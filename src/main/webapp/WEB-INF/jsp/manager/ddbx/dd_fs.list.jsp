@@ -2,9 +2,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
-<%@ taglib prefix="Tools" uri="/tld/manager" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <div class="box">
+	<div class="box-header">
+		<h3 class="box-title">
+			用户列表
+		</h3>
+	</div>
 	<%
 		String url = Tools.urlKill("sdo|id")+"&sdo=form&id=";
 	%>
@@ -20,21 +24,20 @@
 					<table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
 						<thead>
 							<tr role="row">
-								<th class="hidden-xs text-center"><!-- hidden-xs为手机模式时自动隐藏， text-center为居中-->
+								<th class="hidden-xs text-center">
+									<!-- hidden-xs为手机模式时自动隐藏， text-center为居中-->
 									编号
 								</th>
 								<th class="hidden-xs text-center">
-									模块级别
+									公司名称
 								</th>
 								<th class="text-center">
-									显示名称
+									签约时名称
 								</th>
 								<th class="hidden-xs text-center">
-									后台菜单显示
+									最后更新时间
 								</th>
-								<th class="text-center">
-									排序
-								</th>
+								<th class="hidden-xs text-center">添加时间</th>
 								<th class="text-center">操作</th>
 							</tr>
 						</thead>
@@ -42,20 +45,18 @@
 							<c:forEach items="${list}" var="u" varStatus="num">
 								<tr role="row" class="odd">
 									<td class="hidden-xs text-center">
-											${u.id}
+										${u.id}
 									</td>
 									<td class="hidden-xs text-center">
-										${u.level}
+										${u.name}
 									</td>
 									<td class="text-center">
-										${u.showmmenuname}
+										${u.name_qy}
 									</td>
 									<td class="hidden-xs text-center">
-										${u.showmmenutag.equals("1")?"<span class='label label-success'>显示</span>":"<span class='label label-danger'>不显示</span>"}
+										${fn:replace(u.dt_edit, ".0", "")}
 									</td>
-									<td class="text-center">
-										${u.sort}
-									</td>
+									<td class="hidden-xs text-center">${fn:replace(u.dt_add, ".0", "")}</td>
 									<td class="text-center">
 										<div class="table-button">
 											<a href="<%=url%>${u.id}" class="btn btn-default">
@@ -75,4 +76,5 @@
 <script>
 </script>
 </body>
+
 </html>

@@ -52,8 +52,11 @@ public class Manager {
     request.setAttribute("menus", managerSidebar.getMenus()); // 后台左侧菜单,sidebar.jsp里面用到的菜单列表
 
     System.out.println(Tools.jsonEnCode(post));
+
     if (this.checkCn(cn) && this.checkSdo(sdo)) {// 过滤掉cn
+
       if (checkCnDbctrl(cn)) { // 过滤需要操作数据库的cn
+        System.out.println("过滤后的cn："+cn);
         DbCtrl dbCtrl = new DbCtrl(cn);
         long nid = 0;
         try {
@@ -142,6 +145,7 @@ public class Manager {
             dbCtrl.p = pageInt;
             dbCtrl.limit = limtInt;
             list = dbCtrl.lists(whereString, fieldsString);
+            System.out.println("list:"+list);
             request.setAttribute("list", list);
             request.setAttribute("recs", dbCtrl.recs); // 总记录数
             String htmlpages = dbCtrl.getPage("", 0, true); // 分页html代码
@@ -287,8 +291,8 @@ public class Manager {
     if (this.checkSdo(post.get("sdo"))) {// 过滤掉sdo
       switch (post.get("sdo")) {
       case "login":/** 登陆 */
-        String pass = Tools.md5(Tools.md5("kgc" + post.get("password")));
-        String sql = "select id,isadmin from " + loginTb + " where username='" + post.get("username")
+        String pass = Tools.md5(Tools.md5(post.get("password")));
+        String sql = "select id,name,fsid,isadmin from " + loginTb + " where username='" + post.get("username")
             + "' AND password='" + pass + "'";
         System.out.println("SQL:" + sql);
         Map<String, String> info = Tools.recinfo(sql);
@@ -319,12 +323,18 @@ public class Manager {
    */
   private boolean checkCn(String cn) {
     String[] allowCnList = { "admin", "assess_admin", "home", "admin2", "button", "demo_upfile", "icon", "general",
-        "Timeline", "Modals", "table", "comm_citys","sys_modal" }; // 允许的cn,只有在列表中的cn才使用数据库，T
+        "Timeline", "Modals", "table", "comm_citys","sys_modal"
+            ,"dd_fs","dd_gems","dd_icbc","dd_icbc_erp","dd_icbc_erp_result","dd_icbc_materials","dd_icbc_result"
+            ,"sys_menulevels","sys_session","tt_wxconfig"
+    }; // 允许的cn,只有在列表中的cn才使用数据库，T
     return Tools.arrayIndexOf(allowCnList, cn);
   }
 
   private boolean checkCnDbctrl(String cn) {
-    String[] allowCnList = { "admin", "assess_admin", "comm_citys","sys_modal"}; // 允许的cn,只有在列表中的cn才使用数据库，
+    String[] allowCnList = {"admin", "assess_admin", "home", "admin2", "button", "demo_upfile", "icon", "general",
+            "Timeline", "Modals", "table", "comm_citys","sys_modal"
+            ,"dd_fs","dd_gems","dd_icbc","dd_icbc_erp","dd_icbc_erp_result","dd_icbc_materials","dd_icbc_result"
+            ,"sys_menulevels","sys_session","tt_wxconfig"}; // 允许的cn,只有在列表中的cn才使用数据库，
     return Tools.arrayIndexOf(allowCnList, cn);
   }
 

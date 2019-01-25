@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page import="com.tt.tool.Tools" %>
 <%@ page import="java.util.*" %>
+<%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%
 	//Map<String, String> mpTmp = new HashMap<>();
 	//mpTmp.put("id","23");

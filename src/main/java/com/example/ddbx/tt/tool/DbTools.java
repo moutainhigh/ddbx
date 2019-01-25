@@ -21,6 +21,9 @@ public class DbTools {
     private Connection conn = null;
     // private Statement stmt = null;
     private boolean showlog = true;
+
+    public static void unDic(String dbUsertablename, long mid, String fsid) {
+    }
     // ResultSet rs = null;
 
     private void mylog(String mString) {

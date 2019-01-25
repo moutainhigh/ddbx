@@ -78,7 +78,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <span class="fa fa-user form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="密码" name="password" />
+                        <input type="password" class="form-control"  name="password" />
                         <span class="fa fa-lock form-control-feedback"></span>
                     </div>
                     <div class="row">

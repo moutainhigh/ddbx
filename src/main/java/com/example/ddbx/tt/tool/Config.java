@@ -32,8 +32,8 @@ public class Config {
     public final static String DB_MAXACTIVECOMNNECTION = "20";/* 连接池最大连接数.连接池里面最大的连接数，超过这个数时，再获取连接需要等待 */
     public final static String[] DB_CONFIG = TESTMODE/* 数据源配置，格式：数据库名/用户名/密码，每三个一组为一个数据源 */
             ? new String[] { //测试环境
-                "ttdemo", "root", "root",
-                "ddbx", "root", "root"
+                "ddbxdb", "root", "root",
+                "ttdemo", "root", "root"
             }
             : new String[] { //生产环境
                 "kgcdb", "kgcu","NULbhh9fZ79jQfUw" ,
@@ -41,8 +41,7 @@ public class Config {
                 "kcway2", "kcway", "NDXppG2qUNB6pXcA" 
             };
     public final static String DB_ENDCONNSTR = "?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&useSSL=false&serverTimezone=GMT%2B8";/* 数据库连接字符串尾端配置，指定配置的一些参数，SSL，字符编码等 */
-    public final static String DB_USERTABLENAME="admin";
-
+    public final static String DB_USERTABLENAME="dd_gems";
     /**NOTE:
      * @description: 自写日志文件相关配置，使用log4j,文件保存位置等配置在log4j.Properties文件;
      */

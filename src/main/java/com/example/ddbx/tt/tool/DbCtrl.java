@@ -590,6 +590,9 @@ public class DbCtrl {
             if (Tools.myisnull(ary.get("showtag"))) {
                 ary.put("showtag", "0");
             }
+            if (Tools.myisnull(ary.get("up_id"))) {
+                ary.put("up_id", "0");
+            }
             ary = this.param(ary, 0);
             System.out.println("add :" + ary);
             this.id = this.addData(ary);

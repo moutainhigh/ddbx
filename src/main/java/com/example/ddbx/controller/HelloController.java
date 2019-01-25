@@ -27,9 +27,11 @@ import com.example.ddbx.tt.tool.HttpTools;
 import com.example.ddbx.tt.tool.Tools;
 import com.example.ddbx.tt.tool.Wx;
 
+import org.apache.tomcat.util.security.MD5Encoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import sun.security.provider.MD5;
 
 @Controller
 public class HelloController {
@@ -215,19 +217,14 @@ public class HelloController {
 
     public static void main(String[] args) {
         DbCtrl testdb = new DbCtrl("dd_gems");
+        testdb.setDsi("2");
         Map map=new HashMap();
-        map.put("","");
-        map.put("","");
-        map.put("","");
-        map.put("","");
-        map.put("","");
-        map.put("","");
-        map.put("","");
-        map.put("","");
-        map.put("","");
-        map.put("","");
-        map.put("","");
-        map.put("","");
+        map.put("name","tutu");
+        map.put("showtag","1");
+        map.put("deltag","0");
+        map.put("imgurl","");
+        map.put("username","111111");
+        map.put("password", Tools.md5(Tools.md5("111111")));
         testdb.addData(map);
 
 //        Api_Wx api_Wx = new Api_Wx();

@@ -15,6 +15,7 @@
 	String cn = request.getParameter("cn");
 	String sdo = request.getParameter("sdo");
 	String msg =  "/WEB-INF/jsp/manager/" + type + "/" + cn + ".btn.jsp";
+	System.out.println("页面路径："+msg);
 	ServletContext context = request.getSession().getServletContext();
 	InputStream is= context.getResourceAsStream(msg);
 	boolean havebtnfile = is!=null;
