@@ -1,27 +1,22 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2018/9/21/021
-  Time: 17:01
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<% 
-  String AdminLTE_Path = "/manager/AdminLTE-2.4.5/";
-%>
+<%@ page import="java.util.*" %>
+<%@ page import="com.example.ddbx.tt.tool.Tools" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="Tools" uri="/tld/manager" %>
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8">
   <title>
-  后台演示
+    后台演示
   </title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <script type="text/javascript">
-    var _rooturl = "<?php echo $_rooturl ?>";
-    var page_cn = "<?php echo $cn ?>";
+    var _rooturl = "<%=Tools.urlKill("")%>";
+    var page_cn = "<%=request.getParameter("cn")%>";
   </script>
   <!-- Bootstrap 3.3.4 -->
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -36,14 +31,14 @@
 			page. However, you can choose any other skin. Make sure you
 			apply the skin class to the body tag so the changes take effect.
 	-->
-  <link href="dist/css/skins/skin-blue.css" rel="stylesheet" type="text/css" />
+  <link href="dist/css/skins/${cssName}.css" rel="stylesheet" type="text/css" />
   <link href="dist/css/style.css" rel="stylesheet" type="text/css" />
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
-		<script src="https://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
-		<script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
+  <script src="https://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
   <!-- jQuery 2.1.4 -->
   <script src="js/jQuery-2.1.4.min.js" type="text/javascript"></script>
   <script src="js/common.js" type="text/javascript"></script>
@@ -73,6 +68,7 @@
   <script type="text/javascript" src="js/exif.js"></script><%--这个必须,处理图片用--%>
   <script type="text/javascript" src="js/megapic-image.js"></script><%--这个必须，压缩和处理图片用--%>
   <%-- app.iframe --%>
-  <script src="iframe/dist/js/app_iframe.js?ver=3"></script>
+  <script src="iframe/dist/js/app_iframe.js?ver=4"></script>
   <link href="dist/css/style.css" rel="stylesheet" type="text/css" />
+  <script src="js/index.js" type="text/javascript"></script>
 </head>

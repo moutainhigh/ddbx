@@ -1,7 +1,8 @@
 package com.example.ddbx.tt.tool;
+
+import javax.net.ssl.X509TrustManager;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
-import javax.net.ssl.X509TrustManager;
 
 /**
  * 证书处理工具，在第三方需要证书认证时使用。目前暂未用到

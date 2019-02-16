@@ -10,10 +10,99 @@ Target Server Type    : MYSQL
 Target Server Version : 80013
 File Encoding         : 65001
 
-Date: 2019-01-25 17:51:44
+Date: 2019-02-16 17:44:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for admin
+-- ----------------------------
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '微信会话密钥session_key',
+  `an` int(11) NOT NULL DEFAULT '0' COMMENT '用于区别市场下的数据',
+  `name` varchar(64) DEFAULT NULL COMMENT '实名名字,',
+  `avatarurl` varchar(200) DEFAULT NULL,
+  `nickname` varchar(32) DEFAULT NULL COMMENT '昵称',
+  `dt_add` datetime DEFAULT NULL COMMENT '添加时间',
+  `dt_edit` datetime DEFAULT NULL COMMENT '最后编辑时间',
+  `mid_add` int(11) NOT NULL DEFAULT '0' COMMENT '添加人员id',
+  `isadmin` tinyint(4) DEFAULT '0' COMMENT '是否后台管理员,0的时候为小程序端登陆账号，1为后台登陆账号，2，3，4到时扩展',
+  `comname` varchar(255) DEFAULT NULL COMMENT '公司名字',
+  `comname_short` varchar(255) DEFAULT NULL COMMENT '公司名字简写',
+  `showtag` tinyint(4) NOT NULL DEFAULT '1' COMMENT '显示标志，1为显示/可用',
+  `deltag` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除标志，1为删除，0为未删除',
+  `wxopenid` varchar(32) DEFAULT NULL COMMENT '微信登陆用户的openid',
+  `username` varchar(255) DEFAULT NULL COMMENT '账号',
+  `password` varchar(255) DEFAULT NULL COMMENT '密码',
+  `cp` tinyint(4) DEFAULT '0',
+  `state_id` int(11) NOT NULL DEFAULT '0',
+  `city_id` int(11) NOT NULL DEFAULT '0',
+  `agp_id` int(11) NOT NULL DEFAULT '0' COMMENT '后台角色组id,admin_agp',
+  `fsid` int(11) NOT NULL DEFAULT '0',
+  `gemsid` int(11) NOT NULL DEFAULT '0' COMMENT 'gemsid',
+  `superadmin` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否内部超级管理员，拥有后台所有权限',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `mid_add` (`mid_add`) USING BTREE,
+  KEY `showtag` (`showtag`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COMMENT='后台市场会员表,<!-- APP端/H5端/小程序端登陆会员表 -->';
+
+-- ----------------------------
+-- Records of admin
+-- ----------------------------
+INSERT INTO `admin` VALUES ('21', '0', '屠弯弯', '/upload/2019/02/12/1e6287aba2ed4b5f376f0e53b47a8456.jpg', '大人啊大人', null, '2019-02-12 16:22:31', '0', '0', null, null, '1', '0', 'oX6Hb4qluIat5pa2VcNe6T3NOk4g', 'admin', '41f347d047e225bb2cb8fcd5e0f13329', '1', '0', '0', '9', '33', '46', '1');
+INSERT INTO `admin` VALUES ('25', '0', '测试', '/upload/2019/02/11/fbfedbab20a8e45f474dea50088ad595.jpg', '我日', '2018-12-20 18:56:58', '2019-02-11 19:42:55', '21', '0', '', '', '1', '0', 'oX6Hb4t59Aapx3tdKptOPmPtNaWc', 'test', '', '0', '20', '336', '8', '33', '0', '0');
+INSERT INTO `admin` VALUES ('27', '0', 'ttt', null, 'aaa', null, '2018-12-21 14:23:32', '0', '0', null, null, '1', '0', 'ohG8B5Wfh_2qF6mC_RiFZ9BAIJIg', '456', '183a9bedb71eb8441c2138798b47bae0', null, '33', '198', '0', '0', '0', '0');
+INSERT INTO `admin` VALUES ('29', '0', null, null, null, null, '2018-12-21 14:24:56', '0', '0', null, null, '1', '0', 'ohG8B5a-9u_JIpKQYPaJ8HS9OkMA', '789', '9ec8057bdd85a17819c1982b2e1320f5', null, '0', '0', '0', '0', '0', '0');
+INSERT INTO `admin` VALUES ('30', '0', '', null, '', '2018-12-24 20:12:43', '2018-12-24 20:12:43', '21', '0', '', '', '1', '0', null, 'test2', 'dcfcd07e645d245babe887e5e2daa016', '0', '0', '0', '0', '0', '0', '0');
+INSERT INTO `admin` VALUES ('31', '0', '测试111测试111', '/upload/2019/02/11/eddaa197fcfc70f294ca3d197ca509e4.jpg', '昵称', '2019-01-16 11:22:18', '2019-02-11 19:43:16', '0', '0', null, null, '1', '0', null, 'cs444', '82791250224195e962c2cea19988b840', null, '7', '87', '8', '33', '0', '0');
+INSERT INTO `admin` VALUES ('32', '0', '测试333', '/upload/2019/02/11/6aad3155ee55e0904e8f5a8088f4dfa4.jpg', '昵称', '2019-01-16 11:22:28', '2019-02-11 19:43:29', '0', '0', null, null, '1', '0', null, 'cs333', 'a4bf3d1b793ee31147ed28cb849683eb', null, '2', '507', '12', '33', '0', '0');
+INSERT INTO `admin` VALUES ('33', '0', '33332', 'images/mgcaraddimg.jpg', 'woshi333', '2019-01-16 11:22:40', '2019-01-29 14:15:01', '0', '0', null, null, '1', '0', null, 'test333', '41f347d047e225bb2cb8fcd5e0f13329', null, '14', '462', '8', '33', '0', '0');
+INSERT INTO `admin` VALUES ('34', '0', '测试4444测试4444', 'images/mgcaraddimg.jpg', '', '2019-01-16 11:23:03', '2019-01-29 13:44:52', '0', '0', null, null, '1', '0', null, '1234', null, null, '0', '0', '12', '33', '0', '0');
+INSERT INTO `admin` VALUES ('35', '0', '测试歌手', '/upload/2019/02/13/17be9274c16f17780d3bff6da7b9100d.jpg', '我晕倒', '2019-01-16 11:23:28', '2019-02-13 17:12:08', '0', '0', null, null, '1', '0', null, 'hhhhh', '3d48b10a2a0d66ee88b0a9a080e66c25', null, '0', '0', '8', '33', '0', '0');
+INSERT INTO `admin` VALUES ('36', '0', 'ss屠国强ss', '/upload/2019/02/13/09c0617e72acbf457193e3ff8aa62940.jpg', 'ww屠ww', '2019-01-17 15:10:29', '2019-02-13 15:04:21', '21', '0', null, null, '1', '0', null, 'tgqss', 'remove', null, '9', '48', '12', '33', '0', '0');
+INSERT INTO `admin` VALUES ('37', '0', '大哥啊', '/upload/2019/01/20/cf1b4d5f4e5282d2721b178819c235ab.jpg', '大哥啊', '2019-01-20 22:04:50', '2019-01-25 17:26:05', '21', '0', null, null, '1', '0', null, 'dga', '3d48b10a2a0d66ee88b0a9a080e66c25', null, '17', '389', '11', '33', '0', '0');
+INSERT INTO `admin` VALUES ('38', '0', '中国好声音', '/upload/2019/01/20/739c269a3690b9f3943ef4d51f4ea390.jpg', '1234', '2019-01-20 22:13:21', '2019-01-20 22:23:21', '21', '0', null, null, '1', '0', null, 'zghsy', 'd629381af8294f6d9b7b44f110deaa4c', null, '33', '198', '0', '0', '0', '0');
+INSERT INTO `admin` VALUES ('39', '0', '我是歌手', '/upload/2019/02/12/7b52a23971d8df6a6fe39736cf273f2b.jpg', '歌手老大', '2019-01-20 22:18:15', '2019-02-12 16:21:24', '21', '0', null, null, '1', '0', null, 'wsgs', 'a4bf3d1b793ee31147ed28cb849683eb', null, '3', '484', '8', '33', '0', '0');
+INSERT INTO `admin` VALUES ('40', '0', '小弟啊', '/upload/2019/01/25/038ebcae1e1ec7be554f4ae5b29682e4.jpg', '中国小弟', '2019-01-25 16:04:13', '2019-01-25 16:11:11', '37', '0', null, null, '1', '0', null, 'xda', '3d48b10a2a0d66ee88b0a9a080e66c25', '0', '5', '104', '10', '33', '0', '0');
+INSERT INTO `admin` VALUES ('41', '0', '前台收银', '/upload/2019/01/25/e9bba2c6eeccdff9afc126c83a80a8b5.jpg', '前台收银哈哈哈', '2019-01-25 17:27:36', '2019-01-26 12:30:55', '37', '0', null, null, '1', '0', null, 'qtsy', '3d48b10a2a0d66ee88b0a9a080e66c25', '0', '3', '484', '13', '33', '0', '0');
+INSERT INTO `admin` VALUES ('42', '0', '大师2', '/upload/2019/02/11/d2b49daf7acd8a349c3afcf2f92532d6.jpg', '昵称', '2019-01-29 15:49:29', '2019-02-11 19:43:07', '31', '0', null, null, '1', '0', null, 'dsaa', 'a4bf3d1b793ee31147ed28cb849683eb', '0', '15', '609', '8', '33', '0', '0');
+INSERT INTO `admin` VALUES ('43', '0', '大师兄3', '/upload/2019/02/11/a0ce26240f4e3550ec1c5a45d1a9dd1e.jpg', '昵称', '2019-01-29 15:58:22', '2019-02-11 19:42:46', '42', '0', null, null, '1', '0', null, 'dsx3', 'a4bf3d1b793ee31147ed28cb849683eb', '0', '14', '675', '8', '33', '0', '0');
+INSERT INTO `admin` VALUES ('44', '0', '大师兄4', '/upload/2019/02/11/44a3b08c43297c29747d70b2d0b45eb0.jpg', '昵称', '2019-01-29 16:05:37', '2019-02-11 19:42:14', '42', '0', null, null, '1', '0', null, 'dsx4', 'a4bf3d1b793ee31147ed28cb849683eb', '0', '20', '329', '8', '33', '0', '0');
+INSERT INTO `admin` VALUES ('45', '0', '大师兄5', '/upload/2019/01/31/3206609c3639c4b184221f9c23aac612.jpg', '昵称', '2019-01-29 16:06:26', '2019-01-31 17:59:16', '42', '0', null, null, '1', '0', null, 'dsx5', 'a4bf3d1b793ee31147ed28cb849683eb', '0', '22', '260', '8', '33', '0', '0');
+INSERT INTO `admin` VALUES ('46', '0', '张三丰', '/upload/2019/02/11/04fcc7c18db1496001c94fe7d461dc8e.jpg', '昵称', '2019-02-11 16:36:33', '2019-02-11 16:44:48', '0', '0', null, null, '1', '0', null, 'adminwoshizsf', 'b33fea4f0f385e540cea20d3560a6441', '0', '13', '459', '12', '33', '0', '0');
+INSERT INTO `admin` VALUES ('47', '0', '图图图', '/upload/2019/02/16/d24b2a1a6218b715b159ecf812222d1d.jpg', '图图图', '2019-02-16 16:17:13', '2019-02-16 16:17:13', '21', '0', null, null, '1', '0', null, '123', '3d48b10a2a0d66ee88b0a9a080e66c25', '0', '23', '226', '12', '1', '0', '0');
+
+-- ----------------------------
+-- Table structure for admin_agp
+-- ----------------------------
+DROP TABLE IF EXISTS `admin_agp`;
+CREATE TABLE `admin_agp` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL COMMENT '权限组名称',
+  `dt_add` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `dt_edit` datetime DEFAULT NULL,
+  `purview_map` varchar(1024) NOT NULL COMMENT '权限组合集',
+  `showtag` tinyint(4) NOT NULL DEFAULT '1' COMMENT '显示',
+  `fsid` int(11) NOT NULL DEFAULT '0' COMMENT '所属公司fsid',
+  `systag` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否为系统默认模板',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='管理员权限表/角色表';
+
+-- ----------------------------
+-- Records of admin_agp
+-- ----------------------------
+INSERT INTO `admin_agp` VALUES ('1', '系统管理员', '2019-01-25 16:08:56', '2019-01-25 15:49:08', '5,14,17,20,16,10,11,12,9,8,7,15,4,13,3,2,1,18,6,19,', '1', '0', '1');
+INSERT INTO `admin_agp` VALUES ('5', '财务管理员', '2019-01-25 16:08:50', '2019-01-25 15:49:36', '14,17,20,16,9,15,13,2,1,6,19,', '1', '0', '1');
+INSERT INTO `admin_agp` VALUES ('6', '普通审核员', '2019-01-25 16:08:43', '2019-01-25 15:00:16', '14,17,16,15,13,', '1', '0', '1');
+INSERT INTO `admin_agp` VALUES ('7', '业务经理', '2019-01-25 16:08:53', '2019-01-25 15:00:23', '17,16,9,15,2,1,6,19,', '1', '0', '1');
+INSERT INTO `admin_agp` VALUES ('12', '公司老总', '2019-01-25 17:21:31', '2019-01-25 17:16:51', '5,17,20,16,10,11,12,8,7,15,4,3,2,6,19,', '1', '33', '0');
+INSERT INTO `admin_agp` VALUES ('8', '业务经理', '2019-01-25 15:00:23', '2019-01-25 15:00:23', '17,16,9,15,2,1,6,19,', '1', '33', '0');
+INSERT INTO `admin_agp` VALUES ('9', '系统管理员', '2019-02-16 15:39:14', '2019-02-16 15:39:14', '5,14,17,20,16,21,10,27,22,28,26,29,11,24,12,9,8,7,15,4,13,3,2,1,18,23,25,6,19,', '1', '33', '0');
+INSERT INTO `admin_agp` VALUES ('10', '普通审核员', '2019-01-25 15:00:16', '2019-01-25 15:00:16', '14,17,16,15,13,', '1', '33', '0');
+INSERT INTO `admin_agp` VALUES ('11', '财务管理员', '2019-01-28 10:51:10', '2019-01-28 10:51:10', '5,20,16,15,4,6,19,', '1', '33', '0');
+INSERT INTO `admin_agp` VALUES ('13', '前台收银', '2019-01-25 17:26:51', '2019-01-25 17:26:51', '5,4,12,', '1', '33', '0');
 
 -- ----------------------------
 -- Table structure for comm_citys
@@ -483,29 +572,31 @@ DROP TABLE IF EXISTS `dd_fs`;
 CREATE TABLE `dd_fs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `mid_add` int(11) DEFAULT NULL,
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '公司名称',
   `mid_edit` int(11) DEFAULT NULL,
   `dt_add` datetime DEFAULT NULL,
   `dt_edit` datetime DEFAULT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '公司名称',
   `state_id` int(11) DEFAULT NULL COMMENT '所在省id',
   `city_id` int(11) DEFAULT NULL COMMENT '所在市id',
   `zone_id` int(11) DEFAULT NULL COMMENT '所在县id',
   `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '详细地址',
   `showtag` tinyint(4) DEFAULT NULL,
   `fs_logo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '公司logo',
-  `name_py` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '名称拼音首字母',
-  `code_pre` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '名称拼音前缀',
+  `namepy` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '名称拼音首字母',
+  `code_pre` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '鉴定编号前缀',
   `deltag` tinyint(4) DEFAULT NULL COMMENT '删除标记 1 删除',
   `name_qy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '签约时完整名称',
-  `purview_map` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '权限集合',
+  `purview_map` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '前台可以使用模块的权限，用,分开各个权限。如assess_queryby,assess_querybx ',
   `up_id` int(11) DEFAULT NULL COMMENT '代理上级id',
+  `rec_id` int(11) DEFAULT '0' COMMENT '推介人id,member',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dd_fs
 -- ----------------------------
-INSERT INTO `dd_fs` VALUES ('1', '1', '大地保险', '1', '2019-01-25 16:45:08', '2019-01-25 17:16:28', '17', '410', null, '806191630@qq.com', '1', '/upload/2019/01/25/7397bdb084900e46d666186f81974126.jpg', 'ddbx', null, null, '大地保险', null, '1');
+INSERT INTO `dd_fs` VALUES ('1', '1', '21', '2019-01-25 16:45:08', '2019-02-16 16:34:25', '大地保险', '15', '609', null, '806191630@qq.com', '1', '/upload/2019/01/25/7397bdb084900e46d666186f81974126.jpg', 'ddbx', null, null, '大地保险', null, '33', null);
+INSERT INTO `dd_fs` VALUES ('2', '21', '21', '2019-02-16 16:34:57', '2019-02-16 16:34:57', '代理公司', '15', '608', null, 'sssssssssssss', '1', '/upload/2019/02/16/004b24049229f5e889a2a8b187b2f5c2.jpg', 'dlgs', null, null, '1111111111', null, '33', '0');
 
 -- ----------------------------
 -- Table structure for dd_gems
@@ -534,12 +625,13 @@ CREATE TABLE `dd_gems` (
   `isadmin` tinyint(4) DEFAULT '0' COMMENT '是否后台管理员,0的时候为小程序端登陆账号，1为后台登陆账号，2，3，4到时扩展',
   `agpid` int(11) DEFAULT '0' COMMENT '权限id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dd_gems
 -- ----------------------------
-INSERT INTO `dd_gems` VALUES ('1', 'tutu', '0', null, '2019-01-25 17:36:50', null, '1', '1', '0', '/upload/2019/01/25/10a074b73cb60ce9f10968628e834edb.jpg', null, '1', '111111', 'a4bf3d1b793ee31147ed28cb849683eb', null, '0', null, null, null, '0', '0');
+INSERT INTO `dd_gems` VALUES ('1', 'tutu', '1', '2019-02-16 15:21:48', '2019-01-25 17:36:50', null, '1', '1', '0', '/upload/2019/01/25/10a074b73cb60ce9f10968628e834edb.jpg', null, '1', '111111', 'a4bf3d1b793ee31147ed28cb849683eb', null, '0', null, null, null, '0', '0');
+INSERT INTO `dd_gems` VALUES ('2', '图图', '0', '2019-02-16 16:02:37', '2019-02-16 16:02:37', '21', '21', '1', null, '/upload/2019/02/16/27f3ef167b48126e8081dd2e83612cc1.jpg', null, '1', '123', '123', null, '0', null, null, null, '1', '0');
 
 -- ----------------------------
 -- Table structure for dd_icbc
@@ -733,6 +825,672 @@ CREATE TABLE `dd_icbc_result` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for fs
+-- ----------------------------
+DROP TABLE IF EXISTS `fs`;
+CREATE TABLE `fs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '店名',
+  `state_id` int(11) DEFAULT NULL COMMENT '省',
+  `city_id` int(11) DEFAULT NULL COMMENT '市',
+  `zone_id` int(11) DEFAULT NULL COMMENT '县区',
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '具体地址',
+  `showtag` tinyint(4) DEFAULT '1' COMMENT '显示标志',
+  `code_pre` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '鉴定编号前缀',
+  `oemimgurl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '图标',
+  `rec_id` int(11) DEFAULT '0' COMMENT '推介人id,member',
+  `namepy` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '拼音',
+  `purview_map` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `dt_edit` datetime DEFAULT NULL,
+  `dt_add` datetime DEFAULT NULL,
+  `mid_add` int(11) DEFAULT NULL,
+  `mid_edit` int(11) DEFAULT NULL,
+  `up_id` int(11) DEFAULT NULL COMMENT '代理上级id',
+  `name_qy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '签约时完整名称',
+  `fs_logo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '公司logo',
+  PRIMARY KEY (`id`),
+  KEY `state_id` (`state_id`),
+  KEY `city_id` (`city_id`),
+  KEY `zone_id` (`zone_id`),
+  KEY `showtag` (`showtag`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COMMENT='公司资料表';
+
+-- ----------------------------
+-- Records of fs
+-- ----------------------------
+INSERT INTO `fs` VALUES ('33', '擎天柱公司', '33', '198', '23', '擎天柱路', '1', 'QTZ', '', '0', '', '5,14,17,20,16,21,10,27,22,28,26,29,11,24,12,9,8,7,15,4,13,3,2,1,18,23,25,6,19,30,', '2019-02-16 17:24:29', '2019-01-24 07:29:44', '21', '21', null, null, '/upload/2019/02/16/004b24049229f5e889a2a8b187b2f5c2.jpg');
+INSERT INTO `fs` VALUES ('34', '测试', '11', '34', null, 'sssssssssssss', '1', 'cs', null, '0', null, '5,14,17,20,16,21,10,27,22,28,26,29,11,24,12,9,8,7,15,4,13,3,2,1,18,23,25,6,19,30,', '2019-02-16 17:31:52', '2019-02-16 17:19:52', '21', '21', '33', '测试测试测试', '/upload/2019/02/16/19ecb55e54ed7c8f14f5bf5b27d0f5ea.jpg');
+
+-- ----------------------------
+-- Table structure for gems
+-- ----------------------------
+DROP TABLE IF EXISTS `gems`;
+CREATE TABLE `gems` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL COMMENT '鉴定师名',
+  `fsid` int(11) NOT NULL COMMENT '所属店id',
+  `showtag` tinyint(4) NOT NULL DEFAULT '1' COMMENT '显示标志',
+  `mobile` varchar(32) NOT NULL COMMENT '电话',
+  `cp` tinyint(4) DEFAULT '3' COMMENT '权限级别，1为1级，2为2级，3为3级，0为无权限，游客，数字越低权限越高,目前1代表公司管理员',
+  `username` varchar(64) DEFAULT NULL COMMENT '用户名,保留',
+  `purview_map` varchar(255) DEFAULT NULL COMMENT '前台可以使用模块的权限，用,分开各个权限。如assess_queryby,assess_querybx',
+  `dt_add` datetime NOT NULL,
+  `dt_edit` datetime NOT NULL,
+  `idcard` varchar(20) NOT NULL COMMENT '身份证号码',
+  `deltag` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除标志，1为已经删除',
+  `imgurl` varchar(255) NOT NULL COMMENT '头像',
+  PRIMARY KEY (`id`),
+  KEY `fsid` (`fsid`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COMMENT='员工资料表';
+
+-- ----------------------------
+-- Records of gems
+-- ----------------------------
+INSERT INTO `gems` VALUES ('46', '飞机啊飞机', '33', '1', '18950388428', '1', null, null, '2018-04-24 19:25:52', '2018-07-07 11:12:17', '', '0', '');
+
+-- ----------------------------
+-- Table structure for sys_dic_tag
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_dic_tag`;
+CREATE TABLE `sys_dic_tag` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `name` varchar(4) NOT NULL DEFAULT '' COMMENT '显示/隐藏',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='显示/隐藏，是/否';
+
+-- ----------------------------
+-- Records of sys_dic_tag
+-- ----------------------------
+INSERT INTO `sys_dic_tag` VALUES ('0', '否');
+INSERT INTO `sys_dic_tag` VALUES ('1', '是');
+
+-- ----------------------------
+-- Table structure for sys_error
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_error`;
+CREATE TABLE `sys_error` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `errormsg` longtext,
+  `dt_add` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=572 DEFAULT CHARSET=utf8 COMMENT='系统错误日志，异常表';
+
+-- ----------------------------
+-- Records of sys_error
+-- ----------------------------
+INSERT INTO `sys_error` VALUES ('1', 'File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.form.jsp] not found', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('2', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('3', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('4', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('5', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('6', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('7', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('8', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('9', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('10', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('11', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('12', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('13', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('14', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('15', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('16', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('17', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('18', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('19', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('20', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('21', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('22', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('23', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('24', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('25', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('26', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('27', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('28', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('29', 'Cannot forward after response has been committed', '2019-02-01 11:35:48');
+INSERT INTO `sys_error` VALUES ('30', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('31', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('32', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('33', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('34', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('35', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('36', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('37', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('38', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('39', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('40', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('41', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('42', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('43', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('44', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('45', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('46', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('47', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('48', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('49', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('50', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('51', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('52', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('53', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('54', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('55', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('56', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('57', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('58', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('59', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('60', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('61', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('62', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('63', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('64', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('65', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('66', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('67', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('68', 'Cannot forward after response has been committed', '2019-02-01 11:35:49');
+INSERT INTO `sys_error` VALUES ('69', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('70', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('71', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('72', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('73', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('74', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('75', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('76', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('77', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('78', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('79', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('80', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('81', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('82', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('83', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('84', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('85', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('86', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('87', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('88', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('89', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('90', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('91', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('92', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('93', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('94', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('95', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('96', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('97', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('98', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('99', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('100', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('101', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('102', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('103', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('104', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('105', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('106', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('107', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('108', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('109', 'Cannot forward after response has been committed', '2019-02-01 11:35:50');
+INSERT INTO `sys_error` VALUES ('110', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('111', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('112', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('113', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('114', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('115', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('116', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('117', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('118', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('119', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('120', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('121', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('122', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('123', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('124', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('125', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('126', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('127', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('128', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('129', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('130', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('131', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('132', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('133', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('134', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('135', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('136', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('137', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('138', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('139', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('140', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('141', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('142', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('143', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('144', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('145', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('146', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('147', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('148', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('149', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('150', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('151', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('152', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('153', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('154', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('155', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('156', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('157', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('158', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('159', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('160', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('161', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('162', 'Cannot forward after response has been committed', '2019-02-01 11:35:51');
+INSERT INTO `sys_error` VALUES ('163', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('164', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('165', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('166', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('167', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('168', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('169', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('170', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('171', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('172', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('173', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('174', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('175', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('176', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('177', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('178', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('179', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('180', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('181', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('182', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('183', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('184', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('185', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('186', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('187', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('188', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('189', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('190', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('191', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('192', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('193', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('194', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('195', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('196', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('197', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('198', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('199', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('200', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('201', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('202', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('203', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('204', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('205', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('206', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('207', 'Cannot forward after response has been committed', '2019-02-01 11:35:52');
+INSERT INTO `sys_error` VALUES ('208', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('209', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('210', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('211', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('212', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('213', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('214', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('215', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('216', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('217', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('218', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('219', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('220', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('221', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('222', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('223', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('224', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('225', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('226', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('227', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('228', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('229', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('230', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('231', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('232', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('233', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('234', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('235', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('236', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('237', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('238', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('239', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('240', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('241', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('242', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('243', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('244', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('245', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('246', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('247', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('248', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('249', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('250', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('251', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('252', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('253', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('254', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('255', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('256', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('257', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('258', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('259', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('260', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('261', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('262', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('263', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('264', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('265', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('266', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('267', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('268', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('269', 'Cannot forward after response has been committed', '2019-02-01 11:35:53');
+INSERT INTO `sys_error` VALUES ('270', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('271', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('272', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('273', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('274', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('275', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('276', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('277', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('278', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('279', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('280', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('281', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('282', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('283', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('284', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('285', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('286', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('287', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('288', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('289', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('290', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('291', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('292', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('293', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('294', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('295', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('296', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('297', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('298', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('299', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('300', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('301', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('302', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('303', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('304', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('305', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('306', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('307', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('308', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('309', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('310', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('311', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('312', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('313', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('314', 'Cannot forward after response has been committed', '2019-02-01 11:35:54');
+INSERT INTO `sys_error` VALUES ('315', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('316', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('317', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('318', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('319', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('320', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('321', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('322', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('323', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('324', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('325', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('326', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('327', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('328', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('329', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('330', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('331', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('332', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('333', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('334', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('335', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('336', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('337', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('338', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('339', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('340', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('341', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('342', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('343', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('344', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('345', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('346', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('347', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('348', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('349', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('350', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('351', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('352', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('353', 'Cannot forward after response has been committed', '2019-02-01 11:35:55');
+INSERT INTO `sys_error` VALUES ('354', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('355', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('356', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('357', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('358', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('359', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('360', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('361', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('362', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('363', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('364', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('365', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('366', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('367', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('368', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('369', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('370', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('371', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('372', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('373', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('374', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('375', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('376', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('377', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('378', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('379', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('380', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('381', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('382', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('383', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('384', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('385', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('386', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('387', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('388', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('389', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('390', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('391', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('392', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('393', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('394', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('395', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('396', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('397', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('398', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('399', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('400', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('401', 'Cannot forward after response has been committed', '2019-02-01 11:35:56');
+INSERT INTO `sys_error` VALUES ('402', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('403', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('404', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('405', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('406', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('407', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('408', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('409', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('410', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('411', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('412', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('413', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('414', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('415', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('416', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('417', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('418', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('419', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('420', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('421', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('422', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('423', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('424', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('425', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('426', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('427', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('428', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('429', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('430', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('431', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('432', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('433', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('434', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('435', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('436', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('437', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('438', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('439', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('440', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('441', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('442', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('443', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('444', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('445', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('446', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('447', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('448', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('449', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('450', 'Cannot forward after response has been committed', '2019-02-01 11:35:57');
+INSERT INTO `sys_error` VALUES ('451', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('452', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('453', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('454', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('455', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('456', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('457', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('458', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('459', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('460', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('461', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('462', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('463', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('464', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('465', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('466', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('467', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('468', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('469', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('470', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('471', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('472', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('473', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('474', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('475', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('476', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('477', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('478', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('479', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('480', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('481', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('482', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('483', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('484', 'Cannot forward after response has been committed', '2019-02-01 11:35:58');
+INSERT INTO `sys_error` VALUES ('485', 'File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.form.jsp] not found', '2019-02-01 11:40:40');
+INSERT INTO `sys_error` VALUES ('486', 'File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.form.jsp] not found', '2019-02-01 12:31:18');
+INSERT INTO `sys_error` VALUES ('487', 'File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.form.jsp] not found', '2019-02-01 12:32:23');
+INSERT INTO `sys_error` VALUES ('488', 'File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sysss&#47;sys_error.list.jsp] not found', '2019-02-01 12:54:58');
+INSERT INTO `sys_error` VALUES ('489', 'For input string: \"633s3\"', '2019-02-01 12:55:35');
+INSERT INTO `sys_error` VALUES ('490', 'File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 13:03:54');
+INSERT INTO `sys_error` VALUES ('491', 'File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 13:04:02');
+INSERT INTO `sys_error` VALUES ('492', 'File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 13:12:47');
+INSERT INTO `sys_error` VALUES ('493', '/WEB-INF/jsp/manager/index_b.jsp:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 13:18:21');
+INSERT INTO `sys_error` VALUES ('494', '/WEB-INF/jsp/manager/index_b.jsp:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 13:19:25');
+INSERT INTO `sys_error` VALUES ('495', '/WEB-INF/jsp/manager/index_b.jsp:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.form.jsp] not found', '2019-02-01 13:19:48');
+INSERT INTO `sys_error` VALUES ('496', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 13:34:17');
+INSERT INTO `sys_error` VALUES ('497', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp/WEB-INF/jsp/manager/index_b.jspcn=sys_error&type=sys&sdo=form:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 13:37:29');
+INSERT INTO `sys_error` VALUES ('498', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jspcn=sys_error&type=sys&sdo=form:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 13:38:20');
+INSERT INTO `sys_error` VALUES ('499', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jspcn=sys_error&type=sys&sdo=form:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 13:40:20');
+INSERT INTO `sys_error` VALUES ('500', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp\r\n/WEB-INF/jsp/manager/index_b.jsp\r\ncn=sys_error&type=sys&sdo=form\r\n:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 13:46:03');
+INSERT INTO `sys_error` VALUES ('501', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=form<br>:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 13:47:43');
+INSERT INTO `sys_error` VALUES ('502', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=form<br>:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 15:29:46');
+INSERT INTO `sys_error` VALUES ('503', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=form<br>:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 16:02:24');
+INSERT INTO `sys_error` VALUES ('504', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=form<br>:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 16:17:44');
+INSERT INTO `sys_error` VALUES ('505', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=form<br>:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 16:17:57');
+INSERT INTO `sys_error` VALUES ('506', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=form<br>:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 16:18:33');
+INSERT INTO `sys_error` VALUES ('507', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=form<br>:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 16:19:17');
+INSERT INTO `sys_error` VALUES ('508', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=form<br>:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 16:19:54');
+INSERT INTO `sys_error` VALUES ('509', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=form<br>:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 16:21:46');
+INSERT INTO `sys_error` VALUES ('510', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=form<br>:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 16:28:03');
+INSERT INTO `sys_error` VALUES ('511', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=form<br>:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 16:28:45');
+INSERT INTO `sys_error` VALUES ('512', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=form<br>:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 16:38:28');
+INSERT INTO `sys_error` VALUES ('513', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&sdo=list&type=sys<br>:Unable to compile class for JSP: \n\nAn error occurred at line: [8] in the jsp file: [/WEB-INF/jsp/manager/sys/sys_error.btn.jsp]\nConfig.FILEUP_URLPRE cannot be resolved to a type\n5: <%@ taglib prefix=\"fmt\" uri=\"http://java.sun.com/jsp/jstl/fmt\"%>\n6: <%@ taglib uri=\"http://java.sun.com/jsp/jstl/functions\" prefix=\"fn\"%>\n7: <%@ taglib prefix=\"Tools\" uri=\"/tld/manager\" %>\n8: <a href=\"<%=Config.FILEUP_URLPRE%>log/tt_debug.log\" class=\"btn btn-default\"><i class=\"fa fa-arrow-circle-o-down\"></i>下载Debug日志</a>\n9: <a href=\"<%=Config.FILEUP_URLPRE%>log/tt_error.log\" class=\"btn btn-default\"><i class=\"fa fa-arrow-circle-o-down\"></i>下载Error日志</a>\n\n\nAn error occurred at line: [9] in the jsp file: [/WEB-INF/jsp/manager/sys/sys_error.btn.jsp]\nConfig.FILEUP_URLPRE cannot be resolved to a type\n6: <%@ taglib uri=\"http://java.sun.com/jsp/jstl/functions\" prefix=\"fn\"%>\n7: <%@ taglib prefix=\"Tools\" uri=\"/tld/manager\" %>\n8: <a href=\"<%=Config.FILEUP_URLPRE%>log/tt_debug.log\" class=\"btn btn-default\"><i class=\"fa fa-arrow-circle-o-down\"></i>下载Debug日志</a>\n9: <a href=\"<%=Config.FILEUP_URLPRE%>log/tt_error.log\" class=\"btn btn-default\"><i class=\"fa fa-arrow-circle-o-down\"></i>下载Error日志</a>\n\n\nStacktrace:', '2019-02-01 16:38:30');
+INSERT INTO `sys_error` VALUES ('514', 'http://127.0.0.1:8092/WEB-INF/jsp/manager/index_b.jsp<br>/WEB-INF/jsp/manager/index_b.jsp<br>cn=sys_error&type=sys&sdo=list<br>:Unable to compile class for JSP: \n\nAn error occurred at line: [9] in the jsp file: [/WEB-INF/jsp/manager/sys/sys_error.btn.jsp]\nConfig.FILEUP_URLPRE cannot be resolved to a type\n6: <%@ taglib uri=\"http://java.sun.com/jsp/jstl/functions\" prefix=\"fn\"%>\n7: <%@ taglib prefix=\"Tools\" uri=\"/tld/manager\" %>\n8: <%\n9:   String urlPre = Config.FILEUP_URLPRE;\n10: %>\n11: <a href=\"<%=urlPre%>log/tt_debug.log\" class=\"btn btn-default\"><i class=\"fa fa-arrow-circle-o-down\"></i>下载Debug日志</a>\n12: <a href=\"<%=urlPre%>log/tt_error.log\" class=\"btn btn-default\"><i class=\"fa fa-arrow-circle-o-down\"></i>下载Error日志</a>\n\n\nStacktrace:', '2019-02-01 16:39:31');
+INSERT INTO `sys_error` VALUES ('515', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%3Cbr%3E%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%3Cbr%3Ecn%3Dsys_error%26type%3Dsys%26sdo%3Dform%3Cbr%3E:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_error.form.jsp] not found', '2019-02-01 16:50:11');
+INSERT INTO `sys_error` VALUES ('516', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dcomm_citys%26type%3Ddemo%26sdo%3Dfloat:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.form.jsp] not found', '2019-02-08 08:18:46');
+INSERT INTO `sys_error` VALUES ('517', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26type%3Ddemo%26sdo%3Dform:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.form.jsp] not found', '2019-02-08 08:18:50');
+INSERT INTO `sys_error` VALUES ('518', 'null', '2019-02-11 16:33:01');
+INSERT INTO `sys_error` VALUES ('519', 'null', '2019-02-11 16:33:02');
+INSERT INTO `sys_error` VALUES ('520', 'null', '2019-02-11 16:33:02');
+INSERT INTO `sys_error` VALUES ('521', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dadmin_agp%26type%3Dsys%26sdo%3Dlist:Unable to compile class for JSP: \n\nAn error occurred at line: [34] in the jsp file: [/WEB-INF/jsp/manager/sys/admin_agp.list.jsp]\nThe method isSuperAdmin(TtMap) in the type Tools is not applicable for the arguments (Map<String,String>)\n31: 								</th>\n32: 								<th class=\"hidden-xs text-center\">\n33: 									成员列表\n34: 								</th><%if (Tools.isSuperAdmin(minfo)){%>\n35: 								<th class=\"hidden-xs text-center\">\n36: 									所属公司\n37: 								</th>\n\n\nAn error occurred at line: [55] in the jsp file: [/WEB-INF/jsp/manager/sys/admin_agp.list.jsp]\nThe method isSuperAdmin(TtMap) in the type Tools is not applicable for the arguments (Map<String,String>)\n52: 									</td>\n53: 									<td class=\"hidden-xs text-center\">\n54: 										${u.mans}\n55: 									</td><%if (Tools.isSuperAdmin(minfo)){%>\n56: 									<td class=\"hidden-xs text-center\">\n57: 									${u.fsname}\n58: 									</td>									\n\n\nStacktrace:', '2019-02-11 16:50:50');
+INSERT INTO `sys_error` VALUES ('522', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dadmin_agp%26sdo%3Dlist%26type%3Dsys%26systag%3D1:Unable to compile class for JSP: \n\nAn error occurred at line: [34] in the jsp file: [/WEB-INF/jsp/manager/sys/admin_agp.list.jsp]\nThe method isSuperAdmin(TtMap) in the type Tools is not applicable for the arguments (Map<String,String>)\n31: 								</th>\n32: 								<th class=\"hidden-xs text-center\">\n33: 									成员列表\n34: 								</th><%if (Tools.isSuperAdmin(minfo)){%>\n35: 								<th class=\"hidden-xs text-center\">\n36: 									所属公司\n37: 								</th>\n\n\nAn error occurred at line: [55] in the jsp file: [/WEB-INF/jsp/manager/sys/admin_agp.list.jsp]\nThe method isSuperAdmin(TtMap) in the type Tools is not applicable for the arguments (Map<String,String>)\n52: 									</td>\n53: 									<td class=\"hidden-xs text-center\">\n54: 										${u.mans}\n55: 									</td><%if (Tools.isSuperAdmin(minfo)){%>\n56: 									<td class=\"hidden-xs text-center\">\n57: 									${u.fsname}\n58: 									</td>									\n\n\nStacktrace:', '2019-02-11 16:50:59');
+INSERT INTO `sys_error` VALUES ('523', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dadmin_agp%26sdo%3Dlist%26type%3Dsys%26systag%3D1:Unable to compile class for JSP: \n\nAn error occurred at line: [34] in the jsp file: [/WEB-INF/jsp/manager/sys/admin_agp.list.jsp]\nThe method isSuperAdmin(TtMap) in the type Tools is not applicable for the arguments (Map<String,String>)\n31: 								</th>\n32: 								<th class=\"hidden-xs text-center\">\n33: 									成员列表\n34: 								</th><%if (Tools.isSuperAdmin(minfo)){%>\n35: 								<th class=\"hidden-xs text-center\">\n36: 									所属公司\n37: 								</th>\n\n\nAn error occurred at line: [55] in the jsp file: [/WEB-INF/jsp/manager/sys/admin_agp.list.jsp]\nThe method isSuperAdmin(TtMap) in the type Tools is not applicable for the arguments (Map<String,String>)\n52: 									</td>\n53: 									<td class=\"hidden-xs text-center\">\n54: 										${u.mans}\n55: 									</td><%if (Tools.isSuperAdmin(minfo)){%>\n56: 									<td class=\"hidden-xs text-center\">\n57: 									${u.fsname}\n58: 									</td>									\n\n\nStacktrace:', '2019-02-11 16:51:03');
+INSERT INTO `sys_error` VALUES ('524', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dadmin_agp%26sdo%3Dlist%26type%3Dsys%26systag%3D1:Unable to compile class for JSP: \n\nAn error occurred at line: [34] in the jsp file: [/WEB-INF/jsp/manager/sys/admin_agp.list.jsp]\nThe method isSuperAdmin(TtMap) in the type Tools is not applicable for the arguments (Map<String,String>)\n31: 								</th>\n32: 								<th class=\"hidden-xs text-center\">\n33: 									成员列表\n34: 								</th><%if (Tools.isSuperAdmin(minfo)){%>\n35: 								<th class=\"hidden-xs text-center\">\n36: 									所属公司\n37: 								</th>\n\n\nAn error occurred at line: [55] in the jsp file: [/WEB-INF/jsp/manager/sys/admin_agp.list.jsp]\nThe method isSuperAdmin(TtMap) in the type Tools is not applicable for the arguments (Map<String,String>)\n52: 									</td>\n53: 									<td class=\"hidden-xs text-center\">\n54: 										${u.mans}\n55: 									</td><%if (Tools.isSuperAdmin(minfo)){%>\n56: 									<td class=\"hidden-xs text-center\">\n57: 									${u.fsname}\n58: 									</td>									\n\n\nStacktrace:', '2019-02-11 16:51:36');
+INSERT INTO `sys_error` VALUES ('525', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Csystag%3D1%26cn%3Dadmin_agp%26type%3Dsys%26sdo%3Dform:Unable to compile class for JSP: \n\nAn error occurred at line: [16] in the jsp file: [/WEB-INF/jsp/manager/sys/admin_agp.form.jsp]\nThe method isSuperAdmin(TtMap) in the type Tools is not applicable for the arguments (Map<String,String>)\n13: 			id_uplevel = Long.parseLong(infodb.get(\"id_uplevel\"));\n14: 		}\n15:     int sysTag = 0 ;\n16:     if (!Tools.myisnull(strSysTag) && Tools.isSuperAdmin(minfo) && strSysTag.equals(\"1\")){\n17:       sysTag = 1;\n18:     }\n19: %>\n\n\nStacktrace:', '2019-02-11 17:00:59');
+INSERT INTO `sys_error` VALUES ('526', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemoss:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demoss&#47;comm_citys.list.jsp] not found', '2019-02-11 17:44:12');
+INSERT INTO `sys_error` VALUES ('527', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26type%3Ddemoss%26sdo%3Dform:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demoss&#47;comm_citys.form.jsp] not found', '2019-02-11 17:44:20');
+INSERT INTO `sys_error` VALUES ('528', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dsys_error%26type%3Dsys%26sdo%3Dlist:javax.el.ELException: java.lang.IllegalArgumentException: URLDecoder: Illegal hex characters in escape (%) pattern - For input string: \">\n\"', '2019-02-11 17:45:43');
+INSERT INTO `sys_error` VALUES ('529', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dsys_error%26type%3Dsys%26sdo%3Dlist:javax.el.ELException: java.lang.IllegalArgumentException: URLDecoder: Illegal hex characters in escape (%) pattern - For input string: \") \"', '2019-02-11 17:46:23');
+INSERT INTO `sys_error` VALUES ('530', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dsys_error%26type%3Dsys%26sdo%3Dlist:javax.el.ELException: java.lang.IllegalArgumentException: URLDecoder: Illegal hex characters in escape (%) pattern - For input string: \") \"', '2019-02-11 17:46:32');
+INSERT INTO `sys_error` VALUES ('531', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dsys_error%26type%3Dsys%26sdo%3Dlist:javax.el.ELException: java.lang.IllegalArgumentException: URLDecoder: Illegal hex characters in escape (%) pattern - For input string: \") \"', '2019-02-11 17:55:51');
+INSERT INTO `sys_error` VALUES ('532', 'java.util.HashMap cannot be cast to com.tt.data.TtMap', '2019-02-12 11:40:08');
+INSERT INTO `sys_error` VALUES ('533', 'java.util.HashMap cannot be cast to com.tt.data.TtMap', '2019-02-12 11:40:14');
+INSERT INTO `sys_error` VALUES ('534', 'java.util.HashMap cannot be cast to com.tt.data.TtMap', '2019-02-12 11:40:24');
+INSERT INTO `sys_error` VALUES ('535', 'java.util.HashMap cannot be cast to com.tt.data.TtMap', '2019-02-12 11:40:27');
+INSERT INTO `sys_error` VALUES ('536', 'null', '2019-02-12 11:44:17');
+INSERT INTO `sys_error` VALUES ('537', 'http%3A%2F%2F127.0.0.1%3A8092%2Fmanager%2Findex%7C%2Fmanager%2Findex%7Ccn%3Dcomm_citys%26type%3Ddemo%26sdo%3Dlist%26p%3D4:java.lang.NullPointerException', '2019-02-12 11:44:17');
+INSERT INTO `sys_error` VALUES ('538', 'null', '2019-02-12 11:44:21');
+INSERT INTO `sys_error` VALUES ('539', 'http%3A%2F%2F127.0.0.1%3A8092%2Fmanager%2Findex%7C%2Fmanager%2Findex%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:java.lang.NullPointerException', '2019-02-12 11:44:21');
+INSERT INTO `sys_error` VALUES ('540', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dcomm_citys%26type%3Ddemo%26sdo%3Dfloat:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.form.jsp] not found', '2019-02-13 14:12:17');
+INSERT INTO `sys_error` VALUES ('541', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dadmin%26type%3Ddemo%26sdo%3Dlist:Unable to compile class for JSP: \n\nAn error occurred at line: [42] in the jsp file: [/WEB-INF/jsp/manager/list.jsp]\nCannot cast from String to TtMap\n39: 	if (havebtnfile){\n40: 		is.close();\n41: 	}\n42: 	TtMap minfo =(TtMap) request.getParameter(\"minfo\");\n43: %>\n44: <!-- Content Wrapper. Contains page content -->\n45: <div class=\"content-wrapper\">\n\n\nStacktrace:', '2019-02-13 14:56:01');
+INSERT INTO `sys_error` VALUES ('542', 'null', '2019-02-13 16:20:30');
+INSERT INTO `sys_error` VALUES ('543', 'null', '2019-02-13 16:20:52');
+INSERT INTO `sys_error` VALUES ('544', 'null', '2019-02-13 16:22:12');
+INSERT INTO `sys_error` VALUES ('545', 'null', '2019-02-13 16:23:37');
+INSERT INTO `sys_error` VALUES ('546', 'null', '2019-02-13 16:24:03');
+INSERT INTO `sys_error` VALUES ('547', 'null', '2019-02-13 16:25:44');
+INSERT INTO `sys_error` VALUES ('548', 'null', '2019-02-13 16:25:58');
+INSERT INTO `sys_error` VALUES ('549', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddemo_upfile%26sdo%3Dlist%26type%3Ddemo:File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;demo_upfile.list.jsp] not found', '2019-02-13 17:12:46');
+INSERT INTO `sys_error` VALUES ('550', 'http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddemo_upfile%26type%3Ddemo%26sdo%3Dform:Unable to compile class for JSP: \n\nAn error occurred at line: [51] in the jsp file: [/WEB-INF/jsp/manager/form.jsp]\nThe method myisnull(String) is undefined for the type Tools\n48: 	});\n49: }\n50: </script>\n51: <%if (!Tools.myisnull(info)){%>\n52: <script>\n53: editFun(${info});\n54: </script>\n\n\nStacktrace:', '2019-02-13 17:19:31');
+INSERT INTO `sys_error` VALUES ('551', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-16 12:01:07');
+INSERT INTO `sys_error` VALUES ('552', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-16 12:01:09');
+INSERT INTO `sys_error` VALUES ('553', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-16 12:02:31');
+INSERT INTO `sys_error` VALUES ('554', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddemo_upfile%26sdo%3Dform%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;demo_upfile.form.jsp] not found', '2019-02-16 12:02:40');
+INSERT INTO `sys_error` VALUES ('555', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-16 14:05:11');
+INSERT INTO `sys_error` VALUES ('556', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddd_fs%26type%3Daccount%26sdo%3Dform%26id%3D1:Unable to compile class for JSP: \r\n\r\nAn error occurred at line: [46] in the jsp file: [/WEB-INF/jsp/manager/account/dd_fs.form.jsp]\r\nThe method myisnull(String) is undefined for the type Tools\r\n43: 								String  upFile = \"../upfile.inc.jsp\";\r\n44: 								String imgPreName = \"fs_logo\";\r\n45:                 String[] ssImgs = { //设置已有值\r\n46: 											!Tools.myisnull(infodb.get(imgPreName))?infodb.get(imgPreName):\"\"\r\n47:                     };\r\n48:                 String sImgs = \"\";                    \r\n49:                 for (int i =0 ;i<ssImgs.length;i++){\r\n\r\n\r\nStacktrace:', '2019-02-16 15:04:17');
+INSERT INTO `sys_error` VALUES ('557', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddd_fs%26type%3Daccount%26sdo%3Dform%26id%3D1:Unable to compile class for JSP: \r\n\r\nAn error occurred at line: [46] in the jsp file: [/WEB-INF/jsp/manager/account/dd_fs.form.jsp]\r\nThe method myisnull(String) is undefined for the type Tools\r\n43: 								String  upFile = \"../upfile.inc.jsp\";\r\n44: 								String imgPreName = \"fs_logo\";\r\n45:                 String[] ssImgs = { //设置已有值\r\n46: 											!Tools.myisnull(infodb.get(imgPreName))?infodb.get(imgPreName):\"\"\r\n47:                     };\r\n48:                 String sImgs = \"\";                    \r\n49:                 for (int i =0 ;i<ssImgs.length;i++){\r\n\r\n\r\nStacktrace:', '2019-02-16 15:07:09');
+INSERT INTO `sys_error` VALUES ('558', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-16 15:13:45');
+INSERT INTO `sys_error` VALUES ('559', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddd_gems%26sdo%3Dlist%26type%3Daccount:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;account&#47;dd_gems.list.jsp] not found', '2019-02-16 15:16:40');
+INSERT INTO `sys_error` VALUES ('560', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddd_gems%26sdo%3Dlist%26type%3Daccount:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;account&#47;dd_gems.list.jsp] not found', '2019-02-16 15:17:39');
+INSERT INTO `sys_error` VALUES ('561', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-16 15:29:25');
+INSERT INTO `sys_error` VALUES ('562', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-16 15:29:35');
+INSERT INTO `sys_error` VALUES ('563', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-16 15:29:55');
+INSERT INTO `sys_error` VALUES ('564', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-16 15:29:58');
+INSERT INTO `sys_error` VALUES ('565', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-16 15:30:01');
+INSERT INTO `sys_error` VALUES ('566', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-16 15:34:34');
+INSERT INTO `sys_error` VALUES ('567', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddemo_upfile%26sdo%3Dform%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;demo_upfile.form.jsp] not found', '2019-02-16 15:34:37');
+INSERT INTO `sys_error` VALUES ('568', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-16 15:37:40');
+INSERT INTO `sys_error` VALUES ('569', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddd_fs%26type%3Daccount%26sdo%3Dform:An exception occurred processing [/WEB-INF/jsp/manager/account/dd_fs.form.jsp] at line [129]\r\n\r\n126: 						</tr>\r\n127: 						<%\r\n128: 							Map<String,Object> menus = (Map<String,Object>)request.getAttribute(\"modals\");\r\n129: 							for (String key :menus.keySet()){  //一级菜单循环开始\r\n130: 								Map<String,Object>  mainList = (Map<String,Object>) menus.get(key);\r\n131: 								TtList submenus =(TtList)mainList.get(\"submenu\");\r\n132: 								TtMap mainInfo = (TtMap)mainList.get(\"mainmenu\");\r\n\r\n\r\nStacktrace:', '2019-02-16 16:54:24');
+INSERT INTO `sys_error` VALUES ('570', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddd_fs%26type%3Daccount%26sdo%3Dform:An exception occurred processing [/WEB-INF/jsp/manager/account/dd_fs.form.jsp] at line [129]\r\n\r\n126: 						</tr>\r\n127: 						<%\r\n128: 							Map<String,Object> menus = (Map<String,Object>)request.getAttribute(\"modals\");\r\n129: 							for (String key :menus.keySet()){  //一级菜单循环开始\r\n130: 								Map<String,Object>  mainList = (Map<String,Object>) menus.get(key);\r\n131: 								TtList submenus =(TtList)mainList.get(\"submenu\");\r\n132: 								TtMap mainInfo = (TtMap)mainList.get(\"mainmenu\");\r\n\r\n\r\nStacktrace:', '2019-02-16 16:55:26');
+INSERT INTO `sys_error` VALUES ('571', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddd_fs%26type%3Daccount%26sdo%3Dform:An exception occurred processing [/WEB-INF/jsp/manager/account/dd_fs.form.jsp] at line [129]\r\n\r\n126: 						</tr>\r\n127: 						<%\r\n128: 							Map<String,Object> menus = (Map<String,Object>)request.getAttribute(\"modals\");\r\n129: 							for (String key :menus.keySet()){  //一级菜单循环开始\r\n130: 								Map<String,Object>  mainList = (Map<String,Object>) menus.get(key);\r\n131: 								TtList submenus =(TtList)mainList.get(\"submenu\");\r\n132: 								TtMap mainInfo = (TtMap)mainList.get(\"mainmenu\");\r\n\r\n\r\nStacktrace:', '2019-02-16 16:55:28');
+
+-- ----------------------------
 -- Table structure for sys_menulevels
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_menulevels`;
@@ -769,35 +1527,65 @@ CREATE TABLE `sys_modal` (
   `icohtml` varchar(255) NOT NULL DEFAULT '<i class="fa fa-arrow-circle-o-right"></i>' COMMENT '显示菜单时前面的图标html',
   `urlotherstr` varchar(255) NOT NULL DEFAULT '' COMMENT 'url里传入的其他参数',
   `sdo` varchar(20) NOT NULL DEFAULT 'list' COMMENT 'url里面的sdo',
+  `superadmin` tinyint(4) NOT NULL DEFAULT '0' COMMENT '非0时为内部模块，1为内部超级管理员才有的，2为内部员工才有的',
   PRIMARY KEY (`id`),
   KEY `sort` (`sort`),
   KEY `showmmenutag` (`showmmenutag`),
   KEY `id_upmodal` (`id_uplevel`),
   KEY `sort_2` (`sort`),
   KEY `level` (`level`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='系统模块表';
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='系统模块表';
 
 -- ----------------------------
 -- Records of sys_modal
 -- ----------------------------
-INSERT INTO `sys_modal` VALUES ('1', '系统角色管理', '6', '21', '21', '2019-01-21 00:00:00', '2019-01-21 10:03:17', '1', '角色管理', 'agp', 'agp_group', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list');
-INSERT INTO `sys_modal` VALUES ('2', '系统权限管理', '6', '21', '21', '2019-01-21 08:00:00', '2019-01-21 10:00:00', '1', '权限管理', 'agp', 'agp', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list');
-INSERT INTO `sys_modal` VALUES ('3', '演示列表list,用admin表', '5', '21', '21', '2019-01-21 00:00:00', '2019-01-21 00:00:00', '1', '会员列表', 'demo', 'admin', '2', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list');
-INSERT INTO `sys_modal` VALUES ('4', '演示列表，用comm_citys', '5', '21', '21', '2018-08-08 00:00:00', '2019-01-22 14:44:19', '1', '城市列表', 'demo', 'comm_citys', '1', '2', '<i class=\"fa fa-crosshairs\"></i>', '', 'list');
-INSERT INTO `sys_modal` VALUES ('5', '演示模块', '0', '21', '1', '2018-04-24 19:25:52', '2019-01-25 15:23:43', '0', '演示模块', '', '', '1', '1', '<i class=\"fa  fa-database\"></i>', '', 'list');
-INSERT INTO `sys_modal` VALUES ('6', '系统设置', '0', '21', '21', '2018-08-08 00:00:00', '2019-01-22 15:00:43', '1', '系统设置', 'sys', 'sys_modal', '200', '1', '<i class=\"fa fa-asterisk\"></i>', '', 'list');
-INSERT INTO `sys_modal` VALUES ('7', 'tt_form2', '5', '21', '21', '2018-08-08 00:00:00', '2018-08-08 00:00:00', '1', 'tt_form2', 'demo', 'admin2', '4', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '&id=25', 'form');
-INSERT INTO `sys_modal` VALUES ('8', 'button', '5', '21', '21', '2018-08-08 00:00:00', '2018-08-08 00:00:00', '1', 'button', 'demo', 'button', '3', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form');
-INSERT INTO `sys_modal` VALUES ('9', '菜单和模块管理', '6', '21', '21', '2018-04-24 19:25:52', '2019-01-21 17:07:08', '1', '模块管理', 'sys', 'sys_modal', '1', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list');
-INSERT INTO `sys_modal` VALUES ('10', 'Modals', '5', '21', '21', '2019-01-21 16:27:55', '2019-01-21 16:27:55', '1', 'Modals', 'demo', 'Modals', '200', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form');
-INSERT INTO `sys_modal` VALUES ('11', 'general', '5', '21', '21', '2019-01-21 16:36:36', '2019-01-21 16:36:36', '1', 'general', 'demo', 'general', '201', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form');
-INSERT INTO `sys_modal` VALUES ('12', 'table', '5', '21', '1', '2019-01-21 16:39:40', '2019-01-25 15:23:19', '0', 'table', 'demo', 'table', '202', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form');
-INSERT INTO `sys_modal` VALUES ('13', '贷后管理', '0', '21', '1', '2019-01-22 09:42:17', '2019-01-25 15:24:02', '0', '贷后管理', 'bank', 'dh', '3', '1', '<i class=\"fa fa-automobile\"></i>', '', 'list');
-INSERT INTO `sys_modal` VALUES ('14', 'GPS定位管理', '13', '21', '21', '2019-01-22 09:48:26', '2019-01-22 09:48:26', '1', 'GPS管理', 'bank', 'gps', '1', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list');
-INSERT INTO `sys_modal` VALUES ('15', '客户管理', '0', '21', '21', '2019-01-22 09:56:42', '2019-01-22 10:53:56', '1', '客户管理', 'demo', 'admin', '4', '1', '<i class=\"fa fa-home\"></i>', '', 'list');
-INSERT INTO `sys_modal` VALUES ('16', '代理公司', '15', '21', '1', '2019-01-22 09:57:15', '2019-01-25 15:26:42', '1', '代理公司', 'ddbx', 'dd_fs', '1', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list');
-INSERT INTO `sys_modal` VALUES ('17', '给客户开个号', '15', '21', '1', '2019-01-22 11:05:25', '2019-01-25 15:24:44', '0', '新增客户', 'demo', 'admin', '2', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form');
-INSERT INTO `sys_modal` VALUES ('18', '用户列表', '15', '1', '1', '2019-01-25 15:15:32', '2019-01-25 15:15:32', '1', '用户列表', 'ddbx', 'dd_gems', '3', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list');
+INSERT INTO `sys_modal` VALUES ('1', '系统角色管理', '6', '21', '21', '2019-01-21 00:00:00', '2019-01-25 14:38:36', '1', '全局角色', 'sys', 'admin_agp', '4', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '&systag=1', 'list', '1');
+INSERT INTO `sys_modal` VALUES ('2', '系统权限管理', '6', '21', '21', '2019-01-21 08:00:00', '2019-01-25 11:47:08', '0', '权限管理', 'agp', 'agp', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('3', '演示列表list,用admin表', '5', '21', '21', '2019-01-21 00:00:00', '2019-01-21 00:00:00', '1', '会员列表', 'demo', 'admin', '2', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('4', '演示列表，用comm_citys', '5', '21', '21', '2018-08-08 00:00:00', '2019-01-22 14:44:19', '1', '城市列表', 'demo', 'comm_citys', '1', '2', '<i class=\"fa fa-crosshairs\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('5', '演示模块', '0', '21', '21', '2018-04-24 19:25:52', '2019-02-16 15:41:36', '0', '演示模块', '4444444444', '333333333', '1', '1', '<i class=\"fa  fa-database\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('6', '系统设置', '0', '21', '21', '2018-08-08 00:00:00', '2019-01-22 15:00:43', '1', '系统设置', 'sys', 'sys_modal', '200', '1', '<i class=\"fa fa-asterisk\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('7', 'tt_form2', '5', '21', '21', '2018-08-08 00:00:00', '2018-08-08 00:00:00', '1', 'tt_form2', 'demo', 'admin2', '4', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '&id=25', 'form', '0');
+INSERT INTO `sys_modal` VALUES ('8', 'button', '5', '21', '21', '2018-08-08 00:00:00', '2018-08-08 00:00:00', '1', 'button', 'demo', 'button', '3', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form', '0');
+INSERT INTO `sys_modal` VALUES ('9', '菜单和模块管理', '6', '21', '21', '2018-04-24 19:25:52', '2019-01-25 14:10:07', '1', '全局模块', 'sys', 'sys_modal', '1', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '1');
+INSERT INTO `sys_modal` VALUES ('10', 'Modals', '5', '21', '21', '2019-01-21 16:27:55', '2019-01-21 16:27:55', '1', 'Modals', 'demo', 'Modals', '200', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form', '0');
+INSERT INTO `sys_modal` VALUES ('11', 'general', '5', '21', '21', '2019-01-21 16:36:36', '2019-01-21 16:36:36', '1', 'general', 'demo', 'general', '201', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form', '0');
+INSERT INTO `sys_modal` VALUES ('12', 'table', '5', '21', '21', '2019-01-21 16:39:40', '2019-01-21 16:39:40', '1', 'table', 'demo', 'table', '202', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form', '0');
+INSERT INTO `sys_modal` VALUES ('13', '贷后管理', '0', '21', '21', '2019-01-22 09:42:17', '2019-02-16 15:41:48', '0', '贷后管理', 'bank', 'dh', '3', '1', '<i class=\"fa fa-automobile\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('14', 'GPS定位管理', '13', '21', '21', '2019-01-22 09:48:26', '2019-01-22 09:48:26', '1', 'GPS管理', 'bank', 'gps', '1', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('15', '客户管理', '0', '21', '21', '2019-01-22 09:56:42', '2019-02-16 15:41:55', '0', '客户管理', 'demo', 'admin', '4', '1', '<i class=\"fa fa-home\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('16', '客户列表', '15', '21', '21', '2019-01-22 09:57:15', '2019-01-22 09:57:15', '1', '客户列表', 'demo', 'admin', '1', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('17', '给客户开个号', '15', '21', '21', '2019-01-22 11:05:25', '2019-01-22 11:05:25', '1', '新增客户', 'demo', 'admin', '2', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form', '0');
+INSERT INTO `sys_modal` VALUES ('18', '保险管理', '0', '21', '21', '2019-01-23 18:51:55', '2019-02-16 15:42:25', '0', '保险管理', '', '', '180', '1', '<i class=\"fa fa-home\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('19', '公司模块', '6', '21', '21', '2019-01-24 17:35:59', '2019-01-24 17:41:00', '1', '公司模块', 'sys', 'fs_agp', '200', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form', '0');
+INSERT INTO `sys_modal` VALUES ('20', '公司角色', '6', '37', '37', '2019-01-25 15:46:58', '2019-01-25 15:46:58', '1', '公司角色', 'sys', 'admin_agp', '400', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('21', '相关说明', '0', '21', '21', '2019-01-31 14:59:39', '2019-01-31 15:54:19', '1', '相关说明', 'demo', 'readme', '0', '1', '<i class=\"fa fa-diamond\"></i>', 'URL里其他参数', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('22', '简单说明', '21', '21', '21', '2019-01-31 15:07:47', '2019-01-31 15:10:33', '1', '简单说明', 'demo', 'readme', '1', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('23', 'ICON', '5', '21', '21', '2019-01-31 15:51:12', '2019-01-31 15:51:12', '1', 'ICON', 'demo', 'icon', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form', '0');
+INSERT INTO `sys_modal` VALUES ('24', 'sys_error', '6', '21', '21', '2019-02-01 12:38:02', '2019-02-01 12:38:02', '1', '错误日志', 'sys', 'sys_error', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '1');
+INSERT INTO `sys_modal` VALUES ('25', '多文件上传', '5', '21', '21', '2019-02-13 17:13:54', '2019-02-13 17:13:54', '1', '文件上传', 'demo', 'demo_upfile', '4', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form', '0');
+INSERT INTO `sys_modal` VALUES ('26', 'TT二次开发说明', '21', '21', '21', '2019-02-14 11:34:34', '2019-02-14 11:34:34', '1', '二次开发教程', 'demo', 'readmedev', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('27', '账户管理', '0', '21', '21', '2019-02-16 14:17:02', '2019-02-16 14:17:02', '1', '账户管理', 'account', 'account', '1', '1', '<i class=\"fa fa-home\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('28', '公司管理', '27', '21', '21', '2019-02-16 14:18:18', '2019-02-16 17:07:17', '1', '公司管理', 'account', 'fs', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('29', '用户管理', '27', '21', '21', '2019-02-16 15:16:29', '2019-02-16 16:30:51', '1', '用户管理', 'account', 'admin', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('30', '会员管理', '27', '21', '21', '2019-02-16 16:13:48', '2019-02-16 16:30:15', '0', '会员管理', 'account', 'admin', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+
+-- ----------------------------
+-- Table structure for sys_modal_superadmin
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_modal_superadmin`;
+CREATE TABLE `sys_modal_superadmin` (
+  `id` int(4) NOT NULL,
+  `name` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_modal_superadmin
+-- ----------------------------
+INSERT INTO `sys_modal_superadmin` VALUES ('0', '公开模块');
+INSERT INTO `sys_modal_superadmin` VALUES ('1', '超级管理模块');
+INSERT INTO `sys_modal_superadmin` VALUES ('2', '普通内部模块');
 
 -- ----------------------------
 -- Table structure for sys_session
@@ -819,334 +1607,798 @@ CREATE TABLE `sys_session` (
 -- Records of sys_session
 -- ----------------------------
 INSERT INTO `sys_session` VALUES ('008b6fbe9cb15ad4ce45453c30311d2d', '21', '2019-01-21 17:01:11', '127.0.0.1', '127.0.0.1', '1548061156', '1548061271');
+INSERT INTO `sys_session` VALUES ('00f4277df6130e0fdf7fd6a1df297049', '21', '2019-01-25 14:09:51', '127.0.0.1', '127.0.0.1', '1548396476', '1548396591');
 INSERT INTO `sys_session` VALUES ('013b3e699ec6421a225c5a3e8de1a3e2', '21', '2019-01-22 11:03:46', '127.0.0.1', '127.0.0.1', '1548126112', '1548126226');
+INSERT INTO `sys_session` VALUES ('018e72c8d6e6e61245e44e62d64946c9', '37', '2019-01-30 17:12:56', '127.0.0.1', null, '1548839576', '0');
+INSERT INTO `sys_session` VALUES ('02c3f9a3ff1ba4d6312b9af0847e1bcb', '31', '2019-01-29 15:33:11', '127.0.0.1', '127.0.0.1', '1548747112', '1548747191');
 INSERT INTO `sys_session` VALUES ('02c5a6f9e942116f86b796b43189ccc5', '21', '2019-01-16 17:22:42', '127.0.0.1', '127.0.0.1', '1547630516', '1547630562');
 INSERT INTO `sys_session` VALUES ('04098c4d177316170f14bccd712ff292', '21', '2019-01-20 21:48:29', '127.0.0.1', '127.0.0.1', '1547992071', '1547992109');
+INSERT INTO `sys_session` VALUES ('0448b8c76e32159b65e492ead35b85ab', '37', '2019-01-28 11:33:32', '127.0.0.1', '127.0.0.1', '1548646360', '1548646412');
 INSERT INTO `sys_session` VALUES ('045d92d5bc9bf5ac67afeb83e77fa0df', '21', '2019-01-19 17:55:21', '127.0.0.1', '127.0.0.1', '1547891667', '1547891721');
 INSERT INTO `sys_session` VALUES ('04c1b13b90c6fd5f4b45cabd96221bcc', '21', '2019-01-16 19:37:23', '127.0.0.1', '127.0.0.1', '1547638393', '1547638643');
+INSERT INTO `sys_session` VALUES ('04fc958913888152ab65a45209ad2424', '37', '2019-01-25 17:22:51', '127.0.0.1', '127.0.0.1', '1548408146', '1548408171');
 INSERT INTO `sys_session` VALUES ('0541f7d1a07b40958cdd169a9e49827f', '21', '2019-01-20 21:47:51', '127.0.0.1', '127.0.0.1', '1547991994', '1547992071');
 INSERT INTO `sys_session` VALUES ('055c7108bc3f7cac707d071780e318bb', '21', '2019-01-21 11:11:44', '127.0.0.1', '127.0.0.1', '1548040099', '1548040304');
-INSERT INTO `sys_session` VALUES ('05879fe377099e5e6c8c89b122ddde14', '1', '2019-01-25 15:32:04', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548401297', '1548401524');
+INSERT INTO `sys_session` VALUES ('05a2a4b3778e50af5ddaadad6c3919cb', '21', '2019-02-13 14:04:02', '127.0.0.1', '127.0.0.1', '1550037814', '1550037842');
 INSERT INTO `sys_session` VALUES ('05fa215f23035da05229410616c6ef05', '21', '2019-01-20 22:01:33', '127.0.0.1', '127.0.0.1', '1547992873', '1547992893');
 INSERT INTO `sys_session` VALUES ('060c9ed97a559b1e0d693fbf942cedc8', '21', '2019-01-16 15:59:51', '127.0.0.1', '127.0.0.1', '1547625419', '1547625591');
+INSERT INTO `sys_session` VALUES ('06274208dab12e4403a338eb78d29406', '21', '2019-01-26 13:59:10', '127.0.0.1', '127.0.0.1', '1548481839', '1548482350');
 INSERT INTO `sys_session` VALUES ('065a89eae8b65745bd1ba2cfbfc90624', '21', '2019-01-20 22:01:13', '127.0.0.1', '127.0.0.1', '1547992812', '1547992873');
+INSERT INTO `sys_session` VALUES ('069c8c9f5e8378693ff0df093a6765fd', '37', '2019-01-25 17:11:00', '127.0.0.1', '127.0.0.1', '1548407114', '1548407460');
 INSERT INTO `sys_session` VALUES ('06b10f9296b4355bebb1949a28d6c022', '21', '2019-01-16 21:28:07', '127.0.0.1', '127.0.0.1', '1547645083', '1547645287');
+INSERT INTO `sys_session` VALUES ('0700a760cd0795a87753519165e60425', '37', '2019-01-28 15:21:42', '127.0.0.1', '127.0.0.1', '1548659738', '1548660102');
+INSERT INTO `sys_session` VALUES ('073638ca4637ef00cf2d51f941bb193a', '21', '2019-02-01 11:13:37', '127.0.0.1', '127.0.0.1', '1548990420', '1548990817');
 INSERT INTO `sys_session` VALUES ('0777aa1ba8c5d1351505ddb327e9eb08', '21', '2019-01-21 11:52:42', '127.0.0.1', '127.0.0.1', '1548042690', '1548042762');
 INSERT INTO `sys_session` VALUES ('07865b7ffa7effcae1545b28efcb76d8', '21', '2019-01-19 13:41:35', '127.0.0.1', '127.0.0.1', '1547876413', '1547876495');
 INSERT INTO `sys_session` VALUES ('078c4e6626b0c1f183ccd3391ee28204', '21', '2019-01-19 21:34:01', '127.0.0.1', '127.0.0.1', '1547904721', '1547904841');
+INSERT INTO `sys_session` VALUES ('07dd0aae286690b888b9b7e6257f9666', '21', '2019-01-25 14:40:48', '127.0.0.1', '127.0.0.1', '1548398418', '1548398448');
+INSERT INTO `sys_session` VALUES ('07de1662d3978523d2f4a55b012d6d32', '21', '2019-02-13 14:48:42', '127.0.0.1', '127.0.0.1', '1550039963', '1550040522');
+INSERT INTO `sys_session` VALUES ('093c8e303c2e27535348072fe5f6e345', '21', '2019-01-26 16:46:57', '127.0.0.1', '127.0.0.1', '1548482350', '1548492417');
+INSERT INTO `sys_session` VALUES ('0991e6b1d631122fad2cd11a584a1ad8', '21', '2019-01-24 10:08:21', '127.0.0.1', '127.0.0.1', '1548295049', '1548295701');
+INSERT INTO `sys_session` VALUES ('09b94a883b1bdbca15be5a2854ea4ccb', '21', '2019-01-24 18:01:22', '127.0.0.1', '127.0.0.1', '1548324045', '1548324082');
 INSERT INTO `sys_session` VALUES ('0a47f9b47d817ed16b93ed3e3cd3b2c7', '21', '2019-01-16 15:51:56', '127.0.0.1', '127.0.0.1', '1547624966', '1547625116');
+INSERT INTO `sys_session` VALUES ('0a60cecdfabe47c5608510cd27d743a2', '37', '2019-01-28 10:50:44', '127.0.0.1', '127.0.0.1', '1548642538', '1548643844');
+INSERT INTO `sys_session` VALUES ('0b1e106d13e19355cb135b800f031065', '21', '2019-01-23 14:33:56', '127.0.0.1', '127.0.0.1', '1548225083', '1548225236');
+INSERT INTO `sys_session` VALUES ('0b1effe26ce2a24c8c347cd90c1c3d6c', '21', '2019-01-26 11:33:33', '127.0.0.1', '127.0.0.1', '1548473120', '1548473613');
 INSERT INTO `sys_session` VALUES ('0b9394924e8c8f00eabc95a96826fa28', '21', '2019-01-19 14:54:16', '127.0.0.1', '127.0.0.1', '1547880820', '1547880856');
+INSERT INTO `sys_session` VALUES ('0ba4a2370a2bfd693d2d665c1face79b', '21', '2019-01-25 18:08:43', '127.0.0.1', '127.0.0.1', '1548410826', '1548410923');
+INSERT INTO `sys_session` VALUES ('0c4e419f515595a5cbef7221fdcaffcf', '21', '2019-01-22 20:15:25', '127.0.0.1', '127.0.0.1', '1548158094', '1548159325');
+INSERT INTO `sys_session` VALUES ('0c7915989e10db673684a41c0bfaf8b7', '21', '2019-02-14 11:33:53', '127.0.0.1', '127.0.0.1', '1550049929', '1550115233');
+INSERT INTO `sys_session` VALUES ('0cf0f320358aea6ce1bcf9586bdb5372', '21', '2019-01-24 21:01:10', '127.0.0.1', '127.0.0.1', '1548333848', '1548334870');
+INSERT INTO `sys_session` VALUES ('0d583d15bee9e30c06c1c19dc44ebcf0', '21', '2019-01-23 14:45:18', '127.0.0.1', '127.0.0.1', '1548225897', '1548225918');
+INSERT INTO `sys_session` VALUES ('0d609b99918ccad375a7d3a8a1a2affc', '21', '2019-01-25 10:18:18', '127.0.0.1', '127.0.0.1', '1548380472', '1548382698');
+INSERT INTO `sys_session` VALUES ('0d6b1409c752a708ee8f3cd118242e11', '21', '2019-01-31 15:30:08', '127.0.0.1', '127.0.0.1', '1548919585', '1548919807');
+INSERT INTO `sys_session` VALUES ('0e9f87386a6faa592f8ea4aca7ccbb2e', '37', '2019-01-25 17:22:01', '127.0.0.1', '127.0.0.1', '1548407460', '1548408121');
 INSERT INTO `sys_session` VALUES ('0ede20ee11202053ae1de152e9c1393a', '21', '2019-01-21 16:51:13', '127.0.0.1', '127.0.0.1', '1548060473', '1548060673');
+INSERT INTO `sys_session` VALUES ('0f1292178fb5c412ad47a3a96d2476a2', '37', '2019-01-25 15:16:44', '127.0.0.1', '127.0.0.1', '1548400307', '1548400604');
 INSERT INTO `sys_session` VALUES ('0f6f9681a34152b3f5c3adf1e1f981c0', '21', '2019-01-17 13:40:01', '127.0.0.1', '127.0.0.1', '1547703504', '1547703601');
+INSERT INTO `sys_session` VALUES ('1079fe93a32184a3598edca4607a96e7', '21', '2019-02-14 11:35:05', '127.0.0.1', '127.0.0.1', '1550115233', '1550115305');
+INSERT INTO `sys_session` VALUES ('10819c3b2d3ffc1ac9e4b3e8bba74dfa', '21', '2019-02-12 10:41:19', '127.0.0.1', '127.0.0.1', '1549938624', '1549939279');
+INSERT INTO `sys_session` VALUES ('10bfbba4fc3e3ec9bc8f409aa1ee2e1d', '21', '2019-01-23 15:03:25', '127.0.0.1', '127.0.0.1', '1548226346', '1548227005');
 INSERT INTO `sys_session` VALUES ('10f8ad4ad99d72fae388f0560089c2c3', '21', '2019-01-16 15:56:59', '127.0.0.1', '127.0.0.1', '1547625391', '1547625419');
 INSERT INTO `sys_session` VALUES ('10fcd56474aec164c2b68edc1a541cc5', '21', '2019-01-21 13:11:19', '127.0.0.1', '127.0.0.1', '1548047310', '1548047479');
 INSERT INTO `sys_session` VALUES ('1159732b149f1be9fd0ca1a092c75bc2', '21', '2019-01-19 13:40:13', '127.0.0.1', '127.0.0.1', '1547876325', '1547876413');
+INSERT INTO `sys_session` VALUES ('11a3945ba317470655ca9dac1a2faa72', '21', '2019-02-11 16:23:46', '127.0.0.1', '127.0.0.1', '1549873014', '1549873426');
+INSERT INTO `sys_session` VALUES ('11cee33681ee6eda299ecb33ac1b98bd', '21', '2019-02-13 14:49:24', '127.0.0.1', '127.0.0.1', '1550040522', '1550040564');
+INSERT INTO `sys_session` VALUES ('125121fd037d93db801024085761cac0', '37', '2019-01-29 10:59:46', '127.0.0.1', '127.0.0.1', '1548730676', '1548730786');
 INSERT INTO `sys_session` VALUES ('136074729e652668ea9b7fbddf440a8e', '21', '2019-01-16 17:41:53', '127.0.0.1', '127.0.0.1', '1547631353', '1547631713');
+INSERT INTO `sys_session` VALUES ('13636fa9867b2df8097ebd411b4bac71', '21', '2019-01-26 12:28:02', '127.0.0.1', '127.0.0.1', '1548476793', '1548476882');
 INSERT INTO `sys_session` VALUES ('13eb3823b6e9ffb49092bc63151dfafa', '21', '2019-01-17 13:14:36', '127.0.0.1', '127.0.0.1', '1547702040', '1547702076');
 INSERT INTO `sys_session` VALUES ('142979ce43d69672e797be495aeaf4bd', '21', '2019-01-16 21:34:20', '127.0.0.1', '127.0.0.1', '1547645602', '1547645660');
 INSERT INTO `sys_session` VALUES ('1447e7444a1a9d4f620489c023f6671c', '21', '2019-01-19 14:53:40', '127.0.0.1', '127.0.0.1', '1547880752', '1547880820');
+INSERT INTO `sys_session` VALUES ('146196dcbc464b30a86758f33c2db8b7', '21', '2019-01-31 15:05:48', '127.0.0.1', '127.0.0.1', '1548917934', '1548918348');
 INSERT INTO `sys_session` VALUES ('146a327a8b8e50b55637f5dfd9fa1c58', '21', '2019-01-16 17:04:55', '127.0.0.1', '127.0.0.1', '1547629495', '1547629495');
+INSERT INTO `sys_session` VALUES ('14b498d5e6e68412d099e72f2d3599f1', '21', '2019-01-24 19:04:05', '127.0.0.1', '127.0.0.1', '1548324453', '1548327845');
+INSERT INTO `sys_session` VALUES ('14c7664daaebab5b7bda2c266a42a61d', '21', '2019-02-11 16:16:54', '127.0.0.1', '127.0.0.1', '1549871838', '1549873014');
+INSERT INTO `sys_session` VALUES ('15485501d359f65d497a44fdbcf0790e', '21', '2019-01-25 13:45:17', '127.0.0.1', '127.0.0.1', '1548395080', '1548395117');
+INSERT INTO `sys_session` VALUES ('1566fee291e715503a7f777eb3887688', '21', '2019-01-26 12:18:34', '127.0.0.1', '127.0.0.1', '1548476030', '1548476314');
 INSERT INTO `sys_session` VALUES ('15a5109cd38c67f7173a8bd232381faa', '21', '2019-01-19 21:36:39', '127.0.0.1', '127.0.0.1', '1547904911', '1547904999');
 INSERT INTO `sys_session` VALUES ('16a531fd982d37e9bc67714320edcd53', '21', '2019-01-19 17:51:08', '127.0.0.1', '127.0.0.1', '1547891382', '1547891468');
+INSERT INTO `sys_session` VALUES ('17cca7d1e70f916ec21fe5e5be9096eb', '37', '2019-01-25 15:20:06', '127.0.0.1', '127.0.0.1', '1548400693', '1548400806');
+INSERT INTO `sys_session` VALUES ('17ceae06bef36bf743c42c817af0024d', '21', '2019-02-11 13:06:53', '127.0.0.1', '127.0.0.1', '1549860109', '1549861613');
 INSERT INTO `sys_session` VALUES ('17d8790f7d339aafc37906e8c729f87d', '21', '2019-01-17 13:57:48', '127.0.0.1', '127.0.0.1', '1547704631', '1547704668');
+INSERT INTO `sys_session` VALUES ('17debd078ad4fb4614e835b2610da871', '21', '2019-02-01 15:29:29', '127.0.0.1', '127.0.0.1', '1549005173', '1549006169');
+INSERT INTO `sys_session` VALUES ('180bcf9764f6b0d7eaf9c06f6532ecb1', '21', '2019-01-22 20:29:10', '127.0.0.1', '127.0.0.1', '1548159964', '1548160150');
 INSERT INTO `sys_session` VALUES ('18ac30fcdf95a2c501212292f28a7bd2', '21', '2019-01-17 14:32:49', '127.0.0.1', '127.0.0.1', '1547706689', '1547706769');
+INSERT INTO `sys_session` VALUES ('18c413a1b27955b666e66ee2629074ac', '21', '2019-01-24 11:55:37', '127.0.0.1', '127.0.0.1', '1548301902', '1548302137');
 INSERT INTO `sys_session` VALUES ('18cebdaade5814dfc58d13db049c4908', '21', '2019-01-21 11:47:55', '127.0.0.1', '127.0.0.1', '1548042356', '1548042475');
 INSERT INTO `sys_session` VALUES ('18d067cacbb3809883038eb8fb319b24', '21', '2019-01-16 17:28:28', '127.0.0.1', '127.0.0.1', '1547630768', '1547630908');
+INSERT INTO `sys_session` VALUES ('19186fe667545192144d2f91320c3eb5', '21', '2019-01-23 17:31:05', '127.0.0.1', '127.0.0.1', '1548235746', '1548235865');
 INSERT INTO `sys_session` VALUES ('1957bdd7cd869102f2e6b9054293928e', '21', '2019-01-17 14:44:02', '127.0.0.1', '127.0.0.1', '1547707379', '1547707442');
+INSERT INTO `sys_session` VALUES ('198bfaba894f788c43580d451772be73', '21', '2019-01-24 11:37:47', '127.0.0.1', '127.0.0.1', '1548300443', '1548301067');
 INSERT INTO `sys_session` VALUES ('199da1bb19af5ee97983bca4ccf172d2', '21', '2019-01-20 00:40:09', '127.0.0.1', '127.0.0.1', '1547904999', '1547916009');
 INSERT INTO `sys_session` VALUES ('19d21db42884804015df12ef68274173', '21', '2019-01-16 17:13:14', '127.0.0.1', '127.0.0.1', '1547629859', '1547629994');
+INSERT INTO `sys_session` VALUES ('1a44a82d2b97674a8f31bf13df878488', '21', '2019-01-24 11:49:40', '127.0.0.1', '127.0.0.1', '1548301067', '1548301780');
 INSERT INTO `sys_session` VALUES ('1acf7779f1b47c4c9ee693650bec1ebb', '21', '2019-01-16 16:55:25', '127.0.0.1', '127.0.0.1', '1547628914', '1547628925');
 INSERT INTO `sys_session` VALUES ('1c042189a5154a1805a809de02d792e5', '21', '2019-01-21 09:50:40', '127.0.0.1', '127.0.0.1', '1548035263', '1548035440');
+INSERT INTO `sys_session` VALUES ('1c134c4b86e029929b151a2de1ebc704', '21', '2019-01-23 17:59:47', '127.0.0.1', '127.0.0.1', '1548237306', '1548237587');
+INSERT INTO `sys_session` VALUES ('1c348473780f9a7eb0f27e962f8c6fa3', '21', '2019-01-24 11:51:42', '127.0.0.1', '127.0.0.1', '1548301780', '1548301902');
 INSERT INTO `sys_session` VALUES ('1c6dd07c61a851cccd56821135938427', '21', '2019-01-22 10:10:50', '127.0.0.1', '127.0.0.1', '1548121989', '1548123050');
 INSERT INTO `sys_session` VALUES ('1cb515bc1243f8b95d6122c066d49f51', '21', '2019-01-21 13:28:19', '127.0.0.1', '127.0.0.1', '1548048110', '1548048499');
+INSERT INTO `sys_session` VALUES ('1cb9ec7356c09c53fecc9c239a016769', '37', '2019-01-25 15:31:13', '127.0.0.1', '127.0.0.1', '1548401446', '1548401473');
+INSERT INTO `sys_session` VALUES ('1cdcad646f711d1c4c71dc5b6b2a2bab', '21', '2019-01-31 16:58:33', '127.0.0.1', '127.0.0.1', '1548925030', '1548925113');
 INSERT INTO `sys_session` VALUES ('1d5511daccb0783abcc9646d9df6c856', '21', '2019-01-17 14:50:59', '127.0.0.1', '127.0.0.1', '1547707442', '1547707859');
+INSERT INTO `sys_session` VALUES ('1ddbca946aec4f046226577faec46d94', '31', '2019-01-29 15:14:26', '127.0.0.1', '127.0.0.1', '1548745760', '1548746066');
+INSERT INTO `sys_session` VALUES ('1ded0358a95136b6451075050e8409aa', '31', '2019-01-29 15:43:23', '127.0.0.1', '127.0.0.1', '1548747572', '1548747803');
+INSERT INTO `sys_session` VALUES ('1e1e198b30611004fb1744f8ac1028ba', '21', '2019-02-01 13:47:38', '127.0.0.1', '127.0.0.1', '1548999959', '1549000058');
+INSERT INTO `sys_session` VALUES ('1e6b7f9e4762f8e908e6bb8499b90141', '21', '2019-01-24 19:50:12', '127.0.0.1', '127.0.0.1', '1548330483', '1548330612');
 INSERT INTO `sys_session` VALUES ('1e770f7bfae3765d1bbf9ed53871b88a', '21', '2019-01-19 17:52:46', '127.0.0.1', '127.0.0.1', '1547891562', '1547891566');
+INSERT INTO `sys_session` VALUES ('1eddaa839f50275f9938657584824a64', '21', '2019-01-24 20:15:12', '127.0.0.1', '127.0.0.1', '1548331801', '1548332112');
 INSERT INTO `sys_session` VALUES ('1f03e10eeb9febd5ea315d3cfbf0e96c', '21', '2019-01-21 11:23:00', '127.0.0.1', '127.0.0.1', '1548040304', '1548040980');
+INSERT INTO `sys_session` VALUES ('1f35c865d05ea6eebbffc50c17add283', '21', '2019-02-12 11:40:08', '127.0.0.1', '127.0.0.1', '1549939279', '1549942808');
 INSERT INTO `sys_session` VALUES ('1f5d5714168cd8cda8882c3d7fa0c85a', '21', '2019-01-20 22:21:55', '127.0.0.1', '127.0.0.1', '1547993858', '1547994115');
+INSERT INTO `sys_session` VALUES ('1f71de834c861352cf290fb25a55ffa0', '21', '2019-01-24 10:10:06', '127.0.0.1', '127.0.0.1', '1548295755', '1548295806');
 INSERT INTO `sys_session` VALUES ('1fbb5e8d60e14ea098e2855a1e8f34a1', '21', '2019-01-16 16:44:38', '127.0.0.1', '127.0.0.1', '1547627178', '1547628278');
+INSERT INTO `sys_session` VALUES ('1fce48915daac0e5d7fd4642bd5005be', '21', '2019-01-25 13:41:00', '127.0.0.1', '127.0.0.1', '1548394593', '1548394860');
 INSERT INTO `sys_session` VALUES ('20107e513ec3a2838bad540fe4441c05', '21', '2019-01-16 15:56:31', '127.0.0.1', '127.0.0.1', '1547625116', '1547625391');
 INSERT INTO `sys_session` VALUES ('20358f3e0a83023f93b864eff4d440ed', '21', '2019-01-21 09:39:01', '127.0.0.1', '127.0.0.1', '1547994418', '1548034741');
-INSERT INTO `sys_session` VALUES ('20759393ded4f98f16b20fb86164895c', '21', '2019-01-24 11:30:39', '127.0.0.1', '0:0:0:0:0:0:0:1', '1548150293', '1548300639');
+INSERT INTO `sys_session` VALUES ('20759393ded4f98f16b20fb86164895c', '21', '2019-01-22 17:48:36', '127.0.0.1', '127.0.0.1', '1548150293', '1548150516');
+INSERT INTO `sys_session` VALUES ('20a487e81d0b2126c96b301e76ee106f', '37', '2019-01-25 15:54:01', '127.0.0.1', '127.0.0.1', '1548402204', '1548402841');
+INSERT INTO `sys_session` VALUES ('21a10254eae1b97ed37a3fa4522fe8ac', '21', '2019-01-24 21:49:53', '127.0.0.1', '127.0.0.1', '1548334870', '1548337793');
+INSERT INTO `sys_session` VALUES ('21be7c4ed13223b3abf91af91a549ea7', '21', '2019-01-25 14:37:19', '127.0.0.1', '127.0.0.1', '1548397987', '1548398239');
+INSERT INTO `sys_session` VALUES ('224271b0de188cbd40f3f25492397b2e', '42', '2019-01-29 16:05:57', '127.0.0.1', '127.0.0.1', '1548749105', '1548749157');
 INSERT INTO `sys_session` VALUES ('224e8f335d92e8947e303bbc532da1f6', '21', '2019-01-21 17:39:26', '127.0.0.1', '127.0.0.1', '1548061622', '1548063566');
+INSERT INTO `sys_session` VALUES ('22821637da8e237cf3d3e139363ee3c4', '21', '2019-01-24 11:16:23', '127.0.0.1', '127.0.0.1', '1548299527', '1548299783');
+INSERT INTO `sys_session` VALUES ('22d3479777b85712ce3496f196249f5b', '21', '2019-01-23 14:45:42', '127.0.0.1', '127.0.0.1', '1548225918', '1548225942');
+INSERT INTO `sys_session` VALUES ('22ec213ee51c1e2a9ebe378a8cd227d8', '21', '2019-02-11 19:42:28', '127.0.0.1', '127.0.0.1', '1549885262', '1549885348');
 INSERT INTO `sys_session` VALUES ('2314914b589be1b5df38152cf2d35051', '21', '2019-01-19 13:33:04', '127.0.0.1', '127.0.0.1', '1547872968', '1547875984');
 INSERT INTO `sys_session` VALUES ('23be7f9abfa7d8fc2c44d516ca92fdf9', '21', '2019-01-20 20:40:39', '127.0.0.1', '127.0.0.1', '1547975474', '1547988039');
+INSERT INTO `sys_session` VALUES ('24198e7db4da3af5fa9a05df2afbd3d4', '21', '2019-01-24 20:31:58', '127.0.0.1', '127.0.0.1', '1548333025', '1548333118');
+INSERT INTO `sys_session` VALUES ('2489ab012316e4894a2e174614f1df5a', '21', '2019-01-23 11:55:03', '127.0.0.1', '127.0.0.1', '1548214338', '1548215703');
+INSERT INTO `sys_session` VALUES ('24ee689162aa1b791008f48ae40d4739', '21', '2019-01-25 14:18:24', '127.0.0.1', '127.0.0.1', '1548397038', '1548397104');
+INSERT INTO `sys_session` VALUES ('257601b7975ebf46f3320054da4cd76e', '21', '2019-02-01 12:54:49', '127.0.0.1', '127.0.0.1', '1548995841', '1548996889');
 INSERT INTO `sys_session` VALUES ('25a6a3ffea10c0a8d39bb3a1a81b6188', '21', '2019-01-16 18:00:42', '127.0.0.1', '127.0.0.1', '1547632824', '1547632842');
 INSERT INTO `sys_session` VALUES ('265b92efb3129069699c9cd4bafcb87a', '21', '2019-01-21 16:22:52', '127.0.0.1', '127.0.0.1', '1548058223', '1548058972');
 INSERT INTO `sys_session` VALUES ('267574c80f719368d27a3a91baa599a7', '21', '2019-01-16 16:59:33', '127.0.0.1', '127.0.0.1', '1547629173', '1547629173');
 INSERT INTO `sys_session` VALUES ('269ea256704bb3e8a121b8d15055fd8a', '21', '2019-01-19 14:18:03', '127.0.0.1', '127.0.0.1', '1547878557', '1547878683');
 INSERT INTO `sys_session` VALUES ('26b18e940bb9462ce303e2d2c1bb84c7', '21', '2019-01-16 17:18:28', '127.0.0.1', '127.0.0.1', '1547630178', '1547630308');
 INSERT INTO `sys_session` VALUES ('27075e3d760f10e6b4f56e75005b4738', '21', '2019-01-21 13:37:02', '127.0.0.1', '127.0.0.1', '1548048990', '1548049022');
+INSERT INTO `sys_session` VALUES ('27c61fd9484fe2ddd5fa5a5218d26d40', '21', '2019-02-01 16:39:30', '127.0.0.1', '127.0.0.1', '1549010306', '1549010370');
 INSERT INTO `sys_session` VALUES ('283fa6f7fd6e10e99feabc2eebb1dcee', '21', '2019-01-17 14:17:39', '127.0.0.1', '127.0.0.1', '1547705449', '1547705859');
 INSERT INTO `sys_session` VALUES ('28b543f87c05726d9c5c8e23332b2f7a', '21', '2019-01-16 17:58:57', '127.0.0.1', '127.0.0.1', '1547632480', '1547632737');
+INSERT INTO `sys_session` VALUES ('28c1d70845fb3c1e8b10d6b02e02d84a', '21', '2019-01-25 19:28:36', '127.0.0.1', '127.0.0.1', '1548415667', '1548415716');
 INSERT INTO `sys_session` VALUES ('28f9b41428321c125220832951a11d9c', '21', '2019-01-21 12:48:00', '127.0.0.1', '127.0.0.1', '1548045621', '1548046080');
+INSERT INTO `sys_session` VALUES ('2943a2dd41dd8521df7400582e5e3774', '21', '2019-01-24 20:30:25', '127.0.0.1', '127.0.0.1', '1548332821', '1548333025');
+INSERT INTO `sys_session` VALUES ('295135ac8c61f29414166bb29becf2d0', '37', '2019-01-28 12:43:37', '127.0.0.1', '127.0.0.1', '1548646778', '1548650617');
 INSERT INTO `sys_session` VALUES ('29efee79bcb4929c5fff1f9574b2eb81', '21', '2019-01-21 13:28:58', '127.0.0.1', '127.0.0.1', '1548048499', '1548048538');
+INSERT INTO `sys_session` VALUES ('2a0d16445b9d61089a2f11629876ba58', '21', '2019-02-01 16:28:02', '127.0.0.1', '127.0.0.1', '1549009305', '1549009682');
 INSERT INTO `sys_session` VALUES ('2a1786df4e525f3e4750c05f300c9995', '21', '2019-01-16 17:42:15', '127.0.0.1', '127.0.0.1', '1547631713', '1547631735');
+INSERT INTO `sys_session` VALUES ('2b09ed3d7f6404e0dcb7db89ea5f7b38', '37', '2019-01-25 17:22:26', '127.0.0.1', '127.0.0.1', '1548408121', '1548408146');
 INSERT INTO `sys_session` VALUES ('2b6e221ba2e88e50825a71aa5a070317', '21', '2019-01-20 21:44:44', '127.0.0.1', '127.0.0.1', '1547991529', '1547991884');
 INSERT INTO `sys_session` VALUES ('2bf54588e24f3a09d81df5596dd73ea3', '21', '2019-01-20 17:11:14', '127.0.0.1', '127.0.0.1', '1547974997', '1547975474');
+INSERT INTO `sys_session` VALUES ('2c06d86c79a91daed2eea604db6f291e', '21', '2019-02-01 11:14:48', '127.0.0.1', '127.0.0.1', '1548990817', '1548990888');
 INSERT INTO `sys_session` VALUES ('2c2d69d8da81f2951b6de113d5cc3b76', '21', '2019-01-20 22:08:27', '127.0.0.1', '127.0.0.1', '1547992983', '1547993307');
+INSERT INTO `sys_session` VALUES ('2d1a0e134528ac26844e487c23cb421d', '21', '2019-02-13 14:11:17', '127.0.0.1', '127.0.0.1', '1550038069', '1550038277');
 INSERT INTO `sys_session` VALUES ('2d49ca57f00d0258201183f79a2de83a', '21', '2019-01-17 14:24:59', '127.0.0.1', '127.0.0.1', '1547706259', '1547706299');
+INSERT INTO `sys_session` VALUES ('2d6d4ac53bcbc98e42b6defe518193f9', '21', '2019-01-23 14:42:03', '127.0.0.1', '127.0.0.1', '1548225554', '1548225723');
+INSERT INTO `sys_session` VALUES ('2db779cabc6ee5a4403851dbc9bb9890', '31', '2019-01-29 15:37:29', '127.0.0.1', '127.0.0.1', '1548747296', '1548747449');
 INSERT INTO `sys_session` VALUES ('2dc1e893521f7092d552e841695a05d9', '21', '2019-01-19 17:49:42', '127.0.0.1', '127.0.0.1', '1547880856', '1547891382');
 INSERT INTO `sys_session` VALUES ('2f40d8fa73aeb1d8e6c04f84a93fe112', '21', '2019-01-19 14:22:48', '127.0.0.1', '127.0.0.1', '1547878871', '1547878968');
+INSERT INTO `sys_session` VALUES ('2f90e3fa3056cf2dba6bf82e8ce24248', '37', '2019-01-28 11:37:30', '127.0.0.1', '127.0.0.1', '1548646557', '1548646650');
+INSERT INTO `sys_session` VALUES ('2facde6391d404fdb82e825a17e41a6d', '21', '2019-01-25 19:34:10', '127.0.0.1', '127.0.0.1', '1548415838', '1548416050');
+INSERT INTO `sys_session` VALUES ('300dbc0a1cae089af2f8311a1352c210', '21', '2019-01-31 15:26:25', '127.0.0.1', '127.0.0.1', '1548919379', '1548919585');
 INSERT INTO `sys_session` VALUES ('3035bdfc9dc697563cf8934a1f8beabe', '21', '2019-01-22 09:46:29', '127.0.0.1', '127.0.0.1', '1548121309', '1548121589');
 INSERT INTO `sys_session` VALUES ('30a1ad0a70236c6ad166cbca98886cad', '21', '2019-01-17 14:52:15', '127.0.0.1', '127.0.0.1', '1547707902', '1547707935');
 INSERT INTO `sys_session` VALUES ('30b7831d8bfc76d2fb69eec3e08e668e', '21', '2019-01-17 09:56:33', '127.0.0.1', '127.0.0.1', '1547689998', '1547690193');
-INSERT INTO `sys_session` VALUES ('3184fd4c0429d2e5d9f682b2c4c8861b', '1', '2019-01-25 15:41:05', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548401524', '1548402065');
+INSERT INTO `sys_session` VALUES ('31079d92980f934e5307ec07cf480920', '37', '2019-01-29 11:50:37', '127.0.0.1', '127.0.0.1', '1548733777', '1548733837');
 INSERT INTO `sys_session` VALUES ('325ed41e21bab5858f88b8d201e94cbd', '21', '2019-01-17 13:51:30', '127.0.0.1', '127.0.0.1', '1547704136', '1547704290');
 INSERT INTO `sys_session` VALUES ('32683f6ff0b6d9405dbcfed137930a35', '21', '2019-01-21 17:07:02', '127.0.0.1', '127.0.0.1', '1548061550', '1548061622');
+INSERT INTO `sys_session` VALUES ('3283cb3a677d6d082872e1eff4230b46', '21', '2019-02-12 11:40:14', '127.0.0.1', '127.0.0.1', '1549942808', '1549942814');
+INSERT INTO `sys_session` VALUES ('3285a60087564d35cf319b50f9f3baff', '21', '2019-01-31 16:16:06', '127.0.0.1', '127.0.0.1', '1548922515', '1548922566');
+INSERT INTO `sys_session` VALUES ('32f9dc2d2036dfccb7b2f6caf7b58461', '21', '2019-01-23 14:18:49', '127.0.0.1', '127.0.0.1', '1548215703', '1548224329');
 INSERT INTO `sys_session` VALUES ('335d3da4ff39c923640f6a849fa4f1a4', '21', '2019-01-19 21:32:01', '127.0.0.1', '127.0.0.1', '1547891721', '1547904721');
 INSERT INTO `sys_session` VALUES ('33702a127516ab5e8344ba7d4831f174', '21', '2019-01-19 13:44:16', '127.0.0.1', '127.0.0.1', '1547876579', '1547876656');
 INSERT INTO `sys_session` VALUES ('33c42d51fe01a435392bbaa0cfdb6f91', '21', '2019-01-16 17:16:18', '127.0.0.1', '127.0.0.1', '1547629994', '1547630178');
 INSERT INTO `sys_session` VALUES ('347dbb9bb3566513dfae34685c896020', '21', '2019-01-18 11:21:37', '127.0.0.1', '127.0.0.1', '1547781405', '1547781697');
 INSERT INTO `sys_session` VALUES ('34987901e8ce9df14473cd034926e26b', '21', '2019-01-17 10:10:32', '127.0.0.1', '127.0.0.1', '1547690906', '1547691032');
+INSERT INTO `sys_session` VALUES ('34a98ecf468009a87106a34c74034a2d', '21', '2019-02-13 17:22:17', '127.0.0.1', '127.0.0.1', '1550049701', '1550049737');
 INSERT INTO `sys_session` VALUES ('34c5345f0cf56a7294a95b5d319eed50', '21', '2019-01-16 16:26:18', '127.0.0.1', '127.0.0.1', '1547625623', '1547627178');
 INSERT INTO `sys_session` VALUES ('34d9c53dedf116bbb18daad4532d0672', '21', '2019-01-22 14:55:43', '127.0.0.1', '127.0.0.1', '1548140102', '1548140143');
+INSERT INTO `sys_session` VALUES ('34eaf16d540ed90f4b7dec0327903162', '37', '2019-01-25 16:37:23', '127.0.0.1', '127.0.0.1', '1548403862', '1548405443');
+INSERT INTO `sys_session` VALUES ('351c282f85ea430ac874908cfc367c17', '21', '2019-02-01 16:50:07', '127.0.0.1', '127.0.0.1', '1549010528', '1549011007');
 INSERT INTO `sys_session` VALUES ('359522ff8e8f029c5d21f3634c786a70', '21', '2019-01-19 17:49:42', '127.0.0.1', '127.0.0.1', '1547891382', '1547891382');
 INSERT INTO `sys_session` VALUES ('36e4e8165eb673728c32693b5c297969', '21', '2019-01-21 13:21:50', '127.0.0.1', '127.0.0.1', '1548047830', '1548048110');
+INSERT INTO `sys_session` VALUES ('3733f7140acce1a4bb051908d9d27c4d', '21', '2019-02-01 16:38:26', '127.0.0.1', '127.0.0.1', '1549009724', '1549010306');
 INSERT INTO `sys_session` VALUES ('3789c218f975ebe44165c2e1df6814ba', '21', '2019-01-16 17:19:35', '127.0.0.1', '127.0.0.1', '1547630364', '1547630375');
 INSERT INTO `sys_session` VALUES ('37b53fa66d6412f8bfe1e7b406ef6064', '21', '2019-01-19 13:38:45', '127.0.0.1', '127.0.0.1', '1547875984', '1547876325');
+INSERT INTO `sys_session` VALUES ('386d316e3f6c4fbfb5732fefc40f7b61', '47', '2019-02-16 16:19:20', '127.0.0.1', '127.0.0.1', '1550305138', '1550305160');
 INSERT INTO `sys_session` VALUES ('38d89c1bc818d2ef968c0d1038e8fae8', '21', '2019-01-16 17:18:28', '127.0.0.1', '127.0.0.1', '1547630178', '1547630308');
 INSERT INTO `sys_session` VALUES ('38df065750fa35c2e790761437fdce02', '21', '2019-01-17 14:24:19', '127.0.0.1', '127.0.0.1', '1547705907', '1547706259');
 INSERT INTO `sys_session` VALUES ('38df36726bcc7dbeeaec0d0e04a8a20b', '21', '2019-01-16 15:56:31', '127.0.0.1', '127.0.0.1', '1547625116', '1547625391');
+INSERT INTO `sys_session` VALUES ('38e7f023dd94d4f2294c8d5ea0f8b959', '21', '2019-01-25 13:33:39', '127.0.0.1', '127.0.0.1', '1548392053', '1548394419');
+INSERT INTO `sys_session` VALUES ('3923b248dab286833c8247fb0b1e93ca', '21', '2019-01-25 14:58:47', '127.0.0.1', '127.0.0.1', '1548399442', '1548399527');
 INSERT INTO `sys_session` VALUES ('39510a146cf2c9734c0a99b4979cd5e9', '21', '2019-01-21 13:08:30', '127.0.0.1', '127.0.0.1', '1548046686', '1548047310');
+INSERT INTO `sys_session` VALUES ('39684e6be6a5519fd01dee467f0e672c', '37', '2019-01-29 10:21:40', '127.0.0.1', '127.0.0.1', '1548728203', '1548728500');
+INSERT INTO `sys_session` VALUES ('3abba139061f40dc782d8ea89fd9d4a4', '21', '2019-01-31 15:20:44', '127.0.0.1', '127.0.0.1', '1548919124', '1548919244');
+INSERT INTO `sys_session` VALUES ('3ac0f18d011cf9442c0c5122ca2e8796', '37', '2019-01-29 10:30:41', '127.0.0.1', '127.0.0.1', '1548728500', '1548729041');
+INSERT INTO `sys_session` VALUES ('3b0ac6a58bd2aab08fb6576e029e5987', '21', '2019-02-16 16:49:01', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550305964', '1550306941');
+INSERT INTO `sys_session` VALUES ('3bc5e754ab0f789c0dedfc7eb8d8dbb3', '21', '2019-01-26 17:08:28', '127.0.0.1', '127.0.0.1', '1548493139', '1548493708');
+INSERT INTO `sys_session` VALUES ('3c8996ff8f48185d0e5c3864fc538a67', '21', '2019-02-11 11:27:22', '127.0.0.1', '127.0.0.1', '1549855449', '1549855642');
+INSERT INTO `sys_session` VALUES ('3c99adb646a59514ef71fcb98ea98292', '21', '2019-02-16 17:31:44', '0:0:0:0:0:0:0:1', null, '1550309504', '0');
+INSERT INTO `sys_session` VALUES ('3ce8b34dce90038efd04ad10cbcb2b9d', '21', '2019-01-25 14:20:33', '127.0.0.1', '127.0.0.1', '1548397152', '1548397233');
 INSERT INTO `sys_session` VALUES ('3cfbf4c91c5d7603a460ef0a4b6c141d', '21', '2019-01-16 16:55:29', '127.0.0.1', '127.0.0.1', '1547628929', '1547628929');
 INSERT INTO `sys_session` VALUES ('3d4e14dbf2cc10fda20b313f7bf1f870', '21', '2019-01-21 16:47:53', '127.0.0.1', '127.0.0.1', '1548059938', '1548060473');
+INSERT INTO `sys_session` VALUES ('3d59cb1b95ae6260281b717629c3ecdb', '21', '2019-02-01 13:34:16', '127.0.0.1', '127.0.0.1', '1548999210', '1548999256');
+INSERT INTO `sys_session` VALUES ('3d75dcbec97de51b78b2ddce6caf881d', '21', '2019-01-23 14:50:20', '127.0.0.1', '127.0.0.1', '1548226192', '1548226220');
+INSERT INTO `sys_session` VALUES ('3df923dcf47a4137503f0c9455fbc7cf', '21', '2019-02-01 12:37:21', '127.0.0.1', '127.0.0.1', '1548995769', '1548995841');
+INSERT INTO `sys_session` VALUES ('3e33aabf34b023fd65584b35866cc565', '37', '2019-01-29 11:45:53', '127.0.0.1', '127.0.0.1', '1548730786', '1548733553');
+INSERT INTO `sys_session` VALUES ('3ec2a9288078de182019443438b8e7e8', '45', '2019-02-01 09:22:15', '127.0.0.1', '127.0.0.1', '1548749712', '1548984135');
 INSERT INTO `sys_session` VALUES ('3f0357996026e4c98338d3eb9dccaf8d', '21', '2019-01-20 21:49:05', '127.0.0.1', '127.0.0.1', '1547992109', '1547992145');
+INSERT INTO `sys_session` VALUES ('3f534b6576274785d4a8407bcd694da8', '21', '2019-01-31 15:48:52', '127.0.0.1', '127.0.0.1', '1548919941', '1548920932');
+INSERT INTO `sys_session` VALUES ('3fd016576b949170f8d82cb6d2a93835', '37', '2019-01-25 15:59:23', '127.0.0.1', '127.0.0.1', '1548403103', '1548403163');
+INSERT INTO `sys_session` VALUES ('402dd03fb9480b78019da90a576924d9', '21', '2019-01-23 17:50:45', '127.0.0.1', '127.0.0.1', '1548236767', '1548237045');
+INSERT INTO `sys_session` VALUES ('40cd3e3f7787eaacb353294495fc03c2', '21', '2019-01-24 20:35:25', '127.0.0.1', '127.0.0.1', '1548333118', '1548333325');
 INSERT INTO `sys_session` VALUES ('4163a076c934838ab9634710d8d00c78', '21', '2019-01-17 13:46:12', '127.0.0.1', '127.0.0.1', '1547703938', '1547703972');
+INSERT INTO `sys_session` VALUES ('41f00922c034d969d74bff19aa2025f7', '21', '2019-01-24 22:40:48', '127.0.0.1', '127.0.0.1', '1548339873', '1548340848');
+INSERT INTO `sys_session` VALUES ('420a3fbf281f23c8a5ffc361e6d87425', '21', '2019-02-01 09:44:33', '127.0.0.1', '127.0.0.1', '1548985366', '1548985473');
 INSERT INTO `sys_session` VALUES ('422a52d3eefd6bcabddbf2337e4a3a1c', '21', '2019-01-21 11:45:56', '127.0.0.1', '127.0.0.1', '1548042262', '1548042356');
+INSERT INTO `sys_session` VALUES ('42a9f9e1d4a7cf1e064681f72848805c', '21', '2019-01-23 17:09:49', '127.0.0.1', '127.0.0.1', '1548229816', '1548234589');
+INSERT INTO `sys_session` VALUES ('4372a4e8b21aca98f6a843f046acfcf0', '21', '2019-01-25 13:44:40', '127.0.0.1', '127.0.0.1', '1548394972', '1548395080');
+INSERT INTO `sys_session` VALUES ('4426cd64db5f0cbfcd170639a21d4fcc', '21', '2019-01-31 15:06:09', '127.0.0.1', '127.0.0.1', '1548918348', '1548918369');
 INSERT INTO `sys_session` VALUES ('4516fdb6ff7568441a38a40f31f220f6', '21', '2019-01-16 17:54:40', '127.0.0.1', '127.0.0.1', '1547632460', '1547632480');
 INSERT INTO `sys_session` VALUES ('4523c5cd589ded32740ba4f69ac5714a', '21', '2019-01-20 20:45:21', '127.0.0.1', '127.0.0.1', '1547988241', '1547988321');
+INSERT INTO `sys_session` VALUES ('4647b19fdcaf27b0b8867af88fdc373b', '37', '2019-01-28 15:10:39', '127.0.0.1', '127.0.0.1', '1548659399', '1548659439');
+INSERT INTO `sys_session` VALUES ('465f81a5d2b30b82b6c129777244bbe3', '37', '2019-01-28 11:09:14', '127.0.0.1', '127.0.0.1', '1548644927', '1548644954');
 INSERT INTO `sys_session` VALUES ('47b5bcb47662e662027313d5a20ecfbf', '21', '2019-01-17 15:11:30', '127.0.0.1', '127.0.0.1', '1547708979', '1547709090');
+INSERT INTO `sys_session` VALUES ('47bb586cdda807967741fec8e4693857', '21', '2019-02-01 09:57:01', '127.0.0.1', '127.0.0.1', '1548985473', '1548986221');
+INSERT INTO `sys_session` VALUES ('47e62d44394bfa35f31c2e8dc51a9495', '21', '2019-01-26 12:30:28', '127.0.0.1', '127.0.0.1', '1548476882', '1548477028');
+INSERT INTO `sys_session` VALUES ('48afaa51adbf9dd0a70847e9381ee0a3', '21', '2019-02-13 17:24:59', '127.0.0.1', '127.0.0.1', '1550049737', '1550049899');
+INSERT INTO `sys_session` VALUES ('48f8f7acefe61dbc3b62550bf4c04ebd', '37', '2019-01-29 10:00:32', '127.0.0.1', '127.0.0.1', '1548727056', '1548727231');
 INSERT INTO `sys_session` VALUES ('48fa287beb2be4db3cf948b768ee790d', '21', '2019-01-17 13:23:42', '127.0.0.1', '127.0.0.1', '1547702219', '1547702622');
 INSERT INTO `sys_session` VALUES ('490026e3b5abced150953f1c9e8a8b88', '21', '2019-01-19 14:10:08', '127.0.0.1', '127.0.0.1', '1547877278', '1547878208');
 INSERT INTO `sys_session` VALUES ('494174201897a2cb3a744cf3c36775ff', '21', '2019-01-19 12:42:48', '127.0.0.1', '127.0.0.1', '1547872889', '1547872968');
+INSERT INTO `sys_session` VALUES ('4969f6fedb8bd08dbb2347daaa32fd77', '37', '2019-01-29 09:55:28', '127.0.0.1', '127.0.0.1', '1548726323', '1548726928');
+INSERT INTO `sys_session` VALUES ('4a4fe62d7701b79a41381e29065e7eca', '21', '2019-01-23 18:04:06', '127.0.0.1', '127.0.0.1', '1548237587', '1548237846');
 INSERT INTO `sys_session` VALUES ('4ac24e25aa93dd7307ab059f7219224c', '21', '2019-01-16 17:18:39', '127.0.0.1', '127.0.0.1', '1547630308', '1547630319');
-INSERT INTO `sys_session` VALUES ('4d02328176b3ee39bfea1a447209c013', '1', '2019-01-25 16:00:42', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548402907', '1548403242');
+INSERT INTO `sys_session` VALUES ('4ae21415ed2aadeafde43f66f7c989cb', '21', '2019-02-16 17:31:44', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550308209', '1550309504');
+INSERT INTO `sys_session` VALUES ('4b48edd2ca6953e0dc7598141be7c979', '21', '2019-02-01 11:07:00', '127.0.0.1', '127.0.0.1', '1548986221', '1548990420');
+INSERT INTO `sys_session` VALUES ('4b9460ee319306612d30e0bffab74b58', '37', '2019-01-28 12:43:55', '127.0.0.1', '127.0.0.1', '1548650617', '1548650635');
+INSERT INTO `sys_session` VALUES ('4beb1a79f776faafb8907cf0ab6b9c4a', '21', '2019-01-24 11:27:23', '127.0.0.1', '127.0.0.1', '1548300189', '1548300443');
+INSERT INTO `sys_session` VALUES ('4d0ee1ff904b36f8b2aa416a6aa79e16', '37', '2019-01-30 16:04:10', '127.0.0.1', '127.0.0.1', '1548835218', '1548835450');
+INSERT INTO `sys_session` VALUES ('4d4fdeec61284eeadfd2d23ff25096f1', '21', '2019-02-16 17:10:09', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550306941', '1550308209');
+INSERT INTO `sys_session` VALUES ('4d51b28b28667193cb888e2dc82a5ecf', '21', '2019-02-11 19:41:02', '127.0.0.1', '127.0.0.1', '1549884855', '1549885262');
+INSERT INTO `sys_session` VALUES ('4d7c7dd0202e7a458be982543b2fa892', '21', '2019-02-01 13:45:59', '127.0.0.1', '127.0.0.1', '1548999496', '1548999959');
 INSERT INTO `sys_session` VALUES ('4dac4f3a40ba73e3ba0c760737c5b111', '21', '2019-01-20 22:26:58', '127.0.0.1', '127.0.0.1', '1547994163', '1547994418');
 INSERT INTO `sys_session` VALUES ('4e12cd7372f45148f8a30629f2c86a5d', '21', '2019-01-17 10:02:17', '127.0.0.1', '127.0.0.1', '1547690446', '1547690537');
 INSERT INTO `sys_session` VALUES ('4e24d38ef25a91bb40d13fa5639b17fd', '21', '2019-01-19 12:41:29', '127.0.0.1', '127.0.0.1', '1547872473', '1547872889');
+INSERT INTO `sys_session` VALUES ('4e468d6b778209f6e317b31a3c2b0cb9', '21', '2019-02-13 15:00:56', '127.0.0.1', '127.0.0.1', '1550041216', '1550041256');
+INSERT INTO `sys_session` VALUES ('4e62de4bfcf6da2270706ef1d3f9399d', '21', '2019-02-13 17:19:31', '127.0.0.1', '127.0.0.1', '1550049475', '1550049571');
+INSERT INTO `sys_session` VALUES ('4eb663a6b05d1cc40ff27677ea0d01b9', '21', '2019-02-11 12:41:49', '127.0.0.1', '127.0.0.1', '1549856463', '1549860108');
+INSERT INTO `sys_session` VALUES ('4ed4bc2b06a440eb9d5ba0b36881b280', '21', '2019-02-12 11:42:23', '127.0.0.1', '127.0.0.1', '1549942814', '1549942943');
 INSERT INTO `sys_session` VALUES ('4f47a4ee48a74c2919da21463c08a3f5', '21', '2019-01-20 17:03:17', '127.0.0.1', '127.0.0.1', '1547974953', '1547974997');
-INSERT INTO `sys_session` VALUES ('5078cdd900c744d858b63a0a852cc9d1', '1', '2019-01-25 16:31:48', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548403578', '1548405108');
+INSERT INTO `sys_session` VALUES ('500f40843aabd73a6eb66700731c1668', '21', '2019-01-24 11:08:24', '127.0.0.1', '127.0.0.1', '1548295806', '1548299304');
 INSERT INTO `sys_session` VALUES ('50a2e63531c11aa4d673d54a114e8ae8', '21', '2019-01-17 11:21:39', '127.0.0.1', '127.0.0.1', '1547693906', '1547695299');
 INSERT INTO `sys_session` VALUES ('50c9491b56809d14638585bf1390f62d', '21', '2019-01-21 15:59:17', '127.0.0.1', '127.0.0.1', '1548057537', '1548057557');
+INSERT INTO `sys_session` VALUES ('50d6cd508fdf01b7132ccdf206069c0c', '21', '2019-01-25 14:42:56', '127.0.0.1', '127.0.0.1', '1548398489', '1548398576');
 INSERT INTO `sys_session` VALUES ('51e7451f911da3a56052dee3c0e68989', '21', '2019-01-17 13:31:36', '127.0.0.1', '127.0.0.1', '1547702641', '1547703096');
 INSERT INTO `sys_session` VALUES ('5222935aee5b829fdd442894cd8a358e', '21', '2019-01-16 15:51:56', '127.0.0.1', '127.0.0.1', '1547624966', '1547625116');
+INSERT INTO `sys_session` VALUES ('525e9408df5d4dd6095d70d79627e8f8', '37', '2019-01-28 11:25:35', '127.0.0.1', '127.0.0.1', '1548645503', '1548645935');
+INSERT INTO `sys_session` VALUES ('5260f6694935a31729fe777413a00899', '21', '2019-01-25 14:07:56', '127.0.0.1', '127.0.0.1', '1548396407', '1548396476');
+INSERT INTO `sys_session` VALUES ('528b3ec8efacc10d69c1d6699d30c76f', '21', '2019-01-24 17:28:03', '127.0.0.1', '127.0.0.1', '1548321853', '1548322083');
+INSERT INTO `sys_session` VALUES ('52c92d9dba4bbedffca5699762173ee3', '21', '2019-01-31 16:19:00', '127.0.0.1', '127.0.0.1', '1548922693', '1548922740');
+INSERT INTO `sys_session` VALUES ('533459617e3053e8d6f9d0de0d672544', '21', '2019-02-13 14:14:52', '127.0.0.1', '127.0.0.1', '1550038277', '1550038492');
 INSERT INTO `sys_session` VALUES ('5341e481f4bee80b9915d7454fd797f6', '21', '2019-01-20 17:02:03', '127.0.0.1', '127.0.0.1', '1547974822', '1547974923');
+INSERT INTO `sys_session` VALUES ('5361b14bf1eec990c5a8ffcaa7bd5370', '21', '2019-01-23 11:32:18', '127.0.0.1', '127.0.0.1', '1548162008', '1548214338');
 INSERT INTO `sys_session` VALUES ('53c5e41816b75f077b25fd8e0ca75678', '21', '2019-01-17 10:06:36', '127.0.0.1', '127.0.0.1', '1547690702', '1547690796');
+INSERT INTO `sys_session` VALUES ('5489bbacbac5c08ffe882313a9dfda01', '21', '2019-01-26 12:13:50', '127.0.0.1', '127.0.0.1', '1548475838', '1548476030');
+INSERT INTO `sys_session` VALUES ('548ef2b8fbdae0105ed7003cc21f3efe', '37', '2019-01-30 16:32:31', '127.0.0.1', '127.0.0.1', '1548835450', '1548837151');
 INSERT INTO `sys_session` VALUES ('55453b4575c0bfda87e1b845a443a16b', '21', '2019-01-16 17:21:56', '127.0.0.1', '127.0.0.1', '1547630375', '1547630516');
+INSERT INTO `sys_session` VALUES ('55765ba104440e89bd3455d4a34e342d', '21', '2019-01-24 17:35:29', '127.0.0.1', '127.0.0.1', '1548322083', '1548322529');
 INSERT INTO `sys_session` VALUES ('55e3a2ae2aaf34883eb980994ccc0441', '21', '2019-01-16 15:47:17', '127.0.0.1', '127.0.0.1', '1547624808', '1547624837');
+INSERT INTO `sys_session` VALUES ('56b11cf805faf33e312da67efcca023c', '21', '2019-01-22 19:54:54', '127.0.0.1', '127.0.0.1', '1548152004', '1548158094');
 INSERT INTO `sys_session` VALUES ('56e5fa5b8167b2f23753dfbb5b429b57', '21', '2019-01-16 20:02:47', '127.0.0.1', '127.0.0.1', '1547639947', '1547640167');
 INSERT INTO `sys_session` VALUES ('56f5f5b5cddbfcf52350556359d1d800', '21', '2019-01-22 09:41:49', '127.0.0.1', '127.0.0.1', '1548063566', '1548121309');
 INSERT INTO `sys_session` VALUES ('5721b2b622f1acebb2fe64cef8538cf5', '21', '2019-01-20 20:49:14', '127.0.0.1', '127.0.0.1', '1547988511', '1547988554');
 INSERT INTO `sys_session` VALUES ('574ae9a3c86ac8dca7ca4ae86ea2aae8', '21', '2019-01-16 21:24:43', '127.0.0.1', '127.0.0.1', '1547644434', '1547645083');
+INSERT INTO `sys_session` VALUES ('5750f8c13a769bfd810a29f9c9568400', '21', '2019-01-24 17:24:13', '127.0.0.1', '127.0.0.1', '1548321817', '1548321853');
+INSERT INTO `sys_session` VALUES ('577a56f8ba00a622b138d0285401fde6', '21', '2019-01-24 18:00:45', '127.0.0.1', '127.0.0.1', '1548323877', '1548324045');
 INSERT INTO `sys_session` VALUES ('57a420ed5afd6e5aaa6bdf4f65769c98', '21', '2019-01-21 12:58:06', '127.0.0.1', '127.0.0.1', '1548046080', '1548046686');
+INSERT INTO `sys_session` VALUES ('57aa56e099519da797d08cd45996cf65', '21', '2019-02-13 14:03:34', '127.0.0.1', '127.0.0.1', '1550037655', '1550037814');
 INSERT INTO `sys_session` VALUES ('57c3c28ac804cbac477d2f0658a13387', '21', '2019-01-16 16:44:38', '127.0.0.1', '127.0.0.1', '1547627178', '1547628278');
+INSERT INTO `sys_session` VALUES ('583264d1bafcb93dc697dcc9d0c3a984', '21', '2019-02-11 11:21:45', '127.0.0.1', '127.0.0.1', '1549585104', '1549855305');
+INSERT INTO `sys_session` VALUES ('58594a32cca37cc1cf253ae13fd38ee4', '21', '2019-01-25 13:49:31', '127.0.0.1', '127.0.0.1', '1548395117', '1548395371');
+INSERT INTO `sys_session` VALUES ('58a5aa5c1b8cfaa1c4503545420708ef', '21', '2019-01-26 11:25:20', '127.0.0.1', '127.0.0.1', '1548416490', '1548473120');
+INSERT INTO `sys_session` VALUES ('58a7a7153973ffef927c80533105e92e', '21', '2019-01-25 14:33:07', '127.0.0.1', '127.0.0.1', '1548397233', '1548397987');
+INSERT INTO `sys_session` VALUES ('591815860c1cc5450a581d3ffff71e5f', '37', '2019-01-28 11:18:23', '127.0.0.1', '127.0.0.1', '1548645027', '1548645503');
 INSERT INTO `sys_session` VALUES ('5996c9b463709c81f9cfe005eb2fb89f', '21', '2019-01-16 19:33:13', '127.0.0.1', '127.0.0.1', '1547638192', '1547638393');
+INSERT INTO `sys_session` VALUES ('59c2b514c26597431928d3973f889644', '37', '2019-01-25 15:43:24', '127.0.0.1', '127.0.0.1', '1548401698', '1548402204');
 INSERT INTO `sys_session` VALUES ('59cb5277665a2143c2df1e16ac27182b', '21', '2019-01-16 21:28:07', '127.0.0.1', '127.0.0.1', '1547645083', '1547645287');
 INSERT INTO `sys_session` VALUES ('5a1a2735ee4147f0a35e21942467f250', '21', '2019-01-18 11:03:48', '127.0.0.1', '127.0.0.1', '1547779918', '1547780628');
 INSERT INTO `sys_session` VALUES ('5a99282b27c3d2e06d5f71f9cacda4f4', '21', '2019-01-16 17:18:39', '127.0.0.1', '127.0.0.1', '1547630319', '1547630319');
+INSERT INTO `sys_session` VALUES ('5af411fdbfddd4b00811737f3095f272', '21', '2019-02-11 16:57:38', '127.0.0.1', '127.0.0.1', '1549875287', '1549875458');
+INSERT INTO `sys_session` VALUES ('5b75df08968ddb00819a34835375fc56', '21', '2019-02-12 11:43:53', '127.0.0.1', '127.0.0.1', '1549942943', '1549943033');
+INSERT INTO `sys_session` VALUES ('5b8d0600da5c3f15ed11170836345be1', '21', '2019-02-12 15:28:31', '127.0.0.1', '127.0.0.1', '1549955985', '1549956511');
 INSERT INTO `sys_session` VALUES ('5b913baa85e7da68ed05b44076580ab7', '21', '2019-01-19 14:20:32', '127.0.0.1', '127.0.0.1', '1547878683', '1547878832');
 INSERT INTO `sys_session` VALUES ('5bc590562fe7451f45a8ea27e6e92a0b', '21', '2019-01-19 14:15:57', '127.0.0.1', '127.0.0.1', '1547878322', '1547878557');
 INSERT INTO `sys_session` VALUES ('5bd3e87f1444bfceeddc1510f86f7265', '21', '2019-01-21 11:23:40', '127.0.0.1', '127.0.0.1', '1548040980', '1548041020');
+INSERT INTO `sys_session` VALUES ('5bf61eaab9f06e3f91da3f57c54fb4dc', '37', '2019-01-25 15:18:13', '127.0.0.1', '127.0.0.1', '1548400604', '1548400693');
+INSERT INTO `sys_session` VALUES ('5c83acce3c4194ec472e9d5478f57e47', '21', '2019-02-11 19:34:15', '127.0.0.1', '127.0.0.1', '1549879074', '1549884855');
+INSERT INTO `sys_session` VALUES ('5cacdd361c3f84845d0ed87c4283f214', '37', '2019-01-28 21:20:32', '127.0.0.1', '127.0.0.1', '1548681366', '1548681632');
+INSERT INTO `sys_session` VALUES ('5cef7406c2b48d6be615a1e5f7ee9076', '37', '2019-01-30 15:58:55', '127.0.0.1', '127.0.0.1', '1548816949', '1548835135');
+INSERT INTO `sys_session` VALUES ('5d8511bf128b9c3bcd22cb7fca987780', '37', '2019-01-29 13:46:15', '127.0.0.1', '127.0.0.1', '1548740653', '1548740775');
 INSERT INTO `sys_session` VALUES ('5fda50a473acdd0f57342bfc3b146a39', '21', '2019-01-21 16:06:15', '127.0.0.1', '127.0.0.1', '1548057602', '1548057975');
+INSERT INTO `sys_session` VALUES ('60609cf396adeb3396253d3425b47fc8', '21', '2019-01-25 14:57:22', '127.0.0.1', '127.0.0.1', '1548399407', '1548399442');
 INSERT INTO `sys_session` VALUES ('606510119dcd6c499c255c72da7b5c5f', '21', '2019-01-20 22:22:43', '127.0.0.1', '127.0.0.1', '1547994115', '1547994163');
+INSERT INTO `sys_session` VALUES ('606ad1230af5ce52774a04602409a84c', '21', '2019-01-25 14:40:18', '127.0.0.1', '127.0.0.1', '1548398239', '1548398418');
+INSERT INTO `sys_session` VALUES ('607096a4509d05af518df3ae76a464db', '21', '2019-01-23 14:37:41', '127.0.0.1', '127.0.0.1', '1548225413', '1548225461');
+INSERT INTO `sys_session` VALUES ('6083a1e2370b50f0b103ee657b56c81a', '21', '2019-01-25 13:50:35', '127.0.0.1', '127.0.0.1', '1548395371', '1548395435');
+INSERT INTO `sys_session` VALUES ('60a01c2e63a73b9f435b3197b9b534ae', '21', '2019-01-24 19:40:54', '127.0.0.1', '127.0.0.1', '1548327845', '1548330054');
 INSERT INTO `sys_session` VALUES ('60b35e5bd898b4b7fe6492683a17101e', '21', '2019-01-16 19:54:51', '127.0.0.1', '127.0.0.1', '1547638997', '1547639691');
+INSERT INTO `sys_session` VALUES ('60d82546becc8f41027268fa5442424f', '21', '2019-01-31 16:15:15', '127.0.0.1', '127.0.0.1', '1548921003', '1548922515');
 INSERT INTO `sys_session` VALUES ('611b25f08a7e166639866f32e99e01f4', '21', '2019-01-16 17:19:24', '127.0.0.1', '127.0.0.1', '1547630319', '1547630364');
 INSERT INTO `sys_session` VALUES ('613e9c779068bf708f7cbad84d667bda', '21', '2019-01-21 16:10:23', '127.0.0.1', '127.0.0.1', '1548058054', '1548058223');
+INSERT INTO `sys_session` VALUES ('6146de8397c1d79da3d12c4fd8497ac6', '21', '2019-02-16 14:37:50', '127.0.0.1', '127.0.0.1', '1550299015', '1550299070');
+INSERT INTO `sys_session` VALUES ('615d4581fa70567c68696ab2e82d8205', '21', '2019-01-25 11:46:22', '127.0.0.1', '127.0.0.1', '1548384218', '1548387982');
+INSERT INTO `sys_session` VALUES ('6189cfb65861e549e31a6b8f2364eb24', '41', '2019-01-29 16:33:44', '127.0.0.1', '127.0.0.1', '1548750794', '1548750824');
+INSERT INTO `sys_session` VALUES ('61e7aeb1dce18c81453503df5e65fe46', '21', '2019-02-12 14:43:18', '127.0.0.1', '127.0.0.1', '1549953358', '1549953798');
+INSERT INTO `sys_session` VALUES ('62d9c34ce19b921fc0c11d3f6b69de63', '21', '2019-02-11 11:41:03', '127.0.0.1', '127.0.0.1', '1549856169', '1549856463');
 INSERT INTO `sys_session` VALUES ('62dbb3ed24b949b60a7879fc64635ab2', '21', '2019-01-16 16:59:28', '127.0.0.1', '127.0.0.1', '1547629057', '1547629168');
 INSERT INTO `sys_session` VALUES ('634b5b615b3d523d1bd716b5a602ab1e', '21', '2019-01-16 17:18:39', '127.0.0.1', '127.0.0.1', '1547630308', '1547630319');
+INSERT INTO `sys_session` VALUES ('635eb82cdc09a19308f675416e4a65cd', '21', '2019-02-16 14:36:55', '127.0.0.1', '127.0.0.1', '1550298737', '1550299015');
+INSERT INTO `sys_session` VALUES ('63da098050f5658ce659c385e7a31d1c', '21', '2019-02-01 11:15:18', '127.0.0.1', '127.0.0.1', '1548990888', '1548990917');
+INSERT INTO `sys_session` VALUES ('640656063bada13fec1fc602c6df2ea7', '21', '2019-01-24 18:02:59', '127.0.0.1', '127.0.0.1', '1548324082', '1548324179');
+INSERT INTO `sys_session` VALUES ('641af840a63d322afd46c5944c48ee7c', '41', '2019-01-29 16:33:44', '127.0.0.1', null, '1548750824', '0');
+INSERT INTO `sys_session` VALUES ('641bead337bfc7f81e26d2f014fe3ff8', '31', '2019-02-11 20:16:01', '127.0.0.1', null, '1549887361', '0');
 INSERT INTO `sys_session` VALUES ('64830d1aec09b6d601449a0a0fe6dddf', '21', '2019-01-21 16:35:39', '127.0.0.1', '127.0.0.1', '1548059407', '1548059739');
+INSERT INTO `sys_session` VALUES ('6524bb037c7f1f3d88d80e73f86b6f65', '21', '2019-02-11 20:16:14', '127.0.0.1', '127.0.0.1', '1549885348', '1549887374');
 INSERT INTO `sys_session` VALUES ('654110d49ccf0e3f68739261a472865d', '21', '2019-01-20 10:10:28', '127.0.0.1', '127.0.0.1', '1547916009', '1547950228');
 INSERT INTO `sys_session` VALUES ('65b1eeafcbca122ad5280529a4b90ca4', '21', '2019-01-16 17:19:35', '127.0.0.1', '127.0.0.1', '1547630375', '1547630375');
+INSERT INTO `sys_session` VALUES ('65f64202739b704d9c099ed0c57dd5e7', '47', '2019-02-16 16:19:20', '127.0.0.1', null, '1550305160', '0');
+INSERT INTO `sys_session` VALUES ('65fff17b5edc86a0d1917498ce2ade9b', '21', '2019-01-22 17:49:09', '127.0.0.1', '127.0.0.1', '1548150516', '1548150549');
 INSERT INTO `sys_session` VALUES ('6664c69cf1edae1040631db65e50e71c', '21', '2019-01-18 11:16:45', '127.0.0.1', '127.0.0.1', '1547780628', '1547781405');
 INSERT INTO `sys_session` VALUES ('66985892b52c2a1452254d792314c78e', '21', '2019-01-16 17:04:51', '127.0.0.1', '127.0.0.1', '1547629331', '1547629491');
 INSERT INTO `sys_session` VALUES ('66fbbc74043c48978f3d111f1a3bc7bd', '21', '2019-01-20 20:44:01', '127.0.0.1', '127.0.0.1', '1547988039', '1547988241');
 INSERT INTO `sys_session` VALUES ('6717941d926c8bac0d36e66708de5708', '21', '2019-01-21 11:32:16', '127.0.0.1', '127.0.0.1', '1548041283', '1548041536');
+INSERT INTO `sys_session` VALUES ('672769f4d38ef8568b3c7432e840177a', '21', '2019-01-25 19:27:47', '127.0.0.1', '127.0.0.1', '1548415525', '1548415667');
 INSERT INTO `sys_session` VALUES ('676fe9231101ffcd06bf45b440b7df6d', '21', '2019-01-21 11:28:03', '127.0.0.1', '127.0.0.1', '1548041020', '1548041283');
+INSERT INTO `sys_session` VALUES ('6789c78a473cf0533644be1779e1622f', '21', '2019-01-24 22:47:53', '127.0.0.1', '127.0.0.1', '1548340848', '1548341273');
+INSERT INTO `sys_session` VALUES ('6796680d5fc10b073202b55f32c6476d', '21', '2019-01-24 22:54:57', '127.0.0.1', '127.0.0.1', '1548341468', '1548341697');
 INSERT INTO `sys_session` VALUES ('67a4c85ad7dece708f56eef2f0b04417', '21', '2019-01-17 13:38:24', '127.0.0.1', '127.0.0.1', '1547703482', '1547703504');
+INSERT INTO `sys_session` VALUES ('67c0df2eb557d1308e4df9465b20972e', '21', '2019-02-11 11:22:03', '127.0.0.1', '127.0.0.1', '1549855305', '1549855323');
+INSERT INTO `sys_session` VALUES ('680349f26d0f2aae0f07a19e4b05fbce', '21', '2019-01-23 14:52:26', '127.0.0.1', '127.0.0.1', '1548226220', '1548226346');
 INSERT INTO `sys_session` VALUES ('680707b2a45d2bf63656a2c80f1a45be', '21', '2019-01-21 16:06:53', '127.0.0.1', '127.0.0.1', '1548057975', '1548058013');
-INSERT INTO `sys_session` VALUES ('6aab03159fa7247fcac4af59670a94c0', '1', '2019-01-25 16:36:43', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548405316', '1548405403');
+INSERT INTO `sys_session` VALUES ('686f48970d6e057ddfe81b1cda245dcd', '21', '2019-01-31 15:50:03', '127.0.0.1', '127.0.0.1', '1548920972', '1548921003');
+INSERT INTO `sys_session` VALUES ('6979d6793557b44148fed355a01f1c98', '21', '2019-01-24 20:39:48', '127.0.0.1', '127.0.0.1', '1548333343', '1548333588');
+INSERT INTO `sys_session` VALUES ('69c589cf79e2f4ef66036df07cef7938', '21', '2019-02-16 15:00:13', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550300302', '1550300413');
+INSERT INTO `sys_session` VALUES ('6ab006088c7d91a6fb6c57c508b86f7b', '21', '2019-01-24 19:45:59', '127.0.0.1', '127.0.0.1', '1548330308', '1548330359');
+INSERT INTO `sys_session` VALUES ('6abd2013e829bf27c9051a23cf4d3049', '21', '2019-02-01 11:35:42', '127.0.0.1', '127.0.0.1', '1548991948', '1548992142');
 INSERT INTO `sys_session` VALUES ('6ad8de2da172bc8d8c75a052c779166f', '21', '2019-01-21 11:44:22', '127.0.0.1', '127.0.0.1', '1548041536', '1548042262');
 INSERT INTO `sys_session` VALUES ('6b39f0f5e366a41f6f8e0c80fb591f1a', '21', '2019-01-16 21:13:54', '127.0.0.1', '127.0.0.1', '1547644362', '1547644434');
+INSERT INTO `sys_session` VALUES ('6bd2d9224893ead1185c115796bd4e91', '21', '2019-01-23 14:49:52', '127.0.0.1', '127.0.0.1', '1548225942', '1548226192');
+INSERT INTO `sys_session` VALUES ('6c3c8d97e2c35b029b913e625db2a684', '21', '2019-02-11 17:06:33', '127.0.0.1', '127.0.0.1', '1549875543', '1549875993');
+INSERT INTO `sys_session` VALUES ('6c7972739c709258e3f6289810567a8b', '37', '2019-01-28 10:54:58', '127.0.0.1', '127.0.0.1', '1548643844', '1548644098');
+INSERT INTO `sys_session` VALUES ('6c9e9040dc30597f5c931cb30fba76dd', '37', '2019-01-28 11:08:47', '127.0.0.1', '127.0.0.1', '1548644897', '1548644927');
 INSERT INTO `sys_session` VALUES ('6cae5f924ed0a98582f9ab5b07709751', '21', '2019-01-17 13:43:06', '127.0.0.1', '127.0.0.1', '1547703734', '1547703786');
+INSERT INTO `sys_session` VALUES ('6cb8803388bf9b36a8bc62a38016c222', '37', '2019-01-28 11:27:47', '127.0.0.1', '127.0.0.1', '1548646034', '1548646067');
+INSERT INTO `sys_session` VALUES ('6e2e6ec732ea1bafa54e0ec56f7f8e1e', '37', '2019-01-25 18:43:01', '127.0.0.1', '127.0.0.1', '1548408481', '1548412980');
+INSERT INTO `sys_session` VALUES ('6eb496e6f90171705d79f0269add3ae4', '21', '2019-01-23 15:39:06', '127.0.0.1', '127.0.0.1', '1548227070', '1548229146');
+INSERT INTO `sys_session` VALUES ('6ec1be46ae7fe517ecd94b6f692eb179', '37', '2019-01-28 15:15:38', '127.0.0.1', '127.0.0.1', '1548659697', '1548659738');
 INSERT INTO `sys_session` VALUES ('6fe37da0954cde3bb120e2a77bed84be', '21', '2019-01-17 14:57:25', '127.0.0.1', '127.0.0.1', '1547707935', '1547708245');
 INSERT INTO `sys_session` VALUES ('7004a2576db932f3d240dd2259477e30', '21', '2019-01-17 11:23:36', '127.0.0.1', '127.0.0.1', '1547695299', '1547695416');
+INSERT INTO `sys_session` VALUES ('7058f3b08a4b3278e99f37b1a0c74ba0', '21', '2019-01-31 16:57:10', '127.0.0.1', '127.0.0.1', '1548924752', '1548925030');
+INSERT INTO `sys_session` VALUES ('708cd2c0d0f57b689c593979360e7e3e', '21', '2019-01-31 14:58:54', '127.0.0.1', '127.0.0.1', '1548851045', '1548917934');
+INSERT INTO `sys_session` VALUES ('70e8774708c10187fb332d1caed588bc', '21', '2019-02-11 11:30:03', '127.0.0.1', '127.0.0.1', '1549855642', '1549855803');
+INSERT INTO `sys_session` VALUES ('710aea7ef85199df2c624e77087f7bdd', '21', '2019-01-31 16:20:22', '127.0.0.1', '127.0.0.1', '1548922740', '1548922822');
+INSERT INTO `sys_session` VALUES ('7223e52a382d9dc332244e9cc6e91cfd', '21', '2019-02-01 13:38:16', '127.0.0.1', '127.0.0.1', '1548999448', '1548999495');
+INSERT INTO `sys_session` VALUES ('739fc86ea730a45143baf53ba66ec529', '21', '2019-01-25 18:02:47', '127.0.0.1', '127.0.0.1', '1548409060', '1548410567');
+INSERT INTO `sys_session` VALUES ('73a248284ccdbc02f6d180ef7b3781b0', '21', '2019-02-01 09:35:39', '127.0.0.1', '127.0.0.1', '1548928674', '1548984939');
+INSERT INTO `sys_session` VALUES ('7411e9b7322d98cb581af8f0eedc50be', '21', '2019-01-23 14:36:53', '127.0.0.1', '127.0.0.1', '1548225381', '1548225413');
 INSERT INTO `sys_session` VALUES ('74b8c76097ea7b48619390cca04d0aac', '21', '2019-01-17 14:31:29', '127.0.0.1', '127.0.0.1', '1547706520', '1547706689');
 INSERT INTO `sys_session` VALUES ('74d117198b1e44763a298e0f2c10e2a6', '21', '2019-01-17 15:08:33', '127.0.0.1', '127.0.0.1', '1547708627', '1547708913');
+INSERT INTO `sys_session` VALUES ('750215cd117ea2312ab3e80444cf4b54', '21', '2019-02-16 13:44:27', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550295340', '1550295867');
+INSERT INTO `sys_session` VALUES ('758eb29eebcfe68585b11176266ea373', '21', '2019-01-25 13:36:33', '127.0.0.1', '127.0.0.1', '1548394419', '1548394593');
+INSERT INTO `sys_session` VALUES ('762f9a9e512c879c6fc01f136d50f9e6', '21', '2019-01-24 11:09:44', '127.0.0.1', '127.0.0.1', '1548299304', '1548299384');
+INSERT INTO `sys_session` VALUES ('76401a2fb400937cae2d548e51576502', '37', '2019-01-25 17:05:14', '127.0.0.1', '127.0.0.1', '1548405443', '1548407114');
+INSERT INTO `sys_session` VALUES ('766bd823f90df12bcad0aaa9ba32e5f5', '37', '2019-01-30 16:00:18', '127.0.0.1', '127.0.0.1', '1548835135', '1548835218');
+INSERT INTO `sys_session` VALUES ('76e7f1c8b910defbf5e4577661f18dd2', '21', '2019-01-25 14:19:12', '127.0.0.1', '127.0.0.1', '1548397104', '1548397152');
+INSERT INTO `sys_session` VALUES ('77974e65271aa671b57824e011954e52', '21', '2019-01-23 14:44:57', '127.0.0.1', '127.0.0.1', '1548225863', '1548225897');
+INSERT INTO `sys_session` VALUES ('77c6f3590afec9f851d8a6ea48e66cc2', '21', '2019-02-13 17:17:55', '127.0.0.1', '127.0.0.1', '1550047821', '1550049475');
+INSERT INTO `sys_session` VALUES ('7808e4447b17f586055a80058c676eb5', '21', '2019-01-23 17:40:24', '127.0.0.1', '127.0.0.1', '1548236373', '1548236424');
 INSERT INTO `sys_session` VALUES ('782b55e877af2e01ddc91019107f8ae6', '21', '2019-01-17 13:16:24', '127.0.0.1', '127.0.0.1', '1547702160', '1547702184');
 INSERT INTO `sys_session` VALUES ('78e97774a78333e96820f3810d0d3018', '21', '2019-01-20 20:48:31', '127.0.0.1', '127.0.0.1', '1547988423', '1547988511');
+INSERT INTO `sys_session` VALUES ('7a3ac996f1855dcc4398f9e000ddff1e', '21', '2019-02-11 14:10:55', '127.0.0.1', '127.0.0.1', '1549861613', '1549865455');
 INSERT INTO `sys_session` VALUES ('7a752b95907d0ac55511bcb4f42b9ffa', '21', '2019-01-16 16:57:37', '127.0.0.1', '127.0.0.1', '1547629057', '1547629057');
+INSERT INTO `sys_session` VALUES ('7b0b32092d69c8cc5576fca7d4aec44a', '21', '2019-02-13 15:02:23', '127.0.0.1', '127.0.0.1', '1550041256', '1550041343');
 INSERT INTO `sys_session` VALUES ('7b6ee44acee02e6fb876800cf5159522', '21', '2019-01-21 09:41:15', '127.0.0.1', '127.0.0.1', '1548034741', '1548034875');
+INSERT INTO `sys_session` VALUES ('7d3780bbb8b484acb8b258206bb7271c', '21', '2019-01-24 11:12:07', '127.0.0.1', '127.0.0.1', '1548299384', '1548299527');
 INSERT INTO `sys_session` VALUES ('7d47d1d08c469b15040376de9f0da9db', '21', '2019-01-18 10:51:58', '127.0.0.1', '127.0.0.1', '1547714639', '1547779918');
+INSERT INTO `sys_session` VALUES ('7d4c5e6a601bdaa06daeab257c6f5bbc', '37', '2019-01-25 17:24:41', '127.0.0.1', '127.0.0.1', '1548408238', '1548408281');
 INSERT INTO `sys_session` VALUES ('7d727391d85d7710db64f11fd5e58fd9', '21', '2019-01-22 14:34:26', '127.0.0.1', '127.0.0.1', '1548138789', '1548138866');
-INSERT INTO `sys_session` VALUES ('7da60db9c864aa4fee2ec5870703f71f', '1', '2019-01-25 15:28:16', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548400226', '1548401296');
+INSERT INTO `sys_session` VALUES ('7dadbd14ecd175d51f02e7bc476ee959', '21', '2019-02-11 17:55:50', '127.0.0.1', '127.0.0.1', '1549878489', '1549878950');
+INSERT INTO `sys_session` VALUES ('7db01848b88a7bd133de9589bcbf0f59', '21', '2019-02-16 14:04:29', '0:0:0:0:0:0:0:1', '127.0.0.1', '1550295867', '1550297069');
+INSERT INTO `sys_session` VALUES ('7dcda4ddf4c3dc789d84326623e3b83c', '37', '2019-01-28 11:27:14', '127.0.0.1', '127.0.0.1', '1548645935', '1548646034');
+INSERT INTO `sys_session` VALUES ('7de15d9faa1e3a6041cd7d4145608759', '37', '2019-01-30 10:01:26', '127.0.0.1', '127.0.0.1', '1548813288', '1548813686');
+INSERT INTO `sys_session` VALUES ('7dfddedd896a9782079816152297b9fd', '21', '2019-01-22 20:26:04', '127.0.0.1', '127.0.0.1', '1548159325', '1548159964');
+INSERT INTO `sys_session` VALUES ('7e21d2083e488368a270455a6521abf8', '41', '2019-01-29 16:33:14', '127.0.0.1', '127.0.0.1', '1548493815', '1548750794');
+INSERT INTO `sys_session` VALUES ('7e2f4eb5b743d47409140d5acb1fa99a', '21', '2019-02-11 16:58:16', '127.0.0.1', '127.0.0.1', '1549875458', '1549875496');
 INSERT INTO `sys_session` VALUES ('7e461ef45e9b61d775649086b486b9be', '21', '2019-01-21 15:51:10', '127.0.0.1', '127.0.0.1', '1548056916', '1548057070');
-INSERT INTO `sys_session` VALUES ('80723edc07f446693a56d63f21b6b6f8', '21', '2019-01-24 11:38:51', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548300639', '1548301131');
+INSERT INTO `sys_session` VALUES ('7e78b2bacc4044a28ecf68a3819fbb68', '21', '2019-01-25 19:25:25', '127.0.0.1', '127.0.0.1', '1548410923', '1548415525');
+INSERT INTO `sys_session` VALUES ('8050bfa647dab3fd4695f5aaef8bd13f', '37', '2019-01-29 09:43:39', '127.0.0.1', '127.0.0.1', '1548681794', '1548726219');
+INSERT INTO `sys_session` VALUES ('814d56380af1958b2c27796af4ec43e4', '21', '2019-02-12 15:16:35', '127.0.0.1', '127.0.0.1', '1549953798', '1549955795');
 INSERT INTO `sys_session` VALUES ('81c24233c403c107bef7efb4dd202568', '21', '2019-01-21 11:50:13', '127.0.0.1', '127.0.0.1', '1548042506', '1548042612');
 INSERT INTO `sys_session` VALUES ('8252813e2ffd4247926c7fccc573b37a', '21', '2019-01-17 15:58:01', '127.0.0.1', '127.0.0.1', '1547711184', '1547711881');
+INSERT INTO `sys_session` VALUES ('82617fce868e5d4f9b2bf687a16192e8', '37', '2019-01-28 15:23:44', '127.0.0.1', '127.0.0.1', '1548660102', '1548660224');
 INSERT INTO `sys_session` VALUES ('827c1f0ac8747b699ff4f9df7017deb1', '21', '2019-01-16 15:56:59', '127.0.0.1', '127.0.0.1', '1547625391', '1547625419');
-INSERT INTO `sys_session` VALUES ('839bce0d9c523acbd3b1214646e2a210', '1', '2019-01-25 16:06:18', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548403463', '1548403578');
+INSERT INTO `sys_session` VALUES ('8315f764b2ded1689f22ae5907b42d98', '21', '2019-01-24 20:35:43', '127.0.0.1', '127.0.0.1', '1548333325', '1548333343');
+INSERT INTO `sys_session` VALUES ('838d288e9482a2e5c4b3a6bc4374a54d', '21', '2019-01-31 17:16:24', '127.0.0.1', '127.0.0.1', '1548925586', '1548926184');
+INSERT INTO `sys_session` VALUES ('83a56beaf308197d15fbff8ba6495ac9', '21', '2019-02-12 10:08:24', '127.0.0.1', '127.0.0.1', '1549937283', '1549937304');
+INSERT INTO `sys_session` VALUES ('83b460b84d4c422b99ddb4e40bf8e709', '21', '2019-01-31 17:56:09', '127.0.0.1', '127.0.0.1', '1548928527', '1548928569');
 INSERT INTO `sys_session` VALUES ('83b9810fae0cccd8dc9fcb6895d98f5b', '21', '2019-01-16 16:00:23', '127.0.0.1', '127.0.0.1', '1547625591', '1547625623');
+INSERT INTO `sys_session` VALUES ('84272251936dd3adcb300ab6780b4376', '31', '2019-01-29 15:18:06', '127.0.0.1', '127.0.0.1', '1548746234', '1548746286');
 INSERT INTO `sys_session` VALUES ('850c55df8ce3fcbae04f1ddf3ecfbb15', '21', '2019-01-20 21:59:08', '127.0.0.1', '127.0.0.1', '1547992469', '1547992748');
-INSERT INTO `sys_session` VALUES ('858190b751a90e4b2ea4f6bc6d6bf799', '1', '2019-01-25 15:06:49', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548399990', '1548400009');
-INSERT INTO `sys_session` VALUES ('85eb08422eae7044e34036f37f1928f7', '1', '2019-01-25 16:36:43', '0:0:0:0:0:0:0:1', null, '1548405403', '0');
+INSERT INTO `sys_session` VALUES ('858000d725556e7fc41c06a463515b45', '37', '2019-01-26 17:10:35', '127.0.0.1', '127.0.0.1', '1548415503', '1548493835');
+INSERT INTO `sys_session` VALUES ('85f5fd1743a391e24bffc3ab80d9682a', '21', '2019-01-23 14:44:23', '127.0.0.1', '127.0.0.1', '1548225827', '1548225863');
+INSERT INTO `sys_session` VALUES ('8630b19ea2a737d331b7a4efd0fbc1a6', '37', '2019-01-28 21:16:06', '127.0.0.1', '127.0.0.1', '1548660224', '1548681366');
 INSERT INTO `sys_session` VALUES ('864110af021274c3a8eaf8a8036227c4', '21', '2019-01-17 13:14:00', '127.0.0.1', '127.0.0.1', '1547701992', '1547702040');
 INSERT INTO `sys_session` VALUES ('86afacd7142d409d7c528fca2cf0eace', '21', '2019-01-16 21:12:42', '127.0.0.1', '127.0.0.1', '1547644322', '1547644362');
+INSERT INTO `sys_session` VALUES ('86d652edf633bed66eb24f1b9c646eea', '21', '2019-01-26 16:56:17', '127.0.0.1', '127.0.0.1', '1548492417', '1548492977');
+INSERT INTO `sys_session` VALUES ('876f758b0db2ddf1ef70285db8ff1bb1', '21', '2019-01-24 19:48:03', '127.0.0.1', '127.0.0.1', '1548330359', '1548330483');
 INSERT INTO `sys_session` VALUES ('8771f32c1f828ea19250b124cc91c72f', '21', '2019-01-17 15:45:24', '127.0.0.1', '127.0.0.1', '1547710033', '1547711124');
+INSERT INTO `sys_session` VALUES ('87b316f3ef4c44eed54fd3897bb5ad27', '21', '2019-01-24 17:57:19', '127.0.0.1', '127.0.0.1', '1548323786', '1548323839');
+INSERT INTO `sys_session` VALUES ('880cdfd073aa27e75b069b6d08465a99', '37', '2019-01-29 10:16:43', '127.0.0.1', '127.0.0.1', '1548727965', '1548728203');
+INSERT INTO `sys_session` VALUES ('884bda48e47a9ba4f9c9d533a28dc002', '21', '2019-02-11 20:20:50', '127.0.0.1', '127.0.0.1', '1549887374', '1549887650');
+INSERT INTO `sys_session` VALUES ('88828f9de976016c8b0e12004a571ded', '21', '2019-01-23 14:31:23', '127.0.0.1', '127.0.0.1', '1548224530', '1548225083');
 INSERT INTO `sys_session` VALUES ('88f300a5831a08fafc65615f3109e9e5', '21', '2019-01-16 15:47:17', '127.0.0.1', '127.0.0.1', '1547624808', '1547624837');
+INSERT INTO `sys_session` VALUES ('8914da580a833044019f8f77077697e6', '37', '2019-01-25 17:23:58', '127.0.0.1', '127.0.0.1', '1548408171', '1548408238');
+INSERT INTO `sys_session` VALUES ('8945c94b6bcaaf1bf6267f98eb145094', '21', '2019-02-01 09:42:46', '127.0.0.1', '127.0.0.1', '1548985116', '1548985366');
+INSERT INTO `sys_session` VALUES ('8960c7f4a15218a223e43969cb43714d', '21', '2019-02-13 14:00:55', '127.0.0.1', '127.0.0.1', '1550027139', '1550037655');
+INSERT INTO `sys_session` VALUES ('89d0b5736984829bb17d0aa159a1da10', '37', '2019-01-25 17:28:01', '127.0.0.1', '127.0.0.1', '1548408281', '1548408481');
 INSERT INTO `sys_session` VALUES ('8a0f84c6ba7b80c5b946900399e6a968', '21', '2019-01-17 13:44:40', '127.0.0.1', '127.0.0.1', '1547703786', '1547703880');
+INSERT INTO `sys_session` VALUES ('8a18c231c9dadcb036461fa32f76402d', '21', '2019-01-31 15:18:44', '127.0.0.1', '127.0.0.1', '1548918369', '1548919124');
+INSERT INTO `sys_session` VALUES ('8a4f1c1997663def73030a2c8490e63e', '21', '2019-02-11 17:41:47', '127.0.0.1', '127.0.0.1', '1549877529', '1549878107');
+INSERT INTO `sys_session` VALUES ('8a8c8a4077d88488970e18708b61f320', '21', '2019-02-11 11:36:09', '127.0.0.1', '127.0.0.1', '1549855803', '1549856169');
 INSERT INTO `sys_session` VALUES ('8b484384d1757bfefa0fbe20ccc18f66', '21', '2019-01-20 21:46:34', '127.0.0.1', '127.0.0.1', '1547991884', '1547991994');
 INSERT INTO `sys_session` VALUES ('8b795c827e3e0c1baeab90ef24939952', '21', '2019-01-21 10:00:22', '127.0.0.1', '127.0.0.1', '1548035440', '1548036022');
 INSERT INTO `sys_session` VALUES ('8bf63347c9b13b089200763f14109316', '21', '2019-01-22 11:01:52', '127.0.0.1', '127.0.0.1', '1548125735', '1548126112');
 INSERT INTO `sys_session` VALUES ('8d09f904bdb4343456bb8c25bf363e73', '21', '2019-01-19 14:49:41', '127.0.0.1', '127.0.0.1', '1547878968', '1547880581');
+INSERT INTO `sys_session` VALUES ('8d0cd6c4dd1967337efd24e698dd5272', '21', '2019-01-23 14:43:47', '127.0.0.1', '127.0.0.1', '1548225723', '1548225827');
+INSERT INTO `sys_session` VALUES ('8d2de644594a48185f2f903dd1bb5a4e', '31', '2019-01-29 15:38:26', '127.0.0.1', '127.0.0.1', '1548747449', '1548747506');
+INSERT INTO `sys_session` VALUES ('8d65ab1f462db8e5b8c4bb1962668625', '21', '2019-01-31 17:55:27', '127.0.0.1', '127.0.0.1', '1548926679', '1548928527');
+INSERT INTO `sys_session` VALUES ('8d77e47f085bfe3d44c0703d6afaa3de', '37', '2019-01-30 09:54:48', '127.0.0.1', '127.0.0.1', '1548765224', '1548813288');
+INSERT INTO `sys_session` VALUES ('8db8ad0b58eeb48ee32b1204d9c22fad', '21', '2019-01-23 17:39:33', '127.0.0.1', '127.0.0.1', '1548236343', '1548236373');
 INSERT INTO `sys_session` VALUES ('8e1044aed83a553e6341ae2472d4b8d7', '21', '2019-01-16 17:53:56', '127.0.0.1', '127.0.0.1', '1547631735', '1547632436');
+INSERT INTO `sys_session` VALUES ('8eadd7f36eef2fa4958e7a58cd0efc00', '37', '2019-01-25 19:02:44', '127.0.0.1', '127.0.0.1', '1548413513', '1548414164');
+INSERT INTO `sys_session` VALUES ('8eb2a2c359c2cd5fff45f0c032c78869', '21', '2019-01-24 18:05:27', '127.0.0.1', '127.0.0.1', '1548324227', '1548324327');
+INSERT INTO `sys_session` VALUES ('8f17e55d0e0a008ef3b76120dcb79f6f', '21', '2019-01-31 15:49:32', '127.0.0.1', '127.0.0.1', '1548920932', '1548920972');
+INSERT INTO `sys_session` VALUES ('8f1a2b14b55e7d7ab1ce559ab560eedb', '37', '2019-01-30 17:12:56', '127.0.0.1', '127.0.0.1', '1548839570', '1548839576');
+INSERT INTO `sys_session` VALUES ('8f3711e41bab471ab5e1a10ee0e9c5eb', '21', '2019-02-12 14:35:58', '127.0.0.1', '127.0.0.1', '1549951923', '1549953358');
+INSERT INTO `sys_session` VALUES ('8fc53c5a63c7e24bf34530a0c0feb2f1', '21', '2019-02-12 14:12:03', '127.0.0.1', '127.0.0.1', '1549943033', '1549951923');
 INSERT INTO `sys_session` VALUES ('9007dee5b95842626f1d08c4f08c59a6', '21', '2019-01-20 21:38:49', '127.0.0.1', '127.0.0.1', '1547991471', '1547991529');
+INSERT INTO `sys_session` VALUES ('90089b4b46b59e8f6c7771a3adc18745', '21', '2019-01-23 14:36:21', '127.0.0.1', '127.0.0.1', '1548225236', '1548225381');
 INSERT INTO `sys_session` VALUES ('90257d3e9e879d3f09e1386af7fb3c6a', '21', '2019-01-21 13:35:31', '127.0.0.1', '127.0.0.1', '1548048639', '1548048931');
 INSERT INTO `sys_session` VALUES ('9025ecc7cb3336aaf397a54464e163de', '21', '2019-01-21 09:47:43', '127.0.0.1', '127.0.0.1', '1548034875', '1548035263');
 INSERT INTO `sys_session` VALUES ('904037ef5760e7b99644db3876558d90', '21', '2019-01-22 11:13:51', '127.0.0.1', '127.0.0.1', '1548126226', '1548126831');
+INSERT INTO `sys_session` VALUES ('906d6e42b5625b83b5a8fb5a4a5e678a', '21', '2019-02-11 16:52:33', '127.0.0.1', '127.0.0.1', '1549875049', '1549875153');
+INSERT INTO `sys_session` VALUES ('90e36f5a15cf9e25e09fc4561db6d038', '21', '2019-01-24 19:45:08', '127.0.0.1', '127.0.0.1', '1548330054', '1548330308');
 INSERT INTO `sys_session` VALUES ('916c354f0acacdfb27f7c2ee47f8081c', '21', '2019-01-20 17:02:33', '127.0.0.1', '127.0.0.1', '1547974923', '1547974953');
 INSERT INTO `sys_session` VALUES ('91ac4bb5bc044ca04a6ec0617ec32731', '21', '2019-01-19 13:54:38', '127.0.0.1', '127.0.0.1', '1547876656', '1547877278');
 INSERT INTO `sys_session` VALUES ('9246745dde944d3aa4d92d376f65d524', '21', '2019-01-17 16:43:59', '127.0.0.1', '127.0.0.1', '1547711881', '1547714639');
 INSERT INTO `sys_session` VALUES ('9247b599b9663b9540d74c8e665bc38c', '21', '2019-01-16 17:02:11', '127.0.0.1', '127.0.0.1', '1547629173', '1547629331');
+INSERT INTO `sys_session` VALUES ('925ba7b14b3f2802823942b3f0c47690', '21', '2019-02-13 10:23:17', '127.0.0.1', '127.0.0.1', '1549960664', '1550024597');
+INSERT INTO `sys_session` VALUES ('92f51f167a69ac6c8e02798f7c5a6150', '21', '2019-01-26 12:03:49', '127.0.0.1', '127.0.0.1', '1548473613', '1548475429');
 INSERT INTO `sys_session` VALUES ('932c408bdf8946050f84091625f7a4f9', '21', '2019-01-16 17:35:53', '127.0.0.1', '127.0.0.1', '1547630908', '1547631353');
+INSERT INTO `sys_session` VALUES ('935e2eb027e48fda0d15ef199e326a44', '21', '2019-01-23 17:19:05', '127.0.0.1', '127.0.0.1', '1548234920', '1548235145');
 INSERT INTO `sys_session` VALUES ('938cedbfe9020de639fbee7a75352da5', '21', '2019-01-20 21:37:51', '127.0.0.1', '127.0.0.1', '1547990426', '1547991471');
 INSERT INTO `sys_session` VALUES ('93916cc40cf058620fb21241aa66161e', '21', '2019-01-17 14:28:40', '127.0.0.1', '127.0.0.1', '1547706425', '1547706520');
 INSERT INTO `sys_session` VALUES ('93a6ca95a08b1e226685cc59ce2f4d76', '21', '2019-01-21 15:46:21', '127.0.0.1', '127.0.0.1', '1548056617', '1548056781');
+INSERT INTO `sys_session` VALUES ('940c65695acc4c9dfa67bd96f68e8908', '37', '2019-01-28 11:35:57', '127.0.0.1', '127.0.0.1', '1548646412', '1548646557');
+INSERT INTO `sys_session` VALUES ('946f562ccf43e52059e5bf7ecdc0b015', '21', '2019-01-24 17:56:26', '127.0.0.1', '127.0.0.1', '1548323754', '1548323786');
+INSERT INTO `sys_session` VALUES ('952683959372a52544c9834ec10b1435', '37', '2019-01-29 11:47:43', '127.0.0.1', '127.0.0.1', '1548733553', '1548733663');
 INSERT INTO `sys_session` VALUES ('954e15fd43f068a3f222c5bc36d23725', '21', '2019-01-22 10:55:35', '127.0.0.1', '127.0.0.1', '1548125594', '1548125735');
 INSERT INTO `sys_session` VALUES ('95690422e6f4134f35c3d342b888924c', '21', '2019-01-21 13:17:10', '127.0.0.1', '127.0.0.1', '1548047507', '1548047830');
 INSERT INTO `sys_session` VALUES ('95721cd27a98a6e75a54214181a88c47', '21', '2019-01-22 14:36:51', '127.0.0.1', '127.0.0.1', '1548138866', '1548139011');
+INSERT INTO `sys_session` VALUES ('9585aaca1e1f885288187b5220816058', '21', '2019-01-24 22:51:08', '127.0.0.1', '127.0.0.1', '1548341273', '1548341468');
 INSERT INTO `sys_session` VALUES ('95bbfed6eb894548855fbbe159303a31', '21', '2019-01-17 09:51:47', '127.0.0.1', '127.0.0.1', '1547645660', '1547689907');
+INSERT INTO `sys_session` VALUES ('969e5a5e1576f1ef5f6b0544cc66b4bc', '21', '2019-01-31 16:59:38', '127.0.0.1', '127.0.0.1', '1548925113', '1548925178');
+INSERT INTO `sys_session` VALUES ('96a4c62cde8c1e4de830b1b8cf229956', '21', '2019-02-16 16:24:11', '0:0:0:0:0:0:0:1', '127.0.0.1', '1550300413', '1550305451');
+INSERT INTO `sys_session` VALUES ('97373fa77ea35a688478b68c7eb2128a', '21', '2019-02-11 17:57:54', '127.0.0.1', '127.0.0.1', '1549878950', '1549879074');
 INSERT INTO `sys_session` VALUES ('9779ec4579ed7592dbe37c339bdb27e1', '21', '2019-01-21 12:40:21', '127.0.0.1', '127.0.0.1', '1548045508', '1548045621');
+INSERT INTO `sys_session` VALUES ('97b18ea2539b911d4d6b0724a9044dd6', '21', '2019-01-26 12:26:33', '127.0.0.1', '127.0.0.1', '1548476753', '1548476793');
+INSERT INTO `sys_session` VALUES ('97d0849440bb99fee086eff2dc84d6ee', '21', '2019-01-31 17:57:54', '127.0.0.1', '127.0.0.1', '1548928569', '1548928674');
+INSERT INTO `sys_session` VALUES ('98327254216867056eccd7ae1e1274be', '21', '2019-01-23 17:46:07', '127.0.0.1', '127.0.0.1', '1548236424', '1548236767');
+INSERT INTO `sys_session` VALUES ('985421eb9a93e5992cdd6147b87a624a', '37', '2019-01-28 15:09:59', '127.0.0.1', '127.0.0.1', '1548659331', '1548659399');
+INSERT INTO `sys_session` VALUES ('992f2c0513d2544193d906dc4df45e5f', '21', '2019-02-16 14:50:57', '127.0.0.1', '0:0:0:0:0:0:0:1', '1550299070', '1550299857');
+INSERT INTO `sys_session` VALUES ('993bfc6c738949505250a97b39882f51', '21', '2019-02-13 15:03:30', '127.0.0.1', '127.0.0.1', '1550041389', '1550041410');
 INSERT INTO `sys_session` VALUES ('995e2d053df5887e42e45cecd99d0756', '21', '2019-01-22 14:57:15', '127.0.0.1', '127.0.0.1', '1548140143', '1548140235');
-INSERT INTO `sys_session` VALUES ('9a0d6d1944ea883a55a17a7c16348335', '21', '2019-01-24 11:38:51', '0:0:0:0:0:0:0:1', null, '1548301131', '0');
+INSERT INTO `sys_session` VALUES ('9984572afbcbe26f867378110fc5aafb', '21', '2019-01-24 11:19:46', '127.0.0.1', '127.0.0.1', '1548299783', '1548299986');
+INSERT INTO `sys_session` VALUES ('99d82384c4631207ed83ee83ab51546b', '21', '2019-02-13 17:20:59', '127.0.0.1', '127.0.0.1', '1550049571', '1550049659');
+INSERT INTO `sys_session` VALUES ('9a0dea709b9b31737b80e61577cec4d0', '37', '2019-01-28 15:08:51', '127.0.0.1', '127.0.0.1', '1548650635', '1548659331');
+INSERT INTO `sys_session` VALUES ('9a14b13b4068bdb19b2cfda078d405c0', '31', '2019-01-29 15:34:56', '127.0.0.1', '127.0.0.1', '1548747191', '1548747296');
 INSERT INTO `sys_session` VALUES ('9ad6e54eea60ef323468dd301f2ddccb', '21', '2019-01-17 13:37:19', '127.0.0.1', '127.0.0.1', '1547703356', '1547703439');
+INSERT INTO `sys_session` VALUES ('9ae7715fdc189dc251f9ff190cc79570', '21', '2019-02-16 14:58:22', '127.0.0.1', '0:0:0:0:0:0:0:1', '1550300083', '1550300302');
 INSERT INTO `sys_session` VALUES ('9b17a074afac02feaa548e20be9acaa9', '21', '2019-01-17 14:18:27', '127.0.0.1', '127.0.0.1', '1547705859', '1547705907');
 INSERT INTO `sys_session` VALUES ('9ba20d252f528eddb0c2c85835877997', '21', '2019-01-21 17:05:50', '127.0.0.1', '127.0.0.1', '1548061470', '1548061550');
+INSERT INTO `sys_session` VALUES ('9bb2fabc0ccfa2a21fef398057126217', '21', '2019-02-01 16:21:45', '127.0.0.1', '127.0.0.1', '1549009193', '1549009305');
+INSERT INTO `sys_session` VALUES ('9bfba450cc71a6a651bfd148451ebbfd', '21', '2019-02-11 16:44:01', '127.0.0.1', '127.0.0.1', '1549873426', '1549874641');
 INSERT INTO `sys_session` VALUES ('9c2668dcd034c07495c15d449649cbb2', '21', '2019-01-21 17:04:30', '127.0.0.1', '127.0.0.1', '1548061271', '1548061470');
+INSERT INTO `sys_session` VALUES ('9c36df3a0af82476af53b738a57545aa', '21', '2019-02-01 16:18:32', '127.0.0.1', '127.0.0.1', '1549009038', '1549009112');
+INSERT INTO `sys_session` VALUES ('9cb1becae319a57ac331f7702deb84ce', '21', '2019-01-22 21:00:08', '127.0.0.1', '127.0.0.1', '1548161866', '1548162008');
 INSERT INTO `sys_session` VALUES ('9d2d8125c4b8b04d17f4643c2475986e', '21', '2019-01-17 15:27:13', '127.0.0.1', '127.0.0.1', '1547709958', '1547710033');
 INSERT INTO `sys_session` VALUES ('9df30240279a947dd246d1b66b653092', '21', '2019-01-21 11:51:30', '127.0.0.1', '127.0.0.1', '1548042613', '1548042690');
+INSERT INTO `sys_session` VALUES ('9e3e0e12fb524c7d182bad953977cc13', '31', '2019-01-29 15:31:52', '127.0.0.1', '127.0.0.1', '1548746893', '1548747112');
+INSERT INTO `sys_session` VALUES ('9e4cad6c95b136966b472aae155b2090', '21', '2019-02-01 09:38:36', '127.0.0.1', '127.0.0.1', '1548984939', '1548985116');
+INSERT INTO `sys_session` VALUES ('9ea4951cd717ceaf1514afe9495aced0', '21', '2019-01-25 12:54:13', '127.0.0.1', '127.0.0.1', '1548387982', '1548392052');
+INSERT INTO `sys_session` VALUES ('9f00b2f0be9dd95bc9f2492629e0f97d', '21', '2019-01-22 20:57:46', '127.0.0.1', '127.0.0.1', '1548160150', '1548161866');
+INSERT INTO `sys_session` VALUES ('9f18f9684f82d2567f19edfc4e7dfa08', '21', '2019-02-11 16:53:45', '127.0.0.1', '127.0.0.1', '1549875153', '1549875225');
+INSERT INTO `sys_session` VALUES ('9f235d6c41bdb3d6a44f298f1369afd7', '21', '2019-01-31 17:00:45', '127.0.0.1', '127.0.0.1', '1548925178', '1548925245');
+INSERT INTO `sys_session` VALUES ('9fd635ab1e2ee0ccac6f880f89ea56af', '37', '2019-01-28 21:21:25', '127.0.0.1', '127.0.0.1', '1548681632', '1548681685');
+INSERT INTO `sys_session` VALUES ('9fdb806f5489277b6242227eb741f899', '37', '2019-01-25 16:11:02', '127.0.0.1', '127.0.0.1', '1548403387', '1548403862');
 INSERT INTO `sys_session` VALUES ('9ff6686b00968c9ad0f9cdf70309e3bc', '21', '2019-01-17 14:10:49', '127.0.0.1', '127.0.0.1', '1547705416', '1547705449');
+INSERT INTO `sys_session` VALUES ('a049c4c4537bb6a08cd8e181ed61330e', '21', '2019-01-31 15:22:59', '127.0.0.1', '127.0.0.1', '1548919369', '1548919379');
 INSERT INTO `sys_session` VALUES ('a04e06c9b98a3cde54eccf392ed53c9d', '21', '2019-01-19 17:52:42', '127.0.0.1', '127.0.0.1', '1547891468', '1547891562');
+INSERT INTO `sys_session` VALUES ('a05698507784f8d3f5e2a5c06f109ea6', '21', '2019-01-25 17:36:09', '127.0.0.1', '127.0.0.1', '1548408847', '1548408969');
+INSERT INTO `sys_session` VALUES ('a09fe43196c05e29ba6a16bc09b1d141', '21', '2019-01-23 17:11:55', '127.0.0.1', '127.0.0.1', '1548234589', '1548234715');
 INSERT INTO `sys_session` VALUES ('a0f5f4c27c35039a3b8e7bedfd0f80a2', '21', '2019-01-17 14:27:05', '127.0.0.1', '127.0.0.1', '1547706299', '1547706425');
-INSERT INTO `sys_session` VALUES ('a20795bb6c779a7f1eba1556b2bca12c', '1', '2019-01-25 16:35:16', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548405108', '1548405316');
+INSERT INTO `sys_session` VALUES ('a16177d6a55af95c2ab6186993bb313c', '37', '2019-01-29 10:05:21', '127.0.0.1', '127.0.0.1', '1548727232', '1548727521');
+INSERT INTO `sys_session` VALUES ('a2d45e122e3595cdff407f141b150f71', '21', '2019-02-16 14:22:19', '127.0.0.1', '127.0.0.1', '1550297069', '1550298139');
+INSERT INTO `sys_session` VALUES ('a30384ae0f563e93da42b20156b762f1', '21', '2019-01-31 16:52:32', '127.0.0.1', '127.0.0.1', '1548922822', '1548924752');
+INSERT INTO `sys_session` VALUES ('a34974f4143c213e37a5e6d2fddeb418', '31', '2019-01-29 15:17:14', '127.0.0.1', '127.0.0.1', '1548746066', '1548746234');
+INSERT INTO `sys_session` VALUES ('a3b3a9a07f960d68efa9c4a921064291', '37', '2019-01-29 10:12:45', '127.0.0.1', '127.0.0.1', '1548727676', '1548727965');
+INSERT INTO `sys_session` VALUES ('a3b674a7acb897e6ca6f0ab6551b4631', '21', '2019-01-26 16:58:59', '127.0.0.1', '127.0.0.1', '1548492977', '1548493139');
+INSERT INTO `sys_session` VALUES ('a3fcce0ae673b4eb84366bb93a03620c', '21', '2019-01-23 17:39:03', '127.0.0.1', '127.0.0.1', '1548235996', '1548236343');
+INSERT INTO `sys_session` VALUES ('a4bac8b7f0c2df692e30256532f38b20', '21', '2019-02-01 16:19:53', '127.0.0.1', '127.0.0.1', '1549009112', '1549009193');
 INSERT INTO `sys_session` VALUES ('a5736e79c11885810c0ce7ad95d7269f', '21', '2019-01-19 14:21:11', '127.0.0.1', '127.0.0.1', '1547878832', '1547878871');
 INSERT INTO `sys_session` VALUES ('a5d69596ce73d7a7116fa71bf55049c9', '21', '2019-01-16 17:54:20', '127.0.0.1', '127.0.0.1', '1547632436', '1547632460');
+INSERT INTO `sys_session` VALUES ('a5efa0030cbef648819316dc4a4f1824', '21', '2019-02-01 13:37:28', '127.0.0.1', '127.0.0.1', '1548999416', '1548999448');
+INSERT INTO `sys_session` VALUES ('a6b278792e07aa99a6b3b1d970dfae8b', '21', '2019-01-25 10:41:06', '127.0.0.1', '127.0.0.1', '1548382698', '1548384066');
+INSERT INTO `sys_session` VALUES ('a6b81eac0b3b0213eb9d794f8499962f', '37', '2019-01-25 16:02:41', '127.0.0.1', '127.0.0.1', '1548403163', '1548403361');
 INSERT INTO `sys_session` VALUES ('a6e24760fe1fe2d4748bea31da700611', '21', '2019-01-17 09:59:26', '127.0.0.1', '127.0.0.1', '1547690262', '1547690366');
+INSERT INTO `sys_session` VALUES ('a71a790d0821510f3190dffc5377efe0', '21', '2019-02-16 13:35:40', '127.0.0.1', '0:0:0:0:0:0:0:1', '1550289659', '1550295340');
+INSERT INTO `sys_session` VALUES ('a78803812995ecb715d94754a8ee0e51', '37', '2019-01-29 11:49:37', '127.0.0.1', '127.0.0.1', '1548733663', '1548733777');
 INSERT INTO `sys_session` VALUES ('a8934170b50500a68e4d2a696d8c4197', '21', '2019-01-16 15:49:26', '127.0.0.1', '127.0.0.1', '1547624837', '1547624966');
+INSERT INTO `sys_session` VALUES ('a95e32d02794d7671ab2fa5777e1c4c6', '21', '2019-02-12 16:19:49', '127.0.0.1', '127.0.0.1', '1549956511', '1549959589');
+INSERT INTO `sys_session` VALUES ('a98c993727ede918b0073a0632418496', '21', '2019-01-25 10:42:56', '127.0.0.1', '127.0.0.1', '1548384166', '1548384176');
+INSERT INTO `sys_session` VALUES ('a9a8a690c6303d08de6852ff35e1ad57', '37', '2019-01-25 19:03:53', '127.0.0.1', '127.0.0.1', '1548414164', '1548414233');
 INSERT INTO `sys_session` VALUES ('aa29f3da4ecb04645bd48e0241b82ea4', '21', '2019-01-19 21:35:11', '127.0.0.1', '127.0.0.1', '1547904841', '1547904911');
+INSERT INTO `sys_session` VALUES ('aa37a5cef59744b12ddee8b2e0c7459c', '21', '2019-01-31 17:04:51', '127.0.0.1', '127.0.0.1', '1548925371', '1548925491');
+INSERT INTO `sys_session` VALUES ('aa8846f0c79560326f76fa44aa9ee105', '37', '2019-01-29 13:44:13', '127.0.0.1', '127.0.0.1', '1548740610', '1548740653');
+INSERT INTO `sys_session` VALUES ('aad2f9f7d2d4733ca5473082199e2ec5', '21', '2019-01-24 09:57:29', '127.0.0.1', '127.0.0.1', '1548240649', '1548295049');
 INSERT INTO `sys_session` VALUES ('ab0525d6be0de8a35e06575a0828ee32', '21', '2019-01-22 17:44:53', '127.0.0.1', '127.0.0.1', '1548140235', '1548150293');
 INSERT INTO `sys_session` VALUES ('ab1a0019fbd58e668e142db3301be40f', '21', '2019-01-17 10:14:24', '127.0.0.1', '127.0.0.1', '1547691109', '1547691264');
+INSERT INTO `sys_session` VALUES ('ab722c3bd0c15aef915fafd96a71635c', '21', '2019-01-25 19:41:30', '127.0.0.1', '127.0.0.1', '1548416051', '1548416490');
+INSERT INTO `sys_session` VALUES ('ab8e6f6b78646c43a58a4a034aee34fb', '37', '2019-01-29 09:56:36', '127.0.0.1', '127.0.0.1', '1548726928', '1548726996');
+INSERT INTO `sys_session` VALUES ('ac0204af930242b3f1122e31c06dc828', '21', '2019-01-24 17:57:57', '127.0.0.1', '127.0.0.1', '1548323839', '1548323877');
 INSERT INTO `sys_session` VALUES ('ac7dde371a29027c05690d5c6ab542c2', '21', '2019-01-17 10:00:46', '127.0.0.1', '127.0.0.1', '1547690366', '1547690446');
 INSERT INTO `sys_session` VALUES ('acf390d14f057a7df9399a4e8811996c', '21', '2019-01-16 19:59:07', '127.0.0.1', '127.0.0.1', '1547639773', '1547639947');
 INSERT INTO `sys_session` VALUES ('ad60416273aa8b507e3f9a7e4e431248', '21', '2019-01-22 14:33:09', '127.0.0.1', '127.0.0.1', '1548126831', '1548138789');
+INSERT INTO `sys_session` VALUES ('ae7d47e061af429e69e603cb5f15692b', '21', '2019-02-01 16:28:44', '127.0.0.1', '127.0.0.1', '1549009682', '1549009724');
+INSERT INTO `sys_session` VALUES ('aeab1a9d55c78e7c76157a43f4108539', '21', '2019-01-31 17:06:26', '127.0.0.1', '127.0.0.1', '1548925491', '1548925586');
 INSERT INTO `sys_session` VALUES ('aef902dd8da09ad7a8583ab59c1f6188', '21', '2019-01-17 15:24:26', '127.0.0.1', '127.0.0.1', '1547709491', '1547709866');
+INSERT INTO `sys_session` VALUES ('af0ded702948097f43dc3179533e939c', '21', '2019-02-12 10:08:03', '127.0.0.1', '127.0.0.1', '1549887650', '1549937283');
 INSERT INTO `sys_session` VALUES ('af128ebf392f3ae136dc68375aace6ca', '21', '2019-01-21 15:43:37', '127.0.0.1', '127.0.0.1', '1548049022', '1548056617');
+INSERT INTO `sys_session` VALUES ('af19110dd6fc3cf8228f2df88e480f7d', '42', '2019-01-29 16:05:05', '127.0.0.1', '127.0.0.1', '1548748644', '1548749105');
+INSERT INTO `sys_session` VALUES ('af3259c2c31c9da58047dc6f58e71306', '21', '2019-01-23 18:50:49', '127.0.0.1', '127.0.0.1', '1548237846', '1548240649');
+INSERT INTO `sys_session` VALUES ('af554e00a70320e7a9828d243c77d0f3', '21', '2019-01-25 17:37:40', '127.0.0.1', '127.0.0.1', '1548408969', '1548409060');
+INSERT INTO `sys_session` VALUES ('b0234a9989e4edc4d81a4aa99f30a210', '37', '2019-01-28 11:07:53', '127.0.0.1', '127.0.0.1', '1548644098', '1548644873');
 INSERT INTO `sys_session` VALUES ('b03d3de75619ca22c1d493940cbd89c7', '21', '2019-01-20 22:17:38', '127.0.0.1', '127.0.0.1', '1547993353', '1547993858');
+INSERT INTO `sys_session` VALUES ('b0415f4024b54769ababf127c4ab4123', '31', '2019-01-29 15:39:32', '127.0.0.1', '127.0.0.1', '1548747506', '1548747572');
+INSERT INTO `sys_session` VALUES ('b06db9195f30fd1b5ee72d31b2e125ff', '21', '2019-01-25 13:51:14', '127.0.0.1', '127.0.0.1', '1548395435', '1548395474');
+INSERT INTO `sys_session` VALUES ('b09275cc1c47f6af4fb4dcd74467048a', '21', '2019-02-11 17:30:37', '127.0.0.1', '127.0.0.1', '1549875993', '1549877437');
 INSERT INTO `sys_session` VALUES ('b0caf37684724b04eda8f45a00d4112e', '21', '2019-01-16 15:46:48', '127.0.0.1', '127.0.0.1', '1547624546', '1547624808');
 INSERT INTO `sys_session` VALUES ('b0ebb02e3972566075d1e2c6460517d9', '21', '2019-01-16 19:42:28', '127.0.0.1', '127.0.0.1', '1547638643', '1547638948');
 INSERT INTO `sys_session` VALUES ('b11f768713e3387db0dd02a0d15c1652', '21', '2019-01-16 16:57:33', '127.0.0.1', '127.0.0.1', '1547629049', '1547629053');
+INSERT INTO `sys_session` VALUES ('b12d46a5934d86ee6ac9ff04cc6071dd', '21', '2019-02-13 11:05:39', '127.0.0.1', '127.0.0.1', '1550025122', '1550027139');
+INSERT INTO `sys_session` VALUES ('b16253837db8a16258cb98026807bded', '46', '2019-02-11 16:48:12', '127.0.0.1', null, '1549874892', '0');
+INSERT INTO `sys_session` VALUES ('b1ef53a7dc6accc0369bcd6765292056', '41', '2019-01-26 17:10:15', '127.0.0.1', '127.0.0.1', '1548408467', '1548493815');
 INSERT INTO `sys_session` VALUES ('b20f3b4e806f0f2449aef61c41156205', '21', '2019-01-17 13:38:02', '127.0.0.1', '127.0.0.1', '1547703439', '1547703482');
 INSERT INTO `sys_session` VALUES ('b214269a4ebeb57e873214d0ae1a5ffc', '21', '2019-01-16 19:56:13', '127.0.0.1', '127.0.0.1', '1547639691', '1547639773');
 INSERT INTO `sys_session` VALUES ('b22eba8163f9ba26f661dd74136e4c44', '21', '2019-01-20 21:54:29', '127.0.0.1', '127.0.0.1', '1547992359', '1547992469');
+INSERT INTO `sys_session` VALUES ('b268ab0dc9192bd96e33c30518f396a6', '37', '2019-01-28 21:23:02', '127.0.0.1', '127.0.0.1', '1548681685', '1548681782');
 INSERT INTO `sys_session` VALUES ('b2da3082490c7f2885663d7ac28168d6', '21', '2019-01-17 13:35:56', '127.0.0.1', '127.0.0.1', '1547703096', '1547703356');
+INSERT INTO `sys_session` VALUES ('b351564e236851a47bdb1a1f7e5548ca', '37', '2019-01-28 15:12:15', '127.0.0.1', '127.0.0.1', '1548659439', '1548659535');
+INSERT INTO `sys_session` VALUES ('b3653032d608ee355872bb93dd01c583', '21', '2019-01-29 14:20:47', '127.0.0.1', '127.0.0.1', '1548742387', '1548742847');
+INSERT INTO `sys_session` VALUES ('b37b15c0f8c040c58bfa358858695c7c', '21', '2019-02-01 13:18:20', '127.0.0.1', '127.0.0.1', '1548996889', '1548998300');
+INSERT INTO `sys_session` VALUES ('b37f907616b469974cb0178434592156', '21', '2019-02-01 13:32:09', '127.0.0.1', '127.0.0.1', '1548999075', '1548999129');
 INSERT INTO `sys_session` VALUES ('b4078fec373f0964d16910ddf0ca64b8', '21', '2019-01-17 13:24:01', '127.0.0.1', '127.0.0.1', '1547702622', '1547702641');
 INSERT INTO `sys_session` VALUES ('b4b8da010b463ca968b32950ff78498e', '21', '2019-01-21 11:48:25', '127.0.0.1', '127.0.0.1', '1548042475', '1548042505');
+INSERT INTO `sys_session` VALUES ('b533e47b80d1040cbdccc2d8779ad863', '21', '2019-02-11 17:45:42', '127.0.0.1', '127.0.0.1', '1549878107', '1549878342');
 INSERT INTO `sys_session` VALUES ('b54ecb287d0d542357d7ea008fb56525', '21', '2019-01-17 10:08:26', '127.0.0.1', '127.0.0.1', '1547690796', '1547690906');
+INSERT INTO `sys_session` VALUES ('b6073e808af914522746e72cf873ddaa', '21', '2019-01-23 17:20:25', '127.0.0.1', '127.0.0.1', '1548235145', '1548235225');
+INSERT INTO `sys_session` VALUES ('b60fa399a9c03008feb5856231f08795', '21', '2019-01-25 17:34:07', '127.0.0.1', '127.0.0.1', '1548408508', '1548408847');
+INSERT INTO `sys_session` VALUES ('b6b77fb8bb39d1f64cd1d5e798e09774', '37', '2019-01-29 09:45:23', '127.0.0.1', '127.0.0.1', '1548726219', '1548726323');
+INSERT INTO `sys_session` VALUES ('b6b9036acac5cecdf420e932f49f5ece', '21', '2019-02-01 13:31:15', '127.0.0.1', '127.0.0.1', '1548998351', '1548999075');
+INSERT INTO `sys_session` VALUES ('b6ca615cda094e0524684a1b7a060105', '21', '2019-01-24 20:27:01', '127.0.0.1', '127.0.0.1', '1548332112', '1548332821');
 INSERT INTO `sys_session` VALUES ('b6ef329dd633b4d953d525fac8286581', '21', '2019-01-17 13:16:59', '127.0.0.1', '127.0.0.1', '1547702184', '1547702219');
 INSERT INTO `sys_session` VALUES ('b7d87d58cdb8ed3860305a78a0a28b67', '21', '2019-01-16 21:33:22', '127.0.0.1', '127.0.0.1', '1547645287', '1547645602');
+INSERT INTO `sys_session` VALUES ('b8a6ab46db527a134b47366998d4cebe', '21', '2019-02-11 16:50:49', '127.0.0.1', '127.0.0.1', '1549874641', '1549875049');
+INSERT INTO `sys_session` VALUES ('b8d16426ce8c7aeedcfe2e4ff94a22da', '21', '2019-02-13 14:56:00', '127.0.0.1', '127.0.0.1', '1550040564', '1550040960');
 INSERT INTO `sys_session` VALUES ('b8ecb0d86f2fafab0c7f06821c780e50', '21', '2019-01-16 21:12:02', '127.0.0.1', '127.0.0.1', '1547640303', '1547644322');
+INSERT INTO `sys_session` VALUES ('b92fd3e7762ce5ae31bafb167c7e89e7', '37', '2019-01-29 10:57:33', '127.0.0.1', '127.0.0.1', '1548730604', '1548730653');
 INSERT INTO `sys_session` VALUES ('b952d7f7246bbc56f590a66581eabb84', '21', '2019-01-20 21:20:26', '127.0.0.1', '127.0.0.1', '1547988797', '1547990426');
+INSERT INTO `sys_session` VALUES ('b990822c5dec430077139f9902091fba', '37', '2019-01-26 17:19:32', '127.0.0.1', '127.0.0.1', '1548493835', '1548494372');
+INSERT INTO `sys_session` VALUES ('b9bfff4b41ef5f74221fb0acdb65b31c', '21', '2019-02-01 16:04:49', '127.0.0.1', '127.0.0.1', '1549008126', '1549008289');
+INSERT INTO `sys_session` VALUES ('ba606ebaf02017ba910ca16b1b1cc3b8', '21', '2019-02-13 14:05:51', '127.0.0.1', '127.0.0.1', '1550037842', '1550037951');
+INSERT INTO `sys_session` VALUES ('bac1c6c543e0690612b0ea5a18fe4c0b', '21', '2019-01-24 18:03:47', '127.0.0.1', '127.0.0.1', '1548324179', '1548324227');
+INSERT INTO `sys_session` VALUES ('bad6e8b003ccf4ec503aacfc15b19ee7', '37', '2019-01-29 10:56:44', '127.0.0.1', '127.0.0.1', '1548729041', '1548730604');
 INSERT INTO `sys_session` VALUES ('bb28791525e850bfc91743b6a86ffba8', '21', '2019-01-20 22:03:03', '127.0.0.1', '127.0.0.1', '1547992893', '1547992983');
+INSERT INTO `sys_session` VALUES ('bb32fec61ce415ea9df699bccb311e47', '21', '2019-02-13 15:00:16', '127.0.0.1', '127.0.0.1', '1550040960', '1550041216');
 INSERT INTO `sys_session` VALUES ('bb870036bbc2cfc6c62798dc7540910f', '21', '2019-01-17 15:24:31', '127.0.0.1', '127.0.0.1', '1547709866', '1547709871');
+INSERT INTO `sys_session` VALUES ('bba9ab1af3ff86e2a15b95ebb0faf6f2', '21', '2019-01-29 14:13:07', '127.0.0.1', '127.0.0.1', '1548493708', '1548742387');
 INSERT INTO `sys_session` VALUES ('bc0446fb99149cc6201cfe65e189a621', '21', '2019-01-19 17:53:58', '127.0.0.1', '127.0.0.1', '1547891616', '1547891638');
+INSERT INTO `sys_session` VALUES ('bc04d154de8123accd5f9bdca5409db2', '21', '2019-01-22 18:13:24', '127.0.0.1', '127.0.0.1', '1548150549', '1548152004');
+INSERT INTO `sys_session` VALUES ('bc271cbba3bf44f48c34a6e72036c1ed', '37', '2019-01-29 13:57:01', '127.0.0.1', '127.0.0.1', '1548740775', '1548741421');
 INSERT INTO `sys_session` VALUES ('bc9650d5a6b0987c49ac6ab6a41323db', '21', '2019-01-22 10:53:14', '127.0.0.1', '127.0.0.1', '1548125377', '1548125594');
+INSERT INTO `sys_session` VALUES ('bc99a2f9c1bfbc7170a9de3396be8765', '31', '2019-01-29 15:28:13', '127.0.0.1', '127.0.0.1', '1548746286', '1548746893');
 INSERT INTO `sys_session` VALUES ('bceb57d6e70d803755441b5f350d09b5', '21', '2019-01-16 15:59:51', '127.0.0.1', '127.0.0.1', '1547625419', '1547625591');
 INSERT INTO `sys_session` VALUES ('bd51c6f57d9cbdbb28277607693f0c90', '21', '2019-01-17 14:10:16', '127.0.0.1', '127.0.0.1', '1547704668', '1547705416');
+INSERT INTO `sys_session` VALUES ('bd7fdc2cd495b7d23386e7ae5ab830ab', '21', '2019-01-25 09:41:12', '127.0.0.1', '127.0.0.1', '1548342348', '1548380472');
 INSERT INTO `sys_session` VALUES ('bdcb6803c850432c5bfecf28f2ca668e', '21', '2019-01-17 15:46:24', '127.0.0.1', '127.0.0.1', '1547711124', '1547711184');
 INSERT INTO `sys_session` VALUES ('be4a34e548758e679442bc9e8921d4dc', '21', '2019-01-17 14:42:12', '127.0.0.1', '127.0.0.1', '1547707315', '1547707332');
+INSERT INTO `sys_session` VALUES ('bedb2fbe473392d5802d6e5c7a83d936', '21', '2019-01-24 17:23:37', '127.0.0.1', '127.0.0.1', '1548302137', '1548321817');
+INSERT INTO `sys_session` VALUES ('bf123ebd5783b1bb009da437da6a90ce', '37', '2019-01-25 15:11:47', '127.0.0.1', '127.0.0.1', '1548399906', '1548400307');
+INSERT INTO `sys_session` VALUES ('c0c1d2fd65b3c6cd618794623bb88517', '21', '2019-02-13 10:32:02', '127.0.0.1', '127.0.0.1', '1550025073', '1550025122');
+INSERT INTO `sys_session` VALUES ('c0c38a5f4fa110a933dc0195bcdd4f67', '21', '2019-01-30 20:24:05', '127.0.0.1', '127.0.0.1', '1548839589', '1548851045');
 INSERT INTO `sys_session` VALUES ('c140f24f4e32ad58c3dbf10d6f312b52', '21', '2019-01-22 09:49:41', '127.0.0.1', '127.0.0.1', '1548121652', '1548121781');
 INSERT INTO `sys_session` VALUES ('c1787b01b097f76acac5fd472700c35d', '21', '2019-01-17 14:41:55', '127.0.0.1', '127.0.0.1', '1547707084', '1547707315');
 INSERT INTO `sys_session` VALUES ('c1bd2add7e96d958f78d1e66e600e62f', '21', '2019-01-21 13:36:30', '127.0.0.1', '127.0.0.1', '1548048931', '1548048990');
 INSERT INTO `sys_session` VALUES ('c1c94bbd27d8e8f8187eb367558abed1', '21', '2019-01-17 15:03:47', '127.0.0.1', '127.0.0.1', '1547708325', '1547708627');
+INSERT INTO `sys_session` VALUES ('c265156ba156f74f193edec9fe585b92', '21', '2019-01-23 14:39:14', '127.0.0.1', '127.0.0.1', '1548225461', '1548225554');
 INSERT INTO `sys_session` VALUES ('c29c5d53dcd255f58a9903ad8fe6549b', '21', '2019-01-16 16:57:29', '127.0.0.1', '127.0.0.1', '1547628929', '1547629049');
+INSERT INTO `sys_session` VALUES ('c2a7a7740d93af98dc9cc844a5662442', '37', '2019-01-25 15:30:46', '127.0.0.1', '127.0.0.1', '1548401009', '1548401446');
 INSERT INTO `sys_session` VALUES ('c2e5a818259c5ed3bc8eace440d5bd67', '21', '2019-01-19 17:53:36', '127.0.0.1', '127.0.0.1', '1547891566', '1547891616');
 INSERT INTO `sys_session` VALUES ('c3823662975466471ed14e5493043b25', '21', '2019-01-16 17:26:08', '127.0.0.1', '127.0.0.1', '1547630749', '1547630768');
 INSERT INTO `sys_session` VALUES ('c429beff697a56de59c8cf1f181fa815', '21', '2019-01-19 13:42:24', '127.0.0.1', '127.0.0.1', '1547876495', '1547876544');
 INSERT INTO `sys_session` VALUES ('c4d75c57a9025023aab80b40f1515313', '21', '2019-01-16 16:57:37', '127.0.0.1', '127.0.0.1', '1547629053', '1547629057');
+INSERT INTO `sys_session` VALUES ('c546fe9309e3fa307b02a5bbbaf782e2', '37', '2019-01-25 15:34:58', '127.0.0.1', '127.0.0.1', '1548401473', '1548401698');
 INSERT INTO `sys_session` VALUES ('c5b70635f71579169b752b9b242f1721', '21', '2019-01-16 16:59:30', '127.0.0.1', '127.0.0.1', '1547629168', '1547629170');
+INSERT INTO `sys_session` VALUES ('c5d5c9a09551c2ea9c0fb2cd4d3dee9c', '21', '2019-02-01 12:36:09', '127.0.0.1', '127.0.0.1', '1548995448', '1548995769');
 INSERT INTO `sys_session` VALUES ('c6489034cd9ff4918d160000daf02582', '21', '2019-01-16 15:49:26', '127.0.0.1', '127.0.0.1', '1547624837', '1547624966');
 INSERT INTO `sys_session` VALUES ('c6792ec2fd3bb09fbc0b7abf39926992', '21', '2019-01-17 14:38:04', '127.0.0.1', '127.0.0.1', '1547706769', '1547707084');
 INSERT INTO `sys_session` VALUES ('c6d1ddba9c3e16a59ef8a455ba45c725', '21', '2019-01-21 16:59:16', '127.0.0.1', '127.0.0.1', '1548060673', '1548061156');
+INSERT INTO `sys_session` VALUES ('c6e6a3d1bfaeb5cf0214f8cc278dde58', '21', '2019-01-30 17:13:09', '127.0.0.1', '127.0.0.1', '1548742847', '1548839589');
 INSERT INTO `sys_session` VALUES ('c7710514f8115fd71cb6d5bd41eeaaa0', '21', '2019-01-20 20:47:03', '127.0.0.1', '127.0.0.1', '1547988321', '1547988423');
+INSERT INTO `sys_session` VALUES ('c7fd231bacd3e8a1c9753241307da52b', '37', '2019-01-29 16:43:26', '127.0.0.1', '127.0.0.1', '1548750943', '1548751406');
+INSERT INTO `sys_session` VALUES ('c8838ca876d4aeafb16226ab34dd8e05', '42', '2019-01-29 16:05:57', '127.0.0.1', null, '1548749157', '0');
+INSERT INTO `sys_session` VALUES ('c89dc9152c36a34edac91a192394c051', '21', '2019-01-24 17:55:54', '127.0.0.1', '127.0.0.1', '1548322529', '1548323754');
 INSERT INTO `sys_session` VALUES ('c8fd8da27c3a1c2bc33f6aa884ab4e28', '21', '2019-01-22 09:51:32', '127.0.0.1', '127.0.0.1', '1548121781', '1548121892');
+INSERT INTO `sys_session` VALUES ('c965039015b42a08bf2050982e916704', '21', '2019-02-11 15:57:18', '127.0.0.1', '127.0.0.1', '1549865455', '1549871838');
+INSERT INTO `sys_session` VALUES ('c98ac322da4b2925dd2e01000645d077', '37', '2019-01-29 14:04:21', '127.0.0.1', '127.0.0.1', '1548741421', '1548741861');
 INSERT INTO `sys_session` VALUES ('ca1ee15cba4b3c44bf0fcabc913a916d', '21', '2019-01-19 17:54:27', '127.0.0.1', '127.0.0.1', '1547891638', '1547891667');
+INSERT INTO `sys_session` VALUES ('ca23d70069224c471b4ac1bca5a0109c', '21', '2019-02-01 13:19:11', '127.0.0.1', '127.0.0.1', '1548998300', '1548998351');
 INSERT INTO `sys_session` VALUES ('ca3882818f2090b145b46f07e55985fb', '21', '2019-01-21 15:48:36', '127.0.0.1', '127.0.0.1', '1548056781', '1548056916');
+INSERT INTO `sys_session` VALUES ('caba613f9a0f1b8162ff7a7d94421ab7', '21', '2019-01-31 17:24:39', '127.0.0.1', '127.0.0.1', '1548926184', '1548926679');
+INSERT INTO `sys_session` VALUES ('cac3da8276724b255789359a79507218', '37', '2019-01-29 13:43:30', '127.0.0.1', '127.0.0.1', '1548733837', '1548740610');
+INSERT INTO `sys_session` VALUES ('cac4ac70f19971efe8c9532927b10f35', '37', '2019-01-29 10:07:56', '127.0.0.1', '127.0.0.1', '1548727521', '1548727676');
 INSERT INTO `sys_session` VALUES ('cb9b607afcd8a0a7adc8756adbc38e2d', '21', '2019-01-20 22:09:13', '127.0.0.1', '127.0.0.1', '1547993307', '1547993352');
+INSERT INTO `sys_session` VALUES ('cba5e46ffcb46e91aec38e9e1ce576b7', '21', '2019-01-26 12:19:37', '127.0.0.1', '127.0.0.1', '1548476314', '1548476377');
 INSERT INTO `sys_session` VALUES ('cc534d5b0b149c888d250e63b272ee69', '21', '2019-01-21 16:30:07', '127.0.0.1', '127.0.0.1', '1548058972', '1548059407');
+INSERT INTO `sys_session` VALUES ('cc664f0580a8c4b829b914c6f0a1e7ce', '21', '2019-02-16 12:00:59', '127.0.0.1', '127.0.0.1', '1550115305', '1550289659');
+INSERT INTO `sys_session` VALUES ('cccaff20cae66ee523863b0c00880c94', '21', '2019-02-01 13:36:06', '127.0.0.1', '127.0.0.1', '1548999256', '1548999366');
+INSERT INTO `sys_session` VALUES ('ccdf2fe3cb004a19f3b0853f0d776044', '31', '2019-01-29 15:44:49', '127.0.0.1', '127.0.0.1', '1548747803', '1548747889');
+INSERT INTO `sys_session` VALUES ('ccfb261004ed9a45bce47a697d589574', '21', '2019-02-01 12:30:48', '127.0.0.1', '127.0.0.1', '1548992439', '1548995448');
 INSERT INTO `sys_session` VALUES ('ce4630a51d7a1ac9097135ab60c8b57b', '21', '2019-01-22 09:47:32', '127.0.0.1', '127.0.0.1', '1548121589', '1548121652');
 INSERT INTO `sys_session` VALUES ('ceaad73dec47fcd2718380b7c9be0a03', '21', '2019-01-17 14:51:42', '127.0.0.1', '127.0.0.1', '1547707859', '1547707902');
+INSERT INTO `sys_session` VALUES ('cf13a1a03789c624050b96bd36e44f08', '37', '2019-01-29 16:35:43', '127.0.0.1', '127.0.0.1', '1548742074', '1548750943');
+INSERT INTO `sys_session` VALUES ('cf813ff80d8bf7d6593d4abfcf71d51f', '45', '2019-02-01 09:34:35', '127.0.0.1', null, '1548984875', '0');
 INSERT INTO `sys_session` VALUES ('d0bff4970cb4aa3477c9b2be05dcc538', '21', '2019-01-16 17:04:55', '127.0.0.1', '127.0.0.1', '1547629491', '1547629495');
 INSERT INTO `sys_session` VALUES ('d0c7c47ef847b2adc84348d7aa4f20f9', '21', '2019-01-17 10:58:26', '127.0.0.1', '127.0.0.1', '1547691264', '1547693906');
 INSERT INTO `sys_session` VALUES ('d12e9c32f9f22f92f56e62b82219d39e', '21', '2019-01-17 15:18:11', '127.0.0.1', '127.0.0.1', '1547709357', '1547709491');
+INSERT INTO `sys_session` VALUES ('d13542c8314f40dac32c4ab79e7c5a8a', '37', '2019-01-25 15:23:29', '127.0.0.1', '127.0.0.1', '1548400806', '1548401009');
+INSERT INTO `sys_session` VALUES ('d17f10f4757b48121b6648eb87360604', '21', '2019-01-25 10:43:38', '127.0.0.1', '127.0.0.1', '1548384176', '1548384218');
 INSERT INTO `sys_session` VALUES ('d1ae1546c4b63f250049c023409f446c', '21', '2019-01-17 13:48:03', '127.0.0.1', '127.0.0.1', '1547703972', '1547704083');
+INSERT INTO `sys_session` VALUES ('d1e4d9bd375076b9adf929ed4d82bf13', '21', '2019-01-31 17:02:51', '127.0.0.1', '127.0.0.1', '1548925245', '1548925371');
+INSERT INTO `sys_session` VALUES ('d239932486f878a1ad6ab05254abb9dc', '37', '2019-01-28 11:08:17', '127.0.0.1', '127.0.0.1', '1548644873', '1548644897');
 INSERT INTO `sys_session` VALUES ('d24eac26036fe55b1302ca7369cf3d33', '21', '2019-01-17 13:42:14', '127.0.0.1', '127.0.0.1', '1547703601', '1547703734');
+INSERT INTO `sys_session` VALUES ('d2cbfd7f2f09acf93265fcc463e062aa', '37', '2019-01-28 10:28:58', '127.0.0.1', '127.0.0.1', '1548494372', '1548642538');
+INSERT INTO `sys_session` VALUES ('d39ae8733114893d4f12cdf1df159f26', '21', '2019-02-11 17:32:09', '127.0.0.1', '127.0.0.1', '1549877437', '1549877529');
+INSERT INTO `sys_session` VALUES ('d3c9668eb5b30ac99ae91e538a0b9cb8', '37', '2019-01-29 14:07:54', '127.0.0.1', '127.0.0.1', '1548741861', '1548742074');
+INSERT INTO `sys_session` VALUES ('d3e273e7b0353d6df5bdc9ea197c008a', '21', '2019-02-13 17:25:29', '127.0.0.1', '127.0.0.1', '1550049899', '1550049929');
 INSERT INTO `sys_session` VALUES ('d58143ac1bcde8808dc83d00aa40ff69', '21', '2019-01-16 19:29:52', '127.0.0.1', '127.0.0.1', '1547638168', '1547638192');
 INSERT INTO `sys_session` VALUES ('d5f11c669730f5680929170de517512b', '21', '2019-01-19 12:34:33', '127.0.0.1', '127.0.0.1', '1547781825', '1547872473');
+INSERT INTO `sys_session` VALUES ('d61c0a6e0a37ff19eea99f8dc6a94614', '21', '2019-01-31 15:32:21', '127.0.0.1', '127.0.0.1', '1548919808', '1548919941');
 INSERT INTO `sys_session` VALUES ('d648f921cb9836ee12ec244ba81c7484', '21', '2019-01-16 19:29:28', '127.0.0.1', '127.0.0.1', '1547632852', '1547638168');
+INSERT INTO `sys_session` VALUES ('d65fa5d3be9d0a1ae884060b9819401b', '21', '2019-01-24 21:55:09', '127.0.0.1', '127.0.0.1', '1548337793', '1548338109');
+INSERT INTO `sys_session` VALUES ('d7282128f30f90239bda61080bd701cf', '21', '2019-01-24 20:10:01', '127.0.0.1', '127.0.0.1', '1548330612', '1548331801');
+INSERT INTO `sys_session` VALUES ('d758857e8e82659aa1ef04ca124e5988', '21', '2019-02-01 16:02:06', '127.0.0.1', '127.0.0.1', '1549006169', '1549008126');
+INSERT INTO `sys_session` VALUES ('d77fffa5db844463c80b36f83282d302', '37', '2019-01-28 11:32:40', '127.0.0.1', '127.0.0.1', '1548646067', '1548646360');
+INSERT INTO `sys_session` VALUES ('d7a5cfe42df77c7f1c04663c9a81cb00', '21', '2019-02-12 15:19:45', '127.0.0.1', '127.0.0.1', '1549955795', '1549955985');
+INSERT INTO `sys_session` VALUES ('d7d91e120a5591fb1ae8f068c5b66fb4', '21', '2019-01-26 12:25:08', '127.0.0.1', '127.0.0.1', '1548476377', '1548476708');
 INSERT INTO `sys_session` VALUES ('d7d941dc980301917dfbbf8cc1188895', '21', '2019-01-21 16:00:02', '127.0.0.1', '127.0.0.1', '1548057557', '1548057602');
 INSERT INTO `sys_session` VALUES ('d7e304375bec4f0f5ce2d8e3d6b13753', '21', '2019-01-21 13:11:47', '127.0.0.1', '127.0.0.1', '1548047479', '1548047507');
+INSERT INTO `sys_session` VALUES ('d82e83ea07f2fd39bf13e87a83888719', '21', '2019-02-11 17:48:09', '127.0.0.1', '127.0.0.1', '1549878382', '1549878489');
+INSERT INTO `sys_session` VALUES ('d89be60005ac8b01ea8cacf068633ef3', '21', '2019-01-23 17:33:16', '127.0.0.1', '127.0.0.1', '1548235865', '1548235996');
+INSERT INTO `sys_session` VALUES ('d921bf02153774f8fb977de2a86652df', '21', '2019-01-26 12:25:53', '127.0.0.1', '127.0.0.1', '1548476708', '1548476753');
+INSERT INTO `sys_session` VALUES ('d96d78111162c45d5a5e4e79279c1b2c', '21', '2019-02-01 16:17:18', '127.0.0.1', '127.0.0.1', '1549008289', '1549009038');
 INSERT INTO `sys_session` VALUES ('da4cdb2416d0430d80cb0236e3cbbd2c', '21', '2019-01-17 11:26:34', '127.0.0.1', '127.0.0.1', '1547695516', '1547695594');
-INSERT INTO `sys_session` VALUES ('da6320712edb0e6546e01b12a4f6756a', '1', '2019-01-25 15:43:51', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548402065', '1548402231');
+INSERT INTO `sys_session` VALUES ('dab041f3b34da58bd619a0a47e05b51e', '21', '2019-02-12 16:37:44', '127.0.0.1', '127.0.0.1', '1549959589', '1549960664');
 INSERT INTO `sys_session` VALUES ('daea3f4cf79a56500175c4dc21e482fc', '21', '2019-01-21 11:08:19', '127.0.0.1', '127.0.0.1', '1548036022', '1548040099');
+INSERT INTO `sys_session` VALUES ('db12b63c892efeb9f05879455cf87a45', '21', '2019-02-01 15:12:53', '127.0.0.1', '127.0.0.1', '1549000058', '1549005173');
+INSERT INTO `sys_session` VALUES ('db8a8e32b964faab061ad7f8fdc79866', '21', '2019-01-25 16:37:02', '127.0.0.1', '127.0.0.1', '1548399862', '1548405422');
 INSERT INTO `sys_session` VALUES ('dbd5f810e11712fbfe68eed38b8e4ae1', '21', '2019-01-20 21:52:39', '127.0.0.1', '127.0.0.1', '1547992145', '1547992359');
+INSERT INTO `sys_session` VALUES ('dc097d3142a329a20c7cd94c3ae7e707', '45', '2019-02-01 09:34:35', '127.0.0.1', '127.0.0.1', '1548984175', '1548984875');
+INSERT INTO `sys_session` VALUES ('dc7f54e03becf3abc9358197097b83d4', '21', '2019-01-23 17:29:06', '127.0.0.1', '127.0.0.1', '1548235448', '1548235746');
+INSERT INTO `sys_session` VALUES ('dceab33d907344b6b3417722cb2b1404', '21', '2019-02-13 15:03:09', '127.0.0.1', '127.0.0.1', '1550041343', '1550041389');
 INSERT INTO `sys_session` VALUES ('dd125e31dee2c37d558e8e9ca500c7eb', '21', '2019-01-19 13:42:59', '127.0.0.1', '127.0.0.1', '1547876544', '1547876579');
+INSERT INTO `sys_session` VALUES ('ddbb072e0c9f61a5171279452aa1ffd1', '21', '2019-02-13 14:39:23', '127.0.0.1', '127.0.0.1', '1550038492', '1550039963');
+INSERT INTO `sys_session` VALUES ('dde0835b1da3e053b3d61d0bba636a87', '45', '2019-02-01 09:22:55', '127.0.0.1', '127.0.0.1', '1548984135', '1548984175');
+INSERT INTO `sys_session` VALUES ('de004f99cf152a288884f13eb2986ea8', '21', '2019-02-12 10:30:24', '127.0.0.1', '127.0.0.1', '1549937304', '1549938624');
+INSERT INTO `sys_session` VALUES ('de08bd9bac359d3041caf60470567f42', '21', '2019-02-11 16:59:03', '127.0.0.1', '127.0.0.1', '1549875496', '1549875543');
+INSERT INTO `sys_session` VALUES ('de0f373abbc819308312aa7c13eb8cb1', '37', '2019-01-29 10:57:56', '127.0.0.1', '127.0.0.1', '1548730653', '1548730676');
 INSERT INTO `sys_session` VALUES ('de3270ab7a2d48365d82b876b1c1b0d3', '21', '2019-01-16 16:55:14', '127.0.0.1', '127.0.0.1', '1547628278', '1547628914');
+INSERT INTO `sys_session` VALUES ('de45b4854059178757c7428375cd104f', '21', '2019-02-08 08:18:24', '127.0.0.1', '127.0.0.1', '1549011007', '1549585104');
 INSERT INTO `sys_session` VALUES ('de65adbc41ec4e6464f19dfe1dc11182', '21', '2019-01-22 14:55:02', '127.0.0.1', '127.0.0.1', '1548139011', '1548140102');
+INSERT INTO `sys_session` VALUES ('dec73bc760a1f2c1dfb04411f73266b9', '21', '2019-01-26 12:10:38', '127.0.0.1', '127.0.0.1', '1548475429', '1548475838');
+INSERT INTO `sys_session` VALUES ('dedb4bdb414722e447444110685468d8', '21', '2019-02-13 14:07:49', '127.0.0.1', '127.0.0.1', '1550037951', '1550038069');
 INSERT INTO `sys_session` VALUES ('def357b5096e8ad901e67080fbc84438', '21', '2019-01-17 15:09:39', '127.0.0.1', '127.0.0.1', '1547708913', '1547708979');
+INSERT INTO `sys_session` VALUES ('df620279d07b0261bd618de23ed3f8ee', '21', '2019-01-25 10:42:03', '127.0.0.1', '127.0.0.1', '1548384066', '1548384123');
+INSERT INTO `sys_session` VALUES ('df83e1bc30d68b2e5ae4a05b01e757ab', '37', '2019-01-28 11:10:27', '127.0.0.1', '127.0.0.1', '1548644954', '1548645027');
+INSERT INTO `sys_session` VALUES ('dfbc397ad9dcd6e3d85570bd41566d92', '37', '2019-01-28 15:14:57', '127.0.0.1', '127.0.0.1', '1548659535', '1548659697');
+INSERT INTO `sys_session` VALUES ('e00874d03d17f0247d71a66dd8d4418a', '21', '2019-02-16 14:32:17', '127.0.0.1', '127.0.0.1', '1550298139', '1550298737');
 INSERT INTO `sys_session` VALUES ('e07ba43b4c4ab7c838b7a2df68559521', '21', '2019-01-16 17:04:51', '127.0.0.1', '127.0.0.1', '1547629331', '1547629491');
+INSERT INTO `sys_session` VALUES ('e0d1b478d7879b0185d6e7f16323775c', '21', '2019-01-31 15:22:37', '127.0.0.1', '127.0.0.1', '1548919244', '1548919357');
 INSERT INTO `sys_session` VALUES ('e0ef814038762fe8d8b05f012a2052a1', '21', '2019-01-17 09:53:18', '127.0.0.1', '127.0.0.1', '1547689907', '1547689998');
+INSERT INTO `sys_session` VALUES ('e193ebd175b2b359b175e5de05b8b368', '21', '2019-01-25 14:17:18', '127.0.0.1', '127.0.0.1', '1548396591', '1548397038');
 INSERT INTO `sys_session` VALUES ('e19d97ad160e8f478f7a334e33431c8d', '21', '2019-01-20 20:53:17', '127.0.0.1', '127.0.0.1', '1547988554', '1547988797');
+INSERT INTO `sys_session` VALUES ('e1aa26378d71885b9a6433ea6ca6e3f6', '21', '2019-01-25 13:42:52', '127.0.0.1', '127.0.0.1', '1548394860', '1548394972');
+INSERT INTO `sys_session` VALUES ('e1e6c3a1079a20eb90e47917fc0bd524', '21', '2019-02-11 11:24:09', '127.0.0.1', '127.0.0.1', '1549855323', '1549855449');
 INSERT INTO `sys_session` VALUES ('e2c32c3f25ac9bc802ff7515704d9661', '21', '2019-01-17 15:25:58', '127.0.0.1', '127.0.0.1', '1547709871', '1547709958');
+INSERT INTO `sys_session` VALUES ('e318c10c3ac7c20c278c57c4551b0341', '21', '2019-01-24 22:24:33', '127.0.0.1', '127.0.0.1', '1548338109', '1548339873');
 INSERT INTO `sys_session` VALUES ('e32a5eb995b5ec7e45ec8783f097df70', '21', '2019-01-21 16:38:58', '127.0.0.1', '127.0.0.1', '1548059739', '1548059938');
+INSERT INTO `sys_session` VALUES ('e33b2794a8f4e1f35f91c664b64991fe', '21', '2019-02-16 16:32:44', '127.0.0.1', '0:0:0:0:0:0:0:1', '1550305451', '1550305964');
 INSERT INTO `sys_session` VALUES ('e34a6610f48c270a264ace2593ed024d', '21', '2019-01-16 16:00:23', '127.0.0.1', '127.0.0.1', '1547625591', '1547625623');
 INSERT INTO `sys_session` VALUES ('e35f742b233e34441a2a3087495abdbc', '21', '2019-01-16 16:59:33', '127.0.0.1', '127.0.0.1', '1547629170', '1547629173');
 INSERT INTO `sys_session` VALUES ('e36bf7066225dc46d5bb4d9a93ac8ba1', '21', '2019-01-21 15:58:57', '127.0.0.1', '127.0.0.1', '1548057501', '1548057537');
 INSERT INTO `sys_session` VALUES ('e471993502da708149f830004d485487', '21', '2019-01-21 16:07:34', '127.0.0.1', '127.0.0.1', '1548058013', '1548058054');
+INSERT INTO `sys_session` VALUES ('e4c24f2d785758d5aadee706b4d5052e', '21', '2019-01-25 19:30:38', '127.0.0.1', '127.0.0.1', '1548415716', '1548415838');
+INSERT INTO `sys_session` VALUES ('e4db8ceb96ad402a0d93b956f797deb3', '21', '2019-02-11 16:54:47', '127.0.0.1', '127.0.0.1', '1549875225', '1549875287');
 INSERT INTO `sys_session` VALUES ('e5428da4d69bb16da795e66e0975ff99', '21', '2019-01-18 11:23:45', '127.0.0.1', '127.0.0.1', '1547781697', '1547781825');
-INSERT INTO `sys_session` VALUES ('e65b05f76cecbc9af378792e86d60921', '1', '2019-01-25 15:55:07', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548402232', '1548402907');
-INSERT INTO `sys_session` VALUES ('e743a2eb6a812dfba8db73d8ba055b0f', '1', '2019-01-25 16:04:23', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548403242', '1548403463');
+INSERT INTO `sys_session` VALUES ('e5766a2d5b3481d5042a59ca63c560e6', '21', '2019-02-16 14:54:43', '0:0:0:0:0:0:0:1', '127.0.0.1', '1550299857', '1550300083');
+INSERT INTO `sys_session` VALUES ('e5865d68fe3cffe9200f9ea8cfcc1ab4', '37', '2019-01-30 10:55:49', '127.0.0.1', '127.0.0.1', '1548813686', '1548816949');
+INSERT INTO `sys_session` VALUES ('e6894a5bd5d7bbb6269a755d2a51bc1f', '21', '2019-02-01 13:36:56', '127.0.0.1', '127.0.0.1', '1548999366', '1548999415');
+INSERT INTO `sys_session` VALUES ('e68a722067729e9a3f966be1df455516', '21', '2019-01-23 17:15:20', '127.0.0.1', '127.0.0.1', '1548234715', '1548234920');
+INSERT INTO `sys_session` VALUES ('e764cc322bd80ad808a2daa9ae85d620', '21', '2019-01-23 17:24:08', '127.0.0.1', '127.0.0.1', '1548235225', '1548235448');
 INSERT INTO `sys_session` VALUES ('e7b0035d01b74fba9b7e6116588ebb2a', '21', '2019-01-17 14:58:44', '127.0.0.1', '127.0.0.1', '1547708245', '1547708324');
+INSERT INTO `sys_session` VALUES ('e7ba06a9b9a2588d95079fc9f7a1d453', '21', '2019-02-01 13:33:30', '127.0.0.1', '127.0.0.1', '1548999129', '1548999210');
 INSERT INTO `sys_session` VALUES ('e86a13bea519032d144b5c3314921e94', '21', '2019-01-17 13:48:56', '127.0.0.1', '127.0.0.1', '1547704083', '1547704136');
+INSERT INTO `sys_session` VALUES ('e8c762bd73cc10f776da6481ab44d403', '21', '2019-01-25 10:42:46', '127.0.0.1', '127.0.0.1', '1548384123', '1548384166');
+INSERT INTO `sys_session` VALUES ('e998ce75e0d2a2892a6669ee3619840f', '21', '2019-01-31 15:22:49', '127.0.0.1', '127.0.0.1', '1548919357', '1548919369');
+INSERT INTO `sys_session` VALUES ('ea02126cab23eba83fbbdaf45db62617', '37', '2019-01-28 11:39:38', '127.0.0.1', '127.0.0.1', '1548646751', '1548646777');
 INSERT INTO `sys_session` VALUES ('ea698596003498115487c8ab8d515c04', '21', '2019-01-17 15:15:57', '127.0.0.1', '127.0.0.1', '1547709090', '1547709357');
+INSERT INTO `sys_session` VALUES ('eadac2dbc62c848055f12ddb025e27f0', '21', '2019-02-13 16:50:21', '127.0.0.1', '127.0.0.1', '1550041410', '1550047821');
 INSERT INTO `sys_session` VALUES ('eb5f7685e2759646ae92f333a85cf1f8', '21', '2019-01-19 14:51:24', '127.0.0.1', '127.0.0.1', '1547880581', '1547880684');
 INSERT INTO `sys_session` VALUES ('eb716def7b34c0b738a9328d434d552a', '21', '2019-01-16 18:00:24', '127.0.0.1', '127.0.0.1', '1547632737', '1547632824');
+INSERT INTO `sys_session` VALUES ('eba939c514f676e57bc44ad0f0a0bc15', '21', '2019-01-25 14:06:47', '127.0.0.1', '127.0.0.1', '1548395474', '1548396406');
 INSERT INTO `sys_session` VALUES ('ebb11e168fed78f7254d2feaeed956c5', '21', '2019-01-22 09:53:09', '127.0.0.1', '127.0.0.1', '1548121892', '1548121989');
+INSERT INTO `sys_session` VALUES ('ebed5fc6e8ed11c615857757a5cf2680', '21', '2019-02-01 16:42:08', '127.0.0.1', '127.0.0.1', '1549010370', '1549010528');
+INSERT INTO `sys_session` VALUES ('ebfbd9419b3bf86267108cf7b215f436', '21', '2019-01-24 18:07:33', '127.0.0.1', '127.0.0.1', '1548324327', '1548324453');
 INSERT INTO `sys_session` VALUES ('eca147fd20e3bced0d4c46d77d46f2ca', '21', '2019-01-16 19:43:17', '127.0.0.1', '127.0.0.1', '1547638948', '1547638997');
+INSERT INTO `sys_session` VALUES ('ecf34fcd166f498cf946039c2fadfc1c', '21', '2019-01-31 16:18:13', '127.0.0.1', '127.0.0.1', '1548922566', '1548922693');
 INSERT INTO `sys_session` VALUES ('ed55f8171a365ada9273916ee4a5df46', '21', '2019-01-16 17:23:01', '127.0.0.1', '127.0.0.1', '1547630562', '1547630581');
 INSERT INTO `sys_session` VALUES ('ed71e63d960a8162df7831d16c3ed251', '21', '2019-01-16 16:55:29', '127.0.0.1', '127.0.0.1', '1547628925', '1547628929');
 INSERT INTO `sys_session` VALUES ('edcf20dbd806f36e787efe9e43b514fe', '21', '2019-01-20 17:00:22', '127.0.0.1', '127.0.0.1', '1547950228', '1547974822');
 INSERT INTO `sys_session` VALUES ('ee0f4c18fbc2732462f875800960443f', '21', '2019-01-17 09:57:42', '127.0.0.1', '127.0.0.1', '1547690193', '1547690262');
+INSERT INTO `sys_session` VALUES ('ee110bdfd4facd3d9d99310e37d40a80', '37', '2019-01-25 16:03:07', '127.0.0.1', '127.0.0.1', '1548403361', '1548403387');
+INSERT INTO `sys_session` VALUES ('ef3e0fadea4d9e893b215cf918992c11', '37', '2019-01-29 09:57:36', '127.0.0.1', '127.0.0.1', '1548726996', '1548727056');
 INSERT INTO `sys_session` VALUES ('ef56e0638feb233d9ab838b45e760e02', '21', '2019-01-22 10:49:37', '127.0.0.1', '127.0.0.1', '1548123117', '1548125377');
+INSERT INTO `sys_session` VALUES ('eff96df16ca41b3146077e83a2b1da75', '21', '2019-01-25 18:07:06', '127.0.0.1', '127.0.0.1', '1548410567', '1548410826');
+INSERT INTO `sys_session` VALUES ('f07e38479d1141caf6fbe23679e988d2', '21', '2019-02-13 10:31:13', '127.0.0.1', '127.0.0.1', '1550024597', '1550025073');
+INSERT INTO `sys_session` VALUES ('f09cf58f894f09efa8f82c8288748198', '21', '2019-02-01 11:32:28', '127.0.0.1', '127.0.0.1', '1548990918', '1548991948');
 INSERT INTO `sys_session` VALUES ('f0a206891a97f723e6b27035f542ac08', '21', '2019-01-16 16:00:23', '127.0.0.1', '127.0.0.1', '1547625623', '1547625623');
 INSERT INTO `sys_session` VALUES ('f0abd20cc0c3d0ebef1063561de1a5b6', '21', '2019-01-17 13:57:11', '127.0.0.1', '127.0.0.1', '1547704290', '1547704631');
+INSERT INTO `sys_session` VALUES ('f11741e248a11359934d898ccad3e05e', '31', '2019-01-29 15:48:51', '127.0.0.1', '127.0.0.1', '1548747976', '1548748131');
+INSERT INTO `sys_session` VALUES ('f1439117da5dbc977cc34837727f705f', '37', '2019-01-25 19:25:03', '127.0.0.1', '127.0.0.1', '1548414233', '1548415503');
+INSERT INTO `sys_session` VALUES ('f17d4cee7832a8510fce853263728c94', '37', '2019-01-28 11:39:11', '127.0.0.1', '127.0.0.1', '1548646650', '1548646751');
 INSERT INTO `sys_session` VALUES ('f1eb7f3d249140c52c30d2b608e6b879', '21', '2019-01-19 14:52:32', '127.0.0.1', '127.0.0.1', '1547880684', '1547880752');
+INSERT INTO `sys_session` VALUES ('f23a287bfe498cf2d3bf813089ecd6eb', '31', '2019-02-11 20:16:01', '127.0.0.1', '127.0.0.1', '1548748131', '1549887361');
 INSERT INTO `sys_session` VALUES ('f3b5b5a24281a4742db176b61fb0e214', '21', '2019-01-16 17:10:59', '127.0.0.1', '127.0.0.1', '1547629495', '1547629859');
-INSERT INTO `sys_session` VALUES ('f3cdb8b6608bb95d1cd5f5c87a0d3cd5', '1', '2019-01-25 15:10:26', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1548400009', '1548400226');
 INSERT INTO `sys_session` VALUES ('f4f593625b10ecddf795073f7b22c307', '21', '2019-01-19 14:12:02', '127.0.0.1', '127.0.0.1', '1547878208', '1547878322');
 INSERT INTO `sys_session` VALUES ('f501919596e949dbb01b7d956d6cdd30', '21', '2019-01-17 14:42:59', '127.0.0.1', '127.0.0.1', '1547707332', '1547707379');
 INSERT INTO `sys_session` VALUES ('f58aa225683ebd611a58b7476cd2dd69', '21', '2019-01-21 12:38:28', '127.0.0.1', '127.0.0.1', '1548042762', '1548045508');
+INSERT INTO `sys_session` VALUES ('f613654e3f159fd6dd84ebd948057649', '21', '2019-01-25 17:28:28', '127.0.0.1', '127.0.0.1', '1548405422', '1548408508');
+INSERT INTO `sys_session` VALUES ('f644723033d777236b62d14f6d5ce7b9', '31', '2019-01-29 15:46:16', '127.0.0.1', '127.0.0.1', '1548747889', '1548747976');
+INSERT INTO `sys_session` VALUES ('f7052b4a66b901a864538dfd01fe0b43', '21', '2019-01-23 15:49:35', '127.0.0.1', '127.0.0.1', '1548229146', '1548229775');
+INSERT INTO `sys_session` VALUES ('f78688f1410a1cadc373a620eade5f17', '37', '2019-01-29 20:33:44', '127.0.0.1', '127.0.0.1', '1548751406', '1548765224');
+INSERT INTO `sys_session` VALUES ('f7cbf459fb16aa2e48876da505d67e09', '37', '2019-01-30 17:12:50', '127.0.0.1', '127.0.0.1', '1548837151', '1548839570');
+INSERT INTO `sys_session` VALUES ('f7f3a188ab6dac22f7a364df566b885f', '21', '2019-01-25 14:41:29', '127.0.0.1', '127.0.0.1', '1548398448', '1548398489');
 INSERT INTO `sys_session` VALUES ('f7f810d88e8d184c6d37182a826e9254', '21', '2019-01-17 13:13:12', '127.0.0.1', '127.0.0.1', '1547695594', '1547701992');
+INSERT INTO `sys_session` VALUES ('f855af2f314c1d75dc9151e13d4edf67', '21', '2019-01-26 13:50:39', '127.0.0.1', '127.0.0.1', '1548477028', '1548481839');
+INSERT INTO `sys_session` VALUES ('f85b1ece749746a5e0e831783e3b1696', '21', '2019-01-24 10:09:15', '127.0.0.1', '127.0.0.1', '1548295701', '1548295755');
+INSERT INTO `sys_session` VALUES ('f87bb5e7053546b1fcbb4ae31f4fddc7', '37', '2019-01-25 18:51:53', '127.0.0.1', '127.0.0.1', '1548412981', '1548413513');
 INSERT INTO `sys_session` VALUES ('f97d28305b1d91dd0bc67728f796e1f6', '21', '2019-01-20 22:00:12', '127.0.0.1', '127.0.0.1', '1547992748', '1547992812');
+INSERT INTO `sys_session` VALUES ('f98cf353eef8d9c82ceb66d8723a93e3', '37', '2019-01-28 21:23:14', '127.0.0.1', '127.0.0.1', '1548681782', '1548681794');
+INSERT INTO `sys_session` VALUES ('f99624dcb701a8344ecf269473ade3bb', '21', '2019-01-25 14:56:47', '127.0.0.1', '127.0.0.1', '1548398576', '1548399407');
+INSERT INTO `sys_session` VALUES ('fa61972969137ae43acb63f72176e794', '21', '2019-01-24 23:05:48', '127.0.0.1', '127.0.0.1', '1548341697', '1548342348');
 INSERT INTO `sys_session` VALUES ('fa65dec610a469ffdebf4c826c54c570', '21', '2019-01-17 10:05:02', '127.0.0.1', '127.0.0.1', '1547690537', '1547690702');
 INSERT INTO `sys_session` VALUES ('fa8dd6b4ce8548ca561c94b33ff6a67e', '21', '2019-01-17 13:45:38', '127.0.0.1', '127.0.0.1', '1547703880', '1547703938');
 INSERT INTO `sys_session` VALUES ('faf385a87f4643953011401b95797f7d', '21', '2019-01-17 13:16:00', '127.0.0.1', '127.0.0.1', '1547702076', '1547702160');
 INSERT INTO `sys_session` VALUES ('fafefb26852659b1129421b15f70d90c', '21', '2019-01-16 20:05:03', '127.0.0.1', '127.0.0.1', '1547640167', '1547640303');
+INSERT INTO `sys_session` VALUES ('fb3e6d76b85df54faac05f0d77f89d19', '21', '2019-02-01 11:40:39', '127.0.0.1', '127.0.0.1', '1548992142', '1548992439');
+INSERT INTO `sys_session` VALUES ('fb3f9ac53929e80f1ead79ef01bac8b5', '21', '2019-01-24 11:23:09', '127.0.0.1', '127.0.0.1', '1548299986', '1548300189');
+INSERT INTO `sys_session` VALUES ('fb695a98554c60f293c5e5106f1cedd8', '21', '2019-02-11 17:46:22', '127.0.0.1', '127.0.0.1', '1549878342', '1549878382');
 INSERT INTO `sys_session` VALUES ('fbc1c185f1d1ba418d1f47aee043f2ec', '21', '2019-01-17 11:25:16', '127.0.0.1', '127.0.0.1', '1547695416', '1547695516');
+INSERT INTO `sys_session` VALUES ('fbc539821f41cb0afe8328349c42158d', '21', '2019-01-23 15:04:30', '127.0.0.1', '127.0.0.1', '1548227005', '1548227070');
+INSERT INTO `sys_session` VALUES ('fbe1916b3dbd6e1a736209be026fb7a3', '21', '2019-01-23 15:50:16', '127.0.0.1', '127.0.0.1', '1548229775', '1548229816');
 INSERT INTO `sys_session` VALUES ('fbe2d9e98ed2003de7a0bb3e779b0d20', '21', '2019-01-17 10:11:49', '127.0.0.1', '127.0.0.1', '1547691032', '1547691109');
 INSERT INTO `sys_session` VALUES ('fc133de8215eaf0b5337337124a7b34c', '21', '2019-01-16 18:00:52', '127.0.0.1', '127.0.0.1', '1547632842', '1547632852');
+INSERT INTO `sys_session` VALUES ('fc344ffaf3265d9d899e4fe1a371991d', '21', '2019-01-25 15:04:22', '127.0.0.1', '127.0.0.1', '1548399527', '1548399862');
+INSERT INTO `sys_session` VALUES ('fc358e9cf28925761849b8e6af73310b', '21', '2019-01-23 14:22:10', '127.0.0.1', '127.0.0.1', '1548224329', '1548224530');
 INSERT INTO `sys_session` VALUES ('fc4bffb0e8acc476c2f674f5132a060c', '21', '2019-01-21 15:58:21', '127.0.0.1', '127.0.0.1', '1548057070', '1548057501');
+INSERT INTO `sys_session` VALUES ('fc656250f85e5540dd46c81cd7f01fbc', '21', '2019-01-23 17:55:06', '127.0.0.1', '127.0.0.1', '1548237045', '1548237306');
 INSERT INTO `sys_session` VALUES ('fcb0d504adbee3f71b72b6c11b76959f', '21', '2019-01-21 13:30:39', '127.0.0.1', '127.0.0.1', '1548048538', '1548048639');
 INSERT INTO `sys_session` VALUES ('fcb378740c886ce3cdc5a38757e2f051', '21', '2019-01-16 17:25:49', '127.0.0.1', '127.0.0.1', '1547630581', '1547630749');
 INSERT INTO `sys_session` VALUES ('ff4052005adb28ea4d6f79e5f9c05ec9', '21', '2019-01-22 10:11:57', '127.0.0.1', '127.0.0.1', '1548123050', '1548123117');
+INSERT INTO `sys_session` VALUES ('ff5096829ec96e3479439f472f5651d8', '21', '2019-02-13 17:21:41', '127.0.0.1', '127.0.0.1', '1550049659', '1550049701');
+INSERT INTO `sys_session` VALUES ('ff803bad193a28ecab7901924f841469', '37', '2019-01-25 15:58:23', '127.0.0.1', '127.0.0.1', '1548402841', '1548403103');
 
 -- ----------------------------
 -- Table structure for tt_wxconfig
@@ -1172,3 +2424,11 @@ CREATE TABLE `tt_wxconfig` (
 -- Records of tt_wxconfig
 -- ----------------------------
 INSERT INTO `tt_wxconfig` VALUES ('1', 'wx1598bbd23c024f29', 'd92abc8cfaaedc95243ee16d0cced38b', '16_s7KapNU8JMwKMveUV157sNoae4hl68wbRN54UIoKoX4xivNZG_knI-hZhEyGDx1298IJfcFQDL5XlFTanWQuiXAQaElk3GA3vmYWl1v8HzkS0KfWo0_s2bNYGO9gGLhO3vkB7f1e-MtQIXE1PHPgAAAXPX', '2018-11-30 14:59:42', '2018-11-30 14:59:42', '', 'mytest', '1545051882', '0', '', '');
+DROP TRIGGER IF EXISTS `gems`;
+DELIMITER ;;
+CREATE TRIGGER `gems` AFTER UPDATE ON `admin` FOR EACH ROW BEGIN
+
+UPDATE gems SET fsid=new.fsid,cp=new.cp WHERE id=new.gemsid;
+END
+;;
+DELIMITER ;

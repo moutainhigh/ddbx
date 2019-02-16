@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.*" %>
+<%@ page import="com.example.ddbx.tt.data.TtMap" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="admin-content nav-tabs-custom box">
 	<div class="box-header with-border">
@@ -10,26 +12,25 @@
 		<div class="box-body" id="tab-content">
 			<div class="form-group">
 				<label class="col-sm-2 control-label">姓名</label>
-				<div class="col-sm-6">
+				<div class="col-sm-10">
 					<input type="text" class="form-control" id="name" name="name" placeholder="姓名">
 				</div>
 			</div>
 			<%
-				Map<String, String> infodb = (Map<String, String>) request.getAttribute("infodb");
-				if (Tools.myisnull(request.getParameter("id")) || Tools.myisnull(infodb.get("username"))){//如果是新增用户，或者当前编辑的用户的username值为空时，显示用户名输入框
+				TtMap infodb = (TtMap) request.getAttribute("infodb");
+				boolean bAdd = Tools.myIsNull(request.getParameter("id"));
+				boolean bNotReadOnley = Tools.myIsNull(request.getParameter("id")) || Tools.myIsNull(infodb.get("username"));
+				TtMap minfo = (TtMap) request.getAttribute("minfo");
 			%>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">用户名</label>
-				<div class="col-sm-6">
-					<input type="text" class="form-control" id="username" name="username" placeholder="用户名">
+				<div class="col-sm-10">
+					<input type="text" <%=bNotReadOnley?"":"readonly"%> class="form-control" id="username" name="username" placeholder="用户名">
 				</div>
 			</div>
-			<%
-			}
-			%>			
 			<div class="form-group">
-				<a href="javascript:doShowLoading();"><label class="col-sm-2 control-label">用户密码</label></a>
-				<div class="col-sm-6">
+				<label class="col-sm-2 control-label">用户密码</label>
+				<div class="col-sm-10">
 					<div class="input-append input-group">
 						<input type="password" class="form-control" id="password" name="password" placeholder="密码"> <input type="text"
 						 class="form-control" id="userpass1" name="userpass1" placeholder="密码" style="display: none;">
@@ -62,29 +63,30 @@
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">昵称</label>
-				<div class="col-sm-6">
-					<input type="email" class="form-control" id="nickName" name="nickName" placeholder="Email">
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="nickname" name="nickname" placeholder="昵称">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">头像</label>
-				<div class="col-sm-6">
+				<div class="col-sm-10">
 					<% 
 								String  upFile = "../upfile.inc.jsp";
-								String imgPreName = "avatarUrl";
+								String imgPreName = "avatarurl";
                 String[] ssImgs = { //设置已有值
-											!Tools.myisnull(infodb.get(imgPreName))?infodb.get(imgPreName):""
+											!Tools.myIsNull(infodb.get(imgPreName))?infodb.get(imgPreName):""
                     };
                 String sImgs = "";                    
                 for (int i =0 ;i<ssImgs.length;i++){
                     sImgs=sImgs+ssImgs[i]+"|";
                 }
             %>
+					<%-- 可能这里用<%@include file %>模式更适合--%>
 					<jsp:include page="<%=upFile%>">
 						<jsp:param name="img_MarginImgSrc" value="" />
 						<jsp:param name="img_MarginImgClass" value="" />
 						<jsp:param name="img_Total" value="1" />
-						<jsp:param name="img_NamePre" value="avatarUrl" />
+						<jsp:param name="img_NamePre" value="avatarurl" />
 						<jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg" />
 						<jsp:param name="l1div_Style" value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;" />
 						<jsp:param name="img_Style" value="width: 100%;height:100px;border-radius:10px;" />
@@ -97,14 +99,9 @@
 					</jsp:include>
 				</div>
 			</div>
-			<%--selcet，下拉框演示--%>
-			<%
-   			//dicopt功能演示，指定表里面的name和id，并用name组成<option></option>
-    		String sp = Tools.dicopt("comm_states", 0);//省会，
-			%>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">显示/隐藏</label>
-				<div class="col-sm-6">
+				<div class="col-sm-10">
 					<select id="showtag" name="showtag" class="form-control">
 						<option value="">请选择</option>
 						<option value="1">显示</option>
@@ -113,10 +110,44 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label class="col-sm-2 control-label">所属角色组</label>
+				<div class="col-sm-10">
+					<select id="agp_id" name="agp_id" class="form-control">
+					<%if (bAdd){%>
+						<option value="0" selected>请选择</option>
+					<%}else{%>
+						<option value="0" <%=infodb.get("agp_id").equals("0")?"selected=\"selected\"":""%> >请选择</option>	
+					<%}%>
+						<%=Tools.dicopt("admin_agp",Tools.myIsNull(infodb.get("agp_id"))?0:Long.valueOf(infodb.get("agp_id")),"systag=0 AND fsid="+minfo.get("fsid"),"")%>
+					</select>
+				</div>
+			</div><%if (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)){%>
+			<div class="form-group">
+				<label class="col-sm-2 control-label">所属公司</label>
+				<div class="col-sm-10">
+				<select id="fsid" name="fsid" class="form-control">
+					<%if (bAdd){%>
+							<option value="0" selected="selected">请选择</option>
+							<%=Tools.dicopt("fs",0)%>
+					<%}else{%>
+							<option value="0" <%=infodb.get("fsid").equals("0")?"selected=\"selected\"":""%> >请选择</option>
+							<%=Tools.dicopt("fs",Long.valueOf(infodb.get("fsid")))%>
+					<%}%>
+				</select>
+				</div>
+			</div><%}else{%>
+				<input type="hidden" id="fsid" name="fsid" value="<%=minfo.get("fsid")%>">
+			<%}%>
+			<%--selcet，下拉框演示--%>
+			<%
+   			//dicopt功能演示，指定表里面的name和id，并用name组成<option></option>
+    		String sp = Tools.dicopt("comm_states", 0);//省会，
+			%>
+			<div class="form-group">
 				<label class="col-sm-2 control-label">城市选择</label>
 				<div class="col-sm-10">
 					<div class="row inline-from">
-						<div class="col-sm-3">
+						<div class="col-sm-6">
 							<div class="input-group">
 								<span class="input-group-addon">省</span>
 								<select name="state_id" id="state_id" class="form-control">
@@ -125,7 +156,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-sm-3">
+						<div class="col-sm-6">
 							<div class="input-group">
 								<span class="input-group-addon">市</span>
 								<select name="city_id" id="city_id" class="form-control">
@@ -146,7 +177,6 @@
 		</div>
 	</div>
 </div>
-<script src="iframe/dist/js/app_iframe.js?ver=3"></script>
 <script>
 	function doShowLoading() {
 		App.setbasePath("iframe/");

@@ -1,41 +1,42 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<form id="info_form" action="${posturl}" class="form-horizontal" method="post" enctype="multipart/form-data">
+<%@ page import="com.example.ddbx.tt.tool.Tools" %>
+<%@ page import="com.example.ddbx.tt.tool.JspTools" %>
+<form id="info_form" action="<%=Tools.urlKill("id")%>" class="form-horizontal" method="post" enctype="multipart/form-data">
 	<input type="hidden" id="id" name="id" value="${id }" />
-	<section class="content-header">
-    <h1>
-        <small>测试时所所所所所所所todo</small>
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i>1111</a></li>
-        <li class="active">222222222</li>
-    </ol>
-</section>
-<section class="content">
 	<!-- Content Wrapper. Contains page content -->
-		<!-- Main content -->
-			<%
-				String type = request.getParameter("type");
-				String cn = request.getParameter("cn");
-				String sdo = request.getParameter("sdo");
-				String msg =  "/WEB-INF/jsp/manager/" + type + "/" + cn + ".form.jsp";
-				String info =String.valueOf(request.getAttribute("info"));
-			%>
-			<jsp:include page="<%=msg%>"></jsp:include>
-</section>
-		<div class="footer-wrap">
-			<div class="box-footer">
-				<button type="button" class="btn btn-default" onclick="location.href='#'">取消返回</button>
-				<button type="submit" class="btn btn-primary pull-right">保存提交</button>
-			</div>
+	<!-- Main content -->
+	<section class="content">
+		<%
+			String errorMsg =(String) request.getAttribute("errorMsg");
+			if (!Tools.myIsNull(errorMsg)){
+				JspTools.alert(errorMsg,"404",out);
+				return ;
+			}
+			errorMsg =(String) request.getAttribute("showmsg"); //如果有提示信息，就弹出显示一下了。
+			if (!Tools.myIsNull(errorMsg)){
+				JspTools.alert(errorMsg,out);
+			}
+			String type =(String) request.getParameter("type");
+			String cn =(String)  request.getParameter("cn");
+			String sdo =(String)  request.getParameter("sdo");
+			String msg =  "/WEB-INF/jsp/manager/" + type + "/" + cn + ".form.jsp";
+			String info =request.getAttribute("info")!=null?String.valueOf(request.getAttribute("info")):null;
+			String sHideButton =(String)request.getAttribute("sHideButton");
+		%>
+		<jsp:include page="<%=msg%>"></jsp:include>
+	</section><% if (Tools.myIsNull(sHideButton)){%>
+	<div class="footer-wrap">
+		<div class="box-footer">
+			<button type="button" class="btn btn-default" onclick="javascript:history.go(-1);">取消返回</button>
+			<button type="button" onclick="sure();" id="btnsure" class="btn btn-primary pull-right">保存提交</button>
 		</div>
+	</div><%}%>
 	<!-- /.content-wrapper -->
-
 </form>
-<script src="${pageContext.request.contextPath}/manager/js/common.js"></script>
 <script>
-function sure(){//todo
-	var form = $("#info_form").get(0);
-	$(form).ajaxSubmit(function(res){
+	function sure(){//todo
+		var form = $("#info_form").get(0);
+		$(form).ajaxSubmit(function(res){
 			eval("var res=" + res);
 			if (res.msg){
 				alert(res.msg);
@@ -43,7 +44,13 @@ function sure(){//todo
 			if (res.next_url){
 				window.location.href=res.next_url;
 			}
-	});
-}
-editFun(${info});
+		});
+	}
 </script>
+<%if (!Tools.myIsNull(info)){%>
+<script>
+	editFun(${info});
+</script>
+<%}%>
+
+

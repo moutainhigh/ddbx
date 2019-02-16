@@ -1,3 +1,10 @@
+/*
+ * @Description: 微信公众号和小程序相关处理类
+ * @Author: tt
+ * @Date: 2018-12-14 16:13:00
+ * @LastEditTime: 2019-02-12 14:06:58
+ * @LastEditors: tt
+ */
 package com.example.ddbx.tt.tool;
 
 /**
@@ -19,21 +26,15 @@ package com.example.ddbx.tt.tool;
  * 创建日期：2018-11-29
  * 最后更新：2018-12-12
  */
+
+import com.example.ddbx.tt.data.TtMap;
 import net.sf.json.JSONObject;
-
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +43,13 @@ import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class Wx {
@@ -65,9 +73,9 @@ public class Wx {
      * @param defWxName
      * @return
      */
-    public Map<String, String> ttWxMini_GetOpenId(String code, String defWxName) {
-        Map<String, String> result = new HashMap<>();
-        Map<String, String> info = this.getWxConfig(defWxName);
+    public TtMap ttWxMini_GetOpenId(String code, String defWxName) {
+        TtMap result = new TtMap();
+        TtMap info = this.getWxConfig(defWxName);
         String requestUrl = this.GetWxMiniOpenId.replace("APPID", info.get("appid"))
                 .replace("SECRET", info.get("appsecret")).replace("JSCODE", code);
         JSONObject jsonObject = HttpTools.httpsRequest(requestUrl, "GET", null);
@@ -92,7 +100,7 @@ public class Wx {
         extUrl = extUrl + "&defWxName=" + this.defWxName;
         String getCodeUrl = "";
         try {
-            Map<String, String> info = this.getWxConfig(this.defWxName);
+            TtMap info = this.getWxConfig(this.defWxName);
             String appid = info.get("appid");
             getCodeUrl = URLEncoder.encode(Tools.getBaseUrl() + "ttwxcode?" + extUrl, "utf-8");
             String requestUrl = GetPageCode.replace("URL", getCodeUrl).replace("APPID", appid);
@@ -118,21 +126,21 @@ public class Wx {
      * @param openId
      * @return
      */
-    public Map<String, String> tt_getUserInfo(String accessToken, String openId) {
-        Map<String, String> weixinUserInfo = null;
+    public TtMap tt_getUserInfo(String accessToken, String openId) {
+        TtMap weixinUserInfo = null;
         // 拼接请求地址
         String requestUrl = GetPageUsersUrl;
         return getStringStringMap(accessToken, openId, weixinUserInfo, requestUrl);
     }
 
-    private Map<String, String> getStringStringMap(String accessToken, String openId,
-            Map<String, String> weixinUserInfo, String requestUrl) {
+    private TtMap getStringStringMap(String accessToken, String openId,
+            TtMap weixinUserInfo, String requestUrl) {
         requestUrl = requestUrl.replace("ACCESS_TOKEN", accessToken).replace("OPENID", openId);
         // 获取用户信息
         JSONObject jsonObject = HttpTools.httpsRequest(requestUrl, "GET", null);
         if (null != jsonObject) {
             try {
-                weixinUserInfo = new HashMap<>();
+                weixinUserInfo = new TtMap();
                 // 用户的标识
                 weixinUserInfo.put("openid", jsonObject.getString("openid"));
                 // 昵称
@@ -166,8 +174,8 @@ public class Wx {
      * @param openId
      * @return
      */
-    public Map<String, String> ttWx_getUserInfo(String accessToken, String openId) {
-        Map<String, String> weixinUserInfo = null;
+    public TtMap ttWx_getUserInfo(String accessToken, String openId) {
+        TtMap weixinUserInfo = null;
         // 拼接请求地址
         String requestUrl = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=ACCESS_TOKEN&openid=OPENID";
         return getStringStringMap(accessToken, openId, weixinUserInfo, requestUrl);
@@ -181,27 +189,26 @@ public class Wx {
      */
     @RequestMapping("/ttwxcode")
     public Map<String, Object> tt_oauth2GetOpenid(HttpServletRequest request, HttpServletResponse responses) {
-        Map<String, String> post = Tools.getpostmap(request);// 过滤参数，过滤mysql的注入，url参数注入
+        TtMap post = Tools.getPostMap(request);// 过滤参数，过滤mysql的注入，url参数注入
         String code = post.get("code");
-        if (Tools.myisnull(post.get("defWxName")) == false) {
+        if (Tools.myIsNull(post.get("defWxName")) == false) {
         }
-        Map<String, String> info = this.getWxConfig(this.defWxName);
+        TtMap info = this.getWxConfig(this.defWxName);
         String appid = info.get("appid");
         String appsecret = info.get("appsecret");
         System.out.println("id:" + appid + ",SECRET:" + appsecret);
         String requestUrl = GetPageAccessTokenUrl.replace("APPID", appid).replace("SECRET", appsecret).replace("CODE",
                 code);
-        HttpClient client = null;
         Map<String, Object> result = new HashMap<String, Object>();
         try {
-            client = new DefaultHttpClient();
+            CloseableHttpClient client = HttpClientBuilder.create().setProxy(null).build();
             JSONObject OpenidJSONO = getJsonObject(requestUrl, client);
             // OpenidJSONO可以得到的内容：access_token expires_in refresh_token openid scope
             String Openid = String.valueOf(OpenidJSONO.get("openid"));
             String AccessToken = String.valueOf(OpenidJSONO.get("access_token"));
             // String Scope = String.valueOf(OpenidJSONO.get("scope"));//用户保存的作用域
             // String refresh_token = String.valueOf(OpenidJSONO.get("refresh_token"));
-            Map<String, String> wxUserInfo = this.tt_getUserInfo(AccessToken, Openid);
+            TtMap wxUserInfo = this.tt_getUserInfo(AccessToken, Openid);
             result.put("Openid", Openid);
             result.put("AccessToken", AccessToken);
             result.put("wxinfo", wxUserInfo.toString());
@@ -210,13 +217,14 @@ public class Wx {
             HttpSession session = request.getSession();
             session.setAttribute("ttopenid", Openid);
             String sreturn = post.get("return");
-            if (Tools.myisnull(sreturn) == false) { // 如果传过来有return参数，网页中打开return
+            if (Tools.myIsNull(sreturn) == false) { // 如果传过来有return参数，网页中打开return
                 responses.sendRedirect(sreturn);
             }
+            client.close();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            client.getConnectionManager().shutdown();
+            
         }
         return result;
     }
@@ -236,18 +244,19 @@ public class Wx {
      */
     private String doGetToken(String appid, String appsecret) {
         String requestUrl = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
-        Map<String, String> info = this.getWxConfig(this.defWxName);
+        TtMap info = this.getWxConfig(this.defWxName);
         requestUrl = requestUrl.replace("APPID", info.get("appid")).replace("APPSECRET", info.get("appsecret"));
-        HttpClient client = null;
         String result = "";
         try {
-            client = new DefaultHttpClient();
+            @SuppressWarnings({"all"})
+            //HttpClient client = new DefaultHttpClient();
+            CloseableHttpClient client = HttpClientBuilder.create().setProxy(null).build();
             JSONObject OpenidJSONO = getJsonObject(requestUrl, client);
+            client.close();
             return String.valueOf(OpenidJSONO.get("access_token"));
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            client.getConnectionManager().shutdown();
         }
         return result;
     }
@@ -260,19 +269,19 @@ public class Wx {
     public String ttWx_GetToken(boolean bMustRefresh) {
         String result = "";
         DbCtrl dbCtrl = new DbCtrl(this.tbWxConfig);
-        Map<String, String> info = this.getWxConfig(this.defWxName);
+        TtMap info = this.getWxConfig(this.defWxName);
         System.out.println(info.toString());
         try {
             if (info.size() > 0) {
                 if (bMustRefresh == false // 不是必须刷新
-                        && Tools.myisnull(info.get("expirestime")) == false
+                        && Tools.myIsNull(info.get("expirestime")) == false
                         && Integer.parseInt(info.get("expirestime")) > Tools.time()
-                        && Tools.myisnull(info.get("token")) == false) {// 还没过期
+                        && Tools.myIsNull(info.get("token")) == false) {// 还没过期
                     result = info.get("token");
                 } else {
                     String token = doGetToken(info.get("appid"), info.get("appsecret"));
-                    if (Tools.myisnull(token) == false) {
-                        if (Tools.myisnull(info.get("dt_add"))) {
+                    if (Tools.myIsNull(token) == false) {
+                        if (Tools.myIsNull(info.get("dt_add"))) {
                             info.put("dt_add", Tools.dateToStrLong(null));
                         }
                         info.put("token", token);
@@ -293,7 +302,7 @@ public class Wx {
     /**
      * 从数据库里读取微信公众号配置信息
      */
-    private Map<String, String> getWxConfig(String wxName) {
+    private TtMap getWxConfig(String wxName) {
         String sql = "select * from " + this.tbWxConfig + " where name='" + wxName + "'";
         System.out.println(sql);
         return Tools.recinfo(sql);
@@ -306,7 +315,7 @@ public class Wx {
     @RequestMapping("/ttwxpay")
     public Map<String, Object> wxPay(HttpServletRequest request) {
         try {
-            Map<String, String> post = Tools.getpostmap(request);// 过滤参数，过滤mysql的注入，url参数注入
+            TtMap post = Tools.getPostMap(request);// 过滤参数，过滤mysql的注入，url参数注入
             String openid = post.get("openid");
             // 生成的随机字符串
             String nonce_str = Tools.getRandomStringByLength(32);
@@ -318,8 +327,8 @@ public class Wx {
             String payType = "JSAPI";
             String payUrl = "https://api.mch.weixin.qq.com/pay/unifiedorder";
             // 组装参数，用户生成统一下单接口的签名
-            Map<String, String> packageParams = new HashMap<String, String>();
-            Map<String, String> info = this.getWxConfig(defWxName);
+            TtMap packageParams = new TtMap();
+            TtMap info = this.getWxConfig(defWxName);
             packageParams.put("appid", info.get("appid"));
             packageParams.put("mch_id", info.get("pay_mch_id"));
             packageParams.put("nonce_str", nonce_str);
@@ -346,7 +355,7 @@ public class Wx {
             String result = HttpTools.httpsRequest(payUrl, "POST", xml).toString();
             System.out.println("调试模式_统一下单接口 返回XML数据：" + result);
             // 将解析结果存储在HashMap中
-            Map map = HttpTools.doXMLParse(result);
+            TtMap map = HttpTools.doXMLParse(result);
             String return_code = (String) map.get("return_code");// 返回状态码
             Map<String, Object> response = new HashMap<String, Object>();// 返回给小程序端需要的参数
             if (return_code.equals("SUCCESS")) {
@@ -389,13 +398,13 @@ public class Wx {
         String notityXml = sb.toString();
         String resXml = "";
         System.out.println("接收到的报文：" + notityXml);
-        Map map = HttpTools.doXMLParse(notityXml);
+        TtMap map = HttpTools.doXMLParse(notityXml);
         String returnCode = (String) map.get("return_code");
         if ("SUCCESS".equals(returnCode)) {
             // 验证签名是否正确
-            Map<String, String> validParams = HttpTools.paraFilter(map); // 回调验签时需要去除sign和空值参数
+            TtMap validParams = HttpTools.paraFilter((TtMap)map); // 回调验签时需要去除sign和空值参数
             String validStr = HttpTools.createLinkString(validParams);// 把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
-            Map<String, String> info = this.getWxConfig(defWxName);
+            TtMap info = this.getWxConfig(defWxName);
             String sign = Tools.md5(validStr + "&key=" + info.get("pay_key")).toUpperCase();// 拼装生成服务器端验证的签名
             // 根据微信官网的介绍，此处不仅对回调的参数进行验签，还需要对返回的金额与系统订单的金额进行比对等
             if (sign.equals(map.get("sign"))) {
@@ -429,7 +438,7 @@ public class Wx {
          * "url":"http://weixin.qq.com/download", "topcolor":"#FF0000", "data":{ "User":
          * { "value":"黄先生", "color":"#173177" } } }
          */
-        Map<String, String> info = this.getWxConfig(defWxName);
+        TtMap info = this.getWxConfig(defWxName);
         String url = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=TOKEN";// 小程序的
         if (info.get("type").equals("0")) { // 数据库里type为0表示为微信公众号，1为小程序，微信公众号地址不一样
             url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=TOKEN";

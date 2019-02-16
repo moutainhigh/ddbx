@@ -1,4 +1,11 @@
-/**
+/*
+ * @Description: file content
+ * @Author: tt
+ * @Date: 2018-03-22 10:39:10
+ * @LastEditTime: 2019-02-13 11:03:27
+ * @LastEditors: tt
+ */
+ /**
  Core script to handle the entire theme and core functions
  **/
 var App = function () {

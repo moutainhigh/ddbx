@@ -4,20 +4,16 @@
  * 创建日期：2018-11-17
  * @Author: tt
  * @Date: 2018-12-07 10:46:47
- * @LastEditTime: 2019-01-17 11:40:25
+ * @LastEditTime: 2019-02-11 16:16:25
  * @LastEditors: tt
  */
 package com.example.ddbx.tt.tool;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.io.*;
-
+import com.example.ddbx.tt.data.TtMap;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.nio.channels.FileChannel;
-import java.util.HashMap;
-import java.util.Map;
+import java.awt.*;
+import java.io.*;
 
 public class FileUp {
     public String savePath;
@@ -43,9 +39,9 @@ public class FileUp {
      * @param toFile  为相对路径比如/2018/11/22/xxxxsddsa.jpg，实际保存的文件完整路径是savePath+tofile路径，
      * @return
      */
-    public Map<String, String> upFile(MultipartFile srcFile, String toFile, int smallWidth, int smallHeight,
-            String shuiText) {
-        Map<String, String> result = new HashMap<>();
+    public TtMap upFile(MultipartFile srcFile, String toFile, int smallWidth, int smallHeight,
+                        String shuiText) {
+        TtMap result = new TtMap();
         result.put("success", "false");
         result.put("errorcode", "999");
         result.put("msg", "上传出错,初始化出错！");
@@ -57,7 +53,7 @@ public class FileUp {
                 return result;
             }
             long size = srcFile.getSize();
-            if (size > (Tools.isadmin() ? maxSize_Admin : maxSize)) {// 文件太大
+            if (size > (Tools.isAdmin() ? maxSize_Admin : maxSize)) {// 文件太大
                 result.put("msg", "上传出错,文件尺寸超过指定数值！");
                 result.put("errorcode", "997");
                 return result;
@@ -95,7 +91,7 @@ public class FileUp {
                             result.put("small", Tools.formatFilePath(sSmall).replace("\\", "/"));
                         }
                     }
-                    if (Tools.myisnull(shuiText) == false) {// 文字水印
+                    if (Tools.myIsNull(shuiText) == false) {// 文字水印
                         Font font = new Font("YaHei Consolas Hybrid", Font.PLAIN, 35); // 水印字体
                         ImgTools.shuiyTxt(toFileFullPath, toFileFullPath, shuiText, new Color(255, 0, 0, 128), font);
                     }
@@ -114,82 +110,6 @@ public class FileUp {
             result.put("errorcode", "996");
         }
         return result;
-    }
-
-    /**
-     * 复制文件，自动创建目标文件所在文件夹，如果目标文件复制前已经存在，自动先删除
-     *
-     * @param srcFile 源文件
-     * @param toFile  目标文件
-     * @return boolean，返回成功信息
-     * @throws IOException
-     */
-    public boolean ttCopyFile(String srcFile, String toFile) throws IOException {
-        boolean result = false;
-        if (Tools.fileExists(srcFile) == false) {
-            return result;
-        }
-        if (Tools.delFile(toFile) == false) {
-            return result;
-        }
-        Tools.createDir(Tools.delSpc(Tools.extractFilePath(toFile)));
-        File source = new File(srcFile);
-        File dest = new File(toFile);
-        FileChannel inputChannel = null;
-        FileChannel outputChannel = null;
-        try {
-            Tools.delFile(toFile);// 删除旧的文件
-            FileInputStream fSource = new FileInputStream(source);
-            FileOutputStream fDest = new FileOutputStream(dest);
-            inputChannel = fSource.getChannel();
-            outputChannel = fDest.getChannel();
-            outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
-            result = true;
-            inputChannel.close();
-            outputChannel.close();
-            fSource.close();
-            fDest.close();
-        } catch (Exception E) {
-            Config.log.debug(E.getMessage());
-        } finally {
-        }
-        if (result) {// 复制完成，检查文件是否存在。
-            result = Tools.fileExists(toFile);
-        }
-        return result;
-    }
-
-    /**
-     * 移动文件，复制完文件，删除源文件
-     *
-     * @param srcFile
-     * @param toFile
-     * @return
-     * @throws IOException
-     */
-    public boolean ttMoveFile(String srcFile, String toFile) throws IOException {
-        boolean result = false;
-        try {
-            result = ttCopyFile(srcFile, toFile);
-            if (result) {
-                Tools.delFile(srcFile);
-            }
-        } catch (IOException ee) {
-        }
-        return result;
-    }
-
-    public void main2(String[] args) {
-        try {
-            String srcFile = "/work/sd128/downloads/test.rar";
-            String toFile = "/work/sd128/downloads/2/test.rar";
-            System.out.println(Tools.extractFileName(srcFile));
-            System.out.println(Tools.delSpc(Tools.extractFilePath(srcFile)));
-            Tools.createDir(Tools.delSpc(Tools.extractFilePath(toFile)));
-            System.out.println(ttCopyFile(srcFile, toFile));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

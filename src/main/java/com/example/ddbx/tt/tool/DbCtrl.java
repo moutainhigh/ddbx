@@ -3,20 +3,25 @@
  * ver(); 使用时建议在此基础上继承个自己的单独类。
  * @Author: tt
  * @Date: 2018-12-07 10:47:04
- * @LastEditTime: 2019-01-20 10:09:34
+ * @LastEditTime: 2019-02-12 11:43:10
  * @LastEditors: tt
  */
 package com.example.ddbx.tt.tool;
 
+import com.example.ddbx.tt.data.TtList;
+import com.example.ddbx.tt.data.TtMap;
+import com.example.ddbx.tt.manager.ManagerPage;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
 
+import com.alibaba.druid.pool.DruidPooledConnection;
+
+
 public class DbCtrl {
-    public Connection conn = null;
+    public DruidPooledConnection conn = null;
     public String title = "";
     public boolean canadd;
     public boolean thick = false;
@@ -111,7 +116,7 @@ public class DbCtrl {
      * @var array
      * @see setinner();
      */
-    public Map<String, String> innerary = new HashMap<String, String>();
+    public TtMap innerary = new TtMap();
     /**
      * inner join的語句
      *
@@ -124,7 +129,7 @@ public class DbCtrl {
      * @var array
      * @see setleft();
      */
-    public Map<String, String> leftary = new HashMap<String, String>();
+    public TtMap leftary = new TtMap();
     /**
      * left join的語句
      *
@@ -137,7 +142,7 @@ public class DbCtrl {
      * @var array
      * @see setright();
      */
-    public Map<String, String> rightary = new HashMap<String, String>();
+    public TtMap rightary = new TtMap();
     /**
      * right join的語句
      *
@@ -174,13 +179,13 @@ public class DbCtrl {
      *
      * @var array
      */
-    public Map<String, String> recary = null;
+    public TtMap recary = null;
     /**
      * 修改或删除的时候,旧数据的记录
      *
      * @var array
      */
-    public Map<String, String> oldrec = null;
+    public TtMap oldrec = null;
     /**
      * 獲取列表時的總分頁數,需執行getpage()
      *
@@ -219,11 +224,11 @@ public class DbCtrl {
     /**
      * todo 文件上传处理
      */
-    public Map<String, String> uploads = null;
+    public TtMap uploads = null;
     /**
      * 错误代码
      */
-    public int errCode = 0;
+    public int errorCode = 0;
     /**
      * 错误信息
      */
@@ -235,14 +240,12 @@ public class DbCtrl {
     private DbTools myDbTools;
 
     private void mylog(String mString) {
-        if (this.showlog == true) {
-            // System.out.println(this.toString() + ":" + mString);
+        if (showlog == true) {
+            // System.out.println(toString() + ":" + mString);
             Log log = LogFactory.getLog(DbCtrl.class);
             log.info(mString);
         }
-        if (Config.GLOBAL_SHOWLOG) {
-            Config.log.debug("DbCtrl:" + mString);
-        }
+        Tools.logInfo(mString,getClass().toString());
     }
 
     /* 默认的数据库链接，目前直接写到类里 */
@@ -254,16 +257,19 @@ public class DbCtrl {
             mylog("已经初始化过的..");
         }
         try {
-            this.conn = DbConfig.g_dsmap.get(this.dsi).getConnection();
+            conn = DbConfig.g_dsmap.get(dsi).getConnection();
             now++;
             mylog("累计创建getConnection连接数：" + now);
         } catch (SQLException e) {
-            this.errCode = 900;
+            errorCode = 900;
             Tools.logError("DbCtrl:" + e.getMessage());
             mylog(e.getMessage());
+            if (Config.DEBUGMODE) {
+                e.printStackTrace();
+            }
         }
-        if (this.conn == null) {
-            this.errCode = 999;
+        if (conn == null) {
+            errorCode = 999;
             Tools.logError("DbCtrl:connect is null!");
             mylog("connect is null!");
         } else {
@@ -272,8 +278,8 @@ public class DbCtrl {
 
     /* 多数据源情况下修改数据源 */
     public void setDsi(String adsi) {
-        this.closeConn();// 先关闭连接
-        this.dsi = adsi;
+        closeConn();// 先关闭连接
+        dsi = adsi;
         GetdfConnection();
         initconn();
     }
@@ -284,35 +290,35 @@ public class DbCtrl {
     }
 
     /* 类初始化，带数据库链接，如果链接为空，使用默认的数据库账号密码 */
-    public DbCtrl(Connection connection, String tbName) {
-        this.table = tbName;
-        this.conn = connection;
-        if (this.conn == null) {
+    public DbCtrl(DruidPooledConnection connection, String tbName) {
+        table = tbName;
+        conn = connection;
+        if (conn == null) {
             GetdfConnection();
         } else {
         }
-        this.initconn();
-        this.canadd = true;
-        this.candel = true;
+        initconn();
+        canadd = true;
+        candel = true;
     }
 
     /* 类初始化，带数据库链接，如果链接为空，使用默认的数据库账号密码 */
     public DbCtrl(String tbName) {
-        this.table = tbName;
-        this.GetdfConnection();
-        this.initconn();
-        this.canadd = true;
-        this.candel = true;
+        table = tbName;
+        GetdfConnection();
+        initconn();
+        canadd = true;
+        candel = true;
     }
 
     /* 初始数据连接 */
     private void initconn() {
-        if (this.conn != null) {
-            this.myDbTools = null;
-            this.myDbTools = new DbTools(this.conn, this.showlog);
-            this.getTableField(true);
+        if (conn != null) {
+            myDbTools = null;
+            myDbTools = new DbTools(conn, showlog);
+            getTableField(true);
         } else {
-            this.errCode = 996;
+            errorCode = 996;
             Tools.logError("DbCtrl:initconn() error:");
         }
     }
@@ -324,23 +330,23 @@ public class DbCtrl {
      */
     public boolean delete(long id, String deltag) {
         // deltag = "del";
-        if (this.fieldconf == null) {
-            this.getTableField(true);
+        if (fieldconf == null) {
+            getTableField(true);
         }
-        if (Tools.in_array_list("deltag", this.fieldconf)) {
+        if (Tools.inArrayList("deltag", fieldconf)) {
             int delval = (deltag == "del" ? 1 : (deltag == "realdel" ? -1 : 0));
             String setshow = "";
-            if (Tools.in_array_list("showtag", this.fieldconf)) {
+            if (Tools.inArrayList("showtag", fieldconf)) {
                 setshow = ",showtag=0";
             }
             String setlast = "";
-            if (Tools.in_array_list("dt_edit", this.fieldconf)) {
+            if (Tools.inArrayList("dt_edit", fieldconf)) {
                 setlast = ",dt_edit=NOW()";
             }
-            return myDbTools.recexec("update " + this.table + " set deltag=" + delval + " " + setshow + " " + setlast
-                    + " where " + this.key + "='" + id + "'");
+            return myDbTools.recexec("update " + table + " set deltag=" + delval + " " + setshow + " " + setlast
+                    + " where " + key + "='" + id + "'");
         } else {
-            return myDbTools.recexec("delete from " + this.table + " where " + this.key + "='" + id + "'");
+            return myDbTools.recexec("delete from " + table + " where " + key + "='" + id + "'");
         }
     }
 
@@ -352,7 +358,7 @@ public class DbCtrl {
      * @return 數據通過返回true, 失敗返回false
      */
     public boolean chkdel(long id) {
-        return this.chkdel(id, null);
+        return chkdel(id, null);
     }
 
     /**
@@ -362,7 +368,7 @@ public class DbCtrl {
      * @param $id  如果id不爲null,則爲更新數據,否則爲新增數據
      * @return 數據通過返回true, 失敗返回false
      */
-    public boolean chkdel(long id, Map<String, String> ary) {
+    public boolean chkdel(long id, TtMap ary) {
         return true;
     }
 
@@ -372,7 +378,7 @@ public class DbCtrl {
      * @param 需删除數據的主鍵的值
      */
     public boolean del(long id) {
-        return this.del(id, "");
+        return del(id, "");
     }
 
     /**
@@ -381,16 +387,16 @@ public class DbCtrl {
      * @param 需删除數據的主鍵的值
      */
     public boolean del(long id, String deltag) {
-        if (Tools.myisnull(deltag)) {
+        if (Tools.myIsNull(deltag)) {
             deltag = "del";
         }
-        this.oldrec = this.info(id);
-        if (this.chkdel(id)) {
-            boolean re = this.delete(id, deltag);
-            this.succ(null, id, -1);
+        oldrec = info(id);
+        if (chkdel(id)) {
+            boolean re = delete(id, deltag);
+            succ(null, id, -1);
             /*
-             * global tablog_tabs; //写删除日志todo if(in_array(this.table, tablog_tabs)){
-             * this.tablog(this.title,this.table,id,"del",array(),this.oldrec); }
+             * global tablog_tabs; //写删除日志todo if(in_array(table, tablog_tabs)){
+             * tablog(title,table,id,"del",array(),oldrec); }
              */
             return re;
         } else {
@@ -405,47 +411,50 @@ public class DbCtrl {
      */
     public List<String> getTableField(boolean nameonly) {
         // todo 可以加入cache功能。
-        if (this.fieldconf == null || this.fieldconf.size() <= 0) {
-            if (this.fieldconf == null) {
-                this.fieldconf = new ArrayList<>();
+        if (fieldconf == null || fieldconf.size() <= 0) {
+            if (fieldconf == null) {
+                fieldconf = new ArrayList<>();
             }
             mylog("加载字段列表。。。");
-            List<Map<String, String>> list = myDbTools.reclist("SHOW COLUMNS FROM " + table);
+            TtList list = myDbTools.reclist("SHOW COLUMNS FROM " + table);
             for (int i = 0; i < list.size(); i++) {
                 String tmpStr = list.get(i).get("Field");
-                if (Tools.myisnull(tmpStr)) {
+                if (Tools.myIsNull(tmpStr)) {
                     tmpStr = list.get(i).get("COLUMN_NAME");
                 }
-                if (Tools.myisnull(tmpStr) == false) { // 如果不为空
-                    this.fieldconf.add(tmpStr);
+                if (Tools.myIsNull(tmpStr) == false) { // 如果不为空
+                    fieldconf.add(tmpStr);
                 }
             }
         }
-        // mylog(this.fieldconf == null ? "null" : "not null");
-        // mylog(Integer.toString(this.fieldconf.size()));
-        if (this.fieldconf != null && this.fieldconf.size() <= 0) {
+        // mylog(fieldconf == null ? "null" : "not null");
+        // mylog(Integer.toString(fieldconf.size()));
+        if (fieldconf != null && fieldconf.size() <= 0) {
             mylog("字段列表为空");
             try {
                 throw new Exception("TT异常：获取数据表所有字段名失败！" + table);
             } catch (Exception e) {
                 mylog(e.getMessage());
                 Tools.logError("DbCtrl:" + e.getMessage());
+                if (Config.DEBUGMODE) {
+                    e.printStackTrace();
+                }
             }
             mylog("<----------------ERROR,获取字段出错---------------->");
             Tools.logError("DbCtrl:<----------------ERROR,获取字段出错---------------->");
         }
-        if (this.fieldconf != null) {
-            if (this.fieldconf.contains("sort")) {
+        if (fieldconf != null) {
+            if (fieldconf.contains("sort")) {
                 cansort = true;
             }
-            if (this.fieldconf.contains("deltag")) {
+            if (fieldconf.contains("deltag")) {
                 realdel = false;
             }
-            if (this.fieldconf.contains("showtag")) {
+            if (fieldconf.contains("showtag")) {
                 canhide = true;
             }
         }
-        return this.fieldconf;
+        return fieldconf;
     }
 
     /**
@@ -454,7 +463,7 @@ public class DbCtrl {
      * @param array        array 更新的數據
      * @param unknown_type id 主鍵的值
      */
-    private int editData(Map<String, String> array, long id) {
+    private int editData(TtMap array, long id) {
         array.remove(key);
         int result = 0;
         String sql = getAESql(array, "update ");
@@ -466,16 +475,16 @@ public class DbCtrl {
         return result;
     }
 
-    private String getAESql(Map<String, String> array, String s) {
-        if (this.fieldconf == null) {
-            this.getTableField(true);
+    private String getAESql(TtMap array, String s) {
+        if (fieldconf == null) {
+            getTableField(true);
         }
         /*
-         * todo if(_FILES){ array=this.files(array,id); }
+         * todo if(_FILES){ array=files(array,id); }
          */
         for (Iterator<Map.Entry<String, String>> it = array.entrySet().iterator(); it.hasNext();) {
             Map.Entry<String, String> item = it.next();
-            if (!this.fieldconf.contains(item.getKey())) {
+            if (!fieldconf.contains(item.getKey())) {
                 it.remove();
             }
             // ... todo with item
@@ -485,7 +494,7 @@ public class DbCtrl {
          * todo foreach(array as key=>val){ if(is_array(val)){
          * array[key]=self::arytostr(val); } }
          */
-        this.recary = array;
+        recary = array;
         String sql = s + table + " set";
         for (String key : array.keySet()) { // 过滤不存在的字段
             if (array.get(key) == "null") {
@@ -497,16 +506,16 @@ public class DbCtrl {
         return sql;
     }
 
-    public boolean chk(Map<String, String> array, long id) {
+    public boolean chk(TtMap array, long id) {
         return true;
     }
 
-    public Map<String, String> param(Map<String, String> ary, long id) {
+    public TtMap param(TtMap ary, long id) {
         // todo
         return ary;
     }
 
-    public void succ(Map<String, String> array, long id, int sqltp) {
+    public void succ(TtMap array, long id, int sqltp) {
         // todo
     }
 
@@ -516,24 +525,24 @@ public class DbCtrl {
      * @param array ary 待更新的數據
      * @param id    需更新數據的主鍵的值
      */
-    public int edit(Map<String, String> ary, long id) {
-        // todo this.oldrec=this.info(id);
+    public int edit(TtMap ary, long id) {
+        // todo oldrec=info(id);
         if (chk(ary, id)) {
-            if (Tools.myisnull(ary.get("dt_edit"))) {
+            if (Tools.myIsNull(ary.get("dt_edit"))) {
                 ary.put("dt_edit", Tools.dateToStrLong(null));
             }
             if (Tools.mid() != 0) {
                 ary.put("mid_edit", String.valueOf(Tools.mid()));
             }
-            ary = this.param(ary, id);
+            ary = param(ary, id);
             if (ary == null) {
                 return 0;
             } else {
-                int re = this.editData(ary, id);
-                this.succ(ary, id, 1);
+                int re = editData(ary, id);
+                succ(ary, id, 1);
                 /*
-                 * todo global tablog_tabs; if(in_array(this.table, tablog_tabs)){
-                 * this.tablog(this.title,this.table,id,'edit',ary,this.oldrec); }
+                 * todo global tablog_tabs; if(in_array(table, tablog_tabs)){
+                 * tablog(title,table,id,'edit',ary,oldrec); }
                  */
                 return re;
             }
@@ -548,9 +557,9 @@ public class DbCtrl {
      * @param array 插入的數據
      * @return 返回插入的ID
      */
-    public long addData(Map<String, String> array) {
-        if (this.autokey) {
-            array.remove(this.key);
+    public long addData(TtMap array) {
+        if (autokey) {
+            array.remove(key);
         }
         long result = 0;
         String sql = getAESql(array, "insert into ");
@@ -568,53 +577,50 @@ public class DbCtrl {
      * @param Map ary 待新增的數據
      * @return 新增記錄的ID
      */
-    public long add(Map<String, String> ary) {
+    public long add(TtMap ary) {
         if (ary == null || ary.size() == 0) {
             return 0;
         }
-        if (this.chk(ary, 0)) {
+        if (chk(ary, 0)) {
             String dt = Tools.dateToStrLong(null);
-            if (Tools.myisnull(ary.get("dt_edit"))) {
+            if (Tools.myIsNull(ary.get("dt_edit"))) {
                 ary.put("dt_edit", dt);
             }
-            if (Tools.myisnull(ary.get("dt_add"))) {
+            if (Tools.myIsNull(ary.get("dt_add"))) {
                 ary.put("dt_add", dt);
             }
-            if (Tools.myisnull(ary.get("mid_add")) && Tools.mid() != 0) {
+            if (Tools.myIsNull(ary.get("mid_add")) && Tools.mid() != 0) {
                 ary.put("mid_edit", String.valueOf(Tools.mid()));
                 ary.put("mid_add", String.valueOf(Tools.mid()));
             }
-            if (Tools.myisnull(ary.get("sort"))) {
+            if (Tools.myIsNull(ary.get("sort"))) {
                 ary.put("sort", "100");
             }
-            if (Tools.myisnull(ary.get("showtag"))) {
+            if (Tools.myIsNull(ary.get("showtag"))) {
                 ary.put("showtag", "0");
             }
-            if (Tools.myisnull(ary.get("up_id"))) {
-                ary.put("up_id", "0");
-            }
-            ary = this.param(ary, 0);
+            ary = param(ary, 0);
             System.out.println("add :" + ary);
-            this.id = this.addData(ary);
-            this.succ(ary, this.id, 0);
+            id = addData(ary);
+            succ(ary, id, 0);
             /*
              * todo 写数据库日志
              */
-            return this.id;
+            return id;
         } else {
             return 0;
         }
     }
 
     private String getListSqlStr(String sql) {
-        boolean _in_admin = Tools.isadmin();
-        if (this.fieldconf == null) {
-            this.getTableField(true);
+        boolean _in_admin = Tools.isAdmin();
+        if (fieldconf == null) {
+            getTableField(true);
         }
-        if (_in_admin && Tools.in_array_list("showtag", this.fieldconf) && !this.showall) {
+        if (_in_admin && Tools.inArrayList("showtag", fieldconf) && !showall) {
             sql = sql + (sql.equals("") ? " t.showtag=1 " : " and t.showtag=1 ");
         }
-        if (_in_admin && Tools.in_array_list("deltag", this.fieldconf) && !this.getall) {
+        if (_in_admin && Tools.inArrayList("deltag", fieldconf) && !getall) {
             sql = sql + (sql.equals("") ? " t.deltag=0 " : " and t.deltag=0 ");
         }
         return sql;
@@ -622,14 +628,14 @@ public class DbCtrl {
 
     private String getListSqlStrlimit() {
         String r = "";
-        if (!this.nopage) {
-            if (this.p == 0)
-                this.p = 1;
-            if (this.start == 0)
-                this.start = this.limit * (this.p - 1);
-            if (this.start < 0)
-                this.start = 0;
-            r += " limit " + this.start + "," + this.limit;
+        if (!nopage) {
+            if (p == 0)
+                p = 1;
+            if (start == 0)
+                start = limit * (p - 1);
+            if (start < 0)
+                start = 0;
+            r += " limit " + start + "," + limit;
         }
         return r;
     }
@@ -637,26 +643,26 @@ public class DbCtrl {
     /**
      * 显示列表,wheres为条件，f为字段名格式t.username,t.password或者t.*,或者直接为""
      */
-    public List<Map<String, String>> lists(String wheres, String f) {
-        List<Map<String, String>> result = null;// new ArrayList<Map<String, String>>();
+    public TtList lists(String wheres, String f) {
+        TtList result = null;// new ArrayTtList();
         String strWhere = getListSqlStr(wheres);
         /** todo 组合字符串，查询列表 */
-        sql = "select SQL_CALC_FOUND_ROWS " + (Tools.myisnull(f) == false ? f : this.fields) + " from " + this.table
-                + " t " + this.leftsql + " " + this.rightsql + " " + this.innersql + " "
-                + (Tools.myisnull(wheres) == false ? " where " + strWhere
-                        : (Tools.myisnull(strWhere) ? "" : " where " + strWhere))+" "
-                + this.orders + " " + this.groupby + " " + getListSqlStrlimit() + " ";
+        sql = "select SQL_CALC_FOUND_ROWS " + (Tools.myIsNull(f) == false ? f : fields) + " from " + table + " t "
+                + leftsql + " " + rightsql + " " + innersql + " "
+                + (Tools.myIsNull(wheres) == false ? " where " + strWhere
+                : (Tools.myIsNull(strWhere) ? "" : " where " + strWhere))
+                + " " + orders + " " + groupby + " " + getListSqlStrlimit() + " ";
         result = myDbTools.reclist(sql);
-        this.recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+        recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
         return result;
     }
 
-    public List<Map<String, String>> lists() {
-        return this.lists("", "");
+    public TtList lists() {
+        return lists("", "");
     }
 
-    public Map<String, String> info(long id) {
-        return this.info(id, "");
+    public TtMap info(long id) {
+        return info(id, "");
     }
 
     /**
@@ -665,85 +671,81 @@ public class DbCtrl {
      * @param id 主鍵的值
      * @return 記錄數組
      */
-    public Map<String, String> info(long id, String f) {
+    public TtMap info(long id, String f) {
         // f = false;
-        boolean _in_admin = Tools.isadmin();
+        boolean _in_admin = Tools.isAdmin();
         String where = "";
         mylog("begin info...");
-        if (this.fieldconf == null) {
-            this.getTableField(true);
+        if (fieldconf == null) {
+            getTableField(true);
         }
-        if (_in_admin && Tools.in_array_list("showtag", this.fieldconf) && !this.showall) {
+        if (_in_admin && Tools.inArrayList("showtag", fieldconf) && !showall) {
             where = where + " and t.showtag=1 ";
         }
         ;
-        if (_in_admin && Tools.in_array_list("deltag", this.fieldconf) && !this.getall) {
+        if (_in_admin && Tools.inArrayList("deltag", fieldconf) && !getall) {
             where += " and t.deltag=0 ";
         }
         /*
          * NOTE:这个比较重要 todo ,left join，right join，inner join查询以及groupby查询功能的加入 if
-         * (sizeof(this.leftary)>0){ this.leftsql = ""; foreach (this.leftary as
-         * ltab=>ons){ this.leftsql+= " left join ".ltab." on ".implode(",", ons); } }
-         * if (sizeof(this.rightary)>0){ this.rightsql = ""; foreach (this.rightary as
-         * ltab=>ons){ this.rightsql+= " right join ".ltab." on ".implode(",", ons); } }
-         * if (sizeof(this.innerary)>0){ this.innersql = ""; foreach (this.innerary as
-         * itab=>ons){ this.innersql+= " inner join ".itab." on ".implode(",", ons); } }
-         * if (this.groupby != ""){ this.groupby = " group by "+this.groupby; }else
-         * if(this.leftsql || this.rightsql || this.innersql){ this.groupby =
-         * " group by t."+this.key; }
+         * (sizeof(leftary)>0){ leftsql = ""; foreach (leftary as ltab=>ons){ leftsql+=
+         * " left join ".ltab." on ".implode(",", ons); } } if (sizeof(rightary)>0){
+         * rightsql = ""; foreach (rightary as ltab=>ons){ rightsql+=
+         * " right join ".ltab." on ".implode(",", ons); } } if (sizeof(innerary)>0){
+         * innersql = ""; foreach (innerary as itab=>ons){ innersql+=
+         * " inner join ".itab." on ".implode(",", ons); } } if (groupby != ""){ groupby
+         * = " group by "+groupby; }else if(leftsql || rightsql || innersql){ groupby =
+         * " group by t."+key; }
          */
-        String sql = "select " + (Tools.myisnull(f) == false ? f : this.fields) + " from " + this.table + " t "
-                + this.leftsql + " " + this.rightsql + " " + this.innersql + " where t." + this.key + "='" + id + "' "
-                + where + " " + this.groupby + " ";
+        String sql = "select " + (Tools.myIsNull(f) == false ? f : fields) + " from " + table + " t " + leftsql + " "
+                + rightsql + " " + innersql + " where t." + key + "='" + id + "' " + where + " " + groupby + " ";
         this.sql = sql;
-        Map<String, String> rec = myDbTools.recinfo(sql, false, "ary", null);
+        TtMap rec = myDbTools.recinfo(sql, false, "ary", null);
         for (String key : rec.keySet()) {
             String vString = rec.get(key);
-            if (Tools.myisnull(vString) == false
+            if (Tools.myIsNull(vString) == false
                     && ((vString.length() >= 10 && vString.substring(0, 10).equals("0000-00-00"))
-                            || vString.equals("0000"))) {
+                    || vString.equals("0000"))) {
                 rec.put(key, "");
             }
         }
-        return this.show(rec);
+        return show(rec);
         /*
          * todo 其他的处理，imags,mapx,mapy,hit等 foreach(rec as k=>v){ if(substr(v, 0,
          * '10')=='0000-00-00' || v==='0000'){ rec[k]=''; } if(in_array(k,
-         * array('mapx','mapy'))){ rec[k]=rtrim(v,'0'); } rec[k]=this.strtoary(rec[k]);
-         * } if(f){ rec=this.show(rec); if(sizeof(rec)==1){ return @array_shift(rec);
-         * }else{ return rec; } }else if(!rec){ return array(); }else{
-         * if(isset(rec['imgs']) &&!rec['imgs']){ rec['imgs']=array(); }
+         * array('mapx','mapy'))){ rec[k]=rtrim(v,'0'); } rec[k]=strtoary(rec[k]); }
+         * if(f){ rec=show(rec); if(sizeof(rec)==1){ return @array_shift(rec); }else{
+         * return rec; } }else if(!rec){ return array(); }else{ if(isset(rec['imgs'])
+         * &&!rec['imgs']){ rec['imgs']=array(); }
          *
-         * //添加点击数 if(rec && in_array('hit', this.fieldconf) && _in_admin){
-         * recupdate("update this.table set hit=".(rec['hit']+1)+" where id=".rec['id'
-         * ]); }
+         * //添加点击数 if(rec && in_array('hit', fieldconf) && _in_admin){
+         * recupdate("update table set hit=".(rec['hit']+1)+" where id=".rec['id' ]); }
          *
-         * return this.show(rec); }
+         * return show(rec); }
          */
     }
 
     private String strGetPage(int pages, int p, String style, int l, boolean auto_hide) {
         // todo
-        String myString = ManagerPage.getpage(pages, p, l);// 返回分页的html代码
+        String myString = ManagerPage.getPage(pages, p, l, auto_hide);// 返回分页的html代码
         return myString;
     }
 
     /**
-     * 獲取分頁代碼
+     * 獲取分頁代碼,指定style,一页多少，是否自动隐藏
      */
     public String getPage(String style, int l, boolean auto_hide) {
-        // this.recs=recinfo(this.countSql,'rno');
-        if (this.recs > 0) {
-            this.pages = (int) Math.ceil((double) this.recs / this.limit); // update by hong 原來統計出錯
+        // recs=recinfo(countSql,'rno');
+        if (recs > 0) {
+            pages = (int) Math.ceil((double) recs / limit); // update by hong 原來統計出錯
         } else {
-            this.recs = this.pages = 0;
+            recs = pages = 0;
         }
-        return strGetPage(this.pages, this.p, style, this.limit, auto_hide);
+        return strGetPage(pages, p, style, limit, auto_hide);
     }
 
     /* 给子类重载的，做最后的过滤 */
-    private Map<String, String> show(Map<String, String> rec) {
-        // TODO Auto-generated method stub
+    private TtMap show(TtMap rec) {
         return rec;
     }
 
@@ -752,18 +754,21 @@ public class DbCtrl {
      */
     public void closeConn() {
         // 关闭资源
-        this.myDbTools.closeConn();// 释放由dbtools创建的connection,本类
+        myDbTools.closeConn();// 释放由dbtools创建的connection,本类
         closenow++;
         mylog("累计关闭conn.close()连接数：" + closenow);
         try {
-            if (this.conn != null) { // 关闭本类创建的
+            if (conn != null) { // 关闭本类创建的
                 // mylog("累计关闭conn.close()连接数：" + closenow);
-                this.conn.close();
+                conn.close();
             }
         } catch (SQLException e) {
-            this.errCode = 898;
+            errorCode = 898;
             mylog(e.getMessage());
             Tools.logError("DbCtrl:" + e.getMessage());
+            if (Config.DEBUGMODE) {
+                e.printStackTrace();
+            }
         }
     }
 

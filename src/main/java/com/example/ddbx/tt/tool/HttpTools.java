@@ -2,9 +2,10 @@
  * @Description: file content
  * @Author: tt
  * @Date: 2018-12-12 18:06:31
- * @LastEditTime: 2019-01-21 15:08:02
+ * @LastEditTime: 2019-02-15 16:47:49
  * @LastEditors: tt
  */
+
 package com.example.ddbx.tt.tool;
 
 /**
@@ -13,27 +14,21 @@ package com.example.ddbx.tt.tool;
  * 创建日期：2018-11-29
  * 最后更新：2018-12-12
  */
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import javax.net.ssl.HttpsURLConnection;
-import javax.servlet.http.HttpServletRequest;
-import javax.xml.XMLConstants;
-import javax.xml.parsers.DocumentBuilderFactory;
 
+import com.example.ddbx.tt.data.TtMap;
 import net.sf.json.JSONObject;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
@@ -41,20 +36,27 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import javax.net.ssl.HttpsURLConnection;
+import javax.servlet.http.HttpServletRequest;
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
 public class HttpTools {
     private static Logger log = LoggerFactory.getLogger(HttpTools.class);
 
     /**
      * 解析xml,返回第一级元素键值对。如果第一级元素有子节点，则此节点的值是子节点的xml数据。
      */
-    public static Map doXMLParse(String strxml) throws Exception {
+    public static TtMap doXMLParse(String strxml) throws Exception {
         if (null == strxml || "".equals(strxml)) {
             return null;
         }
         /* ============= !!!!注意，修复了微信官方反馈的漏洞，更新于2018-10-16 =========== */
         try {
-            Map<String, String> data = new HashMap<String, String>();
-            // TODO 在这里更换
+            TtMap data = new TtMap();
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             documentBuilderFactory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
             documentBuilderFactory.setFeature("http://xml.org/sax/features/external-general-entities", false);
@@ -91,8 +93,8 @@ public class HttpTools {
      * @param sArray 签名参数组
      * @return 去掉空值与签名参数后的新签名参数组
      */
-    public static Map<String, String> paraFilter(Map<String, String> sArray) {
-        Map<String, String> result = new HashMap<String, String>();
+    public static TtMap paraFilter(TtMap sArray) {
+        TtMap result = new TtMap();
         if (sArray == null || sArray.size() <= 0) {
             return result;
         }
@@ -202,7 +204,7 @@ public class HttpTools {
             }
             tempStr = new String(arrayOut.toByteArray());
         } catch (IOException e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         }
         return tempStr;
@@ -214,7 +216,7 @@ public class HttpTools {
      * @param params 需要排序并参与字符拼接的参数组
      * @return 拼接后字符串
      */
-    public static String createLinkString(Map<String, String> params) {
+    public static String createLinkString(TtMap params) {
         List<String> keys = new ArrayList<String>(params.keySet());
         Collections.sort(keys);
         String prestr = "";
@@ -618,11 +620,11 @@ public class HttpTools {
         }
         return resultBuffer.toString();
     }
-
-    public static Map<String, String> httpClientPostmss(String urlParam, Map<String, Object> params, String charset,
-            Map<String, String> headers) {
+    @SuppressWarnings({"unchecked"})
+    public static TtMap httpClientPostmss(String urlParam, Map<String, Object> params, String charset,
+            TtMap headers) {
         String s = httpClientPost(urlParam, params, charset, headers);
-        Map<String, String> result = Tools.msoToMss(JSONObject.fromObject(s));
+        TtMap result = Tools.msoToMss((JSONObject.fromObject(s)));
         return result;
     }
 
@@ -630,12 +632,11 @@ public class HttpTools {
      * @Description:使用HttpClient发送post请求,params处理成&后再urlEncode
      */
     public static String httpClientPost_String(String urlParam, String params, String charset,
-            Map<String, String> headers) {
+            TtMap headers) {
         StringBuffer resultBuffer = null;
-        HttpClient client = new DefaultHttpClient();
+        CloseableHttpClient client = HttpClientBuilder.create().setProxy(null).build();
         HttpPost httpPost = new HttpPost(urlParam);
         // 构建请求参数
-        List<NameValuePair> list = new ArrayList<NameValuePair>();
         BufferedReader br = null;
         try {
                 System.out.println("param:"+params);
@@ -654,6 +655,7 @@ public class HttpTools {
             while ((temp = br.readLine()) != null) {
                 resultBuffer.append(temp);
             }
+            client.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
@@ -672,9 +674,9 @@ public class HttpTools {
      * @Description:使用HttpClient发送post请求,params处理成&后再urlEncode
      */
     public static String httpClientPost(String urlParam, Map<String, Object> params, String charset,
-            Map<String, String> headers) {
+            TtMap headers) {
         StringBuffer resultBuffer = null;
-        HttpClient client = new DefaultHttpClient();
+        CloseableHttpClient client = HttpClientBuilder.create().setProxy(null).build();
         HttpPost httpPost = new HttpPost(urlParam);
         // 构建请求参数
         List<NameValuePair> list = new ArrayList<NameValuePair>();
@@ -702,6 +704,7 @@ public class HttpTools {
             while ((temp = br.readLine()) != null) {
                 resultBuffer.append(temp);
             }
+            client.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
@@ -721,9 +724,9 @@ public class HttpTools {
      * @Description:使用HttpClient发送get请求
      */
     public static String httpClientGet(String urlParam, Map<String, Object> params, String charset,
-            Map<String, String> headers) {
+            TtMap headers) {
         StringBuffer resultBuffer = null;
-        HttpClient client = new DefaultHttpClient();
+        CloseableHttpClient client = HttpClientBuilder.create().setProxy(null).build();
         BufferedReader br = null;
         // 构建请求参数
         StringBuffer sbParams = new StringBuffer();
@@ -757,6 +760,7 @@ public class HttpTools {
             while ((temp = br.readLine()) != null) {
                 resultBuffer.append(temp);
             }
+            client.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
@@ -1004,7 +1008,7 @@ public class HttpTools {
         BufferedReader in = null;
         try {
             String urlNameString = url;
-            if (Tools.myisnull(param) == false) {
+            if (Tools.myIsNull(param) == false) {
                 if (urlEncode) {
                     param = URLEncoder.encode(param, "UTF-8");// 加上urlencode
                 }

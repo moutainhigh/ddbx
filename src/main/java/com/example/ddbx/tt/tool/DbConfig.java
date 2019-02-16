@@ -2,20 +2,21 @@
  * @Description: TT数据库封装-连接池，数据源处理类
  * @Author: tt
  * @Date: 2018-12-20 19:48:20
- * @LastEditTime: 2019-01-16 09:27:28
+ * @LastEditTime: 2019-02-01 16:17:06
  * @LastEditors: tt
  */
 package com.example.ddbx.tt.tool;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import javax.sql.DataSource;
 
 /**
  * pom.xml配置注意，因为要使用阿里的druid控件所以要导入druid组件 <properties>
@@ -31,7 +32,7 @@ import javax.sql.DataSource;
 
 public class DbConfig {
     public static int errorCode = 0;
-    public static Map<String, DataSource> g_dsmap = new HashMap<>();
+    public static Map<String, DruidDataSource> g_dsmap = new HashMap<>();
     public static boolean showlog = true;
 
     /**
@@ -40,7 +41,7 @@ public class DbConfig {
      * @return:
      */
     public static final DataSource getDataSource(String dbname, String user, String pass) throws Exception {
-        DataSource dataSource = null;
+        DruidDataSource dataSource = null;
 
         Properties p = new Properties();
         /**
@@ -71,7 +72,7 @@ public class DbConfig {
         // p.put("sessionStatEnable","true");
         p.put("driverClassName", Config.DB_DRIVER);
         /** 使用阿里云开源数据库连接池管理 Druid */
-        dataSource = DruidDataSourceFactory.createDataSource(p);
+        dataSource = (DruidDataSource)DruidDataSourceFactory.createDataSource(p);
         g_dsmap.put(Integer.toString(g_dsmap.size() + 1), dataSource);
         return dataSource;
     }
@@ -101,11 +102,11 @@ public class DbConfig {
             // 处理 JDBC 错误
             errorCode = 999;
             mylog(e.getMessage());
-            Tools.logError("DbConfig:errorCode :999,CreateCc() error:" + e.getMessage());
+            Tools.logError("DbConfig:errorCode :999,CreateCc() error:" + e.getMessage(),true,false);
         } catch (Exception e) {
             // 处理 Class.forName 错误
             errorCode = 998;
-            Tools.logError("DbConfig:errorCode :998,CreateCc() error:" + e.getMessage());
+            Tools.logError("DbConfig:errorCode :998,CreateCc() error:" + e.getMessage(),true,false);
             mylog(e.getMessage());
         } finally {
 
@@ -118,7 +119,7 @@ public class DbConfig {
      * 
      * @param ashowlog
      */
-    static public void init(boolean ashowlog) {
+    static public synchronized void init(boolean ashowlog) {
         if (g_dsmap.size() > 0) {// 已经初始化了
             return;
         }

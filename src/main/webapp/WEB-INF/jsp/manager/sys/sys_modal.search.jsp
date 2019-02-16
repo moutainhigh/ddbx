@@ -5,11 +5,9 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%
-	//Map<String, String> mpTmp = new HashMap<>();
-	//mpTmp.put("id","23");
 	String tmpstr = request.getParameter("id_uplevel ");
 	int state_id = 0 ;
-	if (Tools.myisnull(tmpstr)==false){
+	if (Tools.myIsNull(tmpstr)==false){
 		state_id =Integer.valueOf(tmpstr);
 	}
 	String kw = request.getParameter("kw");

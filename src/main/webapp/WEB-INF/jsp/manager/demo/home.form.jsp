@@ -1,3 +1,26 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="Tools" uri="/tld/manager" %>
+
+<div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-speedometer"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Git链接</span>
+                    <span class="info-box-number">https://github.com/superadmini/tt</span>
+                    <span class="info-box-number"><a href="https://github.com/superadmini/tt" target="blank"><small>前往</small></a></span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+</div>
+
  <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">

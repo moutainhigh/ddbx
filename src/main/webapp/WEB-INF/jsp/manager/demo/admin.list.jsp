@@ -1,16 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="java.util.*" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
+<%@ page import="com.example.ddbx.tt.data.TtMap" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <div class="box">
-	<div class="box-header">
-		<h3 class="box-title">
-			用户列表
-		</h3>
-	</div>
 	<%
 		String url = Tools.urlKill("sdo|id")+"&sdo=form&id=";
+		TtMap minfo = (TtMap) request.getAttribute("minfo");
 	%>
 	<!-- /.box-header -->
 	<div class="box-body">
@@ -24,6 +22,9 @@
 					<table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
 						<thead>
 							<tr role="row">
+								<th class="text-center" style="width:120px;">
+									姓名
+								</th>
 								<th class="hidden-xs text-center">
 									<!-- hidden-xs为手机模式时自动隐藏， text-center为居中-->
 									编号
@@ -31,32 +32,49 @@
 								<th class="hidden-xs text-center">
 									用户名
 								</th>
-								<th class="text-center">
-									姓名
+								<th class="hidden-xs text-center">
+									所属公司
 								</th>
 								<th class="hidden-xs text-center">
 									最后更新时间
 								</th>
-								<th class="hidden-xs text-center">添加时间</th>
+								<th class="hidden-xs text-center">显示</th>
 								<th class="text-center">操作</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${list}" var="u" varStatus="num">
 								<tr role="row" class="odd">
+									<td class="user-table-info text-center">
+										<div class="media">
+											<div class="media-left hidden-xs"><a href="<%=url%>${u.id}" class="user-face-pic"> <img class="media-object" src="${Tools.myIsNull(u.avatarurl)?"images/face.png":u.avatarurl}" style="width: 36px;height:36px;"> </a></div>
+											<div class="media-body media-middle">
+												<h5 class="media-heading">
+													<a href="<%=url%>${u.id}">${u.name}</a>
+												</h5>
+												<p></p>
+											</div>
+										</div>
+									</td>
 									<td class="hidden-xs text-center">
 										${u.id}
 									</td>
 									<td class="hidden-xs text-center">
 										${u.username}
 									</td>
-									<td class="text-center">
-										${u.name}
+									<td class="hidden-xs text-center">
+										${u.fsname}
 									</td>
 									<td class="hidden-xs text-center">
-										${fn:replace(u.dt_edit, ".0", "")}
+									  ${fn:replace(u.dt_edit, ".0", "")}
 									</td>
-									<td class="hidden-xs text-center">${fn:replace(u.dt_add, ".0", "")}</td>
+									<td class="hidden-xs text-center"><%
+										String cn = request.getParameter("cn");
+									%>
+									<select id="showtag_${u.id}" onchange="ajax_edit(${u.id},'showtag',this.value,'<%=cn%>');" class="form-control">
+									${u.choice}
+									</select>
+									</td>
 									<td class="text-center">
 										<div class="table-button">
 											<a href="<%=url%>${u.id}" class="btn btn-default">
