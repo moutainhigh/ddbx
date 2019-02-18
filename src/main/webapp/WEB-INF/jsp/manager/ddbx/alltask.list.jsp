@@ -6,7 +6,7 @@
 <div class="box">
 	<div class="box-header">
 		<h3 class="box-title">
-			用户列表
+			全部任务列表
 		</h3>
 	</div>
 	<%
@@ -28,17 +28,27 @@
 									<!-- hidden-xs为手机模式时自动隐藏， text-center为居中-->
 									编号
 								</th>
-								<th class="hidden-xs text-center">
-									公司名称
+								<th class="text-center">
+									客户姓名
 								</th>
 								<th class="text-center">
-									签约时名称
+									业务类型
+								</th>
+								<th class="text-center">
+									任务名称
 								</th>
 								<th class="hidden-xs text-center">
-									最后更新时间
+									任务发起人
 								</th>
-								<th class="hidden-xs text-center">添加时间</th>
-								<th class="text-center">操作</th>
+								<th class="hidden-xs text-center">
+									所属机构
+								</th>
+								<th class="hidden-xs text-center">
+									开始时间
+								</th>
+								<th class="text-center">
+									操作
+								</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -47,16 +57,24 @@
 									<td class="hidden-xs text-center">
 										${u.id}
 									</td>
-									<td class="hidden-xs text-center">
-										${u.name}
+									<td class="text-center">
+										${u.c_name}
 									</td>
 									<td class="text-center">
-										${u.name_qy}
+										业务类型
+									</td>
+									<td class="text-center">
+										任务名称
+									</td>
+									<td class="text-center">
+										任务发起人
+									</td>
+									<td class="text-center">
+										所属机构
 									</td>
 									<td class="hidden-xs text-center">
-										${fn:replace(u.dt_edit, ".0", "")}
+										${fn:replace(u.dt_add, ".0", "")}
 									</td>
-									<td class="hidden-xs text-center">${fn:replace(u.dt_add, ".0", "")}</td>
 									<td class="text-center">
 										<div class="table-button">
 											<a href="<%=url%>${u.id}" class="btn btn-default">

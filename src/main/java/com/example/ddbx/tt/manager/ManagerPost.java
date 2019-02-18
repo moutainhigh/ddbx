@@ -83,7 +83,7 @@ public class ManagerPost {
                 fsModal.add(post);
               }
               boolean bSuccess = fsModal.errorCode == 0;
-              nextUrl = Tools.urlKill("");
+              //nextUrl = Tools.urlKill("");
               Tools.formatResult(result2, bSuccess, fsModal.errorCode, bSuccess ? "编辑成功！" : fsModal.errorMsg, bSuccess ? nextUrl : "");
             } catch (Exception e) {
               Tools.logError(e.getMessage(),true,false);
@@ -101,7 +101,8 @@ public class ManagerPost {
                   fs.add(post);
                 }
                 boolean bSuccess = fs.errorCode == 0;
-                nextUrl = Tools.urlKill("");
+                //nextUrl = Tools.urlKill("");
+                System.out.println("返回的url："+nextUrl);
                 Tools.formatResult(result2, bSuccess, fs.errorCode, bSuccess ? "编辑成功！" : fs.errorMsg, bSuccess ? nextUrl : "");
               } catch (Exception e) {
                 Tools.logError(e.getMessage(),true,false);

@@ -62,7 +62,7 @@ public class DbConfig {
         p.put("filters", "stat,wall,log4j");// todo 可以加上防sql注入参数,wall,stat
         p.put("logAbandoned", "true");
         p.put("removeAbandoned", "true");
-        p.put("removeAbandonedTimeout", "30");
+        p.put("removeAbandonedTimeout", "1800");
         String DB_URL = Config.DB_PRECONNSTR + dbname + Config.DB_ENDCONNSTR;
         p.put("url", DB_URL);
         p.put("username", user);

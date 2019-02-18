@@ -128,10 +128,10 @@
 				<select id="fsid" name="fsid" class="form-control">
 					<%if (bAdd){%>
 							<option value="0" selected="selected">请选择</option>
-							<%=Tools.dicopt("dd_fs",0)%>
+							<%=Tools.dicopt("fs",0)%>
 					<%}else{%>
 							<option value="0" <%=infodb.get("fsid").equals("0")?"selected=\"selected\"":""%> >请选择</option>
-							<%=Tools.dicopt("dd_fs",Long.valueOf(infodb.get("fsid")))%>
+							<%=Tools.dicopt("fs",Long.valueOf(infodb.get("fsid")))%>
 					<%}%>
 				</select>
 				</div>

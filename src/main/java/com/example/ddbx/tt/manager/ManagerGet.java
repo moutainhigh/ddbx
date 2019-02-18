@@ -9,9 +9,7 @@ package com.example.ddbx.tt.manager;
 
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
-import com.example.ddbx.tt.table.Admin;
-import com.example.ddbx.tt.table.AdminAgp;
-import com.example.ddbx.tt.table.CommCitys;
+import com.example.ddbx.tt.table.*;
 import com.example.ddbx.tt.tool.Config;
 import com.example.ddbx.tt.tool.DbCtrl;
 import com.example.ddbx.tt.tool.Tools;
@@ -152,13 +150,29 @@ public class ManagerGet {
               lsitTitleString = "错误日志管理";
               orderString = "ORDER BY dt_add DESC";
               break;
-            case "dd_fs": // 公司管理
-                lsitTitleString = "公司管理";
-                orderString = "ORDER BY dt_add DESC";
-                break;
-            case "dd_gems": //用户管理
-                lsitTitleString = "用户管理";
-                orderString = "ORDER BY dt_add DESC";
+            case "alltask"://全部任务
+              System.out.println("来啦老弟！！！");
+              AllTask allTask=new AllTask();
+              try {
+                allTask.doGetList(request,post);
+              } catch (Exception e) {
+                Tools.logError(e.getMessage(), true, true);
+              } finally {
+                allTask.closeConn();
+              }
+              haveSetFormData = true;
+              break;
+              case "mytask"://我的任务
+
+                MyTask mytask=new MyTask();
+                try {
+                  mytask.doGetList(request,post);
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, true);
+                } finally {
+                  mytask.closeConn();
+                }
+                haveSetFormData = true;
                 break;
             default:
               lsitTitleString = "相关管理";
