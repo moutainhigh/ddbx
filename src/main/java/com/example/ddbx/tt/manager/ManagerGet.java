@@ -64,8 +64,10 @@ public class ManagerGet {
                 nid = Long.parseLong(Tools.minfo().get("fsid"));
                 request.setAttribute("modals", modalMenu.getAllModals()); // 后台左侧菜单,sidebar.jsp里面用到的菜
                 break;
-            default:
+
+              default:
               break;
+
             }
             if (!haveSetFormData) {
               if (Tools.myIsNull(id)) {
