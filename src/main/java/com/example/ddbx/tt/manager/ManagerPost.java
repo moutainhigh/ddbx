@@ -2,7 +2,7 @@
  * @Description: Manager的post处理
  * @Author: tt
  * @Date: 2019-01-25 16:41:58
- * @LastEditTime: 2019-02-11 16:16:01
+ * @LastEditTime: 2019-02-16 14:30:04
  * @LastEditors: tt
  */
 package com.example.ddbx.tt.manager;
@@ -16,10 +16,12 @@ import com.example.ddbx.tt.tool.Tools;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+
 /**
  * @description: Manager的所有Post请求入口
- * @param {type} 
- * @return: 
+ * @param {type}
+ * @return:
  */
 public class ManagerPost {
   public TtMap doPost(HttpServletRequest request) {
@@ -31,128 +33,54 @@ public class ManagerPost {
     Tools.formatResult(result2, false, 999, "异常，请重试！", "");// 初始化返回
     if (ManagerTools.checkCn(cn) && ManagerTools.checkSdo(postUrl.get("sdo"))) {// 过滤掉cn
       switch (postUrl.get("sdo")) { // 目前只有form模式下有post
-      case "form":
-      case "float":
-        long id = Tools.strToLong(post.get("id"));
-        DbCtrl dbCtrl = new DbCtrl(cn);
-        String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
-        try {
-          switch (postUrl.get("cn")) {
-          case "admin":
-            Admin admin = new Admin();
-            try {
-              if (id > 0) { // id为0时，新增
-                admin.edit(post, id);
-              } else {
-                admin.add(post);
-              }
-              boolean bSuccess = admin.errorCode == 0;
-              Tools.formatResult(result2, bSuccess, admin.errorCode, bSuccess ? "编辑成功！" : admin.errorMsg,
-                  bSuccess ? nextUrl : "");//失败时停留在当前页面,nextUrl为空
-            } catch (Exception e) {
-              Tools.formatResult(result2, false, 777, e.getMessage(),  "");//异常时设置提示保存失败并保持停留在当前页面
-              Tools.logError(e.getMessage(),true,false);
-            } finally {
-              admin.closeConn();
-            }
-            break;
-          case "admin_agp":
-            AdminAgp adminAgp = new AdminAgp();
-            try {
-              if (id > 0) { // id为0时，新增
-                adminAgp.edit(post, id);
-              } else {
-                adminAgp.add(post);
-              }
-              boolean bSuccess = adminAgp.errorCode == 0;
-              Tools.formatResult(result2, bSuccess, adminAgp.errorCode, bSuccess ? "编辑成功！" : adminAgp.errorMsg,
-                  bSuccess ? nextUrl : "");//失败时停留在当前页面,nextUrl为空
-            } catch (Exception e) {
-              Tools.logError(e.getMessage(),true,false);
-              Tools.formatResult(result2, false, 777, e.getMessage(), "");
-            } finally {
-              adminAgp.closeConn();
-            }
-            break;
-          case "fs_agp": // 用单独的类演示处理post，保存数据
-            FsModal fsModal = new FsModal();
-            try {
-              if (id > 0) { // id为0时，新增
-                fsModal.edit(post, id);
-              } else {
-                fsModal.add(post);
-              }
-              boolean bSuccess = fsModal.errorCode == 0;
-              //nextUrl = Tools.urlKill("");
-              Tools.formatResult(result2, bSuccess, fsModal.errorCode, bSuccess ? "编辑成功！" : fsModal.errorMsg, bSuccess ? nextUrl : "");
-            } catch (Exception e) {
-              Tools.logError(e.getMessage(),true,false);
-              Tools.formatResult(result2, false, 777, e.getMessage(), "");
-            } finally {
-              fsModal.closeConn();
-            }
-            break;
-            case "my_job":
-              System.out.println("99999999999");
-              break;
-            case "fs": // 用单独的类演示处理post，保存数据
-              FsModal fs = new FsModal();
-              try {
-                if (id > 0) { // id为0时，新增
-                  fs.edit(post, id);
+        case "form":
+        case "float":
+          long id = Tools.strToLong(post.get("id"));
+          DbCtrl dbCtrl = null;
+          String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
+          try {
+            switch (postUrl.get("cn")) {
+              case "admin":
+                dbCtrl = (DbCtrl) new Admin();
+                break;
+              case "admin_agp":
+                dbCtrl = (DbCtrl) new AdminAgp();
+                break;
+              case "fs_agp": // 用单独的类演示处理post，保存数据
+                dbCtrl = (DbCtrl) new FsModal();
+                break;
+              case "sys_modal": // 直接用dbCtrl来处理
+                System.out.println(post.toString());
+                if (post.get("id_uplevel").equals("0")) {
+                  post.put("level", "1");
                 } else {
-                  fs.add(post);
+                  post.put("level", "2");
                 }
-                boolean bSuccess = fs.errorCode == 0;
-                //nextUrl = Tools.urlKill("");
-                System.out.println("返回的url："+nextUrl);
-                Tools.formatResult(result2, bSuccess, fs.errorCode, bSuccess ? "编辑成功！" : fs.errorMsg, bSuccess ? nextUrl : "");
-              } catch (Exception e) {
-                Tools.logError(e.getMessage(),true,false);
-                Tools.formatResult(result2, false, 777, e.getMessage(), "");
-              } finally {
-                fs.closeConn();
-              }
-              break;
-
-            case "sys_modal":
-            System.out.println(post.toString());
-            if (post.get("id_uplevel").equals("0")) {
-              post.put("level", "1");
-            } else {
-              post.put("level", "2");
+                if (Tools.myIsNull(post.get("icohtml"))) {
+                  if (post.get("level") == "1") {
+                    post.put("icohtml", "<i class=\"fa fa-home\"></i>");
+                  } else {
+                    post.put("icohtml", "<i class=\"fa fa-arrow-circle-o-right\"></i>");
+                  }
+                }
+                break;
+              default:
             }
-            if (Tools.myIsNull(post.get("icohtml"))) {
-              if (post.get("level") == "1") {
-                post.put("icohtml", "<i class=\"fa fa-home\"></i>");
-              } else {
-                post.put("icohtml", "<i class=\"fa fa-arrow-circle-o-right\"></i>");
-              }
+            if (dbCtrl == null) {
+              dbCtrl = new DbCtrl(ManagerTools.getRealCn(cn));
             }
-            if (id > 0) { // id为0时，新增
-              dbCtrl.edit(post, id);
-            } else {
-              dbCtrl.add(post);
+            dbCtrl.doPost(post, id, result2);
+          } catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+            Tools.formatResult(result2, false, 0, e.getMessage(), nextUrl);
+          } finally {
+            if (dbCtrl != null) {
+              dbCtrl.closeConn();
             }
-            Tools.formatResult(result2, true, 0, "编辑成功！", nextUrl);
-            break;
-          default:
-            if (id > 0) { // id为0时，新增
-              dbCtrl.edit(post, id);
-            } else {
-              dbCtrl.add(post);
-            }
-            Tools.formatResult(result2, true, 0, "编辑成功！", nextUrl);
+            post.clear();
+            post = null;
           }
-        } catch (Exception e) {
-          Tools.logError(e.getMessage(),true,false);
-          Tools.formatResult(result2, false, 0, e.getMessage(), nextUrl);
-        } finally {
-          dbCtrl.closeConn();
-          post.clear();
-          post = null;
-        }
-        break;
+          break;
       }
     }
     return result2;

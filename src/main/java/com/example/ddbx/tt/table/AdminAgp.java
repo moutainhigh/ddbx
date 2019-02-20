@@ -2,7 +2,7 @@
  * @Description: 权限类
  * @Author: tt
  * @Date: 2019-01-24 09:38:15
- * @LastEditTime: 2019-02-14 15:18:49
+ * @LastEditTime: 2019-02-16 14:13:02
  * @LastEditors: tt
  */
 package com.example.ddbx.tt.table;
@@ -15,6 +15,7 @@ import com.example.ddbx.tt.tool.DbCtrl;
 import com.example.ddbx.tt.tool.Tools;
 
 import javax.servlet.http.HttpServletRequest;
+
 
 public class AdminAgp extends DbCtrl {
   private String purview_map = "";
@@ -208,22 +209,22 @@ public class AdminAgp extends DbCtrl {
     TtMap infoModal = infoModal(modalId);
     if (!Tools.isSuperAdmin(minfo)) {// 当前登陆用户非超级管理员
       switch (infoModal.get("superadmin")) {
-      case "1":// 此权限ID是超级管理员才能用的哈
-        result = false;
-        break;
-      case "2":// 此权限需要公司内部人员才能用的哈
-        result = Tools.isCcAdmin(minfo);
-        break;
-      case "0":// 普通模块，直接判断当前用户所属角色组是否包含此权限
-        result = strAgp.indexOf("," + modalId + ",") != -1;
-        if (result && !Tools.myIsNull(fsTableName)) {// 如果此用户角色拥有此权限，判断其所在公司是否勾选了次模块
-          String strAgpFs = getAgpStrFs(fsTableName, minfo.get("fsid"));
-          strAgpFs = "," + strAgpFs + ",";
-          result = strAgpFs.indexOf("," + modalId + ",") != -1;
-        }
-        break;
-      default:
-        break;
+        case "1":// 此权限ID是超级管理员才能用的哈
+          result = false;
+          break;
+        case "2":// 此权限需要公司内部人员才能用的哈
+          result = Tools.isCcAdmin(minfo);
+          break;
+        case "0":// 普通模块，直接判断当前用户所属角色组是否包含此权限
+          result = strAgp.indexOf("," + modalId + ",") != -1;
+          if (result && !Tools.myIsNull(fsTableName)) {// 如果此用户角色拥有此权限，判断其所在公司是否勾选了次模块
+            String strAgpFs = getAgpStrFs(fsTableName, minfo.get("fsid"));
+            strAgpFs = "," + strAgpFs + ",";
+            result = strAgpFs.indexOf("," + modalId + ",") != -1;
+          }
+          break;
+        default:
+          break;
       }
       // return
     } else {// 超级管理员拥有所有权限
@@ -235,13 +236,25 @@ public class AdminAgp extends DbCtrl {
   public boolean checkAgp(String modalId) {
     return checkAgp(modalId, null);
   }
-
+  @Override
+  public void doPost(TtMap post, long id,TtMap result2) {
+    if (id > 0) { // id为0时，新增
+      edit(post, id);
+    } else {
+      add(post);
+    }
+    String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
+    boolean bSuccess = errorCode == 0;
+    Tools.formatResult(result2, bSuccess, errorCode, bSuccess ? "编辑成功！" : errorMsg,
+            bSuccess ? nextUrl : "");//失败时停留在当前页面,nextUrl为空
+  }
   /**
    * @description: 处理后台的get,演示独立类处理sdo=form的get
    * @param request 待setAttribute的HttpServletRequest。
    * @param post    url来的参数
    * @return 直接setAttribute到相关字段里面
    */
+  @Override
   public void doGetForm(HttpServletRequest request, TtMap post) {
     Modal modalMenu = new Modal();
     request.setAttribute("modals", modalMenu.getAllFsCheckedModals()); // 后台左侧菜单,sidebar.jsp里面用到的菜单列表
@@ -265,6 +278,7 @@ public class AdminAgp extends DbCtrl {
    * @param {type}
    * @return:
    */
+  @Override
   public void doGetList(HttpServletRequest request, TtMap post) {
     int pageInt = Integer.valueOf(Tools.myIsNull(post.get("p")) == false ? post.get("p") : "1"); // 当前页
     int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
@@ -291,7 +305,7 @@ public class AdminAgp extends DbCtrl {
     for (TtMap tmpInfo : list) { // 获取当前角色组的成员列表
       String value = "";
       TtList listTmps = Tools
-          .reclist("select name from " + Config.DB_USERTABLENAME + " where agp_id=" + tmpInfo.get("id"));
+              .reclist("select name from " + Config.DB_USERTABLENAME + " where agp_id=" + tmpInfo.get("id"));
       for (TtMap var : listTmps) {
         value += var.get("name") + ",";
       }

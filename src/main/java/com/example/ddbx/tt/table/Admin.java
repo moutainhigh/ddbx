@@ -2,18 +2,18 @@
  * @Description: 单独的管理员管理类演示，继承自DbCtrl类
  * @Author: tt
  * @Date: 2019-01-26 11:35:00
- * @LastEditTime: 2019-02-15 15:01:53
+ * @LastEditTime: 2019-02-16 14:05:15
  * @LastEditors: tt
  */
 package com.example.ddbx.tt.table;
-
 
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.tool.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+
 
 public class Admin extends DbCtrl {
   private final String title = "管理员管理";
@@ -126,6 +126,7 @@ public class Admin extends DbCtrl {
    * @param {type}
    * @return:
    */
+  @Override
   public void doGetForm(HttpServletRequest request, TtMap post) {
     if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
       request.setAttribute("errorMsg", "权限访问错误！");
@@ -151,6 +152,7 @@ public class Admin extends DbCtrl {
    * @param {type}
    * @return:
    */
+  @Override
   public void doGetList(HttpServletRequest request, TtMap post) {
     if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
       request.setAttribute("errorMsg", errorMsg);
@@ -230,7 +232,7 @@ public class Admin extends DbCtrl {
       if (!Tools.myIsNull(kw)) { // 搜索关键字高亮
         for (TtMap info : list) {
           info.put("name",
-              info.get("name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
+                  info.get("name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
         }
       }
       request.setAttribute("list", list);// 列表list数据
@@ -246,7 +248,18 @@ public class Admin extends DbCtrl {
     }
     // request.setAttribute("showmsg", "测试弹出消息提示哈！"); //如果有showmsg字段，在载入列表前会提示
   }
-
+  @Override
+  public void doPost(TtMap post, long id,TtMap result2) {
+    if (id > 0) { // id为0时，新增
+      edit(post, id);
+    } else {
+      add(post);
+    }
+    String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
+    boolean bSuccess = errorCode == 0;
+    Tools.formatResult(result2, bSuccess, errorCode, bSuccess ? "编辑成功！" : errorMsg,
+            bSuccess ? nextUrl : "");//失败时停留在当前页面,nextUrl为空
+  }
   /**
    * @description: 重载chk方法，就是数据写入前的一些判断逻辑可以在这里完成，如果返回false，将放弃数据写入操作
    * @param {type}

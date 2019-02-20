@@ -2,7 +2,7 @@
  * @Description: 城市列表演示类模板，演示单独的class继承dbctrl来处理各种数据
  * @Author: tt
  * @Date: 2019-01-24 09:38:15
- * @LastEditTime: 2019-02-14 15:13:22
+ * @LastEditTime: 2019-02-16 13:52:12
  * @LastEditors: tt
  */
 package com.example.ddbx.tt.table;
@@ -15,6 +15,8 @@ import com.example.ddbx.tt.tool.Excel;
 import com.example.ddbx.tt.tool.Tools;
 
 import javax.servlet.http.HttpServletRequest;
+
+
 
 public class CommCitys extends DbCtrl {
   private final String lsitTitleString = "城市列表管理";
@@ -94,6 +96,7 @@ public class CommCitys extends DbCtrl {
    * @param {type}
    * @return:
    */
+  @Override
   public void doGetForm(HttpServletRequest request, TtMap post) {
     if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
       request.setAttribute("errorMsg", "权限访问错误！");
@@ -119,6 +122,7 @@ public class CommCitys extends DbCtrl {
    * @param {type}
    * @return:
    */
+  @Override
   public void doGetList(HttpServletRequest request, TtMap post) {
     if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
       request.setAttribute("errorMsg", errorMsg);

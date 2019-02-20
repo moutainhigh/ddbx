@@ -57,35 +57,21 @@ public class ManagerGet {
               haveSetFormData = true;
               break;
               case "fs_agp": // 公司模块选择，显示所有非内部模块
-              nid = Long.parseLong(Tools.minfo().get("fsid"));
-              request.setAttribute("modals", modalMenu.getAllModals()); // 后台左侧菜单,sidebar.jsp里面用到的菜
+                post.put("id", Tools.minfo().get("fsid")); //修改id为当前登陆用户所在公司的id
+                request.setAttribute("modals", modalMenu.getAllModals()); // 后台左侧菜单,sidebar.jsp里面用到的菜
               break;
               case "fs": // 公司模块选择，显示所有非内部模块
-                nid = Long.parseLong(Tools.minfo().get("fsid"));
+                //nid = Long.parseLong(Tools.minfo().get("fsid"));
                 request.setAttribute("modals", modalMenu.getAllModals()); // 后台左侧菜单,sidebar.jsp里面用到的菜
                 break;
 
-              default:
+            default:
               break;
-
             }
-            if (!haveSetFormData) {
-              if (Tools.myIsNull(id)) {
-              } else {
-                nid = Long.valueOf(id);
-              }
-              dbCtrl.showall = true;
-              info = dbCtrl.info(nid);
-              System.out.println(info);
-              if (!Tools.myIsNull(info.get("password"))) {// 密码处理，不显示
-                info.put("password", "");
-              }
-              jsonInfo = Tools.jsonEnCode(info);
-              System.out.println(jsonInfo);
-              request.setAttribute("info", jsonInfo);
-              request.setAttribute("infodb", info);
-              request.setAttribute("id", nid > 0 ? nid : 0);
-            }
+            if (dbCtrl==null) {//使用dbCtrl默认的配置输出数据
+              dbCtrl = new DbCtrl(ManagerTools.getRealCn(cn));
+            };
+            dbCtrl.doGetForm(request, post);
             break;
 
           // ===============无敌分割线，分割sdo=form和list=================/

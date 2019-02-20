@@ -3,7 +3,7 @@
  * ver(); 使用时建议在此基础上继承个自己的单独类。
  * @Author: tt
  * @Date: 2018-12-07 10:47:04
- * @LastEditTime: 2019-02-12 11:43:10
+ * @LastEditTime: 2019-02-16 14:49:05
  * @LastEditors: tt
  */
 package com.example.ddbx.tt.tool;
@@ -17,8 +17,9 @@ import org.apache.commons.logging.LogFactory;
 import java.sql.SQLException;
 import java.util.*;
 
-import com.alibaba.druid.pool.DruidPooledConnection;
+import javax.servlet.http.HttpServletRequest;
 
+import com.alibaba.druid.pool.DruidPooledConnection;
 
 public class DbCtrl {
     public DruidPooledConnection conn = null;
@@ -748,7 +749,52 @@ public class DbCtrl {
     private TtMap show(TtMap rec) {
         return rec;
     }
-
+    /**
+     * @说明: 给继承的子类重载用的
+     * @param {type} {type}
+     * @return: 返回
+     */
+    public void doGetList(HttpServletRequest request, TtMap post) {
+    }
+    /**
+     * @说明: 给继承的子类重载用的
+     * @param {type} {type}
+     * @return: 返回
+     */
+    public void doGetForm(HttpServletRequest request, TtMap post) {
+        String id = post.get("id");
+        long nid = 0;
+        if (!Tools.myIsNull(id)) {
+            nid = Long.valueOf(id);
+        }
+        showall = true;
+        TtMap info = info(nid);
+        if (!Tools.myIsNull(info.get("password"))) {// 密码处理，不显示
+            info.put("password", "");
+        }
+        System.out.println(info);
+        String jsonInfo = Tools.jsonEnCode(info);
+        System.out.println(jsonInfo);
+        request.setAttribute("info", jsonInfo);
+        request.setAttribute("infodb", info);
+        request.setAttribute("id", nid > 0 ? nid : 0);
+    }
+    /**
+     * @说明: 给子类重载用，处理post
+     * @param {type} {type}
+     * @return: 返回
+     */
+    public void doPost(TtMap post, long id,TtMap result2) {
+        if (id > 0) { // id为0时，新增
+            edit(post, id);
+        } else {
+            add(post);
+        }
+        String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
+        boolean bSuccess = errorCode == 0;
+        Tools.formatResult(result2, bSuccess, errorCode, bSuccess ? "编辑成功！" : errorMsg,
+                bSuccess ? nextUrl : "");//失败时停留在当前页面,nextUrl为空
+    }
     /**
      * 关闭连接，所有数据库操作完成后应该调用此方法关闭连接，释放资源。
      */
