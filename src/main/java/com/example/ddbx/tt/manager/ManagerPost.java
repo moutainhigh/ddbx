@@ -92,6 +92,9 @@ public class ManagerPost {
               fsModal.closeConn();
             }
             break;
+            case "my_job":
+              System.out.println("99999999999");
+              break;
             case "fs": // 用单独的类演示处理post，保存数据
               FsModal fs = new FsModal();
               try {
@@ -111,6 +114,7 @@ public class ManagerPost {
                 fs.closeConn();
               }
               break;
+
             case "sys_modal":
             System.out.println(post.toString());
             if (post.get("id_uplevel").equals("0")) {
