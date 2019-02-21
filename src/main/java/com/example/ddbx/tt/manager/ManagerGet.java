@@ -64,7 +64,16 @@ public class ManagerGet {
                 //nid = Long.parseLong(Tools.minfo().get("fsid"));
                 request.setAttribute("modals", modalMenu.getAllModals()); // 后台左侧菜单,sidebar.jsp里面用到的菜
                 break;
-
+              case "mytask": // 我的任务板块
+                //System.out.println("进入我的世界");
+                MyTask myTask=new MyTask();
+                request.setAttribute("clgc_list",myTask.getclgc());
+                break;
+              case "sys_config_son": // 我的任务板块
+                //System.out.println("进入我的世界");
+                MyTask myTask1=new MyTask();
+                request.setAttribute("clgc_list",myTask1.getclgc());
+                break;
             default:
               break;
             }
@@ -151,7 +160,6 @@ public class ManagerGet {
               haveSetFormData = true;
               break;
               case "mytask"://我的任务
-
                 MyTask mytask=new MyTask();
                 try {
                   mytask.doGetList(request,post);
@@ -159,6 +167,28 @@ public class ManagerGet {
                   Tools.logError(e.getMessage(), true, true);
                 } finally {
                   mytask.closeConn();
+                }
+                haveSetFormData = true;
+                break;
+                case "sys_config"://业务板块
+                    Sys_config sys_config=new Sys_config();
+                    try {
+                        sys_config.doGetList(request,post);
+                    } catch (Exception e) {
+                        Tools.logError(e.getMessage(), true, true);
+                    } finally {
+                        sys_config.closeConn();
+                    }
+                    haveSetFormData = true;
+                    break;
+              case "sys_config_son"://业务子版块
+                Sys_config_son sys_config_son=new Sys_config_son();
+                try {
+                  sys_config_son.doGetList(request,post);
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, true);
+                } finally {
+                  sys_config_son.closeConn();
                 }
                 haveSetFormData = true;
                 break;

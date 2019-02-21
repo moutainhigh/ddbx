@@ -34,8 +34,8 @@ public class Config {
     public final static String DB_MAXACTIVECOMNNECTION = "20";/* 连接池最大连接数.连接池里面最大的连接数，超过这个数时，再获取连接需要等待 */
     public final static String[] DB_CONFIG = TESTMODE/* 数据源配置，格式：数据库名/用户名/密码，每三个一组为一个数据源 */
             ? new String[] { //测试环境
-            "ttdemo", "root", "root",//ttdemo
-            "ddbxdb", "root", "root" //ddbxdb
+            "ddbxdb", "root", "root",//ttdemo
+            "ttdemo", "root", "root" //ddbxdb
 
             }
             : new String[] { //生产环境    

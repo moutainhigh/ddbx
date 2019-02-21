@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%
 String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
@@ -27,127 +28,22 @@ String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
 					<div class="box-body">
 						<div style="border:1px solid #478FCA;   margin:5px; padding:20px;border-radius: 10px;">
 							<ul id="yw" class="nav nav-tabs">
-								<li class="active">
-									<a id="" style="background-color: rgb(51, 122, 183); color: rgb(255, 255, 255);" href="">征信查询</a>
+								<c:forEach items="${requestScope.clgc_list}" var="c" varStatus="status">
+								<li ${c.number==1?"class='active'":''}>
+									<a id="${c.type}"  href="" data-toggle="tab" class="btn btn-block btn-info">
+									${c.name}
+									</a>
 								</li>
-
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-long-arrow-right"></i></li>
-
-
-								<li>
-
-
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">征信通融</a>
-
-								</li>
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-long-arrow-right"></i></li>
-
-
-								<li>
-
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">车辆评估</a>
-
-
-								</li>
-
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-long-arrow-right"></i></li>
-
-
-
-								<li>
-
-
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">开卡申请</a>
-
-								</li>
-
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-long-arrow-right"></i></li>
-
-
-								<li>
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">视频面签</a>
-
-								</li>
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-long-arrow-right"></i></li>
-
-								<li>
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">贷款申请</a>
-								</li>
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-long-arrow-right"></i></li>
-
-
-								<li>
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">内审通融</a>
-								</li>
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-long-arrow-right"></i></li>
-
-
-								<li>
-
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">资金分配</a>
-								</li>
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-long-arrow-right"></i></li>
-								<li>
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">融资</a>
-								</li>
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-long-arrow-right"></i></li>
-
-
-
-								<li>
-
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">银行审批</a>
-
-
-								</li>
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-long-arrow-right"></i></li>
-
-
-								<li>
-
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">公司归档</a>
-
-
-								</li>
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-long-arrow-right"></i></li>
-
-
-								<li>
-
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">抵押归档</a>
-
-
-								</li>
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-arrows-h"></i></li>
-
-
-
-								<li>
-
-
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">跨区域业务审批</a>
-
-								</li>
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-arrows-h"></i></li>
-
-
-
-								<li>
-
-
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">业务信息修改</a>
-
-								</li>
-								<li style="display:block;text-align:center; line-height:50px"><i class="fa fa-arrows-h"></i></li>
-
-
-								<li>
-
-
-									<a id="" style="background-color:#3c8dbc;color: #ffffff;" href="">退单退费</a>
-
-								</li>
-
+								<c:choose>
+                                <c:when test="${status.last}">
+								</c:when>
+									<c:otherwise>
+										<li style="display:block;text-align:center; line-height:50px">
+											<i class="fa fa-long-arrow-right"></i>
+										</li>
+									</c:otherwise>
+								</c:choose>
+								</c:forEach>
 
 							</ul>
 						</div>

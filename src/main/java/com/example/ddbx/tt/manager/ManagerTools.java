@@ -25,7 +25,7 @@ public class ManagerTools {
     String[] allowCnList = { "admin", "assess_admin", "home", "admin2", "button", "demo_upfile", "icon", "general",
         "admin_agp", "Timeline", "Modals", "table", "comm_citys", "sys_modal", "fs_agp", "readme", "sys_error","readmedev",
             "fs",
-            "gems","dd_icbc","alltask","mytask","my_job" }; // 允许的cn,只有在列表中的cn才允许访问
+            "gems","dd_icbc","alltask","mytask","my_job","sys_config","sys_config_son" }; // 允许的cn,只有在列表中的cn才允许访问
     return Tools.arrayIndexOf(allowCnList, cn);
   }
 
@@ -44,7 +44,9 @@ public class ManagerTools {
             "sys_error",
             "fs",
             "gems",
-            "dd_icbc","alltask","mytask"
+            "dd_icbc",
+            "alltask",
+            "mytask","sys_config","sys_config_son"
     }; // 允许的cn,只有在列表中的cn才使用数据库，
     return Tools.arrayIndexOf(allowCnList, cn);
   }
@@ -86,6 +88,8 @@ public class ManagerTools {
     switch (cn) {
     case "fs_agp":
       return "fs";
+   case "mytask":
+      return "dd_icbc_erp";
     default:
       return cn;
     }

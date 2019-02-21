@@ -11,6 +11,7 @@ import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.table.Admin;
 import com.example.ddbx.tt.table.AdminAgp;
 import com.example.ddbx.tt.table.FsModal;
+import com.example.ddbx.tt.table.Sys_config;
 import com.example.ddbx.tt.tool.DbCtrl;
 import com.example.ddbx.tt.tool.Tools;
 
@@ -40,6 +41,9 @@ public class ManagerPost {
           String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
           try {
             switch (postUrl.get("cn")) {
+              case "sys_config":
+                    dbCtrl = (DbCtrl) new Sys_config();
+                break;
               case "admin":
                 dbCtrl = (DbCtrl) new Admin();
                 break;

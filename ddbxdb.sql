@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80013
 File Encoding         : 65001
 
-Date: 2019-02-16 17:44:35
+Date: 2019-02-21 17:58:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,7 +46,7 @@ CREATE TABLE `admin` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `mid_add` (`mid_add`) USING BTREE,
   KEY `showtag` (`showtag`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COMMENT='后台市场会员表,<!-- APP端/H5端/小程序端登陆会员表 -->';
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COMMENT='后台市场会员表,<!-- APP端/H5端/小程序端登陆会员表 -->';
 
 -- ----------------------------
 -- Records of admin
@@ -60,7 +60,7 @@ INSERT INTO `admin` VALUES ('31', '0', '测试111测试111', '/upload/2019/02/1
 INSERT INTO `admin` VALUES ('32', '0', '测试333', '/upload/2019/02/11/6aad3155ee55e0904e8f5a8088f4dfa4.jpg', '昵称', '2019-01-16 11:22:28', '2019-02-11 19:43:29', '0', '0', null, null, '1', '0', null, 'cs333', 'a4bf3d1b793ee31147ed28cb849683eb', null, '2', '507', '12', '33', '0', '0');
 INSERT INTO `admin` VALUES ('33', '0', '33332', 'images/mgcaraddimg.jpg', 'woshi333', '2019-01-16 11:22:40', '2019-01-29 14:15:01', '0', '0', null, null, '1', '0', null, 'test333', '41f347d047e225bb2cb8fcd5e0f13329', null, '14', '462', '8', '33', '0', '0');
 INSERT INTO `admin` VALUES ('34', '0', '测试4444测试4444', 'images/mgcaraddimg.jpg', '', '2019-01-16 11:23:03', '2019-01-29 13:44:52', '0', '0', null, null, '1', '0', null, '1234', null, null, '0', '0', '12', '33', '0', '0');
-INSERT INTO `admin` VALUES ('35', '0', '测试歌手', '/upload/2019/02/13/17be9274c16f17780d3bff6da7b9100d.jpg', '我晕倒', '2019-01-16 11:23:28', '2019-02-13 17:12:08', '0', '0', null, null, '1', '0', null, 'hhhhh', '3d48b10a2a0d66ee88b0a9a080e66c25', null, '0', '0', '8', '33', '0', '0');
+INSERT INTO `admin` VALUES ('35', '0', '测试歌手', '/upload/2019/02/13/17be9274c16f17780d3bff6da7b9100d.jpg', '我晕倒', '2019-01-16 11:23:28', '2019-02-18 11:13:19', '0', '0', null, null, '1', '0', null, 'hhhhh', '3d48b10a2a0d66ee88b0a9a080e66c25', null, '0', '0', '8', '33', '0', '0');
 INSERT INTO `admin` VALUES ('36', '0', 'ss屠国强ss', '/upload/2019/02/13/09c0617e72acbf457193e3ff8aa62940.jpg', 'ww屠ww', '2019-01-17 15:10:29', '2019-02-13 15:04:21', '21', '0', null, null, '1', '0', null, 'tgqss', 'remove', null, '9', '48', '12', '33', '0', '0');
 INSERT INTO `admin` VALUES ('37', '0', '大哥啊', '/upload/2019/01/20/cf1b4d5f4e5282d2721b178819c235ab.jpg', '大哥啊', '2019-01-20 22:04:50', '2019-01-25 17:26:05', '21', '0', null, null, '1', '0', null, 'dga', '3d48b10a2a0d66ee88b0a9a080e66c25', null, '17', '389', '11', '33', '0', '0');
 INSERT INTO `admin` VALUES ('38', '0', '中国好声音', '/upload/2019/01/20/739c269a3690b9f3943ef4d51f4ea390.jpg', '1234', '2019-01-20 22:13:21', '2019-01-20 22:23:21', '21', '0', null, null, '1', '0', null, 'zghsy', 'd629381af8294f6d9b7b44f110deaa4c', null, '33', '198', '0', '0', '0', '0');
@@ -72,7 +72,8 @@ INSERT INTO `admin` VALUES ('43', '0', '大师兄3', '/upload/2019/02/11/a0ce262
 INSERT INTO `admin` VALUES ('44', '0', '大师兄4', '/upload/2019/02/11/44a3b08c43297c29747d70b2d0b45eb0.jpg', '昵称', '2019-01-29 16:05:37', '2019-02-11 19:42:14', '42', '0', null, null, '1', '0', null, 'dsx4', 'a4bf3d1b793ee31147ed28cb849683eb', '0', '20', '329', '8', '33', '0', '0');
 INSERT INTO `admin` VALUES ('45', '0', '大师兄5', '/upload/2019/01/31/3206609c3639c4b184221f9c23aac612.jpg', '昵称', '2019-01-29 16:06:26', '2019-01-31 17:59:16', '42', '0', null, null, '1', '0', null, 'dsx5', 'a4bf3d1b793ee31147ed28cb849683eb', '0', '22', '260', '8', '33', '0', '0');
 INSERT INTO `admin` VALUES ('46', '0', '张三丰', '/upload/2019/02/11/04fcc7c18db1496001c94fe7d461dc8e.jpg', '昵称', '2019-02-11 16:36:33', '2019-02-11 16:44:48', '0', '0', null, null, '1', '0', null, 'adminwoshizsf', 'b33fea4f0f385e540cea20d3560a6441', '0', '13', '459', '12', '33', '0', '0');
-INSERT INTO `admin` VALUES ('47', '0', '图图图', '/upload/2019/02/16/d24b2a1a6218b715b159ecf812222d1d.jpg', '图图图', '2019-02-16 16:17:13', '2019-02-16 16:17:13', '21', '0', null, null, '1', '0', null, '123', '3d48b10a2a0d66ee88b0a9a080e66c25', '0', '23', '226', '12', '1', '0', '0');
+INSERT INTO `admin` VALUES ('47', '0', '图图图', '/upload/2019/02/16/d24b2a1a6218b715b159ecf812222d1d.jpg', '图图图', '2019-02-16 16:17:13', '2019-02-18 11:06:41', '21', '0', null, null, '1', '0', null, '123', '3d48b10a2a0d66ee88b0a9a080e66c25', '0', '23', '226', '12', '1', '0', '0');
+INSERT INTO `admin` VALUES ('48', '0', '图图图', '/upload/2019/02/18/13a7824f0c1874ae22ac7fa67738ab3e.jpg', '图图图', '2019-02-18 11:17:11', '2019-02-18 11:17:11', '21', '0', null, null, '1', '0', null, '111111', 'e0b50ce6529038da5cd69ffa2cce9c19', '0', '22', '273', '9', '34', '0', '0');
 
 -- ----------------------------
 -- Table structure for admin_agp
@@ -721,11 +722,12 @@ CREATE TABLE `dd_icbc` (
   `cityid` int(11) DEFAULT NULL COMMENT '所在市ID',
   `adminop_tag` tinyint(4) DEFAULT NULL COMMENT '当前操作人ID',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dd_icbc
 -- ----------------------------
+INSERT INTO `dd_icbc` VALUES ('1', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for dd_icbc_erp
@@ -750,11 +752,12 @@ CREATE TABLE `dd_icbc_erp` (
   `c_carno` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '车牌号',
   `adminop_tag` int(11) DEFAULT NULL COMMENT '当前操作人id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dd_icbc_erp
 -- ----------------------------
+INSERT INTO `dd_icbc_erp` VALUES ('1', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for dd_icbc_erp_result
@@ -858,7 +861,7 @@ CREATE TABLE `fs` (
 -- ----------------------------
 -- Records of fs
 -- ----------------------------
-INSERT INTO `fs` VALUES ('33', '擎天柱公司', '33', '198', '23', '擎天柱路', '1', 'QTZ', '', '0', '', '5,14,17,20,16,21,10,27,22,28,26,29,11,24,12,9,8,7,15,4,13,3,2,1,18,23,25,6,19,30,', '2019-02-16 17:24:29', '2019-01-24 07:29:44', '21', '21', null, null, '/upload/2019/02/16/004b24049229f5e889a2a8b187b2f5c2.jpg');
+INSERT INTO `fs` VALUES ('33', '擎天柱公司', '33', '198', '23', '擎天柱路', '1', 'QTZ', '', '0', '', '5,14,17,20,16,21,10,27,22,28,26,29,11,24,12,9,8,7,15,4,13,3,2,1,18,23,25,6,19,30,', '2019-02-18 11:05:44', '2019-01-24 07:29:44', '21', '21', '33', '1111111111', '/upload/2019/02/16/004b24049229f5e889a2a8b187b2f5c2.jpg');
 INSERT INTO `fs` VALUES ('34', '测试', '11', '34', null, 'sssssssssssss', '1', 'cs', null, '0', null, '5,14,17,20,16,21,10,27,22,28,26,29,11,24,12,9,8,7,15,4,13,3,2,1,18,23,25,6,19,30,', '2019-02-16 17:31:52', '2019-02-16 17:19:52', '21', '21', '33', '测试测试测试', '/upload/2019/02/16/19ecb55e54ed7c8f14f5bf5b27d0f5ea.jpg');
 
 -- ----------------------------
@@ -889,6 +892,61 @@ CREATE TABLE `gems` (
 INSERT INTO `gems` VALUES ('46', '飞机啊飞机', '33', '1', '18950388428', '1', null, null, '2018-04-24 19:25:52', '2018-07-07 11:12:17', '', '0', '');
 
 -- ----------------------------
+-- Table structure for sys_config
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_config`;
+CREATE TABLE `sys_config` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dt_add` datetime DEFAULT NULL COMMENT '添加时间',
+  `dt_edit` datetime DEFAULT NULL COMMENT '修改时间',
+  `name` varchar(255) DEFAULT NULL COMMENT '板块名称',
+  `up_id` int(11) DEFAULT NULL COMMENT '所属板块id',
+  `mid_add` int(11) DEFAULT NULL COMMENT '添加人id',
+  `mid_edit` int(11) DEFAULT NULL COMMENT '编辑人id',
+  `showtag` int(11) DEFAULT NULL COMMENT '1 显示 /2 隐藏',
+  `number` int(11) DEFAULT NULL COMMENT '业务展示顺序  1-2-3-4-5',
+  `pagehtml` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '页面html',
+  `urlotherstr` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'url里传入的其他参数',
+  `type` varchar(255) DEFAULT NULL,
+  `cn` varchar(255) DEFAULT NULL,
+  `sdo` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_config
+-- ----------------------------
+INSERT INTO `sys_config` VALUES ('1', '2019-02-21 15:58:37', '2019-02-21 16:32:53', '开卡', null, null, '21', '1', '2', '\n				', '', 'kk', '', 'list');
+INSERT INTO `sys_config` VALUES ('2', '2019-02-21 15:58:41', '2019-02-21 16:24:03', '征信', null, null, '21', '1', '1', '\n				', '', 'zx', 'zx', 'list');
+
+-- ----------------------------
+-- Table structure for sys_config_son
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_config_son`;
+CREATE TABLE `sys_config_son` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dt_add` datetime DEFAULT NULL,
+  `dt_edit` datetime DEFAULT NULL,
+  `mid_add` int(11) DEFAULT NULL,
+  `mid_edit` int(11) DEFAULT NULL,
+  `pgehtml` text,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '子版块名称',
+  `c_id` int(11) DEFAULT NULL COMMENT '关联上级板块id',
+  `number` int(11) DEFAULT NULL COMMENT '展示序号',
+  `showtag` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '1展示/2隐藏',
+  `urlotherstr` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'url里传入的其他参数',
+  `type` varchar(255) DEFAULT NULL,
+  `cn` varchar(255) DEFAULT NULL,
+  `sdo` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_config_son
+-- ----------------------------
+INSERT INTO `sys_config_son` VALUES ('1', null, '2019-02-21 17:52:10', null, '21', null, '开始', '2', '1', '', '1', '1', '1', '1');
+
+-- ----------------------------
 -- Table structure for sys_dic_tag
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dic_tag`;
@@ -913,7 +971,7 @@ CREATE TABLE `sys_error` (
   `errormsg` longtext,
   `dt_add` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=572 DEFAULT CHARSET=utf8 COMMENT='系统错误日志，异常表';
+) ENGINE=InnoDB AUTO_INCREMENT=588 DEFAULT CHARSET=utf8 COMMENT='系统错误日志，异常表';
 
 -- ----------------------------
 -- Records of sys_error
@@ -1489,6 +1547,22 @@ INSERT INTO `sys_error` VALUES ('568', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%
 INSERT INTO `sys_error` VALUES ('569', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddd_fs%26type%3Daccount%26sdo%3Dform:An exception occurred processing [/WEB-INF/jsp/manager/account/dd_fs.form.jsp] at line [129]\r\n\r\n126: 						</tr>\r\n127: 						<%\r\n128: 							Map<String,Object> menus = (Map<String,Object>)request.getAttribute(\"modals\");\r\n129: 							for (String key :menus.keySet()){  //一级菜单循环开始\r\n130: 								Map<String,Object>  mainList = (Map<String,Object>) menus.get(key);\r\n131: 								TtList submenus =(TtList)mainList.get(\"submenu\");\r\n132: 								TtMap mainInfo = (TtMap)mainList.get(\"mainmenu\");\r\n\r\n\r\nStacktrace:', '2019-02-16 16:54:24');
 INSERT INTO `sys_error` VALUES ('570', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddd_fs%26type%3Daccount%26sdo%3Dform:An exception occurred processing [/WEB-INF/jsp/manager/account/dd_fs.form.jsp] at line [129]\r\n\r\n126: 						</tr>\r\n127: 						<%\r\n128: 							Map<String,Object> menus = (Map<String,Object>)request.getAttribute(\"modals\");\r\n129: 							for (String key :menus.keySet()){  //一级菜单循环开始\r\n130: 								Map<String,Object>  mainList = (Map<String,Object>) menus.get(key);\r\n131: 								TtList submenus =(TtList)mainList.get(\"submenu\");\r\n132: 								TtMap mainInfo = (TtMap)mainList.get(\"mainmenu\");\r\n\r\n\r\nStacktrace:', '2019-02-16 16:55:26');
 INSERT INTO `sys_error` VALUES ('571', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddd_fs%26type%3Daccount%26sdo%3Dform:An exception occurred processing [/WEB-INF/jsp/manager/account/dd_fs.form.jsp] at line [129]\r\n\r\n126: 						</tr>\r\n127: 						<%\r\n128: 							Map<String,Object> menus = (Map<String,Object>)request.getAttribute(\"modals\");\r\n129: 							for (String key :menus.keySet()){  //一级菜单循环开始\r\n130: 								Map<String,Object>  mainList = (Map<String,Object>) menus.get(key);\r\n131: 								TtList submenus =(TtList)mainList.get(\"submenu\");\r\n132: 								TtMap mainInfo = (TtMap)mainList.get(\"mainmenu\");\r\n\r\n\r\nStacktrace:', '2019-02-16 16:55:28');
+INSERT INTO `sys_error` VALUES ('572', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddemo_upfile%26sdo%3Dform%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;demo_upfile.form.jsp] not found', '2019-02-18 15:59:33');
+INSERT INTO `sys_error` VALUES ('573', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-18 15:59:45');
+INSERT INTO `sys_error` VALUES ('574', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found', '2019-02-18 15:59:48');
+INSERT INTO `sys_error` VALUES ('575', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddemo_upfile%26sdo%3Dform%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;demo_upfile.form.jsp] not found', '2019-02-18 15:59:52');
+INSERT INTO `sys_error` VALUES ('576', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dalltask%26type%3Dddbx%26sdo%3Dform%26id%3D1:Unable to compile class for JSP: \r\n\r\nAn error occurred at line: [168] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nDuplicate local variable infodb\r\n165:                     </div>\r\n166:                 </div>\r\n167:                 <%\r\n168:                     Map<String, String> infodb = (Map<String, String>) request.getAttribute(\"infodb\");\r\n169:                 %>\r\n170:                 <div class=\"form-group\">\r\n171:                     <label class=\"col-sm-2 control-label\">公司logo</label>\r\n\r\n\r\nAn error occurred at line: [174] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nDuplicate local variable upFile\r\n171:                     <label class=\"col-sm-2 control-label\">公司logo</label>\r\n172:                     <div class=\"col-sm-6\">\r\n173:                         <%\r\n174:                             String  upFile = \"../upfile.inc.jsp\";\r\n175:                             String imgPreName = \"fs_logo\";\r\n176:                             String[] ssImgs = { //设置已有值\r\n177:                                     !Tools.myIsNull(infodb.get(imgPreName))?infodb.get(imgPreName):\"\"\r\n\r\n\r\nAn error occurred at line: [175] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nDuplicate local variable imgPreName\r\n172:                     <div class=\"col-sm-6\">\r\n173:                         <%\r\n174:                             String  upFile = \"../upfile.inc.jsp\";\r\n175:                             String imgPreName = \"fs_logo\";\r\n176:                             String[] ssImgs = { //设置已有值\r\n177:                                     !Tools.myIsNull(infodb.get(imgPreName))?infodb.get(imgPreName):\"\"\r\n178:                             };\r\n\r\n\r\nAn error occurred at line: [176] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nDuplicate local variable ssImgs\r\n173:                         <%\r\n174:                             String  upFile = \"../upfile.inc.jsp\";\r\n175:                             String imgPreName = \"fs_logo\";\r\n176:                             String[] ssImgs = { //设置已有值\r\n177:                                     !Tools.myIsNull(infodb.get(imgPreName))?infodb.get(imgPreName):\"\"\r\n178:                             };\r\n179:                             String sImgs = \"\";\r\n\r\n\r\nAn error occurred at line: [179] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nDuplicate local variable sImgs\r\n176:                             String[] ssImgs = { //设置已有值\r\n177:                                     !Tools.myIsNull(infodb.get(imgPreName))?infodb.get(imgPreName):\"\"\r\n178:                             };\r\n179:                             String sImgs = \"\";\r\n180:                             for (int i =0 ;i<ssImgs.length;i++){\r\n181:                                 sImgs=sImgs+ssImgs[i]+\"|\";\r\n182:                             }\r\n\r\n\r\nAn error occurred at line: [204] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nDuplicate local variable sp\r\n201:                 <%--selcet，下拉框演示--%>\r\n202:                 <%\r\n203:                     //dicopt功能演示，指定表里面的name和id，并用name组成<option></option>\r\n204:                     String sp = Tools.dicopt(\"comm_states\", 0);//省会，\r\n205:                 %>\r\n206:                 <div class=\"form-group\">\r\n207:                     <label class=\"col-sm-2 control-label\">显示/隐藏</label>\r\n\r\n\r\nStacktrace:', '2019-02-18 16:08:08');
+INSERT INTO `sys_error` VALUES ('577', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dalltask%26type%3Dddbx%26sdo%3Dform%26id%3D1:Unable to compile class for JSP: \r\n\r\nAn error occurred at line: [168] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nDuplicate local variable infodb\r\n165:                     </div>\r\n166:                 </div>\r\n167:                 <%\r\n168:                     Map<String, String> infodb = (Map<String, String>) request.getAttribute(\"infodb\");\r\n169:                 %>\r\n170:                 <div class=\"form-group\">\r\n171:                     <label class=\"col-sm-2 control-label\">公司logo</label>\r\n\r\n\r\nAn error occurred at line: [174] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nDuplicate local variable upFile\r\n171:                     <label class=\"col-sm-2 control-label\">公司logo</label>\r\n172:                     <div class=\"col-sm-6\">\r\n173:                         <%\r\n174:                             String  upFile = \"../upfile.inc.jsp\";\r\n175:                             String imgPreName = \"fs_logo\";\r\n176:                             String[] ssImgs = { //设置已有值\r\n177:                                     !Tools.myIsNull(infodb.get(imgPreName))?infodb.get(imgPreName):\"\"\r\n\r\n\r\nAn error occurred at line: [175] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nDuplicate local variable imgPreName\r\n172:                     <div class=\"col-sm-6\">\r\n173:                         <%\r\n174:                             String  upFile = \"../upfile.inc.jsp\";\r\n175:                             String imgPreName = \"fs_logo\";\r\n176:                             String[] ssImgs = { //设置已有值\r\n177:                                     !Tools.myIsNull(infodb.get(imgPreName))?infodb.get(imgPreName):\"\"\r\n178:                             };\r\n\r\n\r\nAn error occurred at line: [176] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nDuplicate local variable ssImgs\r\n173:                         <%\r\n174:                             String  upFile = \"../upfile.inc.jsp\";\r\n175:                             String imgPreName = \"fs_logo\";\r\n176:                             String[] ssImgs = { //设置已有值\r\n177:                                     !Tools.myIsNull(infodb.get(imgPreName))?infodb.get(imgPreName):\"\"\r\n178:                             };\r\n179:                             String sImgs = \"\";\r\n\r\n\r\nAn error occurred at line: [179] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nDuplicate local variable sImgs\r\n176:                             String[] ssImgs = { //设置已有值\r\n177:                                     !Tools.myIsNull(infodb.get(imgPreName))?infodb.get(imgPreName):\"\"\r\n178:                             };\r\n179:                             String sImgs = \"\";\r\n180:                             for (int i =0 ;i<ssImgs.length;i++){\r\n181:                                 sImgs=sImgs+ssImgs[i]+\"|\";\r\n182:                             }\r\n\r\n\r\nAn error occurred at line: [204] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nDuplicate local variable sp\r\n201:                 <%--selcet，下拉框演示--%>\r\n202:                 <%\r\n203:                     //dicopt功能演示，指定表里面的name和id，并用name组成<option></option>\r\n204:                     String sp = Tools.dicopt(\"comm_states\", 0);//省会，\r\n205:                 %>\r\n206:                 <div class=\"form-group\">\r\n207:                     <label class=\"col-sm-2 control-label\">显示/隐藏</label>\r\n\r\n\r\nStacktrace:', '2019-02-18 16:08:13');
+INSERT INTO `sys_error` VALUES ('578', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dalltask%26type%3Dddbx%26sdo%3Dform%26id%3D1:Unable to compile class for JSP: \r\n\r\nAn error occurred at line: [69] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nsp cannot be resolved to a variable\r\n66: 								<span class=\"input-group-addon\">省</span>\r\n67: 								<select name=\"state_id\" id=\"state_id\" class=\"form-control\">\r\n68: 									<option value=\"0\">请选择</option>\r\n69: 									<%=sp%>\r\n70: 								</select>\r\n71: 							</div>\r\n72: 						</div>\r\n\r\n\r\nAn error occurred at line: [138] in the jsp file: [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp]\r\nsp cannot be resolved to a variable\r\n135:                                     <span class=\"input-group-addon\">省</span>\r\n136:                                     <select name=\"state_id\" id=\"state_id\" class=\"form-control\">\r\n137:                                     <option value=\"0\">请选择</option>\r\n138:                                     <%=sp%>\r\n139:                                 </select>\r\n140:                                 </div>\r\n141:                             </div>\r\n\r\n\r\nStacktrace:', '2019-02-18 16:09:09');
+INSERT INTO `sys_error` VALUES ('579', 'null', '2019-02-21 16:53:27');
+INSERT INTO `sys_error` VALUES ('580', 'null', '2019-02-21 17:07:03');
+INSERT INTO `sys_error` VALUES ('581', 'null', '2019-02-21 17:07:03');
+INSERT INTO `sys_error` VALUES ('582', 'null', '2019-02-21 17:08:33');
+INSERT INTO `sys_error` VALUES ('583', 'null', '2019-02-21 17:08:33');
+INSERT INTO `sys_error` VALUES ('584', 'null', '2019-02-21 17:12:02');
+INSERT INTO `sys_error` VALUES ('585', 'null', '2019-02-21 17:12:02');
+INSERT INTO `sys_error` VALUES ('586', 'null', '2019-02-21 17:22:27');
+INSERT INTO `sys_error` VALUES ('587', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dsys_config_son%26sdo%3Dlist%26type%3Dsys:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;sys&#47;sys_config_son.list.jsp] not found', '2019-02-21 17:27:59');
 
 -- ----------------------------
 -- Table structure for sys_menulevels
@@ -1534,7 +1608,7 @@ CREATE TABLE `sys_modal` (
   KEY `id_upmodal` (`id_uplevel`),
   KEY `sort_2` (`sort`),
   KEY `level` (`level`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='系统模块表';
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='系统模块表';
 
 -- ----------------------------
 -- Records of sys_modal
@@ -1543,7 +1617,7 @@ INSERT INTO `sys_modal` VALUES ('1', '系统角色管理', '6', '21', '21', '201
 INSERT INTO `sys_modal` VALUES ('2', '系统权限管理', '6', '21', '21', '2019-01-21 08:00:00', '2019-01-25 11:47:08', '0', '权限管理', 'agp', 'agp', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
 INSERT INTO `sys_modal` VALUES ('3', '演示列表list,用admin表', '5', '21', '21', '2019-01-21 00:00:00', '2019-01-21 00:00:00', '1', '会员列表', 'demo', 'admin', '2', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
 INSERT INTO `sys_modal` VALUES ('4', '演示列表，用comm_citys', '5', '21', '21', '2018-08-08 00:00:00', '2019-01-22 14:44:19', '1', '城市列表', 'demo', 'comm_citys', '1', '2', '<i class=\"fa fa-crosshairs\"></i>', '', 'list', '0');
-INSERT INTO `sys_modal` VALUES ('5', '演示模块', '0', '21', '21', '2018-04-24 19:25:52', '2019-02-16 15:41:36', '0', '演示模块', '4444444444', '333333333', '1', '1', '<i class=\"fa  fa-database\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('5', '演示模块', '0', '21', '21', '2018-04-24 19:25:52', '2019-02-18 15:59:23', '1', '演示模块', '4444444444', '333333333', '1', '1', '<i class=\"fa  fa-database\"></i>', '', 'list', '0');
 INSERT INTO `sys_modal` VALUES ('6', '系统设置', '0', '21', '21', '2018-08-08 00:00:00', '2019-01-22 15:00:43', '1', '系统设置', 'sys', 'sys_modal', '200', '1', '<i class=\"fa fa-asterisk\"></i>', '', 'list', '0');
 INSERT INTO `sys_modal` VALUES ('7', 'tt_form2', '5', '21', '21', '2018-08-08 00:00:00', '2018-08-08 00:00:00', '1', 'tt_form2', 'demo', 'admin2', '4', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '&id=25', 'form', '0');
 INSERT INTO `sys_modal` VALUES ('8', 'button', '5', '21', '21', '2018-08-08 00:00:00', '2018-08-08 00:00:00', '1', 'button', 'demo', 'button', '3', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'form', '0');
@@ -1567,8 +1641,13 @@ INSERT INTO `sys_modal` VALUES ('25', '多文件上传', '5', '21', '21', '2019-
 INSERT INTO `sys_modal` VALUES ('26', 'TT二次开发说明', '21', '21', '21', '2019-02-14 11:34:34', '2019-02-14 11:34:34', '1', '二次开发教程', 'demo', 'readmedev', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
 INSERT INTO `sys_modal` VALUES ('27', '账户管理', '0', '21', '21', '2019-02-16 14:17:02', '2019-02-16 14:17:02', '1', '账户管理', 'account', 'account', '1', '1', '<i class=\"fa fa-home\"></i>', '', 'list', '0');
 INSERT INTO `sys_modal` VALUES ('28', '公司管理', '27', '21', '21', '2019-02-16 14:18:18', '2019-02-16 17:07:17', '1', '公司管理', 'account', 'fs', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('31', '工作任务', '0', '21', '21', '2019-02-18 11:29:10', '2019-02-18 11:29:10', '1', '工作任务', 'ddbx', 'wdrw', '100', '1', '<i class=\"fa fa-home\"></i>', '', 'list', '0');
 INSERT INTO `sys_modal` VALUES ('29', '用户管理', '27', '21', '21', '2019-02-16 15:16:29', '2019-02-16 16:30:51', '1', '用户管理', 'account', 'admin', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
 INSERT INTO `sys_modal` VALUES ('30', '会员管理', '27', '21', '21', '2019-02-16 16:13:48', '2019-02-16 16:30:15', '0', '会员管理', 'account', 'admin', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('32', '全部任务', '31', '21', '21', '2019-02-18 11:32:36', '2019-02-18 11:34:19', '1', '全部任务', 'ddbx', 'alltask', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('33', '我的任务', '31', '21', '21', '2019-02-18 11:33:33', '2019-02-18 11:34:09', '1', '我的任务', 'ddbx', 'mytask', '100', '2', '<i class=\"fa fa-home\"></i>', '', 'list', '0');
+INSERT INTO `sys_modal` VALUES ('34', '业务模块', '6', '21', '21', '2019-02-21 16:09:46', '2019-02-21 16:09:46', '1', '业务模块', 'sys', 'sys_config', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '2');
+INSERT INTO `sys_modal` VALUES ('35', '业务列表', '6', '21', '21', '2019-02-21 17:27:54', '2019-02-21 17:27:54', '1', '业务列表', 'sys', 'sys_config_son', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '2');
 
 -- ----------------------------
 -- Table structure for sys_modal_superadmin
@@ -1652,6 +1731,7 @@ INSERT INTO `sys_session` VALUES ('0e9f87386a6faa592f8ea4aca7ccbb2e', '37', '201
 INSERT INTO `sys_session` VALUES ('0ede20ee11202053ae1de152e9c1393a', '21', '2019-01-21 16:51:13', '127.0.0.1', '127.0.0.1', '1548060473', '1548060673');
 INSERT INTO `sys_session` VALUES ('0f1292178fb5c412ad47a3a96d2476a2', '37', '2019-01-25 15:16:44', '127.0.0.1', '127.0.0.1', '1548400307', '1548400604');
 INSERT INTO `sys_session` VALUES ('0f6f9681a34152b3f5c3adf1e1f981c0', '21', '2019-01-17 13:40:01', '127.0.0.1', '127.0.0.1', '1547703504', '1547703601');
+INSERT INTO `sys_session` VALUES ('0ffe30b62886be16e1d55e72efe0fd25', '21', '2019-02-18 16:22:00', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550475474', '1550478120');
 INSERT INTO `sys_session` VALUES ('1079fe93a32184a3598edca4607a96e7', '21', '2019-02-14 11:35:05', '127.0.0.1', '127.0.0.1', '1550115233', '1550115305');
 INSERT INTO `sys_session` VALUES ('10819c3b2d3ffc1ac9e4b3e8bba74dfa', '21', '2019-02-12 10:41:19', '127.0.0.1', '127.0.0.1', '1549938624', '1549939279');
 INSERT INTO `sys_session` VALUES ('10bfbba4fc3e3ec9bc8f409aa1ee2e1d', '21', '2019-01-23 15:03:25', '127.0.0.1', '127.0.0.1', '1548226346', '1548227005');
@@ -1699,6 +1779,7 @@ INSERT INTO `sys_session` VALUES ('1cb9ec7356c09c53fecc9c239a016769', '37', '201
 INSERT INTO `sys_session` VALUES ('1cdcad646f711d1c4c71dc5b6b2a2bab', '21', '2019-01-31 16:58:33', '127.0.0.1', '127.0.0.1', '1548925030', '1548925113');
 INSERT INTO `sys_session` VALUES ('1d5511daccb0783abcc9646d9df6c856', '21', '2019-01-17 14:50:59', '127.0.0.1', '127.0.0.1', '1547707442', '1547707859');
 INSERT INTO `sys_session` VALUES ('1ddbca946aec4f046226577faec46d94', '31', '2019-01-29 15:14:26', '127.0.0.1', '127.0.0.1', '1548745760', '1548746066');
+INSERT INTO `sys_session` VALUES ('1de40e8e4c0ac955f79e6d36ff169b84', '48', '2019-02-18 11:17:28', '0:0:0:0:0:0:0:1', null, '1550459848', '0');
 INSERT INTO `sys_session` VALUES ('1ded0358a95136b6451075050e8409aa', '31', '2019-01-29 15:43:23', '127.0.0.1', '127.0.0.1', '1548747572', '1548747803');
 INSERT INTO `sys_session` VALUES ('1e1e198b30611004fb1744f8ac1028ba', '21', '2019-02-01 13:47:38', '127.0.0.1', '127.0.0.1', '1548999959', '1549000058');
 INSERT INTO `sys_session` VALUES ('1e6b7f9e4762f8e908e6bb8499b90141', '21', '2019-01-24 19:50:12', '127.0.0.1', '127.0.0.1', '1548330483', '1548330612');
@@ -1722,6 +1803,7 @@ INSERT INTO `sys_session` VALUES ('22821637da8e237cf3d3e139363ee3c4', '21', '201
 INSERT INTO `sys_session` VALUES ('22d3479777b85712ce3496f196249f5b', '21', '2019-01-23 14:45:42', '127.0.0.1', '127.0.0.1', '1548225918', '1548225942');
 INSERT INTO `sys_session` VALUES ('22ec213ee51c1e2a9ebe378a8cd227d8', '21', '2019-02-11 19:42:28', '127.0.0.1', '127.0.0.1', '1549885262', '1549885348');
 INSERT INTO `sys_session` VALUES ('2314914b589be1b5df38152cf2d35051', '21', '2019-01-19 13:33:04', '127.0.0.1', '127.0.0.1', '1547872968', '1547875984');
+INSERT INTO `sys_session` VALUES ('238761a7c0b5e4bf296aba6254612175', '21', '2019-02-18 14:51:30', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550459945', '1550472690');
 INSERT INTO `sys_session` VALUES ('23be7f9abfa7d8fc2c44d516ca92fdf9', '21', '2019-01-20 20:40:39', '127.0.0.1', '127.0.0.1', '1547975474', '1547988039');
 INSERT INTO `sys_session` VALUES ('24198e7db4da3af5fa9a05df2afbd3d4', '21', '2019-01-24 20:31:58', '127.0.0.1', '127.0.0.1', '1548333025', '1548333118');
 INSERT INTO `sys_session` VALUES ('2489ab012316e4894a2e174614f1df5a', '21', '2019-01-23 11:55:03', '127.0.0.1', '127.0.0.1', '1548214338', '1548215703');
@@ -1743,6 +1825,7 @@ INSERT INTO `sys_session` VALUES ('295135ac8c61f29414166bb29becf2d0', '37', '201
 INSERT INTO `sys_session` VALUES ('29efee79bcb4929c5fff1f9574b2eb81', '21', '2019-01-21 13:28:58', '127.0.0.1', '127.0.0.1', '1548048499', '1548048538');
 INSERT INTO `sys_session` VALUES ('2a0d16445b9d61089a2f11629876ba58', '21', '2019-02-01 16:28:02', '127.0.0.1', '127.0.0.1', '1549009305', '1549009682');
 INSERT INTO `sys_session` VALUES ('2a1786df4e525f3e4750c05f300c9995', '21', '2019-01-16 17:42:15', '127.0.0.1', '127.0.0.1', '1547631713', '1547631735');
+INSERT INTO `sys_session` VALUES ('2a8c586b41d422e84f224abfed6c291a', '21', '2019-02-18 15:23:37', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550474201', '1550474617');
 INSERT INTO `sys_session` VALUES ('2b09ed3d7f6404e0dcb7db89ea5f7b38', '37', '2019-01-25 17:22:26', '127.0.0.1', '127.0.0.1', '1548408121', '1548408146');
 INSERT INTO `sys_session` VALUES ('2b6e221ba2e88e50825a71aa5a070317', '21', '2019-01-20 21:44:44', '127.0.0.1', '127.0.0.1', '1547991529', '1547991884');
 INSERT INTO `sys_session` VALUES ('2bf54588e24f3a09d81df5596dd73ea3', '21', '2019-01-20 17:11:14', '127.0.0.1', '127.0.0.1', '1547974997', '1547975474');
@@ -1753,11 +1836,13 @@ INSERT INTO `sys_session` VALUES ('2d49ca57f00d0258201183f79a2de83a', '21', '201
 INSERT INTO `sys_session` VALUES ('2d6d4ac53bcbc98e42b6defe518193f9', '21', '2019-01-23 14:42:03', '127.0.0.1', '127.0.0.1', '1548225554', '1548225723');
 INSERT INTO `sys_session` VALUES ('2db779cabc6ee5a4403851dbc9bb9890', '31', '2019-01-29 15:37:29', '127.0.0.1', '127.0.0.1', '1548747296', '1548747449');
 INSERT INTO `sys_session` VALUES ('2dc1e893521f7092d552e841695a05d9', '21', '2019-01-19 17:49:42', '127.0.0.1', '127.0.0.1', '1547880856', '1547891382');
+INSERT INTO `sys_session` VALUES ('2dc4c2becf15e1a1af56ad5e1fb351c1', '21', '2019-02-20 14:25:26', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550643555', '1550643926');
 INSERT INTO `sys_session` VALUES ('2f40d8fa73aeb1d8e6c04f84a93fe112', '21', '2019-01-19 14:22:48', '127.0.0.1', '127.0.0.1', '1547878871', '1547878968');
 INSERT INTO `sys_session` VALUES ('2f90e3fa3056cf2dba6bf82e8ce24248', '37', '2019-01-28 11:37:30', '127.0.0.1', '127.0.0.1', '1548646557', '1548646650');
 INSERT INTO `sys_session` VALUES ('2facde6391d404fdb82e825a17e41a6d', '21', '2019-01-25 19:34:10', '127.0.0.1', '127.0.0.1', '1548415838', '1548416050');
 INSERT INTO `sys_session` VALUES ('300dbc0a1cae089af2f8311a1352c210', '21', '2019-01-31 15:26:25', '127.0.0.1', '127.0.0.1', '1548919379', '1548919585');
 INSERT INTO `sys_session` VALUES ('3035bdfc9dc697563cf8934a1f8beabe', '21', '2019-01-22 09:46:29', '127.0.0.1', '127.0.0.1', '1548121309', '1548121589');
+INSERT INTO `sys_session` VALUES ('308adc605168d8f33249f27d7cfa030f', '21', '2019-02-21 17:08:27', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550736440', '1550740107');
 INSERT INTO `sys_session` VALUES ('30a1ad0a70236c6ad166cbca98886cad', '21', '2019-01-17 14:52:15', '127.0.0.1', '127.0.0.1', '1547707902', '1547707935');
 INSERT INTO `sys_session` VALUES ('30b7831d8bfc76d2fb69eec3e08e668e', '21', '2019-01-17 09:56:33', '127.0.0.1', '127.0.0.1', '1547689998', '1547690193');
 INSERT INTO `sys_session` VALUES ('31079d92980f934e5307ec07cf480920', '37', '2019-01-29 11:50:37', '127.0.0.1', '127.0.0.1', '1548733777', '1548733837');
@@ -1769,6 +1854,7 @@ INSERT INTO `sys_session` VALUES ('32f9dc2d2036dfccb7b2f6caf7b58461', '21', '201
 INSERT INTO `sys_session` VALUES ('335d3da4ff39c923640f6a849fa4f1a4', '21', '2019-01-19 21:32:01', '127.0.0.1', '127.0.0.1', '1547891721', '1547904721');
 INSERT INTO `sys_session` VALUES ('33702a127516ab5e8344ba7d4831f174', '21', '2019-01-19 13:44:16', '127.0.0.1', '127.0.0.1', '1547876579', '1547876656');
 INSERT INTO `sys_session` VALUES ('33c42d51fe01a435392bbaa0cfdb6f91', '21', '2019-01-16 17:16:18', '127.0.0.1', '127.0.0.1', '1547629994', '1547630178');
+INSERT INTO `sys_session` VALUES ('33dda6fa14d174b5cae96d7a2e63685d', '21', '2019-02-18 10:53:12', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550457150', '1550458392');
 INSERT INTO `sys_session` VALUES ('347dbb9bb3566513dfae34685c896020', '21', '2019-01-18 11:21:37', '127.0.0.1', '127.0.0.1', '1547781405', '1547781697');
 INSERT INTO `sys_session` VALUES ('34987901e8ce9df14473cd034926e26b', '21', '2019-01-17 10:10:32', '127.0.0.1', '127.0.0.1', '1547690906', '1547691032');
 INSERT INTO `sys_session` VALUES ('34a98ecf468009a87106a34c74034a2d', '21', '2019-02-13 17:22:17', '127.0.0.1', '127.0.0.1', '1550049701', '1550049737');
@@ -1794,7 +1880,7 @@ INSERT INTO `sys_session` VALUES ('3ac0f18d011cf9442c0c5122ca2e8796', '37', '201
 INSERT INTO `sys_session` VALUES ('3b0ac6a58bd2aab08fb6576e029e5987', '21', '2019-02-16 16:49:01', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550305964', '1550306941');
 INSERT INTO `sys_session` VALUES ('3bc5e754ab0f789c0dedfc7eb8d8dbb3', '21', '2019-01-26 17:08:28', '127.0.0.1', '127.0.0.1', '1548493139', '1548493708');
 INSERT INTO `sys_session` VALUES ('3c8996ff8f48185d0e5c3864fc538a67', '21', '2019-02-11 11:27:22', '127.0.0.1', '127.0.0.1', '1549855449', '1549855642');
-INSERT INTO `sys_session` VALUES ('3c99adb646a59514ef71fcb98ea98292', '21', '2019-02-16 17:31:44', '0:0:0:0:0:0:0:1', null, '1550309504', '0');
+INSERT INTO `sys_session` VALUES ('3c99adb646a59514ef71fcb98ea98292', '21', '2019-02-18 10:32:30', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550309504', '1550457150');
 INSERT INTO `sys_session` VALUES ('3ce8b34dce90038efd04ad10cbcb2b9d', '21', '2019-01-25 14:20:33', '127.0.0.1', '127.0.0.1', '1548397152', '1548397233');
 INSERT INTO `sys_session` VALUES ('3cfbf4c91c5d7603a460ef0a4b6c141d', '21', '2019-01-16 16:55:29', '127.0.0.1', '127.0.0.1', '1547628929', '1547628929');
 INSERT INTO `sys_session` VALUES ('3d4e14dbf2cc10fda20b313f7bf1f870', '21', '2019-01-21 16:47:53', '127.0.0.1', '127.0.0.1', '1548059938', '1548060473');
@@ -1810,13 +1896,16 @@ INSERT INTO `sys_session` VALUES ('402dd03fb9480b78019da90a576924d9', '21', '201
 INSERT INTO `sys_session` VALUES ('40cd3e3f7787eaacb353294495fc03c2', '21', '2019-01-24 20:35:25', '127.0.0.1', '127.0.0.1', '1548333118', '1548333325');
 INSERT INTO `sys_session` VALUES ('4163a076c934838ab9634710d8d00c78', '21', '2019-01-17 13:46:12', '127.0.0.1', '127.0.0.1', '1547703938', '1547703972');
 INSERT INTO `sys_session` VALUES ('41f00922c034d969d74bff19aa2025f7', '21', '2019-01-24 22:40:48', '127.0.0.1', '127.0.0.1', '1548339873', '1548340848');
+INSERT INTO `sys_session` VALUES ('4204cf2222345f9a65f4b07a638f8fa3', '21', '2019-02-18 15:16:38', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550474043', '1550474198');
 INSERT INTO `sys_session` VALUES ('420a3fbf281f23c8a5ffc361e6d87425', '21', '2019-02-01 09:44:33', '127.0.0.1', '127.0.0.1', '1548985366', '1548985473');
 INSERT INTO `sys_session` VALUES ('422a52d3eefd6bcabddbf2337e4a3a1c', '21', '2019-01-21 11:45:56', '127.0.0.1', '127.0.0.1', '1548042262', '1548042356');
 INSERT INTO `sys_session` VALUES ('42a9f9e1d4a7cf1e064681f72848805c', '21', '2019-01-23 17:09:49', '127.0.0.1', '127.0.0.1', '1548229816', '1548234589');
 INSERT INTO `sys_session` VALUES ('4372a4e8b21aca98f6a843f046acfcf0', '21', '2019-01-25 13:44:40', '127.0.0.1', '127.0.0.1', '1548394972', '1548395080');
+INSERT INTO `sys_session` VALUES ('43d8ec8e5a123218877517b46e1f4cd6', '21', '2019-02-18 15:24:31', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550474617', '1550474671');
 INSERT INTO `sys_session` VALUES ('4426cd64db5f0cbfcd170639a21d4fcc', '21', '2019-01-31 15:06:09', '127.0.0.1', '127.0.0.1', '1548918348', '1548918369');
 INSERT INTO `sys_session` VALUES ('4516fdb6ff7568441a38a40f31f220f6', '21', '2019-01-16 17:54:40', '127.0.0.1', '127.0.0.1', '1547632460', '1547632480');
 INSERT INTO `sys_session` VALUES ('4523c5cd589ded32740ba4f69ac5714a', '21', '2019-01-20 20:45:21', '127.0.0.1', '127.0.0.1', '1547988241', '1547988321');
+INSERT INTO `sys_session` VALUES ('45838f6b68f10925ccd623de247850fa', '21', '2019-02-21 16:07:20', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550648357', '1550736440');
 INSERT INTO `sys_session` VALUES ('4647b19fdcaf27b0b8867af88fdc373b', '37', '2019-01-28 15:10:39', '127.0.0.1', '127.0.0.1', '1548659399', '1548659439');
 INSERT INTO `sys_session` VALUES ('465f81a5d2b30b82b6c129777244bbe3', '37', '2019-01-28 11:09:14', '127.0.0.1', '127.0.0.1', '1548644927', '1548644954');
 INSERT INTO `sys_session` VALUES ('47b5bcb47662e662027313d5a20ecfbf', '21', '2019-01-17 15:11:30', '127.0.0.1', '127.0.0.1', '1547708979', '1547709090');
@@ -1828,6 +1917,7 @@ INSERT INTO `sys_session` VALUES ('48fa287beb2be4db3cf948b768ee790d', '21', '201
 INSERT INTO `sys_session` VALUES ('490026e3b5abced150953f1c9e8a8b88', '21', '2019-01-19 14:10:08', '127.0.0.1', '127.0.0.1', '1547877278', '1547878208');
 INSERT INTO `sys_session` VALUES ('494174201897a2cb3a744cf3c36775ff', '21', '2019-01-19 12:42:48', '127.0.0.1', '127.0.0.1', '1547872889', '1547872968');
 INSERT INTO `sys_session` VALUES ('4969f6fedb8bd08dbb2347daaa32fd77', '37', '2019-01-29 09:55:28', '127.0.0.1', '127.0.0.1', '1548726323', '1548726928');
+INSERT INTO `sys_session` VALUES ('4a346229ad6695d90b14dc34f5d10983', '21', '2019-02-20 14:38:31', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550644629', '1550644711');
 INSERT INTO `sys_session` VALUES ('4a4fe62d7701b79a41381e29065e7eca', '21', '2019-01-23 18:04:06', '127.0.0.1', '127.0.0.1', '1548237587', '1548237846');
 INSERT INTO `sys_session` VALUES ('4ac24e25aa93dd7307ab059f7219224c', '21', '2019-01-16 17:18:39', '127.0.0.1', '127.0.0.1', '1547630308', '1547630319');
 INSERT INTO `sys_session` VALUES ('4ae21415ed2aadeafde43f66f7c989cb', '21', '2019-02-16 17:31:44', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550308209', '1550309504');
@@ -1883,6 +1973,7 @@ INSERT INTO `sys_session` VALUES ('591815860c1cc5450a581d3ffff71e5f', '37', '201
 INSERT INTO `sys_session` VALUES ('5996c9b463709c81f9cfe005eb2fb89f', '21', '2019-01-16 19:33:13', '127.0.0.1', '127.0.0.1', '1547638192', '1547638393');
 INSERT INTO `sys_session` VALUES ('59c2b514c26597431928d3973f889644', '37', '2019-01-25 15:43:24', '127.0.0.1', '127.0.0.1', '1548401698', '1548402204');
 INSERT INTO `sys_session` VALUES ('59cb5277665a2143c2df1e16ac27182b', '21', '2019-01-16 21:28:07', '127.0.0.1', '127.0.0.1', '1547645083', '1547645287');
+INSERT INTO `sys_session` VALUES ('5a1142446393ac43d80a74e88418571b', '21', '2019-02-18 11:19:05', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550459139', '1550459945');
 INSERT INTO `sys_session` VALUES ('5a1a2735ee4147f0a35e21942467f250', '21', '2019-01-18 11:03:48', '127.0.0.1', '127.0.0.1', '1547779918', '1547780628');
 INSERT INTO `sys_session` VALUES ('5a99282b27c3d2e06d5f71f9cacda4f4', '21', '2019-01-16 17:18:39', '127.0.0.1', '127.0.0.1', '1547630319', '1547630319');
 INSERT INTO `sys_session` VALUES ('5af411fdbfddd4b00811737f3095f272', '21', '2019-02-11 16:57:38', '127.0.0.1', '127.0.0.1', '1549875287', '1549875458');
@@ -1919,6 +2010,7 @@ INSERT INTO `sys_session` VALUES ('63da098050f5658ce659c385e7a31d1c', '21', '201
 INSERT INTO `sys_session` VALUES ('640656063bada13fec1fc602c6df2ea7', '21', '2019-01-24 18:02:59', '127.0.0.1', '127.0.0.1', '1548324082', '1548324179');
 INSERT INTO `sys_session` VALUES ('641af840a63d322afd46c5944c48ee7c', '41', '2019-01-29 16:33:44', '127.0.0.1', null, '1548750824', '0');
 INSERT INTO `sys_session` VALUES ('641bead337bfc7f81e26d2f014fe3ff8', '31', '2019-02-11 20:16:01', '127.0.0.1', null, '1549887361', '0');
+INSERT INTO `sys_session` VALUES ('6449818068ef94dcdbbe264f899e8040', '21', '2019-02-20 14:19:15', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550633612', '1550643555');
 INSERT INTO `sys_session` VALUES ('64830d1aec09b6d601449a0a0fe6dddf', '21', '2019-01-21 16:35:39', '127.0.0.1', '127.0.0.1', '1548059407', '1548059739');
 INSERT INTO `sys_session` VALUES ('6524bb037c7f1f3d88d80e73f86b6f65', '21', '2019-02-11 20:16:14', '127.0.0.1', '127.0.0.1', '1549885348', '1549887374');
 INSERT INTO `sys_session` VALUES ('654110d49ccf0e3f68739261a472865d', '21', '2019-01-20 10:10:28', '127.0.0.1', '127.0.0.1', '1547916009', '1547950228');
@@ -1955,6 +2047,7 @@ INSERT INTO `sys_session` VALUES ('6eb496e6f90171705d79f0269add3ae4', '21', '201
 INSERT INTO `sys_session` VALUES ('6ec1be46ae7fe517ecd94b6f692eb179', '37', '2019-01-28 15:15:38', '127.0.0.1', '127.0.0.1', '1548659697', '1548659738');
 INSERT INTO `sys_session` VALUES ('6fe37da0954cde3bb120e2a77bed84be', '21', '2019-01-17 14:57:25', '127.0.0.1', '127.0.0.1', '1547707935', '1547708245');
 INSERT INTO `sys_session` VALUES ('7004a2576db932f3d240dd2259477e30', '21', '2019-01-17 11:23:36', '127.0.0.1', '127.0.0.1', '1547695299', '1547695416');
+INSERT INTO `sys_session` VALUES ('702c8d32b9ef2204417181caa570ee98', '21', '2019-02-18 15:16:41', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550474198', '1550474201');
 INSERT INTO `sys_session` VALUES ('7058f3b08a4b3278e99f37b1a0c74ba0', '21', '2019-01-31 16:57:10', '127.0.0.1', '127.0.0.1', '1548924752', '1548925030');
 INSERT INTO `sys_session` VALUES ('708cd2c0d0f57b689c593979360e7e3e', '21', '2019-01-31 14:58:54', '127.0.0.1', '127.0.0.1', '1548851045', '1548917934');
 INSERT INTO `sys_session` VALUES ('70e8774708c10187fb332d1caed588bc', '21', '2019-02-11 11:30:03', '127.0.0.1', '127.0.0.1', '1549855642', '1549855803');
@@ -1973,6 +2066,7 @@ INSERT INTO `sys_session` VALUES ('766bd823f90df12bcad0aaa9ba32e5f5', '37', '201
 INSERT INTO `sys_session` VALUES ('76e7f1c8b910defbf5e4577661f18dd2', '21', '2019-01-25 14:19:12', '127.0.0.1', '127.0.0.1', '1548397104', '1548397152');
 INSERT INTO `sys_session` VALUES ('77974e65271aa671b57824e011954e52', '21', '2019-01-23 14:44:57', '127.0.0.1', '127.0.0.1', '1548225863', '1548225897');
 INSERT INTO `sys_session` VALUES ('77c6f3590afec9f851d8a6ea48e66cc2', '21', '2019-02-13 17:17:55', '127.0.0.1', '127.0.0.1', '1550047821', '1550049475');
+INSERT INTO `sys_session` VALUES ('78034e128585b790d0b7af5f9c1ad3a5', '21', '2019-02-20 11:33:32', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550632218', '1550633612');
 INSERT INTO `sys_session` VALUES ('7808e4447b17f586055a80058c676eb5', '21', '2019-01-23 17:40:24', '127.0.0.1', '127.0.0.1', '1548236373', '1548236424');
 INSERT INTO `sys_session` VALUES ('782b55e877af2e01ddc91019107f8ae6', '21', '2019-01-17 13:16:24', '127.0.0.1', '127.0.0.1', '1547702160', '1547702184');
 INSERT INTO `sys_session` VALUES ('78e97774a78333e96820f3810d0d3018', '21', '2019-01-20 20:48:31', '127.0.0.1', '127.0.0.1', '1547988423', '1547988511');
@@ -1992,7 +2086,9 @@ INSERT INTO `sys_session` VALUES ('7dfddedd896a9782079816152297b9fd', '21', '201
 INSERT INTO `sys_session` VALUES ('7e21d2083e488368a270455a6521abf8', '41', '2019-01-29 16:33:14', '127.0.0.1', '127.0.0.1', '1548493815', '1548750794');
 INSERT INTO `sys_session` VALUES ('7e2f4eb5b743d47409140d5acb1fa99a', '21', '2019-02-11 16:58:16', '127.0.0.1', '127.0.0.1', '1549875458', '1549875496');
 INSERT INTO `sys_session` VALUES ('7e461ef45e9b61d775649086b486b9be', '21', '2019-01-21 15:51:10', '127.0.0.1', '127.0.0.1', '1548056916', '1548057070');
+INSERT INTO `sys_session` VALUES ('7e4d2d7ac19df428cdc202841fa5da09', '21', '2019-02-20 11:10:18', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550478120', '1550632218');
 INSERT INTO `sys_session` VALUES ('7e78b2bacc4044a28ecf68a3819fbb68', '21', '2019-01-25 19:25:25', '127.0.0.1', '127.0.0.1', '1548410923', '1548415525');
+INSERT INTO `sys_session` VALUES ('7ec4183b589e13658965919cc0b78f9d', '21', '2019-02-20 14:37:08', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550643986', '1550644628');
 INSERT INTO `sys_session` VALUES ('8050bfa647dab3fd4695f5aaef8bd13f', '37', '2019-01-29 09:43:39', '127.0.0.1', '127.0.0.1', '1548681794', '1548726219');
 INSERT INTO `sys_session` VALUES ('814d56380af1958b2c27796af4ec43e4', '21', '2019-02-12 15:16:35', '127.0.0.1', '127.0.0.1', '1549953798', '1549955795');
 INSERT INTO `sys_session` VALUES ('81c24233c403c107bef7efb4dd202568', '21', '2019-01-21 11:50:13', '127.0.0.1', '127.0.0.1', '1548042506', '1548042612');
@@ -2141,6 +2237,7 @@ INSERT INTO `sys_session` VALUES ('ac0204af930242b3f1122e31c06dc828', '21', '201
 INSERT INTO `sys_session` VALUES ('ac7dde371a29027c05690d5c6ab542c2', '21', '2019-01-17 10:00:46', '127.0.0.1', '127.0.0.1', '1547690366', '1547690446');
 INSERT INTO `sys_session` VALUES ('acf390d14f057a7df9399a4e8811996c', '21', '2019-01-16 19:59:07', '127.0.0.1', '127.0.0.1', '1547639773', '1547639947');
 INSERT INTO `sys_session` VALUES ('ad60416273aa8b507e3f9a7e4e431248', '21', '2019-01-22 14:33:09', '127.0.0.1', '127.0.0.1', '1548126831', '1548138789');
+INSERT INTO `sys_session` VALUES ('adf0b6b460b0a65283fc086480163bce', '21', '2019-02-18 15:14:02', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550472690', '1550474042');
 INSERT INTO `sys_session` VALUES ('ae7d47e061af429e69e603cb5f15692b', '21', '2019-02-01 16:28:44', '127.0.0.1', '127.0.0.1', '1549009682', '1549009724');
 INSERT INTO `sys_session` VALUES ('aeab1a9d55c78e7c76157a43f4108539', '21', '2019-01-31 17:06:26', '127.0.0.1', '127.0.0.1', '1548925491', '1548925586');
 INSERT INTO `sys_session` VALUES ('aef902dd8da09ad7a8583ab59c1f6188', '21', '2019-01-17 15:24:26', '127.0.0.1', '127.0.0.1', '1547709491', '1547709866');
@@ -2165,6 +2262,7 @@ INSERT INTO `sys_session` VALUES ('b214269a4ebeb57e873214d0ae1a5ffc', '21', '201
 INSERT INTO `sys_session` VALUES ('b22eba8163f9ba26f661dd74136e4c44', '21', '2019-01-20 21:54:29', '127.0.0.1', '127.0.0.1', '1547992359', '1547992469');
 INSERT INTO `sys_session` VALUES ('b268ab0dc9192bd96e33c30518f396a6', '37', '2019-01-28 21:23:02', '127.0.0.1', '127.0.0.1', '1548681685', '1548681782');
 INSERT INTO `sys_session` VALUES ('b2da3082490c7f2885663d7ac28168d6', '21', '2019-01-17 13:35:56', '127.0.0.1', '127.0.0.1', '1547703096', '1547703356');
+INSERT INTO `sys_session` VALUES ('b31aa965ee78d25e1dd5aa403f6ec63c', '21', '2019-02-20 15:39:17', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550647894', '1550648357');
 INSERT INTO `sys_session` VALUES ('b351564e236851a47bdb1a1f7e5548ca', '37', '2019-01-28 15:12:15', '127.0.0.1', '127.0.0.1', '1548659439', '1548659535');
 INSERT INTO `sys_session` VALUES ('b3653032d608ee355872bb93dd01c583', '21', '2019-01-29 14:20:47', '127.0.0.1', '127.0.0.1', '1548742387', '1548742847');
 INSERT INTO `sys_session` VALUES ('b37b15c0f8c040c58bfa358858695c7c', '21', '2019-02-01 13:18:20', '127.0.0.1', '127.0.0.1', '1548996889', '1548998300');
@@ -2178,8 +2276,10 @@ INSERT INTO `sys_session` VALUES ('b60fa399a9c03008feb5856231f08795', '21', '201
 INSERT INTO `sys_session` VALUES ('b6b77fb8bb39d1f64cd1d5e798e09774', '37', '2019-01-29 09:45:23', '127.0.0.1', '127.0.0.1', '1548726219', '1548726323');
 INSERT INTO `sys_session` VALUES ('b6b9036acac5cecdf420e932f49f5ece', '21', '2019-02-01 13:31:15', '127.0.0.1', '127.0.0.1', '1548998351', '1548999075');
 INSERT INTO `sys_session` VALUES ('b6ca615cda094e0524684a1b7a060105', '21', '2019-01-24 20:27:01', '127.0.0.1', '127.0.0.1', '1548332112', '1548332821');
+INSERT INTO `sys_session` VALUES ('b6d728aeae9e3f2e2e8a13931fad86b2', '21', '2019-02-18 10:57:26', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550458392', '1550458646');
 INSERT INTO `sys_session` VALUES ('b6ef329dd633b4d953d525fac8286581', '21', '2019-01-17 13:16:59', '127.0.0.1', '127.0.0.1', '1547702184', '1547702219');
 INSERT INTO `sys_session` VALUES ('b7d87d58cdb8ed3860305a78a0a28b67', '21', '2019-01-16 21:33:22', '127.0.0.1', '127.0.0.1', '1547645287', '1547645602');
+INSERT INTO `sys_session` VALUES ('b8a3f5cfbd508621ad60b80f0c0df60d', '21', '2019-02-21 17:23:06', '0:0:0:0:0:0:0:1', null, '1550740986', '0');
 INSERT INTO `sys_session` VALUES ('b8a6ab46db527a134b47366998d4cebe', '21', '2019-02-11 16:50:49', '127.0.0.1', '127.0.0.1', '1549874641', '1549875049');
 INSERT INTO `sys_session` VALUES ('b8d16426ce8c7aeedcfe2e4ff94a22da', '21', '2019-02-13 14:56:00', '127.0.0.1', '127.0.0.1', '1550040564', '1550040960');
 INSERT INTO `sys_session` VALUES ('b8ecb0d86f2fafab0c7f06821c780e50', '21', '2019-01-16 21:12:02', '127.0.0.1', '127.0.0.1', '1547640303', '1547644322');
@@ -2218,6 +2318,8 @@ INSERT INTO `sys_session` VALUES ('c2a7a7740d93af98dc9cc844a5662442', '37', '201
 INSERT INTO `sys_session` VALUES ('c2e5a818259c5ed3bc8eace440d5bd67', '21', '2019-01-19 17:53:36', '127.0.0.1', '127.0.0.1', '1547891566', '1547891616');
 INSERT INTO `sys_session` VALUES ('c3823662975466471ed14e5493043b25', '21', '2019-01-16 17:26:08', '127.0.0.1', '127.0.0.1', '1547630749', '1547630768');
 INSERT INTO `sys_session` VALUES ('c429beff697a56de59c8cf1f181fa815', '21', '2019-01-19 13:42:24', '127.0.0.1', '127.0.0.1', '1547876495', '1547876544');
+INSERT INTO `sys_session` VALUES ('c46333278433ccf6b9d5b62630fd3851', '21', '2019-02-21 17:11:58', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550740107', '1550740318');
+INSERT INTO `sys_session` VALUES ('c4a06b3d91bf33d0dced6403ba3fc97d', '21', '2019-02-18 11:05:39', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550458646', '1550459139');
 INSERT INTO `sys_session` VALUES ('c4d75c57a9025023aab80b40f1515313', '21', '2019-01-16 16:57:37', '127.0.0.1', '127.0.0.1', '1547629053', '1547629057');
 INSERT INTO `sys_session` VALUES ('c546fe9309e3fa307b02a5bbbaf782e2', '37', '2019-01-25 15:34:58', '127.0.0.1', '127.0.0.1', '1548401473', '1548401698');
 INSERT INTO `sys_session` VALUES ('c5b70635f71579169b752b9b242f1721', '21', '2019-01-16 16:59:30', '127.0.0.1', '127.0.0.1', '1547629168', '1547629170');
@@ -2268,10 +2370,12 @@ INSERT INTO `sys_session` VALUES ('d5f11c669730f5680929170de517512b', '21', '201
 INSERT INTO `sys_session` VALUES ('d61c0a6e0a37ff19eea99f8dc6a94614', '21', '2019-01-31 15:32:21', '127.0.0.1', '127.0.0.1', '1548919808', '1548919941');
 INSERT INTO `sys_session` VALUES ('d648f921cb9836ee12ec244ba81c7484', '21', '2019-01-16 19:29:28', '127.0.0.1', '127.0.0.1', '1547632852', '1547638168');
 INSERT INTO `sys_session` VALUES ('d65fa5d3be9d0a1ae884060b9819401b', '21', '2019-01-24 21:55:09', '127.0.0.1', '127.0.0.1', '1548337793', '1548338109');
+INSERT INTO `sys_session` VALUES ('d6c32774765d6e2bef3bb030acc198de', '21', '2019-02-20 15:31:34', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550644711', '1550647894');
 INSERT INTO `sys_session` VALUES ('d7282128f30f90239bda61080bd701cf', '21', '2019-01-24 20:10:01', '127.0.0.1', '127.0.0.1', '1548330612', '1548331801');
 INSERT INTO `sys_session` VALUES ('d758857e8e82659aa1ef04ca124e5988', '21', '2019-02-01 16:02:06', '127.0.0.1', '127.0.0.1', '1549006169', '1549008126');
 INSERT INTO `sys_session` VALUES ('d77fffa5db844463c80b36f83282d302', '37', '2019-01-28 11:32:40', '127.0.0.1', '127.0.0.1', '1548646067', '1548646360');
 INSERT INTO `sys_session` VALUES ('d7a5cfe42df77c7f1c04663c9a81cb00', '21', '2019-02-12 15:19:45', '127.0.0.1', '127.0.0.1', '1549955795', '1549955985');
+INSERT INTO `sys_session` VALUES ('d7be31560606e47cce05aef6559254e4', '21', '2019-02-20 14:26:26', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550643926', '1550643986');
 INSERT INTO `sys_session` VALUES ('d7d91e120a5591fb1ae8f068c5b66fb4', '21', '2019-01-26 12:25:08', '127.0.0.1', '127.0.0.1', '1548476377', '1548476708');
 INSERT INTO `sys_session` VALUES ('d7d941dc980301917dfbbf8cc1188895', '21', '2019-01-21 16:00:02', '127.0.0.1', '127.0.0.1', '1548057557', '1548057602');
 INSERT INTO `sys_session` VALUES ('d7e304375bec4f0f5ce2d8e3d6b13753', '21', '2019-01-21 13:11:47', '127.0.0.1', '127.0.0.1', '1548047479', '1548047507');
@@ -2281,6 +2385,7 @@ INSERT INTO `sys_session` VALUES ('d921bf02153774f8fb977de2a86652df', '21', '201
 INSERT INTO `sys_session` VALUES ('d96d78111162c45d5a5e4e79279c1b2c', '21', '2019-02-01 16:17:18', '127.0.0.1', '127.0.0.1', '1549008289', '1549009038');
 INSERT INTO `sys_session` VALUES ('da4cdb2416d0430d80cb0236e3cbbd2c', '21', '2019-01-17 11:26:34', '127.0.0.1', '127.0.0.1', '1547695516', '1547695594');
 INSERT INTO `sys_session` VALUES ('dab041f3b34da58bd619a0a47e05b51e', '21', '2019-02-12 16:37:44', '127.0.0.1', '127.0.0.1', '1549959589', '1549960664');
+INSERT INTO `sys_session` VALUES ('dad886e0ee613cad2d53fd4ab3613381', '21', '2019-02-21 17:14:19', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550740318', '1550740459');
 INSERT INTO `sys_session` VALUES ('daea3f4cf79a56500175c4dc21e482fc', '21', '2019-01-21 11:08:19', '127.0.0.1', '127.0.0.1', '1548036022', '1548040099');
 INSERT INTO `sys_session` VALUES ('db12b63c892efeb9f05879455cf87a45', '21', '2019-02-01 15:12:53', '127.0.0.1', '127.0.0.1', '1549000058', '1549005173');
 INSERT INTO `sys_session` VALUES ('db8a8e32b964faab061ad7f8fdc79866', '21', '2019-01-25 16:37:02', '127.0.0.1', '127.0.0.1', '1548399862', '1548405422');
@@ -2311,6 +2416,7 @@ INSERT INTO `sys_session` VALUES ('e193ebd175b2b359b175e5de05b8b368', '21', '201
 INSERT INTO `sys_session` VALUES ('e19d97ad160e8f478f7a334e33431c8d', '21', '2019-01-20 20:53:17', '127.0.0.1', '127.0.0.1', '1547988554', '1547988797');
 INSERT INTO `sys_session` VALUES ('e1aa26378d71885b9a6433ea6ca6e3f6', '21', '2019-01-25 13:42:52', '127.0.0.1', '127.0.0.1', '1548394860', '1548394972');
 INSERT INTO `sys_session` VALUES ('e1e6c3a1079a20eb90e47917fc0bd524', '21', '2019-02-11 11:24:09', '127.0.0.1', '127.0.0.1', '1549855323', '1549855449');
+INSERT INTO `sys_session` VALUES ('e23ba51dbc962d16b01ae9ebbd6e8c2c', '21', '2019-02-18 15:37:53', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550474671', '1550475473');
 INSERT INTO `sys_session` VALUES ('e2c32c3f25ac9bc802ff7515704d9661', '21', '2019-01-17 15:25:58', '127.0.0.1', '127.0.0.1', '1547709871', '1547709958');
 INSERT INTO `sys_session` VALUES ('e318c10c3ac7c20c278c57c4551b0341', '21', '2019-01-24 22:24:33', '127.0.0.1', '127.0.0.1', '1548338109', '1548339873');
 INSERT INTO `sys_session` VALUES ('e32a5eb995b5ec7e45ec8783f097df70', '21', '2019-01-21 16:38:58', '127.0.0.1', '127.0.0.1', '1548059739', '1548059938');
@@ -2331,6 +2437,7 @@ INSERT INTO `sys_session` VALUES ('e7b0035d01b74fba9b7e6116588ebb2a', '21', '201
 INSERT INTO `sys_session` VALUES ('e7ba06a9b9a2588d95079fc9f7a1d453', '21', '2019-02-01 13:33:30', '127.0.0.1', '127.0.0.1', '1548999129', '1548999210');
 INSERT INTO `sys_session` VALUES ('e86a13bea519032d144b5c3314921e94', '21', '2019-01-17 13:48:56', '127.0.0.1', '127.0.0.1', '1547704083', '1547704136');
 INSERT INTO `sys_session` VALUES ('e8c762bd73cc10f776da6481ab44d403', '21', '2019-01-25 10:42:46', '127.0.0.1', '127.0.0.1', '1548384123', '1548384166');
+INSERT INTO `sys_session` VALUES ('e8f23a4078a3625cd9bc503d19ffb9dd', '21', '2019-02-21 17:23:06', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550740459', '1550740986');
 INSERT INTO `sys_session` VALUES ('e998ce75e0d2a2892a6669ee3619840f', '21', '2019-01-31 15:22:49', '127.0.0.1', '127.0.0.1', '1548919357', '1548919369');
 INSERT INTO `sys_session` VALUES ('ea02126cab23eba83fbbdaf45db62617', '37', '2019-01-28 11:39:38', '127.0.0.1', '127.0.0.1', '1548646751', '1548646777');
 INSERT INTO `sys_session` VALUES ('ea698596003498115487c8ab8d515c04', '21', '2019-01-17 15:15:57', '127.0.0.1', '127.0.0.1', '1547709090', '1547709357');

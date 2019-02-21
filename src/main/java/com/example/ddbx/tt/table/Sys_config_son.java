@@ -4,23 +4,21 @@ import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.tool.Config;
 import com.example.ddbx.tt.tool.DbCtrl;
-import com.example.ddbx.tt.tool.DbTools;
 import com.example.ddbx.tt.tool.Tools;
 
 import javax.servlet.http.HttpServletRequest;
 
+public class Sys_config_son extends DbCtrl {
 
-public class MyTask extends DbCtrl {
-    private final String title = "我的任务";
+    private final String title = "业务列表";
     private String orderString = "ORDER BY dt_edit DESC"; // 默认排序
     private boolean canDel = false;
-    private boolean canAdd = false;
+    private boolean canAdd = true;
     private final String classAgpId = "6"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
     public boolean agpOK = false;// 默认无权限
 
-
-    public MyTask() {
-        super("dd_icbc_erp");
+    public Sys_config_son() {
+        super("sys_config_son");
         AdminAgp adminAgp = new AdminAgp();
         try {
             if (adminAgp.checkAgp(classAgpId)) { // 如果有权限
@@ -35,25 +33,6 @@ public class MyTask extends DbCtrl {
         } finally {
             adminAgp.closeConn();
         }
-    }
-
-    /**
-     * 获取处理过程显示数据
-     * @param request
-     */
-    public TtList getclgc(){
-        DbTools myDbTools=new DbTools();
-        String sql="select * from sys_config order by number";
-        TtList clgc_list = null;
-        try {
-            clgc_list = myDbTools.reclist(sql);
-            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
-        }catch (Exception e) {
-            Tools.logError(e.getMessage(), true, false);
-        }finally {
-            myDbTools.closeConn();
-        }
-        return clgc_list;
     }
 
     //list 处理
@@ -73,6 +52,7 @@ public class MyTask extends DbCtrl {
         /* 开始处理搜索过来的字段 */
         kw = post.get("kw");
         dtbe = post.get("dtbe");
+
         if (Tools.myIsNull(kw) == false) {
             whereString += " AND c_name like '%" + kw + "%'";
         }
@@ -96,6 +76,7 @@ public class MyTask extends DbCtrl {
 
         if (!Tools.myIsNull(kw)) { // 搜索关键字高亮
             for (TtMap info : list) {
+
                 info.put("name",
                         info.get("name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
             }
@@ -111,6 +92,29 @@ public class MyTask extends DbCtrl {
         request.setAttribute("canDel", canDel); // 是否显示删除按钮
         request.setAttribute("canAdd", canAdd); // 是否显示新增按钮
         // request.setAttribute("showmsg", "测试弹出消息提示哈！"); //如果有showmsg字段，在载入列表前会提示
+    }
+
+    @Override
+    public int edit(TtMap ary, long id) {
+        return super.edit(ary, id);
+    }
+
+    @Override
+    public long add(TtMap ary) {
+        return super.add(ary);
+    }
+
+    @Override
+    public void doPost(TtMap post, long id,TtMap result2) {
+        if (id > 0) { // id为0时，新增
+            edit(post, id);
+        } else {
+            add(post);
+        }
+        String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
+        boolean bSuccess = errorCode == 0;
+        Tools.formatResult(result2, bSuccess, errorCode, bSuccess ? "编辑"+title+"成功！" : errorMsg,
+                bSuccess ? nextUrl : "");//失败时停留在当前页面,nextUrl为空
     }
 
     @Override
