@@ -4,118 +4,527 @@
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-		TtMap infodb = (TtMap) request.getAttribute("infodb");
-		TtMap minfo = (TtMap) request.getAttribute("minfo");
-		long id_uplevel = 0;
-		if (!Tools.myIsNull(infodb.get("id_uplevel"))){
-			id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
-		}
+    TtMap infodb = (TtMap) request.getAttribute("infodb");
+    TtMap minfo = (TtMap) request.getAttribute("minfo");
+    long id_uplevel = 0;
+    if (!Tools.myIsNull(infodb.get("id_uplevel"))) {
+        id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
+    }
 %>
 <div class="admin-content nav-tabs-custom box">
-	<div class="box-header with-border">
-		<div class="box-header with-border">
-			<h3 class="box-title">编辑模块</h3>
-		</div>
-		<div class="box-body" id="tab-content">
-			<div class="form-group">
-				<label class="col-sm-2 control-label">模块相关设置</label>
-				<div class="col-sm-10">
-        <div class="row inline-from">
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">完整名称</span>
-						<input type="text" class="form-control" id="cn" name="name" placeholder="">
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">上级模块</span>
-					<select id="id_uplevel" name="id_uplevel" class="form-control">
-						<option value="0">一级菜单</option>
-						${Tools.dicopt("sys_modal",id_uplevel,"level=1","")}
-					</select>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">菜单显示</span>
-						<select id="showmmenutag" name="showmmenutag" class="form-control">
-						<option value="">请选择</option>
-						<option value="1">显示</option>
-						<option value="0">隐藏</option>
-					</select>
-					</div>
-				</div>
-				<%if (Tools.isSuperAdmin(minfo)){%>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">内部属性</span>
-					<select id="superadmin" name="superadmin" class="form-control">
-						<%=Tools.dicopt("sys_modal_superadmin",Tools.strToLong(minfo.get("superadmin")))%>
-					</select>
-					</div>
-				</div>
-				<%}%>
-				</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label">菜单设置</label>
-				<div class="col-sm-10">
-        <div class="row inline-from">
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">菜单名称</span>
-						<input type="text" class="form-control" id="showmmenuname" name="showmmenuname" placeholder="">
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">cn</span>
-						<input type="text" class="form-control" id="cn" name="cn" placeholder="">
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">type</span>
-						<input type="text" class="form-control" id="type" name="type" placeholder="">
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">sdo</span>
-						<input type="text" class="form-control" id="sdo" name="sdo" placeholder="">
-					</div>
-				</div><%if (Tools.isSuperAdmin(minfo)){%>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">urlotherstr</span>
-						<input type="text" class="form-control" id="urlotherstr" name="urlotherstr" placeholder="">
-					</select>
-					</div>
-				</div><%}%>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">排序</span>
-						<input type="number" class="form-control" id="sort" name="sort" placeholder="" step="1">
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="input-group">
-						<span class="input-group-addon">图标</span>
-						<input type="text" class="form-control" id="icohtml" name="icohtml" placeholder="">
-					</div>
-				</div>
-				</div>
-				</div>
-			</div>
-			<div class="form-group">
-			<label class="col-sm-2 control-label">相关设置说明</label>
-			<div class="col-sm-10">
-				<textarea style="width: 100%; height: 200px" class="form-control" disabled="">模块化管理下的每个模块可以单独添加/删除和设置，这里设置的是模块的一些属性，模块名称是用来标识用，具体显示到后台菜单的名称以菜单设置里面的显示名称为准，模块名称长度不限，但是菜单名称建议4个字。&#13内部属性是设置此模块是否对外公开，如果设置为公开模块，那么所有客户都可以进入后台添加此模块，如果为超级管理模块，那么只有后台设置为超级管理员的人才可以看到此模块，如果设置为普通内部模块，那么只有快车道内部员工账号可以看到和使用。&#13菜单相关设置，除菜单名称外，其他几个参数建议专业人士设置。
-				</textarea>
-			</div>
-		</div>
-		</div>
-	</div>
+    <div class="box-header with-border">
+        <div class="box-header with-border">
+            <h3 class="box-title">订单来自：快加云-秦扬</h3>
+            <h3 class="box-title">提交时间：2019-02-20 16:57:00</h3>
+            <div class="box-tools pull-right">
+
+                <h3 class="box-title">订单编号：</h3>
+            </div>
+        </div>
+        <div class="box-body" id="tab-content">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">主贷人信息</label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">客户姓名</span>
+                                <input type="text" class="form-control" id="c_name" name="c_name" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">客户身份证号</span>
+                                <input type="text" class="form-control" id="c_cardno" name="c_cardno" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">客户电话</span>
+                                <input type="text" class="form-control" id="c_tel" name="c_tel" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">客户性别</span>
+                                <select class="form-control" id="c_sex" name="c_sex">
+                                    <option value="0">请选择</option>
+                                    <option value="1">男</option>
+                                    <option value="2">女</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">配偶信息</label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">配偶姓名</span>
+                                <input type="text" class="form-control" id="po_c_name" name="po_c_name"
+                                       placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">配偶身份证</span>
+                                <input type="text" class="form-control" id="po_c_cardno" name="po_c_cardno"
+                                       placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">配偶电话</span>
+                                <input type="text" class="form-control" id="po_c_tel" name="po_c_tel" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">共同借款人1信息</label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">共同借款人1姓名</span>
+                                <input type="text" class="form-control" id="c_name_gj1" name="c_name_gj1"
+                                       placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">共同借款人1身份证</span>
+                                <input type="text" class="form-control" id="c_cardno_gj1" name="c_cardno_gj1"
+                                       placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">共同借款人1电话</span>
+                                <input type="text" class="form-control" id="c_tel_gj1" name="c_tel_gj1" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">共同借款人2信息</label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">共同借款人2姓名</span>
+                                <input type="text" class="form-control" id="c_name_gj2" name="c_name_gj2"
+                                       placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">共同借款人2身份证</span>
+                                <input type="text" class="form-control" id="c_cardno_gj2" name="c_cardno_gj2"
+                                       placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">共同借款人2电话</span>
+                                <input type="text" class="form-control" id="c_tel_gj2" name="c_tel_gj2" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">贷款产品</label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">按揭银行</span>
+                                <select class="form-control" id="" name="">
+                                    <option value="0">请选择按揭银行</option>
+                                    <option value="1">工行绍兴分行</option>
+                                    <option value="2">工行武林支行</option>
+                                    <option value="3">工行义乌支行</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">贷款产品</span>
+                                <select class="form-control" id="" name="">
+                                    <option value="0">请选择贷款产品</option>
+                                    <option value="1">卡分期</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">业务等级</span>
+                                <select class="form-control" id="" name="">
+                                    <option value="0">请选择业务等级</option>
+                                    <option value="1">预期贷款额度10万以下(含10万)</option>
+                                    <option value="2">预期贷款额度10万以上</option>
+                                </select>
+                            </div>
+                        </div>
+                        <%
+                            //dicopt功能演示，指定表里面的name和id，并用name组成<option></option>
+                            String sp = Tools.dicopt("comm_states", 0);//省会，
+                        %>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">所在省</span>
+                                <select class="form-control" id="state_id" name="state_id">
+                                    <option value="0">请选择</option>
+                                    <%=sp%>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">所在市</span>
+                                <select class="form-control" id="city_id" name="city_id">
+                                    <option value="0">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">相关文件</label>
+                <div class="col-sm-8">
+                <ul id="clTab" class="nav nav-tabs">
+                    <li class="active"><a href="#clTab1" data-toggle="tab" aria-expanded="false">主贷人</a></li>
+                    <li class=""><a href="#clTab2" data-toggle="tab" aria-expanded="true">配偶</a></li>
+                    <li class=""><a href="#clTab3" data-toggle="tab" aria-expanded="false">共借人1</a></li>
+                    <li class=""><a href="#clTab4" data-toggle="tab" aria-expanded="false">共借人2</a></li>
+                </ul>
+                <div id="clTabContent" class="tab-content">
+                    <div class="tab-pane fade active in" id="clTab1">
+                        <div class="form-group">
+                        <div class="col-sm-10">
+                            <div class="row inline-from">
+                                <%
+                                    String upFile1 = "../upfile.inc.jsp";
+                                    String imgPreName1 = "imgstep1_1ss";
+                                    String[] ssImgs1 = { //设置已有值
+                                            !Tools.myIsNull(infodb.get(imgPreName1)) ? infodb.get(imgPreName1) : ""
+                                    };
+                                    String sImgs1 = "";
+                                    for (int i = 0; i < ssImgs1.length; i++) {
+                                        sImgs1 = sImgs1 + ssImgs1[i] + "|";
+                                    }
+                                %>
+                                <%-- 可能这里用<%@include file %>模式更适合--%>
+                                <jsp:include page="<%=upFile1%>">
+                                    <jsp:param name="img_MarginImgSrc" value=""/>
+                                    <jsp:param name="img_MarginImgClass" value=""/>
+                                    <jsp:param name="img_Total" value="4"/>
+                                    <jsp:param name="img_NamePre" value="imgstep1_1ss"/>
+                                    <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
+                                    <jsp:param name="l1div_Style"
+                                               value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
+                                    <jsp:param name="img_Style" value="width: 100%;height:100px;border-radius:10px;"/>
+                                    <jsp:param name="img_FileStyle"
+                                               value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
+                                    <jsp:param name="img_Class" value="imgclass"/>
+                                    <jsp:param name="img_FileClass" value="uploadfileclass"/>
+                                    <jsp:param name="img_SmallWidth" value="100"/>
+                                    <jsp:param name="img_SmallHeight" value="100"/>
+                                    <jsp:param name="sImgs" value="<%=sImgs1%>"/>
+                                </jsp:include>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="clTab2">
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <div class="row inline-from">
+                                    <%
+                                        String upFile2 = "../upfile.inc.jsp";
+                                        String imgPreName2= "imgstep1_2ss";
+                                        String[] ssImgs2 = { //设置已有值
+                                                !Tools.myIsNull(infodb.get(imgPreName2)) ? infodb.get(imgPreName2) : ""
+                                        };
+                                        String sImgs2 = "";
+                                        for (int i = 0; i < ssImgs2.length; i++) {
+                                            sImgs2 = sImgs2 + ssImgs2[i] + "|";
+                                        }
+                                    %>
+                                    <%-- 可能这里用<%@include file %>模式更适合--%>
+                                    <jsp:include page="<%=upFile2%>">
+                                        <jsp:param name="img_MarginImgSrc" value=""/>
+                                        <jsp:param name="img_MarginImgClass" value=""/>
+                                        <jsp:param name="img_Total" value="4"/>
+                                        <jsp:param name="img_NamePre" value="imgstep1_2ss"/>
+                                        <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
+                                        <jsp:param name="l1div_Style"
+                                                   value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
+                                        <jsp:param name="img_Style" value="width: 100%;height:100px;border-radius:10px;"/>
+                                        <jsp:param name="img_FileStyle"
+                                                   value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
+                                        <jsp:param name="img_Class" value="imgclass"/>
+                                        <jsp:param name="img_FileClass" value="uploadfileclass"/>
+                                        <jsp:param name="img_SmallWidth" value="100"/>
+                                        <jsp:param name="img_SmallHeight" value="100"/>
+                                        <jsp:param name="sImgs" value="<%=sImgs2%>"/>
+                                    </jsp:include>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="clTab3">
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <div class="row inline-from">
+                                    <%
+                                        String upFile3 = "../upfile.inc.jsp";
+                                        String imgPreName3 = "imgstep1_3ss";
+                                        String[] ssImgs3 = { //设置已有值
+                                                !Tools.myIsNull(infodb.get(imgPreName3)) ? infodb.get(imgPreName3) : ""
+                                        };
+                                        String sImgs3 = "";
+                                        for (int i = 0; i < ssImgs3.length; i++) {
+                                            sImgs3 = sImgs3 + ssImgs3[i] + "|";
+                                        }
+                                    %>
+                                    <%-- 可能这里用<%@include file %>模式更适合--%>
+                                    <jsp:include page="<%=upFile3%>">
+                                        <jsp:param name="img_MarginImgSrc" value=""/>
+                                        <jsp:param name="img_MarginImgClass" value=""/>
+                                        <jsp:param name="img_Total" value="4"/>
+                                        <jsp:param name="img_NamePre" value="imgstep1_3ss"/>
+                                        <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
+                                        <jsp:param name="l1div_Style"
+                                                   value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
+                                        <jsp:param name="img_Style" value="width: 100%;height:100px;border-radius:10px;"/>
+                                        <jsp:param name="img_FileStyle"
+                                                   value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
+                                        <jsp:param name="img_Class" value="imgclass"/>
+                                        <jsp:param name="img_FileClass" value="uploadfileclass"/>
+                                        <jsp:param name="img_SmallWidth" value="100"/>
+                                        <jsp:param name="img_SmallHeight" value="100"/>
+                                        <jsp:param name="sImgs" value="<%=sImgs3%>"/>
+                                    </jsp:include>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="clTab4">
+                        <div class="form-group">
+                            <div class="col-sm-10">
+                                <div class="row inline-from">
+                                    <%
+                                        String upFile4 = "../upfile.inc.jsp";
+                                        String imgPreName4 = "imgstep1_4ss";
+                                        String[] ssImgs4 = { //设置已有值
+                                                !Tools.myIsNull(infodb.get(imgPreName4)) ? infodb.get(imgPreName4) : ""
+                                        };
+                                        String sImgs4 = "";
+                                        for (int i = 0; i < ssImgs4.length; i++) {
+                                            sImgs4 = sImgs4 + ssImgs4[i] + "|";
+                                        }
+                                    %>
+                                    <%-- 可能这里用<%@include file %>模式更适合--%>
+                                    <jsp:include page="<%=upFile4%>">
+                                        <jsp:param name="img_MarginImgSrc" value=""/>
+                                        <jsp:param name="img_MarginImgClass" value=""/>
+                                        <jsp:param name="img_Total" value="4"/>
+                                        <jsp:param name="img_NamePre" value="imgstep1_4ss"/>
+                                        <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
+                                        <jsp:param name="l1div_Style"
+                                                   value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
+                                        <jsp:param name="img_Style" value="width: 100%;height:100px;border-radius:10px;"/>
+                                        <jsp:param name="img_FileStyle"
+                                                   value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
+                                        <jsp:param name="img_Class" value="imgclass"/>
+                                        <jsp:param name="img_FileClass" value="uploadfileclass"/>
+                                        <jsp:param name="img_SmallWidth" value="100"/>
+                                        <jsp:param name="img_SmallHeight" value="100"/>
+                                        <jsp:param name="sImgs" value="<%=sImgs4%>"/>
+                                    </jsp:include>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">大数据查询</label>
+                <div class="col-sm-8">
+
+                    <ul id="dsjTab" class="nav nav-tabs">
+                        <li class="active"><a href="#dsjTab1" data-toggle="tab" aria-expanded="false">主贷人</a></li>
+                        <li class=""><a href="#dsjTab2" data-toggle="tab" aria-expanded="true">配偶</a></li>
+                        <li class=""><a href="#dsjTab3" data-toggle="tab" aria-expanded="false">共借人1</a></li>
+                        <li class=""><a href="#dsjTab4" data-toggle="tab" aria-expanded="false">共借人2</a></li>
+                    </ul>
+                    <div id="dsjTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="dsjTab1">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="row inline-from">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">大数据编码</span>
+                                                <input class="form-control" name="dsj_report_id" id="dsj_report_id"
+                                                       value="" type="text">
+                                                <span class="input-group-addon">
+						<a style="color: #72afd2;"
+                           href="javascript:queryid('测试','15869871564','412223199710259885','dsj_report_id')">获取编码</a>
+						</span>
+                                                <span class="input-group-addon">
+						<a style="color: #72afd2;" href="javascript:dsj_bg('dsj_report_id');">查看报告</a>
+						</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="dsjTab2">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="row inline-from">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">大数据编码</span>
+                                                <input class="form-control" name="po_dsj_report_id"
+                                                       id="po_dsj_report_id" value="" type="text">
+                                                <span class="input-group-addon">
+						<a style="color: #72afd2;" href="javascript:queryid('','','','po_dsj_report_id');">获取编码</a>
+						</span>
+                                                <span class="input-group-addon">
+						<a style="color: #72afd2;" href="javascript:dsj_bg('po_dsj_report_id');">查看报告</a>
+						</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="dsjTab3">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="row inline-from">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">大数据编码</span>
+                                                <input class="form-control" name="gjr_dsj_report_id1"
+                                                       id="gjr_dsj_report_id1" value="" type="text">
+                                                <span class="input-group-addon">
+						<a style="color: #72afd2;" href="javascript:queryid('','','','gjr_dsj_report_id1');">获取编码</a>
+						</span>
+                                                <span class="input-group-addon">
+						<a style="color: #72afd2;" href="javascript:dsj_bg('gjr_dsj_report_id1');">查看报告</a>
+						</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="dsjTab4">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="row inline-from">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">大数据编码</span>
+                                                <input class="form-control" name="gjr_dsj_report_id2"
+                                                       id="gjr_dsj_report_id2" value="" type="text">
+                                                <span class="input-group-addon">
+						<a style="color: #72afd2;" href="javascript:queryid('','','','gjr_dsj_report_id2');">获取编码</a>
+						</span>
+                                                <span class="input-group-addon">
+						<a style="color: #72afd2;" href="javascript:dsj_bg('gjr_dsj_report_id2');">查看报告</a>
+						</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <%--相关状态--%>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">相关状态</label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">主贷人征信状态</span>
+                                <select class="form-control" id="zdr_zx1_tag" name="zdr_zx1_tag">
+                                    <option value="0">请选择</option>
+                                    <option value="1">通过</option>
+                                    <option value="2">不通过</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">主贷人配偶征信状态</span>
+                                <select class="form-control" id="zdrpo_zx1_tag" name="zdrpo_zx1_tag">
+                                    <option value="0">请选择</option>
+                                    <option value="1">通过</option>
+                                    <option value="2">不通过</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">共同借款人1征信状态</span>
+                                <select class="form-control" id="gjr1_zx1_tag" name="gjr1_zx1_tag">
+                                    <option value="0">请选择</option>
+                                    <option value="1">通过</option>
+                                    <option value="2">不通过</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">共同借款人2征信状态</span>
+                                <select class="form-control" id="gjr2_zx1_tag" name="gjr2_zx1_tag">
+                                    <option value="0">请选择</option>
+                                    <option value="1">通过</option>
+                                    <option value="2">不通过</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%--相关状态--%>
+
+
+        </div>
+    </div>
 </div>
+<script>
+    /*选择省后，动态获取省下面的市，并默认选中你指定的id的市，/ttAjax在Ajax.java中处理
+                                            /ttAjax也可以单独使用，比如
+                                            /ttAjax?do=opt&cn=kjb_user&id=3&mid_add=100000 //显示创建人id为100000的所有用户，默认选择id为3的记录
+                                            * */
+    objacl('#state_id', '#city_id', '/ttAjax?do=opt&cn=comm_citys&id=3&state_id=', '${infodb.state_id}', '${infodb.city_id}');
+</script>

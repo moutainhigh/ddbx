@@ -7,8 +7,11 @@
  */
 package com.example.ddbx.tt.manager;
 
+import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.tool.Config;
+import com.example.ddbx.tt.tool.DbCtrl;
+import com.example.ddbx.tt.tool.DbTools;
 import com.example.ddbx.tt.tool.Tools;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +26,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class Manager {
@@ -126,4 +131,27 @@ public class Manager {
   public String Show404(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
     return "jsp/manager/404"; 
   }
+
+  /**
+   * 删除
+   */
+  @RequestMapping(value = "/manager/todel", method = RequestMethod.POST)
+  @ResponseBody
+  public Map todel(long id,String cn){
+    Map result=new HashMap();
+    DbTools myDbTools=new DbTools();
+    String sql="DELETE FROM "+cn+" WHERE id="+id;
+    try {
+      myDbTools.recexec(sql);
+      result.put("code",true);
+    }catch (Exception e) {
+      result.put("code",false);
+      Tools.logError(e.getMessage(), true, false);
+    }finally {
+      myDbTools.closeConn();
+    }
+    return result;
+  }
+
+
 }

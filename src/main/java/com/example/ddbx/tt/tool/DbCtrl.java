@@ -11,6 +11,7 @@ package com.example.ddbx.tt.tool;
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.manager.ManagerPage;
+import com.example.ddbx.tt.table.BASE64Encoder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -771,6 +772,9 @@ public class DbCtrl {
         TtMap info = info(nid);
         if (!Tools.myIsNull(info.get("password"))) {// 密码处理，不显示
             info.put("password", "");
+        }
+        if (!Tools.myIsNull(info.get("pagehtml"))) {// 编码处理
+            info.put("pagehtml",new String(BASE64Encoder.decode(info.get("pagehtml"))));
         }
         System.out.println(info);
         String jsonInfo = Tools.jsonEnCode(info);

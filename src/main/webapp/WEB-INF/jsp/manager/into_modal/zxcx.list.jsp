@@ -20,20 +20,17 @@
 					<table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
 						<thead>
 							<tr role="row">
-								<th class="hidden-xs text-center"><!-- hidden-xs为手机模式时自动隐藏， text-center为居中-->
-									编号
-								</th>
-								<th class="hidden-xs text-center">
-									模块级别
+								<th class="text-center"><!-- hidden-xs为手机模式时自动隐藏， text-center为居中-->
+									订单编号
 								</th>
 								<th class="text-center">
-									显示名称
-								</th>
-								<th class="hidden-xs text-center">
-									后台菜单显示
+									客户姓名
 								</th>
 								<th class="text-center">
-									排序
+									来源:公司-姓名
+								</th>
+								<th class="hidden-xs text-center">
+									提交/更新时间
 								</th>
 								<th class="text-center">操作</th>
 							</tr>
@@ -41,20 +38,17 @@
 						<tbody>
 							<c:forEach items="${list}" var="u" varStatus="num">
 								<tr role="row" class="odd">
-									<td class="hidden-xs text-center">
-											${u.id}
-									</td>
-									<td class="hidden-xs text-center">
-										${u.level}
+									<td class="text-center">
+										${u.order_code}
 									</td>
 									<td class="text-center">
-										${u.showmmenuname}
-									</td>
-									<td class="hidden-xs text-center">
-										${u.showmmenutag.equals("1")?"<span class='label label-success'>显示</span>":"<span class='label label-danger'>不显示</span>"}
+										${u.c_name}
 									</td>
 									<td class="text-center">
-										${u.sort}
+
+									</td>
+									<td class="hidden-xs text-center">
+											${u.dt_add}<br>${u.dt_edit}
 									</td>
 									<td class="text-center">
 										<div class="table-button">

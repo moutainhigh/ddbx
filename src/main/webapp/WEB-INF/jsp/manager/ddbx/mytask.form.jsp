@@ -2,7 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%
 String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
-
 %>
 <head>
 	<script src="js/jQueryRotate.2.2.js" type="text/javascript"></script>

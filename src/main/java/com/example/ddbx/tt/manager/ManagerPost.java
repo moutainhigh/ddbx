@@ -8,10 +8,7 @@
 package com.example.ddbx.tt.manager;
 
 import com.example.ddbx.tt.data.TtMap;
-import com.example.ddbx.tt.table.Admin;
-import com.example.ddbx.tt.table.AdminAgp;
-import com.example.ddbx.tt.table.FsModal;
-import com.example.ddbx.tt.table.Sys_config;
+import com.example.ddbx.tt.table.*;
 import com.example.ddbx.tt.tool.DbCtrl;
 import com.example.ddbx.tt.tool.Tools;
 
@@ -41,8 +38,11 @@ public class ManagerPost {
           String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
           try {
             switch (postUrl.get("cn")) {
-              case "sys_config":
+              case "sys_config"://业务板块
                     dbCtrl = (DbCtrl) new Sys_config();
+                break;
+              case "sys_config_son"://业务子版块
+                dbCtrl = (DbCtrl) new Sys_config_son();
                 break;
               case "admin":
                 dbCtrl = (DbCtrl) new Admin();

@@ -17,6 +17,12 @@ public class Sys_config_son extends DbCtrl {
     private final String classAgpId = "6"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
     public boolean agpOK = false;// 默认无权限
 
+
+    @Override
+    public void setTable(String table) {
+        super.setTable(table);
+    }
+
     public Sys_config_son() {
         super("sys_config_son");
         AdminAgp adminAgp = new AdminAgp();
@@ -34,6 +40,7 @@ public class Sys_config_son extends DbCtrl {
             adminAgp.closeConn();
         }
     }
+
 
     //list 处理
     public void doGetList(HttpServletRequest request, TtMap post) {
@@ -76,9 +83,20 @@ public class Sys_config_son extends DbCtrl {
 
         if (!Tools.myIsNull(kw)) { // 搜索关键字高亮
             for (TtMap info : list) {
-
                 info.put("name",
                         info.get("name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
+            }
+        }else{
+            //获取其他表字段处理 TODO
+            for (TtMap info : list) {
+                long nid = 0;
+                if(!Tools.myIsNull(info.get("c_id"))){
+                    setTable("sys_config");
+                    nid=Long.parseLong(info.get("c_id"));
+                }
+                TtMap info1 = info(nid);
+                info.put("ssyw_name",
+                        info1.get("name"));
             }
         }
         request.setAttribute("list", list);// 列表list数据
@@ -95,6 +113,11 @@ public class Sys_config_son extends DbCtrl {
     }
 
     @Override
+    public TtMap info(long id) {
+        return super.info(id);
+    }
+
+    @Override
     public int edit(TtMap ary, long id) {
         return super.edit(ary, id);
     }
@@ -106,6 +129,14 @@ public class Sys_config_son extends DbCtrl {
 
     @Override
     public void doPost(TtMap post, long id,TtMap result2) {
+        if(Tools.myIsNull(post.get("pagehtml"))){
+            System.out.println("为null");
+            post.put("pagehtml","");
+        }else{
+            System.out.println("不为null"+BASE64Encoder.encode(post.get("pagehtml").getBytes()));
+            post.put("pagehtml",BASE64Encoder.encode(post.get("pagehtml").getBytes()));
+        }
+        System.out.println("sys_config_son："+post);
         if (id > 0) { // id为0时，新增
             edit(post, id);
         } else {
@@ -116,6 +147,7 @@ public class Sys_config_son extends DbCtrl {
         Tools.formatResult(result2, bSuccess, errorCode, bSuccess ? "编辑"+title+"成功！" : errorMsg,
                 bSuccess ? nextUrl : "");//失败时停留在当前页面,nextUrl为空
     }
+
 
     @Override
     public void closeConn() {

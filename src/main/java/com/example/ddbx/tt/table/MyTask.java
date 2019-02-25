@@ -96,8 +96,8 @@ public class MyTask extends DbCtrl {
 
         if (!Tools.myIsNull(kw)) { // 搜索关键字高亮
             for (TtMap info : list) {
-                info.put("name",
-                        info.get("name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
+                info.put("c_name",
+                        info.get("c_name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
             }
         }
         request.setAttribute("list", list);// 列表list数据

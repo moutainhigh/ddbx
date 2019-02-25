@@ -192,6 +192,17 @@ public class ManagerGet {
                 }
                 haveSetFormData = true;
                 break;
+              case "zxcx"://征信
+                zxcx zxcx=new zxcx();
+                try {
+                  zxcx.doGetList(request,post);
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, true);
+                } finally {
+                  zxcx.closeConn();
+                }
+                haveSetFormData = true;
+                break;
             default:
               lsitTitleString = "相关管理";
               orderString = "ORDER BY id";

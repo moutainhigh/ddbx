@@ -54,7 +54,7 @@
 										${u.number}
 									</td>
 									<td class="text-center">
-										${u.c_id}
+										${u.ssyw_name}
 									</td>
 									<td class="hidden-xs text-center">
 										${u.showtag.equals("1")?"<span class='label label-success'>显示</span>":"<span class='label label-danger'>不显示</span>"}
