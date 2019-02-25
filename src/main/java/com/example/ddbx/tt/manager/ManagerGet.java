@@ -203,6 +203,17 @@ public class ManagerGet {
                 }
                 haveSetFormData = true;
                 break;
+              case "spmq"://征信
+                spmq spmq=new spmq();
+                try {
+                  spmq.doGetList(request,post);
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, true);
+                } finally {
+                  spmq.closeConn();
+                }
+                haveSetFormData = true;
+                break;
             default:
               lsitTitleString = "相关管理";
               orderString = "ORDER BY id";
