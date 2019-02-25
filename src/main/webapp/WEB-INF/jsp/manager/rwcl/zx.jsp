@@ -1,8 +1,3 @@
-<%@ page import="com.example.ddbx.tt.tool.DbTools" %>
-<%@ page import="com.example.ddbx.tt.data.TtList" %>
-<%@ page import="com.example.ddbx.tt.tool.Tools" %>
-<%@ page import="com.example.ddbx.tt.data.TtMap" %>
-<%@ page import="com.example.ddbx.tt.table.BASE64Encoder" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -76,60 +71,28 @@
             height: 34px;
         }
     </style>
-<%
-    long recs = 0;
-    DbTools myDbTools=new DbTools();
-    String sql="select * from sys_config_son order by number";
-    TtList clgc_list = null;
-    try {
-        clgc_list = myDbTools.reclist(sql);
-        recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
-    }catch (Exception e) {
-        Tools.logError(e.getMessage(), true, false);
-    }finally {
-        myDbTools.closeConn();
-    }
 
-%>
     <div class="modal-body flex-box" style="height: auto;">
         <div class="flex-row flex-row-rhcen">
-            <em onclick="funUnfold()" class="text-muted">全部展开</em>
-            <em onclick="funClose()" class="text-muted">全部收起</em>
+            <em onclick="funUnfold()" class="text-muted">全部展开</em> <em onclick="funClose()" class="text-muted">全部收起</em>
         </div>
         <div class="flex-rowcen">
             <ol>
-                <%
-                    for (TtMap ttMap:clgc_list){ %>
-                <li class="text-primary"><em><%=ttMap.get("name")%>：</em>
+
+
+                <textarea id="zx_1_1" name="zx_1_1" style="display: none;"></textarea>
+
+                <li class="text-primary"><em>开始：</em>
                     <div class="big-conte" style="display: none;">
                         <div style="float: left; margin-left: 20px; width: 300px;" class="ng-binding">
                             <strong>开始时间：</strong>
                             2019-01-24 21:59:30
                         </div>
                         <div style="float: left; margin-left: 20px; width: 300px;" class="ng-binding">
-                            <strong>处理时间：</strong>
-                            2019-01-24 21:59:30
-                        </div>
-                        <div style="float: left; margin-left: 20px; width: 300px;" class="ng-binding">
-                            <strong>处理人：</strong>
-                        </div>
-                        <strong style="margin-left: 10px;">
-                            <i>处理信息：</i>
-                        </strong>
-                        <br>
-                        <div>
-                            <form name="" class="form-horizontal">
-                                <%=
-                            new String(BASE64Encoder.decode(ttMap.get("pagehtml")))
-                            %>
-
-                            </form>
+                            <strong>处理人：</strong>韩振杰
                         </div>
                     </div>
                 </li>
-                    <%
-                    }
-                    %>
                 <li class="text-primary"><em>提交查询：</em>
                     <div class="big-conte" style="display: none;">
                         <div style="float: left; margin-left: 20px; width: 300px;" class="ng-binding">
@@ -316,8 +279,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="text-primary">
-                    <em>完成：</em>
+                <li class="text-primary"><em>完成：</em>
                     <div class="big-conte" style="display: none;">
                         <div style="float: left; margin-left: 20px; width: 300px;">
                             <strong>完成时间：</strong>
