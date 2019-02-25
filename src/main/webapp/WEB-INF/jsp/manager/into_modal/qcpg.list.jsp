@@ -8,6 +8,7 @@
 	<%
 		String url = Tools.urlKill("sdo|id")+"&sdo=form&id=";
 	%>
+
 	<!-- /.box-header -->
 	<div class="box-body">
 		<div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">

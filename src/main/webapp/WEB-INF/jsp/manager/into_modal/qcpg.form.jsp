@@ -11,6 +11,7 @@
         id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
     }
 %>
+
 <div class="admin-content nav-tabs-custom box">
     <div class="box-header with-border">
         <div class="box-header with-border">

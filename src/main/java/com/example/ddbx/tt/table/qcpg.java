@@ -35,7 +35,6 @@ public class qcpg extends DbCtrl {
         }
     }
 
-
     @Override
     public void setTable(String table) {
         super.setTable(table);
