@@ -38,6 +38,9 @@ public class ManagerPost {
           String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
           try {
             switch (postUrl.get("cn")) {
+              case "car_loan":
+                dbCtrl = (DbCtrl) new CarLoan();
+                break;
               case "sys_config"://业务板块
                     dbCtrl = (DbCtrl) new Sys_config();
                 break;

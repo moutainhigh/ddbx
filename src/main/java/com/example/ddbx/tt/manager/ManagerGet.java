@@ -25,6 +25,14 @@ import javax.servlet.http.HttpServletResponse;
 public class ManagerGet {
   public String doGet(String cn, String type, String sdo, String id, HttpServletRequest request,
       HttpServletResponse resp) {
+    String realCn = ManagerTools.getRealCn(cn);
+    if (!ManagerTools.checkSdo(sdo) || realCn == null) {// 过滤cn和sdo，realCn为null时表示此cn不合法。
+      return "jsp/manager/404";
+    }
+    if (realCn == "") { // 为空时表示此cn不需要使用数据库，直接返回
+      ManagerTools.doFetchDefault(request, cn, sdo);
+      return "jsp/manager/index_b";
+    }
     TtMap minfo = Tools.minfo();
     request.setAttribute("minfo", minfo);
     TtMap info = null;
@@ -203,9 +211,24 @@ public class ManagerGet {
                 }
                 haveSetFormData = true;
                 break;
+              case "car_loan"://征信
+                CarLoan carLoan=new CarLoan();
+                try {
+                  carLoan.doGetList(request,post);
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, true);
+                } finally {
+                  carLoan.closeConn();
+                }
+                haveSetFormData = true;
+                break;
             default:
               lsitTitleString = "相关管理";
               orderString = "ORDER BY id";
+              Class<?> b = ManagerTools.doGetClass(realCn);
+              if (null != b) {
+                dbCtrl = (DbCtrl) b.newInstance();
+              }
               break;
             }
             if (!haveSetFormData) {// 如果没有处理
