@@ -203,6 +203,17 @@ public class ManagerGet {
                 }
                 haveSetFormData = true;
                 break;
+              case "qcpg":
+                qcpg qcpg=new qcpg();
+                try {
+                  qcpg.doGetList(request,post);
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, true);
+                } finally {
+                  qcpg.closeConn();
+                }
+                haveSetFormData = true;
+                break;
             default:
               lsitTitleString = "相关管理";
               orderString = "ORDER BY id";
