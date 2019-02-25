@@ -240,7 +240,7 @@ public class ManagerGet {
                     request.setAttribute("recs", dbCtrl.recs); // 总记录数
                     String htmlpages = dbCtrl.getPage("", 0, true); // 分页html代码
                     request.setAttribute("pages", dbCtrl.pages); // 总页数
-                    request.setAttribute("p", pageInt); // 当前页码
+                    request.setAttribute("p", pageInt);  //  当前页码
                     request.setAttribute("l", limtInt); // limit量
                     request.setAttribute("lsitTitleString", lsitTitleString); // 标题
                     request.setAttribute("htmlpages", htmlpages); // 分页的html代码
