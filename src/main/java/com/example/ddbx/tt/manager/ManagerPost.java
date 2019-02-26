@@ -50,6 +50,9 @@ public class ManagerPost {
               case "admin_agp":
                 dbCtrl = (DbCtrl) new AdminAgp();
                 break;
+              case "spmq":
+                dbCtrl = (DbCtrl) new spmq();
+                break;
               case "fs_agp": // 用单独的类演示处理post，保存数据
                 dbCtrl = (DbCtrl) new FsModal();
                 break;

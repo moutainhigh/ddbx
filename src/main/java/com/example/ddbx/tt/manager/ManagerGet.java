@@ -80,7 +80,7 @@ public class ManagerGet {
               if (dbCtrl == null) {//使用dbCtrl默认的配置输出数据
                 dbCtrl = new DbCtrl(ManagerTools.getRealCn(cn));
               }
-              ;
+
               dbCtrl.doGetForm(request, post);
               break;
 

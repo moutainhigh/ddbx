@@ -154,11 +154,11 @@ public class Admin extends DbCtrl {
    */
   @Override
   public void doGetList(HttpServletRequest request, TtMap post) {
-    if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
+    if (!agpOK) {  // 演示在需要权限检查的地方插入权限标志判断
       request.setAttribute("errorMsg", errorMsg);
       return;
     }
-    String kw = ""; // 搜索关键字
+    String kw = "";  //搜索关键字
     String dtbe = ""; // 搜索日期选择
     int pageInt = Integer.valueOf(Tools.myIsNull(post.get("p")) == false ? post.get("p") : "1"); // 当前页
     int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
