@@ -82,6 +82,12 @@ public class ManagerGet {
                 MyTask myTask1=new MyTask();
                 request.setAttribute("clgc_list",myTask1.getclgc());
                 break;
+              case "car_loan": // 我的任务板块
+                //查询进件客户
+                CarLoan carLoan = new CarLoan();
+                TtList getAllOrderName = carLoan.selectAllOrderName();
+                request.setAttribute("names",getAllOrderName);
+                break;
             default:
               break;
             }
@@ -211,7 +217,7 @@ public class ManagerGet {
                 }
                 haveSetFormData = true;
                 break;
-              case "car_loan"://征信
+              case "car_loan":
                 CarLoan carLoan=new CarLoan();
                 try {
                   carLoan.doGetList(request,post);

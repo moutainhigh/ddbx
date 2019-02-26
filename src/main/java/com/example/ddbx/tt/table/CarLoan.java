@@ -2,10 +2,16 @@ package com.example.ddbx.tt.table;
 
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
+import com.example.ddbx.tt.manager.ManagerTools;
 import com.example.ddbx.tt.tool.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.sql.Time;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class CarLoan extends DbCtrl {
 
@@ -17,7 +23,7 @@ public class CarLoan extends DbCtrl {
     public boolean agpOK = false;// 默认无权限
 
     public CarLoan() {
-        super("car_loan");
+        super("dd_icbc_materials");
         AdminAgp adminAgp = new AdminAgp();
         try {
             if (adminAgp.checkAgp(classAgpId)) { // 如果有权限
@@ -32,6 +38,162 @@ public class CarLoan extends DbCtrl {
         } finally {
             adminAgp.closeConn();
         }
+    }
+
+
+    /**
+     * @description: 重载edit方法，可以在这里处理一些edit逻辑
+     * @param {type}
+     * @return:
+     */
+    @Override
+    public int edit(TtMap ary, long id) {
+        //1 其他表操作  add
+        //2 本表操作
+        //证明材料
+        String imgstep9_1ss =
+                ary.get("imgstep9_1ss1")+","
+                        +ary.get("imgstep9_1ss2")+","
+                        +ary.get("imgstep9_1ss3")+","
+                        +ary.get("imgstep9_1ss4")+","
+                        +ary.get("imgstep9_1ss5")+","
+                        +ary.get("imgstep9_1ss6");
+        ary.put("imgstep9_1ss",imgstep9_1ss);
+        //合同材料
+        String imgstep9_2ss =
+                ary.get("imgstep9_2ss1")+","
+                        +ary.get("imgstep9_2ss2")+","
+                        +ary.get("imgstep9_2ss3")+","
+                        +ary.get("imgstep9_2ss4")+","
+                        +ary.get("imgstep9_2ss5")+","
+                        +ary.get("imgstep9_2ss6")+","
+                        +ary.get("imgstep9_2ss7")+","
+                        +ary.get("imgstep9_2ss8")+","
+                        +ary.get("imgstep9_2ss9")+","
+                        +ary.get("imgstep9_2ss10")+","
+                        +ary.get("imgstep9_2ss11")+","
+                        +ary.get("imgstep9_2ss12")+","
+                        +ary.get("imgstep9_2ss13")+","
+                        +ary.get("imgstep9_2ss14")+","
+                        +ary.get("imgstep9_2ss15")+","
+                        +ary.get("imgstep9_2ss16")+","
+                        +ary.get("imgstep9_2ss17")+","
+                        +ary.get("imgstep9_2ss18")+","
+                        +ary.get("imgstep9_2ss19")+","
+                        +ary.get("imgstep9_2ss20")+","
+                        +ary.get("imgstep9_2ss21")+","
+                        +ary.get("imgstep9_2ss22")+","
+                        +ary.get("imgstep9_2ss23")+","
+                        +ary.get("imgstep9_2ss24")+","
+                        +ary.get("imgstep9_2ss25")+","
+                        +ary.get("imgstep9_2ss26")+","
+                        +ary.get("imgstep9_2ss27");
+        ary.put("imgstep9_2ss",imgstep9_2ss);
+        //其他材料
+        String imgstep9_3ss =
+                ary.get("imgstep9_3ss1")+","
+                        +ary.get("imgstep9_3ss2")+","
+                        +ary.get("imgstep9_3ss3")+","
+                        +ary.get("imgstep9_3ss4");
+        ary.put("imgstep9_3ss",imgstep9_3ss);
+        //补充材料
+        String imgstep9_4ss =
+                ary.get("imgstep9_4ss1")+","
+                        +ary.get("imgstep9_4ss2")+","
+                        +ary.get("imgstep9_4ss3")+","
+                        +ary.get("imgstep9_4ss4");
+        ary.put("imgstep9_4ss",imgstep9_4ss);
+        return super.edit(ary, id);
+    }
+
+    public TtList selectAllOrderName(){
+        DbTools myDbTools=new DbTools();
+        String sql="select id,c_name from dd_icbc";
+        TtList allCustomer = null;
+        try {
+            allCustomer = myDbTools.reclist(sql);
+            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+        }catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        }finally {
+            myDbTools.closeConn();
+        }
+        return allCustomer;
+    }
+
+    @Override
+    public long add(TtMap ary){
+        //1 其他表操作  add
+        DbTools myDbTools=new DbTools();
+        String sql="select id,gems_fs_id,gems_id,order_code from dd_icbc where id="+ary.get("icbc_id");
+        TtMap ontCustomer = null;
+        try {
+            ontCustomer = myDbTools.recinfo(sql);
+            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+        }catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        }finally {
+            myDbTools.closeConn();
+        }
+        ary.put("icbc_id",ontCustomer.get("id"));
+        ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
+        ary.put("gems_id",ontCustomer.get("gems_id"));
+
+        //2 本表操作
+        //证明材料
+        String imgstep9_1ss =
+                 ary.get("imgstep9_1ss1")+","
+                +ary.get("imgstep9_1ss2")+","
+                +ary.get("imgstep9_1ss3")+","
+                +ary.get("imgstep9_1ss4")+","
+                +ary.get("imgstep9_1ss5")+","
+                +ary.get("imgstep9_1ss6");
+        ary.put("imgstep9_1ss",imgstep9_1ss);
+        //合同材料
+        String imgstep9_2ss =
+                 ary.get("imgstep9_2ss1")+","
+                +ary.get("imgstep9_2ss2")+","
+                +ary.get("imgstep9_2ss3")+","
+                +ary.get("imgstep9_2ss4")+","
+                +ary.get("imgstep9_2ss5")+","
+                +ary.get("imgstep9_2ss6")+","
+                +ary.get("imgstep9_2ss7")+","
+                +ary.get("imgstep9_2ss8")+","
+                +ary.get("imgstep9_2ss9")+","
+                +ary.get("imgstep9_2ss10")+","
+                +ary.get("imgstep9_2ss11")+","
+                +ary.get("imgstep9_2ss12")+","
+                +ary.get("imgstep9_2ss13")+","
+                +ary.get("imgstep9_2ss14")+","
+                +ary.get("imgstep9_2ss15")+","
+                +ary.get("imgstep9_2ss16")+","
+                +ary.get("imgstep9_2ss17")+","
+                +ary.get("imgstep9_2ss18")+","
+                +ary.get("imgstep9_2ss19")+","
+                +ary.get("imgstep9_2ss20")+","
+                +ary.get("imgstep9_2ss21")+","
+                +ary.get("imgstep9_2ss22")+","
+                +ary.get("imgstep9_2ss23")+","
+                +ary.get("imgstep9_2ss24")+","
+                +ary.get("imgstep9_2ss25")+","
+                +ary.get("imgstep9_2ss26")+","
+                +ary.get("imgstep9_2ss27");
+        ary.put("imgstep9_2ss",imgstep9_2ss);
+        //其他材料
+        String imgstep9_3ss =
+                 ary.get("imgstep9_3ss1")+","
+                +ary.get("imgstep9_3ss2")+","
+                +ary.get("imgstep9_3ss3")+","
+                +ary.get("imgstep9_3ss4");
+        ary.put("imgstep9_3ss",imgstep9_3ss);
+        //补充材料
+        String imgstep9_4ss =
+                 ary.get("imgstep9_4ss1")+","
+                +ary.get("imgstep9_4ss2")+","
+                +ary.get("imgstep9_4ss3")+","
+                +ary.get("imgstep9_4ss4");
+        ary.put("imgstep9_4ss",imgstep9_4ss);
+        return super.add(ary);
     }
 
 
@@ -149,7 +311,7 @@ public class CarLoan extends DbCtrl {
      * @return:
      */
     @Override
-    public TtList lists(String wheres, String f) {
+    public TtList lists(String wheres, String f){
         if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
             return null;
         }
@@ -159,24 +321,16 @@ public class CarLoan extends DbCtrl {
         } else {
             wheres += (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)) ? "" : " AND gems_fs_id=" + minfo.get("gems_fs_id"); // 只显示自己公司的
         }
-
         TtList lmss = super.lists(wheres, f);
         for (TtMap tmpInfo : lmss) {
             tmpInfo.put("fsname", Tools.unDic("dd_fs", Tools.strToLong(tmpInfo.get("gems_fs_id"))));// 所属公司
             tmpInfo.put("choice", Tools.dicopt("sys_dic_tag", Tools.strToLong(tmpInfo.get("showtag")))); // 显示/隐藏
+            tmpInfo.put("c_name", Tools.unDic("dd_icbc", Tools.strToLong(tmpInfo.get("icbc_id"))));// 客户订单名字
         }
         return lmss;
     }
 
-    /**
-     * @description: 重载edit方法，可以在这里处理一些edit逻辑
-     * @param {type}
-     * @return:
-     */
-    @Override
-    public int edit(TtMap ary, long id) {
-        return super.edit(ary, id);
-    }
+
 
     @Override
     public void closeConn() {
