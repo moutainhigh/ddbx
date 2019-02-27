@@ -40,7 +40,6 @@ public class ManagerPost {
           try {
             switch (postUrl.get("cn")) {
               case "car_loan":
-                cn = "dd_icbc_materials";
                 dbCtrl = (DbCtrl) new CarLoan();
                 break;
               case "sys_config"://业务板块
