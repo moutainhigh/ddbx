@@ -2,7 +2,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.example.ddbx.tt.data.TtMap" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="admin-content nav-tabs-custom box">
@@ -39,13 +39,16 @@
                             <div class="row inline-from">
                                 <%
                                     String upFile1 = "../upfile.inc.jsp";
-                                    String imgPreName1 = "imgstep1_1ss";
+                                    String imgPreName1 = "imgstep9_1ss";
                                     String[] ssImgs1 = { //设置已有值
                                             !Tools.myIsNull(infodb.get(imgPreName1)) ? infodb.get(imgPreName1) : ""
                                     };
+                                    ssImgs1=ssImgs1[0].split(",");
                                     String sImgs1 = "";
                                     for (int i = 0; i < ssImgs1.length; i++) {
-                                        sImgs1 = sImgs1 + ssImgs1[i] + "|";
+                                          if(ssImgs1[i]!=null&&!ssImgs1[i].equals("")) {
+                                              sImgs1 = sImgs1 + ssImgs1[i] + "|";
+                                          }
                                     }
                                 %>
                                 <%-- 可能这里用<%@include file %>模式更适合--%>
@@ -53,7 +56,7 @@
                                     <jsp:param name="img_MarginImgSrc" value=""/>
                                     <jsp:param name="img_MarginImgClass" value=""/>
                                     <jsp:param name="img_Total" value="6"/>
-                                    <jsp:param name="img_NamePre" value="imgstep1_1ss"/>
+                                    <jsp:param name="img_NamePre" value="imgstep9_1ss"/>
                                     <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                     <jsp:param name="l1div_Style"
                                                value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
@@ -77,13 +80,16 @@
                                 <div class="row inline-from">
                                     <%
                                         String upFile2 = "../upfile.inc.jsp";
-                                        String imgPreName2= "imgstep1_2ss";
+                                        String imgPreName2 = "imgstep9_2ss";
                                         String[] ssImgs2 = { //设置已有值
                                                 !Tools.myIsNull(infodb.get(imgPreName2)) ? infodb.get(imgPreName2) : ""
                                         };
+                                        ssImgs2=ssImgs2[0].split(",");
                                         String sImgs2 = "";
                                         for (int i = 0; i < ssImgs2.length; i++) {
-                                            sImgs2 = sImgs2 + ssImgs2[i] + "|";
+                                              if(ssImgs2[i]!=null&&!ssImgs2[i].equals("")) {
+                                                  sImgs2 = sImgs2 + ssImgs2[i] + "|";
+                                              }
                                         }
                                     %>
                                     <%-- 可能这里用<%@include file %>模式更适合--%>
@@ -91,7 +97,7 @@
                                         <jsp:param name="img_MarginImgSrc" value=""/>
                                         <jsp:param name="img_MarginImgClass" value=""/>
                                         <jsp:param name="img_Total" value="27"/>
-                                        <jsp:param name="img_NamePre" value="imgstep1_2ss"/>
+                                        <jsp:param name="img_NamePre" value="imgstep9_2ss"/>
                                         <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                         <jsp:param name="l1div_Style"
                                                    value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
@@ -115,13 +121,16 @@
                                 <div class="row inline-from">
                                     <%
                                         String upFile3 = "../upfile.inc.jsp";
-                                        String imgPreName3 = "imgstep1_3ss";
+                                        String imgPreName3 = "imgstep9_3ss";
                                         String[] ssImgs3 = { //设置已有值
                                                 !Tools.myIsNull(infodb.get(imgPreName3)) ? infodb.get(imgPreName3) : ""
                                         };
+                                        ssImgs3=ssImgs3[0].split(",");
                                         String sImgs3 = "";
                                         for (int i = 0; i < ssImgs3.length; i++) {
-                                            sImgs3 = sImgs3 + ssImgs3[i] + "|";
+                                              if(ssImgs3[i]!=null&&!ssImgs3[i].equals("")) {
+                                                  sImgs3 = sImgs3 + ssImgs3[i] + "|";
+                                              }
                                         }
                                     %>
                                     <%-- 可能这里用<%@include file %>模式更适合--%>
@@ -129,7 +138,7 @@
                                         <jsp:param name="img_MarginImgSrc" value=""/>
                                         <jsp:param name="img_MarginImgClass" value=""/>
                                         <jsp:param name="img_Total" value="4"/>
-                                        <jsp:param name="img_NamePre" value="imgstep1_3ss"/>
+                                        <jsp:param name="img_NamePre" value="imgstep9_3ss"/>
                                         <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                         <jsp:param name="l1div_Style"
                                                    value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
@@ -153,13 +162,16 @@
                                 <div class="row inline-from">
                                     <%
                                         String upFile4 = "../upfile.inc.jsp";
-                                        String imgPreName4 = "imgstep1_4ss";
+                                        String imgPreName4 = "imgstep9_4ss";
                                         String[] ssImgs4 = { //设置已有值
                                                 !Tools.myIsNull(infodb.get(imgPreName4)) ? infodb.get(imgPreName4) : ""
                                         };
+                                        ssImgs4=ssImgs4[0].split(",");
                                         String sImgs4 = "";
                                         for (int i = 0; i < ssImgs4.length; i++) {
-                                            sImgs4 = sImgs4 + ssImgs4[i] + "|";
+                                              if(ssImgs4[i]!=null&&!ssImgs4[i].equals("")) {
+                                                  sImgs4 = sImgs4 + ssImgs4[i] + "|";
+                                              }
                                         }
                                     %>
                                     <%-- 可能这里用<%@include file %>模式更适合--%>
@@ -167,7 +179,7 @@
                                         <jsp:param name="img_MarginImgSrc" value=""/>
                                         <jsp:param name="img_MarginImgClass" value=""/>
                                         <jsp:param name="img_Total" value="4"/>
-                                        <jsp:param name="img_NamePre" value="imgstep1_4ss"/>
+                                        <jsp:param name="img_NamePre" value="imgstep9_4ss"/>
                                         <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                         <jsp:param name="l1div_Style"
                                                    value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
@@ -187,7 +199,53 @@
                 </div>
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">选择进件客户</label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">客户名字</span>
+                                <select class="form-control" id="icbc_id" name="icbc_id">
+                                    <option value="0" selected="selected">请选择</option>
+                                    <c:forEach items="${names}" var="s" varStatus="num">
+                                        <option value="${s.id}">${s.c_name}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
 </div>
+<script>
+	//删除操作
+	function showOrders() {
+		//定义变量sendData
+		var sendData ={
+			cn:'dd_icbc'
+		};
+		$.ajax({
+			url:'/manager/index?cn=car_loanBy&type=into_modal&sdo=form&selBy=icbcName',
+			type:'get',
+			dataType:'json',
+			async:true,//异步请求
+			cache:false,
+			//执行成功的回调函数
+			success:function(data){
+				if (data.code){
+					alert("删除成功！");
+				}else{
+					alert("删除失败！");
+				}
+			},
+			//执行失败或错误的回调函数
+			error:function(data) {
+				alert("删除失败！");
+			}
+		});
+	}
+</script>
