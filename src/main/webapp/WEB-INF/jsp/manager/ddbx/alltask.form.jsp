@@ -1,8 +1,21 @@
+<%@ page import="com.example.ddbx.tt.data.TtList" %>
+<%@ page import="com.example.ddbx.tt.data.TtMap" %>
+<%@ page import="com.example.ddbx.tt.tool.Tools" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-
+<%
+    TtMap infodb = (TtMap) request.getAttribute("infodb");
+    TtMap minfo = (TtMap) request.getAttribute("minfo");
+    long id_uplevel = 0;
+    if (!Tools.myIsNull(infodb.get("id_uplevel"))) {
+        id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
+    }
+    String url = Tools.urlKill("sdo|id")+"&sdo=form&id=";
+%>
 <head>
     <script src="js/jQueryRotate.2.2.js" type="text/javascript"></script>
 </head>
+
 <div class="admin-content nav-tabs-custom box">
     <div class="box-header with-border">
 
@@ -10,14 +23,43 @@
 
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tab_1" data-toggle="tab">基础信息</a></li>
+                <li class="active">
+                    <a href="#tab_0" data-toggle="tab">处理过程</a>
+                </li>
+                <li><a href="#tab_1" data-toggle="tab">基础信息</a></li>
                 <li><a href="#tab_2" data-toggle="tab">客户管理</a></li>
                 <li><a href="#tab_3" data-toggle="tab">贷款管理</a></li>
                 <li><a href="#tab_4" data-toggle="tab">车辆信息</a></li>
                 <li><a href="#tab_5" data-toggle="tab">影音材料</a></li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane active" id="tab_1">
+                <div class="tab-pane active" id="tab_0">
+                    <div class="box-body">
+                        <div style="border:1px solid #478FCA;   margin:5px; padding:20px;border-radius: 10px;">
+                            <ul id="yw" class="nav nav-tabs">
+                                <c:forEach items="${requestScope.clgc_list}" var="c" varStatus="status">
+                                    <li ${c.sort==1?"class='active'":''  or c.id==infodb.type_id?"class='active'":'' }>
+                                        <a id="${c.cn}"  href="<%=url%><%=infodb.get("id")%>"  class="btn btn-block btn-info">
+                                                ${c.name}
+                                        </a>
+                                    </li>
+                                    <c:choose>
+                                        <c:when test="${status.last}">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <li style="display:block;text-align:center; line-height:50px">
+                                                <i class="fa fa-long-arrow-right"></i>
+                                            </li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+
+                            </ul>
+                        </div>
+                        <jsp:include page="/WEB-INF/jsp/manager/rwcl/rwcl.jsp"></jsp:include>
+                    </div>
+                </div>
+                <div class="tab-pane" id="tab_1">
                     <div class="box-header with-border">
                         <h3 class="box-title">基础信息</h3>
                     </div>

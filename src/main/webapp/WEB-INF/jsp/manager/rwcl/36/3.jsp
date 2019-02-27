@@ -4,65 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<div id="" class="tab-content">
-    <style>
-        .flex-box{
-            display: flex;
-            flex-direction: column;
-        }
-        .flex-box div[class^='flex-row']{
-            width: 100%;
-        }
-        .flex-box .flex-row{
-            height: 35px;
-        }
-        .flex-row-rhcen{
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-        em{
-            cursor: pointer;
-        }
-        .flex-row-rhcen em{
-            padding: 0 5px;
-        }
-        .flex-rowcen{
-            flex: 1;
-        }
-        .text-primary em{
-            display: block;
-            font-size: 15px;
-            line-height: 25px;
-        }
-        .text-primary .big-conte{
-            background-color:#f7f7f7;
-            height:auto!important;
-            height:100px;
-            display:none;
-            min-height:100px;
-            padding: 15px 0;
-            margin: 15px 0;
-            border-radius:10px;
-        }
-        .big-conte-row span{
-            text-align: right;
-            padding-right: 15px;
-            line-height: 34px;
-            width: 25%;
-            float: left;
-
-        }
-        .big-conte-row input{
-            float: left;
-            width: 20%;
-        }
-        .big-conte-row{
-            margin: 20px;
-            height: 34px;
-        }
-    </style>
-</div>
 <li class="text-primary"><em>3.查询结果：</em>
     <div class="big-conte" style="display: block;">
         <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
@@ -208,34 +149,6 @@
                         </div>
                     </div>
                 </div>
-                <script type="text/javascript">
-                    $(document).ready(function(){
-                        var zx_3=document.getElementById("zx_"+'3'+"_"+'3').value;
-                        if(zx_3!=null&&zx_3!=''){
-                            var json = jQuery
-                                .parseJSON(zx_3);
-                            for ( var item in json) {
-                                $("#" + item+"_3").val(json[item]);
-                            }
-                        }
-                    });
-                    function dsj_bg1(report_id) {
-                        var dsj_code=document.getElementById(report_id).value;
-                        if(dsj_code!=null&&dsj_code!=""){
-                            var frameSrc="/dsj_result_jsp.do?report_id="+dsj_code;
-                            //给iframe加上src路径
-                            $("#NoPermissioniframe1").attr("src", frameSrc);
-                            //显示模态框  只有在选择编辑的行   然后根据回调函数成功后才会显示模态框
-                            $('#dsj1Modal').modal({ show: true, backdrop: 'static' });
-                        }else{
-                            alert("大数据编码不能为空!");
-                        }
-
-
-                    }
-                </script>
-
-
             </form>
         </div>
     </div></li>

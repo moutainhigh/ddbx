@@ -61,7 +61,7 @@ public class Sys_config_son extends DbCtrl {
         dtbe = post.get("dtbe");
 
         if (Tools.myIsNull(kw) == false) {
-            whereString += " AND c_name like '%" + kw + "%'";
+            whereString += " AND name like '%" + kw + "%'";
         }
         if (Tools.myIsNull(dtbe) == false) {
             dtbe = dtbe.replace("%2f", "-").replace("+", "");
@@ -90,13 +90,19 @@ public class Sys_config_son extends DbCtrl {
             //获取其他表字段处理 TODO
             for (TtMap info : list) {
                 long nid = 0;
+                DbCtrl dbCtrl=new DbCtrl("sys_config");
                 if(!Tools.myIsNull(info.get("c_id"))){
-                    setTable("sys_config");
                     nid=Long.parseLong(info.get("c_id"));
                 }
-                TtMap info1 = info(nid);
-                info.put("ssyw_name",
-                        info1.get("name"));
+                try {
+                    TtMap info1 = dbCtrl.info(nid);
+                    info.put("ssyw_name",
+                            info1.get("name"));
+                } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, false);
+                } finally {
+                    dbCtrl.closeConn();
+                }
             }
         }
         request.setAttribute("list", list);// 列表list数据

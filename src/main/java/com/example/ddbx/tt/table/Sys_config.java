@@ -53,7 +53,7 @@ public class Sys_config extends DbCtrl {
         kw = post.get("kw");
         dtbe = post.get("dtbe");
         if (Tools.myIsNull(kw) == false) {
-            whereString += " AND c_name like '%" + kw + "%'";
+            whereString += " AND name like '%" + kw + "%'";
         }
         if (Tools.myIsNull(dtbe) == false) {
             dtbe = dtbe.replace("%2f", "-").replace("+", "");

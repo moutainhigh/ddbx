@@ -90,6 +90,12 @@ public class ManagerTools {
       return "fs";
    case "mytask":
       return "dd_icbc_erp";
+   case "alltask":
+        return "dd_icbc_erp";
+   case "zx_1":
+      return "dd_icbc_erp";
+   case "zxcx":
+      return "dd_icbc";
     default:
       return cn;
     }

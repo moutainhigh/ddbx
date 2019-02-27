@@ -11,6 +11,8 @@ import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.table.*;
 import com.example.ddbx.tt.tool.DbCtrl;
 import com.example.ddbx.tt.tool.Tools;
+import com.example.ddbx.tt.utils.orderutil;
+import org.springframework.core.annotation.OrderUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -66,6 +68,18 @@ public class ManagerPost {
                   } else {
                     post.put("icohtml", "<i class=\"fa fa-arrow-circle-o-right\"></i>");
                   }
+                }
+                break;
+              case "zxcx": // 征信添加 erp添加
+                dbCtrl = (DbCtrl) new zxcx();
+                zxcx zxcx=new zxcx();
+                try {
+                  zxcx.addicbc_erp_zx(post,id);
+                }catch (Exception e){
+                  Tools.logError(e.getMessage(), true, false);
+                  Tools.formatResult(result2, false, 0, e.getMessage(), nextUrl);
+                }finally {
+                  zxcx.closeConn();
                 }
                 break;
               default:

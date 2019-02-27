@@ -35,7 +35,10 @@
 								业务类型
 							</th>
 							<th class="text-center">
-								任务名称
+								当前任务节点
+							</th>
+							<th class="text-center">
+								下一任务节点
 							</th>
 							<th class="hidden-xs text-center">
 								任务发起人
@@ -61,23 +64,26 @@
 										${u.c_name}
 								</td>
 								<td class="text-center">
-									业务类型
+										${u.type_name}
 								</td>
 								<td class="text-center">
-									任务名称
+										${u.now_name}
 								</td>
 								<td class="text-center">
-									任务发起人
+										${u.later_name}
 								</td>
 								<td class="text-center">
-									所属机构
+										${u.admin_name}
+								</td>
+								<td class="text-center">
+										${u.fs_name}
 								</td>
 								<td class="hidden-xs text-center">
 										${fn:replace(u.dt_add, ".0", "")}
 								</td>
 								<td class="text-center">
 									<div class="table-button">
-										<a href="<%=url%>${u.id}" class="btn btn-default">
+										<a href="<%=url%>${u.id}&type_id=${u.type_id}&icbc_id=${u.icbc_id}" class="btn btn-default">
 											<i class="fa fa-pencil"></i>
 										</a>
 									</div>

@@ -31,6 +31,7 @@ public class ManagerGet {
     TtList list = null;
     String jsonInfo = "";
     TtMap post = Tools.getPostMap(request);// 过滤参数，过滤mysql的注入，url参数注入
+    System.out.println("get传递参数："+post);
     boolean haveSetFormData = false; // 是否已经处理
     Modal modalMenu = new Modal();
     request.setAttribute("menus", modalMenu.getMenus()); // 后台左侧菜单,sidebar.jsp里面用到的菜单列表
@@ -66,13 +67,77 @@ public class ManagerGet {
                 break;
               case "mytask": // 我的任务板块
                 //System.out.println("进入我的世界");
+
                 MyTask myTask=new MyTask();
-                request.setAttribute("clgc_list",myTask.getclgc());
+                try {
+                  if (myTask.getclgc()!=null&&myTask.getclgc().size()>0){
+                    request.setAttribute("clgc_list",myTask.getclgc());
+                  }
+                  if(post.get("type_id")!=null&&!post.get("type_id").equals("")){
+                    request.setAttribute("type_id",post.get("type_id"));
+                    if(myTask.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id")))!=null&&myTask.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))).size()>0) {
+                      request.setAttribute("erplist", myTask.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
+                    }}
+                   request.setAttribute("icbc",myTask.geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, false);
+                } finally {
+                  myTask.closeConn();
+                }
+
+                break;
+              case "alltask": // 我的任务板块
+                //System.out.println("进入我的世界");
+                AllTask allTask=new AllTask();
+                MyTask myTask3=new MyTask();
+                try {
+                  request.setAttribute("clgc_list",allTask.getclgc());
+                  if(post.get("type_id")!=null&&!post.get("type_id").equals("")) {
+                    request.setAttribute("erplist", myTask3.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
+                  }
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, false);
+                } finally {
+                  myTask3.closeConn();
+                }
                 break;
               case "sys_config_son": // 我的任务板块
                 //System.out.println("进入我的世界");
                 MyTask myTask1=new MyTask();
-                request.setAttribute("clgc_list",myTask1.getclgc());
+                try {
+                  request.setAttribute("clgc_list",myTask1.getclgc());
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, false);
+                } finally {
+                  myTask1.closeConn();
+                }
+                break;
+              case "zxcx": // 我的任务板块
+                //System.out.println("进入我的世界");
+
+                //获取erp类型数据
+                MyTask myTask2=new MyTask();
+                try {
+                  TtList erplist= myTask2.geticbc_erp_type();
+                  request.setAttribute("erplist",erplist);
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, false);
+                } finally {
+                  myTask2.closeConn();
+                }
+
+                if(post.get("id")!=null&&!post.get("id").equals("")){
+                  //获取公司名 人名
+                  Admin admin=new Admin();
+                  try {
+                    TtMap ttMap=admin.getgems_name("dd_icbc",Integer.parseInt(post.get("id")));
+                    request.setAttribute("gsnamemap",ttMap);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, false);
+                  } finally {
+                    admin.closeConn();
+                  }
+                }
                 break;
             default:
               break;

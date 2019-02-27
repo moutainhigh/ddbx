@@ -610,6 +610,11 @@ public class Tools {
     DbTools dbt = new DbTools();
     try {
       result = dbt.recinfo(sql);
+    }catch (Exception e) {
+      Tools.logError(e.getMessage());
+      if (Config.DEBUGMODE) {
+        e.printStackTrace();
+      }
     } finally {
       dbt.closeConn();
     }

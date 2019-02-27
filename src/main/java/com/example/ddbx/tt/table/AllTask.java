@@ -33,7 +33,23 @@ public class AllTask extends DbCtrl {
             adminAgp.closeConn();
         }
     }
-
+    /**
+     * 获取处理过程显示数据
+     * @param request
+     */
+    public TtList getclgc(){
+        DbTools myDbTools=new DbTools();
+        String sql="select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort";
+        TtList clgc_list = null;
+        try {
+            clgc_list = myDbTools.reclist(sql);
+        }catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        }finally {
+            myDbTools.closeConn();
+        }
+        return clgc_list;
+    }
     //list 处理
     public void doGetList(HttpServletRequest request, TtMap post) {
         if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
@@ -46,7 +62,11 @@ public class AllTask extends DbCtrl {
         int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
         String whereString = "true";
         String tmpWhere = "";
-        String fieldsString = ""; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
+        String fieldsString = "t.*,a.name as admin_name,f.name as fs_name" +
+                ",sm.name as type_name" +
+                ",(select name from sys_modal  where type='rwcl' and id_uplevel=t.type_id and sort=t.later_status) as later_name," +
+                "(select name from sys_modal  where type='rwcl' and id_uplevel=t.type_id and sort=t.now_status) as now_name ";
+        // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
         TtList list = null;
         /* 开始处理搜索过来的字段 */
         kw = post.get("kw");
@@ -70,12 +90,15 @@ public class AllTask extends DbCtrl {
         p = pageInt; // 显示页
         limit = limtInt; // 每页显示记录数
         showall = true; // 忽略deltag和showtag
+        leftsql="LEFT JOIN admin a on a.id=t.gems_id " +
+                "LEFT JOIN fs f on f.id=t.gems_fs_id " +
+                "LEFT JOIN sys_modal sm ON sm.id=t.type_id ";
         list = lists(whereString, fieldsString);
 
         if (!Tools.myIsNull(kw)) { // 搜索关键字高亮
             for (TtMap info : list) {
-                info.put("name",
-                        info.get("name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
+                info.put("c_name",
+                        info.get("c_name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
             }
         }
         request.setAttribute("list", list);// 列表list数据
@@ -94,5 +117,76 @@ public class AllTask extends DbCtrl {
     @Override
     public void closeConn() {
         super.closeConn();
+    }
+
+
+    /**
+     * 获取erp所有版块类型数据
+     * @return
+     */
+    public static TtList geticbc_erp_type(){
+        TtList ttList=new TtList();
+        DbTools dbTools=new DbTools();
+        String sql="select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort";
+        try{
+            ttList=dbTools.reclist(sql);
+        }catch(Exception e){
+            Tools.logError(e.getMessage());
+            if (Config.DEBUGMODE) {
+                e.printStackTrace();
+            }
+        }finally{
+            dbTools.closeConn();
+        }
+        return ttList;
+    }
+
+    /**
+     * 获取erp 单个类型name
+     * @return
+     */
+    public static TtMap geticbc_erp_status(int id){
+        TtMap ttMap=new TtMap();
+        DbTools dbTools=new DbTools();
+        String sql="select id,name,sort from sys_modal where id="+id;
+        try{
+            ttMap=dbTools.recinfo(sql);
+        }catch(Exception e){
+            Tools.logError(e.getMessage());
+            if (Config.DEBUGMODE) {
+                e.printStackTrace();
+            }
+        }finally{
+            dbTools.closeConn();
+        }
+        return ttMap;
+    }
+    /**
+     * 获取erp 任务节点name
+     * @return
+     */
+    public static TtMap geticbc_erp_status_node(int type_id,int id1,int id2){
+        TtMap ttMap=new TtMap();
+        DbTools dbTools=new DbTools();
+        String sql="select " +
+                "s1.name as type_name, " +
+                "s2.name as now_name, " +
+                "s3.name as later_name " +
+                "from  " +
+                "(select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort) s1 " +
+                "LEFT JOIN sys_modal s2 ON s2.id_uplevel=s1.id " +
+                "LEFT JOIN sys_modal s3 ON s3.id_uplevel=s1.id " +
+                "where s1.id="+type_id+" and s2.sort="+id1+" and s3.sort="+id2;
+        try{
+            ttMap=dbTools.recinfo(sql);
+        }catch(Exception e){
+            Tools.logError(e.getMessage());
+            if (Config.DEBUGMODE) {
+                e.printStackTrace();
+            }
+        }finally{
+            dbTools.closeConn();
+        }
+        return ttMap;
     }
 }
