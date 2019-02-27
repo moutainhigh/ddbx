@@ -36,13 +36,29 @@ public class spmq extends DbCtrl {
     }
     @Override
     public long add(TtMap ary) {
-        DbCtrl dbCtrl2 = new DbCtrl("dd_icbc");
+        /*DbCtrl dbCtrl2 = new DbCtrl("dd_icbc");
         TtMap ttMap2 = new TtMap();
         ttMap2.put("c_name",ary.get("c_name"));
         dbCtrl2.add(ttMap2);
-        dbCtrl2.closeConn();
-
-        ary.put("gems_fs_id","111   ");
+        dbCtrl2.closeConn();*/
+        //1 其他表操作  add
+       /* DbTools myDbTools=new DbTools();
+        String sql="select id,gems_fs_id,gems_id,order_code from dd_icbc where id="+ary.get("icbc_id");
+        System.out.println(ary.get("icbc_id")+"999999999999999999999");
+        TtMap ontCustomer = null;
+        try {
+            ontCustomer = myDbTools.recinfo(sql);
+            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+        }catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        }finally {
+            myDbTools.closeConn();
+        }*/
+        ary.put("order_id","1");
+        ary.put("gems_fs_id","2");
+        ary.put("gems_id","2");
+        ary.put("videostep1",ary.get("videostep1"));
+        //ary.put("","");
         return super.add(ary);
     }
 
@@ -164,7 +180,6 @@ public class spmq extends DbCtrl {
         TtList lmss = super.lists(wheres, f);
         for (TtMap tmpInfo : lmss) {
             tmpInfo.put("fsname", Tools.unDic("dd_fs", Tools.strToLong(tmpInfo.get("gems_fs_id"))));// 所属公司
-            tmpInfo.put("choice", Tools.dicopt("sys_dic_tag", Tools.strToLong(tmpInfo.get("showtag")))); // 显示/隐藏
             tmpInfo.put("c_name", Tools.unDic("dd_icbc", Tools.strToLong(tmpInfo.get("order_id"))));//客户姓名
             tmpInfo.put("order_code", Tools.unDic("dd_icbc", tmpInfo.get("order_id"),"order_code","id"));//订单编号
 
@@ -175,5 +190,16 @@ public class spmq extends DbCtrl {
     public void closeConn() {
         super.closeConn();
     }
-
+    @Override
+    public void doPost(TtMap post, long id,TtMap result2) {
+        if (id > 0) { // id为0时，新增
+            edit(post, id);
+        } else {
+            add(post);
+        }
+        String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
+        boolean bSuccess = errorCode == 0;
+        Tools.formatResult(result2, bSuccess, errorCode, bSuccess ? "编辑"+title+"成功！" : errorMsg,
+                bSuccess ? nextUrl : "");//失败时停留在当前页面,nextUrl为空
+    }
 }

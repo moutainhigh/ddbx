@@ -788,9 +788,9 @@ public class DbCtrl {
      * @param {type} {type}
      * @return: 返回
      */
-    public void doPost(TtMap post, long id,TtMap result2) {
+    public void doPost(TtMap post,long id,TtMap result2) {
         if (id > 0) { // id为0时，新增
-            edit(post, id);
+            edit(post,id);
         } else {
             add(post);
         }

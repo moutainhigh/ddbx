@@ -64,7 +64,7 @@
                                     <jsp:param name="img_MarginImgSrc" value=""/>
                                     <jsp:param name="img_MarginImgClass" value=""/>
                                     <jsp:param name="img_Total" value="1"/>
-                                    <jsp:param name="img_NamePre" value="imgstep1_1ss"/>
+                                    <jsp:param name="img_NamePre" value="videostep1"/>
                                     <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                     <jsp:param name="l1div_Style"
                                                value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
