@@ -8,10 +8,13 @@ import com.example.ddbx.tt.tool.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.sql.Time;
+import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
+
+import static com.example.ddbx.tt.tool.Tools.time;
 
 public class CarLoan extends DbCtrl {
 
@@ -106,6 +109,7 @@ public class CarLoan extends DbCtrl {
         return super.edit(ary, id);
     }
 
+    //汽车贷款进件 查询全部征信订单并选择一个进件
     public TtList selectAllOrderName(){
         DbTools myDbTools=new DbTools();
         String sql="select id,c_name from dd_icbc";
@@ -138,7 +142,10 @@ public class CarLoan extends DbCtrl {
         ary.put("icbc_id",ontCustomer.get("id"));
         ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
         ary.put("gems_id",ontCustomer.get("gems_id"));
-
+        //订单编号生成规则1: C(1位)+用户id(9位)
+        //JAVA补字符串固定位数，位数不够左补0操作
+        DecimalFormat countFormat = new DecimalFormat("000000000");
+        ary.put("order_code","C"+countFormat.format(Integer.parseInt(ontCustomer.get("id"))));
         //2 本表操作
         //证明材料
         String imgstep9_1ss =
