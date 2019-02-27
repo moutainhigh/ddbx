@@ -7,7 +7,11 @@
  */
 package com.example.ddbx.tt.manager;
 
+import com.example.ddbx.tt.data.TtList;
+import com.example.ddbx.tt.table.CarLoan;
 import com.example.ddbx.tt.tool.Tools;
+
+import javax.servlet.http.HttpServletRequest;
 
 
 /**
@@ -23,8 +27,10 @@ public class ManagerTools {
    */
   public static boolean checkCn(String cn) {
     String[] allowCnList = { "admin", "assess_admin", "home", "admin2", "button", "demo_upfile", "icon", "general",
-        "admin_agp", "Timeline", "Modals", "table", "comm_citys", "sys_modal", "fs_agp", "readme", "sys_error","readmedev",
+            "admin_agp", "Timeline", "Modals", "table", "comm_citys", "sys_modal", "fs_agp", "readme", "sys_error","readmedev",
             "fs",
+            "car_loan",
+            "dd_icbc_materials",
             "gems","dd_icbc","zxcx","alltask","mytask","my_job","sys_config","sys_config_son" }; // 允许的cn,只有在列表中的cn才允许访问
     return Tools.arrayIndexOf(allowCnList, cn);
   }
@@ -34,7 +40,7 @@ public class ManagerTools {
    * @param {type} 
    * @return: 
    */
-  public static boolean checkCnDbctrl(String cn) {
+  public static boolean checkCnDbctrl(String cn){
     String[] allowCnList = { "admin",
             "assess_admin",
             "comm_citys",
@@ -45,6 +51,8 @@ public class ManagerTools {
             "fs",
             "gems",
             "dd_icbc",
+            "car_loan",
+            "dd_icbc_materials",
             "alltask","zxcx",
             "mytask","sys_config","sys_config_son"
     }; // 允许的cn,只有在列表中的cn才使用数据库，
@@ -90,8 +98,49 @@ public class ManagerTools {
       return "fs";
    case "mytask":
       return "dd_icbc_erp";
+   case "car_loan":
+      return "dd_icbc_materials";
     default:
       return cn;
+    }
+  }
+  /**
+   * 获取目前可以用的class，根据cn值（realcn）
+   * @param {type} {type}
+   * @return: 返回
+   */
+  public static Class<?> doGetClass(String realCn) {
+    Class<?> b = null; // 使用反射方式来实例化
+    try {
+      b = Class.forName("com.tt.table." + realCn);
+    } catch (Exception e) {
+      Tools.logError(e.getMessage());
+    } finally {
+    }
+    return b;
+  }
+  /**
+   * @说明 填充默认的数据。显示list.jsp和form.jsp
+   * @param {type} {type}
+   * @return: 返回
+   */
+  public static void doFetchDefault(HttpServletRequest request, String cn, String sdo) {
+    switch (sdo) {
+      case "form":
+        request.setAttribute("sHideButton", "true");
+        break;
+      case "list":
+        request.setAttribute("recs", 0); // 总记录数
+        request.setAttribute("pages", 0); // 总页数
+        request.setAttribute("p", 0); // 当前页码
+        request.setAttribute("l", 0); // limit量
+        request.setAttribute("lsitTitleString", ""); // 标题
+        request.setAttribute("htmlpages", ""); // 分页的html代码
+        request.setAttribute("canDel", false); // 分页的html代码
+        request.setAttribute("canAdd", false); // 分页的html代码
+        if (cn.equals("home")) {
+          request.setAttribute("sHideButton", "true");
+        }
     }
   }
 }
