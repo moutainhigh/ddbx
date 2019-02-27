@@ -73,8 +73,8 @@
 <script>
 	//删除操作
 	function del(url,id) {
-		url=url.replace('&id=','').replace("form","list");
-		//alert(url);
+		//url=url.replace('&id=','').replace("form","list");
+		alert(url);
 		//定义变量sendData
 		var sendData ={
 			id:id,

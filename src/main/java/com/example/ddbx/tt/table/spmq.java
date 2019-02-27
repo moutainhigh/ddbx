@@ -6,6 +6,7 @@ import com.example.ddbx.tt.tool.Config;
 import com.example.ddbx.tt.tool.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 
 public class spmq extends DbCtrl {
@@ -34,17 +35,26 @@ public class spmq extends DbCtrl {
             adminAgp.closeConn();
         }
     }
+    //视频面签进件 查询全部征信订单并选择一个进件
+    public TtList selectAllOrderName(){
+        DbTools myDbTools=new DbTools();
+        String sql="select id,c_name from dd_icbc";
+        TtList allCustomer = null;
+        try {
+            allCustomer = myDbTools.reclist(sql);
+            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+        }catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        }finally {
+            myDbTools.closeConn();
+        }
+        return allCustomer;
+    }
     @Override
     public long add(TtMap ary) {
-        /*DbCtrl dbCtrl2 = new DbCtrl("dd_icbc");
-        TtMap ttMap2 = new TtMap();
-        ttMap2.put("c_name",ary.get("c_name"));
-        dbCtrl2.add(ttMap2);
-        dbCtrl2.closeConn();*/
-        //1 其他表操作  add
-       /* DbTools myDbTools=new DbTools();
-        String sql="select id,gems_fs_id,gems_id,order_code from dd_icbc where id="+ary.get("icbc_id");
-        System.out.println(ary.get("icbc_id")+"999999999999999999999");
+        //从dd_icbc表中查询出id,gems_fs_id,gems_id,order_code
+        DbTools myDbTools=new DbTools();
+        String sql="select id,gems_fs_id,gems_id,order_code,c_tel,c_cardno from dd_icbc where id="+ary.get("icbc_id");
         TtMap ontCustomer = null;
         try {
             ontCustomer = myDbTools.recinfo(sql);
@@ -53,12 +63,57 @@ public class spmq extends DbCtrl {
             Tools.logError(e.getMessage(), true, false);
         }finally {
             myDbTools.closeConn();
+        }
+
+/*        DbTools myDbTools1=new DbTools();
+        String sql1="select c_tel,c_cardno from dd_icbc where order_id="+ary.get("icbc_id");
+        TtMap ontCustomer1 = null;
+        try {
+            ontCustomer1 = myDbTools1.recinfo(sql1);
+            recs = Long.parseLong(myDbTools1.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+        }catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        }finally {
+            myDbTools1.closeConn();
         }*/
-        ary.put("order_id","1");
-        ary.put("gems_fs_id","2");
-        ary.put("gems_id","2");
+        //从dd_icbc表中查询出id,gems_fs_id,gems_id,order_code
+
+
+        //向dd_icbc_erp表中添加数据
+        DbCtrl dbCtrl1 = new DbCtrl("dd_icbc_erp");
+        TtMap ttMap1 = new TtMap();
+        ttMap1.put("c_name",ary.get("c_name"));
+        ttMap1.put("icbc_id",ontCustomer.get("id"));
+        ttMap1.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
+        ttMap1.put("gems_id",ontCustomer.get("gems_id"));
+        ttMap1.put("order_id",ary.get("icbc_id"));
+        ttMap1.put("type_id","3");
+        ttMap1.put("later_status","11");
+        ttMap1.put("now_status","10");
+        ttMap1.put("c_tel",ontCustomer.get("c_tel"));
+        ttMap1.put("c_cardno",ontCustomer.get("c_cardno"));
+        ttMap1.put("adminop_tag", Tools.minfo().get("id")); //当前操作人id
+        dbCtrl1.add(ttMap1);
+        dbCtrl1.closeConn();
+
+        //向dd_icbc_erp_result表中添加数据
+        DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
+        TtMap ttMap2 = new TtMap();
+        ttMap2.put("order_id",ary.get("icbc_id"));
+        ttMap2.put("type_id","3");
+        ttMap2.put("later_status","11");
+        ttMap2.put("now_status","10");
+        dbCtrl2.add(ttMap2);
+        dbCtrl2.closeConn();
+
+        // 本表操作添加数据
+        //ary.put("order_id",ontCustomer.get("id"));
+        ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
+        ary.put("gems_id",ontCustomer.get("gems_id"));
+        DecimalFormat countFormat = new DecimalFormat("000000000");
+        ary.put("order_code","S"+countFormat.format(Integer.parseInt(ontCustomer.get("id"))));
         ary.put("videostep1",ary.get("videostep1"));
-        //ary.put("","");
+
         return super.add(ary);
     }
 
@@ -176,13 +231,10 @@ public class spmq extends DbCtrl {
         } else {
             wheres += (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)) ? "" : " AND gems_fs_id=" + minfo.get("gems_fs_id"); // 只显示自己公司的
         }
-
         TtList lmss = super.lists(wheres, f);
         for (TtMap tmpInfo : lmss) {
             tmpInfo.put("fsname", Tools.unDic("dd_fs", Tools.strToLong(tmpInfo.get("gems_fs_id"))));// 所属公司
             tmpInfo.put("c_name", Tools.unDic("dd_icbc", Tools.strToLong(tmpInfo.get("order_id"))));//客户姓名
-            tmpInfo.put("order_code", Tools.unDic("dd_icbc", tmpInfo.get("order_id"),"order_code","id"));//订单编号
-
         }
         return lmss;
     }

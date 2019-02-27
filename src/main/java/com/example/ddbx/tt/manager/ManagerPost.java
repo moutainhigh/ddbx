@@ -56,6 +56,7 @@ public class ManagerPost {
                 dbCtrl = (DbCtrl) new AdminAgp();
                 break;
               case "spmq":
+                post.put("order_id",post.get("icbc_id"));
                 dbCtrl = (DbCtrl) new spmq();
                 break;
               case "fs_agp": // 用单独的类演示处理post，保存数据

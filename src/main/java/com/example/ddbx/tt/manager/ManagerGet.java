@@ -87,6 +87,26 @@ public class ManagerGet {
                 CarLoan carLoan = new CarLoan();
                 TtList getAllOrderName = carLoan.selectAllOrderName();
                 request.setAttribute("names",getAllOrderName);
+                try {
+                  carLoan.doGetList(request, post);
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, true);
+                } finally {
+                  carLoan.closeConn();
+                }
+                break;
+              case "spmq": // 我的任务板块
+                //查询进件客户
+                spmq spmq = new spmq();
+                TtList getAllOrderName1 = spmq.selectAllOrderName();
+                request.setAttribute("names",getAllOrderName1);
+                try {
+                  spmq.doGetList(request, post);
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, true);
+                } finally {
+                  spmq.closeConn();
+                }
                 break;
             default:
               break;
@@ -114,12 +134,12 @@ public class ManagerGet {
             case "admin_agp": // 演示单独的类来处理数据
               AdminAgp adminAgp = new AdminAgp();
               try {
-                adminAgp.doGetList(request, post);
-              } catch (Exception e) {
-                Tools.logError(e.getMessage(), true, true);
-              } finally {
-                adminAgp.closeConn();
-              }
+              adminAgp.doGetList(request, post);
+            } catch (Exception e) {
+              Tools.logError(e.getMessage(), true, true);
+            } finally {
+              adminAgp.closeConn();
+            }
               haveSetFormData = true;
               break;
             case "comm_citys":// 使用单独的类来处理数据
@@ -228,6 +248,17 @@ public class ManagerGet {
                 }
                 haveSetFormData = true;
                 break;
+              case "spmq":
+                  spmq spmq=new spmq();
+                  try {
+                      spmq.doGetList(request,post);
+                  } catch (Exception e) {
+                      Tools.logError(e.getMessage(), true, true);
+                  } finally {
+                      spmq.closeConn();
+                  }
+                  haveSetFormData = true;
+                  break;
             default:
               lsitTitleString = "相关管理";
               orderString = "ORDER BY id";
