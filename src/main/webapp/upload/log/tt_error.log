@@ -488,3 +488,866 @@ java.sql.SQLException: Incorrect integer value: 'null' for column 'type_id' at r
 2019-02-28 17:05:29  [ http-nio-8092-exec-8:396 ] - [ ERROR ]  Tools.logError:null
 2019-02-28 17:14:26  [ http-nio-8092-exec-7:13658 ] - [ ERROR ]  Tools.logError:null
 2019-02-28 17:45:15  [ http-nio-8092-exec-4:1863239 ] - [ ERROR ]  Tools.logError:com.example.ddbx.tt.table.sys_modal
+2019-02-28 18:11:16  [ http-nio-8092-exec-4:371 ] - [ ERROR ]  Tools.logError:com.example.ddbx.tt.table.sys_modal
+2019-02-28 18:11:30  [ http-nio-8092-exec-3:14793 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D14%26type_id%3D36%26icbc_id%3D23:Unable to compile class for JSP: 
+
+An error occurred at line: [83] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on tokens, delete these tokens
+80:     TtMap infodb = (TtMap) request.getAttribute("infodb");
+81:     TtMap minfo = (TtMap) request.getAttribute("minfo");
+82: 
+83: <<<<<<< HEAD
+84:     String erp_msg="/WEB-INF/jsp/manager/rwcl/";
+85: %>
+86: =======
+
+
+An error occurred at line: [125] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on tokens, delete these tokens
+122:                             if(request.getAttribute("erplist")!=null&&!request.getAttribute("erplist").equals("")){
+123:                             TtList list= (TtList) request.getAttribute("erplist");
+124:                         if(list.size()>0){
+125: =======
+126:                         <ol>
+127:                         <%
+128: >>>>>>> refs/remotes/origin/master
+
+
+An error occurred at line: [126] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on tokens, ( expected instead
+123:                             TtList list= (TtList) request.getAttribute("erplist");
+124:                         if(list.size()>0){
+125: =======
+126:                         <ol>
+127:                         <%
+128: >>>>>>> refs/remotes/origin/master
+129:                         for(TtMap ttMap : list){
+
+
+An error occurred at line: [126] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+The left-hand side of an assignment must be a variable
+123:                             TtList list= (TtList) request.getAttribute("erplist");
+124:                         if(list.size()>0){
+125: =======
+126:                         <ol>
+127:                         <%
+128: >>>>>>> refs/remotes/origin/master
+129:                         for(TtMap ttMap : list){
+
+
+An error occurred at line: [128] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error, insert ")" to complete Expression
+125: =======
+126:                         <ol>
+127:                         <%
+128: >>>>>>> refs/remotes/origin/master
+129:                         for(TtMap ttMap : list){
+130:                             System.out.println(ttMap.get("now_name")+"------"+ttMap.get("now_status"));
+131:                             if(ttMap.get("type_id")!=null
+
+
+An error occurred at line: [128] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error, insert "AssignmentOperator Expression" to complete Assignment
+125: =======
+126:                         <ol>
+127:                         <%
+128: >>>>>>> refs/remotes/origin/master
+129:                         for(TtMap ttMap : list){
+130:                             System.out.println(ttMap.get("now_name")+"------"+ttMap.get("now_status"));
+131:                             if(ttMap.get("type_id")!=null
+
+
+An error occurred at line: [128] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error, insert ";" to complete BlockStatements
+125: =======
+126:                         <ol>
+127:                         <%
+128: >>>>>>> refs/remotes/origin/master
+129:                         for(TtMap ttMap : list){
+130:                             System.out.println(ttMap.get("now_name")+"------"+ttMap.get("now_status"));
+131:                             if(ttMap.get("type_id")!=null
+
+
+An error occurred at line: [136] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on tokens, delete these tokens
+133:                             &&ttMap.get("now_status")!=null
+134:                                     &&!ttMap.get("now_status").equals("")
+135:                             ){
+136: <<<<<<< HEAD
+137:                             System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+138: =======
+139:                              //   System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+
+
+An error occurred at line: [137] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on tokens, ( expected instead
+134:                                     &&!ttMap.get("now_status").equals("")
+135:                             ){
+136: <<<<<<< HEAD
+137:                             System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+138: =======
+139:                              //   System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+140: >>>>>>> refs/remotes/origin/master
+
+
+An error occurred at line: [137] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+The left-hand side of an assignment must be a variable
+134:                                     &&!ttMap.get("now_status").equals("")
+135:                             ){
+136: <<<<<<< HEAD
+137:                             System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+138: =======
+139:                              //   System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+140: >>>>>>> refs/remotes/origin/master
+
+
+An error occurred at line: [140] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error, insert ")" to complete Expression
+137:                             System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+138: =======
+139:                              //   System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+140: >>>>>>> refs/remotes/origin/master
+141:                             switch (ttMap.get("now_name")){
+142:                                 case "开始":
+143:                                     erp_msg=erp_msg+"modal/begin.jsp";
+
+
+An error occurred at line: [140] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error, insert "AssignmentOperator Expression" to complete Assignment
+137:                             System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+138: =======
+139:                              //   System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+140: >>>>>>> refs/remotes/origin/master
+141:                             switch (ttMap.get("now_name")){
+142:                                 case "开始":
+143:                                     erp_msg=erp_msg+"modal/begin.jsp";
+
+
+An error occurred at line: [140] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error, insert ";" to complete BlockStatements
+137:                             System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+138: =======
+139:                              //   System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+140: >>>>>>> refs/remotes/origin/master
+141:                             switch (ttMap.get("now_name")){
+142:                                 case "开始":
+143:                                     erp_msg=erp_msg+"modal/begin.jsp";
+
+
+An error occurred at line: [178] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error, insert "Finally" to complete TryStatement
+175: =======
+176:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+177:                         <%
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+
+
+An error occurred at line: [179] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+erp_msg cannot be resolved to a variable
+176:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+177:                         <%
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ".", @ expected after this token
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error on token ";", @ expected
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error, insert "SimpleName" to complete QualifiedName
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error, insert "Identifier (" to complete MethodHeaderName
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [181] in the jsp file: [/WEB-INF/jsp/manager/rwcl/rwcl.jsp]
+Syntax error, insert ")" to complete MethodDeclaration
+178:                             }
+179:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+180:                         }
+181:                         %>
+182: >>>>>>> refs/remotes/origin/master
+183:                         </ol>
+184:                     </div>
+
+
+An error occurred at line: [373] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+Syntax error on token "catch", invalid AnnotationName
+
+An error occurred at line: [373] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+Syntax error on token(s), misplaced construct(s)
+
+An error occurred at line: [373] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+Syntax error, insert "enum Identifier" to complete EnumHeader
+
+An error occurred at line: [375] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+out cannot be resolved to a variable
+
+An error occurred at line: [375] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+_jspx_out cannot be resolved to a variable
+
+An error occurred at line: [376] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+out cannot be resolved to a variable
+
+An error occurred at line: [376] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+out cannot be resolved
+
+An error occurred at line: [378] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+response cannot be resolved
+
+An error occurred at line: [379] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+out cannot be resolved
+
+An error occurred at line: [381] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+out cannot be resolved
+
+An error occurred at line: [384] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+_jspx_page_context cannot be resolved to a variable
+
+An error occurred at line: [384] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+_jspx_page_context cannot be resolved
+
+An error occurred at line: [387] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+Syntax error on token "finally", invalid AnnotationTypeDeclarationHeader
+
+An error occurred at line: [387] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+Syntax error, insert "}" to complete AnnotationTypeBody
+
+An error occurred at line: [388] in the generated java file: [C:\Users\86176\AppData\Local\Temp\tomcat.2752822906755564782.8092\work\Tomcat\localhost\ROOT\org\apache\jsp\WEB_002dINF\jsp\manager\rwcl\rwcl_jsp.java]
+_jspx_page_context cannot be resolved to a variable
+
+Stacktrace:
