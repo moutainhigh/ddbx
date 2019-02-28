@@ -242,7 +242,7 @@ public class CarLoan extends DbCtrl {
         DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
         TtMap ttMap2 = new TtMap();
         ttMap2.put("qryid",id+"");
-        ttMap2.put("order_id",icbc_id);
+        ttMap2.put("icbc_id",icbc_id);
         ttMap2.put("type_id","5");
         ttMap2.put("later_status","18");
         ttMap2.put("now_status","17");
