@@ -64,7 +64,7 @@ public class ApiWx {
     headers.put("Access-Control-Allow-Origin","*");
     headers.put("Access-Control-Allow-Headers","X-Requested-With,Content-Type");
     headers.put("Content-Type","raw");
-    String mpstr = HttpTools.httpClientPost_String(url, Tools.jsonEnCode(map), "UTF-8", headers);
+    String mpstr = HttpTools.httpClientPost_String(url, Tools.jsonEncode(map), "UTF-8", headers);
     System.out.println(mpstr);
     return mpstr; 
   }

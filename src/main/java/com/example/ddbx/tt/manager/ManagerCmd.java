@@ -39,7 +39,7 @@ public class ManagerCmd {
     }
     TtMap postUrl = Tools.getUrlParam();
     TtMap post = Tools.getPostMap(request, true);// 过滤参数，过滤mysql的注入，url参数注入
-    System.out.println(Tools.jsonEnCode(post));
+    System.out.println(Tools.jsonEncode(post));
     String cn = postUrl.get("cn") == null ? "" : postUrl.get("cn");
     TtMap result2 = new TtMap();
     Tools.formatResult(result2, false, 999, "异常，请重试！", "");// 初始化返回
@@ -69,6 +69,6 @@ public class ManagerCmd {
         break;
       }
     }
-    return Tools.jsonEnCode(result2);
+    return Tools.jsonEncode(result2);
   }
 }

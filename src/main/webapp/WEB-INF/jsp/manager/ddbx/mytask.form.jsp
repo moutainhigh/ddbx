@@ -1,11 +1,21 @@
+<%@ page import="com.example.ddbx.tt.data.TtList" %>
+<%@ page import="com.example.ddbx.tt.data.TtMap" %>
+<%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%
-String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
+	TtMap infodb = (TtMap) request.getAttribute("infodb");
+	TtMap minfo = (TtMap) request.getAttribute("minfo");
+	long id_uplevel = 0;
+	if (!Tools.myIsNull(infodb.get("id_uplevel"))) {
+		id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
+	}
+	String url = Tools.urlKill("sdo|id|type_id")+"&sdo=form&id=";
 %>
 <head>
 	<script src="js/jQueryRotate.2.2.js" type="text/javascript"></script>
 </head>
+
 <div class="admin-content nav-tabs-custom box">
 	<div class="box-header with-border">
 
@@ -14,6 +24,9 @@ String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
 		<div class="nav-tabs-custom">
 			<ul class="nav nav-tabs">
 				<li class="active">
+					<a href="#tab_6" data-toggle="tab">任务处理</a>
+				</li>
+				<li>
 					<a href="#tab_0" data-toggle="tab">处理过程</a>
 				</li>
 				<li><a href="#tab_1" data-toggle="tab">基础信息</a></li>
@@ -23,13 +36,18 @@ String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
 				<li><a href="#tab_5" data-toggle="tab">影音材料</a></li>
 			</ul>
 			<div class="tab-content">
-				<div class="tab-pane active" id="tab_0">
+
+				<div class="tab-pane active" id="tab_6">
+						<jsp:include page="/WEB-INF/jsp/manager/rwcl/36/3.jsp"></jsp:include>
+				</div>
+
+				<div class="tab-pane" id="tab_0">
 					<div class="box-body">
 						<div style="border:1px solid #478FCA;   margin:5px; padding:20px;border-radius: 10px;">
 							<ul id="yw" class="nav nav-tabs">
 								<c:forEach items="${requestScope.clgc_list}" var="c" varStatus="status">
-								<li ${c.number==1?"class='active'":''}>
-									<a id="${c.type}"  href="" data-toggle="tab" class="btn btn-block btn-info">
+								<li ${c.id eq requestScope.type_id?"class='active'":'' }>
+									<a id="${c.cn}"  href="<%=url%><%=infodb.get("id")%>&type_id=${c.id}"  class="btn btn-block btn-info">
 									${c.name}
 									</a>
 								</li>
@@ -46,7 +64,7 @@ String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
 
 							</ul>
 						</div>
-                     <jsp:include page="<%=msg%>"></jsp:include>
+                     <jsp:include page="/WEB-INF/jsp/manager/rwcl/rwcl.jsp"></jsp:include>
 					</div>
 				</div>
 				<div class="tab-pane" id="tab_1">
@@ -61,60 +79,61 @@ String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">姓名</span>
-											<input type="text" class="form-control" onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-												   id="">
+											<input type="text" value="${icbc.c_name}" class="form-control" onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
+												   id="c_name" name="c_name">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">身份证</span>
-											<input type="text" class="form-control" onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-												   id="">
+											<input type="text" value="${icbc.c_cardno}" class="form-control" onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
+												   id="c_cardno" name="c_cardno">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">电话</span>
-											<input type="text" class="form-control" onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-												   id="">
+											<input type="text" value="${icbc.c_tel}" class="form-control" onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
+												   id="c_tel" name="c_tel">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">性别</span>
-											<select name="" id="" class="form-control">
-												<option value="">请选择性别</option>
-												<option value="">男</option>
-												<option value="">女</option>
+											<select name="c_sex" id="c_sex" class="form-control">
+												<option value="0" >请选择性别</option>
+												<option value="1" ${icbc.c_sex eq 1?"selected='selected'":''}>男</option>
+												<option value="2" ${icbc.c_sex eq 2?"selected='selected'":''}>女</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">按揭银行</span>
-											<select name="" id="" class="form-control">
-												<option value="">请选择按揭银行</option>
-												<option value="">工行绍兴分行</option>
-												<option value="">工行上海分行</option>
+											<select id="bank_id" name="bank_id" class="form-control">
+												<option value="0">请选择按揭银行</option>
+												<option value="1">工行绍兴分行</option>
+												<option value="2">工行武林支行</option>
+												<option value="3">工行义乌支行</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">贷款产品</span>
-											<select name="" id="" class="form-control">
-												<option value="">请选择贷款产品</option>
-												<option value="">卡分期</option>
+											<select name="loan_tpid" id="loan_tpid" class="form-control">
+												<option value="0">请选择贷款产品</option>
+												<option value="1">卡分期</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
-											<span class="input-group-addon">业务登记</span>
-											<select name="" id="" class="form-control">
-												<option value="">请选择业务登记</option>
-												<option value="">10万元以上</option>
-												<option value="">10万元以下</option>
+											<span class="input-group-addon">业务等级</span>
+											<select id="loan_level" name="loan_level" class="form-control">
+												<option value="0">请选择业务等级</option>
+												<option value="1">预期贷款额10万以下（含10万）</option>
+												<option value="2">预期贷款额10万以上</option>
 											</select>
 										</div>
 									</div>
@@ -133,19 +152,19 @@ String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">姓名</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="po_c_name" id="po_c_name" value="">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">身份证</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="po_c_cardno" id="po_c_cardno" value="">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">手机号</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="po_c_tel" id="po_c_tel" value="">
 										</div>
 									</div>
 								</div>
@@ -158,19 +177,19 @@ String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">姓名</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="c_name_gj1" id="c_name_gj1" value="">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">身份证</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="c_cardno_gj1" id="c_cardno_gj1" value="">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">手机号</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="c_tel_gj1" id="c_tel_gj1" value="">
 										</div>
 									</div>
 								</div>
@@ -183,19 +202,19 @@ String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">姓名</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="c_name_gj2" id="c_name_gj2" value="">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">身份证</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="c_cardno_gj2" id="c_cardno_gj2" value="">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">手机号</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="c_tel_gj2" id="c_tel_gj2" value="">
 										</div>
 									</div>
 								</div>
@@ -227,19 +246,19 @@ String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
 												<div class="col-sm-4">
 													<div class="input-group">
 														<span class="input-group-addon">姓名</span>
-														<input type="text" class="form-control" name="remark" id="remark" value="">
+														<input type="text" class="form-control" name="c_name" id="c_name" value="">
 													</div>
 												</div>
 												<div class="col-sm-4">
 													<div class="input-group">
 														<span class="input-group-addon">拼音</span>
-														<input type="text" class="form-control" name="remark" id="remark" value="">
+														<input type="text" class="form-control" name="c_name_py" id="c_name_py" value="">
 													</div>
 												</div>
 												<div class="col-sm-4">
 													<div class="input-group">
 														<span class="input-group-addon">出生日期</span>
-														<input type="text" class="form-control" name="remark" id="remark" value="">
+														<input type="text" class="form-control" name="birthday" id="birthday" value="">
 													</div>
 												</div>
 												<div class="col-sm-4">

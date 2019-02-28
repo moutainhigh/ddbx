@@ -11,7 +11,9 @@ import org.apache.log4j.Logger;
 public class Config {
     public final static boolean TESTMODE = true;/* 测试/生产环境开关 */
     public final static boolean DEBUGMODE = true;/* 调试模式开关，调试模式下会打印异常到浏览器 */
-    public final static String TTVER = "1.4 build 20190213"; /* 版本号 */
+    public final static String TTVER = "2.0 build 20190226"; /* 版本号 */
+    public final static String APP_TITLE = "大地保险"; //项目名称：类似大地保险
+    public final static String APP_VER = " 1.0 build 20190226"; //项目版本
     public static String MANAGER_SKINCSS="skin-yellow";//皮肤主题{skin-black  ,skin-purple ,skin-yellow,skin-red,skin-green}
     /**NOTE:
      * 文件上传相关配置开始

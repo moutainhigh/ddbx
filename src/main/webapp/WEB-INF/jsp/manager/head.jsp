@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ page import="java.util.*" %>
+<%@ page import="com.example.ddbx.tt.tool.Config" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -9,9 +10,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>
-    后台演示
-  </title>
+  <title><%=Config.APP_TITLE+" "+ Config.APP_VER%></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <script type="text/javascript">
@@ -68,7 +67,6 @@
   <script type="text/javascript" src="js/exif.js"></script><%--这个必须,处理图片用--%>
   <script type="text/javascript" src="js/megapic-image.js"></script><%--这个必须，压缩和处理图片用--%>
   <%-- app.iframe --%>
-  <script src="iframe/dist/js/app_iframe.js?ver=4"></script>
   <link href="dist/css/style.css" rel="stylesheet" type="text/css" />
   <script src="js/index.js" type="text/javascript"></script>
 </head>

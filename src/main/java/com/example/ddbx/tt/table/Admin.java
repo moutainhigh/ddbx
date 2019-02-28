@@ -42,6 +42,23 @@ public class Admin extends DbCtrl {
   }
 
   /**
+   * 获取公司和人员名称
+   * @param id
+   * @return
+   */
+  public TtMap getgems_name(String cn, int id){
+    String sql="select " +
+            "a.name as admin_name," +
+            "f.name as fs_name" +
+            " from " +
+             cn+" di " +
+            "LEFT JOIN admin a on a.id=di.gems_id" +
+            " LEFT JOIN fs f on f.id=di.gems_fs_id" +
+            " where di.id="+id;
+    return Tools.recinfo(sql);
+  }
+
+  /**
    * @description: 重载lists方法，这里可以处理一些lists前的逻辑
    * @param {type}
    * @return:
@@ -140,7 +157,7 @@ public class Admin extends DbCtrl {
     showall = true;
     TtMap info = info(nid);
     System.out.println(info);
-    String jsonInfo = Tools.jsonEnCode(info);
+    String jsonInfo = Tools.jsonEncode(info);
     System.out.println(jsonInfo);
     request.setAttribute("info", jsonInfo);
     request.setAttribute("infodb", info);
