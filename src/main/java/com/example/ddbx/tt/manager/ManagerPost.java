@@ -7,6 +7,7 @@
  */
 package com.example.ddbx.tt.manager;
 
+import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.table.*;
 import com.example.ddbx.tt.tool.DbCtrl;
@@ -39,7 +40,7 @@ public class ManagerPost {
           try {
             switch (postUrl.get("cn")) {
               case "sys_config"://业务板块
-                    dbCtrl = (DbCtrl) new Sys_config();
+                dbCtrl = (DbCtrl) new Sys_config();
                 break;
               case "sys_config_son"://业务子版块
                 dbCtrl = (DbCtrl) new Sys_config_son();
@@ -67,6 +68,9 @@ public class ManagerPost {
                     post.put("icohtml", "<i class=\"fa fa-arrow-circle-o-right\"></i>");
                   }
                 }
+                break;
+              case "qcpg":
+                dbCtrl = (DbCtrl) new qcpg();
                 break;
               default:
             }

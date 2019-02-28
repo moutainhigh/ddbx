@@ -74,6 +74,18 @@ public class ManagerGet {
                 MyTask myTask1=new MyTask();
                 request.setAttribute("clgc_list",myTask1.getclgc());
                 break;
+              case "qcpg":
+                qcpg qcpg = new qcpg();
+                TtList getAllOrderName1 = qcpg.selectAllOrderName();
+                request.setAttribute("names",getAllOrderName1);
+                try {
+                  qcpg.doGetList(request,post);
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, true);
+                } finally {
+                  qcpg.closeConn();
+                }
+                break;
             default:
               break;
             }
@@ -204,7 +216,7 @@ public class ManagerGet {
                 haveSetFormData = true;
                 break;
               case "qcpg":
-                qcpg qcpg=new qcpg();
+                qcpg qcpg = new qcpg();
                 try {
                   qcpg.doGetList(request,post);
                 } catch (Exception e) {
