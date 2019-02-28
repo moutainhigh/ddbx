@@ -58,8 +58,8 @@ public class DbConfig {
         p.put("testOnBorrow", "false");
         p.put("testOnReturn", "false");
         p.put("poolPreparedStatements", "true");
-        p.put("maxPoolPreparedStatementPerConnectionSize", "20");
-        p.put("filters", "stat,wall,log4j");// todo 可以加上防sql注入参数,wall,stat
+        p.put("maxPoolPreparedStatementPerConnectionSize", "40");
+        p.put("filters", "wall,log4j");// todo 可以加上防sql注入参数,wall,stat
         p.put("logAbandoned", "true");
         p.put("removeAbandoned", "true");
         p.put("removeAbandonedTimeout", "1800");

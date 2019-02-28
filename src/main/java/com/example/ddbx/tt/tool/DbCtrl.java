@@ -1,9 +1,9 @@
 /*
- * @Description:  * 数据库操作基类 创建日期：2018-10-15 NOTE:使用时，需要实例化一个对象 获取版本号调用
+ * @Description:  * 数据库操作基类 创建日期：2018-10-15 NOTE:使用时，需要实例化一个对象
  * ver(); 使用时建议在此基础上继承个自己的单独类。
  * @Author: tt
  * @Date: 2018-12-07 10:47:04
- * @LastEditTime: 2019-02-16 14:49:05
+ * @LastEditTime: 2019-02-27 11:30:17
  * @LastEditors: tt
  */
 package com.example.ddbx.tt.tool;
@@ -11,7 +11,6 @@ package com.example.ddbx.tt.tool;
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.manager.ManagerPage;
-import com.example.ddbx.tt.table.BASE64Encoder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -31,7 +30,7 @@ public class DbCtrl {
     public boolean realdel = true;
     public boolean canhide = false;
     public boolean cancheck = true;
-    static int now = 0, closenow = 0;
+    //static int now = 0, closenow = 0;
     /**
      * 是否允許自動設定排序值,在獲取數據表結構的時候會自動設定
      *
@@ -89,7 +88,7 @@ public class DbCtrl {
      */
     public int limit = 10;
     /**
-     * 獲取列表時不限制函數
+     * 獲取列表時不限制页數
      *
      * @var boolean
      */
@@ -242,16 +241,17 @@ public class DbCtrl {
     private DbTools myDbTools;
 
     private void mylog(String mString) {
-        if (showlog == true) {
-            // System.out.println(toString() + ":" + mString);
-            Log log = LogFactory.getLog(DbCtrl.class);
+        if (Config.GLOBAL_SHOWLOG) {
+            Log log = LogFactory.getLog(DbCtrl.class); //
             log.info(mString);
+            if (!Config.TESTMODE) { //不是测试模式，log4j也打印
+                Tools.logInfo(mString, DbCtrl.class.toString());
+            }
         }
-        Tools.logInfo(mString,getClass().toString());
     }
 
     /* 默认的数据库链接，目前直接写到类里 */
-    private void GetdfConnection() {
+    private synchronized void GetdfConnection() {
         if (DbConfig.g_dsmap.size() <= 0) {
             mylog("开始初始化,使用默认数据库链接..");
             DbConfig.init(true);
@@ -260,8 +260,8 @@ public class DbCtrl {
         }
         try {
             conn = DbConfig.g_dsmap.get(dsi).getConnection();
-            now++;
-            mylog("累计创建getConnection连接数：" + now);
+            //now++;
+            //mylog("累计创建getConnection连接数：" + now);
         } catch (SQLException e) {
             errorCode = 900;
             Tools.logError("DbCtrl:" + e.getMessage());
@@ -286,11 +286,20 @@ public class DbCtrl {
         initconn();
     }
 
-    /* 多数据源情况下修改数据源 */
-    public void setTable(String table) {
-        this.table = table;
+    /* 多数据源情况下修改数据源后重新设置表名用，一般情况下不要使用哈，如果硬要使用，在setTable后，要setDsi一下，刷新数据源 */
+    public void setTable(String aTable) {
+        table = aTable;
     }
 
+    /**
+     * 更改目标表
+     * @param {type} {type}
+     * @return: 返回
+     */
+    public void changeTable(String aTable){
+        setTable(aTable);
+        setDsi(dsi);
+    }
     /* 类初始化，带数据库链接，如果链接为空，使用默认的数据库账号密码 */
     public DbCtrl(DruidPooledConnection connection, String tbName) {
         table = tbName;
@@ -314,7 +323,7 @@ public class DbCtrl {
     }
 
     /* 初始数据连接 */
-    private void initconn() {
+    private synchronized void initconn() {
         if (conn != null) {
             myDbTools = null;
             myDbTools = new DbTools(conn, showlog);
@@ -345,8 +354,8 @@ public class DbCtrl {
             if (Tools.inArrayList("dt_edit", fieldconf)) {
                 setlast = ",dt_edit=NOW()";
             }
-            return myDbTools.recexec("update " + table + " set deltag=" + delval + " " + setshow + " " + setlast
-                    + " where " + key + "='" + id + "'");
+            return myDbTools.recexec("update " + table + " set deltag=" + delval + " " + setshow + " " + setlast + " where "
+                    + key + "='" + id + "'");
         } else {
             return myDbTools.recexec("delete from " + table + " where " + key + "='" + id + "'");
         }
@@ -516,7 +525,11 @@ public class DbCtrl {
         // todo
         return ary;
     }
-
+    /**
+     * 添加/编辑/删除成功一条记录会执行此方法，子类重载用。sqltp：0-添加，1：编辑，-1：删除
+     * @param {type} {type}
+     * @return: 返回
+     */
     public void succ(TtMap array, long id, int sqltp) {
         // todo
     }
@@ -649,8 +662,8 @@ public class DbCtrl {
         TtList result = null;// new ArrayTtList();
         String strWhere = getListSqlStr(wheres);
         /** todo 组合字符串，查询列表 */
-        sql = "select SQL_CALC_FOUND_ROWS " + (Tools.myIsNull(f) == false ? f : fields) + " from " + table + " t "
-                + leftsql + " " + rightsql + " " + innersql + " "
+        sql = "select SQL_CALC_FOUND_ROWS " + (Tools.myIsNull(f) == false ? f : fields) + " from " + table + " t " + leftsql
+                + " " + rightsql + " " + innersql + " "
                 + (Tools.myIsNull(wheres) == false ? " where " + strWhere
                 : (Tools.myIsNull(strWhere) ? "" : " where " + strWhere))
                 + " " + orders + " " + groupby + " " + getListSqlStrlimit() + " ";
@@ -699,15 +712,13 @@ public class DbCtrl {
          * = " group by "+groupby; }else if(leftsql || rightsql || innersql){ groupby =
          * " group by t."+key; }
          */
-        String sql = "select " + (Tools.myIsNull(f) == false ? f : fields) + " from " + table + " t " + leftsql + " "
+        sql = "select " + (Tools.myIsNull(f) == false ? f : fields) + " from " + table + " t " + leftsql + " "
                 + rightsql + " " + innersql + " where t." + key + "='" + id + "' " + where + " " + groupby + " ";
-        this.sql = sql;
         TtMap rec = myDbTools.recinfo(sql, false, "ary", null);
         for (String key : rec.keySet()) {
             String vString = rec.get(key);
             if (Tools.myIsNull(vString) == false
-                    && ((vString.length() >= 10 && vString.substring(0, 10).equals("0000-00-00"))
-                    || vString.equals("0000"))) {
+                    && ((vString.length() >= 10 && vString.substring(0, 10).equals("0000-00-00")) || vString.equals("0000"))) {
                 rec.put(key, "");
             }
         }
@@ -747,9 +758,10 @@ public class DbCtrl {
     }
 
     /* 给子类重载的，做最后的过滤 */
-    private TtMap show(TtMap rec) {
+    public TtMap show(TtMap rec) {
         return rec;
     }
+
     /**
      * @说明: 给继承的子类重载用的
      * @param {type} {type}
@@ -757,56 +769,45 @@ public class DbCtrl {
      */
     public void doGetList(HttpServletRequest request, TtMap post) {
     }
+
     /**
      * @说明: 给继承的子类重载用的
      * @param {type} {type}
      * @return: 返回
      */
     public void doGetForm(HttpServletRequest request, TtMap post) {
-        String id = post.get("id");
-        long nid = 0;
-        if (!Tools.myIsNull(id)) {
-            nid = Long.valueOf(id);
-        }
-        showall = true;
+        long nid = Tools.myIsNull(post.get("id"))?0:Tools.strToLong(post.get("id"));
         TtMap info = info(nid);
-        if (!Tools.myIsNull(info.get("password"))) {// 密码处理，不显示
-            info.put("password", "");
-        }
-        if (!Tools.myIsNull(info.get("pagehtml"))) {// 编码处理
-            info.put("pagehtml",new String(BASE64Encoder.decode(info.get("pagehtml"))));
-        }
-        System.out.println(info);
-        String jsonInfo = Tools.jsonEnCode(info);
-        System.out.println(jsonInfo);
-        request.setAttribute("info", jsonInfo);
-        request.setAttribute("infodb", info);
-        request.setAttribute("id", nid > 0 ? nid : 0);
+        String jsonInfo = Tools.jsonEncode(info);
+        request.setAttribute("info", jsonInfo);//info为json后的info
+        request.setAttribute("infodb", info);//infodb为TtMap的info
+        request.setAttribute("id", nid);
     }
+
     /**
      * @说明: 给子类重载用，处理post
      * @param {type} {type}
      * @return: 返回
      */
-    public void doPost(TtMap post,long id,TtMap result2) {
+    public void doPost(TtMap post, long id, TtMap result2) {
         if (id > 0) { // id为0时，新增
-            edit(post,id);
+            edit(post, id);
         } else {
             add(post);
         }
         String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
         boolean bSuccess = errorCode == 0;
-        Tools.formatResult(result2, bSuccess, errorCode, bSuccess ? "编辑成功！" : errorMsg,
-                bSuccess ? nextUrl : "");//失败时停留在当前页面,nextUrl为空
+        Tools.formatResult(result2, bSuccess, errorCode, bSuccess ? "编辑成功！" : errorMsg, bSuccess ? nextUrl : "");// 失败时停留在当前页面,nextUrl为空
     }
+
     /**
      * 关闭连接，所有数据库操作完成后应该调用此方法关闭连接，释放资源。
      */
-    public void closeConn() {
+    public synchronized void closeConn() {
         // 关闭资源
         myDbTools.closeConn();// 释放由dbtools创建的connection,本类
-        closenow++;
-        mylog("累计关闭conn.close()连接数：" + closenow);
+        //closenow++;
+        //mylog("累计关闭conn.close()连接数：" + closenow);
         try {
             if (conn != null) { // 关闭本类创建的
                 // mylog("累计关闭conn.close()连接数：" + closenow);
@@ -822,7 +823,14 @@ public class DbCtrl {
         }
     }
 
+    /**
+     * tt的版本
+     * @param {type} {type}
+     * @return: 返回
+     */
     public String ver() {
         return Config.TTVER;
     }
+
+
 }
