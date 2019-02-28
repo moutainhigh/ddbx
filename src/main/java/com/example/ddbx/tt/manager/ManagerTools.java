@@ -94,17 +94,14 @@ public class ManagerTools {
       return "fs";
    case "mytask":
       return "dd_icbc_erp";
-<<<<<<< HEAD
   case "qcpg":
     return "dd_icbc_materials";
-=======
    case "alltask":
         return "dd_icbc_erp";
    case "zx_1":
       return "dd_icbc_erp";
    case "zxcx":
       return "dd_icbc";
->>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
     default:
       return cn;
     }

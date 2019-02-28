@@ -75,10 +75,8 @@ public class ManagerPost {
                   }
                 }
                 break;
-<<<<<<< HEAD
               case "qcpg":
                 dbCtrl = (DbCtrl) new qcpg();
-=======
               case "zxcx": // 征信添加 erp添加
                 dbCtrl = (DbCtrl) new zxcx();
                 zxcx zxcx=new zxcx();
@@ -90,7 +88,6 @@ public class ManagerPost {
                 }finally {
                   zxcx.closeConn();
                 }
->>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
                 break;
               default:
             }

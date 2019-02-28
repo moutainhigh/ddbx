@@ -50,305 +50,306 @@ public class ManagerGet {
         long nid = 0;
         try {
           switch (sdo) {
-          case "":
-          case "form": /* 下面的如果功能复杂，建议每一个table新建一个专属的class来处理，保持代码清洁生成相关的参数 */
-          case "float":
-            switch (cn) {
-            case "admin_agp":// 公司角色权限，独立的class演示，显示公司模块下的所有
-              AdminAgp adminAgp = new AdminAgp();
-              try {
-                adminAgp.doGetForm(request, post);
-              } catch (Exception e) {
-                Tools.logError(e.getMessage(), true, true);
-              } finally {
-                adminAgp.closeConn();
-              }
-              haveSetFormData = true;
-              break;
-              case "fs_agp": // 公司模块选择，显示所有非内部模块
-                post.put("id", Tools.minfo().get("fsid")); //修改id为当前登陆用户所在公司的id
-                request.setAttribute("modals", modalMenu.getAllModals()); // 后台左侧菜单,sidebar.jsp里面用到的菜
-              break;
-              case "fs": // 公司模块选择，显示所有非内部模块
-                //nid = Long.parseLong(Tools.minfo().get("fsid"));
-                request.setAttribute("modals", modalMenu.getAllModals()); // 后台左侧菜单,sidebar.jsp里面用到的菜
-                break;
-              case "mytask": // 我的任务板块
-                //System.out.println("进入我的世界");
-
-                MyTask myTask=new MyTask();
-                try {
-                  if (myTask.getclgc()!=null&&myTask.getclgc().size()>0){
-                    request.setAttribute("clgc_list",myTask.getclgc());
-                  }
-                  if(post.get("type_id")!=null&&!post.get("type_id").equals("")){
-                    request.setAttribute("type_id",post.get("type_id"));
-                    if(myTask.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id")))!=null&&myTask.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))).size()>0) {
-                      request.setAttribute("erplist", myTask.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
-                    }}
-                   request.setAttribute("icbc",myTask.geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
-                } catch (Exception e) {
-                  Tools.logError(e.getMessage(), true, false);
-                } finally {
-                  myTask.closeConn();
-                }
-
-                break;
-              case "alltask": // 我的任务板块
-                //System.out.println("进入我的世界");
-                AllTask allTask=new AllTask();
-                MyTask myTask3=new MyTask();
-                try {
-                  request.setAttribute("clgc_list",allTask.getclgc());
-                  if(post.get("type_id")!=null&&!post.get("type_id").equals("")) {
-                    request.setAttribute("erplist", myTask3.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
-                  }
-                } catch (Exception e) {
-                  Tools.logError(e.getMessage(), true, false);
-                } finally {
-                  myTask3.closeConn();
-                }
-                break;
-              case "sys_config_son": // 我的任务板块
-                //System.out.println("进入我的世界");
-                MyTask myTask1=new MyTask();
-                try {
-                  request.setAttribute("clgc_list",myTask1.getclgc());
-                } catch (Exception e) {
-                  Tools.logError(e.getMessage(), true, false);
-                } finally {
-                  myTask1.closeConn();
-                }
-                break;
-              case "zxcx": // 我的任务板块
-                //System.out.println("进入我的世界");
-
-                //获取erp类型数据
-                MyTask myTask2=new MyTask();
-                try {
-                  TtList erplist= myTask2.geticbc_erp_type();
-                  request.setAttribute("erplist",erplist);
-                } catch (Exception e) {
-                  Tools.logError(e.getMessage(), true, false);
-                } finally {
-                  myTask2.closeConn();
-                }
-
-                if(post.get("id")!=null&&!post.get("id").equals("")){
-                  //获取公司名 人名
-                  Admin admin=new Admin();
+            case "":
+            case "form": /* 下面的如果功能复杂，建议每一个table新建一个专属的class来处理，保持代码清洁生成相关的参数 */
+            case "float":
+              switch (cn) {
+                case "admin_agp":// 公司角色权限，独立的class演示，显示公司模块下的所有
+                  AdminAgp adminAgp = new AdminAgp();
                   try {
-                    TtMap ttMap=admin.getgems_name("dd_icbc",Integer.parseInt(post.get("id")));
-                    request.setAttribute("gsnamemap",ttMap);
+                    adminAgp.doGetForm(request, post);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, true);
+                  } finally {
+                    adminAgp.closeConn();
+                  }
+                  haveSetFormData = true;
+                  break;
+                case "fs_agp": // 公司模块选择，显示所有非内部模块
+                  post.put("id", Tools.minfo().get("fsid")); //修改id为当前登陆用户所在公司的id
+                  request.setAttribute("modals", modalMenu.getAllModals()); // 后台左侧菜单,sidebar.jsp里面用到的菜
+                  break;
+                case "fs": // 公司模块选择，显示所有非内部模块
+                  //nid = Long.parseLong(Tools.minfo().get("fsid"));
+                  request.setAttribute("modals", modalMenu.getAllModals()); // 后台左侧菜单,sidebar.jsp里面用到的菜
+                  break;
+                case "mytask": // 我的任务板块
+                  //System.out.println("进入我的世界");
+
+                  MyTask myTask = new MyTask();
+                  try {
+                    if (myTask.getclgc() != null && myTask.getclgc().size() > 0) {
+                      request.setAttribute("clgc_list", myTask.getclgc());
+                    }
+                    if (post.get("type_id") != null && !post.get("type_id").equals("")) {
+                      request.setAttribute("type_id", post.get("type_id"));
+                      if (myTask.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))) != null && myTask.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))).size() > 0) {
+                        request.setAttribute("erplist", myTask.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
+                      }
+                    }
+                    request.setAttribute("icbc", myTask.geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
                   } catch (Exception e) {
                     Tools.logError(e.getMessage(), true, false);
                   } finally {
+                    myTask.closeConn();
+                  }
+
+                  break;
+                case "alltask": // 我的任务板块
+                  //System.out.println("进入我的世界");
+                  AllTask allTask = new AllTask();
+                  MyTask myTask3 = new MyTask();
+                  try {
+                    request.setAttribute("clgc_list", allTask.getclgc());
+                    if (post.get("type_id") != null && !post.get("type_id").equals("")) {
+                      request.setAttribute("erplist", myTask3.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
+                    }
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, false);
+                  } finally {
+                    myTask3.closeConn();
+                  }
+                  break;
+                case "sys_config_son": // 我的任务板块
+                  //System.out.println("进入我的世界");
+                  MyTask myTask1 = new MyTask();
+                  try {
+                    request.setAttribute("clgc_list", myTask1.getclgc());
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, false);
+                  } finally {
+                    myTask1.closeConn();
+                  }
+                  break;
+                case "zxcx": // 我的任务板块
+                  //System.out.println("进入我的世界");
+
+                  //获取erp类型数据
+                  MyTask myTask2 = new MyTask();
+                  try {
+                    TtList erplist = myTask2.geticbc_erp_type();
+                    request.setAttribute("erplist", erplist);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, false);
+                  } finally {
+                    myTask2.closeConn();
+                  }
+
+                  if (post.get("id") != null && !post.get("id").equals("")) {
+                    //获取公司名 人名
+                    Admin admin = new Admin();
+                    try {
+                      TtMap ttMap = admin.getgems_name("dd_icbc", Integer.parseInt(post.get("id")));
+                      request.setAttribute("gsnamemap", ttMap);
+                    } catch (Exception e) {
+                      Tools.logError(e.getMessage(), true, false);
+                    } finally {
+                      admin.closeConn();
+                    }
+                  }
+                  break;
+                case "car_loan": // 我的任务板块
+                  //查询进件客户
+                  CarLoan carLoan = new CarLoan();
+                  TtList getAllOrderName = carLoan.selectAllOrderName();
+                  request.setAttribute("names", getAllOrderName);
+                  break;
+                case "qcpg":
+                  qcpg qcpg = new qcpg();
+                  TtList getAllOrderName1 = qcpg.selectAllOrderName();
+                  request.setAttribute("names", getAllOrderName1);
+                  try {
+                    qcpg.doGetList(request, post);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, true);
+                  } finally {
+                    qcpg.closeConn();
+                  }
+                  break;
+                default:
+                  break;
+              }
+              if (dbCtrl == null) {//使用dbCtrl默认的配置输出数据
+                dbCtrl = new DbCtrl(ManagerTools.getRealCn(cn));
+              }
+              ;
+              dbCtrl.doGetForm(request, post);
+              break;
+
+            // ===============无敌分割线，分割sdo=form和list=================/
+
+            case "list": /* 下面的如果功能复杂，建议每一个table新建一个专属的class来处理，保持代码清洁生成相关的参数 */
+              String whereString = "true";// 过滤 如 t.mid=222 ，只显示mid为222的列表
+              String fieldsString = ""; // 显示字段列表如t.id,t.name,t.dt_edit
+              String orderString = ""; // 排序
+              String lsitTitleString = ""; // list的jsp页面左上角的标题
+              String kw = "";
+              int pageInt = Integer.valueOf(Tools.myIsNull(post.get("p")) == false ? post.get("p") : "1"); // 当前页
+              int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
+              boolean candel = false;
+              boolean canAdd = true;
+              dbCtrl.showall = true;
+              switch (cn) {// list生成前处理
+                case "admin_agp": // 演示单独的类来处理数据
+                  AdminAgp adminAgp = new AdminAgp();
+                  try {
+                    adminAgp.doGetList(request, post);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, true);
+                  } finally {
+                    adminAgp.closeConn();
+                  }
+                  haveSetFormData = true;
+                  break;
+                case "comm_citys":// 使用单独的类来处理数据
+                  CommCitys commCitys = new CommCitys();
+                  try {
+                    commCitys.doGetList(request, post);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, true);
+                  } finally {
+                    commCitys.closeConn();
+                  }
+                  haveSetFormData = true;
+                  break;
+                case "admin":
+                  Admin admin = new Admin();
+                  try {
+                    admin.doGetList(request, post);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, true);
+                  } finally {
                     admin.closeConn();
                   }
-                }
-                break;
-              case "car_loan": // 我的任务板块
-                //查询进件客户
-                CarLoan carLoan = new CarLoan();
-                TtList getAllOrderName = carLoan.selectAllOrderName();
-                request.setAttribute("names",getAllOrderName);
-                break;
-              case "qcpg":
-                qcpg qcpg = new qcpg();
-                TtList getAllOrderName1 = qcpg.selectAllOrderName();
-                request.setAttribute("names",getAllOrderName1);
-                try {
-                  qcpg.doGetList(request,post);
-                } catch (Exception e) {
-                  Tools.logError(e.getMessage(), true, true);
-                } finally {
-                  qcpg.closeConn();
-                }
-                break;
-            default:
-              break;
-            }
-            if (dbCtrl==null) {//使用dbCtrl默认的配置输出数据
-              dbCtrl = new DbCtrl(ManagerTools.getRealCn(cn));
-            };
-            dbCtrl.doGetForm(request, post);
-            break;
-
-          // ===============无敌分割线，分割sdo=form和list=================/
-
-          case "list": /* 下面的如果功能复杂，建议每一个table新建一个专属的class来处理，保持代码清洁生成相关的参数 */
-            String whereString = "true";// 过滤 如 t.mid=222 ，只显示mid为222的列表
-            String fieldsString = ""; // 显示字段列表如t.id,t.name,t.dt_edit
-            String orderString = ""; // 排序
-            String lsitTitleString = ""; // list的jsp页面左上角的标题
-            String kw = "";
-            int pageInt = Integer.valueOf(Tools.myIsNull(post.get("p")) == false ? post.get("p") : "1"); // 当前页
-            int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
-            boolean candel = false;
-            boolean canAdd = true;
-            dbCtrl.showall = true;
-            switch (cn) {// list生成前处理
-            case "admin_agp": // 演示单独的类来处理数据
-              AdminAgp adminAgp = new AdminAgp();
-              try {
-                adminAgp.doGetList(request, post);
-              } catch (Exception e) {
-                Tools.logError(e.getMessage(), true, true);
-              } finally {
-                adminAgp.closeConn();
-              }
-              haveSetFormData = true;
-              break;
-            case "comm_citys":// 使用单独的类来处理数据
-              CommCitys commCitys = new CommCitys();
-              try {
-                commCitys.doGetList(request, post);
-              } catch (Exception e) {
-                Tools.logError(e.getMessage(), true, true);
-              } finally {
-                commCitys.closeConn();
-              }
-              haveSetFormData = true;
-              break;
-            case "admin":
-              Admin admin = new Admin();
-              try {
-                admin.doGetList(request, post);
-              } catch (Exception e) {
-                Tools.logError(e.getMessage(), true, true);
-              } finally {
-                admin.closeConn();
-              }
-              haveSetFormData = true;
-              break;
-            case "sys_modal":
-              lsitTitleString = "模块管理";
-              orderString = "ORDER BY level,id_uplevel,sort";
-              candel = false;
-              kw = post.get("kw");
-              String id_uplevel = post.get("id_uplevel");
-              if (Tools.myIsNull(kw) == false) {
-                whereString += " AND showmmenuname like '%" + kw + "%'";
-              }
-              if (Tools.myIsNull(id_uplevel) == false && !id_uplevel.equals("0")) {
-                whereString += " AND level=" + id_uplevel;
-              }
-              break;
-            case "sys_error": // 演示单独的类来处理数据
-              lsitTitleString = "错误日志管理";
-              orderString = "ORDER BY dt_add DESC";
-              break;
-            case "alltask"://全部任务
-              System.out.println("来啦老弟！！！");
-              AllTask allTask=new AllTask();
-              try {
-                allTask.doGetList(request,post);
-              } catch (Exception e) {
-                Tools.logError(e.getMessage(), true, true);
-              } finally {
-                allTask.closeConn();
-              }
-              haveSetFormData = true;
-              break;
-              case "mytask"://我的任务
-                MyTask mytask=new MyTask();
-                try {
-                  mytask.doGetList(request,post);
-                } catch (Exception e) {
-                  Tools.logError(e.getMessage(), true, true);
-                } finally {
-                  mytask.closeConn();
-                }
-                haveSetFormData = true;
-                break;
+                  haveSetFormData = true;
+                  break;
+                case "sys_modal":
+                  lsitTitleString = "模块管理";
+                  orderString = "ORDER BY level,id_uplevel,sort";
+                  candel = false;
+                  kw = post.get("kw");
+                  String id_uplevel = post.get("id_uplevel");
+                  if (Tools.myIsNull(kw) == false) {
+                    whereString += " AND showmmenuname like '%" + kw + "%'";
+                  }
+                  if (Tools.myIsNull(id_uplevel) == false && !id_uplevel.equals("0")) {
+                    whereString += " AND level=" + id_uplevel;
+                  }
+                  break;
+                case "sys_error": // 演示单独的类来处理数据
+                  lsitTitleString = "错误日志管理";
+                  orderString = "ORDER BY dt_add DESC";
+                  break;
+                case "alltask"://全部任务
+                  System.out.println("来啦老弟！！！");
+                  AllTask allTask = new AllTask();
+                  try {
+                    allTask.doGetList(request, post);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, true);
+                  } finally {
+                    allTask.closeConn();
+                  }
+                  haveSetFormData = true;
+                  break;
+                case "mytask"://我的任务
+                  MyTask mytask = new MyTask();
+                  try {
+                    mytask.doGetList(request, post);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, true);
+                  } finally {
+                    mytask.closeConn();
+                  }
+                  haveSetFormData = true;
+                  break;
                 case "sys_config"://业务板块
-                    Sys_config sys_config=new Sys_config();
-                    try {
-                        sys_config.doGetList(request,post);
-                    } catch (Exception e) {
+                  Sys_config sys_config = new Sys_config();
+                  try {
+                    sys_config.doGetList(request, post);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, true);
+                  } finally {
+                    sys_config.closeConn();
+                  }
+                  haveSetFormData = true;
+                  break;
+                case "sys_config_son"://业务子版块
+                  Sys_config_son sys_config_son = new Sys_config_son();
+                  try {
+                    sys_config_son.doGetList(request, post);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, true);
+                  } finally {
+                    sys_config_son.closeConn();
+                  }
+                  haveSetFormData = true;
+                  break;
+                case "zxcx"://征信
+                  zxcx zxcx = new zxcx();
+                  try {
+                    zxcx.doGetList(request, post);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, true);
+                  } finally {
+                    zxcx.closeConn();
+                  }
+                  haveSetFormData = true;
+                  break;
+                case "qcpg":
+                  qcpg qcpg = new qcpg();
+                  try {
+                    qcpg.doGetList(request, post);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, true);
+                  } finally {
+                    qcpg.closeConn();
+                  }
+                    case "car_loan":
+                      CarLoan carLoan = new CarLoan();
+                      try {
+                        carLoan.doGetList(request, post);
+                      } catch (Exception e) {
                         Tools.logError(e.getMessage(), true, true);
-                    } finally {
-                        sys_config.closeConn();
-                    }
-                    haveSetFormData = true;
-                    break;
-              case "sys_config_son"://业务子版块
-                Sys_config_son sys_config_son=new Sys_config_son();
-                try {
-                  sys_config_son.doGetList(request,post);
-                } catch (Exception e) {
-                  Tools.logError(e.getMessage(), true, true);
-                } finally {
-                  sys_config_son.closeConn();
-                }
-                haveSetFormData = true;
-                break;
-              case "zxcx"://征信
-                zxcx zxcx=new zxcx();
-                try {
-                  zxcx.doGetList(request,post);
-                } catch (Exception e) {
-                  Tools.logError(e.getMessage(), true, true);
-                } finally {
-                  zxcx.closeConn();
-                }
-                haveSetFormData = true;
-                break;
-<<<<<<< HEAD
-              case "qcpg":
-                qcpg qcpg = new qcpg();
-                try {
-                  qcpg.doGetList(request,post);
-                } catch (Exception e) {
-                  Tools.logError(e.getMessage(), true, true);
-                } finally {
-                  qcpg.closeConn();
-=======
-              case "car_loan":
-                CarLoan carLoan=new CarLoan();
-                try {
-                  carLoan.doGetList(request,post);
-                } catch (Exception e) {
-                  Tools.logError(e.getMessage(), true, true);
-                } finally {
-                  carLoan.closeConn();
->>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
-                }
-                haveSetFormData = true;
-                break;
-            default:
-              lsitTitleString = "相关管理";
-              orderString = "ORDER BY id";
-              Class<?> b = ManagerTools.doGetClass(realCn);
-              if (null != b) {
-                dbCtrl = (DbCtrl) b.newInstance();
+                      } finally {
+                        carLoan.closeConn();
+                      }
+                      haveSetFormData = true;
+                      break;
+                    default:
+                      lsitTitleString = "相关管理";
+                      orderString = "ORDER BY id";
+                      Class<?> b = ManagerTools.doGetClass(realCn);
+                      if (null != b) {
+                        dbCtrl = (DbCtrl) b.newInstance();
+                      }
+                      break;
+                  }
+                  if (!haveSetFormData) {// 如果没有处理
+                    dbCtrl.orders = orderString;
+                    dbCtrl.p = pageInt;
+                    dbCtrl.limit = limtInt;
+                    list = dbCtrl.lists(whereString, fieldsString);
+                    request.setAttribute("list", list);
+                    request.setAttribute("recs", dbCtrl.recs); // 总记录数
+                    String htmlpages = dbCtrl.getPage("", 0, true); // 分页html代码
+                    request.setAttribute("pages", dbCtrl.pages); // 总页数
+                    request.setAttribute("p", pageInt); // 当前页码
+                    request.setAttribute("l", limtInt); // limit量
+                    request.setAttribute("lsitTitleString", lsitTitleString); // 标题
+                    request.setAttribute("htmlpages", htmlpages); // 分页的html代码
+                    request.setAttribute("canDel", candel); // 分页的html代码
+                    request.setAttribute("canAdd", canAdd); // 分页的html代码
+                    // request.setAttribute("dbCtrl", dbCtrl);
+                  }
+                  break;
               }
-              break;
-            }
-            if (!haveSetFormData) {// 如果没有处理
-              dbCtrl.orders = orderString;
-              dbCtrl.p = pageInt;
-              dbCtrl.limit = limtInt;
-              list = dbCtrl.lists(whereString, fieldsString);
-              request.setAttribute("list", list);
-              request.setAttribute("recs", dbCtrl.recs); // 总记录数
-              String htmlpages = dbCtrl.getPage("", 0, true); // 分页html代码
-              request.setAttribute("pages", dbCtrl.pages); // 总页数
-              request.setAttribute("p", pageInt); // 当前页码
-              request.setAttribute("l", limtInt); // limit量
-              request.setAttribute("lsitTitleString", lsitTitleString); // 标题
-              request.setAttribute("htmlpages", htmlpages); // 分页的html代码
-              request.setAttribute("canDel", candel); // 分页的html代码
-              request.setAttribute("canAdd", canAdd); // 分页的html代码
-              // request.setAttribute("dbCtrl", dbCtrl);
-            }
-            break;
-          }
         } catch (Exception e) {
           if (Config.DEBUGMODE) {
             e.printStackTrace();
           }
           Tools.logError(e.getMessage(), true, true);
+
         } finally {
           dbCtrl.closeConn();
           if (post != null) {
