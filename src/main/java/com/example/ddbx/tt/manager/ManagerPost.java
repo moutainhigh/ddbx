@@ -44,20 +44,38 @@ public class ManagerPost {
           String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
           try {
             switch (postUrl.get("cn")) {
-              case "sys_modal": // 直接用dbCtrl来处理，但是要特殊处理一些数据的演示。
+             case "sys_modal": // 直接用dbCtrl来处理
                 System.out.println(post.toString());
                 if (post.get("id_uplevel").equals("0")) {
-                  post.put("level", "1");
+                    post.put("level", "1");
                 } else {
-                  post.put("level", "2");
+                    post.put("level", "2");
                 }
                 if (Tools.myIsNull(post.get("icohtml"))) {
-                  if (post.get("level") == "1") {
-                    post.put("icohtml", "<i class=\"fa fa-home\"></i>");
-                  } else {
-                    post.put("icohtml", "<i class=\"fa fa-arrow-circle-o-right\"></i>");
-                  }
+                    if (post.get("level") == "1") {
+                        post.put("icohtml", "<i class=\"fa fa-home\"></i>");
+                    } else {
+                        post.put("icohtml", "<i class=\"fa fa-arrow-circle-o-right\"></i>");
+                    }
                 }
+                break;
+              case "car_loan":
+                dbCtrl = (DbCtrl) new CarLoan();
+                break;
+              case "sys_config"://业务板块
+                dbCtrl = (DbCtrl) new Sys_config();
+                break;
+              case "sys_config_son"://业务子版块
+                dbCtrl = (DbCtrl) new Sys_config_son();
+                break;
+              case "admin":
+                dbCtrl = (DbCtrl) new Admin();
+                break;
+              case "admin_agp":
+                dbCtrl = (DbCtrl) new AdminAgp();
+                break;
+              case "fs_agp": // 用单独的类演示处理post，保存数据
+                dbCtrl = (DbCtrl) new FsModal();
                 break;
               default: // 不用特殊处理的cn
                 Class<?> b = ManagerTools.doGetClass(realCn);
