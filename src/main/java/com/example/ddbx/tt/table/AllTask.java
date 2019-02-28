@@ -49,7 +49,42 @@ public class AllTask extends DbCtrl {
             myDbTools.closeConn();
         }
         return clgc_list;
+
+
+
     }
+    /**
+     * @param {type} {type}
+     * @说明: 给继承的子类重载用的
+     * @return: 返回
+     */
+    public void doGetForm(HttpServletRequest request, TtMap post) {
+        MyTask myTask3=new MyTask();
+        try {
+            request.setAttribute("clgc_list",getclgc());
+            if(post.get("type_id")!=null&&!post.get("type_id").equals("")) {
+                request.setAttribute("erplist", myTask3.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
+            }
+            if(post.get("type_id")!=null&&!post.get("type_id").equals("")){
+                request.setAttribute("type_id",post.get("type_id"));
+                if(myTask3.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id")))!=null&&myTask3.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))).size()>0) {
+                    request.setAttribute("erplist", myTask3.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
+                }}
+            request.setAttribute("icbc",myTask3.geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
+        } catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        } finally {
+            myTask3.closeConn();
+        }
+
+        long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
+        TtMap info = info(nid);
+        String jsonInfo = Tools.jsonEncode(info);
+        request.setAttribute("info", jsonInfo);//info为json后的info
+        request.setAttribute("infodb", info);//infodb为TtMap的info
+        request.setAttribute("id", nid);
+    }
+
     //list 处理
     public void doGetList(HttpServletRequest request, TtMap post) {
         if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断

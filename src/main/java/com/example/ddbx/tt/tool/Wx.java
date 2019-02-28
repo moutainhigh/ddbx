@@ -445,7 +445,7 @@ public class Wx {
         }
         String token = this.ttWx_GetToken(false);
         url = url.replace("TOKEN", token);
-        result = HttpTools.httpClientPost(url, Tools.jsonEnCode(params));
+        result = HttpTools.httpClientPost(url, Tools.jsonEncode(params));
         return result;
     }
 }

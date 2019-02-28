@@ -222,7 +222,7 @@
                                 <select class="form-control" id="type_id" name="type_id">
                                     <option value="0">请选择</option>
                                     <c:forEach var="e" items="${requestScope.erplist}">
-                                        <option value="${e.id}">${e.name}</option>
+                                        <option value="${e.id}" ${infodb.bc_status eq e.id?"selected='selected'":''}>${e.name}</option>
                                     </c:forEach>
                                 </select>
                             </div>

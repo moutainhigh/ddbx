@@ -1,16 +1,8 @@
-<!--
-* @Description: 左侧菜单演示JSP,sidebar
-* @Author: tt
-* @Date: 2019-01-10 10:54:21
-* @LastEditTime: 2019-01-16 13:45:29
-* @LastEditors: tt
--->
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="com.example.ddbx.tt.data.TtList" %>
 <%@ page import="com.example.ddbx.tt.data.TtMap" %>
-<%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
@@ -22,13 +14,13 @@
         <ul class="sidebar-menu">
             <li class="header">管理菜单</li>
             <%
-                String nowurl = Tools.urlKill("cn|sdo|type|id")+"&cn=home&sdo=form&type=demo";
+                String urlHome = "index";
                 String nowcn = "";
                 String nowsdo = "";
                 String nowtype = "";
             %>
-            <li <% if(nowcn.equals("home") && nowtype.equals("demo")){ %> class="active" <%}%>>
-                <a href="<%=nowurl%>"> <i class="fa fa-home"></i> <span>管理中心首页</span></a>
+            <li <% if(cn.equals("home") && type.equals("demo")){ %> class="active" <%}%>>
+                <a href="<%=urlHome%>"> <i class="fa fa-home"></i> <span>管理中心首页</span></a>
             </li>
             <%
                 Map<String,Object> menus = (Map<String,Object>)request.getAttribute("menus");

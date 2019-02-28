@@ -10,10 +10,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page import="java.io.InputStream" %>
-
 <%@ page import="java.io.FileInputStream" %>
-<%@ page import="com.example.ddbx.tt.tool.JspTools" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
+<%@ page import="com.example.ddbx.tt.tool.JspTools" %>
 <%
 	String errorMsg =(String) request.getAttribute("errorMsg");//如果有c错误信息，就弹出显示并跳转
 	if (!Tools.myIsNull(errorMsg)){

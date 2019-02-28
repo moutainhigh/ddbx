@@ -24,6 +24,9 @@
 		<div class="nav-tabs-custom">
 			<ul class="nav nav-tabs">
 				<li class="active">
+					<a href="#tab_6" data-toggle="tab">任务处理</a>
+				</li>
+				<li>
 					<a href="#tab_0" data-toggle="tab">处理过程</a>
 				</li>
 				<li><a href="#tab_1" data-toggle="tab">基础信息</a></li>
@@ -33,7 +36,12 @@
 				<li><a href="#tab_5" data-toggle="tab">影音材料</a></li>
 			</ul>
 			<div class="tab-content">
-				<div class="tab-pane active" id="tab_0">
+
+				<div class="tab-pane active" id="tab_6">
+						<jsp:include page="/WEB-INF/jsp/manager/rwcl/36/3.jsp"></jsp:include>
+				</div>
+
+				<div class="tab-pane" id="tab_0">
 					<div class="box-body">
 						<div style="border:1px solid #478FCA;   margin:5px; padding:20px;border-radius: 10px;">
 							<ul id="yw" class="nav nav-tabs">
@@ -102,30 +110,30 @@
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">按揭银行</span>
-											<select name="bank_id
-" id="bank_id" class="form-control">
-												<option value="">请选择按揭银行</option>
-												<option value="">工行绍兴分行</option>
-												<option value="">工行上海分行</option>
+											<select id="bank_id" name="bank_id" class="form-control">
+												<option value="0">请选择按揭银行</option>
+												<option value="1">工行绍兴分行</option>
+												<option value="2">工行武林支行</option>
+												<option value="3">工行义乌支行</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">贷款产品</span>
-											<select name="" id="" class="form-control">
-												<option value="">请选择贷款产品</option>
-												<option value="">卡分期</option>
+											<select name="loan_tpid" id="loan_tpid" class="form-control">
+												<option value="0">请选择贷款产品</option>
+												<option value="1">卡分期</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
-											<span class="input-group-addon">业务登记</span>
-											<select name="" id="" class="form-control">
-												<option value="">请选择业务登记</option>
-												<option value="">10万元以上</option>
-												<option value="">10万元以下</option>
+											<span class="input-group-addon">业务等级</span>
+											<select id="loan_level" name="loan_level" class="form-control">
+												<option value="0">请选择业务等级</option>
+												<option value="1">预期贷款额10万以下（含10万）</option>
+												<option value="2">预期贷款额10万以上</option>
 											</select>
 										</div>
 									</div>
@@ -144,19 +152,19 @@
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">姓名</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="po_c_name" id="po_c_name" value="">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">身份证</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="po_c_cardno" id="po_c_cardno" value="">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">手机号</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="po_c_tel" id="po_c_tel" value="">
 										</div>
 									</div>
 								</div>
@@ -169,19 +177,19 @@
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">姓名</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="c_name_gj1" id="c_name_gj1" value="">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">身份证</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="c_cardno_gj1" id="c_cardno_gj1" value="">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">手机号</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="c_tel_gj1" id="c_tel_gj1" value="">
 										</div>
 									</div>
 								</div>
@@ -194,19 +202,19 @@
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">姓名</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="c_name_gj2" id="c_name_gj2" value="">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">身份证</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="c_cardno_gj2" id="c_cardno_gj2" value="">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">手机号</span>
-											<input type="text" class="form-control" name="remark" id="remark" value="">
+											<input type="text" class="form-control" name="c_tel_gj2" id="c_tel_gj2" value="">
 										</div>
 									</div>
 								</div>
@@ -238,19 +246,19 @@
 												<div class="col-sm-4">
 													<div class="input-group">
 														<span class="input-group-addon">姓名</span>
-														<input type="text" class="form-control" name="remark" id="remark" value="">
+														<input type="text" class="form-control" name="c_name" id="c_name" value="">
 													</div>
 												</div>
 												<div class="col-sm-4">
 													<div class="input-group">
 														<span class="input-group-addon">拼音</span>
-														<input type="text" class="form-control" name="remark" id="remark" value="">
+														<input type="text" class="form-control" name="c_name_py" id="c_name_py" value="">
 													</div>
 												</div>
 												<div class="col-sm-4">
 													<div class="input-group">
 														<span class="input-group-addon">出生日期</span>
-														<input type="text" class="form-control" name="remark" id="remark" value="">
+														<input type="text" class="form-control" name="birthday" id="birthday" value="">
 													</div>
 												</div>
 												<div class="col-sm-4">

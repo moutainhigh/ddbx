@@ -45,7 +45,6 @@ public class zxcx extends DbCtrl {
         TtMap map = null;
         try {
             map = myDbTools.recinfo(sql);
-            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
         }catch (Exception e) {
             Tools.logError(e.getMessage(), true, false);
         }finally {
@@ -55,9 +54,107 @@ public class zxcx extends DbCtrl {
     }
 
     /**
+     * @说明: 给子类重载用，处理post
+     * @param {type} {type}
+     * @return: 返回
+     */
+    public void doPost(TtMap post, long id, TtMap result2) {
+
+        addicbc_erp_zx(post);
+        String type_id=post.get("type_id");
+        System.out.println("type_id:"+type_id);
+
+        if (id > 0) { // id为0时，新增
+            edit(post, id);
+        } else {
+            long icbc_id = 0;
+            long qryid = 0;
+            icbc_id=add(post);
+            TtMap icbc_code=new TtMap();
+            icbc_code.put("order_code",orderutil.getOrderId("ddbx", 8, icbc_id));
+            edit(icbc_code, icbc_id);
+                //获取订单最大id  获取 当前表里 最大的id  然后+1  得到当前订单编号
+//                TtMap ttMap = getmaxid();
+//                int maxid = Integer.parseInt(ttMap.get("id"));
+//                post.put("order_code", orderutil.getOrderId("ddbx", 8, maxid + 1));
+                //erp业务类型添加
+
+                TtMap ttMap1 = new TtMap();
+                ttMap1.put("now_status", "2");
+                ttMap1.put("later_status", "3");
+                ttMap1.put("icbc_id",String.valueOf(icbc_id));
+                ttMap1.put("gems_id", post.get("gems_id"));
+                ttMap1.put("gems_fs_id", post.get("gems_fs_id"));
+                ttMap1.put("type_id", type_id);
+                ttMap1.put("c_name", post.get("c_name"));
+                ttMap1.put("c_cardno", post.get("c_cardno"));
+                ttMap1.put("c_tel", post.get("c_tel"));
+                System.out.println("icbc_erp_map:" + ttMap1);
+                DbCtrl dbCtrl = new DbCtrl("dd_icbc_erp");
+                try{
+                    qryid=dbCtrl.add(ttMap1);
+                }catch(Exception e){
+                    Tools.logError(e.getMessage());
+                    if (Config.DEBUGMODE) {
+                        e.printStackTrace();
+                    }
+                }finally{
+                    dbCtrl.closeConn();
+                }
+                System.out.println("icbc_erp_id:" + id);
+                //erp业务result类型添加 erp_1
+                TtMap ttMap_res = new TtMap();
+                ttMap_res.put("qryid", String.valueOf(qryid));
+                ttMap_res.put("now_status", "1");
+                ttMap_res.put("later_status", "2");
+                ttMap_res.put("icbc_id",String.valueOf(icbc_id));
+                ttMap_res.put("gems_id", post.get("gems_id"));
+                ttMap_res.put("gems_fs_id", post.get("gems_fs_id"));
+                ttMap_res.put("type_id",type_id);
+//            ttMap_res.put("c_name", post.get("c_name"));
+//            ttMap_res.put("c_cardno", post.get("c_cardno"));
+//            ttMap_res.put("c_tel", post.get("c_tel"));
+                DbCtrl dbCtrl1 = new DbCtrl("dd_icbc_erp_result");
+                try{
+                    dbCtrl1.add(ttMap_res);
+                }catch(Exception e){
+                    Tools.logError(e.getMessage());
+                    if (Config.DEBUGMODE) {
+                        e.printStackTrace();
+                    }
+                }finally{
+                    dbCtrl1.closeConn();
+                }
+                //erp业务result类型添加 erp_2
+                TtMap ttMap_res2 = new TtMap();
+                ttMap_res2.put("qryid", String.valueOf(qryid));
+                ttMap_res2.put("now_status", "2");
+                ttMap_res2.put("later_status", "3");
+                ttMap_res2.put("icbc_id",String.valueOf(icbc_id));
+                ttMap_res2.put("gems_id", post.get("gems_id"));
+                ttMap_res2.put("gems_fs_id", post.get("gems_fs_id"));
+                ttMap_res2.put("type_id",type_id);
+                DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
+                try{
+                    dbCtrl2.add(ttMap_res2);
+                }catch(Exception e){
+                    Tools.logError(e.getMessage());
+                    if (Config.DEBUGMODE) {
+                        e.printStackTrace();
+                    }
+                }finally{
+                    dbCtrl2.closeConn();
+                }
+        }
+        String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
+        boolean bSuccess = errorCode == 0;
+        Tools.formatResult(result2, bSuccess, errorCode, bSuccess ? "编辑成功！" : errorMsg, bSuccess ? nextUrl : "");// 失败时停留在当前页面,nextUrl为空
+    }
+
+    /**
      * 新增订单  erp操作
      */
-    public void addicbc_erp_zx(TtMap post,long icbc_id){
+    public void addicbc_erp_zx(TtMap post){
         //图片路径存放操作
         String imgstep1_1ss="";
         String imgstep1_2ss="";
@@ -74,81 +171,6 @@ public class zxcx extends DbCtrl {
         post.put("imgstep1_3ss",imgstep1_3ss);
         post.put("imgstep1_4ss",imgstep1_4ss);
         post.put("bc_status",post.get("type_id"));
-
-        if(icbc_id==0) {
-            //获取订单最大id  获取 当前表里 最大的id  然后+1  得到当前订单编号
-            TtMap ttMap = getmaxid();
-            int maxid = Integer.parseInt(ttMap.get("id"));
-            post.put("order_code", orderutil.getOrderId("ddbx", 8, maxid + 1));
-            //erp业务类型添加
-            TtMap ttMap1 = new TtMap();
-            ttMap1.put("now_status", "2");
-            ttMap1.put("later_status", "3");
-            ttMap1.put("order_id", String.valueOf(maxid + 1));
-            ttMap1.put("gems_id", post.get("gems_id"));
-            ttMap1.put("gems_fs_id", post.get("gems_fs_id"));
-            ttMap1.put("type_id", post.get("type_id"));
-            ttMap1.put("c_name", post.get("c_name"));
-            ttMap1.put("c_cardno", post.get("c_cardno"));
-            ttMap1.put("c_tel", post.get("c_tel"));
-            System.out.println("icbc_erp_map:" + ttMap1);
-            DbCtrl dbCtrl = new DbCtrl("dd_icbc_erp");
-            long id = 0;
-            try{
-                id=dbCtrl.add(ttMap1);
-            }catch(Exception e){
-                Tools.logError(e.getMessage());
-                if (Config.DEBUGMODE) {
-                    e.printStackTrace();
-                }
-            }finally{
-                dbCtrl.closeConn();
-            }
-            System.out.println("icbc_erp_id:" + id);
-            //erp业务result类型添加 erp_1
-            TtMap ttMap_res = new TtMap();
-            ttMap_res.put("qryid", String.valueOf(id));
-            ttMap_res.put("now_status", "1");
-            ttMap_res.put("later_status", "2");
-            ttMap_res.put("order_id", String.valueOf(maxid + 1));
-            ttMap_res.put("gems_id", post.get("gems_id"));
-            ttMap_res.put("gems_fs_id", post.get("gems_fs_id"));
-            ttMap_res.put("type_id",post.get("type_id"));
-//            ttMap_res.put("c_name", post.get("c_name"));
-//            ttMap_res.put("c_cardno", post.get("c_cardno"));
-//            ttMap_res.put("c_tel", post.get("c_tel"));
-            DbCtrl dbCtrl1 = new DbCtrl("dd_icbc_erp_result");
-            try{
-                dbCtrl1.add(ttMap_res);
-            }catch(Exception e){
-                Tools.logError(e.getMessage());
-                if (Config.DEBUGMODE) {
-                    e.printStackTrace();
-                }
-            }finally{
-                dbCtrl1.closeConn();
-            }
-            //erp业务result类型添加 erp_2
-            TtMap ttMap_res2 = new TtMap();
-            ttMap_res2.put("qryid", String.valueOf(id));
-            ttMap_res2.put("now_status", "2");
-            ttMap_res2.put("later_status", "3");
-            ttMap_res2.put("order_id", String.valueOf(maxid + 1));
-            ttMap_res2.put("gems_id", post.get("gems_id"));
-            ttMap_res2.put("gems_fs_id", post.get("gems_fs_id"));
-            ttMap_res2.put("type_id",post.get("type_id"));
-            DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
-            try{
-                dbCtrl2.add(ttMap_res2);
-            }catch(Exception e){
-                Tools.logError(e.getMessage());
-                if (Config.DEBUGMODE) {
-                    e.printStackTrace();
-                }
-            }finally{
-                dbCtrl2.closeConn();
-            }
-        }
     }
 
 
@@ -179,6 +201,42 @@ public class zxcx extends DbCtrl {
         super.setTable(table);
     }
 
+    /**
+     * @param {type} {type}
+     * @说明: 给继承的子类重载用的
+     * @return: 返回
+     */
+    public void doGetForm(HttpServletRequest request, TtMap post) {
+        //获取erp类型数据
+        MyTask myTask2=new MyTask();
+        try {
+            TtList erplist= myTask2.geticbc_erp_type();
+            request.setAttribute("erplist",erplist);
+        } catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        } finally {
+            myTask2.closeConn();
+        }
+
+        if(post.get("id")!=null&&!post.get("id").equals("")){
+            //获取公司名 人名
+            Admin admin=new Admin();
+            try {
+                TtMap ttMap=admin.getgems_name("dd_icbc",Integer.parseInt(post.get("id")));
+                request.setAttribute("gsnamemap",ttMap);
+            } catch (Exception e) {
+                Tools.logError(e.getMessage(), true, false);
+            } finally {
+                admin.closeConn();
+            }
+        }
+        long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
+        TtMap info = info(nid);
+        String jsonInfo = Tools.jsonEncode(info);
+        request.setAttribute("info", jsonInfo);//info为json后的info
+        request.setAttribute("infodb", info);//infodb为TtMap的info
+        request.setAttribute("id", nid);
+    }
 
     //list 处理
     public void doGetList(HttpServletRequest request, TtMap post) {

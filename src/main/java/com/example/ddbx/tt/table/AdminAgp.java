@@ -266,7 +266,7 @@ public class AdminAgp extends DbCtrl {
     showall = true;
     TtMap info = info(nid);
     System.out.println(info);
-    String jsonInfo = Tools.jsonEnCode(info);
+    String jsonInfo = Tools.jsonEncode(info);
     System.out.println(jsonInfo);
     request.setAttribute("info", jsonInfo);
     request.setAttribute("infodb", info);

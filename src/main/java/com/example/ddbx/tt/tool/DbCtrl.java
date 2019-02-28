@@ -778,7 +778,7 @@ public class DbCtrl {
     public void doGetForm(HttpServletRequest request, TtMap post) {
         long nid = Tools.myIsNull(post.get("id"))?0:Tools.strToLong(post.get("id"));
         TtMap info = info(nid);
-        String jsonInfo = Tools.jsonEnCode(info);
+        String jsonInfo = Tools.jsonEncode(info);
         request.setAttribute("info", jsonInfo);//info为json后的info
         request.setAttribute("infodb", info);//infodb为TtMap的info
         request.setAttribute("id", nid);

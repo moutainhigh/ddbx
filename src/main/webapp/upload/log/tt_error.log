@@ -1,87 +1,50 @@
-2019-02-27 09:24:47  [ http-nio-8092-exec-7:337401 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 09:24:50  [ http-nio-8092-exec-7:340461 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3017, active 20, maxActive 20, creating 0
-2019-02-27 09:24:50  [ http-nio-8092-exec-7:340464 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 09:24:50  [ http-nio-8092-exec-7:340465 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 09:24:53  [ http-nio-8092-exec-2:343473 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3000, active 20, maxActive 20, creating 0
-2019-02-27 09:24:53  [ http-nio-8092-exec-2:343474 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 09:24:53  [ http-nio-8092-exec-2:343474 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 09:24:56  [ http-nio-8092-exec-2:346478 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 09:24:59  [ http-nio-8092-exec-2:349481 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3001, active 20, maxActive 20, creating 0
-2019-02-27 09:24:59  [ http-nio-8092-exec-2:349482 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 09:24:59  [ http-nio-8092-exec-2:349483 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 09:25:07  [ http-nio-8092-exec-4:357870 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3000, active 20, maxActive 20, creating 0
-2019-02-27 09:25:07  [ http-nio-8092-exec-4:357872 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 09:25:07  [ http-nio-8092-exec-4:357873 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 09:25:10  [ http-nio-8092-exec-4:360876 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 09:25:13  [ http-nio-8092-exec-4:363878 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3001, active 20, maxActive 20, creating 0
-2019-02-27 09:25:13  [ http-nio-8092-exec-4:363878 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 09:25:13  [ http-nio-8092-exec-4:363879 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 09:50:57  [ http-nio-8092-exec-8:1227233 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 09:51:00  [ http-nio-8092-exec-8:1230235 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3000, active 20, maxActive 20, creating 0
-2019-02-27 09:51:00  [ http-nio-8092-exec-8:1230236 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 09:51:00  [ http-nio-8092-exec-8:1230236 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 10:27:04  [ http-nio-8092-exec-3:15374 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 10:27:04  [ http-nio-8092-exec-3:15375 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 10:27:07  [ http-nio-8092-exec-3:18377 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3000, active 20, maxActive 20, creating 0
-2019-02-27 10:27:07  [ http-nio-8092-exec-3:18378 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 10:27:07  [ http-nio-8092-exec-3:18378 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 10:30:27  [ http-nio-8092-exec-5:218340 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3000, active 20, maxActive 20, creating 0
-2019-02-27 10:30:27  [ http-nio-8092-exec-5:218342 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 10:30:27  [ http-nio-8092-exec-5:218342 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 10:30:30  [ http-nio-8092-exec-5:221344 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 10:30:30  [ http-nio-8092-exec-5:221345 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 10:30:33  [ http-nio-8092-exec-5:224347 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3001, active 20, maxActive 20, creating 0
-2019-02-27 10:30:33  [ http-nio-8092-exec-5:224348 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 10:30:33  [ http-nio-8092-exec-5:224348 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 10:35:38  [ http-nio-8092-exec-6:137533 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dalltask%26type%3Dddbx%26sdo%3Dform%26id%3D11%26type_id%3D36:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [98]
-
-95:                         <ol id="mochu">
-96: 
-97:                         <%
-98:                             if(list.size()>0){
-99: 
-100:                         for(TtMap ttMap : list){
-101:                             System.out.println(ttMap.get("now_name")+"------"+ttMap.get("now_status"));
-
-
-Stacktrace:
-2019-02-27 10:38:50  [ http-nio-8092-exec-7:329433 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 10:38:50  [ http-nio-8092-exec-7:329434 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 10:38:53  [ http-nio-8092-exec-7:332436 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3000, active 20, maxActive 20, creating 0
-2019-02-27 10:38:53  [ http-nio-8092-exec-7:332437 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 10:38:53  [ http-nio-8092-exec-7:332437 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 10:38:53  [ http-nio-8092-exec-7:332439 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 10:38:54  [ http-nio-8092-exec-7:332930 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2Fmanager%2Findex%7C%2Fmanager%2Findex%7Ccn%3Dmytask%26sdo%3Dlist%26type%3Dddbx:An exception occurred processing [/WEB-INF/jsp/manager/list.jsp] at line [29]
-
-26: 		JspTools.alert(errorMsg,out);
-27: 	}
-28: 	String sPlUrl = Tools.urlKill("l|p");
-29: 	int pages =(int) request.getAttribute("pages");
-30: 	boolean canDel = request.getAttribute("canDel")==null?false:(boolean)request.getAttribute("canDel"); //是否显示删除按钮
-31: 	boolean canAdd = request.getAttribute("canAdd")==null?true:(boolean)request.getAttribute("canAdd"); //是否显示新增按钮
-32: 	String type = request.getParameter("type");
-
-
-Stacktrace:
-2019-02-27 11:08:33  [ http-nio-8092-exec-1:876056 ] - [ ERROR ]  {conn-510002, stmt-520025} execute error. select SQL_CALC_FOUND_ROWS t.*,a.name as admin_name,fs.name as fs_name from dd_icbc t LEFT JOIN admin a on a.id=t.gems_id LEFT JOIN fs f on f.id=t.gems_fs_id     where true ORDER BY dt_edit DESC   limit 0,10 
-java.sql.SQLSyntaxErrorException: Unknown column 'fs.name' in 'field list'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+2019-02-28 09:12:13  [ http-nio-8092-exec-4:9594 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 09:14:13  [ http-nio-8092-exec-3:129945 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 09:14:45  [ http-nio-8092-exec-7:1042 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 09:18:43  [ http-nio-8092-exec-1:239732 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 09:23:17  [ http-nio-8092-exec-8:513868 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 09:24:41  [ http-nio-8092-exec-5:597139 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 09:29:17  [ http-nio-8092-exec-6:873434 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 09:31:44  [ http-nio-8092-exec-2:1020237 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 09:36:37  [ http-nio-8092-exec-4:845 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 09:41:41  [ http-nio-8092-exec-6:898 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 09:42:18  [ http-nio-8092-exec-3:37049 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26sdo%3Dform%26type%3Ddemo:null
+2019-02-28 09:43:50  [ http-nio-8092-exec-9:129164 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 09:44:00  [ http-nio-8092-exec-6:139769 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 09:48:33  [ http-nio-8092-exec-4:1032 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 10:09:46  [ http-nio-8092-exec-7:636 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 10:14:01  [ http-nio-8092-exec-8:255579 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 10:14:05  [ http-nio-8092-exec-5:259345 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%26cn%3Dhome%26sdo%3Dform%26type%3Ddemo:null
+2019-02-28 10:17:09  [ http-nio-8092-exec-4:443906 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%26cn%3Dhome%26sdo%3Dform%26type%3Ddemo:null
+2019-02-28 10:17:18  [ http-nio-8092-exec-9:453154 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%26cn%3Dhome%26sdo%3Dform%26type%3Ddemo:null
+2019-02-28 10:18:45  [ http-nio-8092-exec-6:539547 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%26cn%3Dhome%26sdo%3Dform%26type%3Ddemo:null
+2019-02-28 10:18:48  [ http-nio-8092-exec-1:542660 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%26cn%3Dhome%26sdo%3Dform%26type%3Ddemo:null
+2019-02-28 10:23:21  [ http-nio-8092-exec-5:165279 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
+2019-02-28 10:26:34  [ http-nio-8092-exec-3:8666 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcomm_citys%26sdo%3Dlist%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;comm_citys.list.jsp] not found
+2019-02-28 10:27:04  [ http-nio-8092-exec-9:39078 ] - [ ERROR ]  Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+2019-02-28 10:27:04  [ http-nio-8092-exec-9:39090 ] - [ ERROR ]  Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+2019-02-28 10:51:11  [ http-nio-8092-exec-2:22651 ] - [ ERROR ]  {conn-10002, stmt-20074} execute error. insert into dd_icbc_erp set `later_status`='3', `dt_add`='2019-02-28 10:51:11', `type_id`='null', `gems_id`='21', `mid_add`='21', `c_cardno`='13155645646454', `icbc_id`='20', `dt_edit`='2019-02-28 10:51:11', `gems_fs_id`='33', `c_name`='第一次', `mid_edit`='21', `now_status`='2', `c_tel`='15544345534'
+java.sql.SQLException: Incorrect integer value: 'null' for column 'type_id' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.StatementImpl.executeQuery(StatementImpl.java:1218)
-	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2831)
-	at com.alibaba.druid.filter.FilterAdapter.statement_executeQuery(FilterAdapter.java:2503)
-	at com.alibaba.druid.filter.FilterEventAdapter.statement_executeQuery(FilterEventAdapter.java:302)
-	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2828)
-	at com.alibaba.druid.wall.WallFilter.statement_executeQuery(WallFilter.java:528)
-	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2828)
-	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeQuery(StatementProxyImpl.java:221)
-	at com.alibaba.druid.pool.DruidPooledStatement.executeQuery(DruidPooledStatement.java:291)
-	at com.example.ddbx.tt.tool.DbTools.reclist(DbTools.java:80)
-	at com.example.ddbx.tt.tool.DbCtrl.lists(DbCtrl.java:657)
-	at com.example.ddbx.tt.table.zxcx.doGetList(zxcx.java:224)
-	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:226)
-	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdateInternal(StatementImpl.java:1355)
+	at com.mysql.cj.jdbc.StatementImpl.executeLargeUpdate(StatementImpl.java:2133)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdate(StatementImpl.java:1360)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3104)
+	at com.alibaba.druid.filter.FilterAdapter.statement_executeUpdate(FilterAdapter.java:2514)
+	at com.alibaba.druid.filter.FilterEventAdapter.statement_executeUpdate(FilterEventAdapter.java:350)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.wall.WallFilter.statement_executeUpdate(WallFilter.java:561)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeUpdate(StatementProxyImpl.java:249)
+	at com.alibaba.druid.pool.DruidPooledStatement.executeUpdate(DruidPooledStatement.java:370)
+	at com.example.ddbx.tt.tool.DbTools.recinsert(DbTools.java:222)
+	at com.example.ddbx.tt.tool.DbCtrl.addData(DbCtrl.java:584)
+	at com.example.ddbx.tt.tool.DbCtrl.add(DbCtrl.java:619)
+	at com.example.ddbx.tt.table.zxcx.doPost(zxcx.java:93)
+	at com.example.ddbx.tt.manager.ManagerPost.doPost(ManagerPost.java:72)
+	at com.example.ddbx.tt.manager.Manager.indexpost(Manager.java:70)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -95,8 +58,8 @@ java.sql.SQLSyntaxErrorException: Unknown column 'fs.name' in 'field list'
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:890)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:645)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
@@ -136,26 +99,29 @@ java.sql.SQLSyntaxErrorException: Unknown column 'fs.name' in 'field list'
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-2019-02-27 11:08:33  [ http-nio-8092-exec-1:876060 ] - [ ERROR ]  Tools.logError:Unknown column 'fs.name' in 'field list'
-2019-02-27 11:08:36  [ http-nio-8092-exec-2:879065 ] - [ ERROR ]  {conn-510002, stmt-520052} execute error. select SQL_CALC_FOUND_ROWS t.*,a.name as admin_name,fs.name as fs_name from dd_icbc t LEFT JOIN admin a on a.id=t.gems_id LEFT JOIN fs f on f.id=t.gems_fs_id     where true ORDER BY dt_edit DESC   limit 0,10 
-java.sql.SQLSyntaxErrorException: Unknown column 'fs.name' in 'field list'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+2019-02-28 10:51:11  [ http-nio-8092-exec-2:22653 ] - [ ERROR ]  Tools.logError:Incorrect integer value: 'null' for column 'type_id' at row 1
+2019-02-28 10:51:11  [ http-nio-8092-exec-2:22658 ] - [ ERROR ]  {conn-10002, stmt-20076} execute error. insert into dd_icbc_erp_result set `later_status`='2', `dt_add`='2019-02-28 10:51:11', `type_id`='null', `gems_id`='21', `mid_add`='21', `icbc_id`='20', `dt_edit`='2019-02-28 10:51:11', `gems_fs_id`='33', `mid_edit`='21', `qryid`='0', `now_status`='1'
+java.sql.SQLException: Incorrect integer value: 'null' for column 'type_id' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.StatementImpl.executeQuery(StatementImpl.java:1218)
-	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2831)
-	at com.alibaba.druid.filter.FilterAdapter.statement_executeQuery(FilterAdapter.java:2503)
-	at com.alibaba.druid.filter.FilterEventAdapter.statement_executeQuery(FilterEventAdapter.java:302)
-	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2828)
-	at com.alibaba.druid.wall.WallFilter.statement_executeQuery(WallFilter.java:528)
-	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2828)
-	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeQuery(StatementProxyImpl.java:221)
-	at com.alibaba.druid.pool.DruidPooledStatement.executeQuery(DruidPooledStatement.java:291)
-	at com.example.ddbx.tt.tool.DbTools.reclist(DbTools.java:80)
-	at com.example.ddbx.tt.tool.DbCtrl.lists(DbCtrl.java:657)
-	at com.example.ddbx.tt.table.zxcx.doGetList(zxcx.java:224)
-	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:226)
-	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdateInternal(StatementImpl.java:1355)
+	at com.mysql.cj.jdbc.StatementImpl.executeLargeUpdate(StatementImpl.java:2133)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdate(StatementImpl.java:1360)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3104)
+	at com.alibaba.druid.filter.FilterAdapter.statement_executeUpdate(FilterAdapter.java:2514)
+	at com.alibaba.druid.filter.FilterEventAdapter.statement_executeUpdate(FilterEventAdapter.java:350)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.wall.WallFilter.statement_executeUpdate(WallFilter.java:561)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeUpdate(StatementProxyImpl.java:249)
+	at com.alibaba.druid.pool.DruidPooledStatement.executeUpdate(DruidPooledStatement.java:370)
+	at com.example.ddbx.tt.tool.DbTools.recinsert(DbTools.java:222)
+	at com.example.ddbx.tt.tool.DbCtrl.addData(DbCtrl.java:584)
+	at com.example.ddbx.tt.tool.DbCtrl.add(DbCtrl.java:619)
+	at com.example.ddbx.tt.table.zxcx.doPost(zxcx.java:117)
+	at com.example.ddbx.tt.manager.ManagerPost.doPost(ManagerPost.java:72)
+	at com.example.ddbx.tt.manager.Manager.indexpost(Manager.java:70)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -169,8 +135,8 @@ java.sql.SQLSyntaxErrorException: Unknown column 'fs.name' in 'field list'
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:890)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:645)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
@@ -210,26 +176,29 @@ java.sql.SQLSyntaxErrorException: Unknown column 'fs.name' in 'field list'
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-2019-02-27 11:08:36  [ http-nio-8092-exec-2:879067 ] - [ ERROR ]  Tools.logError:Unknown column 'fs.name' in 'field list'
-2019-02-27 11:08:51  [ http-nio-8092-exec-4:893693 ] - [ ERROR ]  {conn-510002, stmt-520079} execute error. select SQL_CALC_FOUND_ROWS t.*,a.name as admin_name,fs.name as fs_name from dd_icbc t LEFT JOIN admin a on a.id=t.gems_id LEFT JOIN fs f on f.id=t.gems_fs_id     where true ORDER BY dt_edit DESC   limit 0,10 
-java.sql.SQLSyntaxErrorException: Unknown column 'fs.name' in 'field list'
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+2019-02-28 10:51:11  [ http-nio-8092-exec-2:22659 ] - [ ERROR ]  Tools.logError:Incorrect integer value: 'null' for column 'type_id' at row 1
+2019-02-28 10:51:11  [ http-nio-8092-exec-2:22663 ] - [ ERROR ]  {conn-10002, stmt-20078} execute error. insert into dd_icbc_erp_result set `later_status`='3', `dt_add`='2019-02-28 10:51:11', `type_id`='null', `gems_id`='21', `mid_add`='21', `icbc_id`='20', `dt_edit`='2019-02-28 10:51:11', `gems_fs_id`='33', `mid_edit`='21', `qryid`='0', `now_status`='2'
+java.sql.SQLException: Incorrect integer value: 'null' for column 'type_id' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
-	at com.mysql.cj.jdbc.StatementImpl.executeQuery(StatementImpl.java:1218)
-	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2831)
-	at com.alibaba.druid.filter.FilterAdapter.statement_executeQuery(FilterAdapter.java:2503)
-	at com.alibaba.druid.filter.FilterEventAdapter.statement_executeQuery(FilterEventAdapter.java:302)
-	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2828)
-	at com.alibaba.druid.wall.WallFilter.statement_executeQuery(WallFilter.java:528)
-	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2828)
-	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeQuery(StatementProxyImpl.java:221)
-	at com.alibaba.druid.pool.DruidPooledStatement.executeQuery(DruidPooledStatement.java:291)
-	at com.example.ddbx.tt.tool.DbTools.reclist(DbTools.java:80)
-	at com.example.ddbx.tt.tool.DbCtrl.lists(DbCtrl.java:657)
-	at com.example.ddbx.tt.table.zxcx.doGetList(zxcx.java:224)
-	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:226)
-	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdateInternal(StatementImpl.java:1355)
+	at com.mysql.cj.jdbc.StatementImpl.executeLargeUpdate(StatementImpl.java:2133)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdate(StatementImpl.java:1360)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3104)
+	at com.alibaba.druid.filter.FilterAdapter.statement_executeUpdate(FilterAdapter.java:2514)
+	at com.alibaba.druid.filter.FilterEventAdapter.statement_executeUpdate(FilterEventAdapter.java:350)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.wall.WallFilter.statement_executeUpdate(WallFilter.java:561)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeUpdate(StatementProxyImpl.java:249)
+	at com.alibaba.druid.pool.DruidPooledStatement.executeUpdate(DruidPooledStatement.java:370)
+	at com.example.ddbx.tt.tool.DbTools.recinsert(DbTools.java:222)
+	at com.example.ddbx.tt.tool.DbCtrl.addData(DbCtrl.java:584)
+	at com.example.ddbx.tt.tool.DbCtrl.add(DbCtrl.java:619)
+	at com.example.ddbx.tt.table.zxcx.doPost(zxcx.java:137)
+	at com.example.ddbx.tt.manager.ManagerPost.doPost(ManagerPost.java:72)
+	at com.example.ddbx.tt.manager.Manager.indexpost(Manager.java:70)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -243,8 +212,8 @@ java.sql.SQLSyntaxErrorException: Unknown column 'fs.name' in 'field list'
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
-	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:890)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:645)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
@@ -284,54 +253,235 @@ java.sql.SQLSyntaxErrorException: Unknown column 'fs.name' in 'field list'
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
-2019-02-27 11:08:51  [ http-nio-8092-exec-4:893694 ] - [ ERROR ]  Tools.logError:Unknown column 'fs.name' in 'field list'
-2019-02-27 11:12:13  [ http-nio-8092-exec-4:1095354 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 11:12:13  [ http-nio-8092-exec-4:1095355 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 11:12:16  [ http-nio-8092-exec-4:1098356 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3000, active 20, maxActive 20, creating 0
-2019-02-27 11:12:16  [ http-nio-8092-exec-4:1098357 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 11:12:16  [ http-nio-8092-exec-4:1098357 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 11:14:18  [ http-nio-8092-exec-7:1221240 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3000, active 20, maxActive 20, creating 0
-2019-02-27 11:14:18  [ http-nio-8092-exec-7:1221242 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 11:14:18  [ http-nio-8092-exec-7:1221243 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 11:14:21  [ http-nio-8092-exec-7:1224247 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 11:14:21  [ http-nio-8092-exec-7:1224250 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 11:14:24  [ http-nio-8092-exec-7:1227253 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3000, active 20, maxActive 20, creating 0
-2019-02-27 11:14:24  [ http-nio-8092-exec-7:1227254 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 11:14:24  [ http-nio-8092-exec-7:1227254 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 11:19:43  [ http-nio-8092-exec-7:49545 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D11%26type_id%3D42:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [98]
-
-95:                         <ol id="mochu">
-96: 
-97:                         <%
-98:                             if(list.size()>0){
-99: 
-100:                         for(TtMap ttMap : list){
-101:                             System.out.println(ttMap.get("now_name")+"------"+ttMap.get("now_status"));
-
-
-Stacktrace:
-2019-02-27 11:22:51  [ http-nio-8092-exec-7:237594 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D11%26type_id%3D42:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [97]
-
-94:                     <div class="flex-rowcen">
-95:                         <ol id="mochu">
-96:                         <%
-97:                         if(list.size()>0){
-98:                         for(TtMap ttMap : list){
-99:                             System.out.println(ttMap.get("now_name")+"------"+ttMap.get("now_status"));
-100:                             if(ttMap.get("type_id")!=null
-
-
-Stacktrace:
-2019-02-27 11:34:14  [ http-nio-8092-exec-10:203570 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 11:34:14  [ http-nio-8092-exec-10:203579 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 11:34:17  [ http-nio-8092-exec-10:206581 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3000, active 20, maxActive 20, creating 0
-2019-02-27 11:34:17  [ http-nio-8092-exec-10:206582 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 11:34:17  [ http-nio-8092-exec-10:206582 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 11:40:01  [ http-nio-8092-exec-2:550110 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 11:40:01  [ http-nio-8092-exec-2:550112 ] - [ ERROR ]  Tools.logError:null
-2019-02-27 11:40:04  [ http-nio-8092-exec-2:553113 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3000, active 20, maxActive 20, creating 0
-2019-02-27 11:40:04  [ http-nio-8092-exec-2:553114 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 11:40:04  [ http-nio-8092-exec-2:553114 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
-2019-02-27 11:44:21  [ http-nio-8092-exec-3:810213 ] - [ ERROR ]  Tools.logError:DbCtrl:wait millis 3000, active 20, maxActive 20, creating 0
-2019-02-27 11:44:21  [ http-nio-8092-exec-3:810214 ] - [ ERROR ]  Tools.logError:DbCtrl:connect is null!
-2019-02-27 11:44:21  [ http-nio-8092-exec-3:810214 ] - [ ERROR ]  Tools.logError:DbCtrl:initconn() error:
+2019-02-28 10:51:11  [ http-nio-8092-exec-2:22664 ] - [ ERROR ]  Tools.logError:Incorrect integer value: 'null' for column 'type_id' at row 1
+2019-02-28 10:57:37  [ http-nio-8092-exec-1:65295 ] - [ ERROR ]  {conn-110002, stmt-120008} execute error. insert into dd_icbc_erp set `later_status`='3', `dt_add`='2019-02-28 10:57:37', `type_id`='null', `gems_id`='21', `mid_add`='21', `c_cardno`='12314124', `icbc_id`='21', `dt_edit`='2019-02-28 10:57:37', `gems_fs_id`='33', `c_name`='是是是', `mid_edit`='21', `now_status`='2', `c_tel`='24124124141'
+java.sql.SQLException: Incorrect integer value: 'null' for column 'type_id' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdateInternal(StatementImpl.java:1355)
+	at com.mysql.cj.jdbc.StatementImpl.executeLargeUpdate(StatementImpl.java:2133)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdate(StatementImpl.java:1360)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3104)
+	at com.alibaba.druid.filter.FilterAdapter.statement_executeUpdate(FilterAdapter.java:2514)
+	at com.alibaba.druid.filter.FilterEventAdapter.statement_executeUpdate(FilterEventAdapter.java:350)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.wall.WallFilter.statement_executeUpdate(WallFilter.java:561)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeUpdate(StatementProxyImpl.java:249)
+	at com.alibaba.druid.pool.DruidPooledStatement.executeUpdate(DruidPooledStatement.java:370)
+	at com.example.ddbx.tt.tool.DbTools.recinsert(DbTools.java:222)
+	at com.example.ddbx.tt.tool.DbCtrl.addData(DbCtrl.java:584)
+	at com.example.ddbx.tt.tool.DbCtrl.add(DbCtrl.java:619)
+	at com.example.ddbx.tt.table.zxcx.doPost(zxcx.java:94)
+	at com.example.ddbx.tt.manager.ManagerPost.doPost(ManagerPost.java:72)
+	at com.example.ddbx.tt.manager.Manager.indexpost(Manager.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-02-28 10:57:37  [ http-nio-8092-exec-1:65298 ] - [ ERROR ]  Tools.logError:Incorrect integer value: 'null' for column 'type_id' at row 1
+2019-02-28 10:57:37  [ http-nio-8092-exec-1:65303 ] - [ ERROR ]  {conn-110002, stmt-120010} execute error. insert into dd_icbc_erp_result set `later_status`='2', `dt_add`='2019-02-28 10:57:37', `type_id`='null', `gems_id`='21', `mid_add`='21', `icbc_id`='21', `dt_edit`='2019-02-28 10:57:37', `gems_fs_id`='33', `mid_edit`='21', `qryid`='0', `now_status`='1'
+java.sql.SQLException: Incorrect integer value: 'null' for column 'type_id' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdateInternal(StatementImpl.java:1355)
+	at com.mysql.cj.jdbc.StatementImpl.executeLargeUpdate(StatementImpl.java:2133)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdate(StatementImpl.java:1360)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3104)
+	at com.alibaba.druid.filter.FilterAdapter.statement_executeUpdate(FilterAdapter.java:2514)
+	at com.alibaba.druid.filter.FilterEventAdapter.statement_executeUpdate(FilterEventAdapter.java:350)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.wall.WallFilter.statement_executeUpdate(WallFilter.java:561)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeUpdate(StatementProxyImpl.java:249)
+	at com.alibaba.druid.pool.DruidPooledStatement.executeUpdate(DruidPooledStatement.java:370)
+	at com.example.ddbx.tt.tool.DbTools.recinsert(DbTools.java:222)
+	at com.example.ddbx.tt.tool.DbCtrl.addData(DbCtrl.java:584)
+	at com.example.ddbx.tt.tool.DbCtrl.add(DbCtrl.java:619)
+	at com.example.ddbx.tt.table.zxcx.doPost(zxcx.java:118)
+	at com.example.ddbx.tt.manager.ManagerPost.doPost(ManagerPost.java:72)
+	at com.example.ddbx.tt.manager.Manager.indexpost(Manager.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-02-28 10:57:37  [ http-nio-8092-exec-1:65304 ] - [ ERROR ]  Tools.logError:Incorrect integer value: 'null' for column 'type_id' at row 1
+2019-02-28 10:57:37  [ http-nio-8092-exec-1:65310 ] - [ ERROR ]  {conn-110002, stmt-120012} execute error. insert into dd_icbc_erp_result set `later_status`='3', `dt_add`='2019-02-28 10:57:37', `type_id`='null', `gems_id`='21', `mid_add`='21', `icbc_id`='21', `dt_edit`='2019-02-28 10:57:37', `gems_fs_id`='33', `mid_edit`='21', `qryid`='0', `now_status`='2'
+java.sql.SQLException: Incorrect integer value: 'null' for column 'type_id' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdateInternal(StatementImpl.java:1355)
+	at com.mysql.cj.jdbc.StatementImpl.executeLargeUpdate(StatementImpl.java:2133)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdate(StatementImpl.java:1360)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3104)
+	at com.alibaba.druid.filter.FilterAdapter.statement_executeUpdate(FilterAdapter.java:2514)
+	at com.alibaba.druid.filter.FilterEventAdapter.statement_executeUpdate(FilterEventAdapter.java:350)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.wall.WallFilter.statement_executeUpdate(WallFilter.java:561)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeUpdate(StatementProxyImpl.java:249)
+	at com.alibaba.druid.pool.DruidPooledStatement.executeUpdate(DruidPooledStatement.java:370)
+	at com.example.ddbx.tt.tool.DbTools.recinsert(DbTools.java:222)
+	at com.example.ddbx.tt.tool.DbCtrl.addData(DbCtrl.java:584)
+	at com.example.ddbx.tt.tool.DbCtrl.add(DbCtrl.java:619)
+	at com.example.ddbx.tt.table.zxcx.doPost(zxcx.java:138)
+	at com.example.ddbx.tt.manager.ManagerPost.doPost(ManagerPost.java:72)
+	at com.example.ddbx.tt.manager.Manager.indexpost(Manager.java:70)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-02-28 10:57:37  [ http-nio-8092-exec-1:65311 ] - [ ERROR ]  Tools.logError:Incorrect integer value: 'null' for column 'type_id' at row 1

@@ -121,7 +121,7 @@ public class Ajax {
     @RequestMapping(value = "/ttAjaxPost", method = RequestMethod.POST)
     private String showAjaxPost(HttpServletRequest request) throws ServletException, IOException {
         TtMap post = Tools.getPostMap(request);// 过滤参数，过滤mysql的注入，url参数注入
-        System.out.println(Tools.jsonEnCode(post));
+        System.out.println(Tools.jsonEncode(post));
         String cn = post.get("cn") == null ? "" : post.get("cn");
         TtMap result2 = new TtMap();
         formatResult(result2, false, 999, "接口异常，请重试！");// 初始化返回
@@ -132,7 +132,7 @@ public class Ajax {
             List<MultipartFile> fileList = multipartRequest.getFiles("upload_immm");// 固定为upload_immm的name
             if (fileList == null || fileList.size() == 0) {
                 result2.put("errormsg", "文件为空");
-                return Tools.jsonEnCode(result2);
+                return Tools.jsonEncode(result2);
             }
             for (MultipartFile file : fileList) {// 支持多文件上传
                 String filename = Tools.getTimeMd5FileName() + "." + Tools.getFileExt(file.getOriginalFilename());// file.getOriginalFilename();
@@ -199,7 +199,7 @@ public class Ajax {
             }
             break;
         }
-        return Tools.jsonEnCode(result2);
+        return Tools.jsonEncode(result2);
     }
 
     private void formatResult(TtMap result, boolean success, int code, String msg) {
