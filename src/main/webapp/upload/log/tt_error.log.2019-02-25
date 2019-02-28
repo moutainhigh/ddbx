@@ -870,7 +870,11 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
 2019-02-25 09:51:15  [ http-nio-8092-exec-3:1761171 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+<<<<<<< HEAD
 2019-02-25 11:11:36  [ http-nio-8092-exec-8:90631 ] - [ ERROR ]  {conn-10001, stmt-20231} execute error. SHOW COLUMNS FROM zxcx
+=======
+2019-02-25 11:08:19  [ http-nio-8092-exec-3:3167 ] - [ ERROR ]  {conn-10001, stmt-20022} execute error. SHOW COLUMNS FROM zxcx
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
@@ -947,10 +951,17 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 11:11:36  [ http-nio-8092-exec-8:90634 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
 2019-02-25 11:11:36  [ http-nio-8092-exec-8:90635 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
 2019-02-25 11:11:36  [ http-nio-8092-exec-8:90636 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 11:17:37  [ http-nio-8092-exec-6:11452 ] - [ ERROR ]  {conn-10001, stmt-20060} execute error. SHOW COLUMNS FROM zxcx
+=======
+2019-02-25 11:08:19  [ http-nio-8092-exec-3:3214 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 11:08:19  [ http-nio-8092-exec-3:3216 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 11:08:19  [ http-nio-8092-exec-3:3219 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 11:08:19  [ http-nio-8092-exec-3:3225 ] - [ ERROR ]  {conn-10001, stmt-20023} execute error. select t.* from zxcx t    where t.id='0'   
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
@@ -967,11 +978,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
 	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2828)
 	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeQuery(StatementProxyImpl.java:221)
 	at com.alibaba.druid.pool.DruidPooledStatement.executeQuery(DruidPooledStatement.java:291)
+<<<<<<< HEAD
 	at com.example.ddbx.tt.tool.DbTools.reclist(DbTools.java:80)
 	at com.example.ddbx.tt.tool.DbCtrl.getTableField(DbCtrl.java:421)
 	at com.example.ddbx.tt.tool.DbCtrl.initconn(DbCtrl.java:321)
 	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
+=======
+	at com.example.ddbx.tt.tool.DbTools.recinfo(DbTools.java:119)
+	at com.example.ddbx.tt.tool.DbCtrl.info(DbCtrl.java:705)
+	at com.example.ddbx.tt.tool.DbCtrl.info(DbCtrl.java:667)
+	at com.example.ddbx.tt.tool.DbCtrl.doGetForm(DbCtrl.java:772)
+	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:83)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -1027,11 +1046,50 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 11:17:37  [ http-nio-8092-exec-6:11454 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
 2019-02-25 11:17:37  [ http-nio-8092-exec-6:11456 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
 2019-02-25 11:17:37  [ http-nio-8092-exec-6:11457 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 11:29:06  [ http-nio-8092-exec-4:4556 ] - [ ERROR ]  {conn-10001, stmt-20041} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 11:08:19  [ http-nio-8092-exec-3:3228 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 11:44:42  [ http-nio-8092-exec-2:2186363 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D1:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;ddbx&#47;mytask&#47;mytask.jsp] not found
+2019-02-25 11:47:09  [ http-nio-8092-exec-7:7461 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26id%3D1%26type%3Dddbx%26sdo%3Dform:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;ddbx&#47;mytask&#47;mytask.jsp] not found
+2019-02-25 11:49:15  [ http-nio-8092-exec-6:133126 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26id%3D1%26type%3Dddbx%26sdo%3Dform:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;ddbx&#47;mytask&#47;mytask.jsp] not found
+2019-02-25 11:49:23  [ http-nio-8092-exec-6:141379 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26id%3D1%26type%3Dddbx%26sdo%3Dform:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;ddbx&#47;mytask&#47;mytask.jsp] not found
+2019-02-25 11:51:24  [ http-nio-8092-exec-3:261811 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26id%3D1%26type%3Dddbx%26sdo%3Dform:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;ddbx&#47;mytask&#47;mytask.jsp] not found
+2019-02-25 12:02:34  [ http-nio-8092-exec-6:931901 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26id%3D1%26type%3Dddbx%26sdo%3Dform:Unable to compile class for JSP: 
+
+An error occurred at line: [60] in the jsp file: [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp]
+msg1 cannot be resolved to a variable
+57: 							</ul>
+58: 						</div>
+59: 
+60:                      <jsp:include page="<%=msg1%>"></jsp:include>
+61: 					</div>
+62: 				</div>
+63: 				<div class="tab-pane" id="tab_1">
+
+
+Stacktrace:
+2019-02-25 13:34:58  [ http-nio-8092-exec-4:8646 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26id%3D1%26type%3Dddbx%26sdo%3Dform:Unable to compile class for JSP: 
+
+An error occurred at line: [60] in the jsp file: [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp]
+msg1 cannot be resolved to a variable
+57: 							</ul>
+58: 						</div>
+59: 
+60:                      <jsp:include page="<%=msg1%>"></jsp:include>
+61: 					</div>
+62: 				</div>
+63: 				<div class="tab-pane" id="tab_1">
+
+
+Stacktrace:
+2019-02-25 13:36:30  [ http-nio-8092-exec-6:101563 ] - [ ERROR ]  {conn-10001, stmt-20082} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -1107,11 +1165,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 11:29:06  [ http-nio-8092-exec-4:4559 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 11:29:06  [ http-nio-8092-exec-4:4560 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 11:29:06  [ http-nio-8092-exec-4:4561 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 11:30:30  [ http-nio-8092-exec-7:87912 ] - [ ERROR ]  {conn-10001, stmt-20068} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 13:36:30  [ http-nio-8092-exec-6:101565 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 13:36:30  [ http-nio-8092-exec-6:101568 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 13:36:30  [ http-nio-8092-exec-6:101569 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 13:36:35  [ http-nio-8092-exec-1:105655 ] - [ ERROR ]  {conn-10001, stmt-20109} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -1187,11 +1253,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 11:30:30  [ http-nio-8092-exec-7:87914 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 11:30:30  [ http-nio-8092-exec-7:87915 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 11:30:30  [ http-nio-8092-exec-7:87916 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 11:30:30  [ http-nio-8092-exec-7:87918 ] - [ ERROR ]  {conn-10001, stmt-20069} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 13:36:35  [ http-nio-8092-exec-1:105656 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 13:36:35  [ http-nio-8092-exec-1:105658 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 13:36:35  [ http-nio-8092-exec-1:105660 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 13:36:35  [ http-nio-8092-exec-1:105666 ] - [ ERROR ]  {conn-10001, stmt-20110} execute error. select t.* from zxcx t    where t.id='0'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -1267,10 +1341,16 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 11:30:30  [ http-nio-8092-exec-7:87919 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 11:30:30  [ http-nio-8092-exec-7:88069 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dqcpg%26type%3Dinto_modal%26sdo%3Dform:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;into_modal&#47;qcpg.form.jsp] not found
 2019-02-25 11:31:20  [ http-nio-8092-exec-9:138539 ] - [ ERROR ]  {conn-10001, stmt-20093} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 13:36:35  [ http-nio-8092-exec-1:105668 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 13:59:41  [ http-nio-8092-exec-1:1492436 ] - [ ERROR ]  {conn-10001, stmt-20136} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -1346,11 +1426,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 11:31:20  [ http-nio-8092-exec-9:138539 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 11:31:20  [ http-nio-8092-exec-9:138540 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 11:31:20  [ http-nio-8092-exec-9:138541 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 11:31:22  [ http-nio-8092-exec-10:139934 ] - [ ERROR ]  {conn-10001, stmt-20120} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 13:59:41  [ http-nio-8092-exec-1:1492439 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 13:59:41  [ http-nio-8092-exec-1:1492443 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 13:59:41  [ http-nio-8092-exec-1:1492445 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 13:59:41  [ http-nio-8092-exec-1:1492449 ] - [ ERROR ]  {conn-10001, stmt-20137} execute error. select t.* from zxcx t    where t.id='0'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -1366,11 +1454,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2828)
 	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeQuery(StatementProxyImpl.java:221)
 	at com.alibaba.druid.pool.DruidPooledStatement.executeQuery(DruidPooledStatement.java:291)
+<<<<<<< HEAD
 	at com.example.ddbx.tt.tool.DbTools.reclist(DbTools.java:80)
 	at com.example.ddbx.tt.tool.DbCtrl.getTableField(DbCtrl.java:421)
 	at com.example.ddbx.tt.tool.DbCtrl.initconn(DbCtrl.java:321)
 	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
+=======
+	at com.example.ddbx.tt.tool.DbTools.recinfo(DbTools.java:119)
+	at com.example.ddbx.tt.tool.DbCtrl.info(DbCtrl.java:705)
+	at com.example.ddbx.tt.tool.DbCtrl.info(DbCtrl.java:667)
+	at com.example.ddbx.tt.tool.DbCtrl.doGetForm(DbCtrl.java:772)
+	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:83)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -1426,11 +1522,17 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 11:31:22  [ http-nio-8092-exec-10:139935 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 11:31:22  [ http-nio-8092-exec-10:139936 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 11:31:22  [ http-nio-8092-exec-10:139937 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 11:31:22  [ http-nio-8092-exec-10:139938 ] - [ ERROR ]  {conn-10001, stmt-20121} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 13:59:41  [ http-nio-8092-exec-1:1492451 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:00:31  [ http-nio-8092-exec-3:1542347 ] - [ ERROR ]  {conn-10001, stmt-20163} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -1446,11 +1548,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2828)
 	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeQuery(StatementProxyImpl.java:221)
 	at com.alibaba.druid.pool.DruidPooledStatement.executeQuery(DruidPooledStatement.java:291)
+<<<<<<< HEAD
 	at com.example.ddbx.tt.tool.DbTools.recinfo(DbTools.java:119)
 	at com.example.ddbx.tt.tool.DbCtrl.info(DbCtrl.java:705)
 	at com.example.ddbx.tt.tool.DbCtrl.info(DbCtrl.java:667)
 	at com.example.ddbx.tt.tool.DbCtrl.doGetForm(DbCtrl.java:772)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:83)
+=======
+	at com.example.ddbx.tt.tool.DbTools.reclist(DbTools.java:80)
+	at com.example.ddbx.tt.tool.DbCtrl.getTableField(DbCtrl.java:421)
+	at com.example.ddbx.tt.tool.DbCtrl.initconn(DbCtrl.java:321)
+	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
+	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -1506,9 +1616,17 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 11:31:22  [ http-nio-8092-exec-10:139939 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 13:54:07  [ http-nio-8092-exec-9:8704906 ] - [ ERROR ]  {conn-10001, stmt-20169} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:00:31  [ http-nio-8092-exec-3:1542352 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:00:31  [ http-nio-8092-exec-3:1542356 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 14:00:31  [ http-nio-8092-exec-3:1542359 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 14:00:31  [ http-nio-8092-exec-3:1542369 ] - [ ERROR ]  {conn-10001, stmt-20164} execute error. select t.* from zxcx t    where t.id='0'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -1524,11 +1642,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2828)
 	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeQuery(StatementProxyImpl.java:221)
 	at com.alibaba.druid.pool.DruidPooledStatement.executeQuery(DruidPooledStatement.java:291)
+<<<<<<< HEAD
 	at com.example.ddbx.tt.tool.DbTools.reclist(DbTools.java:80)
 	at com.example.ddbx.tt.tool.DbCtrl.getTableField(DbCtrl.java:421)
 	at com.example.ddbx.tt.tool.DbCtrl.initconn(DbCtrl.java:321)
 	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
+=======
+	at com.example.ddbx.tt.tool.DbTools.recinfo(DbTools.java:119)
+	at com.example.ddbx.tt.tool.DbCtrl.info(DbCtrl.java:705)
+	at com.example.ddbx.tt.tool.DbCtrl.info(DbCtrl.java:667)
+	at com.example.ddbx.tt.tool.DbCtrl.doGetForm(DbCtrl.java:772)
+	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:83)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -1584,11 +1710,17 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 13:54:07  [ http-nio-8092-exec-9:8704907 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 13:54:07  [ http-nio-8092-exec-9:8704908 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 13:54:07  [ http-nio-8092-exec-9:8704909 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 13:54:09  [ http-nio-8092-exec-3:8706651 ] - [ ERROR ]  {conn-10001, stmt-20196} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:00:31  [ http-nio-8092-exec-3:1542375 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:03:20  [ http-nio-8092-exec-10:1711595 ] - [ ERROR ]  {conn-10001, stmt-20190} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -1664,11 +1796,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 13:54:09  [ http-nio-8092-exec-3:8706652 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 13:54:09  [ http-nio-8092-exec-3:8706653 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 13:54:09  [ http-nio-8092-exec-3:8706653 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 13:54:09  [ http-nio-8092-exec-3:8706655 ] - [ ERROR ]  {conn-10001, stmt-20197} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:03:20  [ http-nio-8092-exec-10:1711597 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:03:20  [ http-nio-8092-exec-10:1711599 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 14:03:21  [ http-nio-8092-exec-10:1711606 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 14:03:21  [ http-nio-8092-exec-10:1711631 ] - [ ERROR ]  {conn-10001, stmt-20191} execute error. select t.* from zxcx t    where t.id='0'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -1744,9 +1884,15 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 13:54:09  [ http-nio-8092-exec-3:8706656 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:06:14  [ http-nio-8092-exec-5:9432405 ] - [ ERROR ]  {conn-10001, stmt-20223} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:03:21  [ http-nio-8092-exec-10:1711633 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:04:21  [ http-nio-8092-exec-6:1772186 ] - [ ERROR ]  {conn-10001, stmt-20217} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -1822,11 +1968,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:06:14  [ http-nio-8092-exec-5:9432405 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:06:14  [ http-nio-8092-exec-5:9432406 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:06:14  [ http-nio-8092-exec-5:9432407 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:06:14  [ http-nio-8092-exec-5:9432408 ] - [ ERROR ]  {conn-10001, stmt-20224} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:04:21  [ http-nio-8092-exec-6:1772189 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:04:21  [ http-nio-8092-exec-6:1772192 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 14:04:21  [ http-nio-8092-exec-6:1772194 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 14:04:21  [ http-nio-8092-exec-6:1772198 ] - [ ERROR ]  {conn-10001, stmt-20218} execute error. select t.* from zxcx t    where t.id='0'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -1902,9 +2056,15 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:06:14  [ http-nio-8092-exec-5:9432409 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:07:10  [ http-nio-8092-exec-9:9488517 ] - [ ERROR ]  {conn-10001, stmt-20250} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:04:21  [ http-nio-8092-exec-6:1772200 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:04:32  [ http-nio-8092-exec-1:1783106 ] - [ ERROR ]  {conn-10001, stmt-20244} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -1980,11 +2140,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:07:10  [ http-nio-8092-exec-9:9488518 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:07:10  [ http-nio-8092-exec-9:9488518 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:07:10  [ http-nio-8092-exec-9:9488519 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:07:10  [ http-nio-8092-exec-9:9488521 ] - [ ERROR ]  {conn-10001, stmt-20251} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:04:32  [ http-nio-8092-exec-1:1783109 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:04:32  [ http-nio-8092-exec-1:1783112 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 14:04:32  [ http-nio-8092-exec-1:1783115 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 14:04:32  [ http-nio-8092-exec-1:1783124 ] - [ ERROR ]  {conn-10001, stmt-20245} execute error. select t.* from zxcx t    where t.id='0'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2060,9 +2228,15 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:07:10  [ http-nio-8092-exec-9:9488521 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:11:29  [ http-nio-8092-exec-4:9747398 ] - [ ERROR ]  {conn-10001, stmt-20277} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:04:32  [ http-nio-8092-exec-1:1783126 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:04:47  [ http-nio-8092-exec-10:1797740 ] - [ ERROR ]  {conn-10001, stmt-20271} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2138,11 +2312,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:11:29  [ http-nio-8092-exec-4:9747398 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:11:29  [ http-nio-8092-exec-4:9747399 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:11:29  [ http-nio-8092-exec-4:9747400 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:11:29  [ http-nio-8092-exec-4:9747401 ] - [ ERROR ]  {conn-10001, stmt-20278} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:04:47  [ http-nio-8092-exec-10:1797743 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:04:47  [ http-nio-8092-exec-10:1797745 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 14:04:47  [ http-nio-8092-exec-10:1797747 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 14:04:47  [ http-nio-8092-exec-10:1797754 ] - [ ERROR ]  {conn-10001, stmt-20272} execute error. select t.* from zxcx t    where t.id='0'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2218,9 +2400,15 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:11:29  [ http-nio-8092-exec-4:9747404 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:13:09  [ http-nio-8092-exec-9:9846569 ] - [ ERROR ]  {conn-10001, stmt-20304} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:04:47  [ http-nio-8092-exec-10:1797757 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:05:29  [ http-nio-8092-exec-5:1840454 ] - [ ERROR ]  {conn-10001, stmt-20298} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2296,11 +2484,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:13:09  [ http-nio-8092-exec-9:9846569 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:13:09  [ http-nio-8092-exec-9:9846570 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:13:09  [ http-nio-8092-exec-9:9846571 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:13:09  [ http-nio-8092-exec-9:9846572 ] - [ ERROR ]  {conn-10001, stmt-20305} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:05:29  [ http-nio-8092-exec-5:1840457 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:05:29  [ http-nio-8092-exec-5:1840459 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 14:05:29  [ http-nio-8092-exec-5:1840461 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 14:05:29  [ http-nio-8092-exec-5:1840467 ] - [ ERROR ]  {conn-10001, stmt-20299} execute error. select t.* from zxcx t    where t.id='0'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2376,9 +2572,15 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:13:09  [ http-nio-8092-exec-9:9846573 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:13:22  [ http-nio-8092-exec-2:9860040 ] - [ ERROR ]  {conn-10001, stmt-20331} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:05:29  [ http-nio-8092-exec-5:1840472 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:59:00  [ http-nio-8092-exec-3:5050643 ] - [ ERROR ]  {conn-10002, stmt-20325} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2454,11 +2656,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:13:22  [ http-nio-8092-exec-2:9860041 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:13:22  [ http-nio-8092-exec-2:9860041 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:13:22  [ http-nio-8092-exec-2:9860042 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:13:22  [ http-nio-8092-exec-2:9860044 ] - [ ERROR ]  {conn-10001, stmt-20332} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:59:00  [ http-nio-8092-exec-3:5050646 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 14:59:00  [ http-nio-8092-exec-3:5050649 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 14:59:00  [ http-nio-8092-exec-3:5050651 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 14:59:00  [ http-nio-8092-exec-3:5050658 ] - [ ERROR ]  {conn-10002, stmt-20326} execute error. select t.* from zxcx t    where t.id='0'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2534,9 +2744,15 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:13:22  [ http-nio-8092-exec-2:9860045 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:14:27  [ http-nio-8092-exec-8:9924594 ] - [ ERROR ]  {conn-10001, stmt-20358} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 14:59:00  [ http-nio-8092-exec-3:5050662 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:01:07  [ http-nio-8092-exec-6:5177687 ] - [ ERROR ]  {conn-10002, stmt-20352} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2612,11 +2828,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:14:27  [ http-nio-8092-exec-8:9924595 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:14:27  [ http-nio-8092-exec-8:9924596 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:14:27  [ http-nio-8092-exec-8:9924597 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:14:27  [ http-nio-8092-exec-8:9924598 ] - [ ERROR ]  {conn-10001, stmt-20359} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:01:07  [ http-nio-8092-exec-6:5177689 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:01:07  [ http-nio-8092-exec-6:5177695 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 15:01:07  [ http-nio-8092-exec-6:5177706 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 15:01:07  [ http-nio-8092-exec-6:5177716 ] - [ ERROR ]  {conn-10002, stmt-20353} execute error. select t.* from zxcx t    where t.id='0'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2692,9 +2916,17 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:14:27  [ http-nio-8092-exec-8:9924598 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:16:05  [ http-nio-8092-exec-2:10023315 ] - [ ERROR ]  {conn-10001, stmt-20385} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:01:07  [ http-nio-8092-exec-6:5177719 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:04:45  [ http-nio-8092-exec-4:5395848 ] - [ ERROR ]  Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+2019-02-25 15:04:45  [ http-nio-8092-exec-4:5395900 ] - [ ERROR ]  Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+2019-02-25 15:30:02  [ http-nio-8092-exec-1:6913561 ] - [ ERROR ]  {conn-110001, stmt-120019} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2770,11 +3002,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:16:05  [ http-nio-8092-exec-2:10023315 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:16:05  [ http-nio-8092-exec-2:10023316 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:16:05  [ http-nio-8092-exec-2:10023316 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:16:05  [ http-nio-8092-exec-2:10023318 ] - [ ERROR ]  {conn-10001, stmt-20386} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:30:02  [ http-nio-8092-exec-1:6913563 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:30:02  [ http-nio-8092-exec-1:6913565 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 15:30:02  [ http-nio-8092-exec-1:6913566 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 15:30:02  [ http-nio-8092-exec-1:6913571 ] - [ ERROR ]  {conn-110001, stmt-120020} execute error. select t.* from zxcx t    where t.id='0'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2850,9 +3090,15 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:16:05  [ http-nio-8092-exec-2:10023318 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:16:12  [ http-nio-8092-exec-6:10030498 ] - [ ERROR ]  {conn-10001, stmt-20412} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:30:02  [ http-nio-8092-exec-1:6913572 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:36:27  [ http-nio-8092-exec-1:7298278 ] - [ ERROR ]  {conn-110001, stmt-120030} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2872,8 +3118,13 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.getTableField(DbCtrl.java:421)
 	at com.example.ddbx.tt.tool.DbCtrl.initconn(DbCtrl.java:321)
 	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
+<<<<<<< HEAD
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+=======
+	at com.example.ddbx.tt.manager.ManagerPost.doPost(ManagerPost.java:74)
+	at com.example.ddbx.tt.manager.Manager.indexpost(Manager.java:66)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -2887,8 +3138,13 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
+<<<<<<< HEAD
 	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:890)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:645)
+=======
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
@@ -2928,11 +3184,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:16:12  [ http-nio-8092-exec-6:10030498 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:16:12  [ http-nio-8092-exec-6:10030499 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:16:12  [ http-nio-8092-exec-6:10030500 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:16:12  [ http-nio-8092-exec-6:10030501 ] - [ ERROR ]  {conn-10001, stmt-20413} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:36:27  [ http-nio-8092-exec-1:7298279 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:36:27  [ http-nio-8092-exec-1:7298280 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 15:36:27  [ http-nio-8092-exec-1:7298281 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 15:36:29  [ http-nio-8092-exec-10:7300000 ] - [ ERROR ]  {conn-110001, stmt-120050} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -2948,11 +3212,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.alibaba.druid.filter.FilterChainImpl.statement_executeQuery(FilterChainImpl.java:2828)
 	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeQuery(StatementProxyImpl.java:221)
 	at com.alibaba.druid.pool.DruidPooledStatement.executeQuery(DruidPooledStatement.java:291)
+<<<<<<< HEAD
 	at com.example.ddbx.tt.tool.DbTools.recinfo(DbTools.java:119)
 	at com.example.ddbx.tt.tool.DbCtrl.info(DbCtrl.java:705)
 	at com.example.ddbx.tt.tool.DbCtrl.info(DbCtrl.java:667)
 	at com.example.ddbx.tt.tool.DbCtrl.doGetForm(DbCtrl.java:772)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:83)
+=======
+	at com.example.ddbx.tt.tool.DbTools.reclist(DbTools.java:80)
+	at com.example.ddbx.tt.tool.DbCtrl.getTableField(DbCtrl.java:421)
+	at com.example.ddbx.tt.tool.DbCtrl.initconn(DbCtrl.java:321)
+	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
+	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -3008,9 +3280,17 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:16:12  [ http-nio-8092-exec-6:10030502 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:17:01  [ http-nio-8092-exec-3:10078575 ] - [ ERROR ]  {conn-10001, stmt-20439} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:36:29  [ http-nio-8092-exec-10:7300002 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:36:29  [ http-nio-8092-exec-10:7300004 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 15:36:29  [ http-nio-8092-exec-10:7300005 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 15:36:46  [ http-nio-8092-exec-9:7316656 ] - [ ERROR ]  {conn-110001, stmt-120077} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3032,7 +3312,12 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
@@ -3085,11 +3370,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:17:01  [ http-nio-8092-exec-3:10078576 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:17:01  [ http-nio-8092-exec-3:10078576 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:17:01  [ http-nio-8092-exec-3:10078577 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:17:01  [ http-nio-8092-exec-3:10078578 ] - [ ERROR ]  {conn-10001, stmt-20440} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:36:46  [ http-nio-8092-exec-9:7316658 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:36:46  [ http-nio-8092-exec-9:7316660 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 15:36:46  [ http-nio-8092-exec-9:7316662 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 15:36:46  [ http-nio-8092-exec-9:7316671 ] - [ ERROR ]  {conn-110001, stmt-120078} execute error. select t.* from zxcx t    where t.id='0'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3111,7 +3404,12 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.doGetForm(DbCtrl.java:772)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:83)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
@@ -3164,9 +3462,15 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:17:01  [ http-nio-8092-exec-3:10078579 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:17:41  [ http-nio-8092-exec-4:10118893 ] - [ ERROR ]  {conn-10001, stmt-20466} execute error. SHOW COLUMNS FROM alltask
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.alltask' doesn't exist
+=======
+2019-02-25 15:36:46  [ http-nio-8092-exec-9:7316673 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:38:58  [ http-nio-8092-exec-3:7449182 ] - [ ERROR ]  {conn-210001, stmt-220025} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3188,7 +3492,12 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.alltask' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
@@ -3241,11 +3550,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.alltask' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:17:41  [ http-nio-8092-exec-4:10118893 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.alltask' doesn't exist
 2019-02-25 14:17:41  [ http-nio-8092-exec-4:10118894 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！alltask
 2019-02-25 14:17:41  [ http-nio-8092-exec-4:10118895 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:17:43  [ http-nio-8092-exec-5:10121274 ] - [ ERROR ]  {conn-10001, stmt-20493} execute error. SHOW COLUMNS FROM alltask
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.alltask' doesn't exist
+=======
+2019-02-25 15:38:58  [ http-nio-8092-exec-3:7449183 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:38:58  [ http-nio-8092-exec-3:7449184 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 15:38:58  [ http-nio-8092-exec-3:7449186 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 15:39:49  [ http-nio-8092-exec-5:7499820 ] - [ ERROR ]  {conn-210001, stmt-220052} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3267,7 +3584,12 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.alltask' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
@@ -3320,11 +3642,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.alltask' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:17:43  [ http-nio-8092-exec-5:10121274 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.alltask' doesn't exist
 2019-02-25 14:17:43  [ http-nio-8092-exec-5:10121275 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！alltask
 2019-02-25 14:17:43  [ http-nio-8092-exec-5:10121276 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:17:43  [ http-nio-8092-exec-5:10121277 ] - [ ERROR ]  {conn-10001, stmt-20494} execute error. select t.* from alltask t    where t.id='1'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.alltask' doesn't exist
+=======
+2019-02-25 15:39:49  [ http-nio-8092-exec-5:7499821 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:39:49  [ http-nio-8092-exec-5:7499822 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 15:39:49  [ http-nio-8092-exec-5:7499823 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 15:39:49  [ http-nio-8092-exec-5:7499826 ] - [ ERROR ]  {conn-210001, stmt-220053} execute error. select t.* from zxcx t    where t.id='2'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3346,7 +3676,12 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.alltask' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.doGetForm(DbCtrl.java:772)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:83)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
@@ -3399,9 +3734,15 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.alltask' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:17:43  [ http-nio-8092-exec-5:10121278 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.alltask' doesn't exist
 2019-02-25 14:19:53  [ http-nio-8092-exec-9:10251361 ] - [ ERROR ]  {conn-10001, stmt-20514} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:39:49  [ http-nio-8092-exec-5:7499827 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:39:59  [ http-nio-8092-exec-6:7509920 ] - [ ERROR ]  {conn-210001, stmt-220079} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3423,7 +3764,12 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
@@ -3476,11 +3822,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:19:53  [ http-nio-8092-exec-9:10251362 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:19:53  [ http-nio-8092-exec-9:10251363 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:19:53  [ http-nio-8092-exec-9:10251363 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:19:55  [ http-nio-8092-exec-3:10253407 ] - [ ERROR ]  {conn-10001, stmt-20541} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:39:59  [ http-nio-8092-exec-6:7509922 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:39:59  [ http-nio-8092-exec-6:7509923 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 15:39:59  [ http-nio-8092-exec-6:7509924 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 15:40:02  [ http-nio-8092-exec-4:7513304 ] - [ ERROR ]  {conn-210001, stmt-220106} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3502,7 +3856,12 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
@@ -3555,11 +3914,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:19:55  [ http-nio-8092-exec-3:10253407 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:19:55  [ http-nio-8092-exec-3:10253408 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:19:55  [ http-nio-8092-exec-3:10253409 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:19:55  [ http-nio-8092-exec-3:10253410 ] - [ ERROR ]  {conn-10001, stmt-20542} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:40:02  [ http-nio-8092-exec-4:7513304 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:40:02  [ http-nio-8092-exec-4:7513305 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 15:40:02  [ http-nio-8092-exec-4:7513306 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 15:40:02  [ http-nio-8092-exec-4:7513309 ] - [ ERROR ]  {conn-210001, stmt-220107} execute error. select t.* from zxcx t    where t.id='2'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3581,6 +3948,7 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.doGetForm(DbCtrl.java:772)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:83)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
@@ -3659,6 +4027,10 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
@@ -3711,11 +4083,17 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:22:32  [ http-nio-8092-exec-7:10410450 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:22:32  [ http-nio-8092-exec-7:10410451 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:22:32  [ http-nio-8092-exec-7:10410452 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:22:35  [ http-nio-8092-exec-8:10412668 ] - [ ERROR ]  {conn-10001, stmt-20652} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:40:02  [ http-nio-8092-exec-4:7513310 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:42:28  [ http-nio-8092-exec-3:7659285 ] - [ ERROR ]  {conn-210001, stmt-220136} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3737,7 +4115,12 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
@@ -3790,11 +4173,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:22:35  [ http-nio-8092-exec-8:10412669 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:22:35  [ http-nio-8092-exec-8:10412670 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:22:35  [ http-nio-8092-exec-8:10412670 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:22:35  [ http-nio-8092-exec-8:10412673 ] - [ ERROR ]  {conn-10001, stmt-20653} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:42:28  [ http-nio-8092-exec-3:7659286 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:42:28  [ http-nio-8092-exec-3:7659287 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 15:42:28  [ http-nio-8092-exec-3:7659289 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 15:42:28  [ http-nio-8092-exec-3:7659296 ] - [ ERROR ]  {conn-210001, stmt-220137} execute error. select t.* from zxcx t    where t.id='2'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3816,7 +4207,12 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.doGetForm(DbCtrl.java:772)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:83)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
@@ -3869,9 +4265,15 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:22:35  [ http-nio-8092-exec-8:10412673 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:24:44  [ http-nio-8092-exec-1:10542325 ] - [ ERROR ]  {conn-10001, stmt-20679} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:42:28  [ http-nio-8092-exec-3:7659298 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:44:29  [ http-nio-8092-exec-7:7780544 ] - [ ERROR ]  {conn-210001, stmt-220163} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3893,7 +4295,12 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
@@ -3946,11 +4353,19 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:24:44  [ http-nio-8092-exec-1:10542326 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:24:44  [ http-nio-8092-exec-1:10542326 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！qcpg
 2019-02-25 14:24:44  [ http-nio-8092-exec-1:10542327 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
 2019-02-25 14:24:44  [ http-nio-8092-exec-1:10542328 ] - [ ERROR ]  {conn-10001, stmt-20680} execute error. select t.* from qcpg t    where t.id='0'   
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:44:29  [ http-nio-8092-exec-7:7780545 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:44:29  [ http-nio-8092-exec-7:7780547 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 15:44:29  [ http-nio-8092-exec-7:7780549 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 15:44:29  [ http-nio-8092-exec-7:7780552 ] - [ ERROR ]  {conn-210001, stmt-220164} execute error. select t.* from zxcx t    where t.id='2'   
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -3972,7 +4387,12 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.doGetForm(DbCtrl.java:772)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:83)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
@@ -4025,9 +4445,15 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 14:24:44  [ http-nio-8092-exec-1:10542329 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
 2019-02-25 14:27:19  [ http-nio-8092-exec-7:10697090 ] - [ ERROR ]  {conn-10001, stmt-20706} execute error. SHOW COLUMNS FROM qcpg
 java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:44:29  [ http-nio-8092-exec-7:7780554 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:44:34  [ http-nio-8092-exec-7:7785218 ] - [ ERROR ]  {conn-210001, stmt-220190} execute error. SHOW COLUMNS FROM zxcx
+java.sql.SQLSyntaxErrorException: Table 'ddbxdb.zxcx' doesn't exist
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
@@ -4049,6 +4475,7 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.<init>(DbCtrl.java:311)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:40)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+<<<<<<< HEAD
 	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
@@ -6481,6 +6908,8 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at com.example.ddbx.tt.tool.DbCtrl.doGetForm(DbCtrl.java:772)
 	at com.example.ddbx.tt.manager.ManagerGet.doGet(ManagerGet.java:83)
 	at com.example.ddbx.tt.manager.Manager.index(Manager.java:48)
+=======
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -6535,4 +6964,36 @@ java.sql.SQLSyntaxErrorException: Table 'ddbxdb.qcpg' doesn't exist
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
+<<<<<<< HEAD
 2019-02-25 16:50:14  [ http-nio-8092-exec-6:6382 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.qcpg' doesn't exist
+=======
+2019-02-25 15:44:34  [ http-nio-8092-exec-7:7785220 ] - [ ERROR ]  Tools.logError:Table 'ddbxdb.zxcx' doesn't exist
+2019-02-25 15:44:34  [ http-nio-8092-exec-7:7785221 ] - [ ERROR ]  Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！zxcx
+2019-02-25 15:44:34  [ http-nio-8092-exec-7:7785222 ] - [ ERROR ]  Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+2019-02-25 15:47:51  [ http-nio-8092-exec-1:7982094 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dzxcx%26type%3Dinto_modal%26sdo%3Dform%26id%3D2:An exception occurred processing [/WEB-INF/jsp/manager/into_modal/zxcx.form.jsp] at line [17]
+
+14: <div class="admin-content nav-tabs-custom box">
+15:     <div class="box-header with-border">
+16:         ${id }
+17:         <c:if test="${id }">
+18:         <div class="box-header with-border">
+19:             <h3 class="box-title">订单来自：快加云-秦扬</h3>
+20:             <h3 class="box-title">提交时间：2019-02-20 16:57:00</h3>
+
+
+Stacktrace:
+2019-02-25 18:15:02  [ http-nio-8092-exec-8:2114530 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dzxcx%26type%3Dinto_modal%26sdo%3Dform%26id%3D2:Unable to compile class for JSP: 
+
+An error occurred at line: [235] in the jsp file: [/WEB-INF/jsp/manager/into_modal/zxcx.form.jsp]
+Invalid character constant
+232:                                     ssImgs1=ssImgs1[0].split(",");
+233:                                     String sImgs1 = "";
+234:                                     for (int i = 0; i < ssImgs1.length; i++) {
+235:                                         if(sImgs1!=null&&sImgs1!='') {
+236:                                             sImgs1 = sImgs1 + ssImgs1[i] + "|";
+237:                                         }
+238:                                     }
+
+
+Stacktrace:
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c

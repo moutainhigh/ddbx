@@ -11,16 +11,25 @@
         id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
     }
 %>
+<input id="gems_id" name="gems_id" value="<%=minfo.get("id")%>" type="hidden" />
+<input id="gems_fs_id" name="gems_fs_id" value="<%=minfo.get("fsid")%>" type="hidden" />
 <div class="admin-content nav-tabs-custom box">
     <div class="box-header with-border">
+        <c:if test="${id ne 0}">
         <div class="box-header with-border">
-            <h3 class="box-title">订单来自：快加云-秦扬</h3>
-            <h3 class="box-title">提交时间：2019-02-20 16:57:00</h3>
+            <h3 class="box-title">订单来自：${gsnamemap.fs_name}-${gsnamemap.admin_name}</h3>
+            <h3 class="box-title">提交时间：${infodb.dt_add}</h3>
             <div class="box-tools pull-right">
 
-                <h3 class="box-title">订单编号：</h3>
+                <h3 class="box-title">订单编号：${infodb.order_code}</h3>
             </div>
         </div>
+        </c:if>
+        <c:if test="${id eq 0}">
+            <div class="box-header with-border">
+                <h3 class="box-title">新增订单</h3>
+            </div>
+        </c:if>
         <div class="box-body" id="tab-content">
             <div class="form-group">
                 <label class="col-sm-2 control-label">主贷人信息</label>
@@ -149,7 +158,7 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">按揭银行</span>
-                                <select class="form-control" id="" name="">
+                                <select class="form-control" id="bank_id" name="bank_id">
                                     <option value="0">请选择按揭银行</option>
                                     <option value="1">工行绍兴分行</option>
                                     <option value="2">工行武林支行</option>
@@ -160,7 +169,7 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">贷款产品</span>
-                                <select class="form-control" id="" name="">
+                                <select class="form-control" id="loan_tpid" name="loan_tpid">
                                     <option value="0">请选择贷款产品</option>
                                     <option value="1">卡分期</option>
                                 </select>
@@ -169,7 +178,7 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">业务等级</span>
-                                <select class="form-control" id="" name="">
+                                <select class="form-control" id="loan_level" name="loan_level">
                                     <option value="0">请选择业务等级</option>
                                     <option value="1">预期贷款额度10万以下(含10万)</option>
                                     <option value="2">预期贷款额度10万以上</option>
@@ -197,9 +206,31 @@
                                 </select>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">erp相关操作</label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">erp所属类型</span>
+                                <select class="form-control" id="type_id" name="type_id">
+                                    <option value="0">请选择</option>
+                                    <c:forEach var="e" items="${requestScope.erplist}">
+                                        <option value="${e.id}">${e.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label class="col-sm-2 control-label">相关文件</label>
                 <div class="col-sm-8">
@@ -220,9 +251,12 @@
                                     String[] ssImgs1 = { //设置已有值
                                             !Tools.myIsNull(infodb.get(imgPreName1)) ? infodb.get(imgPreName1) : ""
                                     };
+                                    ssImgs1=ssImgs1[0].split(",");
                                     String sImgs1 = "";
                                     for (int i = 0; i < ssImgs1.length; i++) {
-                                        sImgs1 = sImgs1 + ssImgs1[i] + "|";
+                                          if(ssImgs1[i]!=null&&!ssImgs1[i].equals("")) {
+                                              sImgs1 = sImgs1 + ssImgs1[i] + "|";
+                                          }
                                     }
                                 %>
                                 <%-- 可能这里用<%@include file %>模式更适合--%>
@@ -258,9 +292,12 @@
                                         String[] ssImgs2 = { //设置已有值
                                                 !Tools.myIsNull(infodb.get(imgPreName2)) ? infodb.get(imgPreName2) : ""
                                         };
+                                        ssImgs2=ssImgs2[0].split(",");
                                         String sImgs2 = "";
                                         for (int i = 0; i < ssImgs2.length; i++) {
-                                            sImgs2 = sImgs2 + ssImgs2[i] + "|";
+                                            if(ssImgs2[i]!=null&&!ssImgs2[i].equals("")) {
+                                                sImgs2 = sImgs2 + ssImgs2[i] + "|";
+                                            }
                                         }
                                     %>
                                     <%-- 可能这里用<%@include file %>模式更适合--%>
@@ -296,9 +333,12 @@
                                         String[] ssImgs3 = { //设置已有值
                                                 !Tools.myIsNull(infodb.get(imgPreName3)) ? infodb.get(imgPreName3) : ""
                                         };
+                                        ssImgs3=ssImgs3[0].split(",");
                                         String sImgs3 = "";
                                         for (int i = 0; i < ssImgs3.length; i++) {
-                                            sImgs3 = sImgs3 + ssImgs3[i] + "|";
+                                            if(ssImgs3[i]!=null&&!ssImgs3[i].equals("")) {
+                                                sImgs3 = sImgs3 + ssImgs3[i] + "|";
+                                            }
                                         }
                                     %>
                                     <%-- 可能这里用<%@include file %>模式更适合--%>
@@ -334,9 +374,12 @@
                                         String[] ssImgs4 = { //设置已有值
                                                 !Tools.myIsNull(infodb.get(imgPreName4)) ? infodb.get(imgPreName4) : ""
                                         };
+                                        ssImgs4=ssImgs4[0].split(",");
                                         String sImgs4 = "";
                                         for (int i = 0; i < ssImgs4.length; i++) {
-                                            sImgs4 = sImgs4 + ssImgs4[i] + "|";
+                                            if(ssImgs4[i]!=null&&!ssImgs4[i].equals("")) {
+                                                sImgs4 = sImgs4 + ssImgs4[i] + "|";
+                                            }
                                         }
                                     %>
                                     <%-- 可能这里用<%@include file %>模式更适合--%>
@@ -382,14 +425,14 @@
                                         <div class="row inline-from">
                                             <div class="input-group">
                                                 <span class="input-group-addon">大数据编码</span>
-                                                <input class="form-control" name="dsj_report_id" id="dsj_report_id"
+                                                <input class="form-control" name="zdr_dsj_code" id="zdr_dsj_code"
                                                        value="" type="text">
                                                 <span class="input-group-addon">
 						<a style="color: #72afd2;"
-                           href="javascript:queryid('测试','15869871564','412223199710259885','dsj_report_id')">获取编码</a>
+                           href="">获取编码</a>
 						</span>
                                                 <span class="input-group-addon">
-						<a style="color: #72afd2;" href="javascript:dsj_bg('dsj_report_id');">查看报告</a>
+						<a style="color: #72afd2;" href="">查看报告</a>
 						</span>
                                             </div>
                                         </div>
@@ -404,13 +447,13 @@
                                         <div class="row inline-from">
                                             <div class="input-group">
                                                 <span class="input-group-addon">大数据编码</span>
-                                                <input class="form-control" name="po_dsj_report_id"
-                                                       id="po_dsj_report_id" value="" type="text">
+                                                <input class="form-control" name="zdrpo_dsj_code"
+                                                       id="zdrpo_dsj_code" value="" type="text">
                                                 <span class="input-group-addon">
-						<a style="color: #72afd2;" href="javascript:queryid('','','','po_dsj_report_id');">获取编码</a>
+						<a style="color: #72afd2;" href="javascript:">获取编码</a>
 						</span>
                                                 <span class="input-group-addon">
-						<a style="color: #72afd2;" href="javascript:dsj_bg('po_dsj_report_id');">查看报告</a>
+						<a style="color: #72afd2;" href="javascript:">查看报告</a>
 						</span>
                                             </div>
                                         </div>
@@ -425,13 +468,13 @@
                                         <div class="row inline-from">
                                             <div class="input-group">
                                                 <span class="input-group-addon">大数据编码</span>
-                                                <input class="form-control" name="gjr_dsj_report_id1"
-                                                       id="gjr_dsj_report_id1" value="" type="text">
+                                                <input class="form-control" name="gjr1_dsj_code"
+                                                       id="gjr1_dsj_code" value="" type="text">
                                                 <span class="input-group-addon">
-						<a style="color: #72afd2;" href="javascript:queryid('','','','gjr_dsj_report_id1');">获取编码</a>
+						<a style="color: #72afd2;" href="javascript:">获取编码</a>
 						</span>
                                                 <span class="input-group-addon">
-						<a style="color: #72afd2;" href="javascript:dsj_bg('gjr_dsj_report_id1');">查看报告</a>
+						<a style="color: #72afd2;" href="javascript:">查看报告</a>
 						</span>
                                             </div>
                                         </div>
@@ -446,13 +489,13 @@
                                         <div class="row inline-from">
                                             <div class="input-group">
                                                 <span class="input-group-addon">大数据编码</span>
-                                                <input class="form-control" name="gjr_dsj_report_id2"
-                                                       id="gjr_dsj_report_id2" value="" type="text">
+                                                <input class="form-control" name="gjr2_dsj_code"
+                                                       id="gjr2_dsj_code" value="" type="text">
                                                 <span class="input-group-addon">
-						<a style="color: #72afd2;" href="javascript:queryid('','','','gjr_dsj_report_id2');">获取编码</a>
+						<a style="color: #72afd2;" href="javascript:">获取编码</a>
 						</span>
                                                 <span class="input-group-addon">
-						<a style="color: #72afd2;" href="javascript:dsj_bg('gjr_dsj_report_id2');">查看报告</a>
+						<a style="color: #72afd2;" href="javascript:">查看报告</a>
 						</span>
                                             </div>
                                         </div>
@@ -464,15 +507,82 @@
                 </div>
             </div>
 
+        <%----%>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">征信结果返回</label>
+                <div class="col-sm-10">
+                    <!--
 
 
+                    <textarea id="zx_result" name="zx_result" style="width: 80%; height: 200px" class="form-control"></textarea>
+
+                    -->
+                    <ul id="zxTab" class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#tbstep1" data-toggle="tab" aria-expanded="true">主贷人</a>
+                        </li>
+                        <li class=""><a href="#tbstep2" data-toggle="tab" aria-expanded="false">配偶</a></li>
+                        <li class=""><a href="#tbstep3" data-toggle="tab" aria-expanded="false">共借人1</a></li>
+                        <li class=""><a href="#tbstep4" data-toggle="tab" aria-expanded="false">共借人2</a></li>
+                    </ul>
+                    <div id="zxTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="tbstep1">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="row inline-from">
+                                            <textarea id="zdr_zx1_result" name="zdr_zx1_result" style="width: 80%; height: 200px" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tbstep2">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="row inline-from">
+                                            <textarea id="zdrpo_zx1_result" name="zdrpo_zx1_result" style="width: 80%; height: 200px" class="form-control"></textarea>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tbstep3">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="row inline-from">
+                                            <textarea id="gjr1_zx1_result" name="gjr1_zx1_result" style="width: 80%; height: 200px" class="form-control"></textarea>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tbstep4">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="row inline-from">
+                                            <textarea id="gjr2_zx1_result" name="gjr2_zx1_result" style="width: 80%; height: 200px" class="form-control"></textarea>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <%--相关状态--%>
             <div class="form-group">
                 <label class="col-sm-2 control-label">相关状态</label>
                 <div class="col-sm-10">
                     <div class="row inline-from">
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">主贷人征信状态</span>
                                 <select class="form-control" id="zdr_zx1_tag" name="zdr_zx1_tag">
@@ -482,7 +592,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">主贷人配偶征信状态</span>
                                 <select class="form-control" id="zdrpo_zx1_tag" name="zdrpo_zx1_tag">
@@ -492,31 +602,47 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="input-group">
-                                <span class="input-group-addon">共同借款人1征信状态</span>
-                                <select class="form-control" id="gjr1_zx1_tag" name="gjr1_zx1_tag">
-                                    <option value="0">请选择</option>
-                                    <option value="1">通过</option>
-                                    <option value="2">不通过</option>
-                                </select>
-                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <div class="row inline-from">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">共同借款人1征信状态</span>
+                            <select class="form-control" id="gjr1_zx1_tag" name="gjr1_zx1_tag">
+                                <option value="0">请选择</option>
+                                <option value="1">通过</option>
+                                <option value="2">不通过</option>
+                            </select>
                         </div>
-                        <div class="col-sm-3">
-                            <div class="input-group">
-                                <span class="input-group-addon">共同借款人2征信状态</span>
-                                <select class="form-control" id="gjr2_zx1_tag" name="gjr2_zx1_tag">
-                                    <option value="0">请选择</option>
-                                    <option value="1">通过</option>
-                                    <option value="2">不通过</option>
-                                </select>
-                            </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">共同借款人2征信状态</span>
+                            <select class="form-control" id="gjr2_zx1_tag" name="gjr2_zx1_tag">
+                                <option value="0">请选择</option>
+                                <option value="1">通过</option>
+                                <option value="2">不通过</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
-            <%--相关状态--%>
+        </div>
 
+            <%--相关状态--%>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">留言</label>
+                <div class="col-sm-10">
+                    <textarea style="width: 80%; height: 200px" class="form-control">
+
+
+                    </textarea>
+                </div>
+            </div>
 
         </div>
     </div>

@@ -1,11 +1,21 @@
+<%@ page import="com.example.ddbx.tt.data.TtList" %>
+<%@ page import="com.example.ddbx.tt.data.TtMap" %>
+<%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%
-String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
+	TtMap infodb = (TtMap) request.getAttribute("infodb");
+	TtMap minfo = (TtMap) request.getAttribute("minfo");
+	long id_uplevel = 0;
+	if (!Tools.myIsNull(infodb.get("id_uplevel"))) {
+		id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
+	}
+	String url = Tools.urlKill("sdo|id|type_id")+"&sdo=form&id=";
 %>
 <head>
 	<script src="js/jQueryRotate.2.2.js" type="text/javascript"></script>
 </head>
+
 <div class="admin-content nav-tabs-custom box">
 	<div class="box-header with-border">
 
@@ -28,8 +38,8 @@ String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
 						<div style="border:1px solid #478FCA;   margin:5px; padding:20px;border-radius: 10px;">
 							<ul id="yw" class="nav nav-tabs">
 								<c:forEach items="${requestScope.clgc_list}" var="c" varStatus="status">
-								<li ${c.number==1?"class='active'":''}>
-									<a id="${c.type}"  href="" data-toggle="tab" class="btn btn-block btn-info">
+								<li ${c.id eq requestScope.type_id?"class='active'":'' }>
+									<a id="${c.cn}"  href="<%=url%><%=infodb.get("id")%>&type_id=${c.id}"  class="btn btn-block btn-info">
 									${c.name}
 									</a>
 								</li>
@@ -46,7 +56,7 @@ String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
 
 							</ul>
 						</div>
-                     <jsp:include page="<%=msg%>"></jsp:include>
+                     <jsp:include page="/WEB-INF/jsp/manager/rwcl/rwcl.jsp"></jsp:include>
 					</div>
 				</div>
 				<div class="tab-pane" id="tab_1">
@@ -61,38 +71,39 @@ String msg="/WEB-INF/jsp/manager/rwcl/zx.jsp";
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">姓名</span>
-											<input type="text" class="form-control" onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-												   id="">
+											<input type="text" value="${icbc.c_name}" class="form-control" onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
+												   id="c_name" name="c_name">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">身份证</span>
-											<input type="text" class="form-control" onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-												   id="">
+											<input type="text" value="${icbc.c_cardno}" class="form-control" onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
+												   id="c_cardno" name="c_cardno">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">电话</span>
-											<input type="text" class="form-control" onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-												   id="">
+											<input type="text" value="${icbc.c_tel}" class="form-control" onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
+												   id="c_tel" name="c_tel">
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">性别</span>
-											<select name="" id="" class="form-control">
-												<option value="">请选择性别</option>
-												<option value="">男</option>
-												<option value="">女</option>
+											<select name="c_sex" id="c_sex" class="form-control">
+												<option value="0" >请选择性别</option>
+												<option value="1" ${icbc.c_sex eq 1?"selected='selected'":''}>男</option>
+												<option value="2" ${icbc.c_sex eq 2?"selected='selected'":''}>女</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">按揭银行</span>
-											<select name="" id="" class="form-control">
+											<select name="bank_id
+" id="bank_id" class="form-control">
 												<option value="">请选择按揭银行</option>
 												<option value="">工行绍兴分行</option>
 												<option value="">工行上海分行</option>

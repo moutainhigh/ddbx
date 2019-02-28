@@ -45,7 +45,7 @@
 										${u.c_name}
 									</td>
 									<td class="text-center">
-
+										${u.fs_name}-${u.admin_name}
 									</td>
 									<td class="hidden-xs text-center">
 											${u.dt_add}<br>${u.dt_edit}
@@ -55,9 +55,9 @@
 											<a href="<%=url%>${u.id}" class="btn btn-default">
 												<i class="fa fa-pencil"></i>
 											</a>
-											<a onclick="del('<%=url%>','${u.id}')" class="btn btn-default">
-												<i class="fa fa-trash"></i>
-											</a>
+											<%--<a onclick="del('<%=url%>','${u.id}')" class="btn btn-default">--%>
+												<%--<i class="fa fa-trash"></i>--%>
+											<%--</a>--%>
 
 										</div>
 									</td>

@@ -25,12 +25,21 @@ import javax.servlet.http.HttpServletResponse;
 public class ManagerGet {
   public String doGet(String cn, String type, String sdo, String id, HttpServletRequest request,
       HttpServletResponse resp) {
+    String realCn = ManagerTools.getRealCn(cn);
+    if (!ManagerTools.checkSdo(sdo) || realCn == null) {// 过滤cn和sdo，realCn为null时表示此cn不合法。
+      return "jsp/manager/404";
+    }
+    if (realCn == "") { // 为空时表示此cn不需要使用数据库，直接返回
+      ManagerTools.doFetchDefault(request, cn, sdo);
+      return "jsp/manager/index_b";
+    }
     TtMap minfo = Tools.minfo();
     request.setAttribute("minfo", minfo);
     TtMap info = null;
     TtList list = null;
     String jsonInfo = "";
     TtMap post = Tools.getPostMap(request);// 过滤参数，过滤mysql的注入，url参数注入
+    System.out.println("get传递参数："+post);
     boolean haveSetFormData = false; // 是否已经处理
     Modal modalMenu = new Modal();
     request.setAttribute("menus", modalMenu.getMenus()); // 后台左侧菜单,sidebar.jsp里面用到的菜单列表
@@ -66,13 +75,83 @@ public class ManagerGet {
                 break;
               case "mytask": // 我的任务板块
                 //System.out.println("进入我的世界");
+
                 MyTask myTask=new MyTask();
-                request.setAttribute("clgc_list",myTask.getclgc());
+                try {
+                  if (myTask.getclgc()!=null&&myTask.getclgc().size()>0){
+                    request.setAttribute("clgc_list",myTask.getclgc());
+                  }
+                  if(post.get("type_id")!=null&&!post.get("type_id").equals("")){
+                    request.setAttribute("type_id",post.get("type_id"));
+                    if(myTask.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id")))!=null&&myTask.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))).size()>0) {
+                      request.setAttribute("erplist", myTask.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
+                    }}
+                   request.setAttribute("icbc",myTask.geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, false);
+                } finally {
+                  myTask.closeConn();
+                }
+
+                break;
+              case "alltask": // 我的任务板块
+                //System.out.println("进入我的世界");
+                AllTask allTask=new AllTask();
+                MyTask myTask3=new MyTask();
+                try {
+                  request.setAttribute("clgc_list",allTask.getclgc());
+                  if(post.get("type_id")!=null&&!post.get("type_id").equals("")) {
+                    request.setAttribute("erplist", myTask3.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
+                  }
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, false);
+                } finally {
+                  myTask3.closeConn();
+                }
                 break;
               case "sys_config_son": // 我的任务板块
                 //System.out.println("进入我的世界");
                 MyTask myTask1=new MyTask();
-                request.setAttribute("clgc_list",myTask1.getclgc());
+                try {
+                  request.setAttribute("clgc_list",myTask1.getclgc());
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, false);
+                } finally {
+                  myTask1.closeConn();
+                }
+                break;
+              case "zxcx": // 我的任务板块
+                //System.out.println("进入我的世界");
+
+                //获取erp类型数据
+                MyTask myTask2=new MyTask();
+                try {
+                  TtList erplist= myTask2.geticbc_erp_type();
+                  request.setAttribute("erplist",erplist);
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, false);
+                } finally {
+                  myTask2.closeConn();
+                }
+
+                if(post.get("id")!=null&&!post.get("id").equals("")){
+                  //获取公司名 人名
+                  Admin admin=new Admin();
+                  try {
+                    TtMap ttMap=admin.getgems_name("dd_icbc",Integer.parseInt(post.get("id")));
+                    request.setAttribute("gsnamemap",ttMap);
+                  } catch (Exception e) {
+                    Tools.logError(e.getMessage(), true, false);
+                  } finally {
+                    admin.closeConn();
+                  }
+                }
+                break;
+              case "car_loan": // 我的任务板块
+                //查询进件客户
+                CarLoan carLoan = new CarLoan();
+                TtList getAllOrderName = carLoan.selectAllOrderName();
+                request.setAttribute("names",getAllOrderName);
                 break;
               case "qcpg":
                 qcpg qcpg = new qcpg();
@@ -215,6 +294,7 @@ public class ManagerGet {
                 }
                 haveSetFormData = true;
                 break;
+<<<<<<< HEAD
               case "qcpg":
                 qcpg qcpg = new qcpg();
                 try {
@@ -223,12 +303,26 @@ public class ManagerGet {
                   Tools.logError(e.getMessage(), true, true);
                 } finally {
                   qcpg.closeConn();
+=======
+              case "car_loan":
+                CarLoan carLoan=new CarLoan();
+                try {
+                  carLoan.doGetList(request,post);
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(), true, true);
+                } finally {
+                  carLoan.closeConn();
+>>>>>>> 440938a50f7b7387df9d0d3862ff0c131c92035c
                 }
                 haveSetFormData = true;
                 break;
             default:
               lsitTitleString = "相关管理";
               orderString = "ORDER BY id";
+              Class<?> b = ManagerTools.doGetClass(realCn);
+              if (null != b) {
+                dbCtrl = (DbCtrl) b.newInstance();
+              }
               break;
             }
             if (!haveSetFormData) {// 如果没有处理
