@@ -130,6 +130,7 @@ public class ManagerGet {
                         request.setAttribute("canAdd", canAdd); // 分页的html代码
                     } else {
                         dbCtrl.doGetList(request, post);
+
                     }
                     break;
             }

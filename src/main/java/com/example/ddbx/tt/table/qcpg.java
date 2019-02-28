@@ -4,11 +4,15 @@ import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.tool.*;
 import org.apache.commons.lang.StringUtils;
-import org.apache.poi.util.StringUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.DecimalFormat;
+
+import com.example.ddbx.tt.tool.Config;
+import com.example.ddbx.tt.tool.DbCtrl;
+import com.example.ddbx.tt.tool.Tools;
+
 
 public class qcpg extends DbCtrl {
 
@@ -21,6 +25,7 @@ public class qcpg extends DbCtrl {
 
     public qcpg() {
         super("dd_icbc_materials");
+
         AdminAgp adminAgp = new AdminAgp();
         try {
             if (adminAgp.checkAgp(classAgpId)) { // 如果有权限
@@ -133,13 +138,15 @@ public class qcpg extends DbCtrl {
     }
 
 
-    @Override
     public void setTable(String table) {
         super.setTable(table);
     }
 
 
+    //list 处理
     public void doGetList(HttpServletRequest request, TtMap post) {
+        System.out.println("查询list");
+
         if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
             request.setAttribute("errorMsg", errorMsg);
             return;
@@ -155,8 +162,10 @@ public class qcpg extends DbCtrl {
         /* 开始处理搜索过来的字段 */
         kw = post.get("kw");
         dtbe = post.get("dtbe");
+
         if (Tools.myIsNull(kw) == false) {
-            whereString += " AND name like '%" + kw + "%'";
+            whereString += " AND c_name like '%" + kw + "%'";
+
         }
         if (Tools.myIsNull(dtbe) == false) {
             dtbe = dtbe.replace("%2f", "-").replace("+", "");
@@ -167,7 +176,6 @@ public class qcpg extends DbCtrl {
             // todo处理选择时间段
         }
         /* 搜索过来的字段处理完成 */
-
         // 导出到Excel处理
         boolean bToExcel = false, toZip = false;
         if (!Tools.myIsNull(post.get("toExcel")) && post.get("toExcel").equals("1")) {// 导出excel时设置不分页，导出所有
@@ -178,12 +186,14 @@ public class qcpg extends DbCtrl {
             nopage = true;
             toZip = true;
         }
+
         whereString += tmpWhere; // 过滤
         orders = orderString;// 排序
         p = pageInt; // 显示页
         limit = limtInt; // 每页显示记录数
         showall = true; // 忽略deltag和showtag
         list = lists(whereString, fieldsString);
+
         if (bToExcel) { // Excel导出演示：导出到Excel并下载
             String[] headers = new String[] { "管理员名称", "密码MD5", "用户名" };
             String[] fields = new String[] { "name", "password", "username" };
@@ -283,6 +293,7 @@ public class qcpg extends DbCtrl {
     @Override
     public int edit(TtMap ary, long id) {
         return super.edit(ary, id);
+
     }
 
     @Override

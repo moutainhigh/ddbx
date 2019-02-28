@@ -1,6 +1,5 @@
 package com.example.ddbx.tt.table;
 
-import com.alibaba.druid.pool.DruidPooledConnection;
 import com.example.ddbx.tt.tool.Config;
 import com.example.ddbx.tt.tool.DbCtrl;
 import com.example.ddbx.tt.tool.Tools;
@@ -31,6 +30,5 @@ public class zx_1 extends DbCtrl {
             adminAgp.closeConn();
         }
     }
-
 
 }

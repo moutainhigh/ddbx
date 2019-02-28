@@ -238,7 +238,7 @@ public class DbTools {
     /* unDic，定位id为nid的name字段值或者其他值 */
     public String unDic(String tbName, String nid, String fieldName, String fieldId) {
         if (Tools.myIsNull(fieldName) == true) {
-            if (tbName == "dd_icbc") {
+            if(tbName == "dd_icbc"){
                 fieldName = "c_name";
             }else{
                 fieldName = "name";
