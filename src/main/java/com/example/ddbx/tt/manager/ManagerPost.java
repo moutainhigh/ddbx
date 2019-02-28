@@ -12,8 +12,6 @@ import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.table.*;
 import com.example.ddbx.tt.tool.DbCtrl;
 import com.example.ddbx.tt.tool.Tools;
-import com.example.ddbx.tt.utils.orderutil;
-import org.springframework.core.annotation.OrderUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -41,10 +39,6 @@ public class ManagerPost {
           String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
           try {
             switch (postUrl.get("cn")) {
-              case "car_loan":
-                cn = "dd_icbc_materials";
-                dbCtrl = (DbCtrl) new CarLoan();
-                break;
               case "sys_config"://业务板块
                 dbCtrl = (DbCtrl) new Sys_config();
                 break;
@@ -77,17 +71,6 @@ public class ManagerPost {
                 break;
               case "qcpg":
                 dbCtrl = (DbCtrl) new qcpg();
-              case "zxcx": // 征信添加 erp添加
-                dbCtrl = (DbCtrl) new zxcx();
-                zxcx zxcx=new zxcx();
-                try {
-                  zxcx.addicbc_erp_zx(post,id);
-                }catch (Exception e){
-                  Tools.logError(e.getMessage(), true, false);
-                  Tools.formatResult(result2, false, 0, e.getMessage(), nextUrl);
-                }finally {
-                  zxcx.closeConn();
-                }
                 break;
               default:
             }
