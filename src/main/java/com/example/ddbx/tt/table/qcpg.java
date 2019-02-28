@@ -2,11 +2,13 @@ package com.example.ddbx.tt.table;
 
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
-import com.example.ddbx.tt.tool.Config;
-import com.example.ddbx.tt.tool.DbCtrl;
-import com.example.ddbx.tt.tool.Tools;
+import com.example.ddbx.tt.tool.*;
+import org.apache.commons.lang.StringUtils;
+import org.apache.poi.util.StringUtil;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class qcpg extends DbCtrl {
 
@@ -18,7 +20,7 @@ public class qcpg extends DbCtrl {
     public boolean agpOK = false;// 默认无权限
 
     public qcpg() {
-        super("dd_icbc");
+        super("dd_icbc_materials");
         AdminAgp adminAgp = new AdminAgp();
         try {
             if (adminAgp.checkAgp(classAgpId)) { // 如果有权限
@@ -35,15 +37,109 @@ public class qcpg extends DbCtrl {
         }
     }
 
+    //视频面签进件 查询全部征信订单并选择一个进件
+    public TtList selectAllOrderName(){
+        DbTools myDbTools = new DbTools();
+        String sql="select id,c_name from dd_icbc";
+        TtList allCustomer = null;
+        try {
+            allCustomer = myDbTools.reclist(sql);
+            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+        }catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        }finally {
+            myDbTools.closeConn();
+        }
+        return allCustomer;
+    }
+
+    @Override
+    public long add(TtMap ary) {
+
+        DbTools myDbTools = new DbTools();
+        String sql="select id,gems_fs_id,gems_id,order_code,c_name,c_tel,c_cardno from dd_icbc where id="+ary.get("icbc_id");
+        TtMap ontCustomer = null;
+        try {
+            ontCustomer = myDbTools.recinfo(sql);
+            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+        }catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        }finally {
+            myDbTools.closeConn();
+        }
+
+        // 其他表添加数据
+        DbCtrl dbCtrl = new DbCtrl("dd_icbc_erp");
+        TtMap ttMap = new TtMap();
+        ttMap.put("c_name", ontCustomer.get("c_name"));
+        ttMap.put("c_tel", ontCustomer.get("c_tel"));
+        ttMap.put("later_status", "7");
+        ttMap.put("now_status", "6");
+        ttMap.put("order_id", ontCustomer.get("id"));
+        ttMap.put("gems_id", ontCustomer.get("gems_id"));
+        ttMap.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
+        ttMap.put("type_id", "2");
+        ttMap.put("c_cardno", ontCustomer.get("c_cardno"));
+//        ttMap.put("c_carvin", ontCustomer.get(""));
+        ttMap.put("c_carno", ary.get("license_plate"));
+        ttMap.put("adminop_tag", Tools.minfo().get("id"));
+
+        dbCtrl.add(ttMap);
+        dbCtrl.closeConn();
+
+        DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
+        TtMap ttMap2 = new TtMap();
+        ttMap2.put("now_status", "6");
+        ttMap2.put("later_status", "7");
+        ttMap2.put("type_id", "2");
+        ttMap2.put("order_id", ontCustomer.get("id"));
+
+        dbCtrl2.add(ttMap2);
+        dbCtrl2.closeConn();
+
+        // 本表操作添加数据
+        ary.put("order_id",ontCustomer.get("id"));
+        ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
+        ary.put("gems_id",ontCustomer.get("gems_id"));
+        DecimalFormat countFormat = new DecimalFormat("000000000");
+        ary.put("order_code","Q"+countFormat.format(Integer.parseInt(ontCustomer.get("id"))));
+
+        String models = "";
+        if (StringUtils.isNotEmpty(ary.get("models1")) && StringUtils.isNotEmpty(ary.get("models2")) && StringUtils.isNotEmpty(ary.get("models3"))){
+            models = ary.get("models1")+" "+ary.get("models2")+ " "+ary.get("models1");
+        }
+        ary.put("models", models);
+
+        String imgstep1_1qp = "imgstep1_1ss1" + ":" + ary.get("imgstep1_1ss1") + ","
+                            + "imgstep1_1ss2" + ":" + ary.get("imgstep1_1ss2") + ","
+                            + "imgstep1_1ss3" + ":" + ary.get("imgstep1_1ss3") + ","
+                            + "imgstep1_1ss4" + ":" + ary.get("imgstep1_1ss4") + ","
+                            + "imgstep1_1ss5" + ":" + ary.get("imgstep1_1ss5");
+        ary.put("imgstep1_1qp", imgstep1_1qp);
+
+        String imgstep1_2qp = "imgstep1_2ss1" + ":" + ary.get("imgstep1_2ss1") + ","
+                            + "imgstep1_2ss2" + ":" + ary.get("imgstep1_2ss2") + ","
+                            + "imgstep1_2ss3" + ":" + ary.get("imgstep1_2ss3") + ","
+                            + "imgstep1_2ss4" + ":" + ary.get("imgstep1_2ss4") + ","
+                            + "imgstep1_2ss5" + ":" + ary.get("imgstep1_2ss5") + ","
+                            + "imgstep1_2ss6" + ":" + ary.get("imgstep1_2ss6") + ","
+                            + "imgstep1_2ss7" + ":" + ary.get("imgstep1_2ss7") + ","
+                            + "imgstep1_2ss8" + ":" + ary.get("imgstep1_2ss8") + ","
+                            + "imgstep1_2ss9" + ":" + ary.get("imgstep1_2ss9") + ","
+                            + "imgstep1_2ss10" + ":" + ary.get("imgstep1_2ss10");
+        ary.put("imgstep1_2qp", imgstep1_2qp);
+
+        return super.add(ary);
+    }
+
+
     @Override
     public void setTable(String table) {
         super.setTable(table);
     }
 
 
-    //list 处理
     public void doGetList(HttpServletRequest request, TtMap post) {
-        System.out.println("查询list");
         if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
             request.setAttribute("errorMsg", errorMsg);
             return;
@@ -59,9 +155,8 @@ public class qcpg extends DbCtrl {
         /* 开始处理搜索过来的字段 */
         kw = post.get("kw");
         dtbe = post.get("dtbe");
-
         if (Tools.myIsNull(kw) == false) {
-            whereString += " AND c_name like '%" + kw + "%'";
+            whereString += " AND name like '%" + kw + "%'";
         }
         if (Tools.myIsNull(dtbe) == false) {
             dtbe = dtbe.replace("%2f", "-").replace("+", "");
@@ -73,35 +168,121 @@ public class qcpg extends DbCtrl {
         }
         /* 搜索过来的字段处理完成 */
 
-        System.out.println("查询list");
-
+        // 导出到Excel处理
+        boolean bToExcel = false, toZip = false;
+        if (!Tools.myIsNull(post.get("toExcel")) && post.get("toExcel").equals("1")) {// 导出excel时设置不分页，导出所有
+            nopage = true;
+            bToExcel = true;
+        }
+        if (!Tools.myIsNull(post.get("toZip")) && post.get("toZip").equals("1")) {// 导出excel时设置不分页，导出所有
+            nopage = true;
+            toZip = true;
+        }
         whereString += tmpWhere; // 过滤
         orders = orderString;// 排序
         p = pageInt; // 显示页
         limit = limtInt; // 每页显示记录数
         showall = true; // 忽略deltag和showtag
         list = lists(whereString, fieldsString);
-
-        if (!Tools.myIsNull(kw)) { // 搜索关键字高亮
-            for (TtMap info : list) {
-                info.put("c_name",
-                        info.get("c_name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
+        if (bToExcel) { // Excel导出演示：导出到Excel并下载
+            String[] headers = new String[] { "管理员名称", "密码MD5", "用户名" };
+            String[] fields = new String[] { "name", "password", "username" };
+            String toFile = Config.FILEUP_SAVEPATH + "excel/" + title + ".xlsx";
+            closeConn();// 因为要跳到下载，所以要提前closeConn
+            if (!Excel.doOut(list, headers, fields, toFile, "excel2007", true)) {
+                errorMsg = "导出Excel失败";
+                request.setAttribute("errorMsg", errorMsg);
             }
-        }else{
-            //获取其他表字段处理 TODO
+        } else if (toZip) { // ZIP打包演示：打包头像图片到zip并下载
+            TtMap info = new TtMap();
+            for (TtMap mss : list) {
+                if (!Tools.myIsNull(mss.get("avatarurl"))) {
+                    info.put(mss.get("name"), mss.get("avatarurl"));
+                }
+            }
+            try {
+                closeConn();// 因为要跳到下载，所以要提前closeConn
+                if (!Zip.imgsToZipDown(info, title + ".zip", null)) {
+                    errorMsg = "导出ZIP失败!";
+                    request.setAttribute("errorMsg", errorMsg);
+                }
+            } catch (IOException e) {
+
+                errorMsg = "导出ZIP失败:" + e.getMessage();
+                request.setAttribute("errorMsg", errorMsg);
+                if (Config.DEBUGMODE) {
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            if (!Tools.myIsNull(kw)) { // 搜索关键字高亮
+                for (TtMap info : list) {
+                    info.put("name",
+                            info.get("name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
+                }
+            }
+            request.setAttribute("list", list);// 列表list数据
+            request.setAttribute("recs", recs); // 总记录数
+            String htmlpages = getPage("", 0, false); // 分页html代码,
+            request.setAttribute("pages", pages); // 总页数
+            request.setAttribute("p", pageInt); // 当前页码
+            request.setAttribute("l", limtInt); // limit量
+            request.setAttribute("lsitTitleString", title); // 标题
+            request.setAttribute("htmlpages", htmlpages); // 分页的html代码
+            request.setAttribute("canDel", canDel); // 是否显示删除按钮
+            request.setAttribute("canAdd", canAdd); // 是否显示新增按钮
+        }
+        // request.setAttribute("showmsg", "测试弹出消息提示哈！"); //如果有showmsg字段，在载入列表前会提示
+    }
+
+    @Override
+    public void doPost(TtMap post, long id,TtMap result2) {
+        if (id > 0) { // id为0时，新增
+            edit(post, id);
+        } else {
+            add(post);
+        }
+        String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
+        boolean bSuccess = errorCode == 0;
+        Tools.formatResult(result2, bSuccess, errorCode, bSuccess ? "编辑"+title+"成功！" : errorMsg,
+                bSuccess ? nextUrl : "");//失败时停留在当前页面,nextUrl为空
+    }
+
+    /**
+     * @description: 重载lists方法，这里可以处理一些lists前的逻辑
+     * @param {type}
+     * @return:
+     */
+    @Override
+    public TtList lists(String wheres, String f){
+        if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
+            return null;
+        }
+        TtMap minfo = Tools.minfo();
+        if (Tools.myIsNull(wheres)) {
+            wheres = (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)) ? "" : " gems_fs_id=" + minfo.get("gems_fs_id"); // 只显示自己公司的
+        } else {
+            wheres += (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)) ? "" : " AND gems_fs_id=" + minfo.get("gems_fs_id"); // 只显示自己公司的
+        }
+
+        TtList lmss = super.lists(wheres, f);
+        for (TtMap tmpInfo : lmss) {
+            tmpInfo.put("fsname", Tools.unDic("dd_fs", Tools.strToLong(tmpInfo.get("gems_fs_id"))));// 所属公司
+            tmpInfo.put("c_name", Tools.unDic("dd_icbc", tmpInfo.get("order_id"), "c_name", "id"));// 所属公司
+            tmpInfo.put("order_id", Tools.unDic("dd_icbc", tmpInfo.get("order_id"), "order_code", "id"));// 所属公司
 
         }
-        request.setAttribute("list", list);// 列表list数据
-        request.setAttribute("recs", recs); // 总记录数
-        String htmlpages = getPage("", 0, false); // 分页html代码,
-        request.setAttribute("pages", pages); // 总页数
-        request.setAttribute("p", pageInt); // 当前页码
-        request.setAttribute("l", limtInt); // limit量
-        request.setAttribute("lsitTitleString", title); // 标题
-        request.setAttribute("htmlpages", htmlpages); // 分页的html代码
-        request.setAttribute("canDel", canDel); // 是否显示删除按钮
-        request.setAttribute("canAdd", canAdd); // 是否显示新增按钮
-        // request.setAttribute("showmsg", "测试弹出消息提示哈！"); //如果有showmsg字段，在载入列表前会提示
+        return lmss;
+    }
+
+    /**
+     * @description: 重载edit方法，可以在这里处理一些edit逻辑
+     * @param {type}
+     * @return:
+     */
+    @Override
+    public int edit(TtMap ary, long id) {
+        return super.edit(ary, id);
     }
 
     @Override

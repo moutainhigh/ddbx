@@ -20,55 +20,55 @@
 </head>
 <body>
 <div class="navbar">
-  <div class="navbar-inner">
-    <a class="brand" href="#">Title</a>
-    <ul class="nav">
-      <li class="active"><a href="#">首页</a></li>
-      <li><a href="#">Link</a></li>
-      <li><a href="#">Link</a></li>
-    </ul>
-  </div>
+    <div class="navbar-inner">
+        <a class="brand" href="#">Title</a>
+        <ul class="nav">
+            <li class="active"><a href="#">首页</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+        </ul>
+    </div>
 </div>
 <h1>Hello, world!</h1>
-    <p>
-      <button class="btn btn-large btn-primary" type="button">Large button</button>
-      <button class="btn btn-large" type="button">Large button</button>
-    </p>
-    <p>
-      <button class="btn btn-primary" type="button">Default button</button>
-      <button class="btn" type="button">Default button</button>
-    </p>
-    <p>
-      <button class="btn btn-small btn-primary" type="button">Small button</button>
-      <button class="btn btn-small" type="button">Small button</button>
-    </p>
-    <p>
-      <button class="btn btn-mini btn-primary" type="button">Mini button</button>
-      <button class="btn btn-mini" type="button">Mini button</button>
-    </p>
-    <div class="control-group error">
-      <label class="control-label" for="inputError">Input with error</label>
-      <div class="controls">
+<p>
+    <button class="btn btn-large btn-primary" type="button">Large button</button>
+    <button class="btn btn-large" type="button">Large button</button>
+</p>
+<p>
+    <button class="btn btn-primary" type="button">Default button</button>
+    <button class="btn" type="button">Default button</button>
+</p>
+<p>
+    <button class="btn btn-small btn-primary" type="button">Small button</button>
+    <button class="btn btn-small" type="button">Small button</button>
+</p>
+<p>
+    <button class="btn btn-mini btn-primary" type="button">Mini button</button>
+    <button class="btn btn-mini" type="button">Mini button</button>
+</p>
+<div class="control-group error">
+    <label class="control-label" for="inputError">Input with error</label>
+    <div class="controls">
         <input type="text" id="inputError">
         <span class="help-inline">Please correct the error</span>
-      </div>
     </div>
-     
-    <div class="control-group info">
-      <label class="control-label" for="inputInfo">Input with info</label>
-      <div class="controls">
+</div>
+
+<div class="control-group info">
+    <label class="control-label" for="inputInfo">Input with info</label>
+    <div class="controls">
         <input type="text" id="inputInfo">
         <span class="help-inline">Username is already taken</span>
-      </div>
     </div>
-     
-    <div class="control-group success">
-      <label class="control-label" for="inputSuccess">Input with success</label>
-      <div class="controls">
+</div>
+
+<div class="control-group success">
+    <label class="control-label" for="inputSuccess">Input with success</label>
+    <div class="controls">
         <input type="text" id="inputSuccess">
         <span class="help-inline">Woohoo!</span>
-      </div>
     </div>
+</div>
 </body>
 </html>
 

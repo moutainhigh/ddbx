@@ -1,13 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ page import="com.example.ddbx.tt.tool.JspTools" %>
+
 <form id="info_form" action="<%=Tools.urlKill("id")%>" class="form-horizontal" method="post" enctype="multipart/form-data">
 	<input type="hidden" id="id" name="id" value="${id }" />
 	<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper fixed-footer">
 		<!-- Main content -->
-		<section class="content">
+		<section class="content" id="pro_show">
 			<%
+				System.out.println("来啦老弟！！！！");
 				String errorMsg =(String) request.getAttribute("errorMsg");
 				if (!Tools.myIsNull(errorMsg)){
 					JspTools.alert(errorMsg,"404",out);

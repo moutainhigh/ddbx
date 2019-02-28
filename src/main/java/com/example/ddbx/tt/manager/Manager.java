@@ -33,17 +33,21 @@ import java.util.Map;
 public class Manager {
   /**
    * INDEX 的 GET处理
-   * 
+   *
    * @return
    * @throws IOException
    * @throws ServletException
    */
   @RequestMapping(value = "/manager/index", method = RequestMethod.GET)
   public String index(String cn, String type, String sdo, String id, HttpServletRequest request,
-      HttpServletResponse resp) throws ServletException, IOException {
+                      HttpServletResponse resp) throws ServletException, IOException {
     String sLogin = ManagerTools.checkLogin();// 检查是否登陆
     if (!Tools.myIsNull(sLogin)) {// 如未登陆跳转到登陆页面
-      return sLogin + "?refer=" + URLEncoder.encode(Tools.urlKill("toExcel|toZip"), "UTF-8");
+      String newUrl = URLEncoder.encode(Tools.urlKill("toExcel|toZip"), "UTF-8");
+      if (Tools.getRighStr( newUrl,3).equals("%3F")){//?号
+        newUrl = Tools.trimRight(newUrl, 3);
+      }
+      return sLogin + "?refer=" + newUrl;
     }
     return new ManagerGet().doGet(cn, type, sdo, id, request, resp);
   }
@@ -63,7 +67,7 @@ public class Manager {
     if (!Tools.myIsNull(sLogin)) {// 如未登陆跳转到登陆页面
       return sLogin + "?refer=" + URLEncoder.encode(Tools.urlKill(""), "UTF-8");
     }
-    return Tools.jsonEnCode(new ManagerPost().doPost(request));
+    return Tools.jsonEncode(new ManagerPost().doPost(request));
   }
 
   /**
@@ -89,7 +93,7 @@ public class Manager {
     TtMap post = Tools.getPostMap(request);// 过滤参数，过滤mysql的注入，url参数注入
     String refer = post.get("refer");
     String loginTb = Config.DB_USERTABLENAME;
-    System.out.println(Tools.jsonEnCode(post));
+    System.out.println(Tools.jsonEncode(post));
     TtMap result2 = new TtMap();
     Tools.formatResult(result2, false, 999, "异常，请重试！", "");// 初始化返回
     if (ManagerTools.checkSdo(post.get("sdo"))) {// 过滤掉sdo
@@ -117,7 +121,7 @@ public class Manager {
         break;
       }
     }
-    return Tools.jsonEnCode(result2);
+    return Tools.jsonEncode(result2);
   }
 
   /**

@@ -1,34 +1,21 @@
-<!--
-* @Description: 后台登陆页面，简单演示
-* @Author: tt
-* @Date: 2019-01-10 10:54:21
-* @LastEditTime: 2019-01-16 13:45:29
-* @LastEditors: tt
--->
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page import="java.util.*" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
+<%@ page import="com.example.ddbx.tt.tool.Config" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="Tools" uri="/tld/manager" %>
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>系统后台管理-登入</title>
+    <title><%=Config.APP_TITLE%>后台管理-登入</title>
     <meta name="format-detection" content="telephone=no, email=no" />
-    <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.4 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- Font Awesome Icons -->
     <link href="icon/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
     <link href="dist/css/AdminLTE.css" rel="stylesheet" type="text/css" />
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-              page. However, you can choose any other skin. Make sure you
-              apply the skin class to the body tag so the changes take effect.
-        -->
     <link href="dist/css/skins/${cssName}.css?ver=2" rel="stylesheet" type="text/css" />
     <link href="dist/css/style.css" rel="stylesheet" type="text/css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -70,7 +57,7 @@ desired effect
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">登录后台管理系统</p>
+        <p class="login-box-msg">登录<%=Config.APP_TITLE%>系统</p>
         <form id="loginform">
             <input type="hidden" name="sdo" value="login">
             <div class="form-group has-feedback">
@@ -78,7 +65,7 @@ desired effect
                 <span class="fa fa-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="" name="password" />
+                <input type="password" class="form-control" placeholder="密码" name="password" />
                 <span class="fa fa-lock form-control-feedback"></span>
             </div>
             <div class="row">

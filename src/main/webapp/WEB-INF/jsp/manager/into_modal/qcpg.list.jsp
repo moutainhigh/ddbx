@@ -40,13 +40,13 @@
 							<c:forEach items="${list}" var="u" varStatus="num">
 								<tr role="row" class="odd">
 									<td class="text-center">
-										${u.order_code}
+										${u.order_id}
 									</td>
 									<td class="text-center">
 										${u.c_name}
 									</td>
 									<td class="text-center">
-
+										${u.fsname}
 									</td>
 									<td class="hidden-xs text-center">
 											${u.dt_add}<br>${u.dt_edit}
