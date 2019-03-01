@@ -1351,3 +1351,112 @@ An error occurred at line: [388] in the generated java file: [C:\Users\86176\App
 _jspx_page_context cannot be resolved to a variable
 
 Stacktrace:
+2019-03-01 09:55:29  [ http-nio-8092-exec-6:302075 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 09:55:37  [ http-nio-8092-exec-6:309473 ] - [ ERROR ]  Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+2019-03-01 09:55:37  [ http-nio-8092-exec-6:309486 ] - [ ERROR ]  Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+2019-03-01 09:58:31  [ http-nio-8092-exec-5:483693 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 09:58:38  [ http-nio-8092-exec-5:490721 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:04:07  [ http-nio-8092-exec-9:4422 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:04:14  [ http-nio-8092-exec-2:10915 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:04:19  [ http-nio-8092-exec-6:15780 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:04:19  [ http-nio-8092-exec-3:16480 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:04:21  [ http-nio-8092-exec-4:18174 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:04:26  [ http-nio-8092-exec-5:23510 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:04:27  [ http-nio-8092-exec-2:24244 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:09:14  [ http-nio-8092-exec-2:452 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:09:17  [ http-nio-8092-exec-10:3075 ] - [ ERROR ]  Tools.logError:http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dcar_loan%26type%3Dinto_modal%26sdo%3Dform%26id%3D1:An exception occurred processing [/WEB-INF/jsp/manager/into_modal/car_loan.form.jsp] at line [19]
+
+16:         </div>
+17:         <%
+18:             TtMap infodb = (TtMap) request.getAttribute("infodb");
+19:             TtMap minfo = (TtMap) request.getAttribute("info");
+20:             long id_uplevel = 0;
+21:             if (!Tools.myIsNull(infodb.get("id_uplevel"))) {
+22:                 id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
+
+
+Stacktrace:
+2019-03-01 10:09:56  [ http-nio-8092-exec-6:4692 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:10:03  [ http-nio-8092-exec-2:11651 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:10:09  [ http-nio-8092-exec-6:17272 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:10:15  [ http-nio-8092-exec-8:23534 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:10:19  [ http-nio-8092-exec-4:27731 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:10:27  [ http-nio-8092-exec-3:35570 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:10:27  [ http-nio-8092-exec-3:35582 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:10:34  [ http-nio-8092-exec-6:42275 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:10:34  [ http-nio-8092-exec-6:42283 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:25:08  [ http-nio-8092-exec-7:32452 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:25:08  [ http-nio-8092-exec-7:32467 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:25:15  [ http-nio-8092-exec-8:39697 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:25:15  [ http-nio-8092-exec-8:39705 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:25:31  [ http-nio-8092-exec-3:55299 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:25:31  [ http-nio-8092-exec-3:55309 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:25:31  [ http-nio-8092-exec-3:55319 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:27:07  [ http-nio-8092-exec-9:2451 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:27:07  [ http-nio-8092-exec-9:2464 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:27:07  [ http-nio-8092-exec-9:2479 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:27:14  [ http-nio-8092-exec-8:9980 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:27:14  [ http-nio-8092-exec-8:9993 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:27:14  [ http-nio-8092-exec-8:10005 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:27:14  [ http-nio-8092-exec-8:10017 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:27:20  [ http-nio-8092-exec-1:15580 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:27:20  [ http-nio-8092-exec-1:15592 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:27:20  [ http-nio-8092-exec-1:15605 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:27:20  [ http-nio-8092-exec-1:15615 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:42:33  [ http-nio-8092-exec-4:928429 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:42:33  [ http-nio-8092-exec-4:928438 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:42:33  [ http-nio-8092-exec-4:928448 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:42:33  [ http-nio-8092-exec-4:928460 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:42:39  [ http-nio-8092-exec-8:934710 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:42:39  [ http-nio-8092-exec-8:934719 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:42:39  [ http-nio-8092-exec-8:934731 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 10:42:39  [ http-nio-8092-exec-8:934741 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 11:28:55  [ http-nio-8092-exec-10:3710539 ] - [ ERROR ]  Tools.logError:http%3A%2F%2F127.0.0.1%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D16%26type_id%3D5%26icbc_id%3D1:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-01 11:29:12  [ http-nio-8092-exec-3:3727557 ] - [ ERROR ]  Tools.logError:For input string: "475"
+2019-03-01 11:29:15  [ http-nio-8092-exec-8:3730688 ] - [ ERROR ]  Tools.logError:For input string: "475"
+2019-03-01 15:33:35  [ http-nio-8092-exec-6:2811 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:33:35  [ http-nio-8092-exec-6:2826 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:33:35  [ http-nio-8092-exec-6:2835 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:33:35  [ http-nio-8092-exec-6:2848 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:33:58  [ http-nio-8092-exec-4:25951 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:33:58  [ http-nio-8092-exec-4:25962 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:33:58  [ http-nio-8092-exec-4:25974 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:33:58  [ http-nio-8092-exec-4:25986 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:33:58  [ http-nio-8092-exec-4:25997 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:53  [ http-nio-8092-exec-1:320917 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:53  [ http-nio-8092-exec-1:320927 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:53  [ http-nio-8092-exec-1:320938 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:53  [ http-nio-8092-exec-1:320951 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:53  [ http-nio-8092-exec-1:320962 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:54  [ http-nio-8092-exec-2:321810 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:54  [ http-nio-8092-exec-2:321822 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:54  [ http-nio-8092-exec-2:321836 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:54  [ http-nio-8092-exec-2:321848 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:54  [ http-nio-8092-exec-2:321858 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:55  [ http-nio-8092-exec-6:323646 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:55  [ http-nio-8092-exec-6:323657 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:55  [ http-nio-8092-exec-6:323669 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:56  [ http-nio-8092-exec-6:323683 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:56  [ http-nio-8092-exec-6:323694 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:56  [ http-nio-8092-exec-5:324426 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:56  [ http-nio-8092-exec-5:324439 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:56  [ http-nio-8092-exec-5:324451 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:56  [ http-nio-8092-exec-5:324462 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:38:56  [ http-nio-8092-exec-5:324474 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:39:05  [ http-nio-8092-exec-8:333400 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:39:05  [ http-nio-8092-exec-8:333408 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:39:05  [ http-nio-8092-exec-8:333419 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:39:05  [ http-nio-8092-exec-8:333428 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:39:05  [ http-nio-8092-exec-8:333440 ] - [ ERROR ]  Tools.logError:null
+2019-03-01 15:39:05  [ http-nio-8092-exec-8:333451 ] - [ ERROR ]  Tools.logError:null
