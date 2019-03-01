@@ -45,7 +45,7 @@
 										${u.c_name}
 									</td>
 									<td class="text-center">
-
+										${u.fsname}
 									</td>
 									<td class="hidden-xs text-center">
 											${u.dt_add}<br>${u.dt_edit}
@@ -73,8 +73,8 @@
 <script>
 	//删除操作
 	function del(url,id) {
-		url=url.replace('&id=','').replace("form","list");
-		//alert(url);
+		//url=url.replace('&id=','').replace("form","list");
+		alert(url);
 		//定义变量sendData
 		var sendData ={
 			id:id,

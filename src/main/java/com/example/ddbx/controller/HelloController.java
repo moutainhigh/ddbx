@@ -220,7 +220,7 @@ public class HelloController {
         System.out.println(mps.size());
         System.out.println(mps.get("success"));
         // response.sendRedirect();
-        return Tools.jsonEnCode(mps);
+        return Tools.jsonEncode(mps);
     }
 
     public static String testDbCtrl(String arg) {

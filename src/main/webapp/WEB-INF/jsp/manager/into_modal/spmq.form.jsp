@@ -64,7 +64,7 @@
                                     <jsp:param name="img_MarginImgSrc" value=""/>
                                     <jsp:param name="img_MarginImgClass" value=""/>
                                     <jsp:param name="img_Total" value="1"/>
-                                    <jsp:param name="img_NamePre" value="imgstep1_1ss"/>
+                                    <jsp:param name="img_NamePre" value="videostep1"/>
                                     <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                     <jsp:param name="l1div_Style"
                                                value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
@@ -100,7 +100,24 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">选择进件客户</label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">客户名字</span>
+                                <select class="form-control" id="icbc_id" name="icbc_id">
+                                    <option value="0" selected="selected">请选择</option>
+                                    <c:forEach items="${names}" var="s" varStatus="num">
+                                        <option value="${s.id}">${s.c_name}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
