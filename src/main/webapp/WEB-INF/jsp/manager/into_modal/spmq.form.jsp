@@ -6,6 +6,7 @@
 <%
     TtMap infodb = (TtMap) request.getAttribute("infodb");
     TtMap minfo = (TtMap) request.getAttribute("minfo");
+    String c_name = (String) request.getAttribute("c_name");
     long id_uplevel = 0;
     if (!Tools.myIsNull(infodb.get("id_uplevel"))) {
         id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
@@ -29,7 +30,7 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-addon">客户姓名</span>
-                                <input type="text" class="form-control" id="c_name" name="c_name" placeholder="">
+                                <input type="text" class="form-control" id="c_name" name="c_name" value="<%=c_name%>" placeholder="">
                             </div>
                         </div>
                     </div>
@@ -50,7 +51,7 @@
                             <div class="row inline-from" style="position:absolute;top:375px;">
                                 <%
                                     String upFile1 = "../upfile.inc.jsp";
-                                    String imgPreName1 = "imgstep1_1ss";
+                                    String imgPreName1 = "videostep1";
                                     String[] ssImgs1 = { //设置已有值
                                             !Tools.myIsNull(infodb.get(imgPreName1)) ? infodb.get(imgPreName1) : ""
                                     };

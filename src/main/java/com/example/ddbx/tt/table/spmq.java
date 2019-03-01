@@ -72,7 +72,6 @@ public class spmq extends DbCtrl {
         DbCtrl dbCtrl1 = new DbCtrl("dd_icbc_erp");
         TtMap ttMap1 = new TtMap();
         ttMap1.put("c_name",ary.get("c_name"));
-        ttMap1.put("icbc_id",ontCustomer.get("id"));
         ttMap1.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
         ttMap1.put("gems_id",ontCustomer.get("gems_id"));
         ttMap1.put("order_id",ary.get("icbc_id"));
@@ -96,7 +95,7 @@ public class spmq extends DbCtrl {
         dbCtrl2.closeConn();
 
         // 本表操作添加数据
-        //ary.put("order_id",ontCustomer.get("id"));
+        ary.put("order_id",ary.get("icbc_id"));
         ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
         ary.put("gems_id",ontCustomer.get("gems_id"));
         DecimalFormat countFormat = new DecimalFormat("000000000");
@@ -110,7 +109,32 @@ public class spmq extends DbCtrl {
     public void setTable(String table) {
         super.setTable(table);
     }
+    @Override
+    public void doGetForm(HttpServletRequest request, TtMap post) {
+        spmq spmq = new spmq();
+        TtList getAllOrderName1 = spmq.selectAllOrderName();
+        request.setAttribute("names",getAllOrderName1);
+        DbTools myDbTools=new DbTools();
+        String sql="select die.c_name from dd_icbc_materials dim,dd_icbc_erp die where dim.order_id=die.order_id and dim.id"+post.get("icbc_id");
+        TtMap ontCustomer = null;
+        try {
+            ontCustomer = myDbTools.recinfo(sql);
+            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+        }catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        }finally {
+            myDbTools.closeConn();
+        }
 
+        long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
+        TtMap info = info(nid);
+        String jsonInfo = Tools.jsonEncode(info);
+        long c_name=Long.parseLong(ontCustomer.get("c_name"));
+        request.setAttribute("info", jsonInfo);//info为json后的info
+        request.setAttribute("infodb", info);//infodb为TtMap的info
+        request.setAttribute("c_name", c_name);
+        request.setAttribute("id", nid);
+    }
 
     //list 处理
     @Override

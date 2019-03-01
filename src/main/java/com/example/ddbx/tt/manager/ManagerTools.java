@@ -46,6 +46,7 @@ public class ManagerTools {
                 "sys_error",
                 "fs",
                 "gems",
+                "spmq",
                 "dd_icbc",
                 "alltask", "zxcx","spmq",
 
@@ -116,6 +117,8 @@ public class ManagerTools {
                 return "zx_1";
             case "zxcx":
                 return "zxcx";
+            case "spmq":
+                return "spmq";
             // 不需要使用数据库的CN
             case "home":
             case "button":

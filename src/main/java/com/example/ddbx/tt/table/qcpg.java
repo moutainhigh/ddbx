@@ -278,9 +278,8 @@ public class qcpg extends DbCtrl {
         TtList lmss = super.lists(wheres, f);
         for (TtMap tmpInfo : lmss) {
             tmpInfo.put("fsname", Tools.unDic("dd_fs", Tools.strToLong(tmpInfo.get("gems_fs_id"))));// 所属公司
-            tmpInfo.put("c_name", Tools.unDic("dd_icbc", tmpInfo.get("order_id"), "c_name", "id"));// 所属公司
-            tmpInfo.put("order_id", Tools.unDic("dd_icbc", tmpInfo.get("order_id"), "order_code", "id"));// 所属公司
-
+            tmpInfo.put("c_name", Tools.unDic("dd_icbc", tmpInfo.get("icbc_id"), "c_name", "id"));// 所属公司
+            tmpInfo.put("order_id", Tools.unDic("dd_icbc_materials", tmpInfo.get("icbc_id"), "order_code", "id"));// 所属公司
         }
         return lmss;
     }
@@ -294,6 +293,22 @@ public class qcpg extends DbCtrl {
     public int edit(TtMap ary, long id) {
         return super.edit(ary, id);
 
+    }
+
+    @Override
+    public void doGetForm(HttpServletRequest request, TtMap post) {
+
+        //查询进件客户列表
+        qcpg qcpg = new qcpg();
+        TtList getAllOrderName1 = qcpg.selectAllOrderName();
+        request.setAttribute("names",getAllOrderName1);
+
+        long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
+        TtMap info = info(nid);
+        String jsonInfo = Tools.jsonEncode(info);
+        request.setAttribute("info", jsonInfo);//info为json后的info
+        request.setAttribute("infodb", info);//infodb为TtMap的info
+        request.setAttribute("id", nid);
     }
 
     @Override
