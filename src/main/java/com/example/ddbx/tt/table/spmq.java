@@ -109,6 +109,7 @@ public class spmq extends DbCtrl {
     public void setTable(String table) {
         super.setTable(table);
     }
+
     @Override
     public void doGetForm(HttpServletRequest request, TtMap post) {
         spmq spmq = new spmq();
