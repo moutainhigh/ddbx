@@ -65,17 +65,6 @@ public class spmq extends DbCtrl {
             myDbTools.closeConn();
         }
 
-/*        DbTools myDbTools1=new DbTools();
-        String sql1="select c_tel,c_cardno from dd_icbc where order_id="+ary.get("icbc_id");
-        TtMap ontCustomer1 = null;
-        try {
-            ontCustomer1 = myDbTools1.recinfo(sql1);
-            recs = Long.parseLong(myDbTools1.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
-        }catch (Exception e) {
-            Tools.logError(e.getMessage(), true, false);
-        }finally {
-            myDbTools1.closeConn();
-        }*/
         //从dd_icbc表中查询出id,gems_fs_id,gems_id,order_code
 
 

@@ -24,7 +24,7 @@ import java.net.URLEncoder;
 public class ManagerCmd {
   /**
    * command模式的POST处理
-   * 
+   *
    * @param request
    * @return
    * @throws ServletException
@@ -46,27 +46,27 @@ public class ManagerCmd {
     if (ManagerTools.checkCn(cn) && ManagerTools.checkSdo(postUrl.get("sdo"))) {// 过滤掉cn
       post.put("fromcommand", "1");
       switch (postUrl.get("sdo")) { // 目前只有form模式下有post
-      case "edit":
-        long id = Tools.myIsNull(postUrl.get("id")) ? 0 : Tools.strToLong(postUrl.get("id"));
-        switch (cn) {
-        case "admin":
-          if (id > 0) {
-            Admin admin = new Admin();
-            try {
-              admin.edit(post, id);
-              boolean success = admin.errorCode == 0 && Tools.myIsNull(admin.errorMsg);
-              Tools.formatResult(result2, success, admin.errorCode, admin.errorMsg, "");
-            } catch (Exception e) {
-              Tools.logError(e.getMessage(),true,true);
-            } finally {
-              admin.closeConn();
-            }
+        case "edit":
+          long id = Tools.myIsNull(postUrl.get("id")) ? 0 : Tools.strToLong(postUrl.get("id"));
+          switch (cn) {
+            case "admin":
+              if (id > 0) {
+                Admin admin = new Admin();
+                try {
+                  admin.edit(post, id);
+                  boolean success = admin.errorCode == 0 && Tools.myIsNull(admin.errorMsg);
+                  Tools.formatResult(result2, success, admin.errorCode, admin.errorMsg, "");
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(),true,true);
+                } finally {
+                  admin.closeConn();
+                }
+              }
+              break;
           }
           break;
-        }
-        break;
-      default:
-        break;
+        default:
+          break;
       }
     }
     return Tools.jsonEncode(result2);
