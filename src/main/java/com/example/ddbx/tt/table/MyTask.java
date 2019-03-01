@@ -54,7 +54,7 @@ public class MyTask extends DbCtrl {
                 request.setAttribute("erplist", geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
             }
         }
-        request.setAttribute("icbc", geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
+        //request.setAttribute("icbc", geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
 
         long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
         TtMap info = info(nid);

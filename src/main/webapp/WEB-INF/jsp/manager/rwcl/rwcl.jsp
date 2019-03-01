@@ -80,79 +80,79 @@
     TtMap infodb = (TtMap) request.getAttribute("infodb");
     TtMap minfo = (TtMap) request.getAttribute("minfo");
 
-    DbTools dbTools=new DbTools();
-    String sql="select \n" +
-            "e.*,\n" +
-            "(select \n" +
-            "s2.name as now_name\n" +
-            "from \n" +
-            "(select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort) s1\n" +
-            "LEFT JOIN sys_modal s2 ON s2.id_uplevel=s1.id\n" +
-            "where s1.id=e.type_id and s2.sort=e.now_status) as now_name\n" +
-            "from dd_icbc_erp_result e where qryid="+infodb.get("id")+" and order_id="+infodb.get("order_id");
-    TtList list=new TtList();
-    try {
-        list=dbTools.reclist(sql);
-    }catch (Exception e) {
-        Tools.logError(e.getMessage(), true, false);
-    }finally {
-        dbTools.closeConn();
-    }
-
     String erp_msg="/WEB-INF/jsp/manager/rwcl/";
 %>
-
 <div class="tab-content">
     <div class="tab-pane active" id="zx">
         <div class="box-body">
-                <div class="modal-body flex-box" style="height: auto;">
-                    <div class="flex-row flex-row-rhcen">
-                        <em onclick="funUnfold()" class="text-muted">全部展开</em>
-                        <em onclick="funClose()" class="text-muted">全部收起</em>
-                    </div>
-                    <div class="flex-rowcen">
-                        <ol>
+            <div class="modal-body flex-box" style="height: auto;">
+                <div class="flex-row flex-row-rhcen">
+                    <em onclick="funUnfold()" class="text-muted">全部展开</em>
+                    <em onclick="funClose()" class="text-muted">全部收起</em>
+                </div>
+                <div class="flex-rowcen">
+                    <ol id="mochu">
                         <%
-                        for(TtMap ttMap : list){
-                            System.out.println(ttMap.get("now_name")+"------"+ttMap.get("now_status"));
-                            if(ttMap.get("type_id")!=null
-                                    &&!ttMap.get("type_id").equals("")
-                            &&ttMap.get("now_status")!=null
-                                    &&!ttMap.get("now_status").equals("")
-                            ){
-                             //   System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
-                            switch (ttMap.get("now_name")){
-                                case "开始":
-                                    erp_msg=erp_msg+"modal/begin.jsp";
-                                    break;
-                                case "提交查询":
-                                    erp_msg=erp_msg+"modal/submit.jsp";
-                                    break;
-                                case "完成":
-                                    erp_msg=erp_msg+"modal/end.jsp";
-                                    break;
-                                default :
-                                    erp_msg=erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp";
-                            }
+                            if(request.getAttribute("erplist")!=null&&!request.getAttribute("erplist").equals("")){
+                                TtList list= (TtList) request.getAttribute("erplist");
+                                if(list.size()>0){
+                                    for(TtMap ttMap : list){
+                                        System.out.println(ttMap.get("now_name")+"------"+ttMap.get("now_status"));
+                                        if(ttMap.get("type_id")!=null
+                                                &&!ttMap.get("type_id").equals("")
+                                                &&ttMap.get("now_status")!=null
+                                                &&!ttMap.get("now_status").equals("")
+                                        ){
+                                            System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+                                            switch (ttMap.get("now_name")){
+                                                case "开始":
+                                                    erp_msg=erp_msg+"modal/begin.jsp";
+                                                    break;
+                                                case "提交查询":
+                                                    erp_msg=erp_msg+"modal/submit.jsp";
+                                                    break;
+                                                case "完成":
+                                                    erp_msg=erp_msg+"modal/end.jsp";
+                                                    break;
+                                                default :
+                                                    erp_msg=erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp";
+                                            }
                         %>
                         <jsp:include page="<%=erp_msg%>"></jsp:include>
                         <%
-                            }
+                                }
                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
-                        }
-                        %>
-                        </ol>
-                    </div>
+                            }
 
-                    <div class="flex-row flex-row-rhcen">
-                        <em onclick="funUnfold()" class="text-muted">全部展开</em>
-                        <em onclick="funClose()" class="text-muted">全部收起</em>
-                    </div>
+                        }else{
+                        %>
+                        <jsp:include page="/WEB-INF/jsp/manager/rwcl/modal/null.jsp"></jsp:include>
+                        <%
+
+                            }
+                        }else{
+
+                        %>
+                        <jsp:include page="/WEB-INF/jsp/manager/rwcl/modal/null.jsp"></jsp:include>
+                        <%
+                            }
+                        %>
+                    </ol>
                 </div>
+
+                <div class="flex-row flex-row-rhcen">
+                    <em onclick="funUnfold()" class="text-muted">全部展开</em>
+                    <em onclick="funClose()" class="text-muted">全部收起</em>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <script>
+    // $(document).ready(function() {
+    //     $("#mochu").empty();
+    // });
+
     function showradio(id,value) {
         switch(value){
             case "1":

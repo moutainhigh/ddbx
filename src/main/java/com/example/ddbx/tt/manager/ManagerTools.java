@@ -48,6 +48,7 @@ public class ManagerTools {
                 "gems",
                 "dd_icbc",
                 "alltask", "zxcx","spmq",
+
                 "mytask", "sys_config", "sys_config_son"
         }; // 允许的cn,只有在列表中的cn才使用数据库，
         return Tools.arrayIndexOf(allowCnList, cn);
