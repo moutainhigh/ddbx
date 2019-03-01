@@ -116,8 +116,6 @@ public class ManagerTools {
                 return "zx_1";
             case "zxcx":
                 return "zxcx";
-            case "car_loan":
-                return "CarLoan";
             // 不需要使用数据库的CN
             case "home":
             case "button":
