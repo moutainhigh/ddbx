@@ -30,7 +30,7 @@
                         <div class="col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-addon">客户姓名</span>
-                                <input type="text" class="form-control" id="c_name" name="c_name" value="<%=c_name%>" placeholder="">
+                                <input type="text" class="form-control" id="c_name" name="c_name" value="<%=!Tools.myIsNull(c_name) ? c_name : ""%>" placeholder="">
                             </div>
                         </div>
                     </div>
