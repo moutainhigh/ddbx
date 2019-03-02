@@ -115,26 +115,38 @@ public class spmq extends DbCtrl {
         spmq spmq = new spmq();
         TtList getAllOrderName1 = spmq.selectAllOrderName();
         request.setAttribute("names",getAllOrderName1);
-        DbTools myDbTools=new DbTools();
-        String sql="select die.c_name from dd_icbc_materials dim,dd_icbc_erp die where dim.order_id=die.order_id and dim.id"+post.get("icbc_id");
-        TtMap ontCustomer = null;
-        try {
-            ontCustomer = myDbTools.recinfo(sql);
-            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
-        }catch (Exception e) {
-            Tools.logError(e.getMessage(), true, false);
-        }finally {
-            myDbTools.closeConn();
-        }
 
+        if(post.get("id") != null){
+            DbTools myDbTools=new DbTools();
+            String sql="select die.c_name from dd_icbc_materials dim,dd_icbc_erp die where dim.order_id=die.order_id and dim.id="+post.get("id");
+            TtMap ontCustomer = null;
+            try {
+                ontCustomer = myDbTools.recinfo(sql);
+                recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+            }catch (Exception e) {
+                Tools.logError(e.getMessage(), true, false);
+            }finally {
+                myDbTools.closeConn();
+            }
+            String c_name=ontCustomer.get("c_name");
+            request.setAttribute("c_name", c_name);
+        }
         long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
         TtMap info = info(nid);
         String jsonInfo = Tools.jsonEncode(info);
-        long c_name=Long.parseLong(ontCustomer.get("c_name"));
         request.setAttribute("info", jsonInfo);//info为json后的info
         request.setAttribute("infodb", info);//infodb为TtMap的info
-        request.setAttribute("c_name", c_name);
         request.setAttribute("id", nid);
+    }
+
+    @Override
+    public int edit(TtMap ary, long id) {
+        return super.edit(ary, id);
+    }
+
+    @Override
+    public boolean delete(long id, String deltag) {
+        return super.delete(id, deltag);
     }
 
     //list 处理
