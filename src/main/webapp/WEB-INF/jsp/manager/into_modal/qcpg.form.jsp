@@ -260,10 +260,11 @@
                                     <div class="row inline-from">
                                         <%
                                             String upFile1 = "../upfile.inc.jsp";
-                                            String imgPreName1 = "imgstep1_1ss";
+                                            String imgPreName1 = "imgstep1_1qp";
                                             String[] ssImgs1 = { //设置已有值
                                                     !Tools.myIsNull(infodb.get(imgPreName1)) ? infodb.get(imgPreName1) : ""
                                             };
+                                            ssImgs1 = ssImgs1[0].split(",");
                                             String sImgs1 = "";
                                             for (int i = 0; i < ssImgs1.length; i++) {
                                                 sImgs1 = sImgs1 + ssImgs1[i] + "|";
@@ -273,8 +274,8 @@
                                         <jsp:include page="<%=upFile1%>">
                                             <jsp:param name="img_MarginImgSrc" value=""/>
                                             <jsp:param name="img_MarginImgClass" value=""/>
-                                            <jsp:param name="img_Total" value="5"/>
-                                            <jsp:param name="img_NamePre" value="imgstep1_1ss"/>
+                                            <jsp:param name="img_Total" value="6"/>
+                                            <jsp:param name="img_NamePre" value="imgstep1_1qp"/>
                                             <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                             <jsp:param name="l1div_Style"
                                                        value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
@@ -298,10 +299,11 @@
                                     <div class="row inline-from">
                                         <%
                                             String upFile2 = "../upfile.inc.jsp";
-                                            String imgPreName2= "imgstep1_2ss";
+                                            String imgPreName2= "imgstep1_2qp";
                                             String[] ssImgs2 = { //设置已有值
                                                     !Tools.myIsNull(infodb.get(imgPreName2)) ? infodb.get(imgPreName2) : ""
                                             };
+                                            ssImgs2 = ssImgs2[0].split(",");
                                             String sImgs2 = "";
                                             for (int i = 0; i < ssImgs2.length; i++) {
                                                 sImgs2 = sImgs2 + ssImgs2[i] + "|";
@@ -312,7 +314,7 @@
                                             <jsp:param name="img_MarginImgSrc" value=""/>
                                             <jsp:param name="img_MarginImgClass" value=""/>
                                             <jsp:param name="img_Total" value="10"/>
-                                            <jsp:param name="img_NamePre" value="imgstep1_2ss"/>
+                                            <jsp:param name="img_NamePre" value="imgstep1_2qp"/>
                                             <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                             <jsp:param name="l1div_Style"
                                                        value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>

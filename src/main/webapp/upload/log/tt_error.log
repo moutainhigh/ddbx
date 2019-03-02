@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2019-02-28 09:12:13  [ http-nio-8092-exec-4:9594 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
 2019-02-28 09:14:13  [ http-nio-8092-exec-3:129945 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
 2019-02-28 09:14:45  [ http-nio-8092-exec-7:1042 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
@@ -1460,3 +1461,7 @@ Stacktrace:
 2019-03-01 15:39:05  [ http-nio-8092-exec-8:333428 ] - [ ERROR ]  Tools.logError:null
 2019-03-01 15:39:05  [ http-nio-8092-exec-8:333440 ] - [ ERROR ]  Tools.logError:null
 2019-03-01 15:39:05  [ http-nio-8092-exec-8:333451 ] - [ ERROR ]  Tools.logError:null
+=======
+2019-03-02 15:06:51  [ http-nio-8092-exec-4:1732243 ] - [ ERROR ]  Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+2019-03-02 15:06:51  [ http-nio-8092-exec-4:1732262 ] - [ ERROR ]  Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+>>>>>>> sxx

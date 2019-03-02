@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [09:12:13] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
 [09:14:13] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
 [09:14:45] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dhome%26type%3Ddemo%26sdo%3Dform:null
@@ -2372,3 +2373,7 @@ Stacktrace:
 [15:39:05] Config - Tools.logError:null
 [15:39:05] Config - Tools.logError:null
 [15:39:05] Config - Tools.logError:null
+=======
+[15:06:51] Config - Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+[15:06:51] Config - Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+>>>>>>> sxx
