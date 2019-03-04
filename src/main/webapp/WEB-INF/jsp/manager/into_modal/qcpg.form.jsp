@@ -11,17 +11,27 @@
         id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
     }
 %>
-
+<input id="gems_id" name="gems_id" value="<%=minfo.get("id")%>" type="hidden" />
+<input id="gems_fs_id" name="gems_fs_id" value="<%=minfo.get("fsid")%>" type="hidden" />
 <div class="admin-content nav-tabs-custom box">
     <div class="box-header with-border">
-        <div class="box-header with-border">
-            <h3 class="box-title">订单来自：快加云-秦扬</h3>
-            <h3 class="box-title">提交时间：2019-02-20 16:57:00</h3>
-            <div class="box-tools pull-right">
+        <c:if test="${id ne 0}">
+            <div class="box-header with-border">
+                <h3 class="box-title">订单来自：${gsnamemap.fs_name}-${gsnamemap.admin_name}</h3>
+                <h3 class="box-title">提交时间：${infodb.dt_add}</h3>
+                <div class="box-tools pull-right">
 
-                <h3 class="box-title">订单编号：</h3>
+                    <h3 class="box-title">订单编号：${infodb.order_code}</h3>
+                </div>
             </div>
-        </div>
+        </c:if>
+        <c:if test="${id eq 0}">
+            <div class="box-header with-border">
+                <h3 class="box-title">新增订单</h3>
+            </div>
+        </c:if>
+
+
         <div class="box-body" id="tab-content">
             <div class="form-group">
                 <label class="col-sm-2 control-label">车辆信息</label>
@@ -71,6 +81,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="col-sm-2 control-label"></label>
                 <div class="col-sm-10">
@@ -173,6 +184,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="col-sm-2 control-label"></label>
                 <div class="col-sm-10">
@@ -260,10 +272,11 @@
                                     <div class="row inline-from">
                                         <%
                                             String upFile1 = "../upfile.inc.jsp";
-                                            String imgPreName1 = "imgstep1_1ss";
+                                            String imgPreName1 = "imgstep1_1qp";
                                             String[] ssImgs1 = { //设置已有值
                                                     !Tools.myIsNull(infodb.get(imgPreName1)) ? infodb.get(imgPreName1) : ""
                                             };
+                                            ssImgs1 = ssImgs1[0].split(",");
                                             String sImgs1 = "";
                                             for (int i = 0; i < ssImgs1.length; i++) {
                                                 sImgs1 = sImgs1 + ssImgs1[i] + "|";
@@ -274,7 +287,7 @@
                                             <jsp:param name="img_MarginImgSrc" value=""/>
                                             <jsp:param name="img_MarginImgClass" value=""/>
                                             <jsp:param name="img_Total" value="5"/>
-                                            <jsp:param name="img_NamePre" value="imgstep1_1ss"/>
+                                            <jsp:param name="img_NamePre" value="imgstep1_1qp"/>
                                             <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                             <jsp:param name="l1div_Style"
                                                        value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
@@ -298,10 +311,11 @@
                                     <div class="row inline-from">
                                         <%
                                             String upFile2 = "../upfile.inc.jsp";
-                                            String imgPreName2= "imgstep1_2ss";
+                                            String imgPreName2= "imgstep1_2qp";
                                             String[] ssImgs2 = { //设置已有值
                                                     !Tools.myIsNull(infodb.get(imgPreName2)) ? infodb.get(imgPreName2) : ""
                                             };
+                                            ssImgs2 = ssImgs2[0].split(",");
                                             String sImgs2 = "";
                                             for (int i = 0; i < ssImgs2.length; i++) {
                                                 sImgs2 = sImgs2 + ssImgs2[i] + "|";
@@ -312,7 +326,7 @@
                                             <jsp:param name="img_MarginImgSrc" value=""/>
                                             <jsp:param name="img_MarginImgClass" value=""/>
                                             <jsp:param name="img_Total" value="10"/>
-                                            <jsp:param name="img_NamePre" value="imgstep1_2ss"/>
+                                            <jsp:param name="img_NamePre" value="imgstep1_2qp"/>
                                             <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                             <jsp:param name="l1div_Style"
                                                        value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
@@ -355,18 +369,17 @@
 
         </div>
 
-
+<<<<<<< HEAD
 
     </div>
 </div>
-
-
-
-        </div>
+<script>
+=======
     </div>
-
+</div>
 
     <script>
+>>>>>>> 6637eb447dbb361b0522b08f6788efd4d0fead8b
     /*选择省后，动态获取省下面的市，并默认选中你指定的id的市，/ttAjax在Ajax.java中处理
                                             /ttAjax也可以单独使用，比如
                                             /ttAjax?do=opt&cn=kjb_user&id=3&mid_add=100000 //显示创建人id为100000的所有用户，默认选择id为3的记录

@@ -22,7 +22,7 @@
         <!-- ngInclude: '/modules/'+taskAct.menuCode+'/'+taskAct.pageName+'.html' -->
         <div class="task_margin ng-scope"
              style="border: 1px solid #ccc; border-radius: 10px; background-color: #F7F7F7; padding-top: 10px;">
-            <form id="erp_3" class="form-horizontal">
+            <form id="erp_form" class="form-horizontal">
                 <!-- ngIf: notUseButton -->
                 <div class="form-group ng-scope">
                     <label class="col-sm-2 control-label">审核结果</label>
@@ -192,23 +192,48 @@
 </div>
 <script>
     function erp() {
-        var t = $('form').serializeArray();
-
-        if (!state_code) {
-            alert("请选择审核结果");
+        var state_code= $('input[name="state_code"]:checked').val();
+        var remark= $('#remark').val();
+        var zdr_zx1_result= $('#zdr_zx1_result').val();
+        var zdr_dsj_code= $('#zdr_dsj_code').val();
+        var gjr1_zx1_result= $('#gjr1_zx1_result').val();
+        var gjr1_dsj_code= $('#gjr1_dsj_code').val();
+        var gjr2_zx1_result= $('#gjr2_zx1_result').val();
+        var gjr2_dsj_code= $('#gjr2_dsj_code').val();
+        var zdrpo_zx1_result= $('#zdrpo_zx1_result').val();
+        var zdrpo_dsj_code= $('#zdrpo_dsj_code').val();
+        var icbc_id= '${requestScope.infodb.icbc_id}';
+        var type_id= '${requestScope.infodb.type_id}';
+        var id= '${requestScope.infodb.id}';
+        //alert(icbc_id+"----"+type_id+"---"+id);
+        if(!state_code){
+            alert("审核结果不能为空!");
             return false;
         }
-        var data={};
         $.ajax({
             type: "POST",      //data 传送数据类型。post 传递
             dataType: 'json',  // 返回数据的数据类型json
-            url: "/site/abc",  // 控制器方法
-            data: {tel: tel},  //传送的数据
-            error:function(){
+            url: "/manager/ajaxpost",  // 控制器方法
+            data: {
+                state_code : state_code,
+                remark:remark,
+                zdr_zx1_result:zdr_zx1_result,
+                zdr_dsj_code:zdr_dsj_code,
+                gjr1_zx1_result:gjr1_zx1_result,
+                gjr1_dsj_code:gjr1_dsj_code,
+                gjr2_zx1_result:gjr2_zx1_result,
+                gjr2_dsj_code:gjr2_dsj_code,
+                zdrpo_zx1_result:zdrpo_zx1_result,
+                zdrpo_dsj_code:zdrpo_dsj_code,
+                icbc_id:icbc_id,
+                type_id:type_id,
+                id:id
+            },  //传送的数据
+            error: function () {
                 alert("编辑失败...请稍后重试！");
             },
             success: function (data) {
-                alert(data);
+                alert(data.msg);
             }
         });
 

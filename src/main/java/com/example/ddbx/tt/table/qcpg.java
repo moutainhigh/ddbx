@@ -75,35 +75,49 @@ public class qcpg extends DbCtrl {
 
         // 其他表添加数据
         DbCtrl dbCtrl = new DbCtrl("dd_icbc_erp");
-        TtMap ttMap = new TtMap();
-        ttMap.put("c_name", ontCustomer.get("c_name"));
-        ttMap.put("c_tel", ontCustomer.get("c_tel"));
-        ttMap.put("later_status", "7");
-        ttMap.put("now_status", "6");
-        ttMap.put("order_id", ontCustomer.get("id"));
-        ttMap.put("gems_id", ontCustomer.get("gems_id"));
-        ttMap.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
-        ttMap.put("type_id", "2");
-        ttMap.put("c_cardno", ontCustomer.get("c_cardno"));
+        long id = 0;
+        try {
+            TtMap ttMap = new TtMap();
+            ttMap.put("c_name", ontCustomer.get("c_name"));
+            ttMap.put("c_tel", ontCustomer.get("c_tel"));
+            ttMap.put("later_status", "11");
+            ttMap.put("now_status", "10");
+            ttMap.put("icbc_id", ontCustomer.get("id"));
+            ttMap.put("gems_id", ontCustomer.get("gems_id"));
+            ttMap.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
+            ttMap.put("type_id", "47");
+            ttMap.put("c_cardno", ontCustomer.get("c_cardno"));
 //        ttMap.put("c_carvin", ontCustomer.get(""));
-        ttMap.put("c_carno", ary.get("license_plate"));
-        ttMap.put("adminop_tag", Tools.minfo().get("id"));
+            ttMap.put("c_carno", ary.get("license_plate"));
+            ttMap.put("adminop_tag", Tools.minfo().get("id"));
 
-        dbCtrl.add(ttMap);
-        dbCtrl.closeConn();
+            id = dbCtrl.add(ttMap);
+            System.out.println(id+"********");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbCtrl.closeConn();
+        }
 
         DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
-        TtMap ttMap2 = new TtMap();
-        ttMap2.put("now_status", "6");
-        ttMap2.put("later_status", "7");
-        ttMap2.put("type_id", "2");
-        ttMap2.put("order_id", ontCustomer.get("id"));
+        try {
+            TtMap ttMap2 = new TtMap();
+            ttMap2.put("qryid", id+"");
+            ttMap2.put("now_status", "10");
+            ttMap2.put("later_status", "11");
+            ttMap2.put("type_id", "47");
+            ttMap2.put("icbc_id", ontCustomer.get("id"));
 
-        dbCtrl2.add(ttMap2);
-        dbCtrl2.closeConn();
+            dbCtrl2.add(ttMap2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            dbCtrl2.closeConn();
+        }
+
 
         // 本表操作添加数据
-        ary.put("order_id",ontCustomer.get("id"));
+        ary.put("icbc_id",ontCustomer.get("id"));
         ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
         ary.put("gems_id",ontCustomer.get("gems_id"));
         DecimalFormat countFormat = new DecimalFormat("000000000");
@@ -115,23 +129,23 @@ public class qcpg extends DbCtrl {
         }
         ary.put("models", models);
 
-        String imgstep1_1qp = "imgstep1_1ss1" + ":" + ary.get("imgstep1_1ss1") + ","
-                            + "imgstep1_1ss2" + ":" + ary.get("imgstep1_1ss2") + ","
-                            + "imgstep1_1ss3" + ":" + ary.get("imgstep1_1ss3") + ","
-                            + "imgstep1_1ss4" + ":" + ary.get("imgstep1_1ss4") + ","
-                            + "imgstep1_1ss5" + ":" + ary.get("imgstep1_1ss5");
+        String imgstep1_1qp = ary.get("imgstep1_1qp1") + ","
+                            + ary.get("imgstep1_1qp2") + ","
+                            + ary.get("imgstep1_1qp3") + ","
+                            + ary.get("imgstep1_1qp4") + ","
+                            + ary.get("imgstep1_1qp5");
         ary.put("imgstep1_1qp", imgstep1_1qp);
 
-        String imgstep1_2qp = "imgstep1_2ss1" + ":" + ary.get("imgstep1_2ss1") + ","
-                            + "imgstep1_2ss2" + ":" + ary.get("imgstep1_2ss2") + ","
-                            + "imgstep1_2ss3" + ":" + ary.get("imgstep1_2ss3") + ","
-                            + "imgstep1_2ss4" + ":" + ary.get("imgstep1_2ss4") + ","
-                            + "imgstep1_2ss5" + ":" + ary.get("imgstep1_2ss5") + ","
-                            + "imgstep1_2ss6" + ":" + ary.get("imgstep1_2ss6") + ","
-                            + "imgstep1_2ss7" + ":" + ary.get("imgstep1_2ss7") + ","
-                            + "imgstep1_2ss8" + ":" + ary.get("imgstep1_2ss8") + ","
-                            + "imgstep1_2ss9" + ":" + ary.get("imgstep1_2ss9") + ","
-                            + "imgstep1_2ss10" + ":" + ary.get("imgstep1_2ss10");
+        String imgstep1_2qp = ary.get("imgstep1_2qp1") + ","
+                            + ary.get("imgstep1_2qp2") + ","
+                            + ary.get("imgstep1_2qp3") + ","
+                            + ary.get("imgstep1_2qp4") + ","
+                            + ary.get("imgstep1_2qp5") + ","
+                            + ary.get("imgstep1_2qp6") + ","
+                            + ary.get("imgstep1_2qp7") + ","
+                            + ary.get("imgstep1_2qp8") + ","
+                            + ary.get("imgstep1_2qp9") + ","
+                            + ary.get("imgstep1_2qp10");
         ary.put("imgstep1_2qp", imgstep1_2qp);
 
         return super.add(ary);
@@ -146,7 +160,6 @@ public class qcpg extends DbCtrl {
     //list 处理
     public void doGetList(HttpServletRequest request, TtMap post) {
         System.out.println("查询list");
-
         if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
             request.setAttribute("errorMsg", errorMsg);
             return;
@@ -157,7 +170,7 @@ public class qcpg extends DbCtrl {
         int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
         String whereString = "true";
         String tmpWhere = "";
-        String fieldsString = ""; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
+        String fieldsString = "t.*,a.name as admin_name,f.name as fs_name"; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
         TtList list = null;
         /* 开始处理搜索过来的字段 */
         kw = post.get("kw");
@@ -165,7 +178,6 @@ public class qcpg extends DbCtrl {
 
         if (Tools.myIsNull(kw) == false) {
             whereString += " AND c_name like '%" + kw + "%'";
-
         }
         if (Tools.myIsNull(dtbe) == false) {
             dtbe = dtbe.replace("%2f", "-").replace("+", "");
@@ -176,72 +188,34 @@ public class qcpg extends DbCtrl {
             // todo处理选择时间段
         }
         /* 搜索过来的字段处理完成 */
-        // 导出到Excel处理
-        boolean bToExcel = false, toZip = false;
-        if (!Tools.myIsNull(post.get("toExcel")) && post.get("toExcel").equals("1")) {// 导出excel时设置不分页，导出所有
-            nopage = true;
-            bToExcel = true;
-        }
-        if (!Tools.myIsNull(post.get("toZip")) && post.get("toZip").equals("1")) {// 导出excel时设置不分页，导出所有
-            nopage = true;
-            toZip = true;
-        }
+
+        System.out.println("查询list");
 
         whereString += tmpWhere; // 过滤
         orders = orderString;// 排序
         p = pageInt; // 显示页
         limit = limtInt; // 每页显示记录数
         showall = true; // 忽略deltag和showtag
+        leftsql="LEFT JOIN admin a on a.id=t.gems_id " +
+                "LEFT JOIN fs f on f.id=t.gems_fs_id ";
         list = lists(whereString, fieldsString);
 
-        if (bToExcel) { // Excel导出演示：导出到Excel并下载
-            String[] headers = new String[] { "管理员名称", "密码MD5", "用户名" };
-            String[] fields = new String[] { "name", "password", "username" };
-            String toFile = Config.FILEUP_SAVEPATH + "excel/" + title + ".xlsx";
-            closeConn();// 因为要跳到下载，所以要提前closeConn
-            if (!Excel.doOut(list, headers, fields, toFile, "excel2007", true)) {
-                errorMsg = "导出Excel失败";
-                request.setAttribute("errorMsg", errorMsg);
+        if (!Tools.myIsNull(kw)) { // 搜索关键字高亮
+            for (TtMap info : list) {
+                info.put("c_name",
+                        info.get("c_name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
             }
-        } else if (toZip) { // ZIP打包演示：打包头像图片到zip并下载
-            TtMap info = new TtMap();
-            for (TtMap mss : list) {
-                if (!Tools.myIsNull(mss.get("avatarurl"))) {
-                    info.put(mss.get("name"), mss.get("avatarurl"));
-                }
-            }
-            try {
-                closeConn();// 因为要跳到下载，所以要提前closeConn
-                if (!Zip.imgsToZipDown(info, title + ".zip", null)) {
-                    errorMsg = "导出ZIP失败!";
-                    request.setAttribute("errorMsg", errorMsg);
-                }
-            } catch (IOException e) {
-
-                errorMsg = "导出ZIP失败:" + e.getMessage();
-                request.setAttribute("errorMsg", errorMsg);
-                if (Config.DEBUGMODE) {
-                    e.printStackTrace();
-                }
-            }
-        } else {
-            if (!Tools.myIsNull(kw)) { // 搜索关键字高亮
-                for (TtMap info : list) {
-                    info.put("name",
-                            info.get("name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
-                }
-            }
-            request.setAttribute("list", list);// 列表list数据
-            request.setAttribute("recs", recs); // 总记录数
-            String htmlpages = getPage("", 0, false); // 分页html代码,
-            request.setAttribute("pages", pages); // 总页数
-            request.setAttribute("p", pageInt); // 当前页码
-            request.setAttribute("l", limtInt); // limit量
-            request.setAttribute("lsitTitleString", title); // 标题
-            request.setAttribute("htmlpages", htmlpages); // 分页的html代码
-            request.setAttribute("canDel", canDel); // 是否显示删除按钮
-            request.setAttribute("canAdd", canAdd); // 是否显示新增按钮
         }
+        request.setAttribute("list", list);// 列表list数据
+        request.setAttribute("recs", recs); // 总记录数
+        String htmlpages = getPage("", 0, false); // 分页html代码,
+        request.setAttribute("pages", pages); // 总页数
+        request.setAttribute("p", pageInt); // 当前页码
+        request.setAttribute("l", limtInt); // limit量
+        request.setAttribute("lsitTitleString", title); // 标题
+        request.setAttribute("htmlpages", htmlpages); // 分页的html代码
+        request.setAttribute("canDel", canDel); // 是否显示删除按钮
+        request.setAttribute("canAdd", canAdd); // 是否显示新增按钮
         // request.setAttribute("showmsg", "测试弹出消息提示哈！"); //如果有showmsg字段，在载入列表前会提示
     }
 
@@ -277,9 +251,7 @@ public class qcpg extends DbCtrl {
 
         TtList lmss = super.lists(wheres, f);
         for (TtMap tmpInfo : lmss) {
-            tmpInfo.put("fsname", Tools.unDic("dd_fs", Tools.strToLong(tmpInfo.get("gems_fs_id"))));// 所属公司
             tmpInfo.put("c_name", Tools.unDic("dd_icbc", tmpInfo.get("icbc_id"), "c_name", "id"));// 所属公司
-            tmpInfo.put("order_id", Tools.unDic("dd_icbc_materials", tmpInfo.get("icbc_id"), "order_code", "id"));// 所属公司
         }
         return lmss;
     }

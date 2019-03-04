@@ -576,7 +576,38 @@
                     </div>
                 </div>
             </div>
-
+            <div class="form-group">
+                <label class="col-sm-2 control-label">审核状态(主状态)</label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">征信审核状态</span>
+                                <select class="form-control" id="zx_status" name="zx_status">
+                                    <option value="0">请选择</option>
+                                    <option value="1">草稿箱</option>
+                                    <option value="2">提交查询</option>
+                                    <option value="3">审核通过</option>
+                                    <option value="4">回退补件</option>
+                                    <option value="5">审核不通过</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">通融审核状态</span>
+                                <select class="form-control" id="tr_status" name="tr_status">
+                                    <option value="0">请选择</option>
+                                    <option value="1">提交通融信息</option>
+                                    <option value="2">通融不通过</option>
+                                    <option value="3">通融通过</option>
+                                    <option value="4">通融回退补件</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <%--相关状态--%>
             <div class="form-group">
                 <label class="col-sm-2 control-label">相关状态</label>
