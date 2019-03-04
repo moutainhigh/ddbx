@@ -96,7 +96,6 @@ public class MyTask extends DbCtrl {
         }
         TtMap  modals= get_sys_modal_name(Integer.valueOf(post.get("type_id")),Integer.valueOf(info.get("later_status")));
         request.setAttribute("modals",modals);
-
         request.setAttribute("icbc", geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
         String jsonInfo = Tools.jsonEncode(info);
         request.setAttribute("info", jsonInfo);//info为json后的info

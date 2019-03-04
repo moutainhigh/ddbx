@@ -57,11 +57,11 @@
                 <li ${param.tab eq 0?"class='active'":''}>
                     <a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=0">处理过程</a>
                 </li>
-                <li ${param.tab eq 1?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=1">基础信息</a></li>
-                <li ${param.tab eq 2?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=2">客户管理</a></li>
-                <li ${param.tab eq 3?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=3">贷款管理</a></li>
-                <li ${param.tab eq 4?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=4">车辆信息</a></li>
-                <li ${param.tab eq 5?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=5">影音材料</a></li>
+                <li ${param.tab eq 1?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=1">基础信息</a></li>
+                <li ${param.tab eq 2?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=2">客户管理</a></li>
+                <li ${param.tab eq 3?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=3">贷款管理</a></li>
+                <li ${param.tab eq 4?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=4">车辆信息</a></li>
+                <li ${param.tab eq 5?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=5">影音材料</a></li>
             </ul>
             <div class="tab-content">
 
