@@ -115,7 +115,7 @@
                                                     erp_msg=erp_msg+"modal/end.jsp";
                                                     break;
                                                 default :
-                                                    erp_msg=erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp";
+                                                    erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
                                             }
                         %>
                         <jsp:include page="<%=erp_msg%>"></jsp:include>

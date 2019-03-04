@@ -6,11 +6,11 @@
 <div class="box">
 	<div class="box-header">
 		<h3 class="box-title">
-			我的任务列表
+			全部任务列表
 		</h3>
 	</div>
 	<%
-		String url = Tools.urlKill("sdo|id")+"&sdo=form&id=";
+		String url = Tools.urlKill("sdo|id|tab|icbc_id|type_id")+"&sdo=form&id=";
 	%>
 	<!-- /.box-header -->
 	<div class="box-body">
@@ -83,7 +83,7 @@
 								</td>
 								<td class="text-center">
 									<div class="table-button">
-										<a href="<%=url%>${u.id}&type_id=${u.type_id}" class="btn btn-default">
+										<a href="<%=url%>${u.id}&type_id=${u.type_id}&icbc_id=${u.icbc_id}&tab=6" class="btn btn-default">
 											<i class="fa fa-pencil"></i>
 										</a>
 									</div>

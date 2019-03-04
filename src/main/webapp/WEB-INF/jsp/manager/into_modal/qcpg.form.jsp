@@ -11,17 +11,27 @@
         id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
     }
 %>
-
+<input id="gems_id" name="gems_id" value="<%=minfo.get("id")%>" type="hidden" />
+<input id="gems_fs_id" name="gems_fs_id" value="<%=minfo.get("fsid")%>" type="hidden" />
 <div class="admin-content nav-tabs-custom box">
     <div class="box-header with-border">
-        <div class="box-header with-border">
-            <h3 class="box-title">订单来自：快加云-秦扬</h3>
-            <h3 class="box-title">提交时间：2019-02-20 16:57:00</h3>
-            <div class="box-tools pull-right">
+        <c:if test="${id ne 0}">
+            <div class="box-header with-border">
+                <h3 class="box-title">订单来自：${gsnamemap.fs_name}-${gsnamemap.admin_name}</h3>
+                <h3 class="box-title">提交时间：${infodb.dt_add}</h3>
+                <div class="box-tools pull-right">
 
-                <h3 class="box-title">订单编号：</h3>
+                    <h3 class="box-title">订单编号：${infodb.order_code}</h3>
+                </div>
             </div>
-        </div>
+        </c:if>
+        <c:if test="${id eq 0}">
+            <div class="box-header with-border">
+                <h3 class="box-title">新增订单</h3>
+            </div>
+        </c:if>
+
+
         <div class="box-body" id="tab-content">
             <div class="form-group">
                 <label class="col-sm-2 control-label">车辆信息</label>
@@ -358,17 +368,9 @@
         </div>
 
 
-
     </div>
 </div>
-
-
-
-        </div>
-    </div>
-
-
-    <script>
+<script>
     /*选择省后，动态获取省下面的市，并默认选中你指定的id的市，/ttAjax在Ajax.java中处理
                                             /ttAjax也可以单独使用，比如
                                             /ttAjax?do=opt&cn=kjb_user&id=3&mid_add=100000 //显示创建人id为100000的所有用户，默认选择id为3的记录

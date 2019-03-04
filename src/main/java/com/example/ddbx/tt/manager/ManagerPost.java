@@ -28,7 +28,7 @@ public class ManagerPost {
   public TtMap doPost(HttpServletRequest request) {
     TtMap postUrl = Tools.getUrlParam();
     TtMap post = Tools.getPostMap(request, true);// 过滤参数，过滤mysql的注入，url参数注入
-    System.out.println(Tools.jsonEncode(post));
+    System.out.println("post传递参数:"+Tools.jsonEncode(post));
     String cn = postUrl.get("cn") == null ? "" : postUrl.get("cn");
     TtMap result2 = new TtMap();
     Tools.formatResult(result2, false, 999, "异常，请重试！", "");// 初始化返回

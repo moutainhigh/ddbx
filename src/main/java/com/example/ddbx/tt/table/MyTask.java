@@ -94,6 +94,9 @@ public class MyTask extends DbCtrl {
                 request.setAttribute("erplist", geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
             }
         }
+        TtMap  modals= get_sys_modal_name(Integer.valueOf(post.get("type_id")),Integer.valueOf(info.get("later_status")));
+        request.setAttribute("modals",modals);
+
         request.setAttribute("icbc", geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
         String jsonInfo = Tools.jsonEncode(info);
         request.setAttribute("info", jsonInfo);//info为json后的info
@@ -285,7 +288,28 @@ public class MyTask extends DbCtrl {
     }
 
     /**
-     * 获取erp 任务节点name
+     * 获取erp 任务节点name1
+     *
+     * @return
+     */
+    public static TtMap get_sys_modal_name(int type_id, int id) {
+        TtMap ttMap = new TtMap();
+        DbTools dbTools = new DbTools();
+        String sql = "select * from sys_modal where id_uplevel="+type_id+" and sort="+id;
+        try {
+            ttMap = dbTools.recinfo(sql);
+        } catch (Exception e) {
+            Tools.logError(e.getMessage());
+            if (Config.DEBUGMODE) {
+                e.printStackTrace();
+            }
+        } finally {
+            dbTools.closeConn();
+        }
+        return ttMap;
+    }
+    /**
+     * 获取erp 任务节点name2
      *
      * @return
      */

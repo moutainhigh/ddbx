@@ -80,10 +80,10 @@ public class qcpg extends DbCtrl {
         ttMap.put("c_tel", ontCustomer.get("c_tel"));
         ttMap.put("later_status", "7");
         ttMap.put("now_status", "6");
-        ttMap.put("order_id", ontCustomer.get("id"));
+        ttMap.put("icbc_id", ontCustomer.get("id"));
         ttMap.put("gems_id", ontCustomer.get("gems_id"));
         ttMap.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
-        ttMap.put("type_id", "2");
+        ttMap.put("type_id", "47");
         ttMap.put("c_cardno", ontCustomer.get("c_cardno"));
 //        ttMap.put("c_carvin", ontCustomer.get(""));
         ttMap.put("c_carno", ary.get("license_plate"));
@@ -96,14 +96,14 @@ public class qcpg extends DbCtrl {
         TtMap ttMap2 = new TtMap();
         ttMap2.put("now_status", "6");
         ttMap2.put("later_status", "7");
-        ttMap2.put("type_id", "2");
+        ttMap2.put("type_id", "47");
         ttMap2.put("order_id", ontCustomer.get("id"));
 
         dbCtrl2.add(ttMap2);
         dbCtrl2.closeConn();
 
         // 本表操作添加数据
-        ary.put("order_id",ontCustomer.get("id"));
+        ary.put("icbc_id",ontCustomer.get("id"));
         ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
         ary.put("gems_id",ontCustomer.get("gems_id"));
         DecimalFormat countFormat = new DecimalFormat("000000000");

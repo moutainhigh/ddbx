@@ -2,7 +2,7 @@
 <%@ page import="com.example.ddbx.tt.data.TtMap" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     TtMap infodb = (TtMap) request.getAttribute("infodb");
@@ -14,9 +14,31 @@
     String url = Tools.urlKill("sdo|id|type_id|tab") + "&sdo=form&id=";
     String type_id = (String) request.getAttribute("type_id");
 
+    //获取下一任务节点name
+    TtMap modals = (TtMap) request.getAttribute("modals");
 
-    String rwcl_path = "/WEB-INF/jsp/manager/rwcl/" + type_id + "/" + infodb.get("later_status") + ".jsp";
-    TtList erp_stylelist= (TtList) request.getAttribute("erp_stylelist");
+    String rwcl_path = "/WEB-INF/jsp/manager/rwcl/";
+    if (modals!=null&&!modals.equals("")){
+        switch (modals.get("name")) {
+
+            case "开始":
+                rwcl_path = rwcl_path + "modal_son/begin.jsp";
+                break;
+            case "提交查询":
+                rwcl_path = rwcl_path + "modal_son/submit.jsp";
+                break;
+            case "完成":
+                rwcl_path = rwcl_path + "modal_son/end.jsp";
+                break;
+            default:
+                rwcl_path = rwcl_path + type_id + "/" + infodb.get("later_status") + ".jsp";
+                break;
+
+        }
+    } else {
+        rwcl_path=rwcl_path+"modal_son/null.jsp";
+    }
+    TtList erp_stylelist = (TtList) request.getAttribute("erp_stylelist");
 %>
 <head>
     <script src="js/jQueryRotate.2.2.js" type="text/javascript"></script>
@@ -30,20 +52,20 @@
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li ${param.tab eq 6?"class='active'":''}>
-                    <a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=6" >任务处理</a>
+                    <a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=6">任务处理</a>
                 </li>
                 <li ${param.tab eq 0?"class='active'":''}>
-                    <a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=0" >处理过程</a>
+                    <a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=0">处理过程</a>
                 </li>
-                <li ${param.tab eq 1?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=1" >基础信息</a></li>
-                <li ${param.tab eq 2?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=2" >客户管理</a></li>
-                <li ${param.tab eq 3?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=3" >贷款管理</a></li>
-                <li ${param.tab eq 4?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=4" >车辆信息</a></li>
-                <li ${param.tab eq 5?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=5" >影音材料</a></li>
+                <li ${param.tab eq 1?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=1">基础信息</a></li>
+                <li ${param.tab eq 2?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=2">客户管理</a></li>
+                <li ${param.tab eq 3?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=3">贷款管理</a></li>
+                <li ${param.tab eq 4?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=4">车辆信息</a></li>
+                <li ${param.tab eq 5?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&tab=5">影音材料</a></li>
             </ul>
             <div class="tab-content">
 
-                <div ${param.tab eq 6?"class='tab-pane active'":"class='tab-pane'"}  id="tab_6">
+                <div ${param.tab eq 6?"class='tab-pane active'":"class='tab-pane'"} id="tab_6">
                     <c:if test="${param.tab eq 6}">
                         <jsp:include page="<%=rwcl_path%>"></jsp:include>
                     </c:if>
@@ -54,7 +76,7 @@
                         <div style="border:1px solid #478FCA;   margin:5px; padding:20px;border-radius: 10px;">
                             <ul id="yw" class="nav nav-tabs">
                                 <c:forEach items="${requestScope.clgc_list}" var="c" varStatus="status">
-                                    <c:choose >
+                                    <c:choose>
                                         <c:when test="${fn:contains(requestScope.erp_stylelist,c.id)}">
                                             <li ${c.id eq requestScope.type_id?"class='active'":'' }>
                                                 <a ${c.id eq requestScope.type_id?"style='background-color: rgb(25, 53, 78); color: rgb(255, 255, 255);'":"style='background-color: rgb(51, 122, 183); color: rgb(255, 255, 255);'" }
@@ -73,16 +95,16 @@
                                             </li>
 
                                         </c:when>
-                                    <c:otherwise>
-                                        <li ${c.id eq requestScope.type_id?"class='active'":'' }>
-                                            <a  style="background-color: rgb(167, 167, 167); color: rgb(255, 255, 255);"
-                                                 id="${c.cn}"
-                                                 href="javascript:alert('暂无处理过程!!!');"
-                                                 class="btn btn-block btn-info">
-                                                    ${c.name}
-                                            </a>
-                                        </li>
-                                    </c:otherwise>
+                                        <c:otherwise>
+                                            <li ${c.id eq requestScope.type_id?"class='active'":'' }>
+                                                <a style="background-color: rgb(167, 167, 167); color: rgb(255, 255, 255);"
+                                                   id="${c.cn}"
+                                                   href="javascript:alert('暂无处理过程!!!');"
+                                                   class="btn btn-block btn-info">
+                                                        ${c.name}
+                                                </a>
+                                            </li>
+                                        </c:otherwise>
                                     </c:choose>
                                     <c:choose>
                                         <c:when test="${status.last}">
