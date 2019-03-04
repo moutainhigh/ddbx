@@ -71,6 +71,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="col-sm-2 control-label"></label>
                 <div class="col-sm-10">
@@ -173,6 +174,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="col-sm-2 control-label"></label>
                 <div class="col-sm-10">
@@ -274,7 +276,7 @@
                                         <jsp:include page="<%=upFile1%>">
                                             <jsp:param name="img_MarginImgSrc" value=""/>
                                             <jsp:param name="img_MarginImgClass" value=""/>
-                                            <jsp:param name="img_Total" value="6"/>
+                                            <jsp:param name="img_Total" value="5"/>
                                             <jsp:param name="img_NamePre" value="imgstep1_1qp"/>
                                             <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                             <jsp:param name="l1div_Style"
@@ -357,16 +359,8 @@
 
         </div>
 
-
-
     </div>
 </div>
-
-
-
-        </div>
-    </div>
-
 
     <script>
     /*选择省后，动态获取省下面的市，并默认选中你指定的id的市，/ttAjax在Ajax.java中处理
