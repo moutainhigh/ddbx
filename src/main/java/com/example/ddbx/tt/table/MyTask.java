@@ -45,7 +45,47 @@ public class MyTask extends DbCtrl {
      * @return: 返回
      */
     public void doGetForm(HttpServletRequest request, TtMap post) {
-        if (getclgc() != null &&getclgc().size()>0) {
+
+
+        long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
+        TtMap info = info(nid);
+        System.out.println("tab:" + post.get("tab"));
+        System.out.println("type_id:"+info.get("type_id"));
+        System.out.println("later_status:"+info.get("later_status"));
+        //erp任务各板块处理
+        if (post.get("tab") != null && !post.get("tab").equals("")) {
+            switch (post.get("tab")) {
+                case "6":
+
+                    break;
+                case "0":
+                    //查询订单下板块有无进度
+                    System.out.println("进来了没有");
+                  TtList erp_stylelist=getdd_icbc_erp(Integer.valueOf(post.get("icbc_id")));
+                  request.setAttribute("erp_stylelist",erp_stylelist);
+                    break;
+                case "1":
+
+                    break;
+                case "2":
+
+                    break;
+                case "3":
+
+                    break;
+                case "4":
+
+                    break;
+                case "5":
+
+                    break;
+                default:
+
+                    break;
+
+            }
+        }
+        if (getclgc() != null && getclgc().size() > 0) {
             request.setAttribute("clgc_list", getclgc());
         }
         if (post.get("type_id") != null && !post.get("type_id").equals("")) {
@@ -54,10 +94,7 @@ public class MyTask extends DbCtrl {
                 request.setAttribute("erplist", geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
             }
         }
-        //request.setAttribute("icbc", geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
-
-        long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
-        TtMap info = info(nid);
+        request.setAttribute("icbc", geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
         String jsonInfo = Tools.jsonEncode(info);
         request.setAttribute("info", jsonInfo);//info为json后的info
         request.setAttribute("infodb", info);//infodb为TtMap的info
@@ -78,6 +115,14 @@ public class MyTask extends DbCtrl {
         return Tools.recinfo(sql);
     }
 
+    /**
+     * 查询订单下所有任务板块
+     * @return
+     */
+    public TtList getdd_icbc_erp(int icbc_id) {
+        String sql="select type_id from dd_icbc_erp where icbc_id="+icbc_id;
+        return Tools.reclist(sql);
+    }
 
     /**
      * 获取处理过程显示数据
