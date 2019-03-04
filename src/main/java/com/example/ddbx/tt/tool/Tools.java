@@ -2,7 +2,7 @@
  * @Description: 常用功能方法汇总。包括字符串类，数据库类，日期操作类，文件类
  * @Author: tt
  * @Date: 2018-12-12 17:55:41
- * @LastEditTime: 2019-02-15 15:53:38
+ * @LastEditTime: 2019-02-26 14:03:03
  * @LastEditors: tt
  */
 package com.example.ddbx.tt.tool;
@@ -44,15 +44,15 @@ import java.util.regex.Pattern;
  */
 public class Tools {
   static final public char sp = 5;// 分割符号
-  public static boolean showlog = true;
 
-  private static void myLog(String mString) {
-    if (showlog == true) {
-      // mylog(this.toString() + ":" + mString);
-      Log log = LogFactory.getLog(Tools.class);
+  public static void myLog(String mString) {
+    if (Config.GLOBAL_SHOWLOG) {
+      Log log = LogFactory.getLog(Tools.class); //
       log.info(mString);
+      if (!Config.TESTMODE) { // 不是测试模式，log4j也打印
+        Tools.logInfo(mString, Tools.class.toString());
+      }
     }
-    logInfo(mString, "Tools");
   }
 
   /**
@@ -77,7 +77,7 @@ public class Tools {
    */
   @SuppressWarnings("unchecked")
   public static List<Map<String, Object>> lssTolso(TtList lss) {
-    String lssJson = jsonEnCode(lss);
+    String lssJson = jsonEncode(lss);
     List<Map<String, Object>> lmso = new ArrayList<>();
     lmso = (List<Map<String, Object>>) JSON.parse(lssJson);
     return lmso;
@@ -89,7 +89,7 @@ public class Tools {
    * @param object
    * @return
    */
-  public static String jsonEnCode(Object object) {
+  public static String jsonEncode(Object object) {
     return JSON.toJSONString(object, SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue,
             SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.DisableCircularReferenceDetect,
             SerializerFeature.WriteNullListAsEmpty);
@@ -127,7 +127,7 @@ public class Tools {
    * @param mpStr
    * @return
    */
-  public static String jsonEnCode(TtMap mpStr) {
+  public static String jsonEncode(TtMap mpStr) {
     return JSON.toJSONString(mpStr);
   }
 
@@ -415,7 +415,7 @@ public class Tools {
   }
 
   /**
-   * 获取request的所有参数名和值保存到map，包括url和post表单提交的数据
+   * 获取request的所有参数名和值安全过滤后保存到map，包括url和post表单提交的数据
    *
    * @param {type}
    * @return 完整的map型的参数值，key为参数名，value为对应的值。统一转换为String
@@ -425,7 +425,7 @@ public class Tools {
   }
 
   /**
-   * 获取request的所有参数名和值保存到map
+   * 获取request的所有参数名和值安全过滤后保存到map
    *
    * @param request
    * @param onlyPost 是否只获取post表单里面的数据，忽略url传递的参数值
@@ -524,32 +524,37 @@ public class Tools {
    * @return:
    */
   public static String urlKill(String s) {
-    HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-    String urlQuerysString = request.getQueryString();
-    myLog("getQueryString:" + urlQuerysString);
     String result = "";
-    TtMap mpUrl = URLRequest(urlQuerysString);
-    s = s.toLowerCase();
-    String[] ss = s.split("\\|");
-    for (Iterator<Map.Entry<String, String>> it = mpUrl.entrySet().iterator(); it.hasNext();) {
-      Map.Entry<String, String> item = it.next();
-      if (arrayIndexOf(ss, item.getKey().toLowerCase())) {
-        it.remove();
+    try {
+      HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+              .getRequest();
+      String urlQuerysString = request.getQueryString();
+      TtMap mpUrl = URLRequest(urlQuerysString);
+      s = s.toLowerCase();
+      String[] ss = s.split("\\|");
+      for (Iterator<Map.Entry<String, String>> it = mpUrl.entrySet().iterator(); it.hasNext();) {
+        Map.Entry<String, String> item = it.next();
+        if (arrayIndexOf(ss, item.getKey().toLowerCase())) {
+          it.remove();
+        }
+        // ... todo with item
       }
-      // ... todo with item
-    }
-    for (String key : mpUrl.keySet()) {
-      if (myIsNull(key)) {
-        continue;
+      for (String key : mpUrl.keySet()) {
+        if (myIsNull(key)) {
+          continue;
+        }
+        result = result + "&" + key + "=" + mpUrl.get(key);
       }
-      result = result + "&" + key + "=" + mpUrl.get(key);
+      if (!myIsNull(result)) {
+        result = "?" + result.substring(1, result.length());// 去掉前面多余出来的&
+      } else {
+        result = "?";
+      }
+      result = request.getRequestURI() + result;
+    } catch (Exception e) {
+      logError(e.getMessage());
+      e.printStackTrace();
     }
-    if (!myIsNull(result)) {
-      result = "?" + result.substring(1, result.length());// 去掉前面多余出来的&
-    } else {
-      result = "?";
-    }
-    result = request.getRequestURI() + result;
     return result;
   }
 
@@ -610,8 +615,51 @@ public class Tools {
     DbTools dbt = new DbTools();
     try {
       result = dbt.recinfo(sql);
+    } catch (Exception e) {
+      Tools.logError(e.getMessage());
+      if (Config.DEBUGMODE) {
+        e.printStackTrace();
+      }
     } finally {
       dbt.closeConn();
+    }
+    return result;
+  }
+
+  /**
+   * dbCtrl的edit简化版
+   */
+  public static int recEdit(TtMap info, String table, long id) {
+    int result = 0;
+    DbCtrl dbCtrl = new DbCtrl(table);
+    try {
+      result = dbCtrl.edit(info, id);
+    } catch (Exception e) {
+      Tools.logError(e.getMessage());
+      if (Config.DEBUGMODE) {
+        e.printStackTrace();
+      }
+    } finally {
+      dbCtrl.closeConn();
+    }
+    return result;
+  }
+
+  /**
+   * dbCtrl的add简化版
+   */
+  public static long recAdd(TtMap info, String table) {
+    long result = 0;
+    DbCtrl dbCtrl = new DbCtrl(table);
+    try {
+      result = dbCtrl.add(info);
+    } catch (Exception e) {
+      Tools.logError(e.getMessage());
+      if (Config.DEBUGMODE) {
+        e.printStackTrace();
+      }
+    } finally {
+      dbCtrl.closeConn();
     }
     return result;
   }
@@ -624,6 +672,11 @@ public class Tools {
     boolean result = false;
     try {
       result = dbt.recexec(sql);
+    } catch (Exception e) {
+      Tools.logError(e.getMessage());
+      if (Config.DEBUGMODE) {
+        e.printStackTrace();
+      }
     } finally {
       dbt.closeConn();
     }
@@ -638,6 +691,11 @@ public class Tools {
     DbTools dbt = new DbTools();
     try {
       result = dbt.reclist(sql);
+    } catch (Exception e) {
+      Tools.logError(e.getMessage());
+      if (Config.DEBUGMODE) {
+        e.printStackTrace();
+      }
     } finally {
       dbt.closeConn();
     }
@@ -837,7 +895,7 @@ public class Tools {
    */
   public static String formatFilePath(String strFilePath) {
     strFilePath = strFilePath.replace("\\\\", "\\");
-    strFilePath = strFilePath.replace("\\\\", "\\");
+    strFilePath = strFilePath.replace("\\\\", "\\");// 再次，防止有\\\\格式的
     strFilePath = strFilePath.replace("//", "/");
     strFilePath = strFilePath.replace("//", "/");
     strFilePath = strFilePath.replace("http:/", "http://"); // 原来http://被变成http:/了，所以恢复http的//
@@ -909,29 +967,29 @@ public class Tools {
    */
   public static boolean ttCopyFile(String srcFile, String toFile) throws IOException {
     boolean result = false;
-    System.out.println("ttCopyFile1");
+    // System.out.println("ttCopyFile1");
     if (Tools.fileExists(srcFile) == false) {
       return result;
     }
-    System.out.println("ttCopyFile11");
+    // System.out.println("ttCopyFile11");
     if (Tools.delFile(toFile) == false) {
       return result;
     }
-    System.out.println("ttCopyFile2");
+    // System.out.println("ttCopyFile2");
     Tools.createDir(Tools.delSpc(Tools.extractFilePath(toFile)));
     File source = new File(srcFile);
     File dest = new File(toFile);
     FileChannel inputChannel = null;
     FileChannel outputChannel = null;
-    System.out.println("ttCopyFile3");
+    // System.out.println("ttCopyFile3");
     try {
-      System.out.println("开始复制文件：" + srcFile);
+      // System.out.println("开始复制文件：" + srcFile);
       Tools.delFile(toFile);// 删除旧的文件
       FileInputStream fSource = new FileInputStream(source);
       FileOutputStream fDest = new FileOutputStream(dest);
       inputChannel = fSource.getChannel();
       outputChannel = fDest.getChannel();
-      System.out.println("开始transferFrom：" + toFile);
+      // System.out.println("开始transferFrom：" + toFile);
       outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
       result = true;
       inputChannel.close();
@@ -942,8 +1000,8 @@ public class Tools {
       if (Config.DEBUGMODE) {
         E.printStackTrace();
       }
-      System.out.println("copy file exception:" + E.getMessage());
-      Config.log.debug(E.getMessage());
+      // System.out.println("copy file exception:" + E.getMessage());
+      logError(E.getMessage());
     } finally {
     }
     if (result) {// 复制完成，检查文件是否存在。
@@ -1275,7 +1333,7 @@ public class Tools {
    * @param charSet 为UTF-8或者GBK，或者其他编码
    * @return:
    */
-  public static String urlEnCode(String s,String charSet) {
+  public static String urlEncode(String s, String charSet) {
     String result = "";
     try {
       result = URLEncoder.encode(s, charSet);
@@ -1285,13 +1343,14 @@ public class Tools {
     }
     return result;
   }
+
   /**
    * @description: urlEnCode的简化版
    * @param {type}
    * @return:
    */
-  public static String urlEnCode(String s) {
-    return urlEnCode(s,"UTF-8");
+  public static String urlEncode(String s) {
+    return urlEncode(s, "UTF-8");
   }
 
   /**
@@ -1326,6 +1385,7 @@ public class Tools {
 
   /**
    * 转GBK，UTF8->GBK
+   *
    * @param {type} {type}
    * @return: 返回
    */
@@ -1337,5 +1397,51 @@ public class Tools {
       e.printStackTrace();
       return "";
     }
+  }
+
+  // 首字母大写
+  public static String captureName(String name) {
+    name = name.substring(0, 1).toUpperCase() + name.substring(1).replace("_", "");
+    return name;
+  }
+
+  /**
+   * 取字符串的右n位字符
+   *
+   * @param {type} {type}
+   * @return: 返回
+   */
+  public static String getRighStr(String s, int n) {
+    return s.substring(s.length() - n);
+  }
+
+  /**
+   * 取字符串的左边n位字符
+   *
+   * @param {type} {type}
+   * @return: 返回
+   */
+  public static String getLeftStr(String s, int n) {
+    return s.substring(0, n);
+  }
+
+  /**
+   * 删除字符串的右边n位字符
+   *
+   * @param {type} {type}
+   * @return: 返回
+   */
+  public static String trimRight(String s, int n) {
+    return s.substring(0, s.length() - n);
+  }
+
+  /**
+   * 删除字符串的左边n个字符
+   *
+   * @param {type} {type}
+   * @return: 返回
+   */
+  public static String trimLeft(String s, int n) {
+    return s.substring(n);
   }
 }

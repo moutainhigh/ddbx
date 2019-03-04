@@ -1,20 +1,10 @@
-<!--
-* @Description: 列表页主体框架
-* @Author: tt
-* @Date: 2019-01-10 10:54:21
-* @LastEditTime: 2019-01-16 13:45:29
-* @LastEditors: tt
--->
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
 <%@ page import="java.io.InputStream" %>
-
-<%@ page import="java.io.FileInputStream" %>
-<%@ page import="com.example.ddbx.tt.tool.JspTools" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
+<%@ page import="com.example.ddbx.tt.tool.JspTools" %>
 <%
 	String errorMsg =(String) request.getAttribute("errorMsg");//如果有c错误信息，就弹出显示并跳转
 	if (!Tools.myIsNull(errorMsg)){
@@ -98,5 +88,4 @@
 	<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
 <script type="text/javascript" src="js/list.js"></script>

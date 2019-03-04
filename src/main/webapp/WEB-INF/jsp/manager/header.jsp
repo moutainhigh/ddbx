@@ -1,23 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.io.InputStream" %>
-<%@ page import="java.io.FileInputStream" %>
-<%@ page import="java.util.*" %>
-<%@ page import="com.example.ddbx.tt.tool.Config" %>
+<%@ page import="com.example.ddbx.tt.tool.CookieTools" %>
 <%
     String name = minfo.get("name");
 %>
 <!-- Main Header -->
 <header class="main-header">
-    <!-- Logo --> <a href="/manager/index?&cn=home&sdo=form&type=demo" class="logo">
+    <!-- Logo --> <a href="/manager/index" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini">
             <img src="/manager/images/logo.png" width="20" height="20" class="logoimg">
         </span> <!-- logo for regular state and mobile devices -->
     <span class="logo-lg">
             <img src="/manager/images/logo.png" width="20" height="20" class="logoimg hidden-xs">
-            <span class="logotxt">
-                <b>系统后台</b>
+            <span class="logotxt" style="font-size:20px !important">
+                <b id="logo_title"><%=Config.APP_TITLE%></b>
             </span>
         </span>
 </a> <!-- Header Navbar -->
@@ -239,6 +237,18 @@
                         </li>
                     </ul>
                 </li>
+                <li class="notifications-menu">
+                    <a onclick="doFont(0);" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa  fa-font"></i>
+                        <span class="label label-success">+</span>
+                    </a>
+                </li>
+                <li class="notifications-menu">
+                    <a onclick="doFont(1);" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa  fa-font"></i>
+                        <span class="label label-danger">-</span>
+                    </a>
+                </li>
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -326,6 +336,17 @@
     }
 %>
 <script>
+    <%
+        String afontSize = CookieTools.get("fontsize");
+        if (Tools.myIsNull(afontSize) ){
+          if ( !Tools.myIsNull(Config.UI_FONT_SIZE)){
+           afontSize = Config.UI_FONT_SIZE;
+          }else{
+            afontSize = "14";
+          }
+        }
+      %>
+    var afontSize= <%=afontSize%>;
     function dologout(){
         $.post("/manager/login", {
                 sdo: "logout",
@@ -336,14 +357,56 @@
                 location.href=res.next_url;
             });
     }
+    function doFont(type){
+        $.post("/manager/command?cn=font&sdo=sysconfig&stype="+type+"&fontsize="+afontSize , {
+            },
+            function(res) {
+                eval("var res="+res);
+                afontSize = res.msg;
+                chgFontSize(res.msg+"px");
+            });
+    }
+    function chgFontSize(sFontSzie){
+        $("<%=Config.UI_FONT_COMPONENTS%>").css("font-size",sFontSzie)
+        $("#logo_title").css("font-size","20px");
+    }
+    <%
+      String sFontSzie = CookieTools.get("fontsize"); //从cookie里获取用户设置
+      if (!Tools.myIsNull(sFontSzie)){
+        sFontSzie = sFontSzie +"px";
+    %>
+    $(function(){
+        //cookie
+        chgFontSize("<%=sFontSzie%>")
+    });
+    <%
+      }else{
+    %>
     <% if (!Tools.myIsNull(Config.UI_FONT_SIZE)){%>
     $(function(){
-        $("<%=Config.UI_FONT_COMPONENTS%>").css("font-size","<%=Config.UI_FONT_SIZE%>")
+        //config
+        chgFontSize("<%=Config.UI_FONT_SIZE%>px")
     });
     <%}%>
+    <%
+      }
+    %>
+    <%
+     String sFontFamily = CookieTools.get("font-family"); //从cookie里获取用户设置
+     if (!Tools.myIsNull(sFontFamily)){
+   %>
+    $(function(){
+        $("<%=Config.UI_FONT_COMPONENTS%>").css("font-family","<%=sFontFamily%>")
+    });
+    <%
+      }else{ //从全局配置里获取
+    %>
     <% if (!Tools.myIsNull(Config.UI_FONT_FAMILY)){%>
     $(function(){
         $("<%=Config.UI_FONT_COMPONENTS%>").css("font-family","<%=Config.UI_FONT_FAMILY%>")
     });
     <%}%>
+    <%
+      }
+    %>
 </script>

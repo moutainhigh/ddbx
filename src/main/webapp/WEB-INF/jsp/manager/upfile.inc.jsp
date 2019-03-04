@@ -26,7 +26,7 @@
   <input type="hidden" id="${param.img_NamePre}" name="${param.img_NamePre}" value="<%=sFile%>">
   <%--这个用来保存上传后的图片url值--%>
   <%--图片上传演示--%>
-  <input type="file" id="upload_${param.img_NamePre}" runat="server" name="upload_immm" accept="image/*" style="${param.img_FileStyle}" class="${param.img_FileClass}">
+  <input type="file" id="upload_${param.img_NamePre}" runat="server" name="upload_immm" accept="${param.img_Accept}" style="${param.img_FileStyle}" class="${param.img_FileClass}">
   <script>
     $('#upload_${param.img_NamePre}').fileUpload({//压缩图片为jpg后再上传
       "url": "/ttAjaxPost?do=fileup&smallwidth=${param.img_SmallWidth}&smallheight=${param.img_SmallHeight}&shuitext=快加认证",//smallwidth缩略图宽,smallheight缩略图高，shuitext水印文字

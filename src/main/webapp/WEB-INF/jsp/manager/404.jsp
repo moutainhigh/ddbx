@@ -1,24 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ page import="java.util.*" %>
-<%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="Tools" uri="/tld/manager" %>
 <%@ page isErrorPage="true" %>
-
-<%-- head.jsp 页面--%>
 <%
-    String head ="head.jsp";
     String errorMsg =(String) request.getAttribute("errorMsg");
     if (pageContext.getException()!=null){
         String msg = request.getRequestURL().toString()+"|"+request.getRequestURI()+"|"+request.getQueryString();
-        msg = Tools.urlEnCode(msg);
+        msg = Tools.urlEncode(msg);
         Tools.logError(msg+":"+pageContext.getException().getMessage(),true,false);
     }
 %>
-<jsp:include page="<%=head%>"></jsp:include>
-
+<%@include file="head.jsp"%>
 <body class="skin-blue sidebar-mini fixed">
 <div class="box-body">
     <div class="callout callout-danger">

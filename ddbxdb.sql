@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : kcdweb
-Source Server Version : 80014
+Source Server         : localwork
+Source Server Version : 80013
 Source Host           : localhost:3306
 Source Database       : ddbxdb
 
 Target Server Type    : MYSQL
-Target Server Version : 80014
+Target Server Version : 80013
 File Encoding         : 65001
 
-Date: 2019-02-22 11:58:13
+Date: 2019-02-21 17:58:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -565,95 +565,6 @@ INSERT INTO `comm_states` VALUES ('19', '贵州省', 'guizhousheng|gzs', 'g', '0
 INSERT INTO `comm_states` VALUES ('31', '广西省', 'guangxisheng|gxs', 'g', '0');
 INSERT INTO `comm_states` VALUES ('30', '广东省', 'guangdongsheng|gds', 'g', '0');
 INSERT INTO `comm_states` VALUES ('34', '海南省', 'hainansheng|hns', 'h', '0');
-
--- ----------------------------
--- Table structure for dd_erp_commontype
--- ----------------------------
-DROP TABLE IF EXISTS `dd_erp_commontype`;
-CREATE TABLE `dd_erp_commontype` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `showtag` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of dd_erp_commontype
--- ----------------------------
-INSERT INTO `dd_erp_commontype` VALUES ('1', '征信查询', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('2', '车辆评估', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('3', '视频面签', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('4', '汽车贷款', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('5', '银行贷款申请', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('6', '公司归档', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('7', '抵押归档', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('8', '退单退费', '1');
-
--- ----------------------------
--- Table structure for dd_erp_commtaskname
--- ----------------------------
-DROP TABLE IF EXISTS `dd_erp_commtaskname`;
-CREATE TABLE `dd_erp_commtaskname` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `erp_btype_id` int(11) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of dd_erp_commtaskname
--- ----------------------------
-INSERT INTO `dd_erp_commtaskname` VALUES ('1', '开始', '1', '1');
-INSERT INTO `dd_erp_commtaskname` VALUES ('2', '提交查询', '1', '2');
-INSERT INTO `dd_erp_commtaskname` VALUES ('3', '查询结果', '1', '3');
-INSERT INTO `dd_erp_commtaskname` VALUES ('4', '完成', '1', '4');
-INSERT INTO `dd_erp_commtaskname` VALUES ('5', '开始', '2', '5');
-INSERT INTO `dd_erp_commtaskname` VALUES ('6', '提交评估', '2', '6');
-INSERT INTO `dd_erp_commtaskname` VALUES ('7', '评估价审核', '2', '7');
-INSERT INTO `dd_erp_commtaskname` VALUES ('8', '完成', '2', '8');
-INSERT INTO `dd_erp_commtaskname` VALUES ('9', '开始', '3', '9');
-INSERT INTO `dd_erp_commtaskname` VALUES ('10', '提交申请', '3', '10');
-INSERT INTO `dd_erp_commtaskname` VALUES ('11', '结果反馈', '3', '11');
-INSERT INTO `dd_erp_commtaskname` VALUES ('12', '完成', '3', '12');
-INSERT INTO `dd_erp_commtaskname` VALUES ('13', '开始', '4', '13');
-INSERT INTO `dd_erp_commtaskname` VALUES ('14', '提交申请', '4', '14');
-INSERT INTO `dd_erp_commtaskname` VALUES ('15', '审核结果', '4', '15');
-INSERT INTO `dd_erp_commtaskname` VALUES ('16', '完成', '4', '16');
-INSERT INTO `dd_erp_commtaskname` VALUES ('17', '银行贷款申请开始', '5', '17');
-INSERT INTO `dd_erp_commtaskname` VALUES ('18', '合作商寄送材料', '5', '18');
-INSERT INTO `dd_erp_commtaskname` VALUES ('19', '公司收件确认', '5', '19');
-INSERT INTO `dd_erp_commtaskname` VALUES ('20', '银行收件确认', '5', '20');
-INSERT INTO `dd_erp_commtaskname` VALUES ('21', '银行审批结果', '5', '21');
-INSERT INTO `dd_erp_commtaskname` VALUES ('22', '银行放款结果', '5', '22');
-INSERT INTO `dd_erp_commtaskname` VALUES ('23', '收款确认', '5', '23');
-INSERT INTO `dd_erp_commtaskname` VALUES ('24', '补充材料确认', '5', '24');
-INSERT INTO `dd_erp_commtaskname` VALUES ('25', '补充材料', '5', '25');
-INSERT INTO `dd_erp_commtaskname` VALUES ('26', '完成', '5', '26');
-INSERT INTO `dd_erp_commtaskname` VALUES ('27', '开始', '6', '27');
-INSERT INTO `dd_erp_commtaskname` VALUES ('28', '提交申请', '6', '28');
-INSERT INTO `dd_erp_commtaskname` VALUES ('29', '结果反馈', '6', '29');
-INSERT INTO `dd_erp_commtaskname` VALUES ('30', '完成', '6', '30');
-INSERT INTO `dd_erp_commtaskname` VALUES ('31', '开始', '7', '31');
-INSERT INTO `dd_erp_commtaskname` VALUES ('32', '公证记录', '7', '32');
-INSERT INTO `dd_erp_commtaskname` VALUES ('33', '抵押材料寄送至合作商', '7', '33');
-INSERT INTO `dd_erp_commtaskname` VALUES ('34', '合作商收件确认', '7', '34');
-INSERT INTO `dd_erp_commtaskname` VALUES ('35', '抵押情况记录', '7', '35');
-INSERT INTO `dd_erp_commtaskname` VALUES ('36', '抵押材料寄回', '7', '36');
-INSERT INTO `dd_erp_commtaskname` VALUES ('37', '审核收件确认', '7', '37');
-INSERT INTO `dd_erp_commtaskname` VALUES ('38', '抵押材料至银行', '7', '38');
-INSERT INTO `dd_erp_commtaskname` VALUES ('39', '银行收件确认', '7', '39');
-INSERT INTO `dd_erp_commtaskname` VALUES ('40', '录入银行查验情况', '7', '40');
-INSERT INTO `dd_erp_commtaskname` VALUES ('41', '完成', '7', '41');
-INSERT INTO `dd_erp_commtaskname` VALUES ('42', '退单退费申请开始', '8', '42');
-INSERT INTO `dd_erp_commtaskname` VALUES ('43', '审核员退单审核', '8', '43');
-INSERT INTO `dd_erp_commtaskname` VALUES ('44', '退单数据修正', '8', '44');
-INSERT INTO `dd_erp_commtaskname` VALUES ('45', '审核经理退单审核', '8', '45');
-INSERT INTO `dd_erp_commtaskname` VALUES ('46', '合作商回款缴费', '8', '46');
-INSERT INTO `dd_erp_commtaskname` VALUES ('47', '公司确认到账', '8', '47');
-INSERT INTO `dd_erp_commtaskname` VALUES ('48', '材料寄回', '8', '48');
-INSERT INTO `dd_erp_commtaskname` VALUES ('49', '合作商收件确认', '8', '49');
-INSERT INTO `dd_erp_commtaskname` VALUES ('50', '完成', '8', '50');
 
 -- ----------------------------
 -- Table structure for dd_fs

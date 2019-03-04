@@ -7,13 +7,13 @@
  */
 package com.example.ddbx.tt.manager;
 
+import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
-import com.example.ddbx.tt.table.Admin;
-import com.example.ddbx.tt.table.AdminAgp;
-import com.example.ddbx.tt.table.FsModal;
-import com.example.ddbx.tt.table.Sys_config;
+import com.example.ddbx.tt.table.*;
 import com.example.ddbx.tt.tool.DbCtrl;
 import com.example.ddbx.tt.tool.Tools;
+import com.example.ddbx.tt.utils.orderutil;
+import org.springframework.core.annotation.OrderUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,12 +28,15 @@ public class ManagerPost {
   public TtMap doPost(HttpServletRequest request) {
     TtMap postUrl = Tools.getUrlParam();
     TtMap post = Tools.getPostMap(request, true);// 过滤参数，过滤mysql的注入，url参数注入
-    System.out.println(Tools.jsonEnCode(post));
+    System.out.println(Tools.jsonEncode(post));
     String cn = postUrl.get("cn") == null ? "" : postUrl.get("cn");
     TtMap result2 = new TtMap();
     Tools.formatResult(result2, false, 999, "异常，请重试！", "");// 初始化返回
-    if (ManagerTools.checkCn(cn) && ManagerTools.checkSdo(postUrl.get("sdo"))) {// 过滤掉cn
-      switch (postUrl.get("sdo")) { // 目前只有form模式下有post
+    String realCn = ManagerTools.getRealCn(cn);
+    if (!ManagerTools.checkSdo(postUrl.get("sdo")) || realCn == null) {// 过滤cn和sdo，realCn为null时表示此cn不合法。
+      return result2;
+    }
+    switch (postUrl.get("sdo")) { // 目前只有form模式下有post
         case "form":
         case "float":
           long id = Tools.strToLong(post.get("id"));
@@ -41,19 +44,7 @@ public class ManagerPost {
           String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
           try {
             switch (postUrl.get("cn")) {
-              case "sys_config":
-                    dbCtrl = (DbCtrl) new Sys_config();
-                break;
-              case "admin":
-                dbCtrl = (DbCtrl) new Admin();
-                break;
-              case "admin_agp":
-                dbCtrl = (DbCtrl) new AdminAgp();
-                break;
-              case "fs_agp": // 用单独的类演示处理post，保存数据
-                dbCtrl = (DbCtrl) new FsModal();
-                break;
-              case "sys_modal": // 直接用dbCtrl来处理
+              case "sys_modal": // 直接用dbCtrl来处理，但是要特殊处理一些数据的演示。
                 System.out.println(post.toString());
                 if (post.get("id_uplevel").equals("0")) {
                   post.put("level", "1");
@@ -68,10 +59,15 @@ public class ManagerPost {
                   }
                 }
                 break;
-              default:
+              default: // 不用特殊处理的cn
+                Class<?> b = ManagerTools.doGetClass(realCn);
+                if (null != b) {
+                  dbCtrl = (DbCtrl) b.newInstance();
+                }
+                break;
             }
-            if (dbCtrl == null) {
-              dbCtrl = new DbCtrl(ManagerTools.getRealCn(cn));
+            if (dbCtrl == null) {// 使用dbCtrl默认的配置输出数据
+              dbCtrl = new DbCtrl(realCn.toLowerCase());
             }
             dbCtrl.doPost(post, id, result2);
           } catch (Exception e) {
@@ -80,12 +76,12 @@ public class ManagerPost {
           } finally {
             if (dbCtrl != null) {
               dbCtrl.closeConn();
+              dbCtrl = null;
             }
             post.clear();
             post = null;
           }
           break;
-      }
     }
     return result2;
   }

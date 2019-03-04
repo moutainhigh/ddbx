@@ -92,7 +92,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-			<label class="col-sm-2 control-label">相关页面</label>
+			<label class="col-sm-2 control-label">处理信息内文本/表单（HTML）</label>
 			<div class="col-sm-10">
 				<textarea id="pagehtml" name="pagehtml" style="width: 100%; height: 200px" class="form-control">
 

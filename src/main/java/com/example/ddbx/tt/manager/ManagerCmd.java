@@ -24,7 +24,7 @@ import java.net.URLEncoder;
 public class ManagerCmd {
   /**
    * command模式的POST处理
-   * 
+   *
    * @param request
    * @return
    * @throws ServletException
@@ -39,36 +39,36 @@ public class ManagerCmd {
     }
     TtMap postUrl = Tools.getUrlParam();
     TtMap post = Tools.getPostMap(request, true);// 过滤参数，过滤mysql的注入，url参数注入
-    System.out.println(Tools.jsonEnCode(post));
+    System.out.println(Tools.jsonEncode(post));
     String cn = postUrl.get("cn") == null ? "" : postUrl.get("cn");
     TtMap result2 = new TtMap();
     Tools.formatResult(result2, false, 999, "异常，请重试！", "");// 初始化返回
     if (ManagerTools.checkCn(cn) && ManagerTools.checkSdo(postUrl.get("sdo"))) {// 过滤掉cn
       post.put("fromcommand", "1");
       switch (postUrl.get("sdo")) { // 目前只有form模式下有post
-      case "edit":
-        long id = Tools.myIsNull(postUrl.get("id")) ? 0 : Tools.strToLong(postUrl.get("id"));
-        switch (cn) {
-        case "admin":
-          if (id > 0) {
-            Admin admin = new Admin();
-            try {
-              admin.edit(post, id);
-              boolean success = admin.errorCode == 0 && Tools.myIsNull(admin.errorMsg);
-              Tools.formatResult(result2, success, admin.errorCode, admin.errorMsg, "");
-            } catch (Exception e) {
-              Tools.logError(e.getMessage(),true,true);
-            } finally {
-              admin.closeConn();
-            }
+        case "edit":
+          long id = Tools.myIsNull(postUrl.get("id")) ? 0 : Tools.strToLong(postUrl.get("id"));
+          switch (cn) {
+            case "admin":
+              if (id > 0) {
+                Admin admin = new Admin();
+                try {
+                  admin.edit(post, id);
+                  boolean success = admin.errorCode == 0 && Tools.myIsNull(admin.errorMsg);
+                  Tools.formatResult(result2, success, admin.errorCode, admin.errorMsg, "");
+                } catch (Exception e) {
+                  Tools.logError(e.getMessage(),true,true);
+                } finally {
+                  admin.closeConn();
+                }
+              }
+              break;
           }
           break;
-        }
-        break;
-      default:
-        break;
+        default:
+          break;
       }
     }
-    return Tools.jsonEnCode(result2);
+    return Tools.jsonEncode(result2);
   }
 }

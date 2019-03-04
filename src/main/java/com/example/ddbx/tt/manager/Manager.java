@@ -7,8 +7,11 @@
  */
 package com.example.ddbx.tt.manager;
 
+import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.tool.Config;
+import com.example.ddbx.tt.tool.DbCtrl;
+import com.example.ddbx.tt.tool.DbTools;
 import com.example.ddbx.tt.tool.Tools;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,22 +26,28 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class Manager {
   /**
    * INDEX 的 GET处理
-   * 
+   *
    * @return
    * @throws IOException
    * @throws ServletException
    */
   @RequestMapping(value = "/manager/index", method = RequestMethod.GET)
   public String index(String cn, String type, String sdo, String id, HttpServletRequest request,
-      HttpServletResponse resp) throws ServletException, IOException {
+                      HttpServletResponse resp) throws ServletException, IOException {
     String sLogin = ManagerTools.checkLogin();// 检查是否登陆
     if (!Tools.myIsNull(sLogin)) {// 如未登陆跳转到登陆页面
-      return sLogin + "?refer=" + URLEncoder.encode(Tools.urlKill("toExcel|toZip"), "UTF-8");
+      String newUrl = URLEncoder.encode(Tools.urlKill("toExcel|toZip"), "UTF-8");
+      if (Tools.getRighStr( newUrl,3).equals("%3F")){//?号
+        newUrl = Tools.trimRight(newUrl, 3);
+      }
+      return sLogin + "?refer=" + newUrl;
     }
     return new ManagerGet().doGet(cn, type, sdo, id, request, resp);
   }
@@ -58,7 +67,7 @@ public class Manager {
     if (!Tools.myIsNull(sLogin)) {// 如未登陆跳转到登陆页面
       return sLogin + "?refer=" + URLEncoder.encode(Tools.urlKill(""), "UTF-8");
     }
-    return Tools.jsonEnCode(new ManagerPost().doPost(request));
+    return Tools.jsonEncode(new ManagerPost().doPost(request));
   }
 
   /**
@@ -84,7 +93,7 @@ public class Manager {
     TtMap post = Tools.getPostMap(request);// 过滤参数，过滤mysql的注入，url参数注入
     String refer = post.get("refer");
     String loginTb = Config.DB_USERTABLENAME;
-    System.out.println(Tools.jsonEnCode(post));
+    System.out.println(Tools.jsonEncode(post));
     TtMap result2 = new TtMap();
     Tools.formatResult(result2, false, 999, "异常，请重试！", "");// 初始化返回
     if (ManagerTools.checkSdo(post.get("sdo"))) {// 过滤掉sdo
@@ -112,7 +121,7 @@ public class Manager {
         break;
       }
     }
-    return Tools.jsonEnCode(result2);
+    return Tools.jsonEncode(result2);
   }
 
   /**
@@ -125,5 +134,26 @@ public class Manager {
   @RequestMapping(value = "/manager/404", method = RequestMethod.GET)
   public String Show404(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
     return "jsp/manager/404"; 
+  }
+
+  /**
+   * 删除
+   */
+  @RequestMapping(value = "/manager/todel", method = RequestMethod.POST)
+  @ResponseBody
+  public Map todel(long id,String cn){
+    Map result=new HashMap();
+    DbTools myDbTools=new DbTools();
+    String sql="DELETE FROM "+cn+" WHERE id="+id;
+    try {
+      myDbTools.recexec(sql);
+      result.put("code",true);
+    }catch (Exception e) {
+      result.put("code",false);
+      Tools.logError(e.getMessage(), true, false);
+    }finally {
+      myDbTools.closeConn();
+    }
+    return result;
   }
 }

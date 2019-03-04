@@ -32,6 +32,15 @@
 								<th class="hidden-xs text-center">
 									后台菜单显示
 								</th>
+								<th class="hidden-xs text-center">
+                                    cn
+                                </th>
+                                <th class="hidden-xs text-center">
+                                    type
+                                </th>
+                                <th class="hidden-xs text-center">
+                                    sdo
+                                </th>
 								<th class="text-center">
 									排序
 								</th>
@@ -54,6 +63,15 @@
 										${u.showmmenutag.equals("1")?"<span class='label label-success'>显示</span>":"<span class='label label-danger'>不显示</span>"}
 									</td>
 									<td class="text-center">
+                                        ${u.cn}
+                                    </td>
+                                    <td class="text-center">
+                                        ${u.type}
+                                    </td>
+                                    <td class="text-center">
+                                        ${u.sdo}
+                                    </td>
+									<td class="text-center">
 										${u.sort}
 									</td>
 									<td class="text-center">
@@ -61,6 +79,10 @@
 											<a href="<%=url%>${u.id}" class="btn btn-default">
 												<i class="fa fa-pencil"></i>
 											</a>
+											<a onclick="del('<%=url%>','${u.id}')" class="btn btn-default">
+												<i class="fa fa-trash"></i>
+											</a>
+
 										</div>
 									</td>
 								</tr>
@@ -73,6 +95,37 @@
 	</div>
 </div>
 <script>
+	//删除操作
+	function del(url,id) {
+		url=url.replace('&id=','').replace("form","list");
+		//alert(url);
+		//定义变量sendData
+		var sendData ={
+			id:id,
+			cn:'sys_modal'
+		};
+		$.ajax({
+			url:'/manager/todel',
+			type:'post',
+			dataType:'json',
+			async:true,//异步请求
+			cache:false,
+			data:sendData,//使用变量sendData
+			//执行成功的回调函数
+			success:function(data) {
+				if (data.code){
+					alert("删除成功！");
+					window.location.href=url;
+				}else{
+					alert("删除失败！");
+				}
+			},
+			//执行失败或错误的回调函数
+			error:function(data) {
+				alert("删除失败！");
+			}
+		});
+	}
 </script>
 </body>
 </html>
