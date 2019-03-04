@@ -18,7 +18,6 @@
             <h3 class="box-title">订单来自：快加云-秦扬</h3>
             <h3 class="box-title">提交时间：2019-02-25 11:40:16</h3>
             <div class="box-tools pull-right">
-
                 <h3 class="box-title">订单编号：ICBCKJY0000754</h3>
             </div>
         </div>
@@ -45,7 +44,6 @@
                                 <img  id="" name="" onclick="yyclimage(this)" class="img-thumbnail"  style="width: 500px;height: 500px;" src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
                                 <p class="fileUpload_filename ng-binding" style="position:absolute;top:505px;left:220px;font-size:12px;" >身份证</p>
                             </div>
-
                         </div>
                         <div class="col-sm-4">
                             <div class="row inline-from" style="position:absolute;top:375px;">
@@ -120,8 +118,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>

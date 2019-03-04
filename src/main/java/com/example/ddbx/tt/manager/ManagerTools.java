@@ -26,7 +26,7 @@ public class ManagerTools {
     public static boolean checkCn(String cn) {
         String[] allowCnList = {"admin", "assess_admin", "home", "admin2", "button", "demo_upfile", "icon", "general",
                 "admin_agp", "Timeline", "Modals", "table", "comm_citys", "sys_modal", "fs_agp", "readme", "sys_error", "readmedev",
-                "fs","spmq","car_loan",
+                "fs","spmq","car_loan","visual",
                 "gems", "dd_icbc", "zxcx", "alltask", "mytask", "my_job", "sys_config", "sys_config_son"}; // 允许的cn,只有在列表中的cn才允许访问
         return Tools.arrayIndexOf(allowCnList, cn);
     }
@@ -47,6 +47,7 @@ public class ManagerTools {
                 "fs",
                 "gems",
                 "spmq",
+                "visual",
                 "dd_icbc",
                 "alltask", "zxcx","car_loan",
 
@@ -125,6 +126,7 @@ public class ManagerTools {
             case "home":
             case "button":
             case "admin2":
+            case "visual":
             case "demo_upfile":
             case "icon":
             case "general":
