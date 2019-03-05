@@ -54,31 +54,119 @@ public class AllTask extends DbCtrl {
 
     }
     /**
+     * 查询订单下所有任务板块
+     * @return
+     */
+    public TtList getdd_icbc_erp(int icbc_id) {
+        String sql="select type_id from dd_icbc_erp where icbc_id="+icbc_id;
+        return Tools.reclist(sql);
+    }
+    /**
+     * 获取订单单个版块类型 所有进度数据
+     *
+     * @return
+     */
+    public TtList geterplist(int id, int type_id) {
+        DbTools dbTools = new DbTools();
+        String sql = "select " +
+                "e.*, " +
+                "(select  " +
+                "s2.name as now_name " +
+                "from  " +
+                "(select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort) s1 " +
+                "LEFT JOIN sys_modal s2 ON s2.id_uplevel=s1.id " +
+                "where s1.id=e.type_id and s2.sort=e.now_status) as now_name " +
+                "from dd_icbc_erp_result e where e.qryid=" + id + " and e.type_id=" + type_id;
+        TtList list = new TtList();
+        try {
+            list = dbTools.reclist(sql);
+        } catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        } finally {
+            dbTools.closeConn();
+        }
+        System.out.println("erpjson:" + list);
+        return list;
+    }
+    /**
+     * 获取订单详细信息
+     *
+     * @param id
+     * @return
+     */
+    public TtMap geticbc_detail(int id) {
+        String sql = "select * from  " +
+                "dd_icbc i " +
+                "LEFT JOIN dd_icbc_materials im ON im.icbc_id=i.id " +
+                "where i.id=" + id;
+        return Tools.recinfo(sql);
+    }
+
+    /**
      * @param {type} {type}
      * @说明: 给继承的子类重载用的
      * @return: 返回
      */
     public void doGetForm(HttpServletRequest request, TtMap post) {
-        MyTask myTask3=new MyTask();
-        try {
-            request.setAttribute("clgc_list",getclgc());
-            if(post.get("type_id")!=null&&!post.get("type_id").equals("")) {
-                request.setAttribute("erplist", myTask3.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
-            }
-            if(post.get("type_id")!=null&&!post.get("type_id").equals("")){
-                request.setAttribute("type_id",post.get("type_id"));
-                if(myTask3.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id")))!=null&&myTask3.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))).size()>0) {
-                    request.setAttribute("erplist", myTask3.geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
-                }}
-            request.setAttribute("icbc",myTask3.geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
-        } catch (Exception e) {
-            Tools.logError(e.getMessage(), true, false);
-        } finally {
-            myTask3.closeConn();
-        }
+
 
         long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
         TtMap info = info(nid);
+        System.out.println("tab:" + post.get("tab"));
+        System.out.println("type_id:"+info.get("type_id"));
+        System.out.println("later_status:"+info.get("later_status"));
+        //erp任务各板块处理
+//        if (post.get("tab") != null && !post.get("tab").equals("")) {
+//            switch (post.get("tab")) {
+//                case "6":
+//
+//                    break;
+//                case "0":
+//                    //查询订单下板块有无进度
+//                    System.out.println("进来了没有");
+//                    TtList erp_stylelist=getdd_icbc_erp(Integer.valueOf(post.get("icbc_id")));
+//                    request.setAttribute("erp_stylelist",erp_stylelist);
+//                    break;
+//                case "1":
+//
+//                    break;
+//                case "2":
+//
+//                    break;
+//                case "3":
+//
+//                    break;
+//                case "4":
+//
+//                    break;
+//                case "5":
+//
+//                    break;
+//                default:
+//
+//                    break;
+//
+//            }
+//        }
+
+        //查询订单下板块有无进度
+        System.out.println("进来了没有");
+        TtList erp_stylelist=getdd_icbc_erp(Integer.valueOf(post.get("icbc_id")));
+        request.setAttribute("erp_stylelist",erp_stylelist);
+
+        if (getclgc() != null && getclgc().size() > 0) {
+            request.setAttribute("clgc_list", getclgc());
+        }
+        if (post.get("type_id") != null && !post.get("type_id").equals("")) {
+            request.setAttribute("type_id", post.get("type_id"));
+            if (geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))) != null && geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))).size() > 0) {
+                request.setAttribute("erplist", geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
+            }
+        }
+        TtMap  modals= get_sys_modal_name(Integer.valueOf(post.get("type_id")),Integer.valueOf(info.get("later_status")));
+        request.setAttribute("modals",modals);
+
+        request.setAttribute("icbc", geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
         String jsonInfo = Tools.jsonEncode(info);
         request.setAttribute("info", jsonInfo);//info为json后的info
         request.setAttribute("infodb", info);//infodb为TtMap的info
@@ -125,7 +213,7 @@ public class AllTask extends DbCtrl {
         p = pageInt; // 显示页
         limit = limtInt; // 每页显示记录数
         showall = true; // 忽略deltag和showtag
-        leftsql="LEFT JOIN admin a on a.id=t.gems_id " +
+        leftsql = "LEFT JOIN admin a on a.id=t.gems_id " +
                 "LEFT JOIN fs f on f.id=t.gems_fs_id " +
                 "LEFT JOIN sys_modal sm ON sm.id=t.type_id ";
         list = lists(whereString, fieldsString);
@@ -220,6 +308,27 @@ public class AllTask extends DbCtrl {
                 e.printStackTrace();
             }
         }finally{
+            dbTools.closeConn();
+        }
+        return ttMap;
+    }
+    /**
+     * 获取erp 任务节点name1
+     *
+     * @return
+     */
+    public static TtMap get_sys_modal_name(int type_id, int id) {
+        TtMap ttMap = new TtMap();
+        DbTools dbTools = new DbTools();
+        String sql = "select * from sys_modal where id_uplevel="+type_id+" and sort="+id;
+        try {
+            ttMap = dbTools.recinfo(sql);
+        } catch (Exception e) {
+            Tools.logError(e.getMessage());
+            if (Config.DEBUGMODE) {
+                e.printStackTrace();
+            }
+        } finally {
             dbTools.closeConn();
         }
         return ttMap;

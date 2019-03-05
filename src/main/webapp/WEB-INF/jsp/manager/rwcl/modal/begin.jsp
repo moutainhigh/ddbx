@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -13,4 +12,5 @@
         <div style="float: left; margin-left: 20px; width: 260px;">
             <strong>处理人：</strong>秦扬
         </div>
-    </div></li>
+    </div>
+</li>

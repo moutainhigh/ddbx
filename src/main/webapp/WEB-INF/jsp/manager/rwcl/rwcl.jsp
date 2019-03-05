@@ -115,7 +115,7 @@
                                                     erp_msg=erp_msg+"modal/end.jsp";
                                                     break;
                                                 default :
-                                                    erp_msg=erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp";
+                                                    erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
                                             }
                         %>
                         <jsp:include page="<%=erp_msg%>"></jsp:include>
@@ -139,7 +139,6 @@
                         %>
                     </ol>
                 </div>
-
                 <div class="flex-row flex-row-rhcen">
                     <em onclick="funUnfold()" class="text-muted">全部展开</em>
                     <em onclick="funClose()" class="text-muted">全部收起</em>

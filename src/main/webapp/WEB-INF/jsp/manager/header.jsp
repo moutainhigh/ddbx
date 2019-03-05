@@ -336,7 +336,7 @@
     }
 %>
 <script>
-    <%
+      <%
         String afontSize = CookieTools.get("fontsize");
         if (Tools.myIsNull(afontSize) ){
           if ( !Tools.myIsNull(Config.UI_FONT_SIZE)){
@@ -346,7 +346,7 @@
           }
         }
       %>
-    var afontSize= <%=afontSize%>;
+    var afontSize='<%=afontSize%>';
     function dologout(){
         $.post("/manager/login", {
                 sdo: "logout",

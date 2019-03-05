@@ -24,10 +24,12 @@ public class ManagerTools {
      * @return:
      */
     public static boolean checkCn(String cn) {
-        String[] allowCnList = {"admin", "assess_admin", "home", "admin2", "button", "demo_upfile", "icon", "general",
+        String[] allowCnList = {
+                "admin", "assess_admin", "home", "admin2", "button", "demo_upfile", "icon", "general",
                 "admin_agp", "Timeline", "Modals", "table", "comm_citys", "sys_modal", "fs_agp", "readme", "sys_error", "readmedev",
                 "fs","spmq","car_loan","qcpg",
-                "gems", "dd_icbc", "zxcx", "alltask", "mytask", "my_job", "sys_config", "sys_config_son"}; // 允许的cn,只有在列表中的cn才允许访问
+                "gems", "dd_icbc", "zxcx", "alltask", "mytask", "my_job", "sys_config", "sys_config_son","dd_icbc_status"
+        }; // 允许的cn,只有在列表中的cn才允许访问
         return Tools.arrayIndexOf(allowCnList, cn);
     }
 
@@ -50,7 +52,7 @@ public class ManagerTools {
                 "dd_icbc",
                 "alltask", "zxcx","car_loan","qcpg",
 
-                "mytask", "sys_config", "sys_config_son"
+                "mytask", "sys_config", "sys_config_son","dd_icbc_status"
         }; // 允许的cn,只有在列表中的cn才使用数据库，
         return Tools.arrayIndexOf(allowCnList, cn);
     }

@@ -229,12 +229,12 @@ public class CarLoan extends DbCtrl {
         long id = 0;
         try {
             TtMap info = new TtMap();
-            info.put("later_status", "18"); //下一任务节点:合作商寄送材料
-            info.put("now_status", "17"); //当前任务状态节点:银行贷款申请开始
+            info.put("later_status", "33"); //下一任务节点:专员审核结果
+            info.put("now_status", "32"); //当前任务状态节点:专员审核中
             info.put("icbc_id", icbc_id);
             info.put("gems_id", ontCustomer.get("gems_id"));
             info.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
-            info.put("type_id", "5"); //业务类型id
+            info.put("type_id", "70"); //业务类型id
             info.put("c_name", ontCustomer.get("c_name"));
             info.put("c_tel", ontCustomer.get("c_tel"));
             info.put("c_cardno", ontCustomer.get("c_cardno"));
@@ -255,12 +255,21 @@ public class CarLoan extends DbCtrl {
         //向dd_icbc_erp_result表中添加数据 start
         DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
         try {
+            //添加 开始
+            TtMap ttMap1 = new TtMap();
+            ttMap1.put("qryid",id+"");
+            ttMap1.put("icbc_id",icbc_id);
+            ttMap1.put("type_id","70");
+            ttMap1.put("later_status","32");
+            ttMap1.put("now_status","31");
+            dbCtrl2.add(ttMap1);
+            //添加 提交查询
             TtMap ttMap2 = new TtMap();
             ttMap2.put("qryid",id+"");
             ttMap2.put("icbc_id",icbc_id);
-            ttMap2.put("type_id","5");
-            ttMap2.put("later_status","18");
-            ttMap2.put("now_status","17");
+            ttMap2.put("type_id","70");
+            ttMap2.put("later_status","33");
+            ttMap2.put("now_status","32");
             dbCtrl2.add(ttMap2);
         }catch (Exception e){
             e.printStackTrace();
@@ -326,6 +335,8 @@ public class CarLoan extends DbCtrl {
         p = pageInt; // 显示页
         limit = limtInt; // 每页显示记录数
         showall = true; // 忽略deltag和showtag
+//        leftsql = "LEFT JOIN admin a on a.id=t.gems_id " +
+//                "LEFT JOIN fs f on f.id=t.gems_fs_id ";
         list = lists(whereString, fieldsString);
         if (bToExcel) { // Excel导出演示：导出到Excel并下载
             String[] headers = new String[] { "管理员名称", "密码MD5", "用户名" };
@@ -396,7 +407,8 @@ public class CarLoan extends DbCtrl {
         }
         TtList lmss = super.lists(wheres, f);
         for (TtMap tmpInfo : lmss) {
-            tmpInfo.put("fsname", Tools.unDic("dd_fs", Tools.strToLong(tmpInfo.get("gems_fs_id"))));// 所属公司
+            tmpInfo.put("fsname", Tools.unDic("fs", Tools.strToLong(tmpInfo.get("gems_fs_id"))));// 所属公司
+            tmpInfo.put("name", Tools.unDic("admin", Tools.strToLong(tmpInfo.get("gems_id"))));// 所属公司业务员名字
             tmpInfo.put("choice", Tools.dicopt("sys_dic_tag", Tools.strToLong(tmpInfo.get("showtag")))); // 显示/隐藏
             tmpInfo.put("c_name", Tools.unDic("dd_icbc", Tools.strToLong(tmpInfo.get("icbc_id"))));// 客户订单名字
         }
