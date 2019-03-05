@@ -45,11 +45,11 @@
 										${u.c_name}
 									</td>
 									<td class="text-center">
-                                        ${u.fsname}
-									</td>
-									<td class="hidden-xs text-center">
-											${u.dt_add}<br>${u.dt_edit}
-									</td>
+                                        ${u.fsname}-${u.name}
+                                    </td>
+                                    <td class="hidden-xs text-center">
+                                            ${u.dt_add}<br>${u.dt_edit}
+                                    </td>
 									<td class="text-center">
 										<div class="table-button">
 											<a href="<%=url%>${u.id}" class="btn btn-default">
