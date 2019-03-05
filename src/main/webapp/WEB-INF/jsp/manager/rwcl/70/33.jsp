@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<style>li{list-style-type:none;}</style>
 <li class="text-primary"><em>专员审核结果：</em>
     <div class="big-conte" style="display: block;">
         <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
