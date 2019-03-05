@@ -229,8 +229,8 @@ public class CarLoan extends DbCtrl {
         long id = 0;
         try {
             TtMap info = new TtMap();
-            info.put("later_status", "32"); //下一任务节点:合作商寄送材料
-            info.put("now_status", "31"); //当前任务状态节点:银行贷款申请开始
+            info.put("later_status", "33"); //下一任务节点:专员审核结果
+            info.put("now_status", "32"); //当前任务状态节点:专员审核中
             info.put("icbc_id", icbc_id);
             info.put("gems_id", ontCustomer.get("gems_id"));
             info.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
@@ -255,12 +255,21 @@ public class CarLoan extends DbCtrl {
         //向dd_icbc_erp_result表中添加数据 start
         DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
         try {
+            //添加 开始
+            TtMap ttMap1 = new TtMap();
+            ttMap1.put("qryid",id+"");
+            ttMap1.put("icbc_id",icbc_id);
+            ttMap1.put("type_id","70");
+            ttMap1.put("later_status","32");
+            ttMap1.put("now_status","31");
+            dbCtrl2.add(ttMap1);
+            //添加 提交查询
             TtMap ttMap2 = new TtMap();
             ttMap2.put("qryid",id+"");
             ttMap2.put("icbc_id",icbc_id);
-            ttMap2.put("type_id","5");
-            ttMap2.put("later_status","18");
-            ttMap2.put("now_status","17");
+            ttMap2.put("type_id","70");
+            ttMap2.put("later_status","33");
+            ttMap2.put("now_status","32");
             dbCtrl2.add(ttMap2);
         }catch (Exception e){
             e.printStackTrace();
