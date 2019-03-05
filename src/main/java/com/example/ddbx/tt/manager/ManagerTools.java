@@ -124,13 +124,13 @@ public class ManagerTools {
                 return "CarLoan";
             case "qcpg":
                 return "qcpg";
-
+            case "visual":
+                return "visual";
             // 不需要使用数据库的CN
             case "home":
             case "button":
             case "admin2":
             case "demo_upfile":
-            case "visual":
             case "icon":
             case "general":
             case "readmedev":

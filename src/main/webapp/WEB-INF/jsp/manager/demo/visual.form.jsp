@@ -8,7 +8,7 @@
 
 
 <div id="main" name="main" style="width: 600px;height: 300px;"></div>
-
+<div id="main1" name="main1" style="width: 600px;height: 300px;"></div>
 <script type="text/javascript" src="/manager/js/visual/visual.js"></script>
 </body>
 </html>

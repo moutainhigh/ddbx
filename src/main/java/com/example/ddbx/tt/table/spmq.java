@@ -54,7 +54,7 @@ public class spmq extends DbCtrl {
     public long add(TtMap ary) {
         //从dd_icbc表中查询出id,gems_fs_id,gems_id,order_code
         DbTools myDbTools=new DbTools();
-        String sql="select id,gems_fs_id,gems_id,order_code,c_tel,c_cardno from dd_icbc where id="+ary.get("icbc_id");
+        String sql="select id,gems_fs_id,gems_id,c_tel,c_cardno from dd_icbc where id="+ary.get("icbc_id");
         TtMap ontCustomer = null;
         try {
             ontCustomer = myDbTools.recinfo(sql);
@@ -74,10 +74,10 @@ public class spmq extends DbCtrl {
         ttMap1.put("c_name",ary.get("c_name"));
         ttMap1.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
         ttMap1.put("gems_id",ontCustomer.get("gems_id"));
-        ttMap1.put("order_id",ary.get("icbc_id"));
-        ttMap1.put("type_id","3");
-        ttMap1.put("later_status","11");
-        ttMap1.put("now_status","10");
+        ttMap1.put("icbc_id",ary.get("icbc_id"));
+        ttMap1.put("type_id","63");
+        ttMap1.put("later_status","24");
+        ttMap1.put("now_status","23");
         ttMap1.put("c_tel",ontCustomer.get("c_tel"));
         ttMap1.put("c_cardno",ontCustomer.get("c_cardno"));
         ttMap1.put("adminop_tag", Tools.minfo().get("id")); //当前操作人id
@@ -87,15 +87,15 @@ public class spmq extends DbCtrl {
         //向dd_icbc_erp_result表中添加数据
         DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
         TtMap ttMap2 = new TtMap();
-        ttMap2.put("order_id",ary.get("icbc_id"));
-        ttMap2.put("type_id","3");
-        ttMap2.put("later_status","11");
-        ttMap2.put("now_status","10");
+        ttMap2.put("icbc_id",ary.get("icbc_id"));
+        ttMap2.put("type_id","63");
+        ttMap2.put("later_status","24");
+        ttMap2.put("now_status","23");
         dbCtrl2.add(ttMap2);
         dbCtrl2.closeConn();
 
         // 本表操作添加数据
-        ary.put("order_id",ary.get("icbc_id"));
+        ary.put("icbc_id",ary.get("icbc_id"));
         ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
         ary.put("gems_id",ontCustomer.get("gems_id"));
         DecimalFormat countFormat = new DecimalFormat("000000000");
