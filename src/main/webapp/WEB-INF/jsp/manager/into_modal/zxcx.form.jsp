@@ -11,19 +11,19 @@
         id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
     }
 %>
-<input id="gems_id" name="gems_id" value="<%=minfo.get("id")%>" type="hidden" />
-<input id="gems_fs_id" name="gems_fs_id" value="<%=minfo.get("fsid")%>" type="hidden" />
+<input id="gems_id" name="gems_id" value="<%=minfo.get("id")%>" type="hidden"/>
+<input id="gems_fs_id" name="gems_fs_id" value="<%=minfo.get("fsid")%>" type="hidden"/>
 <div class="admin-content nav-tabs-custom box">
     <div class="box-header with-border">
         <c:if test="${id ne 0}">
-        <div class="box-header with-border">
-            <h3 class="box-title">订单来自：${gsnamemap.fs_name}-${gsnamemap.admin_name}</h3>
-            <h3 class="box-title">提交时间：${infodb.dt_add}</h3>
-            <div class="box-tools pull-right">
+            <div class="box-header with-border">
+                <h3 class="box-title">订单来自：${gsnamemap.fs_name}-${gsnamemap.admin_name}</h3>
+                <h3 class="box-title">提交时间：${infodb.dt_add}</h3>
+                <div class="box-tools pull-right">
 
-                <h3 class="box-title">订单编号：${infodb.order_code}</h3>
+                    <h3 class="box-title">订单编号：${infodb.order_code}</h3>
+                </div>
             </div>
-        </div>
         </c:if>
         <c:if test="${id eq 0}">
             <div class="box-header with-border">
@@ -234,177 +234,181 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">相关文件</label>
                 <div class="col-sm-8">
-                <ul id="clTab" class="nav nav-tabs">
-                    <li class="active"><a href="#clTab1" data-toggle="tab" aria-expanded="false">主贷人</a></li>
-                    <li class=""><a href="#clTab2" data-toggle="tab" aria-expanded="true">配偶</a></li>
-                    <li class=""><a href="#clTab3" data-toggle="tab" aria-expanded="false">共借人1</a></li>
-                    <li class=""><a href="#clTab4" data-toggle="tab" aria-expanded="false">共借人2</a></li>
-                </ul>
-                <div id="clTabContent" class="tab-content">
-                    <div class="tab-pane fade active in" id="clTab1">
-                        <div class="form-group">
-                        <div class="col-sm-10">
-                            <div class="row inline-from">
-                                <%
-                                    String upFile1 = "../upfile.inc.jsp";
-                                    String imgPreName1 = "imgstep1_1ss";
-                                    String[] ssImgs1 = { //设置已有值
-                                            !Tools.myIsNull(infodb.get(imgPreName1)) ? infodb.get(imgPreName1) : ""
-                                    };
-                                    ssImgs1=ssImgs1[0].split(",");
-                                    String sImgs1 = "";
-                                    for (int i = 0; i < ssImgs1.length; i++) {
-                                          if(ssImgs1[i]!=null&&!ssImgs1[i].equals("")) {
-                                              sImgs1 = sImgs1 + ssImgs1[i] + "|";
-                                          }
-                                    }
-                                %>
-                                <%-- 可能这里用<%@include file %>模式更适合--%>
-                                <jsp:include page="<%=upFile1%>">
-                                    <jsp:param name="img_MarginImgSrc" value=""/>
-                                    <jsp:param name="img_MarginImgClass" value=""/>
-                                    <jsp:param name="img_Total" value="4"/>
-                                    <jsp:param name="img_NamePre" value="imgstep1_1ss"/>
-                                    <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
-                                    <jsp:param name="l1div_Style"
-                                               value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
-                                    <jsp:param name="img_Style" value="width: 100%;height:100px;border-radius:10px;"/>
-                                    <jsp:param name="img_FileStyle"
-                                               value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
-                                    <jsp:param name="img_Class" value="imgclass"/>
-                                    <jsp:param name="img_FileClass" value="uploadfileclass"/>
-                                    <jsp:param name="img_SmallWidth" value="100"/>
-                                    <jsp:param name="img_SmallHeight" value="100"/>
-                                    <jsp:param name="sImgs" value="<%=sImgs1%>"/>
-                                </jsp:include>
-                                </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="clTab2">
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <div class="row inline-from">
-                                    <%
-                                        String upFile2 = "../upfile.inc.jsp";
-                                        String imgPreName2= "imgstep1_2ss";
-                                        String[] ssImgs2 = { //设置已有值
-                                                !Tools.myIsNull(infodb.get(imgPreName2)) ? infodb.get(imgPreName2) : ""
-                                        };
-                                        ssImgs2=ssImgs2[0].split(",");
-                                        String sImgs2 = "";
-                                        for (int i = 0; i < ssImgs2.length; i++) {
-                                            if(ssImgs2[i]!=null&&!ssImgs2[i].equals("")) {
-                                                sImgs2 = sImgs2 + ssImgs2[i] + "|";
+                    <ul id="clTab" class="nav nav-tabs">
+                        <li class="active"><a href="#clTab1" data-toggle="tab" aria-expanded="false">主贷人</a></li>
+                        <li class=""><a href="#clTab2" data-toggle="tab" aria-expanded="true">配偶</a></li>
+                        <li class=""><a href="#clTab3" data-toggle="tab" aria-expanded="false">共借人1</a></li>
+                        <li class=""><a href="#clTab4" data-toggle="tab" aria-expanded="false">共借人2</a></li>
+                    </ul>
+                    <div id="clTabContent" class="tab-content">
+                        <div class="tab-pane fade active in" id="clTab1">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <div class="row inline-from">
+                                        <%
+                                            String upFile1 = "../upfile.inc.jsp";
+                                            String imgPreName1 = "imgstep1_1ss";
+                                            String[] ssImgs1 = { //设置已有值
+                                                    !Tools.myIsNull(infodb.get(imgPreName1)) ? infodb.get(imgPreName1) : ""
+                                            };
+                                            ssImgs1 = ssImgs1[0].split(",");
+                                            String sImgs1 = "";
+                                            for (int i = 0; i < ssImgs1.length; i++) {
+                                                if (ssImgs1[i] != null && !ssImgs1[i].equals("")) {
+                                                    sImgs1 = sImgs1 + ssImgs1[i] + "|";
+                                                }
                                             }
-                                        }
-                                    %>
-                                    <%-- 可能这里用<%@include file %>模式更适合--%>
-                                    <jsp:include page="<%=upFile2%>">
-                                        <jsp:param name="img_MarginImgSrc" value=""/>
-                                        <jsp:param name="img_MarginImgClass" value=""/>
-                                        <jsp:param name="img_Total" value="4"/>
-                                        <jsp:param name="img_NamePre" value="imgstep1_2ss"/>
-                                        <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
-                                        <jsp:param name="l1div_Style"
-                                                   value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
-                                        <jsp:param name="img_Style" value="width: 100%;height:100px;border-radius:10px;"/>
-                                        <jsp:param name="img_FileStyle"
-                                                   value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
-                                        <jsp:param name="img_Class" value="imgclass"/>
-                                        <jsp:param name="img_FileClass" value="uploadfileclass"/>
-                                        <jsp:param name="img_SmallWidth" value="100"/>
-                                        <jsp:param name="img_SmallHeight" value="100"/>
-                                        <jsp:param name="sImgs" value="<%=sImgs2%>"/>
-                                    </jsp:include>
+                                        %>
+                                        <%-- 可能这里用<%@include file %>模式更适合--%>
+                                        <jsp:include page="<%=upFile1%>">
+                                            <jsp:param name="img_MarginImgSrc" value=""/>
+                                            <jsp:param name="img_MarginImgClass" value=""/>
+                                            <jsp:param name="img_Total" value="4"/>
+                                            <jsp:param name="img_NamePre" value="imgstep1_1ss"/>
+                                            <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
+                                            <jsp:param name="l1div_Style"
+                                                       value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
+                                            <jsp:param name="img_Style"
+                                                       value="width: 100%;height:100px;border-radius:10px;"/>
+                                            <jsp:param name="img_FileStyle"
+                                                       value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
+                                            <jsp:param name="img_Class" value="imgclass"/>
+                                            <jsp:param name="img_FileClass" value="uploadfileclass"/>
+                                            <jsp:param name="img_SmallWidth" value="100"/>
+                                            <jsp:param name="img_SmallHeight" value="100"/>
+                                            <jsp:param name="sImgs" value="<%=sImgs1%>"/>
+                                        </jsp:include>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="clTab2">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <div class="row inline-from">
+                                        <%
+                                            String upFile2 = "../upfile.inc.jsp";
+                                            String imgPreName2 = "imgstep1_2ss";
+                                            String[] ssImgs2 = { //设置已有值
+                                                    !Tools.myIsNull(infodb.get(imgPreName2)) ? infodb.get(imgPreName2) : ""
+                                            };
+                                            ssImgs2 = ssImgs2[0].split(",");
+                                            String sImgs2 = "";
+                                            for (int i = 0; i < ssImgs2.length; i++) {
+                                                if (ssImgs2[i] != null && !ssImgs2[i].equals("")) {
+                                                    sImgs2 = sImgs2 + ssImgs2[i] + "|";
+                                                }
+                                            }
+                                        %>
+                                        <%-- 可能这里用<%@include file %>模式更适合--%>
+                                        <jsp:include page="<%=upFile2%>">
+                                            <jsp:param name="img_MarginImgSrc" value=""/>
+                                            <jsp:param name="img_MarginImgClass" value=""/>
+                                            <jsp:param name="img_Total" value="4"/>
+                                            <jsp:param name="img_NamePre" value="imgstep1_2ss"/>
+                                            <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
+                                            <jsp:param name="l1div_Style"
+                                                       value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
+                                            <jsp:param name="img_Style"
+                                                       value="width: 100%;height:100px;border-radius:10px;"/>
+                                            <jsp:param name="img_FileStyle"
+                                                       value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
+                                            <jsp:param name="img_Class" value="imgclass"/>
+                                            <jsp:param name="img_FileClass" value="uploadfileclass"/>
+                                            <jsp:param name="img_SmallWidth" value="100"/>
+                                            <jsp:param name="img_SmallHeight" value="100"/>
+                                            <jsp:param name="sImgs" value="<%=sImgs2%>"/>
+                                        </jsp:include>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="clTab3">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <div class="row inline-from">
+                                        <%
+                                            String upFile3 = "../upfile.inc.jsp";
+                                            String imgPreName3 = "imgstep1_3ss";
+                                            String[] ssImgs3 = { //设置已有值
+                                                    !Tools.myIsNull(infodb.get(imgPreName3)) ? infodb.get(imgPreName3) : ""
+                                            };
+                                            ssImgs3 = ssImgs3[0].split(",");
+                                            String sImgs3 = "";
+                                            for (int i = 0; i < ssImgs3.length; i++) {
+                                                if (ssImgs3[i] != null && !ssImgs3[i].equals("")) {
+                                                    sImgs3 = sImgs3 + ssImgs3[i] + "|";
+                                                }
+                                            }
+                                        %>
+                                        <%-- 可能这里用<%@include file %>模式更适合--%>
+                                        <jsp:include page="<%=upFile3%>">
+                                            <jsp:param name="img_MarginImgSrc" value=""/>
+                                            <jsp:param name="img_MarginImgClass" value=""/>
+                                            <jsp:param name="img_Total" value="4"/>
+                                            <jsp:param name="img_NamePre" value="imgstep1_3ss"/>
+                                            <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
+                                            <jsp:param name="l1div_Style"
+                                                       value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
+                                            <jsp:param name="img_Style"
+                                                       value="width: 100%;height:100px;border-radius:10px;"/>
+                                            <jsp:param name="img_FileStyle"
+                                                       value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
+                                            <jsp:param name="img_Class" value="imgclass"/>
+                                            <jsp:param name="img_FileClass" value="uploadfileclass"/>
+                                            <jsp:param name="img_SmallWidth" value="100"/>
+                                            <jsp:param name="img_SmallHeight" value="100"/>
+                                            <jsp:param name="sImgs" value="<%=sImgs3%>"/>
+                                        </jsp:include>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="clTab4">
+                            <div class="form-group">
+                                <div class="col-sm-10">
+                                    <div class="row inline-from">
+                                        <%
+                                            String upFile4 = "../upfile.inc.jsp";
+                                            String imgPreName4 = "imgstep1_4ss";
+                                            String[] ssImgs4 = { //设置已有值
+                                                    !Tools.myIsNull(infodb.get(imgPreName4)) ? infodb.get(imgPreName4) : ""
+                                            };
+                                            ssImgs4 = ssImgs4[0].split(",");
+                                            String sImgs4 = "";
+                                            for (int i = 0; i < ssImgs4.length; i++) {
+                                                if (ssImgs4[i] != null && !ssImgs4[i].equals("")) {
+                                                    sImgs4 = sImgs4 + ssImgs4[i] + "|";
+                                                }
+                                            }
+                                        %>
+                                        <%-- 可能这里用<%@include file %>模式更适合--%>
+                                        <jsp:include page="<%=upFile4%>">
+                                            <jsp:param name="img_MarginImgSrc" value=""/>
+                                            <jsp:param name="img_MarginImgClass" value=""/>
+                                            <jsp:param name="img_Total" value="4"/>
+                                            <jsp:param name="img_NamePre" value="imgstep1_4ss"/>
+                                            <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
+                                            <jsp:param name="l1div_Style"
+                                                       value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
+                                            <jsp:param name="img_Style"
+                                                       value="width: 100%;height:100px;border-radius:10px;"/>
+                                            <jsp:param name="img_FileStyle"
+                                                       value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
+                                            <jsp:param name="img_Class" value="imgclass"/>
+                                            <jsp:param name="img_FileClass" value="uploadfileclass"/>
+                                            <jsp:param name="img_SmallWidth" value="100"/>
+                                            <jsp:param name="img_SmallHeight" value="100"/>
+                                            <jsp:param name="sImgs" value="<%=sImgs4%>"/>
+                                        </jsp:include>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="tab-pane fade" id="clTab3">
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <div class="row inline-from">
-                                    <%
-                                        String upFile3 = "../upfile.inc.jsp";
-                                        String imgPreName3 = "imgstep1_3ss";
-                                        String[] ssImgs3 = { //设置已有值
-                                                !Tools.myIsNull(infodb.get(imgPreName3)) ? infodb.get(imgPreName3) : ""
-                                        };
-                                        ssImgs3=ssImgs3[0].split(",");
-                                        String sImgs3 = "";
-                                        for (int i = 0; i < ssImgs3.length; i++) {
-                                            if(ssImgs3[i]!=null&&!ssImgs3[i].equals("")) {
-                                                sImgs3 = sImgs3 + ssImgs3[i] + "|";
-                                            }
-                                        }
-                                    %>
-                                    <%-- 可能这里用<%@include file %>模式更适合--%>
-                                    <jsp:include page="<%=upFile3%>">
-                                        <jsp:param name="img_MarginImgSrc" value=""/>
-                                        <jsp:param name="img_MarginImgClass" value=""/>
-                                        <jsp:param name="img_Total" value="4"/>
-                                        <jsp:param name="img_NamePre" value="imgstep1_3ss"/>
-                                        <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
-                                        <jsp:param name="l1div_Style"
-                                                   value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
-                                        <jsp:param name="img_Style" value="width: 100%;height:100px;border-radius:10px;"/>
-                                        <jsp:param name="img_FileStyle"
-                                                   value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
-                                        <jsp:param name="img_Class" value="imgclass"/>
-                                        <jsp:param name="img_FileClass" value="uploadfileclass"/>
-                                        <jsp:param name="img_SmallWidth" value="100"/>
-                                        <jsp:param name="img_SmallHeight" value="100"/>
-                                        <jsp:param name="sImgs" value="<%=sImgs3%>"/>
-                                    </jsp:include>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="clTab4">
-                        <div class="form-group">
-                            <div class="col-sm-10">
-                                <div class="row inline-from">
-                                    <%
-                                        String upFile4 = "../upfile.inc.jsp";
-                                        String imgPreName4 = "imgstep1_4ss";
-                                        String[] ssImgs4 = { //设置已有值
-                                                !Tools.myIsNull(infodb.get(imgPreName4)) ? infodb.get(imgPreName4) : ""
-                                        };
-                                        ssImgs4=ssImgs4[0].split(",");
-                                        String sImgs4 = "";
-                                        for (int i = 0; i < ssImgs4.length; i++) {
-                                            if(ssImgs4[i]!=null&&!ssImgs4[i].equals("")) {
-                                                sImgs4 = sImgs4 + ssImgs4[i] + "|";
-                                            }
-                                        }
-                                    %>
-                                    <%-- 可能这里用<%@include file %>模式更适合--%>
-                                    <jsp:include page="<%=upFile4%>">
-                                        <jsp:param name="img_MarginImgSrc" value=""/>
-                                        <jsp:param name="img_MarginImgClass" value=""/>
-                                        <jsp:param name="img_Total" value="4"/>
-                                        <jsp:param name="img_NamePre" value="imgstep1_4ss"/>
-                                        <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
-                                        <jsp:param name="l1div_Style"
-                                                   value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
-                                        <jsp:param name="img_Style" value="width: 100%;height:100px;border-radius:10px;"/>
-                                        <jsp:param name="img_FileStyle"
-                                                   value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
-                                        <jsp:param name="img_Class" value="imgclass"/>
-                                        <jsp:param name="img_FileClass" value="uploadfileclass"/>
-                                        <jsp:param name="img_SmallWidth" value="100"/>
-                                        <jsp:param name="img_SmallHeight" value="100"/>
-                                        <jsp:param name="sImgs" value="<%=sImgs4%>"/>
-                                    </jsp:include>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 </div>
             </div>
             <div class="form-group">
@@ -507,7 +511,7 @@
                 </div>
             </div>
 
-        <%----%>
+            <%----%>
             <div class="form-group">
                 <label class="col-sm-2 control-label">征信结果返回</label>
                 <div class="col-sm-10">
@@ -531,7 +535,8 @@
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <div class="row inline-from">
-                                            <textarea id="zdr_zx1_result" name="zdr_zx1_result" style="width: 80%; height: 200px" class="form-control"></textarea>
+                                            <textarea id="zdr_zx1_result" name="zdr_zx1_result"
+                                                      style="width: 80%; height: 200px" class="form-control"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -542,7 +547,8 @@
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <div class="row inline-from">
-                                            <textarea id="zdrpo_zx1_result" name="zdrpo_zx1_result" style="width: 80%; height: 200px" class="form-control"></textarea>
+                                            <textarea id="zdrpo_zx1_result" name="zdrpo_zx1_result"
+                                                      style="width: 80%; height: 200px" class="form-control"></textarea>
 
                                         </div>
                                     </div>
@@ -554,7 +560,8 @@
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <div class="row inline-from">
-                                            <textarea id="gjr1_zx1_result" name="gjr1_zx1_result" style="width: 80%; height: 200px" class="form-control"></textarea>
+                                            <textarea id="gjr1_zx1_result" name="gjr1_zx1_result"
+                                                      style="width: 80%; height: 200px" class="form-control"></textarea>
 
                                         </div>
                                     </div>
@@ -566,13 +573,63 @@
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <div class="row inline-from">
-                                            <textarea id="gjr2_zx1_result" name="gjr2_zx1_result" style="width: 80%; height: 200px" class="form-control"></textarea>
+                                            <textarea id="gjr2_zx1_result" name="gjr2_zx1_result"
+                                                      style="width: 80%; height: 200px" class="form-control"></textarea>
 
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">通融留言：</label>
+                <div class="col-sm-10">
+                <textarea style="width: 80%; height: 80px" class="form-control" id="tr_msg" name="tr_msg">
+
+                </textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">通融材料：</label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
+                        <%
+                            String upFile1_1 = "../upfile.inc.jsp";
+                            String imgPreName1_1 = "imgstep1_5ss";
+                            String[] ssImgs1_1 = { //设置已有值
+                                    !Tools.myIsNull(infodb.get(imgPreName1_1)) ? infodb.get(imgPreName1_1) : ""
+                            };
+                            ssImgs1_1=ssImgs1_1[0].split(",");
+                            String sImgs1_1 = "";
+                            for (int i = 0; i < ssImgs1_1.length; i++) {
+                                if(ssImgs1_1[i]!=null&&!ssImgs1_1[i].equals("")) {
+                                    sImgs1_1 = sImgs1_1 + ssImgs1_1[i] + "|";
+                                }
+                            }
+                        %>
+                        <%-- 可能这里用<%@include file %>模式更适合--%>
+                        <jsp:include page="<%=upFile1_1%>">
+                            <jsp:param name="img_MarginImgSrc" value=""/>
+                            <jsp:param name="img_MarginImgClass" value=""/>
+                            <jsp:param name="img_Total" value="4"/>
+                            <jsp:param name="img_NamePre" value="imgstep1_5ss"/>
+                            <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
+                            <jsp:param name="l1div_Style"
+                                       value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
+                            <jsp:param name="img_Style" value="width: 100%;height:100px;border-radius:10px;"/>
+                            <jsp:param name="img_FileStyle"
+                                       value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
+                            <jsp:param name="img_Class" value="imgclass"/>
+                            <jsp:param name="img_FileClass" value="uploadfileclass"/>
+                            <jsp:param name="img_SmallWidth" value="100"/>
+                            <jsp:param name="img_SmallHeight" value="100"/>
+                            <jsp:param name="sImgs" value="<%=sImgs1_1%>"/>
+                        </jsp:include>
                     </div>
                 </div>
             </div>
@@ -637,32 +694,32 @@
                 </div>
             </div>
             <div class="form-group">
-            <label class="col-sm-2 control-label"></label>
-            <div class="col-sm-10">
-                <div class="row inline-from">
-                    <div class="col-sm-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">共同借款人1征信状态</span>
-                            <select class="form-control" id="gjr1_zx1_tag" name="gjr1_zx1_tag">
-                                <option value="0">请选择</option>
-                                <option value="1">通过</option>
-                                <option value="2">不通过</option>
-                            </select>
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">共同借款人1征信状态</span>
+                                <select class="form-control" id="gjr1_zx1_tag" name="gjr1_zx1_tag">
+                                    <option value="0">请选择</option>
+                                    <option value="1">通过</option>
+                                    <option value="2">不通过</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="input-group">
-                            <span class="input-group-addon">共同借款人2征信状态</span>
-                            <select class="form-control" id="gjr2_zx1_tag" name="gjr2_zx1_tag">
-                                <option value="0">请选择</option>
-                                <option value="1">通过</option>
-                                <option value="2">不通过</option>
-                            </select>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">共同借款人2征信状态</span>
+                                <select class="form-control" id="gjr2_zx1_tag" name="gjr2_zx1_tag">
+                                    <option value="0">请选择</option>
+                                    <option value="1">通过</option>
+                                    <option value="2">不通过</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
             <%--相关状态--%>
             <div class="form-group">

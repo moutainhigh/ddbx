@@ -1,9 +1,11 @@
-<%@ page import="com.example.ddbx.tt.tool.Tools" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="com.example.ddbx.tt.tool.Tools" %><%--
+  Created by IntelliJ IDEA.
+  User: 86176
+  Date: 2019/3/5
+  Time: 16:21
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String dt_edit = "";
     if (!Tools.myIsNull(request.getParameter("dt_edit"))) {
@@ -26,3 +28,4 @@
         </div>
     </div>
 </li>
+
