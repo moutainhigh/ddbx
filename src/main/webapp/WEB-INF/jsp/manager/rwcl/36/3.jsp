@@ -214,13 +214,16 @@
                 zdrpo_dsj_code:zdrpo_dsj_code,
                 icbc_id:icbc_id,
                 type_id:type_id,
-                id:id
+                id:id,
+                type:'1'//类型
             },  //传送的数据
             error: function () {
                 alert("编辑失败...请稍后重试！");
+
             },
             success: function (data) {
                 alert(data.msg);
+                window.location.href="/manager/index?cn=mytask&sdo=list&type=ddbx";
             }
         });
 

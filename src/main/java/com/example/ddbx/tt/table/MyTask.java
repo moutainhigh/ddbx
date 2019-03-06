@@ -1,7 +1,5 @@
 package com.example.ddbx.tt.table;
 
-import ch.qos.logback.classic.layout.TTLLLayout;
-import com.alibaba.fastjson.JSON;
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.tool.Config;
@@ -10,7 +8,7 @@ import com.example.ddbx.tt.tool.DbTools;
 import com.example.ddbx.tt.tool.Tools;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.tools.Tool;
+
 
 
 public class MyTask extends DbCtrl {
@@ -79,6 +77,8 @@ public class MyTask extends DbCtrl {
                     break;
                 case "5":
 
+
+
                     break;
                 default:
 
@@ -95,7 +95,12 @@ public class MyTask extends DbCtrl {
                 request.setAttribute("erplist", geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
             }
         }
-
+        //获取当前任务节点信息
+        TtMap erp_result=Tools.recinfo("select r.* from dd_icbc_erp_result r where r.qryid="+nid+" ORDER BY r.id DESC limit 1");
+        request.setAttribute("erp_result", erp_result);
+        if(erp_result.get("result_value")!=null&&!erp_result.get("result_value").equals("")) {
+            request.setAttribute("erp_result_value", Tools.jsonDeCode_mp(erp_result.get("result_value")));
+        }
         //进度板块处理  erp id  不对应问题
         TtList jdlist=Tools.reclist("select * from dd_icbc_erp where icbc_id="+post.get("icbc_id"));
         request.setAttribute("jdlist", jdlist);
@@ -106,9 +111,11 @@ public class MyTask extends DbCtrl {
 
         request.setAttribute("icbc", geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
         String jsonInfo = Tools.jsonEncode(info);
+
         request.setAttribute("info", jsonInfo);//info为json后的info
         request.setAttribute("infodb", info);//infodb为TtMap的info
         request.setAttribute("id", nid);
+        request.setAttribute("sHideButton","true");//隐藏保存提交和取消返回标志
     }
 
     /**

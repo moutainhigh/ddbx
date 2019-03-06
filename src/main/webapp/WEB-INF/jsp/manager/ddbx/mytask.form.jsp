@@ -18,7 +18,6 @@
     TtMap modals = (TtMap) request.getAttribute("modals");
 
     String rwcl_path = "/WEB-INF/jsp/manager/rwcl/";
-
     if (modals!=null&&!modals.equals("")){
         switch (modals.get("name")) {
 
@@ -152,7 +151,7 @@
                                             <span class="input-group-addon">姓名</span>
                                             <input type="text" value="${icbc.c_name}" class="form-control"
                                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                                   id="c_name" name="c_name">
+                                                   id="c_name_1" name="c_name_1">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
@@ -160,7 +159,7 @@
                                             <span class="input-group-addon">身份证</span>
                                             <input type="text" value="${icbc.c_cardno}" class="form-control"
                                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                                   id="c_cardno" name="c_cardno">
+                                                   id="c_cardno_1" name="c_cardno_1">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
@@ -168,13 +167,13 @@
                                             <span class="input-group-addon">电话</span>
                                             <input type="text" value="${icbc.c_tel}" class="form-control"
                                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                                   id="c_tel" name="c_tel">
+                                                   id="c_tel_1" name="c_tel_1">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="input-group">
                                             <span class="input-group-addon">性别</span>
-                                            <select name="c_sex" id="c_sex" class="form-control">
+                                            <select name="c_sex_1" id="c_sex_1" class="form-control">
                                                 <option value="0">请选择性别</option>
                                                 <option value="1" ${icbc.c_sex eq 1?"selected='selected'":''}>男</option>
                                                 <option value="2" ${icbc.c_sex eq 2?"selected='selected'":''}>女</option>
@@ -184,20 +183,20 @@
                                     <div class="col-sm-3">
                                         <div class="input-group">
                                             <span class="input-group-addon">按揭银行</span>
-                                            <select id="bank_id" name="bank_id" class="form-control">
+                                            <select id="bank_id_1" name="bank_id_1" class="form-control">
                                                 <option value="0">请选择按揭银行</option>
-                                                <option value="1">工行绍兴分行</option>
-                                                <option value="2">工行武林支行</option>
-                                                <option value="3">工行义乌支行</option>
+                                                <option value="1" ${icbc.bank_id eq 1?"selected='selected'":''}>工行绍兴分行</option>
+                                                <option value="2" ${icbc.bank_id eq 2?"selected='selected'":''}>工行武林支行</option>
+                                                <option value="3" ${icbc.bank_id eq 3?"selected='selected'":''}>工行义乌支行</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="input-group">
                                             <span class="input-group-addon">贷款产品</span>
-                                            <select name="loan_tpid" id="loan_tpid" class="form-control">
+                                            <select name="loan_tpid_1" id="loan_tpid_1" class="form-control">
                                                 <option value="0">请选择贷款产品</option>
-                                                <option value="1">卡分期</option>
+                                                <option value="1" ${icbc.loan_tpid eq 1?"selected='selected'":''}>卡分期</option>
                                             </select>
                                         </div>
                                     </div>
@@ -206,8 +205,8 @@
                                             <span class="input-group-addon">业务等级</span>
                                             <select id="loan_level" name="loan_level" class="form-control">
                                                 <option value="0">请选择业务等级</option>
-                                                <option value="1">预期贷款额10万以下（含10万）</option>
-                                                <option value="2">预期贷款额10万以上</option>
+                                                <option value="1" ${icbc.loan_level eq 1?"selected='selected'":''}>预期贷款额10万以下（含10万）</option>
+                                                <option value="2" ${icbc.loan_level eq 1?"selected='selected'":''}>预期贷款额10万以上</option>
                                             </select>
                                         </div>
                                     </div>
@@ -227,21 +226,21 @@
                                         <div class="input-group">
                                             <span class="input-group-addon">姓名</span>
                                             <input type="text" class="form-control" name="po_c_name" id="po_c_name"
-                                                   value="">
+                                                   value="${icbc.po_c_name}">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="input-group">
                                             <span class="input-group-addon">身份证</span>
                                             <input type="text" class="form-control" name="po_c_cardno" id="po_c_cardno"
-                                                   value="">
+                                                   value="${icbc.po_c_cardno}">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="input-group">
                                             <span class="input-group-addon">手机号</span>
                                             <input type="text" class="form-control" name="po_c_tel" id="po_c_tel"
-                                                   value="">
+                                                   value="${icbc.po_c_tel}">
                                         </div>
                                     </div>
                                 </div>
@@ -255,21 +254,21 @@
                                         <div class="input-group">
                                             <span class="input-group-addon">姓名</span>
                                             <input type="text" class="form-control" name="c_name_gj1" id="c_name_gj1"
-                                                   value="">
+                                                   value="${icbc.c_name_gj1}">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="input-group">
                                             <span class="input-group-addon">身份证</span>
                                             <input type="text" class="form-control" name="c_cardno_gj1"
-                                                   id="c_cardno_gj1" value="">
+                                                   id="c_cardno_gj1" value="${icbc.c_cardno_gj1}">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="input-group">
                                             <span class="input-group-addon">手机号</span>
                                             <input type="text" class="form-control" name="c_tel_gj1" id="c_tel_gj1"
-                                                   value="">
+                                                   value="${icbc.c_tel_gj1}">
                                         </div>
                                     </div>
                                 </div>
@@ -283,21 +282,21 @@
                                         <div class="input-group">
                                             <span class="input-group-addon">姓名</span>
                                             <input type="text" class="form-control" name="c_name_gj2" id="c_name_gj2"
-                                                   value="">
+                                                   value="${icbc.c_name_gj2}">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="input-group">
                                             <span class="input-group-addon">身份证</span>
                                             <input type="text" class="form-control" name="c_cardno_gj2"
-                                                   id="c_cardno_gj2" value="">
+                                                   id="c_cardno_gj2" value="${icbc.c_cardno_gj2}">
                                         </div>
                                     </div>
                                     <div class="col-sm-3">
                                         <div class="input-group">
                                             <span class="input-group-addon">手机号</span>
                                             <input type="text" class="form-control" name="c_tel_gj2" id="c_tel_gj2"
-                                                   value="">
+                                                   value="${icbc.c_tel_gj2}">
                                         </div>
                                     </div>
                                 </div>
@@ -330,7 +329,7 @@
                                                     <div class="input-group">
                                                         <span class="input-group-addon">姓名</span>
                                                         <input type="text" class="form-control" name="c_name"
-                                                               id="c_name" value="">
+                                                               id="c_name" value="${icbc.c_name}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
@@ -351,149 +350,149 @@
                                                     <div class="input-group">
                                                         <span class="input-group-addon">性别</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <option value="">大专</option>
-                                                            <option value="">本科</option>
-                                                            <option value="">研究生</option>
-                                                            <option value="">博士</option>
-                                                            <option value="">硕士</option>
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">大专</option>
+                                                            <option value="2">本科</option>
+                                                            <option value="3">研究生</option>
+                                                            <option value="4">博士</option>
+                                                            <option value="5">硕士</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">身份证号</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">业务员姓名</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">所属机构</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">手机号码</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">婚姻状况</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <option value="">未婚</option>
-                                                            <option value="">已婚</option>
-                                                            <option value="">离异</option>
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">未婚</option>
+                                                            <option value="2">已婚</option>
+                                                            <option value="3">离异</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">有无子女</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">赌博记录</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">法院经济案</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">最高学历</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <option value="">大专</option>
-                                                            <option value="">本科</option>
-                                                            <option value="">研究生</option>
-                                                            <option value="">博士</option>
-                                                            <option value="">硕士</option>
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">大专</option>
+                                                            <option value="2">本科</option>
+                                                            <option value="3">研究生</option>
+                                                            <option value="4">博士</option>
+                                                            <option value="5">硕士</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">邮编</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">居住状况</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <option value="">租房</option>
-                                                            <option value="">自有住房</option>
-                                                            <option value="">其他</option>
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">租房</option>
+                                                            <option value="2">自有住房</option>
+                                                            <option value="3">其他</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">现住电话</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">单位电话</span>
                                                         <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">现住地址</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">工作单位</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">单位地址</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">单位性质</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <option value="">国有</option>
-                                                            <option value="">私有</option>
-                                                            <option value="">民营</option>
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">国有</option>
+                                                            <option value="2">私有</option>
+                                                            <option value="3">民营</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -501,10 +500,10 @@
                                                     <div class="input-group">
                                                         <span class="input-group-addon">职业</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <option value="">公务员</option>
-                                                            <option value="">农民</option>
-                                                            <option value="">工人</option>
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">公务员</option>
+                                                            <option value="2">农民</option>
+                                                            <option value="3">工人</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -512,32 +511,32 @@
                                                     <div class="input-group">
                                                         <span class="input-group-addon">职务</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <option value="">总经理</option>
-                                                            <option value="">部门经理</option>
-                                                            <option value="">职员</option>
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">总经理</option>
+                                                            <option value="2">部门经理</option>
+                                                            <option value="3">职员</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">月收入(元)</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">工作年限(年)</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">文书送达地址</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -579,111 +578,111 @@
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">姓名</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">关系</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">月收入(元)</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">学历</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <option value="">大专</option>
-                                                            <option value="">本科</option>
-                                                            <option value="">研究生</option>
-                                                            <option value="">博士</option>
-                                                            <option value="">硕士</option>
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">大专</option>
+                                                            <option value="2">本科</option>
+                                                            <option value="3">研究生</option>
+                                                            <option value="4">博士</option>
+                                                            <option value="5">硕士</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">现住地址</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">邮政编码</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">工作单位</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">单位地址</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">文书送达地址</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">主要从事或职务</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">联系人级别</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <option value="">一级</option>
-                                                            <option value="">二级</option>
-                                                            <option value="">三级</option>
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">一级</option>
+                                                            <option value="2">二级</option>
+                                                            <option value="3">三级</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">联系人电话区号</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">手机号码</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">性别</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <option value="">男</option>
-                                                            <option value="">女</option>
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">男</option>
+                                                            <option value="2">女</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -691,18 +690,18 @@
                                                     <div class="input-group">
                                                         <span class="input-group-addon">婚姻状况</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <option value="">已婚</option>
-                                                            <option value="">未婚</option>
-                                                            <option value="">离异</option>
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">已婚</option>
+                                                            <option value="2">未婚</option>
+                                                            <option value="3">离异</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">身份证号</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -723,22 +722,22 @@
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">姓名</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">电话</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">与主贷人关系</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -751,8 +750,8 @@
                                                 <div class="col-sm-12">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">地址</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -765,22 +764,22 @@
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">姓名</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">电话</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">与主贷人关系</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -793,8 +792,8 @@
                                                 <div class="col-sm-12">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">地址</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -816,11 +815,11 @@
                                                     <div class="input-group">
                                                         <span class="input-group-addon">收入类型</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择收入</option>
-                                                            <option value="">工资性收入</option>
-                                                            <option value="">租赁型收入</option>
-                                                            <option value="">经营型收入</option>
-                                                            <option value="">其他收入</option>
+                                                            <option value="0">请选择收入</option>
+                                                            <option value="1">工资性收入</option>
+                                                            <option value="2">租赁型收入</option>
+                                                            <option value="3">经营型收入</option>
+                                                            <option value="4">其他收入</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -828,26 +827,26 @@
                                                     <div class="input-group">
                                                         <span class="input-group-addon">收入币种</span>
                                                         <select name="" id="" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <option value="">人民币</option>
-                                                            <option value="">美元</option>
-                                                            <option value="">欧元</option>
-                                                            <option value="">其他</option>
+                                                            <option value="0">请选择</option>
+                                                            <option value="1">人民币</option>
+                                                            <option value="2">美元</option>
+                                                            <option value="3">欧元</option>
+                                                            <option value="4">其他</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">月收入(元)</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">家庭月收入(元)</span>
-                                                        <input type="text" class="form-control" name="remark"
-                                                               id="remark" value="">
+                                                        <input type="text" class="form-control" name=""
+                                                               id="" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1568,6 +1567,7 @@
                         </div>
                     </div>
                 </div>
+                <c:if test="${param.tab eq 5}">
                 <div ${param.tab eq 5?"class='tab-pane active'":"class='tab-pane'"} id="tab_5">
                     <div class="box-header with-border">
                         <h3 class="box-title">征信材料</h3>
@@ -1575,10 +1575,10 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">主贷人材料</label>
+                            <label class="col-sm-1 control-label">主贷人材料</label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1590,19 +1590,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
-                                        <div class="input-group">
-                                            <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
-                                                 style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
-                                            <a class="btn btn-primary btn-download"
-                                               style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
-                                               href="">↓</a>
-                                            <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -1611,10 +1599,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">主贷人配偶材料</label>
+                            <label class="col-sm-1 control-label">主贷人配偶材料</label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1626,7 +1614,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1638,7 +1626,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -1647,10 +1635,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">共还人1材料</label>
+                            <label class="col-sm-1 control-label">共还人1材料</label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1662,7 +1650,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1674,7 +1662,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -1683,10 +1671,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">共还人2材料</label>
+                            <label class="col-sm-1 control-label">共还人2材料</label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1698,7 +1686,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1710,7 +1698,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -1724,10 +1712,10 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"></label>
+                            <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1739,7 +1727,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1751,7 +1739,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -1765,10 +1753,10 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"></label>
+                            <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1780,7 +1768,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1792,7 +1780,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -1806,10 +1794,10 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"></label>
+                            <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1821,7 +1809,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1833,7 +1821,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -1847,10 +1835,10 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"></label>
+                            <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1862,7 +1850,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1874,7 +1862,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -1888,10 +1876,10 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"></label>
+                            <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1903,7 +1891,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1915,7 +1903,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -1929,10 +1917,10 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"></label>
+                            <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1944,7 +1932,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1956,7 +1944,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -1970,10 +1958,10 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"></label>
+                            <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1985,7 +1973,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -1997,7 +1985,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -2011,10 +1999,10 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"></label>
+                            <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -2026,7 +2014,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -2038,7 +2026,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -2052,10 +2040,10 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"></label>
+                            <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -2067,7 +2055,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
@@ -2079,7 +2067,7 @@
                                                style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                                         <div class="input-group">
                                             <button type="button" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
@@ -2089,6 +2077,7 @@
                         </div>
                     </div>
                 </div>
+                </c:if>
                 <!-- /.tab-pane -->
             </div>
             <!-- /.tab-content -->

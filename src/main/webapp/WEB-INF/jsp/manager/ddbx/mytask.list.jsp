@@ -79,7 +79,7 @@
 										${u.fs_name}
 								</td>
 								<td class="hidden-xs text-center">
-										${fn:replace(u.dt_add, ".0", "")}
+										${fn:replace(u.dt_add, ".0", "")}/${fn:replace(u.dt_edit, ".0", "")}
 								</td>
 								<td class="text-center">
 									<div class="table-button">

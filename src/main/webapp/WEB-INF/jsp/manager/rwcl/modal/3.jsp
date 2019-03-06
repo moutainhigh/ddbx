@@ -39,12 +39,8 @@
             <strong>处理人：</strong><%=admin_name%>
         </div>
         <strong style="margin-left: 10px;"><i>处理信息：</i></strong><br>
-        <!-- ngIf: taskAct.pageName!='cudp'||'_cudp'.indexOf(taskAct.pageName)<=-1 -->
-        <!-- ngInclude: '/modules/'+taskAct.menuCode+'/'+taskAct.pageName+'.html' -->
         <div class="task_margin ng-scope"
              style="border: 1px solid #ccc; border-radius: 10px; background-color: #F7F7F7; padding-top: 10px;">
-
-            <!-- ngIf: notUseButton -->
             <div class="form-group ng-scope">
                 <label class="col-sm-2 control-label">审核结果</label>
                 <div class="col-sm-8">

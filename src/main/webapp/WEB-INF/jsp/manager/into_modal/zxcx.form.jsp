@@ -589,9 +589,8 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">通融留言：</label>
                 <div class="col-sm-10">
-                <textarea style="width: 80%; height: 80px" class="form-control" id="tr_msg" name="tr_msg">
-
-                </textarea>
+                    <textarea style="width: 80%; height: 80px" class="form-control" id="tr_msg"
+                              name="tr_msg"></textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -604,10 +603,10 @@
                             String[] ssImgs1_1 = { //设置已有值
                                     !Tools.myIsNull(infodb.get(imgPreName1_1)) ? infodb.get(imgPreName1_1) : ""
                             };
-                            ssImgs1_1=ssImgs1_1[0].split(",");
+                            ssImgs1_1 = ssImgs1_1[0].split(",");
                             String sImgs1_1 = "";
                             for (int i = 0; i < ssImgs1_1.length; i++) {
-                                if(ssImgs1_1[i]!=null&&!ssImgs1_1[i].equals("")) {
+                                if (ssImgs1_1[i] != null && !ssImgs1_1[i].equals("")) {
                                     sImgs1_1 = sImgs1_1 + ssImgs1_1[i] + "|";
                                 }
                             }
@@ -725,10 +724,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">留言</label>
                 <div class="col-sm-10">
-                    <textarea style="width: 80%; height: 200px" class="form-control">
-
-
-                    </textarea>
+                    <textarea style="width: 80%; height: 200px" class="form-control"></textarea>
                 </div>
             </div>
 
