@@ -54,7 +54,7 @@ public class spmq extends DbCtrl {
     public long add(TtMap ary) {
         //从dd_icbc表中查询出id,gems_fs_id,gems_id,order_code
         DbTools myDbTools=new DbTools();
-        String sql="select id,gems_fs_id,gems_id,order_code,c_tel,c_cardno from dd_icbc where id="+ary.get("icbc_id");
+        String sql="select id,gems_fs_id,gems_id,c_name,c_tel,c_cardno from dd_icbc where id="+ary.get("icbc_id");
         TtMap ontCustomer = null;
         try {
             ontCustomer = myDbTools.recinfo(sql);
@@ -67,35 +67,43 @@ public class spmq extends DbCtrl {
 
         //从dd_icbc表中查询出id,gems_fs_id,gems_id,order_code
 
-
+        long qryid = 0;
         //向dd_icbc_erp表中添加数据
-        DbCtrl dbCtrl1 = new DbCtrl("dd_icbc_erp");
         TtMap ttMap1 = new TtMap();
-        ttMap1.put("c_name",ary.get("c_name"));
+        ttMap1.put("c_name",ontCustomer.get("c_name"));
         ttMap1.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
         ttMap1.put("gems_id",ontCustomer.get("gems_id"));
-        ttMap1.put("order_id",ary.get("icbc_id"));
-        ttMap1.put("type_id","3");
-        ttMap1.put("later_status","11");
-        ttMap1.put("now_status","10");
+        ttMap1.put("icbc_id",ary.get("icbc_id"));
+        ttMap1.put("type_id","63");
+        ttMap1.put("later_status","24");
+        ttMap1.put("now_status","23");
         ttMap1.put("c_tel",ontCustomer.get("c_tel"));
         ttMap1.put("c_cardno",ontCustomer.get("c_cardno"));
         ttMap1.put("adminop_tag", Tools.minfo().get("id")); //当前操作人id
-        dbCtrl1.add(ttMap1);
-        dbCtrl1.closeConn();
+        qryid = Tools.recAdd(ttMap1, "dd_icbc_erp");
+
+
 
         //向dd_icbc_erp_result表中添加数据
-        DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
         TtMap ttMap2 = new TtMap();
-        ttMap2.put("order_id",ary.get("icbc_id"));
-        ttMap2.put("type_id","3");
-        ttMap2.put("later_status","11");
-        ttMap2.put("now_status","10");
-        dbCtrl2.add(ttMap2);
-        dbCtrl2.closeConn();
+        ttMap2.put("qryid", qryid+"");
+        ttMap2.put("icbc_id",ary.get("icbc_id"));
+        ttMap2.put("type_id","63");
+        ttMap2.put("later_status","23");
+        ttMap2.put("now_status","22");
+        Tools.recAdd(ttMap2, "dd_icbc_erp_result");
+
+        TtMap ttMap3 = new TtMap();
+        ttMap3.put("qryid", qryid+"");
+        ttMap3.put("icbc_id",ary.get("icbc_id"));
+        ttMap3.put("type_id","63");
+        ttMap3.put("later_status","24");
+        ttMap3.put("now_status","23");
+        Tools.recAdd(ttMap3, "dd_icbc_erp_result");
+
 
         // 本表操作添加数据
-        ary.put("order_id",ary.get("icbc_id"));
+        ary.put("icbc_id",ary.get("icbc_id"));
         ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
         ary.put("gems_id",ontCustomer.get("gems_id"));
         DecimalFormat countFormat = new DecimalFormat("000000000");
@@ -118,7 +126,7 @@ public class spmq extends DbCtrl {
 
         if(post.get("id") != null){
             DbTools myDbTools=new DbTools();
-            String sql="select die.c_name from dd_icbc_materials dim,dd_icbc_erp die where dim.order_id=die.order_id and dim.id="+post.get("id");
+            String sql="select die.c_name from dd_icbc_materials dim,dd_icbc_erp die where dim.icbc_id=die.icbc_id and dim.id="+post.get("id");
             TtMap ontCustomer = null;
             try {
                 ontCustomer = myDbTools.recinfo(sql);
@@ -162,7 +170,7 @@ public class spmq extends DbCtrl {
         int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
         String whereString = "true";
         String tmpWhere = "";
-        String fieldsString = ""; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
+        String fieldsString = "t.*,a.name as admin_name,f.name as fs_name"; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
         TtList list = null;
         /* 开始处理搜索过来的字段 */
         kw = post.get("kw");
@@ -195,6 +203,8 @@ public class spmq extends DbCtrl {
         p = pageInt; // 显示页
         limit = limtInt; // 每页显示记录数
         showall = true; // 忽略deltag和showtag
+        leftsql="LEFT JOIN admin a on a.id=t.gems_id " +
+                "LEFT JOIN fs f on f.id=t.gems_fs_id ";
         list = lists(whereString, fieldsString);
         if (bToExcel) { // Excel导出演示：导出到Excel并下载
             String[] headers = new String[] { "管理员名称", "密码MD5", "用户名" };
@@ -259,8 +269,7 @@ public class spmq extends DbCtrl {
         }
         TtList lmss = super.lists(wheres, f);
         for (TtMap tmpInfo : lmss) {
-            tmpInfo.put("fsname", Tools.unDic("dd_fs", Tools.strToLong(tmpInfo.get("gems_fs_id"))));// 所属公司
-            tmpInfo.put("c_name", Tools.unDic("dd_icbc", Tools.strToLong(tmpInfo.get("order_id"))));//客户姓名
+            tmpInfo.put("c_name", Tools.unDic("dd_icbc", Tools.strToLong(tmpInfo.get("icbc_id"))));//客户姓名
         }
         return lmss;
     }

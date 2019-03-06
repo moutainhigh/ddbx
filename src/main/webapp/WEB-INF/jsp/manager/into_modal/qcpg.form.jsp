@@ -11,27 +11,17 @@
         id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
     }
 %>
-<input id="gems_id" name="gems_id" value="<%=minfo.get("id")%>" type="hidden" />
-<input id="gems_fs_id" name="gems_fs_id" value="<%=minfo.get("fsid")%>" type="hidden" />
+
 <div class="admin-content nav-tabs-custom box">
     <div class="box-header with-border">
-        <c:if test="${id ne 0}">
-            <div class="box-header with-border">
-                <h3 class="box-title">订单来自：${gsnamemap.fs_name}-${gsnamemap.admin_name}</h3>
-                <h3 class="box-title">提交时间：${infodb.dt_add}</h3>
-                <div class="box-tools pull-right">
+        <div class="box-header with-border">
+            <h3 class="box-title">订单来自：快加云-秦扬</h3>
+            <h3 class="box-title">提交时间：2019-02-20 16:57:00</h3>
+            <div class="box-tools pull-right">
 
-                    <h3 class="box-title">订单编号：${infodb.order_code}</h3>
-                </div>
+                <h3 class="box-title">订单编号：</h3>
             </div>
-        </c:if>
-        <c:if test="${id eq 0}">
-            <div class="box-header with-border">
-                <h3 class="box-title">新增订单</h3>
-            </div>
-        </c:if>
-
-
+        </div>
         <div class="box-body" id="tab-content">
             <div class="form-group">
                 <label class="col-sm-2 control-label">车辆信息</label>
@@ -41,7 +31,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">车辆类型</span>
                                 <select class="form-control" id="" name="cars_type">
-                                    <option selected = "selected"></option>
+                                    <option selected = "selected">请选择</option>
                                     <option value="新车">新车</option>
                                     <option value="二手车">二手车</option>
                                 </select>
@@ -51,7 +41,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">国产/进口</span>
                                 <select class="form-control" id="" name="origin_type">
-                                    <option selected = "selected"></option>
+                                    <option selected = "selected">请选择</option>
                                     <option value="国产">国产</option>
                                     <option value="进口">进口</option>
                                 </select>
@@ -61,7 +51,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">使用性质</span>
                                 <select class="form-control" id="" name="using_nature">
-                                    <option selected = "selected"></option>
+                                    <option selected = "selected">请选择</option>
                                     <option value="运营">运营</option>
                                     <option value="非运营">非运营</option>
                                 </select>
@@ -71,7 +61,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">变速箱</span>
                                 <select class="form-control" id="" name="transmission">
-                                    <option selected = "selected"></option>
+                                    <option selected = "selected">请选择</option>
                                     <option value="自动">自动</option>
                                     <option value="手动">手动</option>
                                 </select>
@@ -90,7 +80,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">车型</span>
                                 <select class="form-control" id="" name="models1">
-                                    <option selected = "selected"></option>
+                                    <option selected = "selected">请选择</option>
                                     <option value="本田">本田</option>
                                     <option value="别克">别克</option>
                                     <option value="宝马">宝马</option>
@@ -101,7 +91,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"></span>
                                 <select class="form-control" id="" name="models2">
-                                    <option selected = "selected"></option>
+                                    <option selected = "selected">请选择</option>
                                     <option value="本田">本田</option>
                                     <option value="别克">别克</option>
                                     <option value="宝马">宝马</option>
@@ -112,7 +102,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon"></span>
                                 <select class="form-control" id="" name="models3">
-                                    <option selected = "selected"></option>
+                                    <option selected = "selected">请选择</option>
                                     <option value="本田">本田</option>
                                     <option value="别克">别克</option>
                                     <option value="宝马">宝马</option>
@@ -131,7 +121,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">车辆状况</span>
                                 <select class="form-control" id="" name="cars_vehicles">
-                                    <option selected = "selected"></option>
+                                    <option selected = "selected">请选择</option>
                                     <option value="车辆优秀">车辆优秀</option>
                                     <option value="车辆良好">车辆良好</option>
                                     <option value="车辆一般">车辆一般</option>
@@ -166,7 +156,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">颜色</span>
                                 <select class="form-control" id="" name="cars_color">
-                                    <option selected = "selected"></option>
+                                    <option selected = "selected">请选择</option>
                                     <option value="黑">黑</option>
                                     <option value="白">白</option>
                                     <option value="灰">灰</option>
@@ -193,7 +183,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">所在省</span>
                                 <select class="form-control" id="" name="cars_province">
-                                    <option selected = "selected"></option>
+                                    <option selected = "selected">请选择</option>
                                     <option value="安徽省">安徽省</option>
                                     <option value="北京市">北京市</option>
                                     <option value="福建省">福建省</option>
@@ -207,7 +197,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">所在市</span>
                                 <select class="form-control" id="" name="cars_city">
-                                    <option selected = "selected"></option>
+                                    <option selected = "selected">请选择</option>
                                     <option value="安徽省">安徽省</option>
                                     <option value="北京市">北京市</option>
                                     <option value="福建省">福建省</option>
@@ -369,17 +359,10 @@
 
         </div>
 
-<<<<<<< HEAD
-
-    </div>
-</div>
-<script>
-=======
     </div>
 </div>
 
     <script>
->>>>>>> 6637eb447dbb361b0522b08f6788efd4d0fead8b
     /*选择省后，动态获取省下面的市，并默认选中你指定的id的市，/ttAjax在Ajax.java中处理
                                             /ttAjax也可以单独使用，比如
                                             /ttAjax?do=opt&cn=kjb_user&id=3&mid_add=100000 //显示创建人id为100000的所有用户，默认选择id为3的记录
