@@ -27,6 +27,9 @@
 									客户姓名
 								</th>
 								<th class="text-center">
+									订单状态
+								</th>
+								<th class="text-center">
 									来源:公司-姓名
 								</th>
 								<th class="hidden-xs text-center">
@@ -43,6 +46,18 @@
 									</td>
 									<td class="text-center">
 										${u.c_name}
+									</td>
+									<td class="text-center">
+									<span class="label label-success">
+									 <c:choose>
+										 <c:when test="${u.zx_status eq 1}">草稿箱</c:when>
+										 <c:when test="${u.zx_status eq 2}">提交查询</c:when>
+										 <c:when test="${u.zx_status eq 3}">征信通过</c:when>
+										 <c:when test="${u.zx_status eq 4}">回退补件</c:when>
+										 <c:when test="${u.zx_status eq 5}">征信不通过</c:when>
+										 <c:otherwise>草稿箱</c:otherwise>
+									 </c:choose>
+									</span>
 									</td>
 									<td class="text-center">
 										${u.fs_name}-${u.admin_name}

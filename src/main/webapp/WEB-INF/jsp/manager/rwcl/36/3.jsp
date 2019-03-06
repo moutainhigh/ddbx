@@ -6,20 +6,7 @@
 <div class="text-primary">
     <em>查询结果：</em>
     <div class="big-conte" style="display: block;">
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
-            <strong>开始时间：</strong>
-            2019-02-20 16:58:39
-        </div>
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
-            <strong>处理时间：</strong>
-            2019-02-20 16:59:10
-        </div>
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
-            <strong>处理人：</strong>秦扬
-        </div>
         <strong style="margin-left: 10px;"><i>处理信息：</i></strong><br>
-        <!-- ngIf: taskAct.pageName!='cudp'||'_cudp'.indexOf(taskAct.pageName)<=-1 -->
-        <!-- ngInclude: '/modules/'+taskAct.menuCode+'/'+taskAct.pageName+'.html' -->
         <div class="task_margin ng-scope"
              style="border: 1px solid #ccc; border-radius: 10px; background-color: #F7F7F7; padding-top: 10px;">
             <form id="erp_form" class="form-horizontal">
@@ -227,13 +214,16 @@
                 zdrpo_dsj_code:zdrpo_dsj_code,
                 icbc_id:icbc_id,
                 type_id:type_id,
-                id:id
+                id:id,
+                type:'1'//类型
             },  //传送的数据
             error: function () {
                 alert("编辑失败...请稍后重试！");
+
             },
             success: function (data) {
                 alert(data.msg);
+                window.location.href="/manager/index?cn=mytask&sdo=list&type=ddbx";
             }
         });
 
