@@ -36,9 +36,9 @@ public class Visual {
         s[2]=list.get(2).get("id");
         JSONArray jsonArray = JSONArray.fromObject(s);
         ToJson(request,response,jsonArray);
-
         return null;
     }
+
     //输入sql语句进行查询操作
     public TtList selectSQL(String sql){
         DbTools myDbTools=new DbTools();
