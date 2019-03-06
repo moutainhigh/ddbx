@@ -94,6 +94,7 @@ public class MyTask extends DbCtrl {
                 request.setAttribute("erplist", geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
             }
         }
+
         TtMap  modals= get_sys_modal_name(Integer.valueOf(post.get("type_id")),Integer.valueOf(info.get("later_status")));
         request.setAttribute("modals",modals);
         request.setAttribute("icbc", geticbc_detail(Integer.valueOf(post.get("icbc_id"))));

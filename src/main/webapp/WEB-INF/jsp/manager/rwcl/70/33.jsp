@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<li class="text-primary"><em>专员审核结果：</em>
+<div class="text-primary"><em>专员审核结果：</em>
     <div class="big-conte" style="display: block;">
         <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
             <strong>开始时间：</strong>
@@ -37,7 +37,7 @@
                 </div>
             </form>
         </div>
-    </div></li>
+    </div></div>
 <script>
     function erp() {
         var result_code= $('input[name="result_code"]:checked').val();
@@ -50,7 +50,6 @@
             alert("审核结果不能为空!");
             return false;
         }
-        <!--
         $.ajax({
             type: "POST",      //data 传送数据类型。post 传递
             dataType: 'json',  // 返回数据的数据类型json
@@ -70,6 +69,5 @@
                 window.location.href='${pageContext.request.contextPath}/manager/index?cn=mytask&sdo=list&type=ddbx';
             }
         });
-        -->
     }
 </script>

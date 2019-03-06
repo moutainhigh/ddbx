@@ -66,7 +66,12 @@ public class CarLoan extends DbCtrl {
      */
     @Override
     public int edit(TtMap ary, long id) {
+        String icbc_id = ary.get("icbc_id");
         //1 其他表操作  add
+//        TtMap carLoanErpStatus = new TtMap();
+//        carLoanErpStatus.put("now_status","32"); //提交查询
+//        carLoanErpStatus.put("later_status","33"); //专员审核
+        Tools.recexec("update dd_icbc_erp set now_status=32,later_status=33 where type_id=70 and icbc_id="+icbc_id);
         //2 本表操作
         //证明材料
         String imgstep9_1ss =
