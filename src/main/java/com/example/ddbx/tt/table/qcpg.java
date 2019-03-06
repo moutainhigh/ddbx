@@ -108,7 +108,7 @@ public class qcpg extends DbCtrl {
             Tools.recAdd(ttMap2, "dd_icbc_erp_result");
 
         // 本表操作添加数据
-        ary.put("order_id",ontCustomer.get("id"));
+        ary.put("icbc_id",ontCustomer.get("id"));
         ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
         ary.put("gems_id",ontCustomer.get("gems_id"));
         DecimalFormat countFormat = new DecimalFormat("000000000");

@@ -149,10 +149,6 @@
                     }
                 ]
             };
-
-
-
-
             // 为echarts对象加载数据
             myChart1.setOption(option1);
             //ajax结尾

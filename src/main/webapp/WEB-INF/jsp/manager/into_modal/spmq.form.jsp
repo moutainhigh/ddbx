@@ -23,19 +23,6 @@
         </div>
         <div class="box-body" id="tab-content">
             <div class="form-group">
-                <label class="col-sm-2 control-label">视频面签</label>
-                <div class="col-sm-10">
-                    <div class="row inline-from">
-                        <div class="col-sm-6">
-                            <div class="input-group">
-                                <span class="input-group-addon">客户姓名</span>
-                                <input type="text" class="form-control" id="c_name" name="c_name" value="<%=!Tools.myIsNull(c_name) ? c_name : ""%>" placeholder="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
                 <label class="col-sm-2 control-label">身份证信息</label>
                 <div class="col-sm-10">
                     <div class="row inline-from">
