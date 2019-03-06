@@ -74,9 +74,8 @@ public class qcpg extends DbCtrl {
         }
 
         // 其他表添加数据
-        DbCtrl dbCtrl = new DbCtrl("dd_icbc_erp");
-        long id = 0;
-        try {
+        long qryid = 0;
+
             TtMap ttMap = new TtMap();
             ttMap.put("c_name", ontCustomer.get("c_name"));
             ttMap.put("c_tel", ontCustomer.get("c_tel"));
@@ -90,34 +89,26 @@ public class qcpg extends DbCtrl {
 //        ttMap.put("c_carvin", ontCustomer.get(""));
             ttMap.put("c_carno", ary.get("license_plate"));
             ttMap.put("adminop_tag", Tools.minfo().get("id"));
+            qryid = Tools.recAdd(ttMap, "dd_icbc_erp");
 
-            id = dbCtrl.add(ttMap);
-            System.out.println(id+"********");
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            dbCtrl.closeConn();
-        }
+            TtMap ttMap1 = new TtMap();
+            ttMap1.put("qryid", qryid+"");
+            ttMap1.put("now_status", "9");
+            ttMap1.put("later_status", "10");
+            ttMap1.put("type_id", "47");
+            ttMap1.put("icbc_id", ontCustomer.get("id"));
+            Tools.recAdd(ttMap1, "dd_icbc_erp_result");
 
-        DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
-        try {
             TtMap ttMap2 = new TtMap();
-            ttMap2.put("qryid", id+"");
+            ttMap2.put("qryid", qryid+"");
             ttMap2.put("now_status", "10");
             ttMap2.put("later_status", "11");
             ttMap2.put("type_id", "47");
             ttMap2.put("icbc_id", ontCustomer.get("id"));
-
-            dbCtrl2.add(ttMap2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            dbCtrl2.closeConn();
-        }
-
+            Tools.recAdd(ttMap2, "dd_icbc_erp_result");
 
         // 本表操作添加数据
-        ary.put("icbc_id",ontCustomer.get("id"));
+        ary.put("order_id",ontCustomer.get("id"));
         ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
         ary.put("gems_id",ontCustomer.get("gems_id"));
         DecimalFormat countFormat = new DecimalFormat("000000000");

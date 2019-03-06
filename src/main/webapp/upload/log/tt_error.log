@@ -217,3 +217,940 @@ com.mysql.cj.jdbc.exceptions.MysqlDataTruncation: Data truncation: Data too long
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:748)
 2019-03-04 17:59:19  [ http-nio-8092-exec-1:551927 ] - [ ERROR ]  Tools.logError:Data truncation: Data too long for column 'c_name' at row 1
+2019-03-05 10:11:30  [ http-nio-8092-exec-5:7580 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:13:29  [ http-nio-8092-exec-9:126017 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:40:36  [ http-nio-8092-exec-4:80887 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:40:57  [ http-nio-8092-exec-10:101589 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D29%26type_id%3D47%26icbc_id%3D29%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:41:57  [ http-nio-8092-exec-5:2934 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:44:06  [ http-nio-8092-exec-8:131647 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:44:09  [ http-nio-8092-exec-10:134310 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:44:22  [ http-nio-8092-exec-3:147315 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:44:24  [ http-nio-8092-exec-4:149532 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D30%26sdo%3Dform%26id%3D30%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:44:25  [ http-nio-8092-exec-5:150563 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D30%26sdo%3Dform%26id%3D30%26type_id%3D47%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:44:35  [ http-nio-8092-exec-7:161149 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D30%26sdo%3Dform%26id%3D30%26type_id%3D47%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:44:36  [ http-nio-8092-exec-9:161753 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D30%26sdo%3Dform%26id%3D30%26type_id%3D47%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:52:12  [ http-nio-8092-exec-8:1539 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ctab%3D6%26type_id%3D47%26cn%3Dmytask%26id%3D30%26type%3Dddbx%26icbc_id%3D30%26sdo%3Dform:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:53:01  [ http-nio-8092-exec-7:50724 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D30%26sdo%3Dform%26id%3D30%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 10:53:02  [ http-nio-8092-exec-5:51644 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D30%26sdo%3Dform%26id%3D30%26type_id%3D47%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:01:02  [ http-nio-8092-exec-1:11331430 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:13:27  [ http-nio-8092-exec-10:12076551 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D29%26type_id%3D47%26icbc_id%3D29%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:15:57  [ http-nio-8092-exec-7:12226863 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:16:02  [ http-nio-8092-exec-8:12231356 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D30%26sdo%3Dform%26id%3D30%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:16:03  [ http-nio-8092-exec-9:12232196 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D30%26sdo%3Dform%26id%3D30%26type_id%3D47%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:16:03  [ http-nio-8092-exec-4:12233034 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D30%26sdo%3Dform%26id%3D30%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:16:05  [ http-nio-8092-exec-3:12234365 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D30%26sdo%3Dform%26id%3D30%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:16:11  [ http-nio-8092-exec-5:12240225 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D30%26sdo%3Dform%26id%3D30%26type_id%3D47%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:19:45  [ http-nio-8092-exec-7:2921 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:22:56  [ http-nio-8092-exec-3:193284 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D29%26type_id%3D47%26icbc_id%3D29%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:26:31  [ http-nio-8092-exec-8:5667 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:26:42  [ http-nio-8092-exec-3:15897 ] - [ ERROR ]  {conn-10001, stmt-20091} execute error. insert into dd_icbc_erp_result set `later_status`='4', `dt_add`='2019-03-05 14:26:42', `type_id`='47', `gems_id`='21', `remark`='', `mid_add`='21', `icbc_id`='30', `result_msg`='', `dt_edit`='2019-03-05 14:26:42', `result_code`='', `result_value`='', `gems_fs_id`='33', `mid_edit`='21', `qryid`='30', `now_status`='4'
+java.sql.SQLException: Incorrect integer value: '' for column 'result_code' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdateInternal(StatementImpl.java:1355)
+	at com.mysql.cj.jdbc.StatementImpl.executeLargeUpdate(StatementImpl.java:2133)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdate(StatementImpl.java:1360)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3104)
+	at com.alibaba.druid.filter.FilterAdapter.statement_executeUpdate(FilterAdapter.java:2514)
+	at com.alibaba.druid.filter.FilterEventAdapter.statement_executeUpdate(FilterEventAdapter.java:350)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.wall.WallFilter.statement_executeUpdate(WallFilter.java:561)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeUpdate(StatementProxyImpl.java:249)
+	at com.alibaba.druid.pool.DruidPooledStatement.executeUpdate(DruidPooledStatement.java:370)
+	at com.example.ddbx.tt.tool.DbTools.recinsert(DbTools.java:222)
+	at com.example.ddbx.tt.tool.DbCtrl.addData(DbCtrl.java:584)
+	at com.example.ddbx.tt.tool.DbCtrl.add(DbCtrl.java:619)
+	at com.example.ddbx.tt.tool.Tools.recAdd(Tools.java:655)
+	at com.example.ddbx.tt.erp.erpController.ajaxpost(erpController.java:102)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-03-05 14:26:42  [ http-nio-8092-exec-3:15899 ] - [ ERROR ]  Tools.logError:Incorrect integer value: '' for column 'result_code' at row 1
+2019-03-05 14:29:29  [ http-nio-8092-exec-5:183110 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp] at line [22]
+
+19: 
+20:     String rwcl_path = "/WEB-INF/jsp/manager/rwcl/";
+21:     if (modals!=null&&!modals.equals("")){
+22:         switch (modals.get("name")) {
+23: 
+24:             case "开始":
+25:                 rwcl_path = rwcl_path + "modal_son/begin.jsp";
+
+
+Stacktrace:
+2019-03-05 14:29:32  [ http-nio-8092-exec-8:186244 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D30%26type_id%3D47%26icbc_id%3D30%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp] at line [22]
+
+19: 
+20:     String rwcl_path = "/WEB-INF/jsp/manager/rwcl/";
+21:     if (modals!=null&&!modals.equals("")){
+22:         switch (modals.get("name")) {
+23: 
+24:             case "开始":
+25:                 rwcl_path = rwcl_path + "modal_son/begin.jsp";
+
+
+Stacktrace:
+2019-03-05 14:29:49  [ http-nio-8092-exec-9:203345 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D29%26type_id%3D47%26icbc_id%3D29%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:54:07  [ http-nio-8092-exec-2:1661617 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D35%26type_id%3D47%26icbc_id%3D33%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 14:56:12  [ http-nio-8092-exec-7:1786265 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D35%26type_id%3D47%26icbc_id%3D33%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:23:40  [ http-nio-8092-exec-1:62877 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D36%26type_id%3D47%26icbc_id%3D18%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:23:54  [ http-nio-8092-exec-9:77324 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D36%26type_id%3D47%26icbc_id%3D18%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:23:58  [ http-nio-8092-exec-3:80952 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D36%26type_id%3D47%26icbc_id%3D18%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:25:12  [ http-nio-8092-exec-7:3455 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D36%26type_id%3D47%26icbc_id%3D18%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:25:21  [ http-nio-8092-exec-9:11993 ] - [ ERROR ]  {conn-10001, stmt-20072} execute error. insert into dd_icbc_erp_result set `later_status`='4', `dt_add`='2019-03-05 15:25:21', `type_id`='47', `gems_id`='21', `remark`='', `mid_add`='21', `icbc_id`='18', `result_msg`='', `dt_edit`='2019-03-05 15:25:21', `result_code`='', `result_value`='', `gems_fs_id`='33', `mid_edit`='21', `qryid`='36', `now_status`='4'
+java.sql.SQLException: Incorrect integer value: '' for column 'result_code' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdateInternal(StatementImpl.java:1355)
+	at com.mysql.cj.jdbc.StatementImpl.executeLargeUpdate(StatementImpl.java:2133)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdate(StatementImpl.java:1360)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3104)
+	at com.alibaba.druid.filter.FilterAdapter.statement_executeUpdate(FilterAdapter.java:2514)
+	at com.alibaba.druid.filter.FilterEventAdapter.statement_executeUpdate(FilterEventAdapter.java:350)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.wall.WallFilter.statement_executeUpdate(WallFilter.java:561)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeUpdate(StatementProxyImpl.java:249)
+	at com.alibaba.druid.pool.DruidPooledStatement.executeUpdate(DruidPooledStatement.java:370)
+	at com.example.ddbx.tt.tool.DbTools.recinsert(DbTools.java:222)
+	at com.example.ddbx.tt.tool.DbCtrl.addData(DbCtrl.java:584)
+	at com.example.ddbx.tt.tool.DbCtrl.add(DbCtrl.java:619)
+	at com.example.ddbx.tt.tool.Tools.recAdd(Tools.java:655)
+	at com.example.ddbx.tt.erp.ErpqcpgController.ajaxpost(ErpqcpgController.java:79)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-03-05 15:25:21  [ http-nio-8092-exec-9:11996 ] - [ ERROR ]  Tools.logError:Incorrect integer value: '' for column 'result_code' at row 1
+2019-03-05 15:25:25  [ http-nio-8092-exec-1:16604 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D36%26type_id%3D47%26icbc_id%3D18%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:25:33  [ http-nio-8092-exec-4:24157 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D36%26type_id%3D47%26icbc_id%3D18%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:26:12  [ http-nio-8092-exec-5:63119 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D18%26sdo%3Dform%26id%3D36%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:26:14  [ http-nio-8092-exec-6:64937 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D18%26sdo%3Dform%26id%3D36%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:26:14  [ http-nio-8092-exec-7:65415 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D18%26sdo%3Dform%26id%3D36%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:26:15  [ http-nio-8092-exec-8:65710 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D18%26sdo%3Dform%26id%3D36%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:26:21  [ http-nio-8092-exec-9:72170 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D18%26sdo%3Dform%26id%3D36%26type_id%3D47%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:26:34  [ http-nio-8092-exec-2:85003 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D36%26type_id%3D47%26icbc_id%3D18%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:26:41  [ http-nio-8092-exec-7:92448 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D36%26type_id%3D47%26icbc_id%3D18%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:26:42  [ http-nio-8092-exec-8:93360 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D18%26sdo%3Dform%26id%3D36%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:28:01  [ http-nio-8092-exec-9:172586 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D36%26type_id%3D47%26icbc_id%3D18%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:28:04  [ http-nio-8092-exec-10:175075 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D18%26sdo%3Dform%26id%3D36%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:30:29  [ http-nio-8092-exec-5:319786 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D37%26type_id%3D47%26icbc_id%3D20%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:31:03  [ http-nio-8092-exec-9:354135 ] - [ ERROR ]  {conn-10001, stmt-21110} execute error. insert into dd_icbc_erp_result set `later_status`='4', `dt_add`='2019-03-05 15:31:03', `type_id`='47', `gems_id`='21', `remark`='', `mid_add`='21', `icbc_id`='20', `result_msg`='', `dt_edit`='2019-03-05 15:31:03', `result_code`='', `result_value`='', `gems_fs_id`='33', `mid_edit`='21', `qryid`='37', `now_status`='4'
+java.sql.SQLException: Incorrect integer value: '' for column 'result_code' at row 1
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:129)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdateInternal(StatementImpl.java:1355)
+	at com.mysql.cj.jdbc.StatementImpl.executeLargeUpdate(StatementImpl.java:2133)
+	at com.mysql.cj.jdbc.StatementImpl.executeUpdate(StatementImpl.java:1360)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3104)
+	at com.alibaba.druid.filter.FilterAdapter.statement_executeUpdate(FilterAdapter.java:2514)
+	at com.alibaba.druid.filter.FilterEventAdapter.statement_executeUpdate(FilterEventAdapter.java:350)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.wall.WallFilter.statement_executeUpdate(WallFilter.java:561)
+	at com.alibaba.druid.filter.FilterChainImpl.statement_executeUpdate(FilterChainImpl.java:3102)
+	at com.alibaba.druid.proxy.jdbc.StatementProxyImpl.executeUpdate(StatementProxyImpl.java:249)
+	at com.alibaba.druid.pool.DruidPooledStatement.executeUpdate(DruidPooledStatement.java:370)
+	at com.example.ddbx.tt.tool.DbTools.recinsert(DbTools.java:222)
+	at com.example.ddbx.tt.tool.DbCtrl.addData(DbCtrl.java:584)
+	at com.example.ddbx.tt.tool.DbCtrl.add(DbCtrl.java:619)
+	at com.example.ddbx.tt.tool.Tools.recAdd(Tools.java:655)
+	at com.example.ddbx.tt.erp.ErpqcpgController.ajaxpost(ErpqcpgController.java:79)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-03-05 15:31:03  [ http-nio-8092-exec-9:354136 ] - [ ERROR ]  Tools.logError:Incorrect integer value: '' for column 'result_code' at row 1
+2019-03-05 15:31:32  [ http-nio-8092-exec-8:382972 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D37%26type_id%3D47%26icbc_id%3D20%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:31:33  [ http-nio-8092-exec-6:383871 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D20%26sdo%3Dform%26id%3D37%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:31:35  [ http-nio-8092-exec-7:385646 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D20%26sdo%3Dform%26id%3D37%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:33:38  [ http-nio-8092-exec-1:508771 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D20%26sdo%3Dform%26id%3D37%26type_id%3D47%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:33:38  [ http-nio-8092-exec-4:509126 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D20%26sdo%3Dform%26id%3D37%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:35:06  [ http-nio-8092-exec-8:597276 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D37%26type_id%3D47%26icbc_id%3D20%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:35:12  [ http-nio-8092-exec-7:603220 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D20%26sdo%3Dform%26id%3D37%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [121]
+
+118:                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+119:                                             }
+120:                         %>
+121:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+122:                         <%
+123:                                 }
+124:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:40:07  [ http-nio-8092-exec-4:898406 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D37%26type_id%3D47%26icbc_id%3D20%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [122]
+
+119:                                             }
+120:                                             System.out.println(erp_msg+"......");
+121:                         %>
+122:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+123:                         <%
+124:                                 }
+125:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:40:08  [ http-nio-8092-exec-3:899345 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D20%26sdo%3Dform%26id%3D37%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [122]
+
+119:                                             }
+120:                                             System.out.println(erp_msg+"......");
+121:                         %>
+122:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+123:                         <%
+124:                                 }
+125:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:40:52  [ http-nio-8092-exec-8:943077 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D37%26type_id%3D47%26icbc_id%3D20%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [122]
+
+119:                                             }
+120:                                             System.out.println(erp_msg+"......");
+121:                         %>
+122:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+123:                         <%
+124:                                 }
+125:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 15:40:53  [ http-nio-8092-exec-6:943809 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D20%26sdo%3Dform%26id%3D37%26type_id%3D47%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [122]
+
+119:                                             }
+120:                                             System.out.println(erp_msg+"......");
+121:                         %>
+122:                         <jsp:include page="<%=erp_msg%>"></jsp:include>
+123:                         <%
+124:                                 }
+125:                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
+
+
+Stacktrace:
+2019-03-05 16:41:42  [ http-nio-8092-exec-1:4592972 ] - [ ERROR ]  Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Ddemo_upfile%26sdo%3Dform%26type%3Ddemo:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;demo&#47;demo_upfile.form.jsp] not found
