@@ -35,10 +35,10 @@
 								业务类型
 							</th>
 							<th class="text-center">
-								当前任务节点
+								已执行任务节点
 							</th>
 							<th class="text-center">
-								下一任务节点
+								待执行任务节点
 							</th>
 							<th class="hidden-xs text-center">
 								任务发起人

@@ -18,6 +18,7 @@
     TtMap modals = (TtMap) request.getAttribute("modals");
 
     String rwcl_path = "/WEB-INF/jsp/manager/rwcl/";
+
     if (modals!=null&&!modals.equals("")){
         switch (modals.get("name")) {
 
@@ -35,10 +36,16 @@
                 break;
 
         }
+
     } else {
         rwcl_path=rwcl_path+"modal_son/null.jsp";
     }
+
     TtList erp_stylelist = (TtList) request.getAttribute("erp_stylelist");
+
+    TtList jdlist = (TtList) request.getAttribute("jdlist");
+
+    TtList clgc_list= (TtList) request.getAttribute("clgc_list");
 %>
 <head>
     <script src="js/jQueryRotate.2.2.js" type="text/javascript"></script>
@@ -76,12 +83,15 @@
                         <div style="border:1px solid #478FCA;   margin:5px; padding:20px;border-radius: 10px;">
                             <ul id="yw" class="nav nav-tabs">
                                 <c:forEach items="${requestScope.clgc_list}" var="c" varStatus="status">
+                                    <c:set var="flag" value="true"></c:set>
                                     <c:choose>
                                         <c:when test="${fn:contains(requestScope.erp_stylelist,c.id)}">
                                             <li ${c.id eq requestScope.type_id?"class='active'":'' }>
+                                                <c:forEach items="${requestScope.jdlist}" var="e" varStatus="status">
+                                                    <c:if test="${c.id eq e.type_id}">
                                                 <a ${c.id eq requestScope.type_id?"style='background-color: rgb(25, 53, 78); color: rgb(255, 255, 255);'":"style='background-color: rgb(51, 122, 183); color: rgb(255, 255, 255);'" }
                                                         id="${c.cn}"
-                                                        href="<%=url%><%=infodb.get("id")%>&type_id=${c.id}&tab=0"
+                                                        href="<%=url%>${e.id}&type_id=${c.id}&tab=0"
                                                         class="btn btn-block btn-info">
                                                         ${c.name}
                                                         <%--
@@ -92,11 +102,15 @@
                                                         style="background-color:#3c8dbc;color: #ffffff;"
                                                         --%>
                                                 </a>
-                                            </li>
+                                                        <c:set var="flag" value="false"></c:set>
+                                                    </c:if>
 
+                                                </c:forEach>
+                                                <c:set var="flag" value="true"></c:set>
+                                            </li>
                                         </c:when>
                                         <c:otherwise>
-                                            <li ${c.id eq requestScope.type_id?"class='active'":'' }>
+                                            <li>
                                                 <a style="background-color: rgb(167, 167, 167); color: rgb(255, 255, 255);"
                                                    id="${c.cn}"
                                                    href="javascript:alert('暂无处理过程!!!');"
@@ -106,6 +120,7 @@
                                             </li>
                                         </c:otherwise>
                                     </c:choose>
+
                                     <c:choose>
                                         <c:when test="${status.last}">
                                         </c:when>
@@ -115,6 +130,7 @@
                                             </li>
                                         </c:otherwise>
                                     </c:choose>
+
                                 </c:forEach>
 
                             </ul>

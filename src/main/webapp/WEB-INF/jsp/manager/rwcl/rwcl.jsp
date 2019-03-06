@@ -97,6 +97,12 @@
                                 TtList list= (TtList) request.getAttribute("erplist");
                                 if(list.size()>0){
                                     for(TtMap ttMap : list){
+                                        String result_value=ttMap.get("result_value");
+                                        String admin_name=ttMap.get("admin_name");
+                                        String s_time=ttMap.get("s_time");
+                                        String id=ttMap.get("id");
+                                        System.out.println("s_time:"+s_time+"---------"+ttMap.get("id"));
+                                        String dt_edit=ttMap.get("dt_edit");
                                         System.out.println(ttMap.get("now_name")+"------"+ttMap.get("now_status"));
                                         if(ttMap.get("type_id")!=null
                                                 &&!ttMap.get("type_id").equals("")
@@ -116,9 +122,19 @@
                                                     break;
                                                 default :
                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+                                                    break;
                                             }
+
+
                         %>
-                        <jsp:include page="<%=erp_msg%>"></jsp:include>
+
+                        <jsp:include page="<%=erp_msg%>" >
+                            <jsp:param name="result_value" value="<%=result_value%>"/>
+                            <jsp:param name="admin_name" value="<%=admin_name%>"/>
+                            <jsp:param name="s_time" value="<%=s_time%>"/>
+                            <jsp:param name="dt_edit" value="<%=dt_edit%>"/>
+                            <jsp:param name="id" value="<%=id%>"/>
+                        </jsp:include>
                         <%
                                 }
                                 erp_msg="/WEB-INF/jsp/manager/rwcl/";
