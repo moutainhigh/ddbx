@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.tools.Tool;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * erp 相关操作
@@ -25,7 +28,7 @@ public class erpController {
     @ResponseBody
     public TtMap ajaxpost(HttpServletRequest request) {
         TtMap post = Tools.getPostMap(request, true);// 过滤参数，过滤mysql的注入，url参数注入
-        String result_msg = Tools.jsonEncode(post);
+
         TtMap res = new TtMap();
         String msg = "编辑成功";
         long code = 200;
@@ -45,13 +48,13 @@ public class erpController {
         }
         if (post.get("gjr2_zx1_result") != null && !post.get("gjr2_zx1_result").equals("")) {
             icbc.put("gjr2_zx1_result", post.get("gjr2_zx1_result"));
-            icbc.put("gjr2_zx1_query_time", post.get("gjr2_zx1_query_time"));
-            icbc.put("gjr2_zx1_result_time", post.get("gjr2_zx1_result_time"));
+            icbc.put("gjr2_zx1_query_time", Tools.dateToStrLong(null));
+            icbc.put("gjr2_zx1_result_time", Tools.dateToStrLong(null));
         }
         if (post.get("zdrpo_zx1_result") != null && !post.get("zdrpo_zx1_result").equals("")) {
             icbc.put("zdrpo_zx1_result", post.get("zdrpo_zx1_result"));
-            icbc.put("zdrpo_zx1_query_time", post.get("zdrpo_zx1_query_time"));
-            icbc.put("zdrpo_zx1_result_time", post.get("zdrpo_zx1_result_time"));
+            icbc.put("zdrpo_zx1_query_time", Tools.dateToStrLong(null));
+            icbc.put("zdrpo_zx1_result_time", Tools.dateToStrLong(null));
         }
         if (post.get("icbc_id") != null && !post.get("icbc_id").equals("")) {
             Tools.recEdit(icbc, "dd_icbc", Long.valueOf(post.get("icbc_id")));
@@ -66,35 +69,39 @@ public class erpController {
         switch (post.get("state_code")) {
             case "1":
                 erp_result.put("later_status", "4");
-                erp_result.put("now_status", "3");
                 break;
             case "2":
                 erp_result.put("later_status", "4");
-                erp_result.put("now_status", "3");
                 break;
             case "3":
-                erp_result.put("later_status", "3");
-                erp_result.put("now_status", "2");
+                erp_result.put("later_status", "2");
+
                 break;
         }
+        erp_result.put("now_status", "3");
         erp_result.put("remark", post.get("remark"));
         erp_result.put("result_code", post.get("state_code"));
-        erp_result.put("result_msg", "");
-        erp_result.put("result_value", result_msg);
+        erp_result.put("result_msg",post.get("remark"));
         erp_result.put("type_id", post.get("type_id"));
         erp_result.put("icbc_id", post.get("icbc_id"));
         erp_result.put("gems_id", minfo.get("id"));
         erp_result.put("gems_fs_id", minfo.get("fsid"));
+        post.putAll(erp_result);
+        post.put("dt_add",Tools.dateToStrLong(null));
+        post.put("dt_edit",Tools.dateToStrLong(null));
+        String result_msg = Tools.jsonEncode(post);
+        System.out.println("合并后post"+result_msg);
+        erp_result.put("result_value", result_msg);
         Tools.recAdd(erp_result, "dd_icbc_erp_result");
-        if (post.get("state_code").equals("1")||post.get("state_code").equals("2")) {
+        if (post.get("state_code").equals("1") || post.get("state_code").equals("2")) {
             TtMap erp_result1 = new TtMap();
             erp_result1.put("qryid", post.get("id"));
             erp_result1.put("later_status", "4");
             erp_result1.put("now_status", "4");
-            erp_result1.put("remark", "");
-            erp_result1.put("result_code", "");
-            erp_result1.put("result_msg", "");
-            erp_result1.put("result_value","");
+//            erp_result1.put("remark", "");
+//            erp_result1.put("result_code", "");
+//            erp_result1.put("result_msg", "");
+//            erp_result1.put("result_value","");
             erp_result1.put("type_id", post.get("type_id"));
             erp_result1.put("icbc_id", post.get("icbc_id"));
             erp_result1.put("gems_id", minfo.get("id"));
@@ -105,17 +112,17 @@ public class erpController {
         TtMap erp = new TtMap();
         switch (post.get("state_code")) {
             case "1":
-                erp.put("now_status", "3");
+                erp.put("now_status", "4");
                 erp.put("later_status", "4");
 
                 break;
             case "2":
-                erp.put("now_status", "3");
+                erp.put("now_status", "4");
                 erp.put("later_status", "4");
                 break;
             case "3":
-                erp.put("now_status", "2");
-                erp.put("later_status", "3");
+                erp.put("now_status", "3");
+                erp.put("later_status", "2");
                 break;
         }
         Tools.recEdit(erp, "dd_icbc_erp", Long.valueOf(post.get("id")));
@@ -139,6 +146,7 @@ public class erpController {
         res.put("msg", msg);
         return res;
     }
+
 
 
 }

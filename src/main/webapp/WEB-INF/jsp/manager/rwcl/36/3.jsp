@@ -6,20 +6,7 @@
 <div class="text-primary">
     <em>查询结果：</em>
     <div class="big-conte" style="display: block;">
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
-            <strong>开始时间：</strong>
-            2019-02-20 16:58:39
-        </div>
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
-            <strong>处理时间：</strong>
-            2019-02-20 16:59:10
-        </div>
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
-            <strong>处理人：</strong>秦扬
-        </div>
         <strong style="margin-left: 10px;"><i>处理信息：</i></strong><br>
-        <!-- ngIf: taskAct.pageName!='cudp'||'_cudp'.indexOf(taskAct.pageName)<=-1 -->
-        <!-- ngInclude: '/modules/'+taskAct.menuCode+'/'+taskAct.pageName+'.html' -->
         <div class="task_margin ng-scope"
              style="border: 1px solid #ccc; border-radius: 10px; background-color: #F7F7F7; padding-top: 10px;">
             <form id="erp_form" class="form-horizontal">

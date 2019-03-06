@@ -1,5 +1,6 @@
 package com.example.ddbx.tt.table;
 
+import ch.qos.logback.classic.layout.TTLLLayout;
 import com.alibaba.fastjson.JSON;
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
@@ -9,6 +10,7 @@ import com.example.ddbx.tt.tool.DbTools;
 import com.example.ddbx.tt.tool.Tools;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.tools.Tool;
 
 
 public class MyTask extends DbCtrl {
@@ -46,12 +48,11 @@ public class MyTask extends DbCtrl {
      */
     public void doGetForm(HttpServletRequest request, TtMap post) {
 
-
         long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
         TtMap info = info(nid);
         System.out.println("tab:" + post.get("tab"));
-        System.out.println("type_id:"+info.get("type_id"));
-        System.out.println("later_status:"+info.get("later_status"));
+        System.out.println("type_id:" + info.get("type_id"));
+        System.out.println("later_status:" + info.get("later_status"));
         //erp任务各板块处理
         if (post.get("tab") != null && !post.get("tab").equals("")) {
             switch (post.get("tab")) {
@@ -61,8 +62,8 @@ public class MyTask extends DbCtrl {
                 case "0":
                     //查询订单下板块有无进度
                     System.out.println("进来了没有");
-                  TtList erp_stylelist=getdd_icbc_erp(Integer.valueOf(post.get("icbc_id")));
-                  request.setAttribute("erp_stylelist",erp_stylelist);
+                    TtList erp_stylelist = getdd_icbc_erp(Integer.valueOf(post.get("icbc_id")));
+                    request.setAttribute("erp_stylelist", erp_stylelist);
                     break;
                 case "1":
 
@@ -94,8 +95,15 @@ public class MyTask extends DbCtrl {
                 request.setAttribute("erplist", geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
             }
         }
-        TtMap  modals= get_sys_modal_name(Integer.valueOf(post.get("type_id")),Integer.valueOf(info.get("later_status")));
-        request.setAttribute("modals",modals);
+
+        //进度板块处理  erp id  不对应问题
+        TtList jdlist=Tools.reclist("select * from dd_icbc_erp where icbc_id="+post.get("icbc_id"));
+        request.setAttribute("jdlist", jdlist);
+
+
+        TtMap modals = get_sys_modal_name(Integer.valueOf(post.get("type_id")), Integer.valueOf(info.get("later_status")));
+        request.setAttribute("modals", modals);
+
         request.setAttribute("icbc", geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
         String jsonInfo = Tools.jsonEncode(info);
         request.setAttribute("info", jsonInfo);//info为json后的info
@@ -119,10 +127,11 @@ public class MyTask extends DbCtrl {
 
     /**
      * 查询订单下所有任务板块
+     *
      * @return
      */
     public TtList getdd_icbc_erp(int icbc_id) {
-        String sql="select type_id from dd_icbc_erp where icbc_id="+icbc_id;
+        String sql = "select type_id from dd_icbc_erp where icbc_id=" + icbc_id;
         return Tools.reclist(sql);
     }
 
@@ -132,17 +141,8 @@ public class MyTask extends DbCtrl {
      * @param request
      */
     public TtList getclgc() {
-        DbTools myDbTools = new DbTools();
         String sql = "select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort";
-        TtList clgc_list = null;
-        try {
-            clgc_list = myDbTools.reclist(sql);
-        } catch (Exception e) {
-            Tools.logError(e.getMessage(), true, false);
-        } finally {
-            myDbTools.closeConn();
-        }
-        return clgc_list;
+        return Tools.reclist(sql);
     }
 
     /**
@@ -151,25 +151,25 @@ public class MyTask extends DbCtrl {
      * @return
      */
     public TtList geterplist(int id, int type_id) {
-        DbTools dbTools = new DbTools();
         String sql = "select " +
-                "e.*, " +
-                "(select  " +
-                "s2.name as now_name " +
-                "from  " +
-                "(select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort) s1 " +
-                "LEFT JOIN sys_modal s2 ON s2.id_uplevel=s1.id " +
-                "where s1.id=e.type_id and s2.sort=e.now_status) as now_name " +
-                "from dd_icbc_erp_result e where e.qryid=" + id + " and e.type_id=" + type_id;
-        TtList list = new TtList();
-        try {
-            list = dbTools.reclist(sql);
-        } catch (Exception e) {
-            Tools.logError(e.getMessage(), true, false);
-        } finally {
-            dbTools.closeConn();
+                " e.*, " +
+                " (select  " +
+                " s2.name as now_name " +
+                " from  " +
+                " (select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort) s1 " +
+                " LEFT JOIN sys_modal s2 ON s2.id_uplevel=s1.id " +
+                " where s1.id=e.type_id and s2.sort=e.now_status) as now_name," +
+                " a.name as admin_name" +
+                " from dd_icbc_erp_result e " +
+                "LEFT JOIN admin a ON a.id=e.mid_add " +
+                "where e.qryid=" + id + " and e.type_id=" + type_id;
+        TtList list = Tools.reclist(sql);
+        for(int i=0;i<list.size();i++){
+            TtMap map=list.get(i);
+            TtMap map1=Tools.recinfo("select r1.id,r1.dt_edit from  dd_icbc_erp_result r1 where r1.qryid="+id+" and r1.type_id="+type_id+" and r1.id!="+map.get("id")+" and r1.id<"+map.get("id")+" ORDER BY r1.id  DESC limit 1");
+            map.put("s_time",map1.get("dt_edit"));
         }
-        System.out.println("erpjson:" + list);
+        System.out.println("list:"+list);
         return list;
     }
 
@@ -292,21 +292,10 @@ public class MyTask extends DbCtrl {
      * @return
      */
     public static TtMap get_sys_modal_name(int type_id, int id) {
-        TtMap ttMap = new TtMap();
-        DbTools dbTools = new DbTools();
-        String sql = "select * from sys_modal where id_uplevel="+type_id+" and sort="+id;
-        try {
-            ttMap = dbTools.recinfo(sql);
-        } catch (Exception e) {
-            Tools.logError(e.getMessage());
-            if (Config.DEBUGMODE) {
-                e.printStackTrace();
-            }
-        } finally {
-            dbTools.closeConn();
-        }
-        return ttMap;
+        String sql = "select * from sys_modal where id_uplevel=" + type_id + " and sort=" + id;
+        return Tools.recinfo(sql);
     }
+
     /**
      * 获取erp 任务节点name2
      *
