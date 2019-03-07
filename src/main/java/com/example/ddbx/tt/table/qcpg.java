@@ -74,14 +74,7 @@ public class qcpg extends DbCtrl {
         }
 
         // 其他表添加数据
-<<<<<<< HEAD
         long qryid = 0;
-
-=======
-        DbCtrl dbCtrl = new DbCtrl("dd_icbc_erp");
-        long id = 0;
-        try {
->>>>>>> 0518842038f8a84fc06c78d40aa2c0e041fcac24
             TtMap ttMap = new TtMap();
             ttMap.put("c_name", ontCustomer.get("c_name"));
             ttMap.put("c_tel", ontCustomer.get("c_tel"));
@@ -95,9 +88,7 @@ public class qcpg extends DbCtrl {
 //        ttMap.put("c_carvin", ontCustomer.get(""));
             ttMap.put("c_carno", ary.get("license_plate"));
             ttMap.put("adminop_tag", Tools.minfo().get("id"));
-<<<<<<< HEAD
             qryid = Tools.recAdd(ttMap, "dd_icbc_erp");
-
             TtMap ttMap1 = new TtMap();
             ttMap1.put("qryid", qryid+"");
             ttMap1.put("now_status", "9");
@@ -108,38 +99,11 @@ public class qcpg extends DbCtrl {
 
             TtMap ttMap2 = new TtMap();
             ttMap2.put("qryid", qryid+"");
-=======
-
-            id = dbCtrl.add(ttMap);
-            System.out.println(id+"********");
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            dbCtrl.closeConn();
-        }
-
-        DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
-        try {
-            TtMap ttMap2 = new TtMap();
-            ttMap2.put("qryid", id+"");
->>>>>>> 0518842038f8a84fc06c78d40aa2c0e041fcac24
             ttMap2.put("now_status", "10");
             ttMap2.put("later_status", "11");
             ttMap2.put("type_id", "47");
             ttMap2.put("icbc_id", ontCustomer.get("id"));
-<<<<<<< HEAD
             Tools.recAdd(ttMap2, "dd_icbc_erp_result");
-=======
-
-            dbCtrl2.add(ttMap2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            dbCtrl2.closeConn();
-        }
-
->>>>>>> 0518842038f8a84fc06c78d40aa2c0e041fcac24
-
         // 本表操作添加数据
         ary.put("icbc_id",ontCustomer.get("id"));
         ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
