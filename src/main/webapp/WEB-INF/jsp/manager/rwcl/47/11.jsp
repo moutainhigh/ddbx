@@ -1,13 +1,10 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <div class="text-primary">
     <em>评估价审核：</em>
-
     <div class="big-conte" style="display: block;">
         <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
             <strong>开始时间：</strong>
@@ -46,14 +43,14 @@
                                 <label class="col-sm-2 control-label">新车指导价</label>
                                 <div class="col-sm-3">
                                     <div class="input-group date ng-isolate-scope ng-not-empty ng-valid ng-valid-required">
-                                        <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" name="price_new" value=""><span class="input-group-addon">元</span>
+                                        <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" id="price_new" name="price_new" value=""><span class="input-group-addon">元</span>
                                     </div>
                                 </div>
                             </span><!-- end ngIf: currentUser.orgType!='HAFU' -->
                     <label class="col-sm-2 control-label">期望评估价</label>
                     <div class="col-sm-3">
                         <div class="input-group date ng-isolate-scope ng-not-empty ng-valid ng-valid-required">
-                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" name="icbc_pricecs" value=""><span class="input-group-addon">元</span>
+                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" id="icbc_pricecs" name="icbc_pricecs" value=""><span class="input-group-addon">元</span>
                         </div>
                     </div>
                 </div>
@@ -64,7 +61,7 @@
                         <label class="col-sm-2 control-label">建议评估价</label>
                             <div class="col-sm-3">
                                 <div class="input-group date ng-isolate-scope ng-not-empty ng-valid ng-valid-required">
-                                    <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" name="suggest_price" value=""><span class="input-group-addon">元</span>
+                                    <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" id="suggest_price" name="suggest_price" value=""><span class="input-group-addon">元</span>
                                 </div>
                             </div>
                         </span>
@@ -80,7 +77,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">备注</label>
                     <div class="col-sm-8">
-                        <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" name="remark" value="">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" id="remark" name="remark" value="">
                     </div>
                 </div>
 
@@ -129,9 +126,9 @@
             },
             success: function (data) {
                 alert(data.msg);
+                window.location.href="/manager/index?cn=mytask&sdo=list&type=ddbx";
             }
         });
 
     }
 </script>
-

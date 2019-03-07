@@ -21,6 +21,7 @@ public class ErpqcpgController {
     @RequestMapping(value = "/manager/qcpgajaxpost", method = RequestMethod.POST)
     @ResponseBody
     public TtMap ajaxpost(HttpServletRequest request) {
+        System.out.println(request.getParameter("suggest_price")+"+++++");
         TtMap post = Tools.getPostMap(request, true);// 过滤参数，过滤mysql的注入，url参数注入
         String result_msg = Tools.jsonEncode(post);
         TtMap res = new TtMap();
@@ -66,10 +67,10 @@ public class ErpqcpgController {
         if (post.get("state_code").equals("1") || post.get("state_code").equals("2")) {
             TtMap erp_result1 = new TtMap();
             erp_result1.put("qryid", post.get("id"));
-            erp_result1.put("later_status", "4");
-            erp_result1.put("now_status", "4");
+            erp_result1.put("later_status", "12");
+            erp_result1.put("now_status", "12");
             erp_result1.put("remark", "");
-            erp_result1.put("result_code", "");
+            erp_result1.put("result_code", post.get("state_code"));
             erp_result1.put("result_msg", "");
             erp_result1.put("result_value", "");
             erp_result1.put("type_id", post.get("type_id"));
@@ -82,12 +83,11 @@ public class ErpqcpgController {
         TtMap erp = new TtMap();
         switch (post.get("state_code")) {
             case "1":
-                erp.put("now_status", "11");
+                erp.put("now_status", "12");
                 erp.put("later_status", "12");
-
                 break;
             case "2":
-                erp.put("now_status", "11");
+                erp.put("now_status", "12");
                 erp.put("later_status", "12");
                 break;
             case "3":
@@ -96,21 +96,21 @@ public class ErpqcpgController {
                 break;
         }
         Tools.recEdit(erp, "dd_icbc_erp", Long.valueOf(post.get("id")));
-        //更新icbc状态
-        TtMap icbc_status = new TtMap();
-        switch (post.get("state_code")) {
-            case "1":
-                icbc_status.put("zx_status", "11");
-                break;
-            case "2":
-                icbc_status.put("zx_status", "14");
-                break;
-            case "3":
-                icbc_status.put("zx_status", "12");
-                break;
-        }
-        String status_id = Tools.unDic("dd_icbc_status", post.get("icbc_id"), "id", "icbc_id");
-        Tools.recEdit(icbc_status, "dd_icbc_status", Long.valueOf(status_id));
+//        //更新icbc状态
+//        TtMap icbc_status = new TtMap();
+//        switch (post.get("state_code")) {
+//            case "1":
+//                icbc_status.put("zx_status", "11");
+//                break;
+//            case "2":
+//                icbc_status.put("zx_status", "14");
+//                break;
+//            case "3":
+//                icbc_status.put("zx_status", "12");
+//                break;
+//        }
+//        String status_id = Tools.unDic("dd_icbc_status", post.get("icbc_id"), "id", "icbc_id");
+//        Tools.recEdit(icbc_status, "dd_icbc_status", Long.valueOf(status_id));
         System.out.println("post:" + post);
         res.put("code", String.valueOf(code));
         res.put("msg", msg);
