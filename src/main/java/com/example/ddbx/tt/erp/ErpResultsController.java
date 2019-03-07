@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ErpResultsController {
     //客户贷款金额
-    public static final int LOANMONEY = 50000;
+    public static final int LOANMONEY = 1000000;
     /**
      * 添加任务进度
      *
