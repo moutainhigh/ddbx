@@ -122,7 +122,10 @@
                                                     break;
                                                 default :
                                                     erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+<<<<<<< HEAD
                                                     break;
+=======
+>>>>>>> 0518842038f8a84fc06c78d40aa2c0e041fcac24
                                             }
 
 

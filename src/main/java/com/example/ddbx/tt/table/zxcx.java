@@ -60,7 +60,6 @@ public class zxcx extends DbCtrl {
      * @return: 返回
      */
     public void doPost(TtMap post, long id, TtMap result2) {
-
         addicbc_erp_zx(post);
         String type_id = post.get("type_id");
         System.out.println("type_id:" + type_id);
@@ -108,6 +107,7 @@ public class zxcx extends DbCtrl {
                 ttMap_res.put("gems_id", post.get("gems_id"));
                 ttMap_res.put("gems_fs_id", post.get("gems_fs_id"));
                 ttMap_res.put("type_id", "42");
+                ttMap_res.put("result_msg",post.get("tr_msg"));
                 ttMap_res.put("result_value", Tools.jsonEncode(post));
                 Tools.recAdd(ttMap_res, "dd_icbc_erp_result");
             }
@@ -351,5 +351,4 @@ public class zxcx extends DbCtrl {
     public void closeConn() {
         super.closeConn();
     }
-
 }

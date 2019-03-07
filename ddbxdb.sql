@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80013
 File Encoding         : 65001
 
-Date: 2019-02-25 09:53:57
+Date: 2019-02-21 17:58:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,20 +22,20 @@ DROP TABLE IF EXISTS `admin`;
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '微信会话密钥session_key',
   `an` int(11) NOT NULL DEFAULT '0' COMMENT '用于区别市场下的数据',
-  `name` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '实名名字,',
-  `avatarurl` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `nickname` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '昵称',
+  `name` varchar(64) DEFAULT NULL COMMENT '实名名字,',
+  `avatarurl` varchar(200) DEFAULT NULL,
+  `nickname` varchar(32) DEFAULT NULL COMMENT '昵称',
   `dt_add` datetime DEFAULT NULL COMMENT '添加时间',
   `dt_edit` datetime DEFAULT NULL COMMENT '最后编辑时间',
   `mid_add` int(11) NOT NULL DEFAULT '0' COMMENT '添加人员id',
   `isadmin` tinyint(4) DEFAULT '0' COMMENT '是否后台管理员,0的时候为小程序端登陆账号，1为后台登陆账号，2，3，4到时扩展',
-  `comname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '公司名字',
-  `comname_short` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '公司名字简写',
+  `comname` varchar(255) DEFAULT NULL COMMENT '公司名字',
+  `comname_short` varchar(255) DEFAULT NULL COMMENT '公司名字简写',
   `showtag` tinyint(4) NOT NULL DEFAULT '1' COMMENT '显示标志，1为显示/可用',
   `deltag` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除标志，1为删除，0为未删除',
-  `wxopenid` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '微信登陆用户的openid',
-  `username` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '账号',
-  `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '密码',
+  `wxopenid` varchar(32) DEFAULT NULL COMMENT '微信登陆用户的openid',
+  `username` varchar(255) DEFAULT NULL COMMENT '账号',
+  `password` varchar(255) DEFAULT NULL COMMENT '密码',
   `cp` tinyint(4) DEFAULT '0',
   `state_id` int(11) NOT NULL DEFAULT '0',
   `city_id` int(11) NOT NULL DEFAULT '0',
@@ -46,7 +46,7 @@ CREATE TABLE `admin` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `mid_add` (`mid_add`) USING BTREE,
   KEY `showtag` (`showtag`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='后台市场会员表,<!-- APP端/H5端/小程序端登陆会员表 -->';
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8 COMMENT='后台市场会员表,<!-- APP端/H5端/小程序端登陆会员表 -->';
 
 -- ----------------------------
 -- Records of admin
@@ -81,15 +81,15 @@ INSERT INTO `admin` VALUES ('48', '0', '图图图', '/upload/2019/02/18/13a7824f
 DROP TABLE IF EXISTS `admin_agp`;
 CREATE TABLE `admin_agp` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '权限组名称',
+  `name` varchar(255) NOT NULL COMMENT '权限组名称',
   `dt_add` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `dt_edit` datetime DEFAULT NULL,
-  `purview_map` varchar(1024) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '权限组合集',
+  `purview_map` varchar(1024) NOT NULL COMMENT '权限组合集',
   `showtag` tinyint(4) NOT NULL DEFAULT '1' COMMENT '显示',
   `fsid` int(11) NOT NULL DEFAULT '0' COMMENT '所属公司fsid',
   `systag` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否为系统默认模板',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='管理员权限表/角色表';
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='管理员权限表/角色表';
 
 -- ----------------------------
 -- Records of admin_agp
@@ -113,9 +113,9 @@ CREATE TABLE `comm_citys` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `caid` int(11) DEFAULT NULL,
   `state_id` int(11) DEFAULT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `namepy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `chrkey` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `namepy` varchar(255) DEFAULT NULL,
+  `chrkey` char(1) DEFAULT NULL,
   `is_site` int(1) DEFAULT '0',
   `mapx` decimal(20,17) DEFAULT NULL,
   `mapy` decimal(20,17) DEFAULT NULL,
@@ -124,22 +124,22 @@ CREATE TABLE `comm_citys` (
   `vips_num` int(11) DEFAULT NULL,
   `pact_num` int(11) DEFAULT NULL COMMENT '签约量',
   `pact_price` int(11) DEFAULT NULL COMMENT '签约金额',
-  `baseurl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `manager` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `tel` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `fax` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `addres` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `zipcode` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `baseurl` varchar(255) DEFAULT NULL,
+  `manager` varchar(255) DEFAULT NULL,
+  `tel` varchar(255) DEFAULT NULL,
+  `fax` varchar(255) DEFAULT NULL,
+  `addres` varchar(255) DEFAULT NULL,
+  `zipcode` varchar(255) DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `create_time` int(10) DEFAULT NULL,
   `update_time` int(10) DEFAULT NULL,
   `is_del` tinyint(1) DEFAULT '0',
-  `imgurl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE,
-  KEY `state_id` (`state_id`) USING BTREE,
-  KEY `is_site` (`is_site`) USING BTREE,
-  KEY `caid` (`caid`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=681 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  `imgurl` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `state_id` (`state_id`),
+  KEY `is_site` (`is_site`),
+  KEY `caid` (`caid`)
+) ENGINE=MyISAM AUTO_INCREMENT=681 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comm_citys
@@ -524,12 +524,12 @@ INSERT INTO `comm_citys` VALUES ('669', null, '34', '保亭市', 'baotingshi|bts
 DROP TABLE IF EXISTS `comm_states`;
 CREATE TABLE `comm_states` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `namepy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `chrkey` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `namepy` varchar(255) DEFAULT NULL,
+  `chrkey` varchar(1) DEFAULT NULL,
   `sort` int(11) DEFAULT '0',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comm_states
@@ -567,97 +567,6 @@ INSERT INTO `comm_states` VALUES ('30', '广东省', 'guangdongsheng|gds', 'g', 
 INSERT INTO `comm_states` VALUES ('34', '海南省', 'hainansheng|hns', 'h', '0');
 
 -- ----------------------------
--- Table structure for dd_erp_commontype
--- ----------------------------
-DROP TABLE IF EXISTS `dd_erp_commontype`;
-CREATE TABLE `dd_erp_commontype` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `showtag` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
--- ----------------------------
--- Records of dd_erp_commontype
--- ----------------------------
-INSERT INTO `dd_erp_commontype` VALUES ('1', '征信查询', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('2', '车辆评估', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('3', '视频面签', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('4', '汽车贷款', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('5', '银行贷款申请', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('6', '公司归档', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('7', '抵押归档', '1');
-INSERT INTO `dd_erp_commontype` VALUES ('8', '退单退费', '1');
-
--- ----------------------------
--- Table structure for dd_erp_commtaskname
--- ----------------------------
-DROP TABLE IF EXISTS `dd_erp_commtaskname`;
-CREATE TABLE `dd_erp_commtaskname` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `erp_btype_id` int(11) DEFAULT NULL,
-  `status` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
-
--- ----------------------------
--- Records of dd_erp_commtaskname
--- ----------------------------
-INSERT INTO `dd_erp_commtaskname` VALUES ('1', '开始', '1', '1');
-INSERT INTO `dd_erp_commtaskname` VALUES ('2', '提交查询', '1', '2');
-INSERT INTO `dd_erp_commtaskname` VALUES ('3', '查询结果', '1', '3');
-INSERT INTO `dd_erp_commtaskname` VALUES ('4', '完成', '1', '4');
-INSERT INTO `dd_erp_commtaskname` VALUES ('5', '开始', '2', '5');
-INSERT INTO `dd_erp_commtaskname` VALUES ('6', '提交评估', '2', '6');
-INSERT INTO `dd_erp_commtaskname` VALUES ('7', '评估价审核', '2', '7');
-INSERT INTO `dd_erp_commtaskname` VALUES ('8', '完成', '2', '8');
-INSERT INTO `dd_erp_commtaskname` VALUES ('9', '开始', '3', '9');
-INSERT INTO `dd_erp_commtaskname` VALUES ('10', '提交申请', '3', '10');
-INSERT INTO `dd_erp_commtaskname` VALUES ('11', '结果反馈', '3', '11');
-INSERT INTO `dd_erp_commtaskname` VALUES ('12', '完成', '3', '12');
-INSERT INTO `dd_erp_commtaskname` VALUES ('13', '开始', '4', '13');
-INSERT INTO `dd_erp_commtaskname` VALUES ('14', '提交申请', '4', '14');
-INSERT INTO `dd_erp_commtaskname` VALUES ('15', '审核结果', '4', '15');
-INSERT INTO `dd_erp_commtaskname` VALUES ('16', '完成', '4', '16');
-INSERT INTO `dd_erp_commtaskname` VALUES ('17', '银行贷款申请开始', '5', '17');
-INSERT INTO `dd_erp_commtaskname` VALUES ('18', '合作商寄送材料', '5', '18');
-INSERT INTO `dd_erp_commtaskname` VALUES ('19', '公司收件确认', '5', '19');
-INSERT INTO `dd_erp_commtaskname` VALUES ('20', '银行收件确认', '5', '20');
-INSERT INTO `dd_erp_commtaskname` VALUES ('21', '银行审批结果', '5', '21');
-INSERT INTO `dd_erp_commtaskname` VALUES ('22', '银行放款结果', '5', '22');
-INSERT INTO `dd_erp_commtaskname` VALUES ('23', '收款确认', '5', '23');
-INSERT INTO `dd_erp_commtaskname` VALUES ('24', '补充材料确认', '5', '24');
-INSERT INTO `dd_erp_commtaskname` VALUES ('25', '补充材料', '5', '25');
-INSERT INTO `dd_erp_commtaskname` VALUES ('26', '完成', '5', '26');
-INSERT INTO `dd_erp_commtaskname` VALUES ('27', '开始', '6', '27');
-INSERT INTO `dd_erp_commtaskname` VALUES ('28', '公司纸质归档', '6', '28');
-INSERT INTO `dd_erp_commtaskname` VALUES ('29', '纸质归档', '6', '29');
-INSERT INTO `dd_erp_commtaskname` VALUES ('30', '审核员补资料', '6', '30');
-INSERT INTO `dd_erp_commtaskname` VALUES ('31', '行政入库', '6', '31');
-INSERT INTO `dd_erp_commtaskname` VALUES ('32', '完成', '6', '32');
-INSERT INTO `dd_erp_commtaskname` VALUES ('33', '开始', '7', '33');
-INSERT INTO `dd_erp_commtaskname` VALUES ('34', '公证记录', '7', '34');
-INSERT INTO `dd_erp_commtaskname` VALUES ('35', '抵押材料寄送至合作商', '7', '35');
-INSERT INTO `dd_erp_commtaskname` VALUES ('36', '合作商收件确认', '7', '36');
-INSERT INTO `dd_erp_commtaskname` VALUES ('37', '抵押情况记录', '7', '37');
-INSERT INTO `dd_erp_commtaskname` VALUES ('38', '抵押材料寄回', '7', '38');
-INSERT INTO `dd_erp_commtaskname` VALUES ('39', '审核收件确认', '7', '39');
-INSERT INTO `dd_erp_commtaskname` VALUES ('40', '抵押材料至银行', '7', '40');
-INSERT INTO `dd_erp_commtaskname` VALUES ('41', '银行收件确认', '7', '41');
-INSERT INTO `dd_erp_commtaskname` VALUES ('42', '录入银行查验情况', '7', '42');
-INSERT INTO `dd_erp_commtaskname` VALUES ('43', '完成', '7', '43');
-INSERT INTO `dd_erp_commtaskname` VALUES ('44', '退单退费申请开始', '8', '44');
-INSERT INTO `dd_erp_commtaskname` VALUES ('45', '审核员退单审核', '8', '45');
-INSERT INTO `dd_erp_commtaskname` VALUES ('46', '退单数据修正', '8', '46');
-INSERT INTO `dd_erp_commtaskname` VALUES ('47', '审核经理退单审核', '8', '47');
-INSERT INTO `dd_erp_commtaskname` VALUES ('48', '合作商回款缴费', '8', '48');
-INSERT INTO `dd_erp_commtaskname` VALUES ('49', '公司确认到账', '8', '49');
-INSERT INTO `dd_erp_commtaskname` VALUES ('50', '材料寄回', '8', '50');
-INSERT INTO `dd_erp_commtaskname` VALUES ('51', '合作商收件确认', '8', '51');
-INSERT INTO `dd_erp_commtaskname` VALUES ('52', '完成', '8', '52');
-
--- ----------------------------
 -- Table structure for dd_fs
 -- ----------------------------
 DROP TABLE IF EXISTS `dd_fs`;
@@ -681,8 +590,8 @@ CREATE TABLE `dd_fs` (
   `purview_map` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '前台可以使用模块的权限，用,分开各个权限。如assess_queryby,assess_querybx ',
   `up_id` int(11) DEFAULT NULL COMMENT '代理上级id',
   `rec_id` int(11) DEFAULT '0' COMMENT '推介人id,member',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dd_fs
@@ -716,8 +625,8 @@ CREATE TABLE `dd_gems` (
   `bc_title` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '职称',
   `isadmin` tinyint(4) DEFAULT '0' COMMENT '是否后台管理员,0的时候为小程序端登陆账号，1为后台登陆账号，2，3，4到时扩展',
   `agpid` int(11) DEFAULT '0' COMMENT '权限id',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dd_gems
@@ -738,20 +647,20 @@ CREATE TABLE `dd_icbc` (
   `bc_status` tinyint(4) DEFAULT NULL COMMENT '订单状态',
   `gems_id` int(11) DEFAULT NULL COMMENT '人员ID',
   `gems_fs_id` int(11) DEFAULT NULL,
-  `order_code` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '订单编号',
-  `c_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '客户姓名',
-  `c_tel` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '客户手机号',
-  `c_cardno` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '客户身份证号',
+  `order_code` varchar(20) DEFAULT NULL COMMENT '订单编号',
+  `c_name` varchar(20) DEFAULT NULL COMMENT '客户姓名',
+  `c_tel` varchar(15) DEFAULT NULL COMMENT '客户手机号',
+  `c_cardno` varchar(32) DEFAULT NULL COMMENT '客户身份证号',
   `c_sex` tinyint(4) DEFAULT NULL,
-  `po_c_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '配偶姓名',
-  `po_c_tel` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '配偶手机号',
-  `po_c_cardno` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '配偶身份证号',
-  `c_name_gj1` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '共借人1姓名',
-  `c_tel_gj1` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '共借人1手机号',
-  `c_cardno_gj1` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '共借人1身份证号',
-  `c_name_gj2` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '共借人2姓名',
-  `c_tel_gj2` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '共借人2手机号',
-  `c_cardno_gj2` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '共借人2身份证号',
+  `po_c_name` varchar(20) DEFAULT NULL COMMENT '配偶姓名',
+  `po_c_tel` varchar(15) DEFAULT NULL COMMENT '配偶手机号',
+  `po_c_cardno` varchar(32) DEFAULT NULL COMMENT '配偶身份证号',
+  `c_name_gj1` varchar(20) DEFAULT NULL COMMENT '共借人1姓名',
+  `c_tel_gj1` varchar(15) DEFAULT NULL COMMENT '共借人1手机号',
+  `c_cardno_gj1` varchar(32) DEFAULT NULL COMMENT '共借人1身份证号',
+  `c_name_gj2` varchar(20) DEFAULT NULL COMMENT '共借人2姓名',
+  `c_tel_gj2` varchar(15) DEFAULT NULL COMMENT '共借人2手机号',
+  `c_cardno_gj2` varchar(32) DEFAULT NULL COMMENT '共借人2身份证号',
   `imgstep1_1ss` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '主贷人材料集合',
   `imgstep1_2ss` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '主贷人配偶材料集合',
   `imgstep1_3ss` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '共借人1材料集合',
@@ -812,8 +721,8 @@ CREATE TABLE `dd_icbc` (
   `stateid` int(11) DEFAULT NULL COMMENT '所在省ID',
   `cityid` int(11) DEFAULT NULL COMMENT '所在市ID',
   `adminop_tag` tinyint(4) DEFAULT NULL COMMENT '当前操作人ID',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dd_icbc
@@ -842,8 +751,8 @@ CREATE TABLE `dd_icbc_erp` (
   `c_carvin` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '车辆VIN',
   `c_carno` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '车牌号',
   `adminop_tag` int(11) DEFAULT NULL COMMENT '当前操作人id',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dd_icbc_erp
@@ -869,8 +778,8 @@ CREATE TABLE `dd_icbc_erp_result` (
   `result_value` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '节点保存信息json文本',
   `type_id` int(11) DEFAULT NULL COMMENT '业务类型id',
   `order_id` int(11) DEFAULT NULL COMMENT '主订单id',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dd_icbc_erp_result
@@ -891,8 +800,8 @@ CREATE TABLE `dd_icbc_materials` (
   `order_id` int(11) DEFAULT NULL COMMENT '主订单id',
   `imgstep1_1ss` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '贷款材料集合',
   `imgstep1_2ss` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '银行材料集合',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dd_icbc_materials
@@ -911,8 +820,8 @@ CREATE TABLE `dd_icbc_result` (
   `dt_edit` datetime DEFAULT NULL COMMENT '编辑时间',
   `status` int(11) DEFAULT NULL COMMENT '状态',
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '描述',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dd_icbc_result
@@ -942,12 +851,12 @@ CREATE TABLE `fs` (
   `up_id` int(11) DEFAULT NULL COMMENT '代理上级id',
   `name_qy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '签约时完整名称',
   `fs_logo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '公司logo',
-  PRIMARY KEY (`id`) USING BTREE,
-  KEY `state_id` (`state_id`) USING BTREE,
-  KEY `city_id` (`city_id`) USING BTREE,
-  KEY `zone_id` (`zone_id`) USING BTREE,
-  KEY `showtag` (`showtag`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='公司资料表';
+  PRIMARY KEY (`id`),
+  KEY `state_id` (`state_id`),
+  KEY `city_id` (`city_id`),
+  KEY `zone_id` (`zone_id`),
+  KEY `showtag` (`showtag`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COMMENT='公司资料表';
 
 -- ----------------------------
 -- Records of fs
@@ -961,21 +870,21 @@ INSERT INTO `fs` VALUES ('34', '测试', '11', '34', null, 'sssssssssssss', '1',
 DROP TABLE IF EXISTS `gems`;
 CREATE TABLE `gems` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '鉴定师名',
+  `name` varchar(255) NOT NULL COMMENT '鉴定师名',
   `fsid` int(11) NOT NULL COMMENT '所属店id',
   `showtag` tinyint(4) NOT NULL DEFAULT '1' COMMENT '显示标志',
-  `mobile` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电话',
+  `mobile` varchar(32) NOT NULL COMMENT '电话',
   `cp` tinyint(4) DEFAULT '3' COMMENT '权限级别，1为1级，2为2级，3为3级，0为无权限，游客，数字越低权限越高,目前1代表公司管理员',
-  `username` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '用户名,保留',
-  `purview_map` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '前台可以使用模块的权限，用,分开各个权限。如assess_queryby,assess_querybx',
-  `dt_add` datetime DEFAULT NULL,
-  `dt_edit` datetime DEFAULT NULL,
-  `idcard` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '身份证号码',
+  `username` varchar(64) DEFAULT NULL COMMENT '用户名,保留',
+  `purview_map` varchar(255) DEFAULT NULL COMMENT '前台可以使用模块的权限，用,分开各个权限。如assess_queryby,assess_querybx',
+  `dt_add` datetime NOT NULL,
+  `dt_edit` datetime NOT NULL,
+  `idcard` varchar(20) NOT NULL COMMENT '身份证号码',
   `deltag` tinyint(4) NOT NULL DEFAULT '0' COMMENT '删除标志，1为已经删除',
-  `imgurl` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '头像',
-  PRIMARY KEY (`id`) USING BTREE,
-  KEY `fsid` (`fsid`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='员工资料表';
+  `imgurl` varchar(255) NOT NULL COMMENT '头像',
+  PRIMARY KEY (`id`),
+  KEY `fsid` (`fsid`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8 COMMENT='员工资料表';
 
 -- ----------------------------
 -- Records of gems
@@ -990,7 +899,7 @@ CREATE TABLE `sys_config` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `dt_add` datetime DEFAULT NULL COMMENT '添加时间',
   `dt_edit` datetime DEFAULT NULL COMMENT '修改时间',
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '板块名称',
+  `name` varchar(255) DEFAULT NULL COMMENT '板块名称',
   `up_id` int(11) DEFAULT NULL COMMENT '所属板块id',
   `mid_add` int(11) DEFAULT NULL COMMENT '添加人id',
   `mid_edit` int(11) DEFAULT NULL COMMENT '编辑人id',
@@ -998,11 +907,11 @@ CREATE TABLE `sys_config` (
   `number` int(11) DEFAULT NULL COMMENT '业务展示顺序  1-2-3-4-5',
   `pagehtml` text CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT '页面html',
   `urlotherstr` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'url里传入的其他参数',
-  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `cn` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `sdo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  `type` varchar(255) DEFAULT NULL,
+  `cn` varchar(255) DEFAULT NULL,
+  `sdo` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_config
@@ -1020,23 +929,22 @@ CREATE TABLE `sys_config_son` (
   `dt_edit` datetime DEFAULT NULL,
   `mid_add` int(11) DEFAULT NULL,
   `mid_edit` int(11) DEFAULT NULL,
-  `pagehtml` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `pgehtml` text,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '子版块名称',
   `c_id` int(11) DEFAULT NULL COMMENT '关联上级板块id',
   `number` int(11) DEFAULT NULL COMMENT '展示序号',
   `showtag` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '1展示/2隐藏',
   `urlotherstr` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT 'url里传入的其他参数',
-  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `cn` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `sdo` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  `type` varchar(255) DEFAULT NULL,
+  `cn` varchar(255) DEFAULT NULL,
+  `sdo` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_config_son
 -- ----------------------------
-INSERT INTO `sys_config_son` VALUES ('1', null, '2019-02-22 10:36:38', null, '21', '6K6i5Y2V5byA5aeLCgkJCQk=', '开始', '2', '1', '1', '1', '1', '1', '1');
-INSERT INTO `sys_config_son` VALUES ('2', '2019-02-22 10:31:55', '2019-02-22 11:17:43', '21', '21', '5o+Q5Lqk55Sz6K+3CgkJCQk=', '提交申请', '2', '2', '1', '', '', '', '');
+INSERT INTO `sys_config_son` VALUES ('1', null, '2019-02-21 17:52:10', null, '21', null, '开始', '2', '1', '', '1', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for sys_dic_tag
@@ -1044,9 +952,9 @@ INSERT INTO `sys_config_son` VALUES ('2', '2019-02-22 10:31:55', '2019-02-22 11:
 DROP TABLE IF EXISTS `sys_dic_tag`;
 CREATE TABLE `sys_dic_tag` (
   `id` int(11) NOT NULL DEFAULT '0',
-  `name` varchar(4) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '显示/隐藏',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='显示/隐藏，是/否';
+  `name` varchar(4) NOT NULL DEFAULT '' COMMENT '显示/隐藏',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='显示/隐藏，是/否';
 
 -- ----------------------------
 -- Records of sys_dic_tag
@@ -1060,10 +968,10 @@ INSERT INTO `sys_dic_tag` VALUES ('1', '是');
 DROP TABLE IF EXISTS `sys_error`;
 CREATE TABLE `sys_error` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `errormsg` longtext CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `errormsg` longtext,
   `dt_add` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=588 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='系统错误日志，异常表';
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=588 DEFAULT CHARSET=utf8 COMMENT='系统错误日志，异常表';
 
 -- ----------------------------
 -- Records of sys_error
@@ -1662,9 +1570,9 @@ INSERT INTO `sys_error` VALUES ('587', 'http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%
 DROP TABLE IF EXISTS `sys_menulevels`;
 CREATE TABLE `sys_menulevels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='菜单级别';
+  `name` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='菜单级别';
 
 -- ----------------------------
 -- Records of sys_menulevels
@@ -1678,29 +1586,29 @@ INSERT INTO `sys_menulevels` VALUES ('2', '2级菜单');
 DROP TABLE IF EXISTS `sys_modal`;
 CREATE TABLE `sys_modal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '子模块名称',
+  `name` varchar(32) NOT NULL DEFAULT '' COMMENT '子模块名称',
   `id_uplevel` int(11) NOT NULL COMMENT '上级模块id,主模块id，所属主模块',
   `mid_add` int(11) NOT NULL DEFAULT '0',
   `mid_edit` int(11) NOT NULL DEFAULT '0',
   `dt_add` datetime DEFAULT NULL,
   `dt_edit` datetime DEFAULT NULL,
   `showmmenutag` tinyint(4) NOT NULL DEFAULT '0' COMMENT '后台菜单显示',
-  `showmmenuname` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '后台菜单显示名称',
-  `type` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT 'url,type=的值',
-  `cn` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT 'url里面的cn的值，一般是表名',
+  `showmmenuname` varchar(20) NOT NULL DEFAULT '' COMMENT '后台菜单显示名称',
+  `type` varchar(20) NOT NULL DEFAULT '' COMMENT 'url,type=的值',
+  `cn` varchar(20) NOT NULL DEFAULT '' COMMENT 'url里面的cn的值，一般是表名',
   `sort` int(8) NOT NULL DEFAULT '100' COMMENT '排序，越小越高',
   `level` tinyint(4) NOT NULL DEFAULT '1' COMMENT '菜单级别，1为1级，2为2级。。。。',
-  `icohtml` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '<i class="fa fa-arrow-circle-o-right"></i>' COMMENT '显示菜单时前面的图标html',
-  `urlotherstr` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT 'url里传入的其他参数',
-  `sdo` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'list' COMMENT 'url里面的sdo',
+  `icohtml` varchar(255) NOT NULL DEFAULT '<i class="fa fa-arrow-circle-o-right"></i>' COMMENT '显示菜单时前面的图标html',
+  `urlotherstr` varchar(255) NOT NULL DEFAULT '' COMMENT 'url里传入的其他参数',
+  `sdo` varchar(20) NOT NULL DEFAULT 'list' COMMENT 'url里面的sdo',
   `superadmin` tinyint(4) NOT NULL DEFAULT '0' COMMENT '非0时为内部模块，1为内部超级管理员才有的，2为内部员工才有的',
-  PRIMARY KEY (`id`) USING BTREE,
-  KEY `sort` (`sort`) USING BTREE,
-  KEY `showmmenutag` (`showmmenutag`) USING BTREE,
-  KEY `id_upmodal` (`id_uplevel`) USING BTREE,
-  KEY `sort_2` (`sort`) USING BTREE,
-  KEY `level` (`level`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=146 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统模块表';
+  PRIMARY KEY (`id`),
+  KEY `sort` (`sort`),
+  KEY `showmmenutag` (`showmmenutag`),
+  KEY `id_upmodal` (`id_uplevel`),
+  KEY `sort_2` (`sort`),
+  KEY `level` (`level`)
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='系统模块表';
 
 -- ----------------------------
 -- Records of sys_modal
@@ -1740,114 +1648,6 @@ INSERT INTO `sys_modal` VALUES ('32', '全部任务', '31', '21', '21', '2019-02
 INSERT INTO `sys_modal` VALUES ('33', '我的任务', '31', '21', '21', '2019-02-18 11:33:33', '2019-02-18 11:34:09', '1', '我的任务', 'ddbx', 'mytask', '100', '2', '<i class=\"fa fa-home\"></i>', '', 'list', '0');
 INSERT INTO `sys_modal` VALUES ('34', '业务模块', '6', '21', '21', '2019-02-21 16:09:46', '2019-02-21 16:09:46', '1', '业务模块', 'sys', 'sys_config', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '2');
 INSERT INTO `sys_modal` VALUES ('35', '业务列表', '6', '21', '21', '2019-02-21 17:27:54', '2019-02-21 17:27:54', '1', '业务列表', 'sys', 'sys_config_son', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '2');
-INSERT INTO `sys_modal` VALUES ('36', '征信查询', '0', '21', '21', '2019-02-22 13:43:43', '2019-02-22 14:16:40', '0', '征信查询', 'rwcl', 'zxcx', '1', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('38', '开始', '36', '21', '21', '2019-02-22 14:18:59', '2019-02-22 14:18:59', '0', '开始', 'rwcl', 'ks', '1', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('39', '提交查询', '36', '21', '21', '2019-02-22 14:19:42', '2019-02-22 14:19:42', '0', '提交查询', 'rwcl', 'tjcx', '2', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('40', '查询结果', '36', '21', '21', '2019-02-22 14:20:17', '2019-02-22 14:20:17', '0', '查询结果', 'rwcl', 'cxjg', '3', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('41', '完成', '36', '21', '21', '2019-02-22 14:20:48', '2019-02-22 14:20:48', '0', '完成', 'rwcl', 'wc', '4', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('42', '征信通融', '0', '21', '21', '2019-02-22 14:22:13', '2019-02-22 14:22:13', '0', '通融', 'rwcl', 'zxtr', '2', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('43', '申请通融', '42', '21', '21', '2019-02-22 14:23:07', '2019-02-22 14:23:07', '0', '申请通融', 'rwcl', 'sqtr', '5', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('44', '征信员银行意见', '42', '21', '21', '2019-02-22 14:26:16', '2019-02-22 14:26:16', '0', '征信员银行意见', 'rwcl', 'zxyyhyj', '6', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('45', '通融审核', '42', '21', '21', '2019-02-22 14:26:42', '2019-02-22 14:26:42', '0', '通融审核', 'rwcl', 'trsh', '7', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('46', '完成', '42', '21', '21', '2019-02-22 14:27:07', '2019-02-22 14:27:07', '0', '完成', 'rwcl', 'wc', '8', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('47', '车辆评估', '0', '21', '21', '2019-02-22 14:27:43', '2019-02-22 14:27:43', '0', '车辆评估', 'rwcl', 'clpg', '3', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('48', '开始', '47', '21', '21', '2019-02-22 14:31:21', '2019-02-22 14:31:21', '0', '开始', 'rwcl', 'ks', '9', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('49', '提交评估', '47', '21', '21', '2019-02-22 14:31:50', '2019-02-22 14:31:50', '0', '提交评估', 'rwcl', 'tkpg', '10', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('50', '评估价审核', '47', '21', '21', '2019-02-22 14:32:15', '2019-02-22 14:32:15', '0', '评估价审核', 'rwcl', 'pgjsh', '11', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('51', '完成', '47', '21', '21', '2019-02-22 14:32:36', '2019-02-22 14:32:36', '0', '完成', 'rwcl', 'wc', '12', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('52', '银行电审', '0', '21', '21', '2019-02-22 14:33:09', '2019-02-22 14:33:09', '0', '银行电审', 'rwcl', 'yhds', '4', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('53', '开始', '52', '21', '21', '2019-02-22 14:33:36', '2019-02-22 14:33:36', '0', '开始', 'rwcl', 'ks', '13', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('54', '提交电审', '52', '21', '21', '2019-02-22 14:34:04', '2019-02-22 14:34:04', '0', '提交电审', 'rwcl', 'tjds', '14', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('55', '电审结果', '52', '21', '21', '2019-02-22 14:34:28', '2019-02-22 14:34:28', '0', '电审结果', 'rwcl', 'dsjg', '15', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('56', '完成', '52', '21', '21', '2019-02-22 14:36:56', '2019-02-22 14:36:56', '0', '完成', 'rwcl', 'wc', '16', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('57', '开卡申请', '0', '21', '21', '2019-02-22 14:37:22', '2019-02-22 14:37:22', '0', '开卡申请', 'rwcl', 'kksq', '5', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('58', '开始', '57', '21', '21', '2019-02-22 14:37:45', '2019-02-22 14:37:45', '0', '开始', 'rwcl', 'ks', '17', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('59', '提交申请', '57', '21', '21', '2019-02-22 14:38:36', '2019-02-22 14:38:36', '0', '提交申请', 'rwcl', 'tjsq', '18', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('60', '身份核查结果', '57', '21', '21', '2019-02-22 14:39:22', '2019-02-22 14:39:22', '0', '身份核查结果', 'rwcl', 'sfhcjg', '19', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('61', '反馈开卡结果', '57', '21', '21', '2019-02-22 14:39:58', '2019-02-22 14:39:58', '0', '反馈开卡结果', 'rwcl', 'fkkkjg', '20', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('62', '完成', '57', '21', '21', '2019-02-22 14:40:24', '2019-02-22 14:40:24', '0', '完成', 'rwcl', 'wc', '21', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('63', '视频面签', '0', '21', '21', '2019-02-22 14:40:48', '2019-02-22 14:40:48', '0', '视频面签', 'rwcl', 'spmq', '6', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('64', '开始', '63', '21', '21', '2019-02-22 14:41:14', '2019-02-22 14:41:14', '0', '开始', 'rwcl', 'ks', '22', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('65', '提交申请', '63', '21', '21', '2019-02-22 14:41:48', '2019-02-22 14:41:48', '0', '提交申请', 'rwcl', 'tjsq', '23', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('66', '结果反馈', '63', '21', '21', '2019-02-22 14:42:13', '2019-02-22 14:42:13', '0', '结果反馈', 'rwcl', 'jgfk', '24', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('67', '完成', '63', '21', '21', '2019-02-22 14:42:28', '2019-02-22 14:42:28', '0', '完成', 'rwcl', 'wc', '25', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('68', '跨区域业务审批', '0', '21', '21', '2019-02-22 14:43:41', '2019-02-22 14:43:41', '0', '跨区域业务审批', 'rwcl', 'kqyywsp', '7', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('70', '汽车贷款', '0', '21', '21', '2019-02-22 14:48:30', '2019-02-22 14:48:30', '0', '汽车贷款', 'rwcl', 'qcdk', '8', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('71', '开始', '70', '21', '21', '2019-02-22 14:48:53', '2019-02-22 14:48:53', '0', '开始', 'rwcl', 'ks', '31', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('72', '专员审核中', '70', '21', '21', '2019-02-22 14:49:15', '2019-02-22 14:49:15', '0', '专员审核中', 'rwcl', 'zyshz', '32', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('73', '专员审核结果', '70', '21', '21', '2019-02-22 14:49:41', '2019-02-22 14:49:41', '0', '专员审核结果', 'rwcl', 'zyshjg', '33', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('74', '主管审核中', '70', '21', '21', '2019-02-22 14:50:04', '2019-02-22 14:50:04', '0', '主管审核中', 'rwcl', 'zgshz', '34', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('75', '主管审核结果', '70', '21', '21', '2019-02-22 14:50:26', '2019-02-22 14:50:26', '0', '主管审核结果', 'rwcl', 'zgshjg', '35', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('76', '经理审核中', '70', '21', '21', '2019-02-22 14:50:46', '2019-02-22 14:50:46', '0', '经理审核中', 'rwcl', 'jlshz', '36', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('77', '经理审核结果', '70', '21', '21', '2019-02-22 14:51:09', '2019-02-22 14:51:09', '0', '经理审核结果', 'rwcl', 'jlshjg', '37', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('78', '总监审核中', '70', '21', '21', '2019-02-22 14:51:34', '2019-02-22 14:51:34', '0', '总监审核中', 'rwcl', 'zjshz', '38', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('79', '总监审核结果', '70', '21', '21', '2019-02-22 14:51:59', '2019-02-22 14:51:59', '0', '总监审核结果', 'rwcl', 'zjshjg', '39', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('80', '完成', '70', '21', '21', '2019-02-22 14:52:19', '2019-02-22 14:52:19', '0', '完成', 'rwcl', 'wc', '40', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('81', '内审通融', '0', '21', '21', '2019-02-22 14:53:01', '2019-02-22 14:53:01', '0', '内审通融', 'rwcl', 'nstr', '9', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('82', '开始', '81', '21', '21', '2019-02-22 14:53:24', '2019-02-22 14:53:24', '0', '开始', 'rwcl', 'ks', '41', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('83', '合作商总经理申请通融', '81', '21', '21', '2019-02-22 14:54:16', '2019-02-22 14:54:16', '0', '合作商总经理申请通融', 'rwcl', 'hzssqtr', '42', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('84', '审核员通融审核意见反馈', '81', '21', '21', '2019-02-22 14:54:46', '2019-02-22 14:54:46', '0', '审核员通融审核意见反馈', 'rwcl', 'tryjfk', '43', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('85', '通融主管', '81', '21', '21', '2019-02-22 14:55:11', '2019-02-22 14:55:11', '0', '通融主管', 'rwcl', 'trzg', '44', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('86', '通融经理', '81', '21', '21', '2019-02-22 14:55:33', '2019-02-22 14:55:33', '0', '通融经理', 'rwcl', 'trjl', '45', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('87', '完成', '81', '21', '21', '2019-02-22 14:55:52', '2019-02-22 14:55:52', '0', '完成', 'rwcl', 'wc', '46', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('88', '资金分配', '0', '21', '21', '2019-02-22 14:56:24', '2019-02-22 14:56:24', '0', '资金分配', 'rwcl', 'zjfp', '10', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('89', '开始', '88', '21', '21', '2019-02-22 14:56:49', '2019-02-22 14:56:49', '0', '开始', 'rwcl', 'ks', '47', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('90', '确认申请垫资', '88', '21', '21', '2019-02-22 14:58:22', '2019-02-22 14:58:22', '0', '确认申请垫资', 'rwcl', 'qrsqdz', '48', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('91', '资金分配', '88', '21', '21', '2019-02-22 14:58:46', '2019-02-22 14:58:46', '0', '资金分配', 'rwcl', 'zjfp', '49', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('92', '出账', '88', '21', '21', '2019-02-22 14:59:11', '2019-02-22 14:59:11', '0', '出账', 'rwcl', 'cz', '50', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('93', '实收录入-出纳', '88', '21', '21', '2019-02-22 14:59:39', '2019-02-22 14:59:39', '0', '实收录入-出纳', 'rwcl', 'cn', '51', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('94', '公司财务确认到账', '88', '21', '21', '2019-02-22 15:02:30', '2019-02-22 15:02:30', '0', '公司财务确认到账', 'rwcl', 'qrdz', '52', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('95', '等待银行审批', '88', '21', '21', '2019-02-22 15:03:00', '2019-02-22 15:03:00', '0', '等待银行审批', 'rwcl', 'ddyhsp', '53', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('96', '等待抵押完成', '88', '21', '21', '2019-02-22 15:04:13', '2019-02-22 15:04:13', '0', '等待抵押完成', 'rwcl', 'ddyywc', '54', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('97', '完成', '88', '21', '21', '2019-02-22 15:04:55', '2019-02-22 15:04:55', '0', '完成', 'rwcl', 'wc', '55', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('98', '银行贷款申请', '0', '21', '21', '2019-02-22 15:06:08', '2019-02-22 15:06:08', '0', '银行贷款申请', 'rwcl', 'yhdksq', '11', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('99', '银行贷款申请开始', '98', '21', '21', '2019-02-22 15:06:47', '2019-02-22 15:06:47', '0', '银行贷款申请开始', 'rwcl', 'ks', '56', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('100', '合作商寄送材料', '98', '21', '21', '2019-02-22 15:07:16', '2019-02-22 15:07:16', '0', '合作商寄送材料', 'rwcl', 'hzsjscl', '57', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('101', '公司收件确认', '98', '21', '21', '2019-02-22 15:07:39', '2019-02-22 15:07:39', '0', '公司收件确认', 'rwcl', 'gssjqr', '58', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('102', '银行收件确认', '98', '21', '21', '2019-02-22 15:08:07', '2019-02-22 15:08:07', '0', '银行收件确认', 'rwcl', 'yhsjqr', '59', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('103', '银行审批结果', '98', '21', '21', '2019-02-22 15:09:49', '2019-02-22 15:09:49', '0', '银行审批结果', 'rwcl', 'yhspjg', '60', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('104', '银行放款结果', '98', '21', '21', '2019-02-22 15:10:10', '2019-02-22 15:10:10', '0', '银行放款结果', 'rwcl', 'yhfkjg', '61', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('105', '收款确认', '98', '21', '21', '2019-02-22 15:10:31', '2019-02-22 15:10:31', '0', '收款确认', 'rwcl', 'skqr', '62', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('106', '补充材料确认', '98', '21', '21', '2019-02-22 15:10:58', '2019-02-22 15:10:58', '0', '补充材料确认', 'rwcl', 'bcclqr', '63', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('107', '补充材料', '98', '21', '21', '2019-02-22 15:11:22', '2019-02-22 15:11:22', '0', '补充材料', 'rwcl', 'bccl', '64', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('108', '完成', '98', '21', '21', '2019-02-22 15:11:40', '2019-02-22 15:11:40', '0', '完成', 'rwcl', 'wc', '65', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('109', '公司归档', '0', '21', '21', '2019-02-22 15:12:07', '2019-02-22 15:12:07', '0', '公司归档', 'rwcl', 'gsgd', '12', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('110', '开始', '109', '21', '21', '2019-02-22 15:12:27', '2019-02-22 15:12:27', '0', '开始', 'rwcl', 'ks', '66', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('111', '公司纸质归档', '109', '21', '21', '2019-02-22 15:12:54', '2019-02-22 15:12:54', '0', '公司纸质归档', 'rwcl', 'gszzgd', '67', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('112', '纸质归档', '109', '21', '21', '2019-02-22 15:13:15', '2019-02-22 15:13:15', '0', '纸质归档', 'rwcl', 'zzgd', '68', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('113', '审核员补资料', '109', '21', '21', '2019-02-22 15:13:42', '2019-02-22 15:13:42', '0', '审核员补资料', 'rwcl', 'shybzl', '69', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('114', '行政入库', '109', '21', '21', '2019-02-22 15:14:05', '2019-02-22 15:14:05', '0', '行政入库', 'rwcl', 'xzrk', '70', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('115', '完成', '109', '21', '21', '2019-02-22 15:14:25', '2019-02-22 15:14:25', '0', '完成', 'rwcl', 'wc', '71', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('116', '抵押归档', '0', '21', '21', '2019-02-22 15:19:35', '2019-02-22 15:19:35', '0', '抵押归档', 'rwcl', 'dygd', '13', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('117', '开始', '116', '21', '21', '2019-02-22 15:20:03', '2019-02-22 15:20:03', '0', '开始', 'rwcl', 'ks', '72', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('118', '公证记录', '116', '21', '21', '2019-02-22 15:20:25', '2019-02-22 15:20:25', '0', '公证记录', 'rwcl', 'gzjl', '73', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('119', '抵押材料寄送至合作商', '116', '21', '21', '2019-02-22 15:20:54', '2019-02-22 15:20:54', '0', '抵押材料寄送至合作商', 'rwcl', 'dycljs', '74', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('120', '合作商收件确认', '116', '21', '21', '2019-02-22 15:21:29', '2019-02-22 15:21:29', '0', '合作商收件确认', 'rwcl', 'hzssjqr', '75', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('121', '抵押情况记录', '116', '21', '21', '2019-02-22 15:21:58', '2019-02-22 15:21:58', '0', '抵押情况记录', 'rwcl', 'dyqkjl', '76', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('122', '抵押材料寄回', '116', '21', '21', '2019-02-22 15:22:21', '2019-02-22 15:22:21', '0', '抵押材料寄回', 'rwcl', 'dycljh', '77', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('123', '审核收件确认', '116', '21', '21', '2019-02-22 15:22:42', '2019-02-22 15:22:42', '0', '审核收件确认', 'rwcl', 'shsjqr', '78', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('124', '抵押材料至银行', '116', '21', '21', '2019-02-22 15:23:16', '2019-02-22 15:23:16', '0', '抵押材料至银行', 'rwcl', 'dyclzyh', '79', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('125', '银行收件确认', '116', '21', '21', '2019-02-22 15:23:41', '2019-02-22 15:23:41', '0', '银行收件确认', 'rwcl', 'yhsjqr', '80', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('126', '录入银行查验情况', '116', '21', '21', '2019-02-22 15:24:06', '2019-02-22 15:24:06', '0', '录入银行查验情况', 'rwcl', 'lryhcyqk', '81', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('127', '完成', '116', '21', '21', '2019-02-22 15:24:19', '2019-02-22 15:24:19', '0', '完成', 'rwcl', 'wc', '82', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('128', '业务信息修改', '0', '21', '21', '2019-02-22 15:24:46', '2019-02-22 15:24:46', '0', '业务信息修改', 'rwcl', 'ywxxxg', '14', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('129', '开始', '128', '21', '21', '2019-02-22 15:25:07', '2019-02-22 15:25:07', '0', '开始', 'rwcl', 'ks', '83', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('130', '业务管理部', '128', '21', '21', '2019-02-22 15:25:30', '2019-02-22 15:25:30', '0', '业务管理部', 'rwcl', 'ywglb', '84', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('131', '系统运维（专员）', '128', '21', '21', '2019-02-22 15:25:48', '2019-02-22 15:25:48', '0', '系统运维（专员）', 'rwcl', 'xtyw', '85', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('132', '完成', '128', '21', '21', '2019-02-22 15:26:06', '2019-02-22 15:26:06', '0', '完成', 'rwcl', 'wc', '86', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('133', '退单退费', '0', '21', '21', '2019-02-22 15:26:34', '2019-02-22 15:26:34', '0', '退单退费', 'rwcl', 'tdtf', '15', '1', '<i class=\"fa fa-home\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('134', '开始', '133', '21', '21', '2019-02-22 15:26:56', '2019-02-22 15:26:56', '0', '开始', 'rwcl', 'ks', '87', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('135', '审核员退单审核', '133', '21', '21', '2019-02-22 15:27:21', '2019-02-22 15:43:58', '0', '审核员退单审核', 'rwcl', 'shytdsh', '89', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('136', '退单数据修正', '133', '21', '21', '2019-02-22 15:27:47', '2019-02-22 15:44:13', '0', '退单数据修正', 'rwcl', 'tdsjxz', '90', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('137', '审核经理退单审核', '133', '21', '21', '2019-02-22 15:28:10', '2019-02-22 15:44:27', '0', '审核经理退单审核', 'rwcl', 'jltdsh', '91', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('138', '合作商回款缴费', '133', '21', '21', '2019-02-22 15:28:36', '2019-02-22 15:44:35', '0', '合作商回款缴费', 'rwcl', 'hzshkjf', '92', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('139', '公司确认到账', '133', '21', '21', '2019-02-22 15:29:02', '2019-02-22 15:44:49', '0', '公司确认到账', 'rwcl', 'gsqrdz', '93', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('140', '材料寄回', '133', '21', '21', '2019-02-22 15:29:22', '2019-02-22 15:45:01', '0', '材料寄回', 'rwcl', 'cljh', '94', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('141', '合作商收件确认', '133', '21', '21', '2019-02-22 15:29:47', '2019-02-22 15:45:07', '0', '合作商收件确认', 'rwcl', 'hzssjqr', '95', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('142', '退单退费申请', '133', '21', '21', '2019-02-22 15:43:37', '2019-02-22 15:43:37', '0', '退单退费申请', 'rwcl', 'tdtfsq', '88', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('143', '完成', '133', '21', '21', '2019-02-22 15:45:29', '2019-02-22 15:45:29', '0', '完成', 'rwcl', 'wc', '96', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', '', '0');
-INSERT INTO `sys_modal` VALUES ('144', '进件模块', '0', '21', '21', '2019-02-25 09:47:46', '2019-02-25 09:47:46', '1', '进件模块', 'into_modal', 'into_modal', '100', '1', '<i class=\"fa fa-home\"></i>', '', 'list', '0');
-INSERT INTO `sys_modal` VALUES ('145', '征信查询', '144', '21', '21', '2019-02-25 09:48:51', '2019-02-25 09:48:51', '1', '征信查询', 'into_modal', 'zxcx', '100', '2', '<i class=\"fa fa-arrow-circle-o-right\"></i>', '', 'list', '0');
 
 -- ----------------------------
 -- Table structure for sys_modal_superadmin
@@ -1855,9 +1655,9 @@ INSERT INTO `sys_modal` VALUES ('145', '征信查询', '144', '21', '21', '2019-
 DROP TABLE IF EXISTS `sys_modal_superadmin`;
 CREATE TABLE `sys_modal_superadmin` (
   `id` int(4) NOT NULL,
-  `name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  `name` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sys_modal_superadmin
@@ -1871,16 +1671,16 @@ INSERT INTO `sys_modal_superadmin` VALUES ('2', '普通内部模块');
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_session`;
 CREATE TABLE `sys_session` (
-  `idmd5` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
-  `mid` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `idmd5` varchar(64) NOT NULL DEFAULT '',
+  `mid` varchar(255) DEFAULT NULL,
   `lastdt` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `logip` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `outip` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `logip` varchar(64) DEFAULT NULL,
+  `outip` varchar(64) DEFAULT NULL,
   `logdt` int(11) DEFAULT '0',
   `outdt` int(11) DEFAULT '0',
-  PRIMARY KEY (`idmd5`) USING BTREE,
-  KEY `outdt` (`outdt`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+  PRIMARY KEY (`idmd5`),
+  KEY `outdt` (`outdt`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_session
@@ -2065,7 +1865,6 @@ INSERT INTO `sys_session` VALUES ('351c282f85ea430ac874908cfc367c17', '21', '201
 INSERT INTO `sys_session` VALUES ('359522ff8e8f029c5d21f3634c786a70', '21', '2019-01-19 17:49:42', '127.0.0.1', '127.0.0.1', '1547891382', '1547891382');
 INSERT INTO `sys_session` VALUES ('36e4e8165eb673728c32693b5c297969', '21', '2019-01-21 13:21:50', '127.0.0.1', '127.0.0.1', '1548047830', '1548048110');
 INSERT INTO `sys_session` VALUES ('3733f7140acce1a4bb051908d9d27c4d', '21', '2019-02-01 16:38:26', '127.0.0.1', '127.0.0.1', '1549009724', '1549010306');
-INSERT INTO `sys_session` VALUES ('37790973711b0ded020ac218935632af', '21', '2019-02-22 10:39:55', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550802511', '1550803195');
 INSERT INTO `sys_session` VALUES ('3789c218f975ebe44165c2e1df6814ba', '21', '2019-01-16 17:19:35', '127.0.0.1', '127.0.0.1', '1547630364', '1547630375');
 INSERT INTO `sys_session` VALUES ('37b53fa66d6412f8bfe1e7b406ef6064', '21', '2019-01-19 13:38:45', '127.0.0.1', '127.0.0.1', '1547875984', '1547876325');
 INSERT INTO `sys_session` VALUES ('386d316e3f6c4fbfb5732fefc40f7b61', '47', '2019-02-16 16:19:20', '127.0.0.1', '127.0.0.1', '1550305138', '1550305160');
@@ -2096,7 +1895,6 @@ INSERT INTO `sys_session` VALUES ('3fd016576b949170f8d82cb6d2a93835', '37', '201
 INSERT INTO `sys_session` VALUES ('402dd03fb9480b78019da90a576924d9', '21', '2019-01-23 17:50:45', '127.0.0.1', '127.0.0.1', '1548236767', '1548237045');
 INSERT INTO `sys_session` VALUES ('40cd3e3f7787eaacb353294495fc03c2', '21', '2019-01-24 20:35:25', '127.0.0.1', '127.0.0.1', '1548333118', '1548333325');
 INSERT INTO `sys_session` VALUES ('4163a076c934838ab9634710d8d00c78', '21', '2019-01-17 13:46:12', '127.0.0.1', '127.0.0.1', '1547703938', '1547703972');
-INSERT INTO `sys_session` VALUES ('41ad9bc61c7e8eb7fe5983821bbc5da5', '21', '2019-02-25 09:22:56', '0:0:0:0:0:0:0:1', null, '1551057776', '0');
 INSERT INTO `sys_session` VALUES ('41f00922c034d969d74bff19aa2025f7', '21', '2019-01-24 22:40:48', '127.0.0.1', '127.0.0.1', '1548339873', '1548340848');
 INSERT INTO `sys_session` VALUES ('4204cf2222345f9a65f4b07a638f8fa3', '21', '2019-02-18 15:16:38', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550474043', '1550474198');
 INSERT INTO `sys_session` VALUES ('420a3fbf281f23c8a5ffc361e6d87425', '21', '2019-02-01 09:44:33', '127.0.0.1', '127.0.0.1', '1548985366', '1548985473');
@@ -2157,7 +1955,6 @@ INSERT INTO `sys_session` VALUES ('548ef2b8fbdae0105ed7003cc21f3efe', '37', '201
 INSERT INTO `sys_session` VALUES ('55453b4575c0bfda87e1b845a443a16b', '21', '2019-01-16 17:21:56', '127.0.0.1', '127.0.0.1', '1547630375', '1547630516');
 INSERT INTO `sys_session` VALUES ('55765ba104440e89bd3455d4a34e342d', '21', '2019-01-24 17:35:29', '127.0.0.1', '127.0.0.1', '1548322083', '1548322529');
 INSERT INTO `sys_session` VALUES ('55e3a2ae2aaf34883eb980994ccc0441', '21', '2019-01-16 15:47:17', '127.0.0.1', '127.0.0.1', '1547624808', '1547624837');
-INSERT INTO `sys_session` VALUES ('5695fe10bba09d729cbf0194a8bcaed9', '21', '2019-02-22 10:42:04', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550803195', '1550803324');
 INSERT INTO `sys_session` VALUES ('56b11cf805faf33e312da67efcca023c', '21', '2019-01-22 19:54:54', '127.0.0.1', '127.0.0.1', '1548152004', '1548158094');
 INSERT INTO `sys_session` VALUES ('56e5fa5b8167b2f23753dfbb5b429b57', '21', '2019-01-16 20:02:47', '127.0.0.1', '127.0.0.1', '1547639947', '1547640167');
 INSERT INTO `sys_session` VALUES ('56f5f5b5cddbfcf52350556359d1d800', '21', '2019-01-22 09:41:49', '127.0.0.1', '127.0.0.1', '1548063566', '1548121309');
@@ -2182,7 +1979,6 @@ INSERT INTO `sys_session` VALUES ('5a99282b27c3d2e06d5f71f9cacda4f4', '21', '201
 INSERT INTO `sys_session` VALUES ('5af411fdbfddd4b00811737f3095f272', '21', '2019-02-11 16:57:38', '127.0.0.1', '127.0.0.1', '1549875287', '1549875458');
 INSERT INTO `sys_session` VALUES ('5b75df08968ddb00819a34835375fc56', '21', '2019-02-12 11:43:53', '127.0.0.1', '127.0.0.1', '1549942943', '1549943033');
 INSERT INTO `sys_session` VALUES ('5b8d0600da5c3f15ed11170836345be1', '21', '2019-02-12 15:28:31', '127.0.0.1', '127.0.0.1', '1549955985', '1549956511');
-INSERT INTO `sys_session` VALUES ('5b8d219180b038b63661aaf18ab5937b', '21', '2019-02-22 13:59:35', '127.0.0.1', '127.0.0.1', '1550815158', '1550815175');
 INSERT INTO `sys_session` VALUES ('5b913baa85e7da68ed05b44076580ab7', '21', '2019-01-19 14:20:32', '127.0.0.1', '127.0.0.1', '1547878683', '1547878832');
 INSERT INTO `sys_session` VALUES ('5bc590562fe7451f45a8ea27e6e92a0b', '21', '2019-01-19 14:15:57', '127.0.0.1', '127.0.0.1', '1547878322', '1547878557');
 INSERT INTO `sys_session` VALUES ('5bd3e87f1444bfceeddc1510f86f7265', '21', '2019-01-21 11:23:40', '127.0.0.1', '127.0.0.1', '1548040980', '1548041020');
@@ -2278,7 +2074,6 @@ INSERT INTO `sys_session` VALUES ('7a3ac996f1855dcc4398f9e000ddff1e', '21', '201
 INSERT INTO `sys_session` VALUES ('7a752b95907d0ac55511bcb4f42b9ffa', '21', '2019-01-16 16:57:37', '127.0.0.1', '127.0.0.1', '1547629057', '1547629057');
 INSERT INTO `sys_session` VALUES ('7b0b32092d69c8cc5576fca7d4aec44a', '21', '2019-02-13 15:02:23', '127.0.0.1', '127.0.0.1', '1550041256', '1550041343');
 INSERT INTO `sys_session` VALUES ('7b6ee44acee02e6fb876800cf5159522', '21', '2019-01-21 09:41:15', '127.0.0.1', '127.0.0.1', '1548034741', '1548034875');
-INSERT INTO `sys_session` VALUES ('7c52bd72a3e15a41b194e11f688f1e5e', '21', '2019-02-22 10:28:31', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550802406', '1550802511');
 INSERT INTO `sys_session` VALUES ('7d3780bbb8b484acb8b258206bb7271c', '21', '2019-01-24 11:12:07', '127.0.0.1', '127.0.0.1', '1548299384', '1548299527');
 INSERT INTO `sys_session` VALUES ('7d47d1d08c469b15040376de9f0da9db', '21', '2019-01-18 10:51:58', '127.0.0.1', '127.0.0.1', '1547714639', '1547779918');
 INSERT INTO `sys_session` VALUES ('7d4c5e6a601bdaa06daeab257c6f5bbc', '37', '2019-01-25 17:24:41', '127.0.0.1', '127.0.0.1', '1548408238', '1548408281');
@@ -2318,7 +2113,6 @@ INSERT INTO `sys_session` VALUES ('8771f32c1f828ea19250b124cc91c72f', '21', '201
 INSERT INTO `sys_session` VALUES ('87b316f3ef4c44eed54fd3897bb5ad27', '21', '2019-01-24 17:57:19', '127.0.0.1', '127.0.0.1', '1548323786', '1548323839');
 INSERT INTO `sys_session` VALUES ('880cdfd073aa27e75b069b6d08465a99', '37', '2019-01-29 10:16:43', '127.0.0.1', '127.0.0.1', '1548727965', '1548728203');
 INSERT INTO `sys_session` VALUES ('884bda48e47a9ba4f9c9d533a28dc002', '21', '2019-02-11 20:20:50', '127.0.0.1', '127.0.0.1', '1549887374', '1549887650');
-INSERT INTO `sys_session` VALUES ('8881a3e42c7f08bf0e4f29d63b0b5468', '21', '2019-02-22 13:49:34', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550814113', '1550814574');
 INSERT INTO `sys_session` VALUES ('88828f9de976016c8b0e12004a571ded', '21', '2019-01-23 14:31:23', '127.0.0.1', '127.0.0.1', '1548224530', '1548225083');
 INSERT INTO `sys_session` VALUES ('88f300a5831a08fafc65615f3109e9e5', '21', '2019-01-16 15:47:17', '127.0.0.1', '127.0.0.1', '1547624808', '1547624837');
 INSERT INTO `sys_session` VALUES ('8914da580a833044019f8f77077697e6', '37', '2019-01-25 17:23:58', '127.0.0.1', '127.0.0.1', '1548408171', '1548408238');
@@ -2329,7 +2123,6 @@ INSERT INTO `sys_session` VALUES ('8a0f84c6ba7b80c5b946900399e6a968', '21', '201
 INSERT INTO `sys_session` VALUES ('8a18c231c9dadcb036461fa32f76402d', '21', '2019-01-31 15:18:44', '127.0.0.1', '127.0.0.1', '1548918369', '1548919124');
 INSERT INTO `sys_session` VALUES ('8a4f1c1997663def73030a2c8490e63e', '21', '2019-02-11 17:41:47', '127.0.0.1', '127.0.0.1', '1549877529', '1549878107');
 INSERT INTO `sys_session` VALUES ('8a8c8a4077d88488970e18708b61f320', '21', '2019-02-11 11:36:09', '127.0.0.1', '127.0.0.1', '1549855803', '1549856169');
-INSERT INTO `sys_session` VALUES ('8af0653ac6f63e91bc1493492a304d83', '21', '2019-02-22 13:41:53', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550803324', '1550814113');
 INSERT INTO `sys_session` VALUES ('8b484384d1757bfefa0fbe20ccc18f66', '21', '2019-01-20 21:46:34', '127.0.0.1', '127.0.0.1', '1547991884', '1547991994');
 INSERT INTO `sys_session` VALUES ('8b795c827e3e0c1baeab90ef24939952', '21', '2019-01-21 10:00:22', '127.0.0.1', '127.0.0.1', '1548035440', '1548036022');
 INSERT INTO `sys_session` VALUES ('8bf63347c9b13b089200763f14109316', '21', '2019-01-22 11:01:52', '127.0.0.1', '127.0.0.1', '1548125735', '1548126112');
@@ -2390,7 +2183,6 @@ INSERT INTO `sys_session` VALUES ('9a14b13b4068bdb19b2cfda078d405c0', '31', '201
 INSERT INTO `sys_session` VALUES ('9ad6e54eea60ef323468dd301f2ddccb', '21', '2019-01-17 13:37:19', '127.0.0.1', '127.0.0.1', '1547703356', '1547703439');
 INSERT INTO `sys_session` VALUES ('9ae7715fdc189dc251f9ff190cc79570', '21', '2019-02-16 14:58:22', '127.0.0.1', '0:0:0:0:0:0:0:1', '1550300083', '1550300302');
 INSERT INTO `sys_session` VALUES ('9b17a074afac02feaa548e20be9acaa9', '21', '2019-01-17 14:18:27', '127.0.0.1', '127.0.0.1', '1547705859', '1547705907');
-INSERT INTO `sys_session` VALUES ('9b1fa622a4bfcfd44da9a3ef82ba1f98', '21', '2019-02-22 13:59:18', '0:0:0:0:0:0:0:1', '127.0.0.1', '1550814574', '1550815158');
 INSERT INTO `sys_session` VALUES ('9ba20d252f528eddb0c2c85835877997', '21', '2019-01-21 17:05:50', '127.0.0.1', '127.0.0.1', '1548061470', '1548061550');
 INSERT INTO `sys_session` VALUES ('9bb2fabc0ccfa2a21fef398057126217', '21', '2019-02-01 16:21:45', '127.0.0.1', '127.0.0.1', '1549009193', '1549009305');
 INSERT INTO `sys_session` VALUES ('9bfba450cc71a6a651bfd148451ebbfd', '21', '2019-02-11 16:44:01', '127.0.0.1', '127.0.0.1', '1549873426', '1549874641');
@@ -2471,12 +2263,10 @@ INSERT INTO `sys_session` VALUES ('b22eba8163f9ba26f661dd74136e4c44', '21', '201
 INSERT INTO `sys_session` VALUES ('b268ab0dc9192bd96e33c30518f396a6', '37', '2019-01-28 21:23:02', '127.0.0.1', '127.0.0.1', '1548681685', '1548681782');
 INSERT INTO `sys_session` VALUES ('b2da3082490c7f2885663d7ac28168d6', '21', '2019-01-17 13:35:56', '127.0.0.1', '127.0.0.1', '1547703096', '1547703356');
 INSERT INTO `sys_session` VALUES ('b31aa965ee78d25e1dd5aa403f6ec63c', '21', '2019-02-20 15:39:17', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550647894', '1550648357');
-INSERT INTO `sys_session` VALUES ('b35150dca4b15cb2ca7e52ed90ebadf8', '21', '2019-02-22 14:05:02', '127.0.0.1', '0:0:0:0:0:0:0:1', '1550815175', '1550815502');
 INSERT INTO `sys_session` VALUES ('b351564e236851a47bdb1a1f7e5548ca', '37', '2019-01-28 15:12:15', '127.0.0.1', '127.0.0.1', '1548659439', '1548659535');
 INSERT INTO `sys_session` VALUES ('b3653032d608ee355872bb93dd01c583', '21', '2019-01-29 14:20:47', '127.0.0.1', '127.0.0.1', '1548742387', '1548742847');
 INSERT INTO `sys_session` VALUES ('b37b15c0f8c040c58bfa358858695c7c', '21', '2019-02-01 13:18:20', '127.0.0.1', '127.0.0.1', '1548996889', '1548998300');
 INSERT INTO `sys_session` VALUES ('b37f907616b469974cb0178434592156', '21', '2019-02-01 13:32:09', '127.0.0.1', '127.0.0.1', '1548999075', '1548999129');
-INSERT INTO `sys_session` VALUES ('b3aaa43554a5061d25d80cfdbc8df58e', '21', '2019-02-22 10:26:46', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550802232', '1550802406');
 INSERT INTO `sys_session` VALUES ('b4078fec373f0964d16910ddf0ca64b8', '21', '2019-01-17 13:24:01', '127.0.0.1', '127.0.0.1', '1547702622', '1547702641');
 INSERT INTO `sys_session` VALUES ('b4b8da010b463ca968b32950ff78498e', '21', '2019-01-21 11:48:25', '127.0.0.1', '127.0.0.1', '1548042475', '1548042505');
 INSERT INTO `sys_session` VALUES ('b533e47b80d1040cbdccc2d8779ad863', '21', '2019-02-11 17:45:42', '127.0.0.1', '127.0.0.1', '1549878107', '1549878342');
@@ -2489,7 +2279,7 @@ INSERT INTO `sys_session` VALUES ('b6ca615cda094e0524684a1b7a060105', '21', '201
 INSERT INTO `sys_session` VALUES ('b6d728aeae9e3f2e2e8a13931fad86b2', '21', '2019-02-18 10:57:26', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550458392', '1550458646');
 INSERT INTO `sys_session` VALUES ('b6ef329dd633b4d953d525fac8286581', '21', '2019-01-17 13:16:59', '127.0.0.1', '127.0.0.1', '1547702184', '1547702219');
 INSERT INTO `sys_session` VALUES ('b7d87d58cdb8ed3860305a78a0a28b67', '21', '2019-01-16 21:33:22', '127.0.0.1', '127.0.0.1', '1547645287', '1547645602');
-INSERT INTO `sys_session` VALUES ('b8a3f5cfbd508621ad60b80f0c0df60d', '21', '2019-02-22 09:12:25', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550740986', '1550797945');
+INSERT INTO `sys_session` VALUES ('b8a3f5cfbd508621ad60b80f0c0df60d', '21', '2019-02-21 17:23:06', '0:0:0:0:0:0:0:1', null, '1550740986', '0');
 INSERT INTO `sys_session` VALUES ('b8a6ab46db527a134b47366998d4cebe', '21', '2019-02-11 16:50:49', '127.0.0.1', '127.0.0.1', '1549874641', '1549875049');
 INSERT INTO `sys_session` VALUES ('b8d16426ce8c7aeedcfe2e4ff94a22da', '21', '2019-02-13 14:56:00', '127.0.0.1', '127.0.0.1', '1550040564', '1550040960');
 INSERT INTO `sys_session` VALUES ('b8ecb0d86f2fafab0c7f06821c780e50', '21', '2019-01-16 21:12:02', '127.0.0.1', '127.0.0.1', '1547640303', '1547644322');
@@ -2572,7 +2362,6 @@ INSERT INTO `sys_session` VALUES ('d1e4d9bd375076b9adf929ed4d82bf13', '21', '201
 INSERT INTO `sys_session` VALUES ('d239932486f878a1ad6ab05254abb9dc', '37', '2019-01-28 11:08:17', '127.0.0.1', '127.0.0.1', '1548644873', '1548644897');
 INSERT INTO `sys_session` VALUES ('d24eac26036fe55b1302ca7369cf3d33', '21', '2019-01-17 13:42:14', '127.0.0.1', '127.0.0.1', '1547703601', '1547703734');
 INSERT INTO `sys_session` VALUES ('d2cbfd7f2f09acf93265fcc463e062aa', '37', '2019-01-28 10:28:58', '127.0.0.1', '127.0.0.1', '1548494372', '1548642538');
-INSERT INTO `sys_session` VALUES ('d30c8cd452dbe99eab34ecddaa5e96b3', '21', '2019-02-22 10:23:52', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550797945', '1550802232');
 INSERT INTO `sys_session` VALUES ('d39ae8733114893d4f12cdf1df159f26', '21', '2019-02-11 17:32:09', '127.0.0.1', '127.0.0.1', '1549877437', '1549877529');
 INSERT INTO `sys_session` VALUES ('d3c9668eb5b30ac99ae91e538a0b9cb8', '37', '2019-01-29 14:07:54', '127.0.0.1', '127.0.0.1', '1548741861', '1548742074');
 INSERT INTO `sys_session` VALUES ('d3e273e7b0353d6df5bdc9ea197c008a', '21', '2019-02-13 17:25:29', '127.0.0.1', '127.0.0.1', '1550049899', '1550049929');
@@ -2663,7 +2452,6 @@ INSERT INTO `sys_session` VALUES ('eca147fd20e3bced0d4c46d77d46f2ca', '21', '201
 INSERT INTO `sys_session` VALUES ('ecf34fcd166f498cf946039c2fadfc1c', '21', '2019-01-31 16:18:13', '127.0.0.1', '127.0.0.1', '1548922566', '1548922693');
 INSERT INTO `sys_session` VALUES ('ed55f8171a365ada9273916ee4a5df46', '21', '2019-01-16 17:23:01', '127.0.0.1', '127.0.0.1', '1547630562', '1547630581');
 INSERT INTO `sys_session` VALUES ('ed71e63d960a8162df7831d16c3ed251', '21', '2019-01-16 16:55:29', '127.0.0.1', '127.0.0.1', '1547628925', '1547628929');
-INSERT INTO `sys_session` VALUES ('ed758060a16bdfeb4c6af14f3a0a2784', '21', '2019-02-25 09:22:56', '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1', '1550815502', '1551057776');
 INSERT INTO `sys_session` VALUES ('edcf20dbd806f36e787efe9e43b514fe', '21', '2019-01-20 17:00:22', '127.0.0.1', '127.0.0.1', '1547950228', '1547974822');
 INSERT INTO `sys_session` VALUES ('ee0f4c18fbc2732462f875800960443f', '21', '2019-01-17 09:57:42', '127.0.0.1', '127.0.0.1', '1547690193', '1547690262');
 INSERT INTO `sys_session` VALUES ('ee110bdfd4facd3d9d99310e37d40a80', '37', '2019-01-25 16:03:07', '127.0.0.1', '127.0.0.1', '1548403361', '1548403387');
@@ -2725,19 +2513,19 @@ INSERT INTO `sys_session` VALUES ('ff803bad193a28ecab7901924f841469', '37', '201
 DROP TABLE IF EXISTS `tt_wxconfig`;
 CREATE TABLE `tt_wxconfig` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `appid` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `appsecret` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `token` varchar(512) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `appid` varchar(32) DEFAULT NULL,
+  `appsecret` varchar(64) DEFAULT NULL,
+  `token` varchar(512) DEFAULT NULL,
   `dt_add` datetime DEFAULT NULL,
   `dt_edit` datetime DEFAULT NULL,
-  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '备注',
-  `name` varchar(12) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标识',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `name` varchar(12) NOT NULL COMMENT '标识',
   `expirestime` int(11) DEFAULT NULL,
   `type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '公众号类型0为微信公众，1为微信小程序',
-  `pay_mch_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '微信支付pay_mch_id',
-  `pay_key` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '微信支付key',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='微信公众号配置表';
+  `pay_mch_id` varchar(255) NOT NULL COMMENT '微信支付pay_mch_id',
+  `pay_key` varchar(255) NOT NULL COMMENT '微信支付key',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='微信公众号配置表';
 
 -- ----------------------------
 -- Records of tt_wxconfig
