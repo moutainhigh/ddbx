@@ -369,22 +369,9 @@
 
         </div>
 
-<<<<<<< HEAD
-    </div>
-</div>
-=======
-<<<<<<< HEAD
-
     </div>
 </div>
 <script>
-=======
-    </div>
-</div>
->>>>>>> 0518842038f8a84fc06c78d40aa2c0e041fcac24
-
-    <script>
->>>>>>> 6637eb447dbb361b0522b08f6788efd4d0fead8b
     /*选择省后，动态获取省下面的市，并默认选中你指定的id的市，/ttAjax在Ajax.java中处理
                                             /ttAjax也可以单独使用，比如
                                             /ttAjax?do=opt&cn=kjb_user&id=3&mid_add=100000 //显示创建人id为100000的所有用户，默认选择id为3的记录

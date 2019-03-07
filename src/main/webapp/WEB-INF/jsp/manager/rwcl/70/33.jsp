@@ -2,12 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<<<<<<< HEAD
 <style>li{list-style-type:none;}</style>
 <li class="text-primary"><em>专员审核结果：</em>
-=======
-<div class="text-primary"><em>专员审核结果：</em>
->>>>>>> 0518842038f8a84fc06c78d40aa2c0e041fcac24
     <div class="big-conte" style="display: block;">
         <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
             <strong>开始时间：</strong>
@@ -42,11 +38,7 @@
                 </div>
             </form>
         </div>
-<<<<<<< HEAD
     </div></li>
-=======
-    </div></div>
->>>>>>> 0518842038f8a84fc06c78d40aa2c0e041fcac24
 <script>
     function erp() {
         var result_code= $('input[name="result_code"]:checked').val();
@@ -59,10 +51,7 @@
             alert("审核结果不能为空!");
             return false;
         }
-<<<<<<< HEAD
-        <!--
-=======
->>>>>>> 0518842038f8a84fc06c78d40aa2c0e041fcac24
+
         $.ajax({
             type: "POST",      //data 传送数据类型。post 传递
             dataType: 'json',  // 返回数据的数据类型json
@@ -82,11 +71,7 @@
                 window.location.href='${pageContext.request.contextPath}/manager/index?cn=mytask&sdo=list&type=ddbx';
             }
         });
-<<<<<<< HEAD
-        -->
+
     }
 </script>
-=======
-    }
-</script>
->>>>>>> 0518842038f8a84fc06c78d40aa2c0e041fcac24
+

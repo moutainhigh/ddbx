@@ -65,8 +65,6 @@ public class spmq extends DbCtrl {
             myDbTools.closeConn();
         }
 
-        //从dd_icbc表中查询出id,gems_fs_id,gems_id,order_code
-
         long qryid = 0;
         //向dd_icbc_erp表中添加数据
         TtMap ttMap1 = new TtMap();
@@ -81,8 +79,6 @@ public class spmq extends DbCtrl {
         ttMap1.put("c_cardno",ontCustomer.get("c_cardno"));
         ttMap1.put("adminop_tag", Tools.minfo().get("id")); //当前操作人id
         qryid = Tools.recAdd(ttMap1, "dd_icbc_erp");
-
-
 
         //向dd_icbc_erp_result表中添加数据
         TtMap ttMap2 = new TtMap();
@@ -100,7 +96,6 @@ public class spmq extends DbCtrl {
         ttMap3.put("later_status","24");
         ttMap3.put("now_status","23");
         Tools.recAdd(ttMap3, "dd_icbc_erp_result");
-
 
         // 本表操作添加数据
         ary.put("icbc_id",ary.get("icbc_id"));
