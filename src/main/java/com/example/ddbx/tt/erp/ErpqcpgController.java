@@ -70,7 +70,7 @@ public class ErpqcpgController {
             erp_result1.put("later_status", "12");
             erp_result1.put("now_status", "12");
             erp_result1.put("remark", "");
-            erp_result1.put("result_code", "");
+            erp_result1.put("result_code", post.get("state_code"));
             erp_result1.put("result_msg", "");
             erp_result1.put("result_value", "");
             erp_result1.put("type_id", post.get("type_id"));
@@ -83,11 +83,11 @@ public class ErpqcpgController {
         TtMap erp = new TtMap();
         switch (post.get("state_code")) {
             case "1":
-                erp.put("now_status", "11");
+                erp.put("now_status", "12");
                 erp.put("later_status", "12");
                 break;
             case "2":
-                erp.put("now_status", "11");
+                erp.put("now_status", "12");
                 erp.put("later_status", "12");
                 break;
             case "3":
