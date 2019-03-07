@@ -62,26 +62,20 @@ public class qcpg extends DbCtrl {
     public long add(TtMap ary) {
 
         DbTools myDbTools = new DbTools();
-        String sql="select id,gems_fs_id,gems_id,order_code,c_name,c_tel,c_cardno from dd_icbc where id="+ary.get("icbc_id");
+        String sql = "select id,gems_fs_id,gems_id,order_code,c_name,c_tel,c_cardno from dd_icbc where id=" + ary.get("icbc_id");
         TtMap ontCustomer = null;
         try {
             ontCustomer = myDbTools.recinfo(sql);
             recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
-        }catch (Exception e) {
+        } catch (Exception e) {
             Tools.logError(e.getMessage(), true, false);
-        }finally {
+        } finally {
             myDbTools.closeConn();
         }
 
         // 其他表添加数据
-<<<<<<< HEAD
         long qryid = 0;
 
-=======
-        DbCtrl dbCtrl = new DbCtrl("dd_icbc_erp");
-        long id = 0;
-        try {
->>>>>>> 0518842038f8a84fc06c78d40aa2c0e041fcac24
             TtMap ttMap = new TtMap();
             ttMap.put("c_name", ontCustomer.get("c_name"));
             ttMap.put("c_tel", ontCustomer.get("c_tel"));
@@ -95,11 +89,10 @@ public class qcpg extends DbCtrl {
 //        ttMap.put("c_carvin", ontCustomer.get(""));
             ttMap.put("c_carno", ary.get("license_plate"));
             ttMap.put("adminop_tag", Tools.minfo().get("id"));
-<<<<<<< HEAD
             qryid = Tools.recAdd(ttMap, "dd_icbc_erp");
 
             TtMap ttMap1 = new TtMap();
-            ttMap1.put("qryid", qryid+"");
+            ttMap1.put("qryid", qryid + "");
             ttMap1.put("now_status", "9");
             ttMap1.put("later_status", "10");
             ttMap1.put("type_id", "47");
@@ -107,73 +100,49 @@ public class qcpg extends DbCtrl {
             Tools.recAdd(ttMap1, "dd_icbc_erp_result");
 
             TtMap ttMap2 = new TtMap();
-            ttMap2.put("qryid", qryid+"");
-=======
-
-            id = dbCtrl.add(ttMap);
-            System.out.println(id+"********");
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            dbCtrl.closeConn();
-        }
-
-        DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
-        try {
-            TtMap ttMap2 = new TtMap();
-            ttMap2.put("qryid", id+"");
->>>>>>> 0518842038f8a84fc06c78d40aa2c0e041fcac24
+            ttMap2.put("qryid", qryid + "");
             ttMap2.put("now_status", "10");
             ttMap2.put("later_status", "11");
             ttMap2.put("type_id", "47");
             ttMap2.put("icbc_id", ontCustomer.get("id"));
-<<<<<<< HEAD
             Tools.recAdd(ttMap2, "dd_icbc_erp_result");
-=======
 
-            dbCtrl2.add(ttMap2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            dbCtrl2.closeConn();
+            // 本表操作添加数据
+            ary.put("icbc_id", ontCustomer.get("id"));
+            ary.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
+            ary.put("gems_id", ontCustomer.get("gems_id"));
+            DecimalFormat countFormat = new DecimalFormat("000000000");
+            ary.put("order_code", "Q" + countFormat.format(Integer.parseInt(ontCustomer.get("id"))));
+
+            String models = "";
+            if (StringUtils.isNotEmpty(ary.get("models1")) && StringUtils.isNotEmpty(ary.get("models2")) && StringUtils.isNotEmpty(ary.get("models3"))) {
+                models = ary.get("models1") + " " + ary.get("models2") + " " + ary.get("models1");
+            }
+            ary.put("models", models);
+
+            String imgstep1_1qp = ary.get("imgstep1_1qp1") + ","
+                    + ary.get("imgstep1_1qp2") + ","
+                    + ary.get("imgstep1_1qp3") + ","
+                    + ary.get("imgstep1_1qp4") + ","
+                    + ary.get("imgstep1_1qp5");
+            ary.put("imgstep1_1qp", imgstep1_1qp);
+
+            String imgstep1_2qp = ary.get("imgstep1_2qp1") + ","
+                    + ary.get("imgstep1_2qp2") + ","
+                    + ary.get("imgstep1_2qp3") + ","
+                    + ary.get("imgstep1_2qp4") + ","
+                    + ary.get("imgstep1_2qp5") + ","
+                    + ary.get("imgstep1_2qp6") + ","
+                    + ary.get("imgstep1_2qp7") + ","
+                    + ary.get("imgstep1_2qp8") + ","
+                    + ary.get("imgstep1_2qp9") + ","
+                    + ary.get("imgstep1_2qp10");
+            ary.put("imgstep1_2qp", imgstep1_2qp);
+
+            return super.add(ary);
         }
 
->>>>>>> 0518842038f8a84fc06c78d40aa2c0e041fcac24
 
-        // 本表操作添加数据
-        ary.put("icbc_id",ontCustomer.get("id"));
-        ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
-        ary.put("gems_id",ontCustomer.get("gems_id"));
-        DecimalFormat countFormat = new DecimalFormat("000000000");
-        ary.put("order_code","Q"+countFormat.format(Integer.parseInt(ontCustomer.get("id"))));
-
-        String models = "";
-        if (StringUtils.isNotEmpty(ary.get("models1")) && StringUtils.isNotEmpty(ary.get("models2")) && StringUtils.isNotEmpty(ary.get("models3"))){
-            models = ary.get("models1")+" "+ary.get("models2")+ " "+ary.get("models1");
-        }
-        ary.put("models", models);
-
-        String imgstep1_1qp = ary.get("imgstep1_1qp1") + ","
-                            + ary.get("imgstep1_1qp2") + ","
-                            + ary.get("imgstep1_1qp3") + ","
-                            + ary.get("imgstep1_1qp4") + ","
-                            + ary.get("imgstep1_1qp5");
-        ary.put("imgstep1_1qp", imgstep1_1qp);
-
-        String imgstep1_2qp = ary.get("imgstep1_2qp1") + ","
-                            + ary.get("imgstep1_2qp2") + ","
-                            + ary.get("imgstep1_2qp3") + ","
-                            + ary.get("imgstep1_2qp4") + ","
-                            + ary.get("imgstep1_2qp5") + ","
-                            + ary.get("imgstep1_2qp6") + ","
-                            + ary.get("imgstep1_2qp7") + ","
-                            + ary.get("imgstep1_2qp8") + ","
-                            + ary.get("imgstep1_2qp9") + ","
-                            + ary.get("imgstep1_2qp10");
-        ary.put("imgstep1_2qp", imgstep1_2qp);
-
-        return super.add(ary);
-    }
 
 
     public void setTable(String table) {
