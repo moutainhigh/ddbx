@@ -87,26 +87,6 @@
                     </div>
                 </li>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <li class="text-primary">
                     <em>2.提交评估：</em>
                     <div class="big-conte" style="display: block;">
