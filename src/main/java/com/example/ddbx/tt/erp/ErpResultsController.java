@@ -158,6 +158,104 @@ public class ErpResultsController {
                         erp_result.put("result_msg", post.get("result_msg"));
                         erp_result.put("result_value", result_value);
                         break;
+                    case "58": //公司收件确认
+                        //if 已收到 & 1通过  进入下一个环节
+                        if(post.get("receiptConfirm").equals("已收到") && post.get("materialResult").equals("1")){
+                            erp.put("now_status", "58");
+                            erp.put("later_status", "59");
+                            erp_result.put("now_status","58");
+                            erp_result.put("later_status","59");
+                        }else{
+                            erp.put("now_status", "58");
+                            erp.put("later_status", "57");
+                            erp_result.put("now_status","58");
+                            erp_result.put("later_status","57");
+                        }
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("materialResult"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
+                        //当收件确认为"已收到"时,公司归档亮起
+                        if(post.get("receiptConfirm").equals("已收到")){
+                            //dd_icbc_erp  add
+                            TtMap bankLoanERP = new TtMap();
+                            bankLoanERP.put("now_status", "66");
+                            bankLoanERP.put("later_status", "67");
+                            bankLoanERP.put("type_id", "109");
+                            bankLoanERP.put("icbc_id", post.get("icbc_id"));
+                            bankLoanERP.put("gems_id", minfo.get("id"));
+                            bankLoanERP.put("gems_fs_id", minfo.get("fsid"));
+                            bankLoanERP.put("c_name", UserInfoICBC.get("c_name"));
+                            bankLoanERP.put("c_tel", UserInfoICBC.get("c_tel"));
+                            bankLoanERP.put("c_cardno", UserInfoICBC.get("c_cardno"));
+                            bankLoanERP.put("c_carvin", "");
+                            bankLoanERP.put("c_carno", "");
+                            bankLoanERP.put("adminop_tag",minfo.get("id")); //当前操作人id
+                            Tools.recAdd(bankLoanERP, "dd_icbc_erp");
+                            //dd_icbc_erp_result 添加
+                            TtMap bankLoanERPResult = new TtMap();
+                            bankLoanERPResult.put("now_status", "66");
+                            bankLoanERPResult.put("later_status", "67");
+                            bankLoanERPResult.put("remark","公司归档亮起");
+                            bankLoanERPResult.put("result_code","0");
+                            bankLoanERPResult.put("result_msg", "");
+                            bankLoanERPResult.put("result_value","");
+                            bankLoanERPResult.put("type_id", "109");
+                            bankLoanERPResult.put("icbc_id", post.get("icbc_id"));
+                            bankLoanERPResult.put("gems_id", minfo.get("id"));
+                            bankLoanERPResult.put("gems_fs_id", minfo.get("fsid"));
+                            Tools.recAdd(bankLoanERPResult, "dd_icbc_erp_result");
+                        }
+                        break;
+                    case "59": //银行收件确认
+                        //if 已收到 & 1通过  进入下一个环节
+                        if(post.get("receiptConfirm").equals("已收到") && post.get("materialResult").equals("1")){
+                            erp.put("now_status", "59");
+                            erp.put("later_status", "60");
+                            erp_result.put("now_status","59");
+                            erp_result.put("later_status","60");
+                        }else{
+                            erp.put("now_status", "59");
+                            erp.put("later_status", "58");
+                            erp_result.put("now_status","59");
+                            erp_result.put("later_status","58");
+                        }
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("materialResult"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
+                        //当收件确认为"已收到"时,抵押归档亮起
+                        if(post.get("receiptConfirm").equals("已收到")){
+                            //dd_icbc_erp  add
+                            TtMap bankLoanERP = new TtMap();
+                            bankLoanERP.put("now_status", "72");
+                            bankLoanERP.put("later_status", "73");
+                            bankLoanERP.put("type_id", "116");
+                            bankLoanERP.put("icbc_id", post.get("icbc_id"));
+                            bankLoanERP.put("gems_id", minfo.get("id"));
+                            bankLoanERP.put("gems_fs_id", minfo.get("fsid"));
+                            bankLoanERP.put("c_name", UserInfoICBC.get("c_name"));
+                            bankLoanERP.put("c_tel", UserInfoICBC.get("c_tel"));
+                            bankLoanERP.put("c_cardno", UserInfoICBC.get("c_cardno"));
+                            bankLoanERP.put("c_carvin", "");
+                            bankLoanERP.put("c_carno", "");
+                            bankLoanERP.put("adminop_tag",minfo.get("id")); //当前操作人id
+                            Tools.recAdd(bankLoanERP, "dd_icbc_erp");
+                            //dd_icbc_erp_result 添加
+                            TtMap bankLoanERPResult = new TtMap();
+                            bankLoanERPResult.put("now_status", "72");
+                            bankLoanERPResult.put("later_status", "73");
+                            bankLoanERPResult.put("remark","抵押归档亮起");
+                            bankLoanERPResult.put("result_code","0");
+                            bankLoanERPResult.put("result_msg", "");
+                            bankLoanERPResult.put("result_value","");
+                            bankLoanERPResult.put("type_id", "116");
+                            bankLoanERPResult.put("icbc_id", post.get("icbc_id"));
+                            bankLoanERPResult.put("gems_id", minfo.get("id"));
+                            bankLoanERPResult.put("gems_fs_id", minfo.get("fsid"));
+                            Tools.recAdd(bankLoanERPResult, "dd_icbc_erp_result");
+                        }
+                        break;
                 }
                 break;
             /**

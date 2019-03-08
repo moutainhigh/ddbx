@@ -7,28 +7,18 @@
     <div class="big-conte" style="display: block;">
         <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
             <strong>开始时间：</strong>
-            2019-02-20 17:01:06
         </div>
         <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
             <strong>处理时间：</strong>
-            2019-02-20 17:02:57
         </div>
         <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
-            <strong>处理人：</strong>秦扬</div>
+            <strong>处理人：</strong></div>
         <strong style="margin-left:10px;"><i>处理信息：</i></strong><br>
         <div class="task_margin ng-scope" style="border:1px solid #ccc; border-radius: 10px;background-color:#F7F7F7; padding-top:10px;">
             <form name="modalForm" class="form-horizontal ng-pristine ng-valid ng-scope ng-valid-required">
-                <!-- 	<div class="form-group" ng-if="notUseButton && task.postRet != null">
-                        <label class="col-sm-2 control-label">收件确认</label>
-                        <div class="col-sm-6">
-                            <input type="radio" value="1" ng-model="task.postRet" disabled="true">已收到
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" value="0" ng-model="task.postRet" disabled="true">未收到
-                        </div>
-                    </div> -->
                 <!-- ngIf: (rootData.taskDefKey == 'loanOrder_postinfo_send' || (task.notarizeEndDate !=null))&&task.justRecord==true -->
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">快递公司</label>
+                    <label class="col-sm-2 control-label">快递公司<i class="pull-right text-red">*</i></label>
                     <div class="col-sm-3">
                         <input id="courierCompany" name="courierCompany" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
                     </div>
@@ -39,44 +29,24 @@
                     <div class="col-sm-3">
                         <input id="orderNo" name="orderNo" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
                     </div>
-                    <label class="col-sm-2 control-label">寄出日期</label>
+                    <label class="col-sm-2 control-label">寄出日期<i class="pull-right text-red">*</i></label>
+                    <div class="input-group date form_datetime col-md-3" data-date="2019-3-8" data-date-format="yyyy-mm-dd" data-link-field="sendDate">
+                        <input class="form-control" size="16" type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                    </div>
+                    <input type="hidden" id="sendDate" name="sendDate" value="" /><br/>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">快递图片<i class="pull-right text-red">*</i></label>
                     <div class="col-sm-3">
-                        <div class="input-group date ng-isolate-scope ng-not-empty ng-valid ng-valid-required">
-                            <input id="sendDate" name="sendDate" class="form-control" type="text">
-                            <span class="input-group-addon">
-  				<i class="fa fa-calendar"></i>
-  				</span>
-                        </div>
+                        <input type="hidden" id="courierImage" name="courierImage" value="" >
+                        <input style="display:none" onchange="javascript:setImagePreview();" type="file" value="" id="file" name="file" >
+                        <label for="file">
+                            <img  id="preview" style="display:block;width:42%;height:100px;border-radius:10px;"  class="img-thumbnail"  src="images/mgcaraddimg.jpg"/>
+                        </label>
                     </div>
                 </div>
-                <!-- ngIf: !notUseButton -->
-                <br>
-                <!-- <div style="overflow: hidden;margin-left: 7%">
-                     ngRepeat: img in task.filepathlist<div  style="float:left;left:5px;margin-top: 20px" class="ng-scope">
-                         <div class="fileUpload_preview" style="margin-top:5px;">
-                             <li>
-                                 <img onclick="alert('ylimage');" id="bcimg1" class="fileUpload_preview fileUpload_preview-small fileUpload_preview-square"  src="images/user1-128x128.jpg">
-                             </li>
-                             <div class="btn btn-success btn-resize ng-hide">⇔</div>
-                             <div class="btn btn-danger btn-close ng-hide">x</div>
-                            <div class="btn btn-primary btn-download">↓</div>
-                            <div class="fileUpload_filename ng-binding">3282.jpg</div>
-                        </div>
-                        <div style="margin-top:5px;position: absolute;" class="ng-binding">2018-07-18</div>
-                    </div>end ngRepeat: img in task.filepathlist
-                </div> -->
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">快递图片</label>
-                    <div class="col-sm-3">
-<li> <!-- ylimage(this) -->
-    <img onclick="aayyclimage(this)" id="bcimg1_2" class="fileUpload_preview fileUpload_preview-small fileUpload_preview-square" src="images/user3-128x128.jpg">
-</li>
-<div class="btn btn-success btn-resize ng-hide">⇔</div>
-<div class="btn btn-danger btn-close ng-hide">x</div>
-<!-- <div class="btn btn-primary btn-download">↓</div> -->
-<!-- <div class="fileUpload_filename ng-binding" style="margin-left:30px;">点击放大</div> -->
-</div>
-</div>
 <!-- ngIf: rootData.taskDefKey!='loanOrder_postinfo_return' -->
 <div class="form-group">
     <label class="col-sm-2 control-label">备注</label>
@@ -88,17 +58,39 @@
     <a onclick="erp()" class="btn btn-primary">提交</a>
 </div>
 <script>
+$('.form_datetime').datetimepicker({
+        weekStart: 0, //一周从哪一天开始
+        minView: "month",//设置只显示到月份
+        todayBtn:  1, //
+        autoclose: 1, //当选择一个日期之后是否立即关闭此日期时间选择器。
+        todayHighlight: 1, //当天日期高亮
+        startView: 2, //0 or 'hour' 为小时视图，1 or 'day' 为天视图，2 or 'month' 为月视图（为默认值），3 or 'year'  为年视图，4 or 'decade' 为十年视图
+        forceParse: 0, //当选择器关闭的时候，是否强制解析输入框中的值。
+        showMeridian: 1
+    });
+</script>
+<script>
     function erp(){
         var courierCompany= $('#courierCompany').val();
         var orderNo= $('#orderNo').val();
         var sendDate= $('#sendDate').val();
         var result_msg= $('#result_msg').val();
+        var courierImage = $('#courierImage').val();
         var icbc_id= '${requestScope.infodb.icbc_id}';
         var type_id= '${requestScope.infodb.type_id}';
         var id= '${requestScope.infodb.id}';
         //alert(icbc_id+"----"+type_id+"---"+id+"---");
         if(!orderNo){
             alert("快递单号不能为空!");
+            return false;
+        }else if(!courierCompany){
+            alert("快递公司不能为空!");
+            return false;
+        }else if(!sendDate){
+            alert("寄出日期不能为空!");
+            return false;
+        }else if(!courierImage){
+            alert("快递图片不能为空!");
             return false;
         }
         $.ajax({
@@ -110,6 +102,7 @@
                 orderNo:orderNo,
                 sendDate:sendDate,
                 result_msg:result_msg,
+                courierImage:courierImage,
                 icbc_id:icbc_id,
                 type_id:type_id,
                 id:id
@@ -123,67 +116,69 @@
             }
         });
     }
-
-    // 57 处理 json ,并给相应的对象赋值
-    var index = 2;
-    var objS_57index = JSON.parse($("#inObj_57_2").val()); //由JSON字符串转换为JSON对象
-    document.getElementById("kdgs_2").value = objS_57index['kdgs'];
-    document.getElementById("kddh_2").value = objS_57index.kddh;
-    document.getElementById("jcrq_2").value = objS_57index.jcrq;
-    //alert("图片："+objS_57index.bcimg1);
-    if(objS_57index.bcimg1!=null&&objS_57index.bcimg1!=''){
-        //document.getElementById("bcimg1_2").src = "http://a.kcway.net/"+objS_57index.bcimg1;
-    }else{
-        //document.getElementById("bcimg1_2").style.display="none";
+    //上传图片
+    function setImagePreview(avalue) {
+        var docObj = document.getElementById("file");
+        var imgObjPreview = document.getElementById("preview");
+        if(docObj.files && docObj.files[0])
+        {
+            //火狐下，直接设img属性
+            imgObjPreview.style.display = 'block';
+            imgObjPreview.style.width = '100px';
+            imgObjPreview.style.height = '100px';
+            //imgObjPreview.src = docObj.files[0].getAsDataURL();
+            //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
+            imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
+        }
+        else
+        {
+            //IE下，使用滤镜
+            docObj.select();
+            var imgSrc = document.selection.createRange().text;
+            var localImagId = document.getElementById("localImag"); //必须设置初始大小
+            localImagId.style.width = "100px";
+            localImagId.style.height = "100px"; //图片异常的捕捉，防止用户修改后缀来伪造图片
+            try {
+                localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
+                localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
+            } catch(e) {
+                alert("您上传的图片格式不正确，请重新选择!");
+                return false;
+            }
+            imgObjPreview.style.display = 'none';
+            document.selection.empty();
+        }
+        //file_up();
+        document.getElementById("courierImage").value=document.getElementById("file").files[0];
+        return true;
     }
 
-    function aayyclimage(obj){
-        //alert(obj);
-        if(obj!=0){
-            var $img = $(obj),
-                imgUrl = $img[0].src;
-        }
-        /* alert($img[0].src); */
-        var activeIndex=0;
-        var imgs = [];
-        $(".fileUpload_preview").each(function(i,elem){
-            //alert(elem.src);
-            if(obj!=0){
-                if(elem.src == imgUrl){
-                    activeIndex=i;
-                }
+    function file_up(){
+        var formData = new FormData();
+        formData.append("file", document.getElementById("file").files[0]);
+        $.ajax({
+            url: "${pageContext.request.contextPath}/manager/file_up_util.do",
+            type: "POST",
+            data: formData,
+            /**
+             *必须false才会自动加上正确的Content-Type
+             */
+            contentType: false,
+            /**
+             * 必须false才会避开jQuery对 formdata 的默认处理
+             * XMLHttpRequest会对 formdata 进行正确的处理
+             */
+            processData: false,
+            success: function (data) {
+                alert("上传成功！");
+                document.getElementById("courierImage").value=data;
+            },
+            error: function () {
+                alert("上传失败！");
             }
-            imgs.push({
-                url: elem.src,
-                imgHeight :'820',
-                imgWidth : '900'
-            });
         });
-        localStorage["photoGalleryImgs"] = JSON.stringify(imgs); //因为此字符串可能是base64字符，appgo无法传
-        localStorage["photoGalleryActiveIndex"] = activeIndex;
-        //给iframe加上src路径
-        $("#aayyclModal_iframe").attr("src","/jquery-photo-gallery/gallerys.jsp");
-        //显示模态框  只有在选择编辑的行   然后根据回调函数成功后才会显示模态框
-        $('#aayyclModal').modal({ show: true, backdrop: 'static' });
     }
 </script>
-<div class="modal fade" id="aayyclModal" tabindex="-1" role="dialog" aria-labelledby="aayyclModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" align="center" id="aayyclModalLabel">图片预览</h4>
-            </div>
-            <div class="modal-body" style="height:750px;">
-                <iframe id="aayyclModal_iframe" width="100%" height="100%" frameborder="0"></iframe>
-                (左右键控制上一张,下一张)
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-            </div>
-        </div>
-    </div>
-</div>
 </form>
 </div>
 </div>
