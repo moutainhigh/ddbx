@@ -105,7 +105,15 @@
         if(!state_code){
             alert("审核结果不能为空!");
             return false;
+        } else {
+            if (state_code == 1) {
+                if(!price_result){
+                    alert("最终评估价不能为空!");
+                    return false;
+                }
+            }
         }
+
         $.ajax({
             type: "POST",      //data 传送数据类型。post 传递
             dataType: 'json',  // 返回数据的数据类型json

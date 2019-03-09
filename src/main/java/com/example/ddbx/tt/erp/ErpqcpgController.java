@@ -51,8 +51,8 @@ public class ErpqcpgController {
                 erp_result.put("now_status", "11");
                 break;
             case "3":
-                erp_result.put("later_status", "11");
-                erp_result.put("now_status", "10");
+                erp_result.put("later_status", "10");
+                erp_result.put("now_status", "11");
                 break;
         }
         erp_result.put("remark", post.get("remark"));
