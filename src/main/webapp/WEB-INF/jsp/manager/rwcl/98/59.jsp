@@ -26,7 +26,7 @@
                         <input id="receiptConfirm" name="receiptConfirm" type="radio" value="未收到"  class="ng-pristine ng-untouched ng-valid ng-not-empty" name="yhdksh_58_msg">未收到
                     </div>
                     <label class="col-sm-2 control-label">收件日期<i class="pull-right text-red">*</i></label>
-                    <div class="input-group date form_datetime col-md-3" data-date="2019-3-8" data-date-format="yyyy-mm-dd" data-link-field="receiptDate">
+                    <div class="input-group date form_datetime col-md-3" data-date="" data-date-format="yyyy-mm-dd" data-link-field="receiptDate">
                         <input class="form-control" size="16" type="text" value="" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
@@ -52,7 +52,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">备注</label>
                     <div class="col-sm-8">
-                        <textarea name="result_msg" rows="3" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" ng-model="task.remarks"></textarea>
+                        <textarea id="result_msg" name="result_msg" rows="3" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" ng-model="task.remarks"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
