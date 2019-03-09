@@ -26,8 +26,8 @@
     System.out.println(result_map+"**********");
     request.setAttribute("result_map", result_map);
 %>
-<div class="text-primary">
-    <em>3.评估价审核：</em>
+<li class="text-primary">
+    <em>评估价审核：</em>
     <div class="big-conte" style="display: block;">
         <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
             <strong>开始时间：</strong>
@@ -113,4 +113,4 @@
             </form>
         </div>
     </div>
-</div>
+</li>
