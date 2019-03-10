@@ -22,7 +22,7 @@ public class Fs extends DbCtrl {
   private String orderString = "ORDER BY dt_edit DESC"; // 默认排序
   private boolean canDel = false;
   private boolean canAdd = true;
-  private final String classAgpId = "6"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
+  private final String classAgpId = "28"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
   public boolean agpOK = false;// 默认无权限
   private String purview_map = "";
 
@@ -67,6 +67,7 @@ public class Fs extends DbCtrl {
    * @return: 返回
    */
   public void doGetForm(HttpServletRequest request, TtMap post) {
+
     Modal modalMenu = new Modal();
     request.setAttribute("modals", modalMenu.getAllModals());
 
@@ -151,14 +152,25 @@ public class Fs extends DbCtrl {
     System.out.println(ary.toString());
     return ary;
   }
+
   @Override
   public void doPost(TtMap post, long id,TtMap result2) {
+    //System.out.println("fs:"+Tools.jsonEncode(post));
+    TtMap minfo = Tools.minfo();
     if (id > 0) { // id为0时，新增
       edit(post, id);
     } else {
-      add(post);
+      post.put("up_id",minfo.get("fsid"));
+      long fsid= add(post);
+      //复制权限数据到新开公司
+      TtList agplist=Tools.reclist("SELECT * FROM admin_agp where fsid=0");
+      for(TtMap ttMap:agplist){
+        ttMap.put("fsid",String.valueOf(fsid));
+        ttMap.put("systag","0");
+        Tools.recAdd(ttMap,"admin_agp");
+      }
     }
-    String nextUrl = Tools.urlKill("");
+    String nextUrl = Tools.urlKill("sdo|id")+"&sdo=list";
     boolean bSuccess = errorCode == 0;
     Tools.formatResult(result2, bSuccess, errorCode, bSuccess ? "编辑"+title+"成功！" : errorMsg,
             bSuccess ? nextUrl : "");//失败时停留在当前页面,nextUrl为空

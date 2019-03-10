@@ -16,7 +16,7 @@ public class MyTask extends DbCtrl {
     private String orderString = "ORDER BY dt_edit DESC"; // 默认排序
     private boolean canDel = false;
     private boolean canAdd = false;
-    private final String classAgpId = "6"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
+    private final String classAgpId = "33"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
     public boolean agpOK = false;// 默认无权限
 
 
@@ -105,6 +105,8 @@ public class MyTask extends DbCtrl {
         TtList jdlist=Tools.reclist("select * from dd_icbc_erp where icbc_id="+post.get("icbc_id"));
         request.setAttribute("jdlist", jdlist);
 
+        //获取业务类型板块信息
+        request.setAttribute("ywlxlist", Tools.reclist("SELECT * FROM sys_modal where type='rwcl' and id_uplevel=0"));
 
         TtMap modals = get_sys_modal_name(Integer.valueOf(post.get("type_id")), Integer.valueOf(info.get("later_status")));
         request.setAttribute("modals", modals);

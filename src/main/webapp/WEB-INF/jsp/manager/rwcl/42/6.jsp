@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">通融资料:</label>
                     <div class="col-sm-10">
-                        <div class="row inline-from">
+                        <div class="row inline-from gallerys">
                             <input id="imgstep1_5ss" name="imgstep1_5ss" value="${erp_result_value.imgstep1_5ss}"  type="hidden" />
                             <%
                                 TtMap result_value=(TtMap) request.getAttribute("erp_result_value");
@@ -39,10 +39,8 @@
 
                                     if (ssImgs1_1[i] != null && !ssImgs1_1[i].equals("")) {
                                         %>
-                            <div style="position: relative;width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;" id="div_imgstep1_5ss<%=i+1%>">
-                                <a href="<%=ssImgs1_1[i]%>" target="_blank">
-                                <img id="imgstep1_5ss_view<%=i+1%>" name="imgstep1_5ss_view<%=i+1%>" src="<%=ssImgs1_1[i]%>" class="imgclass" style="width: 100%;height:100px;border-radius:10px;">
-                                </a>
+                            <div  style="position: relative;width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;" id="div_imgstep1_5ss<%=i+1%>">
+                                <img class="imgclass gallery-pic" onclick="$.openPhotoGallery(this)" id="imgstep1_5ss_view<%=i+1%>" name="imgstep1_5ss_view<%=i+1%>" src="<%=ssImgs1_1[i]%>"  style="width: 100%;height:100px;border-radius:10px;">
                             </div>
 
 

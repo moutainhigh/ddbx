@@ -112,7 +112,7 @@
                                             <li>
                                                 <a style="background-color: rgb(167, 167, 167); color: rgb(255, 255, 255);"
                                                    id="${c.cn}"
-                                                   href="javascript:alert('暂无处理过程!!!');"
+                                                   href="javascript:adderp('${c.cn}','${c.id}');"
                                                    class="btn btn-block btn-info">
                                                         ${c.name}
                                                 </a>
@@ -135,6 +135,33 @@
                             </ul>
                         </div>
                         <jsp:include page="/WEB-INF/jsp/manager/rwcl/rwcl.jsp"></jsp:include>
+                    </div>
+                </div>
+                <script>
+                    <%
+                    url=Tools.urlKill("cn|type|sdo|tab|type_id|id");
+                    %>
+                    //需要手动添加板块配置
+                    function adderp(cn,type_id){
+                         switch (cn) {
+                             case "ywxxxg":
+                                 if (window.confirm('你确定要添加吗？')) {
+                                     //alert('<%=url%>&cn=ywxxxg&type=rwcl&sdo=float&type_id='+type_id);
+                                     $("#erpmodal").modal({ remote: '<%=url%>&cn=ywxxxg&type=rwcl&sdo=float&type_id='+type_id });
+                                 }
+                                 break;
+                             default:
+                                 alert("暂无处理过程!!!");
+                                 break;
+                         }
+                    }
+                </script>
+                <!--弹窗框体开始-->
+                <div class="modal fade" id="erpmodal" role="dialog" data-backdrop="static">
+                    <div class="modal-dialog" role="document" style="width: 800px;">
+                        <div id="mycontent" class="modal-content">
+                            <!--将在这里载入链接页面-->
+                        </div>
                     </div>
                 </div>
                 <div ${param.tab eq 1?"class='tab-pane active'":"class='tab-pane'"} id="tab_1">

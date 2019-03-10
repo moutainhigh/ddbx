@@ -6,11 +6,6 @@
 <%@ page import="com.example.ddbx.tt.data.TtMap" %>
 <%@ page import="com.example.ddbx.tt.data.TtList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-	DbTools myDbTools = new DbTools(null, true);
-	Map<String, String> info = myDbTools.recinfo("select fsid from admin where id="+Tools.mid(), false, "", null);
-%>
-<input id="up_id" name="up_id" type="hidden" value="<%=info.get("fsid") %>">
 <div class="admin-content nav-tabs-custom box">
 	<div class="box-header with-border">
 		<div class="box-header with-border">
@@ -20,7 +15,7 @@
 			<div class="form-group">
 				<label class="col-sm-2 control-label">公司名称</label>
 				<div class="col-sm-6">
-					<input type="text" class="form-control" id="name" name="name"  placeholder="公司名称">
+					<input type="text" class="form-control" id="name" name="name"   placeholder="公司名称">
 				</div>
 			</div>
 			<div class="form-group">
@@ -35,6 +30,15 @@
 					<input type="text" class="form-control" id="code_pre" name="code_pre" placeholder="名称拼音">
 				</div>
 			</div>
+			<script>
+				$("#name").change(function(){
+					var name=$("#name").val();
+				  	var py=getPinYinFirstCharacter(name,"","");
+					py = py.replace(/\ +/g,"").replace(/[\r\n]/g,"");
+					document.getElementById("code_pre").value=py;
+				});
+
+			</script>
 			<%
 				Map<String, String> infodb = (Map<String, String>) request.getAttribute("infodb");
 			%>
@@ -73,6 +77,7 @@
 			<%
    			//dicopt功能演示，指定表里面的name和id，并用name组成<option></option>
     		String sp = Tools.dicopt("comm_states", 0);//省会，
+			//String cp = Tools.dicopt("comm_citys", 0);//市，
 			%>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">显示/隐藏</label>
@@ -101,6 +106,14 @@
 							<div class="input-group">
 								<span class="input-group-addon">市</span>
 								<select name="city_id" id="city_id" class="form-control">
+									<option value="0">请选择</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="input-group">
+								<span class="input-group-addon">县</span>
+								<select name="zone_id" id="zone_id" class="form-control">
 									<option value="0">请选择</option>
 								</select>
 							</div>
@@ -164,9 +177,11 @@
 			<script>
 				/*选择省后，动态获取省下面的市，并默认选中你指定的id的市，/ttAjax在Ajax.java中处理
 														/ttAjax也可以单独使用，比如
-														/ttAjax?do=opt&cn=kjb_user&id=3&mid_add=100000 //显示创建人id为100000的所有用户，默认选择id为3的记录
+														/ttAjax?do=opt&cn=kjb_user&id=3&mid_add=100000
+														//显示创建人id为100000的所有用户，默认选择id为3的记录
 														* */
 				objacl('#state_id', '#city_id', '/ttAjax?do=opt&cn=comm_citys&id=3&state_id=', '${infodb.state_id}', '${infodb.city_id}');
+				objacl('#city_id', '#zone_id', '/ttAjax?do=opt&cn=comm_zones&id=3&cityid=', '${infodb.city_id}', '${infodb.zone_id}');
 			</script>
 		</div>
 	</div>

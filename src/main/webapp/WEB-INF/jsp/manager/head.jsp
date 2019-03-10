@@ -62,11 +62,17 @@
   <script src="dist/js/jQuery-slimScroll-1.3.8/jquery.slimscroll.js " type="text/javascript"></script>
   <!-- <script src="/comm/jquery.dragsort-0.4.min.js" type="text/javascript"></script> -->
   <link href="dist/css/iconfont.css" rel="stylesheet" type="text/css" />
-  <%-- 文件上传 --%>
-  <script type="text/javascript" src="js/fileupload.js?v=4.0"></script><%--这个必须--%>
-  <script type="text/javascript" src="js/exif.js"></script><%--这个必须,处理图片用--%>
-  <script type="text/javascript" src="js/megapic-image.js"></script><%--这个必须，压缩和处理图片用--%>
+  <!-- 图片上传,文件上传js -->
+  <script type="text/javascript" src="js/fileupload.js?v=4.0"></script>
+  <!-- 图片扩展信息获取js -->
+  <script type="text/javascript" src="js/exif.js"></script>
+  <!-- 上传图片前图片自动旋转 -->
+  <script type="text/javascript" src="js/megapic-image.js"></script>
   <%-- app.iframe --%>
   <link href="dist/css/style.css" rel="stylesheet" type="text/css" />
   <script src="js/index.js" type="text/javascript"></script>
+  <!-- 图片旋转放大等 -->
+  <script src="js/jquery-photo-gallery/jquery.photo.gallery.js"></script>
+  <!-- 汉字拼音获取 -->
+  <script src="js/namepy/namePY.js"></script>
 </head>

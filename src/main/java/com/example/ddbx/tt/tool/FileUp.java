@@ -9,11 +9,14 @@
  */
 package com.example.ddbx.tt.tool;
 
-import com.example.ddbx.tt.data.TtMap;
+import java.awt.Color;
+import java.awt.Font;
+import java.io.*;
+
 import org.springframework.web.multipart.MultipartFile;
 
-import java.awt.*;
-import java.io.*;
+
+import com.example.ddbx.tt.data.TtMap;
 
 public class FileUp {
     public String savePath;

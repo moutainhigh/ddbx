@@ -127,7 +127,6 @@
 
 
                         %>
-
                         <jsp:include page="<%=erp_msg%>" >
                             <jsp:param name="result_value" value="<%=result_value%>"/>
                             <jsp:param name="admin_name" value="<%=admin_name%>"/>

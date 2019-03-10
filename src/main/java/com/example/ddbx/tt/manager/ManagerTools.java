@@ -10,6 +10,7 @@ package com.example.ddbx.tt.manager;
 import com.example.ddbx.tt.tool.Tools;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.tools.Tool;
 
 
 /**
@@ -139,6 +140,7 @@ public class ManagerTools {
             case "Modals":
             case "Timeline":
             case "font":
+            case "ywxxxg":
                 return "";
             default:
                 return null;
@@ -153,8 +155,18 @@ public class ManagerTools {
     public static void doFetchDefault(HttpServletRequest request, String cn, String sdo) {
         switch (sdo) {
             case "form":
+            case "float":
                 System.out.println("没有表的form情况");
-                request.setAttribute("sHideButton", "true");
+                switch (cn) {//提交按钮的显示隐藏
+                    case "ywxxxg":
+                        System.out.println("ywxxxg");
+                        request.setAttribute("ywlxlist", Tools.reclist("SELECT * FROM sys_modal where type='rwcl' and id_uplevel=0"));
+                        request.setAttribute("sHideButton", "true");
+                        break;
+                    default:
+                        request.setAttribute("sHideButton", "true");
+                        break;
+                }
 
                 break;
             case "list":

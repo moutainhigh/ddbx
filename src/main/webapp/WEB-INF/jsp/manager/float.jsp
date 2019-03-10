@@ -6,7 +6,7 @@
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<h4 class="modal-title" id="myModalLabel"></h4>
 	</div>
-	<div class="modal-body">
+	<div class="modal-body" >
 		<form class="form-horizontal" id="float_form" action="<%=Tools.urlKill("id")%>" method="post">
 			<%
 				String errorMsg =(String) request.getAttribute("errorMsg");
@@ -23,14 +23,21 @@
 				String sdo = request.getParameter("sdo");
 				String msg =  "/WEB-INF/jsp/manager/" + type + "/" + cn + ".form.jsp";
 				String info =String.valueOf(request.getAttribute("info"));
+				String sHideButton =(String)request.getAttribute("sHideButton"); //隐藏保存提交和取消返回标志，非空时隐藏
 			%>
 			<jsp:include page="<%=msg%>"></jsp:include>
 		</form>
 	</div>
+
+	<%
+		System.out.println("sHideButton:"+Tools.myIsNull(sHideButton));
+		if (Tools.myIsNull(sHideButton)) {%>
 	<div class="modal-footer">
 		<button type="button" class="btn btn-default pull-left" data-dismiss="modal" aria-label="Close">取消返回</button>
 		<button type="submit" class="btn btn-danger" onclick="$('#float_form').submit()">保存提交</button>
 	</div>
+    <%}%>
+
 </div>
 <script>
 	<%if (!Tools.myIsNull(info)){%>

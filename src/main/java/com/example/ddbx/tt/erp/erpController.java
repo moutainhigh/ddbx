@@ -19,6 +19,16 @@ import java.util.Map;
 public class erpController {
 
     /**
+     * erp 弹窗框体url返回
+     * @return
+     */
+    @RequestMapping(value = "/manager/erpmodal", method = RequestMethod.GET)
+    public String erpmodal(HttpServletRequest request){
+        TtMap post = Tools.getPostMap(request, true);// 过滤参数，过滤mysql的注入，url参数注入
+        return "jsp/manager/rwcl/"+post.get("cn")+"."+post.get("sdo")+".jsp";
+    }
+
+    /**
      * 添加任务进度
      *
      * @param request
@@ -35,6 +45,10 @@ public class erpController {
         TtMap res = new TtMap();
         //更新dd_icbc_erp表状态
         TtMap erp = new TtMap();
+        erp.put("icbc_id",post.get("icbc_id"));
+        erp.put("gems_id",minfo.get("id"));
+        erp.put("gems_fs_id",minfo.get("fsid"));
+        erp.put("type_id",post.get("type_id"));
         //添加 erp_result
         TtMap erp_result = new TtMap();
         erp_result.put("qryid",post.get("id"));
@@ -42,6 +56,8 @@ public class erpController {
         erp_result.put("icbc_id",post.get("icbc_id"));
         erp_result.put("gems_id",minfo.get("id"));
         erp_result.put("gems_fs_id",minfo.get("fsid"));
+        //查询主订单信息
+        TtMap icbcMap=Tools.recinfo("select * from dd_icbc where id="+post.get("icbc_id"));
         //查询 dd_icbc_status id
         TtMap icbc_status = new TtMap();
         String status_id = Tools.unDic("dd_icbc_status", post.get("icbc_id"), "id", "icbc_id");
@@ -210,7 +226,82 @@ public class erpController {
                     Tools.recAdd(erp_result_end, "dd_icbc_erp_result");
                 }
                 break;
-
+            case "4"://业务信息修改申请
+                erp.put("now_status","84");
+                erp.put("later_status","85");
+                erp.put("c_name",icbcMap.get("c_name"));
+                erp.put("c_tel",icbcMap.get("c_tel"));
+                erp.put("c_cardno",icbcMap.get("c_cardno"));
+                long id=Tools.recAdd(erp,"dd_icbc_erp");
+                erp_result.put("now_status","83");
+                erp_result.put("later_status","84");
+                erp_result.put("qryid",String.valueOf(id));
+                erp_result.put("result_msg",post.get("xgbz"));
+                erp_result.put("result_value", Tools.jsonEncode(post));
+                Tools.recAdd(erp_result,"dd_icbc_erp_result");
+                erp_result.put("now_status","84");
+                erp_result.put("later_status","85");
+                erp_result.put("qryid",String.valueOf(id));
+                erp_result.put("result_msg",post.get("xgbz"));
+                erp_result.put("result_value", Tools.jsonEncode(post));
+                Tools.recAdd(erp_result,"dd_icbc_erp_result");
+                break;
+            case "5"://业务管理部审核
+                erp.put("now_status","85");
+                erp_result.put("now_status","85");
+                switch (post.get("state_code")) {
+                    case "1":
+                        erp.put("later_status","86");
+                        erp_result.put("later_status","86");
+                        break;
+                    case "2":
+                        erp.put("later_status","84");
+                        erp_result.put("later_status","84");
+                        break;
+                }
+                Tools.recEdit(erp,"dd_icbc_erp",Long.valueOf(post.get("id")));
+                erp_result.put("qryid",post.get("id"));
+                erp_result.put("result_msg",post.get("result_msg"));
+                erp_result.put("result_code",post.get("state_code"));
+                erp_result.put("result_value", Tools.jsonEncode(post));
+                Tools.recAdd(erp_result,"dd_icbc_erp_result");
+                break;
+            case "6":
+                erp.put("now_status","84");
+                erp.put("later_status","85");
+                Tools.recEdit(erp,"dd_icbc_erp",Long.valueOf(post.get("id")));
+                erp_result.put("now_status","84");
+                erp_result.put("later_status","85");
+                erp_result.put("qryid",post.get("id"));
+                erp_result.put("result_msg",post.get("xgbz"));
+                erp_result.put("result_value", Tools.jsonEncode(post));
+                Tools.recAdd(erp_result,"dd_icbc_erp_result");
+                break;
+            case "7":
+                erp_result.put("now_status","86");
+                switch (post.get("state_code")) {
+                    case "1":
+                        erp.put("now_status","87");
+                        erp.put("later_status","87");
+                        erp_result.put("later_status","87");
+                        break;
+                    case "2":
+                        erp.put("now_status","86");
+                        erp.put("later_status","85");
+                        erp_result.put("later_status","85");
+                        break;
+                }
+                Tools.recEdit(erp,"dd_icbc_erp",Long.valueOf(post.get("id")));
+                erp_result.put("qryid",post.get("id"));
+                erp_result.put("result_msg",post.get("result_msg"));
+                erp_result.put("result_value", Tools.jsonEncode(post));
+                Tools.recAdd(erp_result,"dd_icbc_erp_result");
+                if (post.get("state_code").equals("1")) {
+                    erp_result_end.put("later_status", "87");
+                    erp_result_end.put("now_status", "87");
+                    Tools.recAdd(erp_result_end, "dd_icbc_erp_result");
+                }
+                break;
             default:
 
                 break;
