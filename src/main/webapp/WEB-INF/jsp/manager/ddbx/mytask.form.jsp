@@ -112,7 +112,7 @@
                                             <li>
                                                 <a style="background-color: rgb(167, 167, 167); color: rgb(255, 255, 255);"
                                                    id="${c.cn}"
-                                                   href="javascript:adderp('${c.cn}','${c.id}');"
+                                                   href="javascript:alert('暂无处理过程!!!');"
                                                    class="btn btn-block btn-info">
                                                         ${c.name}
                                                 </a>

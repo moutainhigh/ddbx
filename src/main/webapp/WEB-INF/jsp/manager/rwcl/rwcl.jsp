@@ -186,9 +186,6 @@
         }
     };
 
-
-
-
     $(".text-primary em").click(function(){
         $(this).next(".big-conte").slideToggle();
     })

@@ -105,8 +105,6 @@ public class MyTask extends DbCtrl {
         TtList jdlist=Tools.reclist("select * from dd_icbc_erp where icbc_id="+post.get("icbc_id"));
         request.setAttribute("jdlist", jdlist);
 
-        //获取业务类型板块信息
-        request.setAttribute("ywlxlist", Tools.reclist("SELECT * FROM sys_modal where type='rwcl' and id_uplevel=0"));
 
         TtMap modals = get_sys_modal_name(Integer.valueOf(post.get("type_id")), Integer.valueOf(info.get("later_status")));
         request.setAttribute("modals", modals);

@@ -66,7 +66,12 @@ public class CarLoan extends DbCtrl {
      */
     @Override
     public int edit(TtMap ary, long id) {
+        String icbc_id = ary.get("icbc_id");
         //1 其他表操作  add
+//        TtMap carLoanErpStatus = new TtMap();
+//        carLoanErpStatus.put("now_status","32"); //提交查询
+//        carLoanErpStatus.put("later_status","33"); //专员审核
+        Tools.recexec("update dd_icbc_erp set now_status=32,later_status=33 where type_id=70 and icbc_id="+icbc_id);
         //2 本表操作
         //证明材料
         String imgstep9_1ss =
@@ -156,119 +161,148 @@ public class CarLoan extends DbCtrl {
         return ontCustomer;
     }
 
+    public TtMap selectCarLoanPlate(String icbc_id) {
+        DbTools myDbTools = new DbTools();
+        String sql = "select count(*) sum,e.* from dd_icbc_erp e where type_id=40 and icbc_id=" + icbc_id;
+        TtMap ontCustomer = null;
+        try {
+            ontCustomer = myDbTools.recinfo(sql);
+            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+        } catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        } finally {
+            myDbTools.closeConn();
+        }
+        return ontCustomer;
+    }
 
     @Override
     public long add(TtMap ary){
-        //首先通过获取到主订单id查询到客户的主订单信息
+        //添加时先判断一下有没有这个板块，如果有该板块>0就不添加，没有0该板块就添加
         String icbc_id = ary.get("icbc_id");
-        TtMap ontCustomer = getInfoByIcbc_id(icbc_id);
-        //1本表操作
-        ary.put("icbc_id",ontCustomer.get("id"));
-        ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
-        ary.put("gems_id",ontCustomer.get("gems_id"));
-        //订单编号生成规则1: C(1位)+用户id(9位)
-        //JAVA补字符串固定位数，位数不够左补0操作
-        DecimalFormat countFormat = new DecimalFormat("000000000");
-        ary.put("order_code","C"+countFormat.format(Integer.parseInt(ontCustomer.get("id"))));
-        //证明材料
-        String imgstep9_1ss =
-                ary.get("imgstep9_1ss1")+","
-                        +ary.get("imgstep9_1ss2")+","
-                        +ary.get("imgstep9_1ss3")+","
-                        +ary.get("imgstep9_1ss4")+","
-                        +ary.get("imgstep9_1ss5")+","
-                        +ary.get("imgstep9_1ss6");
-        ary.put("imgstep9_1ss",imgstep9_1ss);
-        //合同材料
-        String imgstep9_2ss =
-                ary.get("imgstep9_2ss1")+","
-                        +ary.get("imgstep9_2ss2")+","
-                        +ary.get("imgstep9_2ss3")+","
-                        +ary.get("imgstep9_2ss4")+","
-                        +ary.get("imgstep9_2ss5")+","
-                        +ary.get("imgstep9_2ss6")+","
-                        +ary.get("imgstep9_2ss7")+","
-                        +ary.get("imgstep9_2ss8")+","
-                        +ary.get("imgstep9_2ss9")+","
-                        +ary.get("imgstep9_2ss10")+","
-                        +ary.get("imgstep9_2ss11")+","
-                        +ary.get("imgstep9_2ss12")+","
-                        +ary.get("imgstep9_2ss13")+","
-                        +ary.get("imgstep9_2ss14")+","
-                        +ary.get("imgstep9_2ss15")+","
-                        +ary.get("imgstep9_2ss16")+","
-                        +ary.get("imgstep9_2ss17")+","
-                        +ary.get("imgstep9_2ss18")+","
-                        +ary.get("imgstep9_2ss19")+","
-                        +ary.get("imgstep9_2ss20")+","
-                        +ary.get("imgstep9_2ss21")+","
-                        +ary.get("imgstep9_2ss22")+","
-                        +ary.get("imgstep9_2ss23")+","
-                        +ary.get("imgstep9_2ss24")+","
-                        +ary.get("imgstep9_2ss25")+","
-                        +ary.get("imgstep9_2ss26")+","
-                        +ary.get("imgstep9_2ss27");
-        ary.put("imgstep9_2ss",imgstep9_2ss);
-        //其他材料
-        String imgstep9_3ss =
-                ary.get("imgstep9_3ss1")+","
-                        +ary.get("imgstep9_3ss2")+","
-                        +ary.get("imgstep9_3ss3")+","
-                        +ary.get("imgstep9_3ss4");
-        ary.put("imgstep9_3ss",imgstep9_3ss);
-        //补充材料
-        String imgstep9_4ss =
-                ary.get("imgstep9_4ss1")+","
-                        +ary.get("imgstep9_4ss2")+","
-                        +ary.get("imgstep9_4ss3")+","
-                        +ary.get("imgstep9_4ss4");
-        ary.put("imgstep9_4ss",imgstep9_4ss);
+        TtMap ttMap = selectCarLoanPlate(icbc_id);
+        // 没有该板块添加
+        if(ttMap.get("sum").equals("0")){
+            //首先通过获取到主订单id查询到客户的主订单信息
+            TtMap ontCustomer = getInfoByIcbc_id(icbc_id);
+            //1本表操作
+            ary.put("icbc_id",ontCustomer.get("id"));
+            ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
+            ary.put("gems_id",ontCustomer.get("gems_id"));
+            //订单编号生成规则1: C(1位)+用户id(9位)
+            //JAVA补字符串固定位数，位数不够左补0操作
+            DecimalFormat countFormat = new DecimalFormat("000000000");
+            ary.put("order_code","C"+countFormat.format(Integer.parseInt(ontCustomer.get("id"))));
+            //证明材料
+            String imgstep9_1ss =
+                    ary.get("imgstep9_1ss1")+","
+                            +ary.get("imgstep9_1ss2")+","
+                            +ary.get("imgstep9_1ss3")+","
+                            +ary.get("imgstep9_1ss4")+","
+                            +ary.get("imgstep9_1ss5")+","
+                            +ary.get("imgstep9_1ss6");
+            ary.put("imgstep9_1ss",imgstep9_1ss);
+            //合同材料
+            String imgstep9_2ss =
+                    ary.get("imgstep9_2ss1")+","
+                            +ary.get("imgstep9_2ss2")+","
+                            +ary.get("imgstep9_2ss3")+","
+                            +ary.get("imgstep9_2ss4")+","
+                            +ary.get("imgstep9_2ss5")+","
+                            +ary.get("imgstep9_2ss6")+","
+                            +ary.get("imgstep9_2ss7")+","
+                            +ary.get("imgstep9_2ss8")+","
+                            +ary.get("imgstep9_2ss9")+","
+                            +ary.get("imgstep9_2ss10")+","
+                            +ary.get("imgstep9_2ss11")+","
+                            +ary.get("imgstep9_2ss12")+","
+                            +ary.get("imgstep9_2ss13")+","
+                            +ary.get("imgstep9_2ss14")+","
+                            +ary.get("imgstep9_2ss15")+","
+                            +ary.get("imgstep9_2ss16")+","
+                            +ary.get("imgstep9_2ss17")+","
+                            +ary.get("imgstep9_2ss18")+","
+                            +ary.get("imgstep9_2ss19")+","
+                            +ary.get("imgstep9_2ss20")+","
+                            +ary.get("imgstep9_2ss21")+","
+                            +ary.get("imgstep9_2ss22")+","
+                            +ary.get("imgstep9_2ss23")+","
+                            +ary.get("imgstep9_2ss24")+","
+                            +ary.get("imgstep9_2ss25")+","
+                            +ary.get("imgstep9_2ss26")+","
+                            +ary.get("imgstep9_2ss27");
+            ary.put("imgstep9_2ss",imgstep9_2ss);
+            //其他材料
+            String imgstep9_3ss =
+                    ary.get("imgstep9_3ss1")+","
+                            +ary.get("imgstep9_3ss2")+","
+                            +ary.get("imgstep9_3ss3")+","
+                            +ary.get("imgstep9_3ss4");
+            ary.put("imgstep9_3ss",imgstep9_3ss);
+            //补充材料
+            String imgstep9_4ss =
+                    ary.get("imgstep9_4ss1")+","
+                            +ary.get("imgstep9_4ss2")+","
+                            +ary.get("imgstep9_4ss3")+","
+                            +ary.get("imgstep9_4ss4");
+            ary.put("imgstep9_4ss",imgstep9_4ss);
 
-        //icbc操作添加记录  start
-        DbCtrl testdb = new DbCtrl("dd_icbc_erp");
-        long id = 0;
-        try {
-            TtMap info = new TtMap();
-            info.put("later_status", "32"); //下一任务节点:合作商寄送材料
-            info.put("now_status", "31"); //当前任务状态节点:银行贷款申请开始
-            info.put("icbc_id", icbc_id);
-            info.put("gems_id", ontCustomer.get("gems_id"));
-            info.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
-            info.put("type_id", "70"); //业务类型id
-            info.put("c_name", ontCustomer.get("c_name"));
-            info.put("c_tel", ontCustomer.get("c_tel"));
-            info.put("c_cardno", ontCustomer.get("c_cardno"));
-            info.put("c_carvin", ontCustomer.get("c_carvin")); //暂无暂无
-            info.put("c_carno", ontCustomer.get("c_carno"));
-            info.put("adminop_tag", Tools.minfo().get("id")); //当前操作人id
-            /*
-             * 新增一条记录,返回生成记录的id
-             */
-            id = testdb.add(info);
-            System.out.println("新增的ID为：" + id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            testdb.closeConn();
+            //icbc操作添加记录  start
+            DbCtrl testdb = new DbCtrl("dd_icbc_erp");
+            long id = 0;
+            try {
+                TtMap info = new TtMap();
+                info.put("later_status", "33"); //下一任务节点:专员审核结果
+                info.put("now_status", "32"); //当前任务状态节点:专员审核中
+                info.put("icbc_id", icbc_id);
+                info.put("gems_id", ontCustomer.get("gems_id"));
+                info.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
+                info.put("type_id", "70"); //业务类型id
+                info.put("c_name", ontCustomer.get("c_name"));
+                info.put("c_tel", ontCustomer.get("c_tel"));
+                info.put("c_cardno", ontCustomer.get("c_cardno"));
+                info.put("c_carvin", ontCustomer.get("c_carvin")); //暂无暂无
+                info.put("c_carno", ontCustomer.get("c_carno"));
+                info.put("adminop_tag", Tools.minfo().get("id")); //当前操作人id
+                /*
+                 * 新增一条记录,返回生成记录的id
+                 */
+                id = testdb.add(info);
+                System.out.println("新增的ID为：" + id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                testdb.closeConn();
+            }
+            //icbc操作添加记录  end
+            //向dd_icbc_erp_result表中添加数据 start
+            DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
+            try {
+                //添加 开始
+                TtMap ttMap1 = new TtMap();
+                ttMap1.put("qryid",id+"");
+                ttMap1.put("icbc_id",icbc_id);
+                ttMap1.put("type_id","70");
+                ttMap1.put("later_status","32");
+                ttMap1.put("now_status","31");
+                dbCtrl2.add(ttMap1);
+                //添加 提交查询
+                TtMap ttMap2 = new TtMap();
+                ttMap2.put("qryid",id+"");
+                ttMap2.put("icbc_id",icbc_id);
+                ttMap2.put("type_id","70");
+                ttMap2.put("later_status","33");
+                ttMap2.put("now_status","32");
+                dbCtrl2.add(ttMap2);
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                dbCtrl2.closeConn();
+            }
+            //向dd_icbc_erp_result表中添加数据 end
+            return super.add(ary);
         }
-        //icbc操作添加记录  end
-        //向dd_icbc_erp_result表中添加数据 start
-        DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
-        try {
-            TtMap ttMap2 = new TtMap();
-            ttMap2.put("qryid",id+"");
-            ttMap2.put("icbc_id",icbc_id);
-            ttMap2.put("type_id","5");
-            ttMap2.put("later_status","18");
-            ttMap2.put("now_status","17");
-            dbCtrl2.add(ttMap2);
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            dbCtrl2.closeConn();
-        }
-        //向dd_icbc_erp_result表中添加数据 end
-        return super.add(ary);
+        return 0;
     }
 
     @Override

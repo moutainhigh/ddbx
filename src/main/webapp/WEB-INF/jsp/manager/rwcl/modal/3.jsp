@@ -1,57 +1,39 @@
-<%@ page import="com.example.ddbx.tt.tool.Tools" %>
-<%@ page import="com.example.ddbx.tt.data.TtMap" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%
-    String result_value = request.getParameter("result_value");
-    TtMap result_map = new TtMap();
-    String admin_name = "";
-    String s_time = "";
-    if (result_value != null && !result_value.equals("")) {
-        result_map = Tools.jsonDeCode_mp(result_value);
-    }
-    if (!Tools.myIsNull(request.getParameter("admin_name"))) {
-        admin_name = request.getParameter("admin_name");
-    }
-    if (!Tools.myIsNull(request.getParameter("s_time"))) {
-        s_time = request.getParameter("s_time");
-    }
-    String dt_edit = "";
-    if (!Tools.myIsNull(request.getParameter("dt_edit"))) {
-        dt_edit = request.getParameter("dt_edit");
-    }
-    request.setAttribute("result_map", result_map);
-%>
 <li class="text-primary"><em>查询结果：</em>
     <div class="big-conte" style="display: none;">
         <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
             <strong>开始时间：</strong>
-            <%=s_time%>
+            2019-02-20 16:58:39
         </div>
         <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
             <strong>处理时间：</strong>
-            <%=dt_edit%>
+            2019-02-20 16:59:10
         </div>
         <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
-            <strong>处理人：</strong><%=admin_name%>
+            <strong>处理人：</strong>秦扬
         </div>
         <strong style="margin-left: 10px;"><i>处理信息：</i></strong><br>
-        <div class="task_margin ng-scope"
-             style="border: 1px solid #ccc; border-radius: 10px; background-color: #F7F7F7; padding-top: 10px;">
+        <!-- ngIf: taskAct.pageName!='cudp'||'_cudp'.indexOf(taskAct.pageName)<=-1 -->
+        <!-- ngInclude: '/modules/'+taskAct.menuCode+'/'+taskAct.pageName+'.html' -->
+        <div class="task_margin ng-scope" style="border: 1px solid #ccc; border-radius: 10px; background-color: #F7F7F7; padding-top: 10px;">
+
+            <!-- ngIf: notUseButton -->
             <div class="form-group ng-scope">
                 <label class="col-sm-2 control-label">审核结果</label>
                 <div class="col-sm-8">
                     <label class="radio-inline">
-                        <input type="radio" value="1" ${result_map.state_code eq 1?"checked":''} name="state_code">通过
+                        <input type="radio" value="1" name="state_code">通过
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" value="2" ${result_map.state_code eq 2?"checked":''} name="state_code">不通过
+                        <input type="radio" value="2" name="state_code">不通过
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" value="3" ${result_map.state_code eq 3?"checked":''} name="state_code">回退补件
+                        <input type="radio" value="3" name="state_code">回退补件
                     </label>
                 </div>
             </div>
@@ -59,8 +41,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">备注</label>
                 <div class="col-sm-8">
-                        <textarea class="form-control" name="remark" id="remark"
-                                  style="margin: 0px -5.34375px 0px 0px; height: 141px; width: 545px;">${result_map.result_msg}
+                        <textarea class="form-control" name="remark" id="remark" style="margin: 0px -5.34375px 0px 0px; height: 141px; width: 545px;">
                         </textarea>
                 </div>
             </div>
@@ -87,8 +68,7 @@
                     <div id="zdr_hai" class="form-group" style="margin-top: 20px;">
                         <label class="col-sm-2 control-label">征信报告</label>
                         <div class="col-sm-8">
-                            <textarea id="zdr_zx1_result" name="zdr_zx1_result" class="form-control"
-                                      style="margin: 0px -5.34375px 0px 0px; height: 141px; width: 545px;">${result_map.zdr_zx1_result}</textarea>
+                            <textarea id="zdr_zx1_result" name="zdr_zx1_result" class="form-control" style="margin: 0px -5.34375px 0px 0px; height: 141px; width: 545px;"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -96,8 +76,7 @@
                         <div class="col-sm-4">
                             <div class="row inline-from">
                                 <div class="input-group">
-                                    <input class="form-control" name="zdr_dsj_code" id="zdr_dsj_code" value="${result_map.zdr_dsj_code}"
-                                           type="text">
+                                    <input class="form-control" name="zdr_dsj_code" id="zdr_dsj_code" value="" type="text">
                                     <span class="input-group-addon">
 
                                             <a style="color: #72afd2;" href="javascript:">查看报告</a>
@@ -113,8 +92,7 @@
                     <div id="ghr1_hai" class="form-group" style="margin-top: 20px;">
                         <label class="col-sm-2 control-label">征信报告</label>
                         <div class="col-sm-8">
-                            <textarea id="gjr1_zx1_result" name="gjr1_zx1_result" class="form-control"
-                                      style="margin: 0px -5.34375px 0px 0px; height: 141px; width: 545px;">${result_map.gjr1_zx1_result}</textarea>
+                            <textarea id="gjr1_zx1_result" name="gjr1_zx1_result" class="form-control" style="margin: 0px -5.34375px 0px 0px; height: 141px; width: 545px;"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -122,8 +100,7 @@
                         <div class="col-sm-4">
                             <div class="row inline-from">
                                 <div class="input-group">
-                                    <input class="form-control" name="gjr1_dsj_code" id="gjr1_dsj_code" value="${result_map.gjr1_dsj_code}"
-                                           type="text">
+                                    <input class="form-control" name="gjr1_dsj_code" id="gjr1_dsj_code" value="" type="text">
                                     <span class="input-group-addon">
 
                                             <a style="color: #72afd2;" href="javascript:">查看报告</a>
@@ -138,8 +115,7 @@
                     <div id="ghr2_hai" class="form-group" style="margin-top: 20px;">
                         <label class="col-sm-2 control-label">征信报告</label>
                         <div class="col-sm-8">
-                            <textarea id="gjr2_zx1_result" name="gjr2_zx1_result" class="form-control"
-                                      style="margin: 0px -5.34375px 0px 0px; height: 141px; width: 545px;">${result_map.gjr2_zx1_result}</textarea>
+                            <textarea id="gjr2_zx1_result" name="gjr2_zx1_result" class="form-control" style="margin: 0px -5.34375px 0px 0px; height: 141px; width: 545px;"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -147,8 +123,7 @@
                         <div class="col-sm-4">
                             <div class="row inline-from">
                                 <div class="input-group">
-                                    <input class="form-control" name="gjr2_dsj_code" id="gjr2_dsj_code" value="${result_map.gjr2_dsj_code}"
-                                           type="text">
+                                    <input class="form-control" name="gjr2_dsj_code" id="gjr2_dsj_code" value="" type="text">
                                     <span class="input-group-addon">
                                             <a style="color: #72afd2;" href="javascript:">查看报告</a>
 						                </span>
@@ -162,8 +137,7 @@
                     <div id="zdrpo_hai" class="form-group" style="margin-top: 20px;">
                         <label class="col-sm-2 control-label">征信报告</label>
                         <div class="col-sm-8">
-                            <textarea id="zdrpo_zx1_result" name="zdrpo_zx1_result" class="form-control"
-                                      style="margin: 0px -5.34375px 0px 0px; height: 141px; width: 545px;">${result_map.zdrpo_zx1_result}</textarea>
+                            <textarea id="zdrpo_zx1_result" name="zdrpo_zx1_result" class="form-control" style="margin: 0px -5.34375px 0px 0px; height: 141px; width: 545px;"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -171,8 +145,7 @@
                         <div class="col-sm-4">
                             <div class="row inline-from">
                                 <div class="input-group">
-                                    <input class="form-control" name="zdrpo_dsj_code" id="zdrpo_dsj_code" value="${result_map.zdrpo_dsj_code}"
-                                           type="text">
+                                    <input class="form-control" name="zdrpo_dsj_code" id="zdrpo_dsj_code" value="" type="text">
                                     <span class="input-group-addon">
 
                                             <a style="color: #72afd2;" href="javascript:">查看报告</a>
