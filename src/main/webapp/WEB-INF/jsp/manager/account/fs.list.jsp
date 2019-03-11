@@ -45,7 +45,7 @@
                             <th class="text-center">操作</th>
                         </tr>
                         </thead>
-                        <tbody class="gallerys"><!--class为gallerys表示图片放大组件的起始范围。 -->
+                        <tbody id="example2 tbody" class="gallerys"><!--class为gallerys表示图片放大组件的起始范围。 -->
                         <c:forEach items="${list}" var="u" varStatus="num">
                             <tr role="row" class="odd">
                                 <td class="hidden-xs text-center">

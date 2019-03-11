@@ -9,8 +9,11 @@ package com.example.ddbx.tt.table;
 
 
 import com.example.ddbx.tt.data.TtMap;
+import com.example.ddbx.tt.manager.Modal;
 import com.example.ddbx.tt.tool.DbCtrl;
 import com.example.ddbx.tt.tool.Tools;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class FsModal extends DbCtrl {
   private String purview_map = "";
@@ -33,6 +36,19 @@ public class FsModal extends DbCtrl {
     if (super.conn != null) {
       super.closeConn();
     }
+  }
+
+  @Override
+  public void doGetForm(HttpServletRequest request, TtMap post) {
+    Modal modalMenu = new Modal();
+    post.put("id", Tools.minfo().get("fsid")); // 修改id为当前登陆用户所在公司的id
+    request.setAttribute("modals", modalMenu.getAllModals()); // 后台左侧菜单,sidebar.jsp里面用到的菜
+    long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
+    TtMap info = info(nid);
+    String jsonInfo = Tools.jsonEncode(info);
+    request.setAttribute("info", jsonInfo);//info为json后的info
+    request.setAttribute("infodb", info);//infodb为TtMap的info
+    request.setAttribute("id", nid);
   }
 
   @Override

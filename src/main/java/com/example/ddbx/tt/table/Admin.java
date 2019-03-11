@@ -130,8 +130,10 @@ public class Admin extends DbCtrl {
    */
   @Override
   public TtMap param(TtMap ary, long id) {
+    System.out.println("密码内容："+ary.get("password"));
     if (!Tools.myIsNull(ary.get("password"))) { // 密码处理
       ary.put("password", Tools.md5(Tools.md5("kgc" + ary.get("password"))));
+      System.out.println("密码处理："+Tools.md5(Tools.md5("kgc" + ary.get("password"))));
     } else {
       ary.remove("password");
     }
@@ -267,6 +269,7 @@ public class Admin extends DbCtrl {
   }
   @Override
   public void doPost(TtMap post, long id,TtMap result2) {
+    System.out.println("密码admin："+post);
     if (id > 0) { // id为0时，新增
       edit(post, id);
     } else {

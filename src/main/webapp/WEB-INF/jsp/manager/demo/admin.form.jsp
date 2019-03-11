@@ -2,14 +2,13 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.example.ddbx.tt.data.TtMap" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="admin-content nav-tabs-custom box">
 	<div class="box-header with-border">
 		<div class="box-header with-border">
 			<h3 class="box-title">修改用户</h3>
 		</div>
-		<div class="box-body" id="tab-content">
+		<div class="box-body">
 			<div class="form-group">
 				<label class="col-sm-2 control-label">姓名</label>
 				<div class="col-sm-10">
@@ -177,20 +176,3 @@
 		</div>
 	</div>
 </div>
-<script>
-	function doShowLoading() {
-		App.setbasePath("iframe/");
-		App.setGlobalImgPath("dist/img/");
-		App.blockUI({
-			target: '#tab-content',
-			boxed: true,
-			message: '加载中......' //,
-			// animate: true
-		});
-		setTimeout("doCloseLoading()", 3000);
-	}
-
-	function doCloseLoading() {
-		App.unblockUI('#tab-content'); //解锁界面
-	}
-</script>

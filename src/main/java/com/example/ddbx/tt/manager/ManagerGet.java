@@ -54,10 +54,6 @@ public class ManagerGet {
                 case "form": /* 下面的如果功能复杂，建议每一个table新建一个专属的class来处理，保持代码清洁生成相关的参数 */
                 case "float":
                     switch (cn) {
-                        case "fs_agp": // 特殊处理的模块：公司模块选择，显示所有非内部模块
-                            post.put("id", Tools.minfo().get("fsid")); // 修改id为当前登陆用户所在公司的id
-                            request.setAttribute("modals", modalMenu.getAllModals()); // 后台左侧菜单,sidebar.jsp里面用到的菜
-                            break;
                         default:
                             Class<?> b = ManagerTools.doGetClass(realCn);//根据cn自动映射实例化类
                             if (null != b) {

@@ -18,7 +18,7 @@ public class zxcx extends DbCtrl {
     private String orderString = "ORDER BY dt_edit DESC"; // 默认排序
     private boolean canDel = false;
     private boolean canAdd = true;
-    private final String classAgpId = "6"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
+    private final String classAgpId = "145"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
     public boolean agpOK = false;// 默认无权限
 
     public zxcx() {
@@ -83,6 +83,26 @@ public class zxcx extends DbCtrl {
                 icbc_status.put("zx_status",zx_status);
                 icbc_status.put("tr_status",tr_status);
                 Tools.recAdd(icbc_status, "dd_icbc_status");
+            }
+            if(zx_status.equals("2")){
+                //获取征信板块erp表信息
+                TtMap erpmap=Tools.recinfo("select * from dd_icbc_erp where icbc_id="+id+" and type_id=36");
+                //更新erp表节点状态
+                TtMap erp=new TtMap();
+                erp.put("now_status","2");
+                erp.put("later_status","3");
+                Tools.recEdit(erp,"dd_icbc_erp",Long.valueOf(erpmap.get("id")));
+                //新增erp_result表处理信息
+                TtMap erp_result=new TtMap();
+                erp_result.put("qryid",erpmap.get("id"));
+                erp_result.put("now_status","2");
+                erp_result.put("later_status","3");
+                erp_result.put("result_value", Tools.jsonEncode(post));
+                erp_result.put("type_id","36");
+                erp_result.put("icbc_id",String.valueOf(id));
+                erp_result.put("gems_id",post.get("gems_id"));
+                erp_result.put("gems_fs_id",post.get("gems_fs_id"));
+                Tools.recAdd(erp_result,"dd_icbc_erp_result");
             }
             if(tr_status.equals("1")){
                 //add 通融板块
@@ -290,11 +310,12 @@ public class zxcx extends DbCtrl {
             request.setAttribute("errorMsg", errorMsg);
             return;
         }
+        TtMap minfo = Tools.minfo();//获取当前登录信息
         String kw = ""; // 搜索关键字
         String dtbe = ""; // 搜索日期选择
         int pageInt = Integer.valueOf(Tools.myIsNull(post.get("p")) == false ? post.get("p") : "1"); // 当前页
         int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
-        String whereString = "true";
+        String whereString = "t.gems_fs_id="+minfo.get("fsid");
         String tmpWhere = "";
         String fieldsString = "t.*,a.name as admin_name,f.name as fs_name,s.zx_status as zx_status,s.tr_status as tr_status"; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
         TtList list = null;

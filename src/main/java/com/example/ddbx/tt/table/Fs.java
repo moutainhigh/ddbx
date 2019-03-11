@@ -82,16 +82,18 @@ public class Fs extends DbCtrl {
 
   //list 处理
   public void doGetList(HttpServletRequest request, TtMap post) {
+
     if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
       request.setAttribute("errorMsg", errorMsg);
       return;
     }
+    TtMap minfo = Tools.minfo();//获取当前登录信息
     String kw = ""; // 搜索关键字
     String dtbe = ""; // 搜索日期选择
     int pageInt = Integer.valueOf(Tools.myIsNull(post.get("p")) == false ? post.get("p") : "1"); // 当前页
     int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
-    String whereString = "true";
-    String tmpWhere = "";
+    String whereString = "(t.id="+minfo.get("fsid")+" or t.up_id="+minfo.get("fsid")+")";
+    String tmpWhere ="";
     String fieldsString = "";    // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
     TtList list = null;
     /* 开始处理搜索过来的字段 */

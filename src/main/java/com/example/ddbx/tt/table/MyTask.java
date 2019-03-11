@@ -186,11 +186,12 @@ public class MyTask extends DbCtrl {
             request.setAttribute("errorMsg", errorMsg);
             return;
         }
+        TtMap minfo= Tools.minfo();//获取当前登录用户信息
         String kw = ""; // 搜索关键字
         String dtbe = ""; // 搜索日期选择
         int pageInt = Integer.valueOf(Tools.myIsNull(post.get("p")) == false ? post.get("p") : "1"); // 当前页
         int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
-        String whereString = "true";
+        String whereString = "t.gems_fs_id="+minfo.get("fsid");
         String tmpWhere = "";
         String fieldsString = "t.*,a.name as admin_name,f.name as fs_name" +
                 ",sm.name as type_name" +

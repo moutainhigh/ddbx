@@ -293,13 +293,15 @@ public class DbCtrl {
 
     /**
      * 更改目标表
+     *
      * @param {type} {type}
      * @return: 返回
      */
-    public void changeTable(String aTable){
+    public void changeTable(String aTable) {
         setTable(aTable);
         setDsi(dsi);
     }
+
     /* 类初始化，带数据库链接，如果链接为空，使用默认的数据库账号密码 */
     public DbCtrl(DruidPooledConnection connection, String tbName) {
         table = tbName;
@@ -493,7 +495,7 @@ public class DbCtrl {
         /*
          * todo if(_FILES){ array=files(array,id); }
          */
-        for (Iterator<Map.Entry<String, String>> it = array.entrySet().iterator(); it.hasNext();) {
+        for (Iterator<Map.Entry<String, String>> it = array.entrySet().iterator(); it.hasNext(); ) {
             Map.Entry<String, String> item = it.next();
             if (!fieldconf.contains(item.getKey())) {
                 it.remove();
@@ -525,8 +527,10 @@ public class DbCtrl {
         // todo
         return ary;
     }
+
     /**
      * 添加/编辑/删除成功一条记录会执行此方法，子类重载用。sqltp：0-添加，1：编辑，-1：删除
+     *
      * @param {type} {type}
      * @return: 返回
      */
@@ -664,8 +668,7 @@ public class DbCtrl {
         /** todo 组合字符串，查询列表 */
         sql = "select SQL_CALC_FOUND_ROWS " + (Tools.myIsNull(f) == false ? f : fields) + " from " + table + " t " + leftsql
                 + " " + rightsql + " " + innersql + " "
-                + (Tools.myIsNull(wheres) == false ? " where " + strWhere
-                : (Tools.myIsNull(strWhere) ? "" : " where " + strWhere))
+                + (Tools.myIsNull(wheres) == false ? " where " + strWhere : (Tools.myIsNull(strWhere) ? "" : " where " + strWhere))
                 + " " + orders + " " + groupby + " " + getListSqlStrlimit() + " ";
         result = myDbTools.reclist(sql);
         recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
@@ -763,20 +766,20 @@ public class DbCtrl {
     }
 
     /**
-     * @说明: 给继承的子类重载用的
      * @param {type} {type}
+     * @说明: 给继承的子类重载用的
      * @return: 返回
      */
     public void doGetList(HttpServletRequest request, TtMap post) {
     }
 
     /**
-     * @说明: 给继承的子类重载用的
      * @param {type} {type}
+     * @说明: 给继承的子类重载用的
      * @return: 返回
      */
     public void doGetForm(HttpServletRequest request, TtMap post) {
-        long nid = Tools.myIsNull(post.get("id"))?0:Tools.strToLong(post.get("id"));
+        long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
         TtMap info = info(nid);
         String jsonInfo = Tools.jsonEncode(info);
         request.setAttribute("info", jsonInfo);//info为json后的info
@@ -785,8 +788,8 @@ public class DbCtrl {
     }
 
     /**
-     * @说明: 给子类重载用，处理post
      * @param {type} {type}
+     * @说明: 给子类重载用，处理post
      * @return: 返回
      */
     public void doPost(TtMap post, long id, TtMap result2) {
@@ -825,6 +828,7 @@ public class DbCtrl {
 
     /**
      * tt的版本
+     *
      * @param {type} {type}
      * @return: 返回
      */

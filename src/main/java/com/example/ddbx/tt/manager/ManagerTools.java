@@ -98,15 +98,15 @@ public class ManagerTools {
             case "erp":
                 return "erp";
             case "fs_agp":
-                return "fs";
+                return "FsModal";
             case "fs":
                 return "Fs";
             case "admin":
                 return "Admin";
             case "comm_citys":
                 return "CommCitys";
-            case "fsmodal":
-                return "FsModal";
+//            case "fsmodal":
+//                return "FsModal";
             case "admin_agp":
                 return "AdminAgp";
             case "sys_modal":

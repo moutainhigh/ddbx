@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page import="java.util.*" %>
-<%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ page import="com.example.ddbx.tt.data.TtMap" %>
+<%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <div class="box">
 	<%
@@ -42,12 +42,18 @@
 								<th class="text-center">操作</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="gallerys"><!--class为gallerys表示图片放大组件的起始范围。 -->
 							<c:forEach items="${list}" var="u" varStatus="num">
 								<tr role="row" class="odd">
 									<td class="user-table-info text-center">
 										<div class="media">
-											<div class="media-left hidden-xs"><a href="<%=url%>${u.id}" class="user-face-pic"> <img class="media-object" src="${Tools.myIsNull(u.avatarurl)?"images/face.png":u.avatarurl}" style="width: 36px;height:36px;"> </a></div>
+											<div class="media-left hidden-xs">
+											<div class="user-face-pic"> 
+											<img class="media-object gallery-pic" onclick="$.openPhotoGallery(this)" 
+											src="${Tools.myIsNull(u.avatarurl)?"images/face.png":u.avatarurl}" style="width: 36px;height:36px;">
+											<!--gallery-pic的class表示这个图片加入到图片放大缩小组件列表里。 --> 
+											</div>
+											</div>
 											<div class="media-body media-middle">
 												<h5 class="media-heading">
 													<a href="<%=url%>${u.id}">${u.name}</a>
@@ -91,8 +97,3 @@
 		</div>
 	</div>
 </div>
-<script>
-</script>
-</body>
-
-</html>
