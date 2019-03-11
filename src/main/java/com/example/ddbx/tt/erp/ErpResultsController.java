@@ -1,5 +1,4 @@
 package com.example.ddbx.tt.erp;
-import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.tool.DbTools;
 import com.example.ddbx.tt.tool.Tools;
@@ -194,9 +193,10 @@ public class ErpResultsController {
                                 bankLoanERP.put("c_carvin", "");
                                 bankLoanERP.put("c_carno", "");
                                 bankLoanERP.put("adminop_tag", minfo.get("id")); //当前操作人id
-                                Tools.recAdd(bankLoanERP, "dd_icbc_erp");
+                                Long bankLoanERP_Id = Tools.recAdd(bankLoanERP, "dd_icbc_erp");
                                 //dd_icbc_erp_result 添加
                                 TtMap bankLoanERPResult = new TtMap();
+                                bankLoanERPResult.put("qryid",bankLoanERP_Id+"");
                                 bankLoanERPResult.put("now_status", "66");
                                 bankLoanERPResult.put("later_status", "67");
                                 bankLoanERPResult.put("remark", "公司归档亮起");
@@ -246,9 +246,10 @@ public class ErpResultsController {
                                 bankLoanERP.put("c_carvin", "");
                                 bankLoanERP.put("c_carno", "");
                                 bankLoanERP.put("adminop_tag",minfo.get("id")); //当前操作人id
-                                Tools.recAdd(bankLoanERP, "dd_icbc_erp");
+                                Long bankLoanERP_Id = Tools.recAdd(bankLoanERP, "dd_icbc_erp");
                                 //dd_icbc_erp_result 添加
                                 TtMap bankLoanERPResult = new TtMap();
+                                bankLoanERPResult.put("qryid",bankLoanERP_Id+"");
                                 bankLoanERPResult.put("now_status", "72");
                                 bankLoanERPResult.put("later_status", "73");
                                 bankLoanERPResult.put("remark","抵押归档亮起");
@@ -284,10 +285,11 @@ public class ErpResultsController {
                             erp_result.put("now_status","60");
                             erp_result.put("later_status","63");
                         }else if(post.get("result_code").equals("4")){
-                            //先抵押后放贷：选择这个界面暂时不往下级走，等“抵押归档”模块完成开启“银行放款结果”
+                            //银行审批结果 先抵押后放贷：选择这个界面暂时不往下级走，等“抵押归档”模块完成开启“银行放款结果”
                             //得到  抵押归档完成-小状态
                             TtMap ttMap= Tools.recinfo("select * from dd_icbc_erp_result where type_id=116 and now_status=82 and icbc_id=" + Long.valueOf(post.get("icbc_id")));
-                            if(ttMap.get("id")!=null || !ttMap.get("id").equals("")){
+                            System.err.println(ttMap+"-999999999");
+                            if(ttMap.get("id")!=null){
                                 // “抵押归档”模块完成 , 开启“银行放款结果”
                                 erp.put("now_status", "60");
                                 erp.put("later_status", "61");
@@ -368,17 +370,162 @@ public class ErpResultsController {
                         erp_result.put("result_msg", post.get("result_msg"));
                         erp_result.put("result_value", result_value);
                         break;
-                    case "64": //补充材料
-
+                    case "64": //机构补充材料
+                        if(post.get("result_code").equals("1")) { // 已补充  进入下一个状态 完成
+                            erp.put("now_status", "64");
+                            erp.put("later_status", "63");
+                            erp_result.put("now_status","64");
+                            erp_result.put("later_status","63");
+                        }else if(post.get("result_code").equals("2")){ // 未补充   还停留在补充材料阶段
+                            erp.put("now_status", "64");
+                            erp.put("later_status", "64");
+                            erp_result.put("now_status","64");
+                            erp_result.put("later_status","64");
+                        }
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("result_code"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
                         break;
-                    case "65": //完成
+                    case "65": //完成就是完成  没有操作
                         break;
                 }
                 break;
             /**
-             * 某某某某
+             * 抵押归档
              */
-            case "72":
+            case "116":
+                switch (getOneUserInfoErp.get("later_status")) {
+                    case "73"://公证记录
+                        erp.put("now_status", "73");
+                        erp.put("later_status", "74");
+                        erp_result.put("now_status","73");
+                        erp_result.put("later_status","74");
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("result_code"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
+                        break;
+                    case "74"://抵押材料寄送至合作商
+                        erp.put("now_status", "74");
+                        erp.put("later_status", "75");
+                        erp_result.put("now_status","74");
+                        erp_result.put("later_status","75");
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("result_code"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
+                        break;
+                    case "75"://合作商收件确认
+                        if(post.get("receiptConfirm").equals("已收到") && post.get("materialResult").equals("1")){
+                            erp.put("now_status", "75");
+                            erp.put("later_status", "76");
+                            erp_result.put("now_status","75");
+                            erp_result.put("later_status","76");
+                        }else{
+                            erp.put("now_status", "75");
+                            erp.put("later_status", "74");
+                            erp_result.put("now_status","57");
+                            erp_result.put("later_status","74");
+                        }
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("materialResult"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
+                        break;
+                    case "76"://抵押情况记录
+                        if(post.get("examineCondition").equals("1")){ // 抵押 抵押查验情况 通过  进入下一步 抵押材料寄回
+                            erp.put("now_status", "76");
+                            erp.put("later_status", "77");
+                            erp_result.put("now_status","76");
+                            erp_result.put("later_status","77");
+                        }else if(post.get("examineCondition").equals("2")){ // 抵押 抵押查验情况 不通过  进入上一步 合作商收件确认
+                            erp.put("now_status", "76");
+                            erp.put("later_status", "75");
+                            erp_result.put("now_status","76");
+                            erp_result.put("later_status","75");
+                        }
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("examineCondition"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
+                        break;
+                    case "77"://抵押材料寄回
+                        erp.put("now_status", "77");
+                        erp.put("later_status", "78");
+                        erp_result.put("now_status","77");
+                        erp_result.put("later_status","78");
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("examineCondition"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
+                        break;
+                    case "78"://审核收件确认
+                        if(post.get("receiptConfirm").equals("已收到") && post.get("materialResult").equals("1")){
+                            erp.put("now_status", "78");
+                            erp.put("later_status", "79");
+                            erp_result.put("now_status","78");
+                            erp_result.put("later_status","79");
+                        }else{
+                            erp.put("now_status", "78");
+                            erp.put("later_status", "77");
+                            erp_result.put("now_status","78");
+                            erp_result.put("later_status","77");
+                        }
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("materialResult"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
+                        break;
+                    case "79"://抵押材料至银行
+                        erp.put("now_status", "79");
+                        erp.put("later_status", "80");
+                        erp_result.put("now_status","79");
+                        erp_result.put("later_status","80");
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("examineCondition"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
+                        break;
+                    case "80"://银行收件确认
+                        if(post.get("receiptConfirm").equals("已收到") && post.get("materialResult").equals("1")){
+                            erp.put("now_status", "80");
+                            erp.put("later_status", "81");
+                            erp_result.put("now_status","80");
+                            erp_result.put("later_status","81");
+                        }else{
+                            erp.put("now_status", "80");
+                            erp.put("later_status", "79");
+                            erp_result.put("now_status","80");
+                            erp_result.put("later_status","79");
+                        }
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("materialResult"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
+                        break;
+                    case "81"://录入银行查验情况
+                        if(post.get("examineCondition").equals("1")){ // 抵押 抵押查验情况 通过  进入下一步 抵押材料寄回
+                            erp.put("now_status", "81");
+                            erp.put("later_status", "82");
+                            erp_result.put("now_status","81");
+                            erp_result.put("later_status","82");
+                            //update erp set later_status:60改61 where icbc_id and type_id 98
+                            //98银行审批结果 : 先抵押后放贷：选择这个界面暂时不往下级走，等“抵押归档”模块完成开启“银行放款结果”
+                            boolean falg = Tools.recexec("update dd_icbc_erp set later_status='61' where later_status='60' and type_id='98' and icbc_id="+post.get("icbc_id"));
+                            System.err.println(falg+"--先抵押后放贷2222222222");
+                        }else if(post.get("examineCondition").equals("2")){ // 抵押 抵押查验情况 不通过  进入上一步 合作商收件确认
+                            erp.put("now_status", "81");
+                            erp.put("later_status", "80");
+                            erp_result.put("now_status","81");
+                            erp_result.put("later_status","80");
+                        }
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("examineCondition"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
+                        break;
+                }
                 break;
             /**
              * 某某某某
@@ -450,6 +597,10 @@ public class ErpResultsController {
             //添加 银行贷款 完成 状态
             if(erp.get("later_status").equals("65")){
                 addEnd(post,minfo,"65","65");
+            }
+            //添加 银行贷款 完成 状态
+            if(erp.get("later_status").equals("82")){
+                addEnd(post,minfo,"82","82");
             }
         }
         //汽车贷款end

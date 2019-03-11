@@ -44,7 +44,7 @@
                         <label class="col-sm-2 control-label">分期数<i class="pull-right text-red">*</i></label>
                         <div class="col-sm-3">
                             <div class="input-group date ng-isolate-scope ng-not-empty ng-valid ng-valid-required" >
-                                <input name="yhdksh_61_fq" id="yhdksh_61_fq" value="${pd.aj_date}" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text"  ><span class="input-group-addon">期</span>
+                                <input name="yhdksh_61_fq" id="yhdksh_61_fq" value="" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text"  ><span class="input-group-addon">期</span>
                             </div>
                         </div>
                     </div>

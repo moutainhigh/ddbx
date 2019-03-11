@@ -22,15 +22,15 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">检查结果</label>
                     <div class="col-sm-8">
-                        <input name="result_1_code" id="result_1_code" class="ng-pristine ng-untouched ng-valid ng-not-empty" type="radio" value="1">完整
+                        <input name="result_code" id="result_code" class="ng-pristine ng-untouched ng-valid ng-not-empty" type="radio" value="1">完整
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input name="result_1_code" id="result_1_code" class="ng-pristine ng-untouched ng-valid ng-not-empty" type="radio" value="2">材料不完整，需要机构补充
+                        <input name="result_code" id="result_code" class="ng-pristine ng-untouched ng-valid ng-not-empty" type="radio" value="2">材料不完整，需要机构补充
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">其它说明</label>
                     <div class="col-sm-8">
-                        <input id="result_1_msg" name="result_1_msg" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" ng-model="task.remarks">
+                        <textarea name="result_msg" id="result_msg" rows="3" class="form-control ng-pristine ng-untouched ng-valid ng-empty" type="text"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -54,7 +54,6 @@ function erp(){
         url: "${pageContext.request.contextPath}/manager/ajaxPostResults",  // 控制器方法
         data: {
             result_code:result_code,
-            getMoneyDate:getMoneyDate,
             result_msg:result_msg,
             icbc_id:icbc_id,
             type_id:type_id,

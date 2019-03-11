@@ -30,7 +30,7 @@
                         <input id="orderNo" name="orderNo" class="form-control ng-pristine ng-untouched ng-valid ng-empty">
                     </div>
                     <label class="col-sm-2 control-label">寄出日期<i class="pull-right text-red">*</i></label>
-                    <div class="input-group date form_datetime col-md-3" data-date="2019-3-8" data-date-format="yyyy-mm-dd" data-link-field="sendDate">
+                    <div class="input-group date form_datetime col-md-3" data-date="" data-date-format="yyyy-mm-dd" data-link-field="sendDate">
                         <input class="form-control" size="16" type="text" value="" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>

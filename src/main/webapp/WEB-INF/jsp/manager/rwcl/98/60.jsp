@@ -35,16 +35,16 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                        <a onclick="erp()" class="btn btn-primary">提交</a>
+                        <a onclick="erpa()" class="btn btn-primary">提交</a>
                 </div>
 <script>
-    function erp(){
+    function erpa(){
         var result_code= $('input[name="result_code"]:checked').val(); //审批结果
         var result_msg= $('#result_msg').val();
         var icbc_id= '${requestScope.infodb.icbc_id}';
         var type_id= '${requestScope.infodb.type_id}';
         var id= '${requestScope.infodb.id}';
-        //alert(icbc_id+"----"+type_id+"---"+id+"---");
+        //alert(icbc_id+"----"+type_id+"---"+id+"---"+result_code);
         if(!result_code){
             alert("审批结果不能为空!");
             return false;
