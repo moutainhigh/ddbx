@@ -22,11 +22,11 @@
                  <div class="form-group">
                     <label class="col-sm-2 control-label">放款日期<i class="pull-right text-red">*</i></label>
                     <div class="col-sm-3">
-                        <input disabled="disable" value="${fn:substring(erp_result_value.lendingDate,0,10)}" id="fkDate_result" name="fkDate_result" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" type="text">
+                        <input readonly = "readonly" value="${fn:substring(erp_result_value.lendingDate,0,10)}" id="fkDate_result" name="fkDate_result" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" type="text">
                     </div>
                     <label class="col-sm-2 control-label">放款金额<i class="pull-right text-red">*</i></label>
                     <div class="col-sm-3">
-                        <input disabled="disable" value="${erp_result_value.yhdksh_61_je}" id="fkje_result" name="fkje_result" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" type="text">
+                        <input readonly = "readonly" value="${erp_result_value.yhdksh_61_je}" id="fkje_result" name="fkje_result" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" type="text">
                     </div>
                 </div>
 
@@ -76,6 +76,8 @@ $('.form_datetime').datetimepicker({
 function erp(){
     var result_code= $('input[name="result_code"]:checked').val(); //收款情况
     var getMoneyDate= $('#getMoneyDate').val(); //收款日期
+    var fkDate_result= $('#fkDate_result').val();
+    var fkje_result= $('#fkje_result').val();
     var result_msg= $('#result_msg').val();
     var icbc_id= '${requestScope.infodb.icbc_id}';
     var type_id= '${requestScope.infodb.type_id}';
@@ -95,6 +97,8 @@ function erp(){
         data: {
             result_code:result_code,
             getMoneyDate:getMoneyDate,
+            fkDate_result:fkDate_result,
+            fkje_result:fkje_result,
             result_msg:result_msg,
             icbc_id:icbc_id,
             type_id:type_id,

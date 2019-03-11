@@ -163,7 +163,22 @@ public class CarLoan extends DbCtrl {
 
     public TtMap selectCarLoanPlate(String icbc_id) {
         DbTools myDbTools = new DbTools();
-        String sql = "select count(*) sum,e.* from dd_icbc_erp e where type_id=40 and icbc_id=" + icbc_id;
+        String sql = "select count(*) sum,e.* from dd_icbc_erp e where type_id=70 and icbc_id=" + icbc_id;
+        TtMap ontCustomer = null;
+        try {
+            ontCustomer = myDbTools.recinfo(sql);
+            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+        } catch (Exception e) {
+            Tools.logError(e.getMessage(), true, false);
+        } finally {
+            myDbTools.closeConn();
+        }
+        return ontCustomer;
+    }
+
+    public TtMap selectCarLoanPlateInto(String icbc_id) {
+        DbTools myDbTools = new DbTools();
+        String sql = "select count(*) sum,e.* from dd_icbc_materials e where icbc_id=" + icbc_id;
         TtMap ontCustomer = null;
         try {
             ontCustomer = myDbTools.recinfo(sql);
@@ -181,6 +196,7 @@ public class CarLoan extends DbCtrl {
         //添加时先判断一下有没有这个板块，如果有该板块>0就不添加，没有0该板块就添加
         String icbc_id = ary.get("icbc_id");
         TtMap ttMap = selectCarLoanPlate(icbc_id);
+        System.err.println(ttMap.get("sum")+"-99999999999999"+ttMap.get("sum").equals("0"));
         // 没有该板块添加
         if(ttMap.get("sum").equals("0")){
             //首先通过获取到主订单id查询到客户的主订单信息
@@ -300,7 +316,12 @@ public class CarLoan extends DbCtrl {
                 dbCtrl2.closeConn();
             }
             //向dd_icbc_erp_result表中添加数据 end
-            return super.add(ary);
+            TtMap ttMap2 = selectCarLoanPlateInto(icbc_id);
+            if(ttMap2.get("sum").equals("0")){ //如果没有有汽车贷款进件就添加
+                return super.add(ary);
+            }else{//如果有汽车贷款进件就不添加
+                return 0;
+            }
         }
         return 0;
     }

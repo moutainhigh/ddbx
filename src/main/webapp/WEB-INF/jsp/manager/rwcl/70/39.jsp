@@ -20,9 +20,9 @@
                 <div class="form-group ng-scope" ng-if="notUseButton">
                     <label class="col-sm-2 control-label">审核结果</label>
                     <div class="col-sm-6">
-                        <input type="radio" value="1" ng-model="task.checkRet" id="" name="result_code" class="ng-pristine ng-untouched ng-valid ng-not-empty">过件&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="radio" value="2" ng-model="task.checkRet" id="" name="result_code" class="ng-pristine ng-untouched ng-valid ng-not-empty">过件附条件&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="radio" value="3" ng-model="task.checkRet" id="" name="result_code" class="ng-pristine ng-untouched ng-valid ng-not-empty">回退补件
+                        <input type="radio" value="1" ng-model="task.checkRet" id="result_code" name="result_code" class="ng-pristine ng-untouched ng-valid ng-not-empty">过件&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" value="2" ng-model="task.checkRet" id="result_code" name="result_code" class="ng-pristine ng-untouched ng-valid ng-not-empty">过件附条件&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" value="3" ng-model="task.checkRet" id="result_code" name="result_code" class="ng-pristine ng-untouched ng-valid ng-not-empty">回退补件
                     </div>
                 </div>
                 <!-- end ngIf: notUseButton -->

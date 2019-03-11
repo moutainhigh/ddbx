@@ -44,9 +44,9 @@
                 <div class="form-group ng-scope" ng-if="notUseButton">
                     <label class="col-sm-2 control-label">审核结果</label>
                     <div class="col-sm-6">
-                        <input disabled="disabled" type="radio" ${result_map.result_code eq 1?"checked":''} value="1" ng-model="task.checkRet" id="" name="result_code" class="ng-pristine ng-untouched ng-valid ng-not-empty">过件&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input disabled="disabled" type="radio" ${result_map.result_code eq 2?"checked":''} value="2" ng-model="task.checkRet" id="" name="result_code" class="ng-pristine ng-untouched ng-valid ng-not-empty">过件附条件&nbsp;&nbsp;&nbsp;&nbsp;
-                        <input disabled="disabled" type="radio" ${result_map.result_code eq 3?"checked":''} value="3" ng-model="task.checkRet" id="" name="result_code" class="ng-pristine ng-untouched ng-valid ng-not-empty">回退补件
+                        <input disabled="disabled" type="radio" ${result_map.result_code eq 1?"checked":''} value="1" ng-model="task.checkRet" id="" name="" class="ng-pristine ng-untouched ng-valid ng-not-empty">过件&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input disabled="disabled" type="radio" ${result_map.result_code eq 2?"checked":''} value="2" ng-model="task.checkRet" id="" name="" class="ng-pristine ng-untouched ng-valid ng-not-empty">过件附条件&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input disabled="disabled" type="radio" ${result_map.result_code eq 3?"checked":''} value="3" ng-model="task.checkRet" id="" name="" class="ng-pristine ng-untouched ng-valid ng-not-empty">回退补件
                     </div>
                 </div>
                 <!-- end ngIf: notUseButton -->
