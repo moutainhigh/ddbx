@@ -1,0 +1,75 @@
+[09:25:44] Config - Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+[09:25:44] Config - Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+[10:45:51] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2F404.jsp%7Ccn%3Dywxxxg%26type%3Drwcl%26sdo%3Dfloat:javax.servlet.ServletException: File [&#47;WEB-INF&#47;jsp&#47;manager&#47;rwcl&#47;ywxxxg.form.jsp] not found
+[14:17:53] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D39%26sdo%3Dform%26id%3D40%26type_id%3D128%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp] at line [76]
+
+73: 
+74:                 <div ${param.tab eq 6?"class='tab-pane active'":"class='tab-pane'"} id="tab_6">
+75:                     <c:if test="${param.tab eq 6}">
+76:                         <jsp:include page="<%=rwcl_path%>"></jsp:include>
+77:                     </c:if>
+78:                 </div>
+79: 
+
+
+Stacktrace:
+[14:17:53] Config - Tools.logError:sql injection violation, syntax error: syntax error, error in :'ass='tab-pane active'":"class='tab-', expect IDENTIFIER, actual IDENTIFIER pos 427, line 4, column 55, token IDENTIFIER tab : insert into sys_error set `dt_add`='2019-03-09 14:17:53', `errormsg`='http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D39%26sdo%3Dform%26id%3D40%26type_id%3D128%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp] at line [76]
+
+73: 
+74:                 <div ${param.tab eq 6?"class='tab-pane active'":"class='tab-pane'"} id="tab_6">
+75:                     <c:if test="${param.tab eq 6}">
+76:                         <jsp:include page="<%=rwcl_path%>"></jsp:include>
+77:                     </c:if>
+78:                 </div>
+79: 
+
+
+Stacktrace:'
+[14:58:49] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D41%26type_id%3D128%26icbc_id%3D39%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp] at line [76]
+
+73: 
+74:                 <div ${param.tab eq 6?"class='tab-pane active'":"class='tab-pane'"} id="tab_6">
+75:                     <c:if test="${param.tab eq 6}">
+76:                         <jsp:include page="<%=rwcl_path%>"></jsp:include>
+77:                     </c:if>
+78:                 </div>
+79: 
+
+
+Stacktrace:
+[14:58:49] Config - Tools.logError:sql injection violation, syntax error: syntax error, error in :'ass='tab-pane active'":"class='tab-', expect IDENTIFIER, actual IDENTIFIER pos 427, line 4, column 55, token IDENTIFIER tab : insert into sys_error set `dt_add`='2019-03-09 14:58:49', `errormsg`='http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D41%26type_id%3D128%26icbc_id%3D39%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp] at line [76]
+
+73: 
+74:                 <div ${param.tab eq 6?"class='tab-pane active'":"class='tab-pane'"} id="tab_6">
+75:                     <c:if test="${param.tab eq 6}">
+76:                         <jsp:include page="<%=rwcl_path%>"></jsp:include>
+77:                     </c:if>
+78:                 </div>
+79: 
+
+
+Stacktrace:'
+[16:08:15] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D41%26type_id%3D128%26icbc_id%3D39%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp] at line [76]
+
+73: 
+74:                 <div ${param.tab eq 6?"class='tab-pane active'":"class='tab-pane'"} id="tab_6">
+75:                     <c:if test="${param.tab eq 6}">
+76:                         <jsp:include page="<%=rwcl_path%>"></jsp:include>
+77:                     </c:if>
+78:                 </div>
+79: 
+
+
+Stacktrace:
+[16:08:15] Config - Tools.logError:sql injection violation, syntax error: syntax error, error in :'ass='tab-pane active'":"class='tab-', expect IDENTIFIER, actual IDENTIFIER pos 427, line 4, column 55, token IDENTIFIER tab : insert into sys_error set `dt_add`='2019-03-09 16:08:15', `errormsg`='http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D41%26type_id%3D128%26icbc_id%3D39%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp] at line [76]
+
+73: 
+74:                 <div ${param.tab eq 6?"class='tab-pane active'":"class='tab-pane'"} id="tab_6">
+75:                     <c:if test="${param.tab eq 6}">
+76:                         <jsp:include page="<%=rwcl_path%>"></jsp:include>
+77:                     </c:if>
+78:                 </div>
+79: 
+
+
+Stacktrace:'

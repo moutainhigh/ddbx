@@ -264,7 +264,7 @@ public class erpController {
                 erp_result.put("result_value", Tools.jsonEncode(post));
                 Tools.recAdd(erp_result,"dd_icbc_erp_result");
                 break;
-            case "6":
+            case "6"://业务信息修改申请回退补件
                 erp.put("now_status","84");
                 erp.put("later_status","85");
                 Tools.recEdit(erp,"dd_icbc_erp",Long.valueOf(post.get("id")));
@@ -275,7 +275,7 @@ public class erpController {
                 erp_result.put("result_value", Tools.jsonEncode(post));
                 Tools.recAdd(erp_result,"dd_icbc_erp_result");
                 break;
-            case "7":
+            case "7"://系统运维(专员)
                 erp_result.put("now_status","86");
                 switch (post.get("state_code")) {
                     case "1":
