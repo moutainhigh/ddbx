@@ -29,15 +29,15 @@
 <li class="text-primary">
     <em>评估价审核：</em>
     <div class="big-conte" style="display: block;">
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
+        <div style="float: left; margin-left: 20px; width: 300px;">
             <strong>开始时间：</strong>
             <%=s_time%>
         </div>
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
+        <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
             <strong>处理时间：</strong>
             <%=dt_edit%>
         </div>
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
+        <div style="float: left; margin-left: 20px; width: 260px;">
             <strong>处理人：</strong><%=admin_name%>
         </div>
         <strong style="margin-left: 10px;"><i>处理信息：</i></strong><br>

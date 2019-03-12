@@ -6,16 +6,6 @@
 <div class="text-primary">
     <em>评估价审核：</em>
     <div class="big-conte" style="display: block;">
-        <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
-            <strong>开始时间：</strong>
-            2018-12-18 10:46:36
-        </div>
-        <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
-            <strong>处理时间：</strong>
-            2018-12-18 10:47:02
-        </div>
-        <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
-            <strong>处理人：</strong>韩振杰</div>
         <strong style="margin-left:10px;"><i>处理信息：</i></strong><br>
         <!-- ngIf: taskAct.pageName!='cudp'||'_cudp'.indexOf(taskAct.pageName)<=-1 -->
         <!-- ngInclude: '/modules/'+taskAct.menuCode+'/'+taskAct.pageName+'.html' -->

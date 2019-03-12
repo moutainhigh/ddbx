@@ -29,15 +29,15 @@
 <li class="text-primary">
     <em>审核员补资料:</em>
     <div class="big-conte_" >
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
+        <div style="float: left; margin-left: 20px; width: 300px;">
             <strong>开始时间：</strong>
             <%=s_time%>
         </div>
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
+        <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
             <strong>处理时间：</strong>
             <%=dt_edit%>
         </div>
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
+        <div style="float: left; margin-left: 20px; width: 260px;">
             <strong>处理人：</strong><%=admin_name%>
         </div>
         <strong style="margin-left:10px;"><i>处理信息：</i></strong><br>
@@ -56,7 +56,7 @@
                     <span class="ng-hide">
                     <label class="col-sm-2 control-label">编号</label><!--AX年份000001  -->
                     <div class="col-sm-3">
-                        <input  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" value="${infodb.order_code}">
+                        <input  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" value="${icbc.order_code}">
                     </div>
                     </span>
                 </div>

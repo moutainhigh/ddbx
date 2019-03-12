@@ -29,15 +29,15 @@
 <li class="text-primary">
     <em>公司纸质归档:</em>
     <div class="big-conte_" >
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
+        <div style="float: left; margin-left: 20px; width: 300px;">
             <strong>开始时间：</strong>
             <%=s_time%>
         </div>
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
+        <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
             <strong>处理时间：</strong>
             <%=dt_edit%>
         </div>
-        <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
+        <div style="float: left; margin-left: 20px; width: 260px;">
             <strong>处理人：</strong><%=admin_name%>
         </div>
         <strong style="margin-left:10px;"><i>处理信息：</i></strong><br>
@@ -50,8 +50,8 @@
                 <div class="form-group ng-scope" >
                     <label class="col-sm-2 control-label">材料审核<span class="red">*</span></label>
                     <div class="col-sm-3">
-                        <input type="radio" value="1" ${result_map.result_1_code eq 1?"checked":''} class="ng-pristine ng-untouched ng-valid ng-not-empty" name="result_1_code">通过  &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input type="radio" value="2" ${result_map.result_1_code eq 2?"checked":''} class="ng-pristine ng-untouched ng-valid ng-not-empty" name="result_1_code">不通过
+                        <input type="radio" onClick='javascript:return false' value="1" ${result_map.result_1_code eq 1?"checked":''} class="ng-pristine ng-untouched ng-valid ng-not-empty" name="result_1_code">通过  &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" onClick='javascript:return false' value="2" ${result_map.result_1_code eq 2?"checked":''} class="ng-pristine ng-untouched ng-valid ng-not-empty" name="result_1_code">不通过
                     </div>
                 </div><!-- end ngIf: notUseButton && task.complete!=null -->
                 <div class="form-group">
@@ -62,7 +62,7 @@
                     <span class="ng-hide">
                     <label class="col-sm-2 control-label">编号</label><!--AX年份000001  -->
                     <div class="col-sm-3">
-                        <input  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" value="${infodb.order_code}">
+                        <input  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" value="${icbc.order_code}">
                     </div>
                     </span>
                 </div>
