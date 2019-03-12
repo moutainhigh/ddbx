@@ -39,12 +39,57 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">快递图片<i class="pull-right text-red">*</i></label>
-                    <div class="col-sm-3">
-                        <input type="hidden" id="courierImage" name="courierImage" value="" >
-                        <input style="display:none" onchange="javascript:setImagePreview();" type="file" value="" id="file" name="file" >
-                        <label for="file">
-                            <img  id="preview" style="display:block;width:42%;height:100px;border-radius:10px;"  class="img-thumbnail"  src="images/mgcaraddimg.jpg"/>
-                        </label>
+                    <div class="col-sm-10">
+                        <div style="position: relative;width: 100px;height:100px;display: inline-block;text-align: center;margin: auto;" id="div_avatarurl">
+                          <img id="avatarurl_view" name="avatarurl_view" src="images/mgcaraddimg.jpg" class="imgclass" style="width: 100%;height:100px;border-radius:10px;">
+                          <input type="hidden" id="avatarurl" name="avatarurl" value="images/mgcaraddimg.jpg">
+                          <input type="file" id="upload_avatarurl" runat="server" name="upload_immm" accept="" style="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;" class="uploadfileclass">
+                          <script>
+                            $('#upload_avatarurl').fileUpload({//压缩图片为jpg后再上传
+                              "url": "/ttAjaxPost?do=fileup&smallwidth=100&smallheight=100&shuitext=快加认证",//smallwidth缩略图宽,smallheight缩略图高，shuitext水印文字
+                              "success": function (res) {
+                                eval("var data=" + res);
+                                var msg = data.msg;
+                                $('#upload_avatarurl').attr('filename', '');
+                                $('#upload_avatarurl').val('');
+                                if (data.url) {
+                                  var avatarurl = data.url;
+                                  var smallavatarurl = data.small ? data.small : data.url;
+                                  if (msg) {
+                                    alert(msg);
+                                    //$("#aiclf45_1").attr("class", "am-icon-warning am-text-warning");
+                                  } else {
+                                    //avatarurl = "assess/"+avatarurl;
+                                    $('#avatarurl').val(avatarurl);
+                                    $('#avatarurl_view').attr('src', smallavatarurl);
+                                    $('#avatarurl_view').parents('div.hide:first').removeClass('hide');
+                                    //$("#aiclf45_1").attr("class", "am-icon-check am-text-success");
+                                  }
+                                }else{
+                                  if (msg) {
+                                    alert(msg);
+                                  }
+                                }
+                                if (typeof (cloaseuplayer) == 'function') {
+                                  cloaseuplayer("#div_avatarurl");
+                                }
+                              },
+                              "fail":function(res){
+                                eval("var data=" + res);
+                                var msg = data.msg;
+                                if (msg) {
+                                  alert(msg);
+                                }
+                              }
+                            });
+                            $('#upload_avatarurl').on('change', function () {
+                              //$("#aiclf45_1").attr("class", "am-icon-refresh am-icon-spin");
+                              if (typeof (beforeup) == 'function') {
+                                beforeup("#div_avatarurl");
+                              }
+                            });
+                          </script>
+                        </div>
                     </div>
                 </div>
 <!-- ngIf: rootData.taskDefKey!='loanOrder_postinfo_return' -->
@@ -75,11 +120,12 @@ $('.form_datetime').datetimepicker({
         var orderNo= $('#orderNo').val();
         var sendDate= $('#sendDate').val();
         var result_msg= $('#result_msg').val();
-        var courierImage = $('#courierImage').val();
+        var courierImage = $('#avatarurl').val();
         var icbc_id= '${requestScope.infodb.icbc_id}';
         var type_id= '${requestScope.infodb.type_id}';
         var id= '${requestScope.infodb.id}';
         //alert(icbc_id+"----"+type_id+"---"+id+"---");
+        //alert(courierImage);
         if(!orderNo){
             alert("快递单号不能为空!");
             return false;

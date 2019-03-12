@@ -44,9 +44,9 @@ public class ErpResultsController {
                 if(post.get("result_code")!= null && !post.get("result_code").equals("")){
                     //回退补件
                     if(post.get("result_code").equals("3")){
-                        erp.put("now_status", "33");
+                        erp.put("now_status", getOneUserInfoErp.get("later_status"));
                         erp.put("later_status", "32");
-                        erp_result.put("now_status","33");
+                        erp_result.put("now_status",getOneUserInfoErp.get("later_status"));
                         erp_result.put("later_status","32");
                         erp_result.put("remark", "");
                         erp_result.put("result_code", post.get("result_code"));
@@ -288,7 +288,6 @@ public class ErpResultsController {
                             //银行审批结果 先抵押后放贷：选择这个界面暂时不往下级走，等“抵押归档”模块完成开启“银行放款结果”
                             //得到  抵押归档完成-小状态
                             TtMap ttMap= Tools.recinfo("select * from dd_icbc_erp_result where type_id=116 and now_status=82 and icbc_id=" + Long.valueOf(post.get("icbc_id")));
-                            System.err.println(ttMap+"-999999999");
                             if(ttMap.get("id")!=null){
                                 // “抵押归档”模块完成 , 开启“银行放款结果”
                                 erp.put("now_status", "60");
@@ -314,6 +313,11 @@ public class ErpResultsController {
                             erp.put("later_status", "62");
                             erp_result.put("now_status","61");
                             erp_result.put("later_status","62");
+                            /**
+                             * 生成客户还款计划
+                             * 期数 金额 月还款额 月还日期
+                             */
+
                         }else if(post.get("result_code").equals("2")){ //放款失败 进入上一个状态 银行审批结果
                             erp.put("now_status", "61");
                             erp.put("later_status", "60");
@@ -401,8 +405,8 @@ public class ErpResultsController {
                         erp.put("later_status", "74");
                         erp_result.put("now_status","73");
                         erp_result.put("later_status","74");
-                        erp_result.put("remark", "");
-                        erp_result.put("result_code",post.get("result_code"));
+                        erp_result.put("remark", "公证记录");
+                        erp_result.put("result_code","0");
                         erp_result.put("result_msg", post.get("result_msg"));
                         erp_result.put("result_value", result_value);
                         break;
@@ -412,7 +416,7 @@ public class ErpResultsController {
                         erp_result.put("now_status","74");
                         erp_result.put("later_status","75");
                         erp_result.put("remark", "");
-                        erp_result.put("result_code",post.get("result_code"));
+                        erp_result.put("result_code","0");
                         erp_result.put("result_msg", post.get("result_msg"));
                         erp_result.put("result_value", result_value);
                         break;
@@ -530,7 +534,7 @@ public class ErpResultsController {
             /**
              * 某某某某
              */
-            case "73":
+            case "777":
                 break;
             default:
                 code = 119;
@@ -636,7 +640,6 @@ public class ErpResultsController {
         TtMap selectOnebankLoanERPErp = Tools.recinfo("select * from dd_icbc_erp where icbc_id=" + Long.valueOf(post.get("icbc_id")) + " and type_id=198");
         //        if (selectOnebankLoanERPErp == null || selectOnebankLoanERPErp.equals("")){
         Long getERPId = Tools.recAdd(bankLoanERP, "dd_icbc_erp");
-        System.err.println(getERPId+"--9999999999999999999--"+selectOnebankLoanERPErp.equals(""));
         bankLoanERPResult.put("qryid",getERPId+"");
         Tools.recAdd(bankLoanERPResult, "dd_icbc_erp_result");
 //        }
