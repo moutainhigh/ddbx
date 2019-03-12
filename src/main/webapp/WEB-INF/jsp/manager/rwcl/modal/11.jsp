@@ -28,7 +28,7 @@
 %>
 <li class="text-primary">
     <em>评估价审核：</em>
-    <div class="big-conte" style="display: block;">
+    <div class="big-conte" style="display: none;">
         <div style="float: left; margin-left: 20px; width: 300px;">
             <strong>开始时间：</strong>
             <%=s_time%>
@@ -50,13 +50,13 @@
                     <label class="col-sm-2 control-label">审核结果</label>
                     <div class="col-sm-8">
                         <label class="radio-inline">
-                            <input type="radio" value="1" ${result_map.state_code eq 1?"checked":''} name="state_code">通过
+                            <input type="radio" value="1" disabled="disabled" ${result_map.state_code eq 1?"checked":''} name="state_code">通过
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" value="2" ${result_map.state_code eq 2?"checked":''} name="state_code">不通过
+                            <input type="radio" value="2" disabled="disabled" ${result_map.state_code eq 2?"checked":''} name="state_code">不通过
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" value="3" ${result_map.state_code eq 3?"checked":''} name="state_code">回退补件
+                            <input type="radio" value="3" disabled="disabled" ${result_map.state_code eq 3?"checked":''} name="state_code">回退补件
                         </label>
                     </div>
                 </div>
@@ -67,14 +67,14 @@
                                 <label class="col-sm-2 control-label">新车指导价</label>
                                 <div class="col-sm-3">
                                     <div class="input-group date ng-isolate-scope ng-not-empty ng-valid ng-valid-required">
-                                        <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" name="price_new" value="${result_map.price_new}"><span class="input-group-addon">元</span>
+                                        <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" disabled="disabled" type="text" name="price_new" value="${result_map.price_new}"><span class="input-group-addon">元</span>
                                     </div>
                                 </div>
                             </span><!-- end ngIf: currentUser.orgType!='HAFU' -->
                     <label class="col-sm-2 control-label">期望评估价</label>
                     <div class="col-sm-3">
                         <div class="input-group date ng-isolate-scope ng-not-empty ng-valid ng-valid-required">
-                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" name="icbc_pricecs" value="${result_map.icbc_pricecs}"><span class="input-group-addon">元</span>
+                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" disabled="disabled" type="text" name="icbc_pricecs" value="${result_map.icbc_pricecs}"><span class="input-group-addon">元</span>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                         <label class="col-sm-2 control-label">建议评估价</label>
                             <div class="col-sm-3">
                                 <div class="input-group date ng-isolate-scope ng-not-empty ng-valid ng-valid-required">
-                                    <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" name="suggest_price" value="${result_map.suggest_price}"><span class="input-group-addon">元</span>
+                                    <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" disabled="disabled" type="text" name="suggest_price" value="${result_map.suggest_price}"><span class="input-group-addon">元</span>
                                 </div>
                             </div>
                         </span>
@@ -93,7 +93,7 @@
                     <label class="col-sm-2 control-label">最终评估价<i class="red">*</i></label>
                     <div class="col-sm-3">
                         <div class="input-group date ng-isolate-scope ng-not-empty ng-valid ng-valid-required">
-                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" type="text" id="price_result" name="price_result" value="${result_map.price_result}"><span class="input-group-addon">元</span>
+                            <input class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" disabled="disabled" type="text" id="price_result" name="price_result" value="${result_map.price_result}"><span class="input-group-addon">元</span>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">备注</label>
                     <div class="col-sm-8">
-                        <textarea class="form-control" name="remark" id="remark"
+                        <textarea class="form-control" disabled="disabled" name="remark" id="remark"
                                   style="margin: 0px -5.34375px 0px 0px; height: 141px; width: 545px;">${result_map.remark}
                         </textarea>
                     </div>

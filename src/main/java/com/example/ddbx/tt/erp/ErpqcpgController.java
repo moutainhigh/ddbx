@@ -91,8 +91,8 @@ public class ErpqcpgController {
                 erp.put("later_status", "12");
                 break;
             case "3":
-                erp.put("now_status", "10");
-                erp.put("later_status", "11");
+                erp.put("now_status", "11");
+                erp.put("later_status", "10");
                 break;
         }
         Tools.recEdit(erp, "dd_icbc_erp", Long.valueOf(post.get("id")));

@@ -28,7 +28,7 @@
 %>
 <li class="text-primary">
     <em>纸质归档:</em>
-    <div class="big-conte_">
+    <div class="big-conte" style="display: none;">
         <div style="float: left; margin-left: 20px; width: 300px;">
             <strong>开始时间：</strong>
             <%=s_time%>
@@ -52,19 +52,19 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">客户姓名</label>
                     <div class="col-sm-3">
-                        <input  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" value="${infodb.c_name}">
+                        <input  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" disabled="disabled" type="text" value="${infodb.c_name}">
                     </div>
                     <span class="ng-hide">
                     <label class="col-sm-2 control-label">编号</label><!--AX年份000001  -->
                     <div class="col-sm-3">
-                        <input  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" value="${icbc.order_code}">
+                        <input  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" disabled="disabled" type="text" value="${icbc.order_code}">
                     </div>
                     </span>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">备注</label>
                     <div class="col-sm-8">
-                        <textarea name="result_1_msg" id="result_1_msg" rows="3" class="form-control ng-pristine ng-untouched ng-valid ng-empty" type="text">
+                        <textarea name="result_1_msg" id="result_1_msg" rows="3" class="form-control ng-pristine ng-untouched ng-valid ng-empty" disabled="disabled" type="text">
                             ${result_map.result_1_msg}
                         </textarea>
                         <!-- <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" type="text"  > -->
