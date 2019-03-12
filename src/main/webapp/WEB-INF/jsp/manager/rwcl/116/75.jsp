@@ -23,7 +23,7 @@
                     <div class="col-sm-3">
                         <input id="receiptConfirm" name="receiptConfirm" type="radio" value="已收到"  class="ng-pristine ng-untouched ng-valid ng-not-empty" >已收到
                             &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input id="receiptConfirm" name="receiptConfirm" type="radio" value="未收到"  class="ng-pristine ng-untouched ng-valid ng-not-empty" name="yhdksh_58_msg">未收到
+                        <input id="receiptConfirm" name="receiptConfirm" type="radio" value="未收到"  class="ng-pristine ng-untouched ng-valid ng-not-empty" >未收到
                     </div>
                     <label class="col-sm-2 control-label">收件日期<i class="pull-right text-red">*</i></label>
                     <div class="input-group date form_datetime col-md-3" data-date="" data-date-format="yyyy-mm-dd" data-link-field="receiptDate">

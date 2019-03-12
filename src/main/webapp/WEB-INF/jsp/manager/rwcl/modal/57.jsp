@@ -56,19 +56,21 @@
                     </div>
                     <label class="col-sm-2 control-label">寄出日期<i class="pull-right text-red">*</i></label>
                     <div class="input-group date form_datetime col-md-3" data-date="" data-date-format="yyyy-mm-dd" data-link-field="sendDate">
-                        <input class="form-control" size="16" type="text" value="" readonly>
+                        <input class="form-control" size="16" type="text" value="${fn:substring(result_map.sendDate,0,10)}" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                     </div>
-                    <input type="hidden" id="sendDate" name="sendDate" value="${result_map.sendDate}" /><br/>
+                    <input type="hidden" id="" name="" value="${result_map.sendDate}" /><br/>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">快递图片<i class="pull-right text-red">*</i></label>
-                    <div class="col-sm-3">
+                    <div class="gallerys">
                         <input type="hidden" id="courierImage" name="courierImage" value="" >
-                        <input style="display:none" onchange="javascript:setImagePreview();" type="file" value="" id="file" name="file" >
                         <label for="file">
-                            <img  id="preview" style="display:block;width:42%;height:100px;border-radius:10px;"  class="img-thumbnail"  src="images/mgcaraddimg.jpg"/>
+                            <div class="user-face-pic">
+                                <!-- class为gallerys表示图片放大组件的起始范围。 aaaa -->
+                                <img class="media-object gallery-pic" onclick="$.openPhotoGallery(this)"  id="preview" style="width:120px;height:120px;display:block;border-radius:10px;" src="${result_map.courierImage}"/>
+                            </div>
                         </label>
                     </div>
                 </div>
@@ -79,44 +81,6 @@
         <textarea id="result_msg" name="result_msg" rows="3" class="form-control ng-pristine ng-untouched ng-valid ng-empty" type="text"><%=result_map.get("result_msg")%></textarea>
     </div>
 </div>
-<script>
-    //上传图片
-    function setImagePreview(avalue) {
-        var docObj = document.getElementById("file");
-        var imgObjPreview = document.getElementById("preview");
-        if(docObj.files && docObj.files[0])
-        {
-            //火狐下，直接设img属性
-            imgObjPreview.style.display = 'block';
-            imgObjPreview.style.width = '100px';
-            imgObjPreview.style.height = '100px';
-            //imgObjPreview.src = docObj.files[0].getAsDataURL();
-            //火狐7以上版本不能用上面的getAsDataURL()方式获取，需要一下方式
-            imgObjPreview.src = window.URL.createObjectURL(docObj.files[0]);
-        }
-        else
-        {
-            //IE下，使用滤镜
-            docObj.select();
-            var imgSrc = document.selection.createRange().text;
-            var localImagId = document.getElementById("localImag"); //必须设置初始大小
-            localImagId.style.width = "100px";
-            localImagId.style.height = "100px"; //图片异常的捕捉，防止用户修改后缀来伪造图片
-            try {
-                localImagId.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)";
-                localImagId.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = imgSrc;
-            } catch(e) {
-                alert("您上传的图片格式不正确，请重新选择!");
-                return false;
-            }
-            imgObjPreview.style.display = 'none';
-            document.selection.empty();
-        }
-        //file_up();
-        document.getElementById("courierImage").value=document.getElementById("file").files[0];
-        return true;
-    }
-</script>
 </form>
 </div>
 </div>
