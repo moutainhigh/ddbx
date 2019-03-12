@@ -7,14 +7,6 @@
 <div class="text-primary">
     <em>公司纸质归档:</em>
     <div class="big-conte_" >
-        <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
-            <strong>开始时间：</strong>
-        </div>
-        <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
-            <strong>处理时间：</strong>
-        </div>
-        <div style="float:left;margin-left:20px;width:260px;" class="ng-binding">
-            <strong>处理人：</strong></div>
         <strong style="margin-left:10px;"><i>处理信息：</i></strong><br>
         <div class="task_margin ng-scope"  style="border:1px solid #ccc; border-radius: 10px;background-color:#F7F7F7; padding-top:10px;">
             <form id="gsgdsh_67"  name="modalForm" class="form-horizontal ng-pristine ng-valid ng-scope" >
@@ -37,7 +29,7 @@
                     <span class="ng-hide">
                     <label class="col-sm-2 control-label">编号</label><!--AX年份000001  -->
                     <div class="col-sm-3">
-                        <input  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" value="${infodb.order_code}">
+                        <input  class="form-control ng-pristine ng-untouched ng-valid ng-not-empty" type="text" value="${icbc.order_code}">
                     </div>
                     </span>
                 </div>
