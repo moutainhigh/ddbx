@@ -27,7 +27,7 @@
 %>
 <li class="text-primary">
 <em>录入银行查验情况：</em>
-    <div class="big-conte" style="display: block;">
+    <div class="big-conte" style="display: none;">
         <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
             <strong>开始时间：</strong>
             <%=s_time%>
