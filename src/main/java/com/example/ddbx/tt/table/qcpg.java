@@ -24,7 +24,7 @@ public class qcpg extends DbCtrl {
     public boolean agpOK = false;// 默认无权限
 
     public qcpg() {
-        super("dd_icbc_materials");
+        super("dd_icbc_cars");
 
         AdminAgp adminAgp = new AdminAgp();
         try {
@@ -131,33 +131,28 @@ public class qcpg extends DbCtrl {
             ary.put("icbc_id", ontCustomer.get("id"));
             ary.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
             ary.put("gems_id", ontCustomer.get("gems_id"));
-            DecimalFormat countFormat = new DecimalFormat("000000000");
-            ary.put("order_code", "Q" + countFormat.format(Integer.parseInt(ontCustomer.get("id"))));
+            ary.put("order_code", "暂时保留");
 
-            String models = "";
-            if (StringUtils.isNotEmpty(ary.get("models1")) && StringUtils.isNotEmpty(ary.get("models2")) && StringUtils.isNotEmpty(ary.get("models3"))) {
-                models = ary.get("models1") + " " + ary.get("models2") + " " + ary.get("models1");
-            }
-            ary.put("models", models);
+            String imgstep9_1ss = ary.get("imgstep9_1ss1") + ","
+                    + ary.get("imgstep9_1ss2") + ","
+                    + ary.get("imgstep9_1ss3") + ","
+                    + ary.get("imgstep9_1ss4") + ","
+                    + ary.get("imgstep9_1ss5");
+            ary.put("imgstep9_1ss", imgstep9_1ss);
 
-            String imgstep1_1qp = ary.get("imgstep1_1qp1") + ","
-                    + ary.get("imgstep1_1qp2") + ","
-                    + ary.get("imgstep1_1qp3") + ","
-                    + ary.get("imgstep1_1qp4") + ","
-                    + ary.get("imgstep1_1qp5");
-            ary.put("imgstep1_1qp", imgstep1_1qp);
+            String imgstep9_2ss = ary.get("imgstep9_2ss1") + ","
+                    + ary.get("imgstep9_2ss2") + ","
+                    + ary.get("imgstep9_2ss3") + ","
+                    + ary.get("imgstep9_2ss4") + ","
+                    + ary.get("imgstep9_2ss5") + ","
+                    + ary.get("imgstep9_2ss6") + ","
+                    + ary.get("imgstep9_2ss7") + ","
+                    + ary.get("imgstep9_2ss8") + ","
+                    + ary.get("imgstep9_2ss9") + ","
+                    + ary.get("imgstep9_2ss10");
+            ary.put("imgstep9_2ss", imgstep9_2ss);
 
-            String imgstep1_2qp = ary.get("imgstep1_2qp1") + ","
-                    + ary.get("imgstep1_2qp2") + ","
-                    + ary.get("imgstep1_2qp3") + ","
-                    + ary.get("imgstep1_2qp4") + ","
-                    + ary.get("imgstep1_2qp5") + ","
-                    + ary.get("imgstep1_2qp6") + ","
-                    + ary.get("imgstep1_2qp7") + ","
-                    + ary.get("imgstep1_2qp8") + ","
-                    + ary.get("imgstep1_2qp9") + ","
-                    + ary.get("imgstep1_2qp10");
-            ary.put("imgstep1_2qp", imgstep1_2qp);
+            System.out.println("ary:"+ary);
 
             return super.add(ary);
         }
@@ -280,24 +275,24 @@ public class qcpg extends DbCtrl {
 
         Tools.recexec("update dd_icbc_erp set now_status=10,later_status=11 where type_id=47 and icbc_id="+icbc_id);
         //2 本表操作
-        String imgstep1_1qp = ary.get("imgstep1_1qp1") + ","
-                + ary.get("imgstep1_1qp2") + ","
-                + ary.get("imgstep1_1qp3") + ","
-                + ary.get("imgstep1_1qp4") + ","
-                + ary.get("imgstep1_1qp5");
-        ary.put("imgstep1_1qp", imgstep1_1qp);
+        String imgstep9_1ss = ary.get("imgstep9_1ss1") + ","
+                + ary.get("imgstep9_1ss2") + ","
+                + ary.get("imgstep9_1ss3") + ","
+                + ary.get("imgstep9_1ss4") + ","
+                + ary.get("imgstep9_1ss5");
+        ary.put("imgstep9_1ss", imgstep9_1ss);
 
-        String imgstep1_2qp = ary.get("imgstep1_2qp1") + ","
-                + ary.get("imgstep1_2qp2") + ","
-                + ary.get("imgstep1_2qp3") + ","
-                + ary.get("imgstep1_2qp4") + ","
-                + ary.get("imgstep1_2qp5") + ","
-                + ary.get("imgstep1_2qp6") + ","
-                + ary.get("imgstep1_2qp7") + ","
-                + ary.get("imgstep1_2qp8") + ","
-                + ary.get("imgstep1_2qp9") + ","
-                + ary.get("imgstep1_2qp10");
-        ary.put("imgstep1_2qp", imgstep1_2qp);
+        String imgstep9_2ss = ary.get("imgstep9_2ss1") + ","
+                + ary.get("imgstep9_2ss2") + ","
+                + ary.get("imgstep9_2ss3") + ","
+                + ary.get("imgstep9_2ss4") + ","
+                + ary.get("imgstep9_2ss5") + ","
+                + ary.get("imgstep9_2ss6") + ","
+                + ary.get("imgstep9_2ss7") + ","
+                + ary.get("imgstep9_2ss8") + ","
+                + ary.get("imgstep9_2ss9") + ","
+                + ary.get("imgstep9_2ss10");
+        ary.put("imgstep9_2ss", imgstep9_2ss);
 
 
         return super.edit(ary, id);
@@ -313,6 +308,7 @@ public class qcpg extends DbCtrl {
 
         long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
         TtMap info = info(nid);
+        System.out.println("info:---"+info);
         String jsonInfo = Tools.jsonEncode(info);
         request.setAttribute("info", jsonInfo);//info为json后的info
         request.setAttribute("infodb", info);//infodb为TtMap的info
