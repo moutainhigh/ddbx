@@ -108,7 +108,7 @@ $('.form_datetime').datetimepicker({
         minView: "month",//设置只显示到月份
         todayBtn:  1, //
         autoclose: 1, //当选择一个日期之后是否立即关闭此日期时间选择器。
-        todayHighlight: 1, //当天日期高亮
+        todayHighlight: 0, //当天日期高亮
         startView: 2, //0 or 'hour' 为小时视图，1 or 'day' 为天视图，2 or 'month' 为月视图（为默认值），3 or 'year'  为年视图，4 or 'decade' 为十年视图
         forceParse: 0, //当选择器关闭的时候，是否强制解析输入框中的值。
         showMeridian: 1
