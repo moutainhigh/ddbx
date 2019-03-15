@@ -9,7 +9,29 @@ p{
 	margin: 0;
 }
 
+.visual_form_top {
+	width: 100%;
+	height: 50%;}
 
+.visual_form_bottom {
+	width: 100%;
+	height: 50%;}
+.visual_form1_top_left{
+	width: 50%;
+	height: 100%;
+}
+.visual_form1_top_right{
+	width: 50%;
+	height: 100%;
+}
+.baodan_left{
+	width: 60%;
+	height: 100%;
+}
+.baodan_right{
+	width: 40%;
+	height: 100%;
+}
 
 
 

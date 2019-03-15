@@ -19,6 +19,7 @@ public class spmq extends DbCtrl {
     public boolean agpOK = false;// 默认无权限
 
     public spmq() {
+
         super("dd_icbc_materials");
         AdminAgp adminAgp = new AdminAgp();
         try {
@@ -50,62 +51,84 @@ public class spmq extends DbCtrl {
         }
         return allCustomer;
     }
-    @Override
-    public long add(TtMap ary) {
-        //从dd_icbc表中查询出id,gems_fs_id,gems_id,order_code
-        DbTools myDbTools=new DbTools();
-        String sql="select id,gems_fs_id,gems_id,c_name,c_tel,c_cardno from dd_icbc where id="+ary.get("icbc_id");
+
+    public TtMap selectspmqPlate(String icbc_id) {
+        DbTools myDbTools = new DbTools();
+        String sql = "select count(*) sum,e.* from dd_icbc_erp e where type_id=63 and icbc_id=" + icbc_id;
         TtMap ontCustomer = null;
         try {
             ontCustomer = myDbTools.recinfo(sql);
             recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
-        }catch (Exception e) {
+        } catch (Exception e) {
             Tools.logError(e.getMessage(), true, false);
-        }finally {
+        } finally {
             myDbTools.closeConn();
         }
+        return ontCustomer;
+    }
+    @Override
+    public long add(TtMap ary) {
+        //添加时先判断一下有没有这个板块，如果有该板块>0就不添加，没有0该板块就添加
+        String icbc_id = ary.get("icbc_id");
+        TtMap ttMap = selectspmqPlate(icbc_id);
+        // 没有该板块添加
+        if(ttMap.get("sum").equals("0")) {
+            //从dd_icbc表中查询出id,gems_fs_id,gems_id,order_code
+            DbTools myDbTools = new DbTools();
+            String sql = "select id,gems_fs_id,gems_id,c_name,c_tel,c_cardno from dd_icbc where id=" + ary.get("icbc_id");
+            TtMap ontCustomer = null;
+            try {
+                ontCustomer = myDbTools.recinfo(sql);
+                recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
+            } catch (Exception e) {
+                Tools.logError(e.getMessage(), true, false);
+            } finally {
+                myDbTools.closeConn();
+            }
 
-        long qryid = 0;
-        //向dd_icbc_erp表中添加数据
-        TtMap ttMap1 = new TtMap();
-        ttMap1.put("c_name",ontCustomer.get("c_name"));
-        ttMap1.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
-        ttMap1.put("gems_id",ontCustomer.get("gems_id"));
-        ttMap1.put("icbc_id",ary.get("icbc_id"));
-        ttMap1.put("type_id","63");
-        ttMap1.put("later_status","24");
-        ttMap1.put("now_status","23");
-        ttMap1.put("c_tel",ontCustomer.get("c_tel"));
-        ttMap1.put("c_cardno",ontCustomer.get("c_cardno"));
-        ttMap1.put("adminop_tag", Tools.minfo().get("id")); //当前操作人id
-        qryid = Tools.recAdd(ttMap1, "dd_icbc_erp");
+            long qryid = 0;
+            //向dd_icbc_erp表中添加数据
+            TtMap ttMap1 = new TtMap();
+            ttMap1.put("c_name", ontCustomer.get("c_name"));
+            ttMap1.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
+            ttMap1.put("gems_id", ontCustomer.get("gems_id"));
+            ttMap1.put("icbc_id", ary.get("icbc_id"));
+            ttMap1.put("type_id", "63");
+            ttMap1.put("later_status", "24");
+            ttMap1.put("now_status", "23");
+            ttMap1.put("c_tel", ontCustomer.get("c_tel"));
+            ttMap1.put("c_cardno", ontCustomer.get("c_cardno"));
+            ttMap1.put("adminop_tag", Tools.minfo().get("id")); //当前操作人id
+            qryid = Tools.recAdd(ttMap1, "dd_icbc_erp");
 
-        //向dd_icbc_erp_result表中添加数据
-        TtMap ttMap2 = new TtMap();
-        ttMap2.put("qryid", qryid+"");
-        ttMap2.put("icbc_id",ary.get("icbc_id"));
-        ttMap2.put("type_id","63");
-        ttMap2.put("later_status","23");
-        ttMap2.put("now_status","22");
-        Tools.recAdd(ttMap2, "dd_icbc_erp_result");
+            //向dd_icbc_erp_result表中添加数据
+            TtMap ttMap2 = new TtMap();
+            ttMap2.put("qryid", qryid + "");
+            ttMap2.put("icbc_id", ary.get("icbc_id"));
+            ttMap2.put("type_id", "63");
+            ttMap2.put("later_status", "23");
+            ttMap2.put("now_status", "22");
+            Tools.recAdd(ttMap2, "dd_icbc_erp_result");
 
-        TtMap ttMap3 = new TtMap();
-        ttMap3.put("qryid", qryid+"");
-        ttMap3.put("icbc_id",ary.get("icbc_id"));
-        ttMap3.put("type_id","63");
-        ttMap3.put("later_status","24");
-        ttMap3.put("now_status","23");
-        Tools.recAdd(ttMap3, "dd_icbc_erp_result");
+            TtMap ttMap3 = new TtMap();
+            ttMap3.put("qryid", qryid + "");
+            ttMap3.put("icbc_id", ary.get("icbc_id"));
+            ttMap3.put("type_id", "63");
+            ttMap3.put("later_status", "24");
+            ttMap3.put("now_status", "23");
+            Tools.recAdd(ttMap3, "dd_icbc_erp_result");
 
-        // 本表操作添加数据
-        ary.put("icbc_id",ary.get("icbc_id"));
-        ary.put("gems_fs_id",ontCustomer.get("gems_fs_id"));
-        ary.put("gems_id",ontCustomer.get("gems_id"));
-        DecimalFormat countFormat = new DecimalFormat("000000000");
-        ary.put("order_code","S"+countFormat.format(Integer.parseInt(ontCustomer.get("id"))));
-        ary.put("videostep1",ary.get("videostep1"));
+            // 本表操作添加数据
+            ary.put("icbc_id", ary.get("icbc_id"));
+            ary.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
+            ary.put("gems_id", ontCustomer.get("gems_id"));
+            DecimalFormat countFormat = new DecimalFormat("000000000");
+            ary.put("order_code", "S" + countFormat.format(Integer.parseInt(ontCustomer.get("id"))));
+            ary.put("videostep1", ary.get("videostep1"));
 
-        return super.add(ary);
+            return super.add(ary);
+        }
+        return 0;
     }
 
     @Override
@@ -144,6 +167,12 @@ public class spmq extends DbCtrl {
 
     @Override
     public int edit(TtMap ary, long id) {
+        String icbc_id = ary.get("icbc_id");
+
+        Tools.recexec("update dd_icbc_erp set now_status=23,later_status=24 where type_id=63 and icbc_id="+icbc_id);
+        //2 本表操作
+        ary.put("videostep1", ary.get("videostep1"));
+
         return super.edit(ary, id);
     }
 
