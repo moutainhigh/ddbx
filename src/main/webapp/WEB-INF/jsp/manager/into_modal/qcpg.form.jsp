@@ -40,40 +40,40 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">车辆类型</span>
-                                <select class="form-control" id="" name="cars_type">
+                                <select class="form-control" id="" name="car_type">
                                     <option selected = "selected">请选择</option>
-                                    <option value="新车">新车</option>
-                                    <option value="二手车">二手车</option>
+                                    <option value="1">新车</option>
+                                    <option value="2">二手车</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">国产/进口</span>
-                                <select class="form-control" id="" name="origin_type">
+                                <select class="form-control" id="" name="source_id">
                                     <option selected = "selected">请选择</option>
-                                    <option value="国产">国产</option>
-                                    <option value="进口">进口</option>
+                                    <option value="1">国产</option>
+                                    <option value="2">进口</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">使用性质</span>
-                                <select class="form-control" id="" name="using_nature">
+                                <select class="form-control" id="" name="property_id">
                                     <option selected = "selected">请选择</option>
-                                    <option value="运营">运营</option>
-                                    <option value="非运营">非运营</option>
+                                    <option value="1">营运</option>
+                                    <option value="2">非营运</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">变速箱</span>
-                                <select class="form-control" id="" name="transmission">
+                                <select class="form-control" id="" name="gear_box_id">
                                     <option selected = "selected">请选择</option>
-                                    <option value="自动">自动</option>
-                                    <option value="手动">手动</option>
+                                    <option value="1">自动</option>
+                                    <option value="2">手动</option>
                                 </select>
                             </div>
                         </div>
@@ -89,33 +89,33 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">车型</span>
-                                <select class="form-control" id="" name="models1">
+                                <select class="form-control" id="" name="carid">
                                     <option selected = "selected">请选择</option>
-                                    <option value="本田">本田</option>
-                                    <option value="别克">别克</option>
-                                    <option value="宝马">宝马</option>
+                                    <option value="1">本田</option>
+                                    <option value="2">别克</option>
+                                    <option value="3">宝马</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon"></span>
-                                <select class="form-control" id="" name="models2">
+                                <select class="form-control" id="" name="seid">
                                     <option selected = "selected">请选择</option>
-                                    <option value="本田">本田</option>
-                                    <option value="别克">别克</option>
-                                    <option value="宝马">宝马</option>
+                                    <option value="1">本田</option>
+                                    <option value="2">别克</option>
+                                    <option value="3">宝马</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon"></span>
-                                <select class="form-control" id="" name="models3">
+                                <select class="form-control" id="" name="brid">
                                     <option selected = "selected">请选择</option>
-                                    <option value="本田">本田</option>
-                                    <option value="别克">别克</option>
-                                    <option value="宝马">宝马</option>
+                                    <option value="1">本田</option>
+                                    <option value="2">别克</option>
+                                    <option value="3">宝马</option>
                                 </select>
                             </div>
                         </div>
@@ -130,24 +130,24 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">车辆状况</span>
-                                <select class="form-control" id="" name="cars_vehicles">
+                                <select class="form-control" id="" name="car_status">
                                     <option selected = "selected">请选择</option>
-                                    <option value="车辆优秀">车辆优秀</option>
-                                    <option value="车辆良好">车辆良好</option>
-                                    <option value="车辆一般">车辆一般</option>
+                                    <option value="1">车辆优秀</option>
+                                    <option value="2">车辆良好</option>
+                                    <option value="3">车辆一般</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">行驶里程(公里)</span>
-                                <input type="text" class="form-control" id="" name="mileage" placeholder="">
+                                <input type="text" class="form-control" id="" name="car_km" placeholder="">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">出厂日期</span>
-                                <input type="text" class="form-control" id="" name="manufacture_date" placeholder="">
+                                <input type="text" class="form-control" id="" name="cardt1" placeholder="">
                                 <span class="input-group-addon" style="font-size: 18px;">
                                     <i class="fa fa-calendar"></i>
                                 </span>
@@ -156,7 +156,7 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">初次登记日期</span>
-                                <input type="text" class="form-control" id="" name="firstregistration_date" placeholder="">
+                                <input type="text" class="form-control" id="" name="cardt2" placeholder="">
                                 <span class="input-group-addon" style="font-size: 18px;">
                                     <i class="fa fa-calendar"></i>
                                 </span>
@@ -165,18 +165,18 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">颜色</span>
-                                <select class="form-control" id="" name="cars_color">
+                                <select class="form-control" id="" name="car_color_id">
                                     <option selected = "selected">请选择</option>
-                                    <option value="黑">黑</option>
-                                    <option value="白">白</option>
-                                    <option value="灰">灰</option>
-                                    <option value="红">红</option>
-                                    <option value="银">银</option>
-                                    <option value="蓝">蓝</option>
-                                    <option value="金">金</option>
-                                    <option value="棕">棕</option>
-                                    <option value="橙">橙</option>
-                                    <option value="黄">黄</option>
+                                    <option value="1">黑</option>
+                                    <option value="2">白</option>
+                                    <option value="3">灰</option>
+                                    <option value="4">红</option>
+                                    <option value="5">银</option>
+                                    <option value="6">蓝</option>
+                                    <option value="7">金</option>
+                                    <option value="8">棕</option>
+                                    <option value="9">橙</option>
+                                    <option value="10">黄</option>
                                 </select>
                             </div>
                         </div>
@@ -192,65 +192,65 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">所在省</span>
-                                <select class="form-control" id="" name="cars_province">
+                                <select class="form-control" id="" name="local_states">
                                     <option selected = "selected">请选择</option>
-                                    <option value="安徽省">安徽省</option>
-                                    <option value="北京市">北京市</option>
-                                    <option value="福建省">福建省</option>
-                                    <option value="甘肃省">甘肃省</option>
-                                    <option value="贵州省">贵州省</option>
-                                    <option value="广西省">广西省</option>
+                                    <option value="1">安徽省</option>
+                                    <option value="2">北京市</option>
+                                    <option value="3">福建省</option>
+                                    <option value="4">甘肃省</option>
+                                    <option value="5">贵州省</option>
+                                    <option value="6">广西省</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">所在市</span>
-                                <select class="form-control" id="" name="cars_city">
+                                <select class="form-control" id="" name="local_citys">
                                     <option selected = "selected">请选择</option>
-                                    <option value="安徽省">安徽省</option>
-                                    <option value="北京市">北京市</option>
-                                    <option value="福建省">福建省</option>
-                                    <option value="甘肃省">甘肃省</option>
-                                    <option value="贵州省">贵州省</option>
-                                    <option value="广西省">广西省</option>
+                                    <option value="1">安徽省</option>
+                                    <option value="2">北京市</option>
+                                    <option value="3">福建省</option>
+                                    <option value="4">甘肃省</option>
+                                    <option value="5">贵州省</option>
+                                    <option value="6">广西省</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">车牌号码</span>
-                                <input type="text" class="form-control" id="" name="license_plate" placeholder="">
+                                <input type="text" class="form-control" id="" name="carno" placeholder="">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">车架号</span>
-                                <input type="text" class="form-control" id="" name="chassis_number" placeholder="">
+                                <input type="text" class="form-control" id="" name="car_vin" placeholder="">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">品牌型号</span>
-                                <input type="text" class="form-control" id="" name="brand_models" placeholder="">
+                                <input type="text" class="form-control" id="" name="ppxh" placeholder="">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">发动机号</span>
-                                <input type="text" class="form-control" id="" name="engine_number" placeholder="">
+                                <input type="text" class="form-control" id="" name="motorcode" placeholder="">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">预期价格</span>
-                                <input type="text" class="form-control" id="" name="expected_price" placeholder="">
+                                <input type="text" class="form-control" id="" name="expect_price" placeholder="">
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">原车主姓名</span>
-                                <input type="text" class="form-control" id="" name="owner_name" placeholder="">
+                                <input type="text" class="form-control" id="" name="old_owner" placeholder="">
                             </div>
                         </div>
 
@@ -272,7 +272,7 @@
                                     <div class="row inline-from">
                                         <%
                                             String upFile1 = "../upfile.inc.jsp";
-                                            String imgPreName1 = "imgstep1_1qp";
+                                            String imgPreName1 = "imgstep9_1ss";
                                             String[] ssImgs1 = { //设置已有值
                                                     !Tools.myIsNull(infodb.get(imgPreName1)) ? infodb.get(imgPreName1) : ""
                                             };
@@ -287,7 +287,7 @@
                                             <jsp:param name="img_MarginImgSrc" value=""/>
                                             <jsp:param name="img_MarginImgClass" value=""/>
                                             <jsp:param name="img_Total" value="5"/>
-                                            <jsp:param name="img_NamePre" value="imgstep1_1qp"/>
+                                            <jsp:param name="img_NamePre" value="imgstep9_1ss"/>
                                             <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                             <jsp:param name="l1div_Style"
                                                        value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
@@ -311,7 +311,7 @@
                                     <div class="row inline-from">
                                         <%
                                             String upFile2 = "../upfile.inc.jsp";
-                                            String imgPreName2= "imgstep1_2qp";
+                                            String imgPreName2= "imgstep9_2ss";
                                             String[] ssImgs2 = { //设置已有值
                                                     !Tools.myIsNull(infodb.get(imgPreName2)) ? infodb.get(imgPreName2) : ""
                                             };
@@ -326,7 +326,7 @@
                                             <jsp:param name="img_MarginImgSrc" value=""/>
                                             <jsp:param name="img_MarginImgClass" value=""/>
                                             <jsp:param name="img_Total" value="10"/>
-                                            <jsp:param name="img_NamePre" value="imgstep1_2qp"/>
+                                            <jsp:param name="img_NamePre" value="imgstep9_2ss"/>
                                             <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                             <jsp:param name="l1div_Style"
                                                        value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
