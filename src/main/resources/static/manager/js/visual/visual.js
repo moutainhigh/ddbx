@@ -1,15 +1,16 @@
 /*点击切换事件 直接用js吧*/
 function visualTransform(){
-    var graphTransform2=document.getElementById("form_visual_form2")
-    var graphTransform1=document.getElementById("form_visual_form1")
-    if (graphTransform2.style.display=="block"){
-        graphTransform2.style.display="none";
-        graphTransform1.style.display="block";
-    } else {
+    var graphTransform1=document.getElementById("form_visual_form1");
+    var graphTransform2=document.getElementById("form_visual_form2");
+    if (graphTransform2.style.display=="none"){
         graphTransform2.style.display="block";
         graphTransform1.style.display="none";
+    } else {
+        graphTransform2.style.display="none";
+        graphTransform1.style.display="block";
     }
 }
+
 var axistick="{lineStyle:{color:'white',type:'dashed'}}";//刻度
 
 /* -----------------------------------------报单统计开始----------------------------------------- */
@@ -648,7 +649,7 @@ var option_dalifenxi = {
             { text: '贷后能力-M3及以上逾期率', max: 400},
             { text: '风控能力-M1逾期率', max: 400}
         ],
-        radius:'60%',
+        radius:'58%',
         nameGap:-2,
         name:{//这里以-分割
             formatter: function (value,indicator) {
@@ -669,7 +670,7 @@ var option_dalifenxi = {
                 b: {
                     color: '#61A0A8',
                     lineHeight: 15,
-                    fontSize:11,
+                    fontSize:10,
                     align:'center'
                 }
             }

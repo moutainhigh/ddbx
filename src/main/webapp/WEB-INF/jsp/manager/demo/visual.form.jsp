@@ -1,17 +1,15 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="Tools" uri="/tld/manager" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+
 <script type="text/javascript" src="${pageContext.request.contextPath }/manager/js/visual/echarts.js"></script>
-<link href="${pageContext.request.contextPath }/manager/css/visual/Visual.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/manager/css/visual/Visual.css"  />
 
 
 <!-- 可视化数据图 -->
-<div class="content_visual" style="width: 100%; height: 100%;">
-    <div class="form_visual" style="width: 100%; height: 100%;">
+<div class="content_visual">
+    <div class="form_visual" >
         <!-- <%--  数据图一  --%> -->
-        <div class="form_visual_form1" id="form_visual_form1" style="width: 100%; height: 100%;">
+        <div class="form_visual_form1" id="form_visual_form1" style="width: 1670px; height: 800px;display: block;">
             <div class="visual_form_top_box">
                 <!-- 报单统计开始 -->
                 <div class="visual_form_box">
@@ -191,12 +189,12 @@
                                 </li>
                             </ul>
                         </div>
-                        <div style="height: 88%;width: 92%;">
-                            <div style="width: 100%; height: 36%;">
-                                <div style="height: 100%; width: 50%; float:left" id="fangkuan_1"></div>
-                                <div style="height: 100%; width: 50%; float: right;" id="fangkuan_2"></div>
-                            </div>
-                            <div style="height: 63%;width: 100%;margin-left: 10px;" id="fangkuan_3">
+                        <div style="height: 88%;width: 92%;display: inline-block">
+
+                            <div style="height: 35%; width: 50%; float: left; " id="fangkuan_1"></div>
+                            <div style="height: 35%; width: 48%; float: right; " id="fangkuan_2"></div>
+
+                            <div style="height: 63%;width: 100%;margin-left: 10px; display: inline-block" id="fangkuan_3">
                             </div>
                         </div>
                     </div>
@@ -326,11 +324,11 @@
         </div>
 
         <!--  数据图切换按钮  -->
-        <div class="qiehuanbutton" onclick="visualTransform()">切</br>换</div>
+        <div class="qiehuanbutton" id="qiehuanbutton" onclick="visualTransform()">切</br>换</div>
 
 
         <!--   数据图二   -->
-        <div class="form_visual_form2" id="form_visual_form2" style="width: 100%; height: 100%;">
+        <div class="form_visual_form2" id="form_visual_form2" style="width: 1670px; height: 800px;">
             <div class="visual_form2_box">
                 <!-- 逾期率开始 -->
                 <div class="form2_box" style="margin-bottom: 20px;">
@@ -352,11 +350,11 @@
                             </div>
 
                         </div>
-                        <div style="height: 100%;width: 22%; float: left;">
+                        <div style="height: 100%;width: 18%; float: left;">
                             <div style="height: 20%;width: 100%;margin-top: 20%;">
                                 <div class="graph_statistics_content" style="width: 60%;height: 65%;margin-top: 10%;margin: auto;">
-                                    <img src="724618841177387879.png" style="width: 23px;height: 23px;padding-top: 5px;"/>
-                                    <p style="margin: 0;padding: 0;color:#2F4554;font-size: 12px;padding-top: 2px;">逾期率预警</p>
+                                    <img src="${pageContext.request.contextPath }/manager/images/724618841177387879.png" style="width: 23px;height: 23px;padding-top: 5px;"/>
+                                    <p style="color:#2F4554;font-size: 12px;padding-top: 2px;">逾期率预警</p>
                                 </div>
                             </div>
                             <table class="graph_overdue_center">
@@ -386,7 +384,7 @@
                                 </tr>
                             </table>
                             <div style="width: 100%; height: 10%;margin-top: 2%;">
-                                <button class="paiming_button" style="margin-right: 0;">更多</button>
+                                <button class="paiming_button">更多</button>
                             </div>
                         </div>
                         <div style="height: 100%;width: 36%; float: left;">
@@ -398,7 +396,7 @@
                                 <li class="font_color_3">客户年龄</li>
                                 <li class="font_color_3">贷款金额</li>
                             </ul>
-                            <div style="width: 100%;height:80%; margin-left: 8%;" id="yuqilv_2">
+                            <div style="width: 100%;height:80%; margin-left: 5%;" id="yuqilv_2">
                             </div>
                         </div>
                     </div>
@@ -502,6 +500,8 @@
     window.onload =function(){
         document.getElementById("form_visual_form2").style.display="none";
     };
+
+
 </script>
 
 

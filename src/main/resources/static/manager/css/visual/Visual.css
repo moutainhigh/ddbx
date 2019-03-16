@@ -1,5 +1,5 @@
 *{
-
+	-webkit-text-size-adjust: none;
 	margin: 0;
 	padding: 0;
 }
@@ -142,7 +142,9 @@ li{
 	height: 100%;
 	float: left;
 }
-
+.visual_form_box div{
+	display: inline-block;
+}
 .baodan_left{
 	width: 58%;
 	height: 100%;
