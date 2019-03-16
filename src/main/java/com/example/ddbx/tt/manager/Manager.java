@@ -49,6 +49,7 @@ public class Manager {
             }
             return sLogin + "?refer=" + newUrl;
         }
+
         return new ManagerGet().doGet(cn, type, sdo, id, request, resp);
     }
 
@@ -67,6 +68,7 @@ public class Manager {
         if (!Tools.myIsNull(sLogin)) {// 如未登陆跳转到登陆页面
             return sLogin + "?refer=" + URLEncoder.encode(Tools.urlKill(""), "UTF-8");
         }
+
         return Tools.jsonEncode(new ManagerPost().doPost(request));
     }
 
