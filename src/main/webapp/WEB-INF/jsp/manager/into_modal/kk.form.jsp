@@ -2,6 +2,7 @@
 <%@ page import="com.example.ddbx.tt.data.TtMap" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ page import="com.example.ddbx.tt.data.TtList" %>
+<%@ page import="com.example.ddbx.tt.tool.DataDic" %>
 <%--
   Created by IntelliJ IDEA.
   User: 86176
@@ -70,23 +71,21 @@
                             <div class="input-group">
                                 <span class="input-group-addon">车辆类型</span>
                                 <select class="form-control" id="cars_type" name="cars_type">
-                                    <option value="0">请选择</option>
-                                    <option value="1">新车</option>
-                                    <option value="2">二手车</option>
+                                    <%=Tools.dicopt(DataDic.dic_cars_type,infodb.get("cars_type"))%>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">开票价</span>
-                                <input type="number" class="form-control" id="kp_price" name="kp_price" placeholder="">
+                                <input type="number" step="0.01" class="form-control" id="kp_price" name="kp_price" placeholder="">
                                 <span class="input-group-addon" style="font-size: 16px;">元</span>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">购车分期本金</span>
-                                <input type="number" class="form-control" id="gcfqbj" name="gcfqbj" placeholder="">
+                                <input type="number" step="0.01" class="form-control" id="gcfqbj" name="gcfqbj" placeholder="">
                                 <span class="input-group-addon" style="font-size: 16px;">元</span>
                             </div>
                         </div>
@@ -94,7 +93,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">金融服务费</span>
                                 <input type="number" class="form-control" id="jrfw_price" name="jrfw_price"
-                                       placeholder="">
+                                       placeholder="" step="0.01">
                                 <span class="input-group-addon" style="font-size: 16px;">元</span>
                             </div>
                         </div>
@@ -102,14 +101,14 @@
                             <div class="input-group">
                                 <span class="input-group-addon">贷款总额</span>
                                 <input type="number" class="form-control" id="dk_total_price" name="dk_total_price"
-                                       placeholder="">
+                                       placeholder="" step="0.01">
                                 <span class="input-group-addon" style="font-size: 16px;">元</span>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">首付金额</span>
-                                <input type="number" class="form-control" id="sfje" name="sfje" placeholder="">
+                                <input type="number" class="form-control" id="sfje" name="sfje" placeholder="" step="0.01">
                                 <span class="input-group-addon" style="font-size: 16px;">元</span>
                             </div>
                         </div>
@@ -134,9 +133,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">按揭期限</span>
                                 <select class="form-control" id="aj_date" name="aj_date">
-                                    <option value="0">请选择</option>
-                                    <option value="24">24期</option>
-                                    <option value="36">36期</option>
+                                   <%=Tools.dicopt(DataDic.dic_aj_date,infodb.get("aj_date"))%>
                                 </select>
                             </div>
                         </div>
@@ -153,9 +150,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">垫资类型</span>
                                 <select class="form-control" id="dz_type" name="dz_type">
-                                    <option value="0">请选择</option>
-                                    <option value="1">不垫资</option>
-                                    <option value="2">提车垫资</option>
+                                    <%=Tools.dicopt(DataDic.dic_dz_type,infodb.get("dz_type"))%>
                                 </select>
                             </div>
                         </div>
@@ -236,7 +231,9 @@
                     </ul>
                     <div id="clTabContent" class="tab-content">
                         <%
+                            TtList bclist =(TtList)request.getAttribute("bclist");
                             for (int i = 1; i <= 4; i++) {
+                              TtMap bcmap=bclist.get(i-1);
                                 if (i == 1) {
                         %>
 
@@ -256,34 +253,24 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">婚姻状况</span>
                                                     <select class="form-control" id="hyzk<%=i%>" name="hyzk<%=i%>">
-                                                        <option value="0">请选择</option>
-                                                        <option value="1">未婚</option>
-                                                        <option value="2">已婚</option>
-                                                        <option value="3">离异</option>
-                                                        <option value="4">丧偶</option>
+                                                        <%=Tools.dicopt(DataDic.dic_hyzk,bcmap.get("hyzk"))%>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">个人月收入</span>
-                                                    <input type="number" class="form-control" id="ysr<%=i%>"
+                                                    <input value="<%=bcmap.get("ysr")%>" step="0.01" type="number" class="form-control" id="ysr<%=i%>"
                                                            name="ysr<%=i%>"
                                                            placeholder="">
+                                                    <span class="input-group-addon" style="font-size: 16px;">元</span>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">最高学历</span>
                                                     <select class="form-control" id="xl<%=i%>" name="xl<%=i%>">
-                                                        <option value="0">请选择</option>
-                                                        <option value="1">小学</option>
-                                                        <option value="2">初中</option>
-                                                        <option value="3">高中</option>
-                                                        <option value="4">大专</option>
-                                                        <option value="5">本科</option>
-                                                        <option value="6">硕士</option>
-                                                        <option value="7">博士及以上</option>
+                                                        <%=Tools.dicopt(DataDic.dic_xl,bcmap.get("xl"))%>
                                                     </select>
                                                 </div>
                                             </div>
@@ -291,19 +278,14 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">居住状况</span>
                                                     <select class="form-control" id="jzzk<%=i%>" name="jzzk<%=i%>">
-                                                        <option value="0">请选择</option>
-                                                        <option value="1">自有住房</option>
-                                                        <option value="2">租房</option>
-                                                        <option value="3">分期付款购房</option>
-                                                        <option value="4">集体宿舍</option>
-                                                        <option value="5">其他</option>
+                                                        <%=Tools.dicopt(DataDic.dic_jzzk,bcmap.get("jzzk"))%>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">现住地址</span>
-                                                    <input type="text" class="form-control" id="xzdz<%=i%>"
+                                                    <input value="<%=bcmap.get("xzdz")%>" type="text" class="form-control" id="xzdz<%=i%>"
                                                            name="xzdz<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -311,7 +293,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">邮政编码</span>
-                                                    <input type="text" class="form-control" id="yzbm<%=i%>"
+                                                    <input value="<%=bcmap.get("yzbm")%>" type="text" class="form-control" id="yzbm<%=i%>"
                                                            name="yzbm<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -319,7 +301,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">工作单位</span>
-                                                    <input type="text" class="form-control" id="gzdw<%=i%>"
+                                                    <input value="<%=bcmap.get("gzdw")%>"  type="text" class="form-control" id="gzdw<%=i%>"
                                                            name="gzdw<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -327,7 +309,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">单位电话</span>
-                                                    <input type="text" class="form-control" id="dwdh<%=i%>"
+                                                    <input value="<%=bcmap.get("dwdh")%>" type="text" class="form-control" id="dwdh<%=i%>"
                                                            name="dwdh<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -335,7 +317,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">单位地址</span>
-                                                    <input type="text" class="form-control" id="dwdz<%=i%>"
+                                                    <input value="<%=bcmap.get("dwdz")%>" type="text" class="form-control" id="dwdz<%=i%>"
                                                            name="dwdz<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -343,7 +325,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">文书地址</span>
-                                                    <input type="text" class="form-control" id="wsdz<%=i%>"
+                                                    <input value="<%=bcmap.get("wsdz")%>" type="text" class="form-control" id="wsdz<%=i%>"
                                                            name="wsdz<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -351,7 +333,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">文书送达地址</span>
-                                                    <input type="text" class="form-control" id="wssddz<%=i%>"
+                                                    <input value="<%=bcmap.get("wssddz")%>" type="text" class="form-control" id="wssddz<%=i%>"
                                                            name="wssddz<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -360,16 +342,7 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">单位性质</span>
                                                     <select class="form-control" id="dwxz<%=i%>" name="dwxz<%=i%>">
-                                                        <option value="0">请选择</option>
-                                                        <option value="1">国有</option>
-                                                        <option value="2">集体经济</option>
-                                                        <option value="3">私营</option>
-                                                        <option value="4">民营</option>
-                                                        <option value="5">股份合作</option>
-                                                        <option value="6">其他股份制</option>
-                                                        <option value="7">个体</option>
-                                                        <option value="8">三资</option>
-                                                        <option value="9">其他</option>
+                                                        <%=Tools.dicopt(DataDic.dic_dwxz,bcmap.get("dwxz"))%>
                                                     </select>
                                                 </div>
                                             </div>
@@ -377,19 +350,7 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">所属行业</span>
                                                     <select class="form-control" id="sshy<%=i%>" name="sshy<%=i%>">
-                                                        <option value="0">请选择</option>
-                                                        <option value="1">农林牧渔</option>
-                                                        <option value="2">邮电通讯</option>
-                                                        <option value="3">房地产</option>
-                                                        <option value="4">科教文卫</option>
-                                                        <option value="5">工业</option>
-                                                        <option value="6">银行</option>
-                                                        <option value="7">证券</option>
-                                                        <option value="8">保险</option>
-                                                        <option value="9">商业</option>
-                                                        <option value="10">机关团体</option>
-                                                        <option value="11">其他</option>
-
+                                                        <%=Tools.dicopt(DataDic.dic_sshy,bcmap.get("sshy"))%>
                                                     </select>
                                                 </div>
                                             </div>
@@ -397,17 +358,7 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">职业</span>
                                                     <select class="form-control" id="zy<%=i%>" name="zy<%=i%>">
-                                                        <option value="0">请选择</option>
-                                                        <option value="1">公务员</option>
-                                                        <option value="2">事业单位员工</option>
-                                                        <option value="3">工人</option>
-                                                        <option value="4">农民</option>
-                                                        <option value="5">军人</option>
-                                                        <option value="6">职员</option>
-                                                        <option value="7">私人业主</option>
-                                                        <option value="8">学生</option>
-                                                        <option value="9">自由职业</option>
-                                                        <option value="10">其他</option>
+                                                        <%=Tools.dicopt(DataDic.dic_zy,bcmap.get("zy"))%>
                                                     </select>
                                                 </div>
                                             </div>
@@ -415,18 +366,14 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">职务</span>
                                                     <select class="form-control" id="zw<%=i%>" name="zw<%=i%>">
-                                                        <option value="0">请选择</option>
-                                                        <option value="1">企业负责人</option>
-                                                        <option value="2">总经理</option>
-                                                        <option value="3">部门经理</option>
-                                                        <option value="4">职员</option>
+                                                        <%=Tools.dicopt(DataDic.dic_zw,bcmap.get("zw"))%>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">工作年限</span>
-                                                    <input type="text" class="form-control" id="gznx<%=i%>"
+                                                    <input value="<%=bcmap.get("gznx")%>" type="text" class="form-control" id="gznx<%=i%>"
                                                            name="gznx<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -526,7 +473,11 @@
                             String upFile1 = "../upfiles.inc.jsp";
                             String imgName = "imgstep3_1,imgstep3_2,imgstep3_3,imgstep3_4,imgstep3_5,imgstep3_6,imgstep3_7,imgstep3_8,imgstep3_9";
                             String imgNames_title = "身份证正面, 身份证反面, 面签照片, 借款人资料1, 借款人资料2, 信用卡申请1, 信用卡申请2, 个人税收声明, 电话调查申请";
+
                             String[] imgNames= imgName.split(",");
+                            String[] imgNames_titles= imgNames_title.split(",");
+
+
                                 for(int s = 0; s < imgNames.length; s++){
                                 String[] ssImgs1 = { //设置已有值
                                         !Tools.myIsNull(infodb.get(imgNames[s])) ? infodb.get(imgNames[s]) : ""
@@ -538,14 +489,14 @@
                                         sImgs1 = sImgs1 + ssImgs1[i] + "|";
                                     }
                                 }
-                                }
+
                         %>
                         <%--&lt;%&ndash; 可能这里用<%@include file %>模式更适合&ndash;%&gt;--%>
                         <jsp:include page="<%=upFile1%>">
                             <jsp:param name="img_MarginImgSrc" value=""/>
                             <jsp:param name="img_MarginImgClass" value=""/>
-                            <jsp:param name="img_Total" value="9"/>
-                            <jsp:param name="img_NamePre" value="imgName"/>
+                            <jsp:param name="img_Total" value="1"/>
+                            <jsp:param name="img_NamePre" value="<%=imgNames[s]%>"/>
                             <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                             <jsp:param name="l1div_Style"
                                        value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
@@ -556,17 +507,21 @@
                             <jsp:param name="img_FileClass" value="uploadfileclass"/>
                             <jsp:param name="img_SmallWidth" value="100"/>
                             <jsp:param name="img_SmallHeight" value="100"/>
-                            <jsp:param name="sImgs" value=""/>
-                            <jsp:param name="img_title" value="<%=imgNames_title%>"/>
+                            <jsp:param name="sImgs" value="<%=sImgs1%>"/>
+                            <jsp:param name="img_title" value="<%=imgNames_titles[s]%>"/>
                         </jsp:include>
                         <%
-                            String upFile2 = "../upfile.inc.jsp";
+                            }
+                        %>
+                        <%
+                            String upFile2 = "../upfiles.inc.jsp";
                             String[] ssImgs2 = { //设置已有值
                                     !Tools.myIsNull(infodb.get("imgstep3_1s")) ? infodb.get("imgstep3_1s") : ""
                             };
-                            //System.out.println("收拾收拾"+ssImgs2[0]);
-                            ssImgs2 = ssImgs2[0].split(",");
                             int num=0;
+                           if(ssImgs2[0]!=null&&!ssImgs2[0].equals("")&&ssImgs2[0].length()>0){
+                            ssImgs2 = ssImgs2[0].split(",");
+
                             if(ssImgs2.length>0){
                                 num=ssImgs2.length;
                             }
@@ -576,6 +531,7 @@
                                     sImgs2 = sImgs2 + ssImgs2[i] + "|";
                                 }
                             }
+                            System.out.println("长度:"+ssImgs2.length);
                         %>
                         <%--&lt;%&ndash; 可能这里用<%@include file %>模式更适合&ndash;%&gt;--%>
                         <jsp:include page="<%=upFile2%>">
@@ -596,6 +552,7 @@
                             <jsp:param name="sImgs" value="<%=sImgs2%>"/>
                             <jsp:param name="img_title" value="补充材料"/>
                         </jsp:include>
+                        <%}%>
                         <div style="position: relative;width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"
                              id="div_imgstep3_1s">
                             <img id="imgstep3_1s_view" onclick="addimgFileup('imgstep3_1s');" name="imgstep3_1s_view" src="images/mgcaraddimg.jpg"
@@ -603,7 +560,7 @@
                             <img onclick="addimgFileup('imgstep3_1s');" id="imgstep3_1s_views" name="imgstep3_1s_views"
                                  style="float:center;width:12px;height:12px;text-align:center;display:none;"
                                  src="iframe/dist/img/loading/loading-spinner-grey.gif">
-                            <input id="imgstep3_1s" name="imgstep3_1s" value="0" type="hidden"/>
+                            <input id="imgstep3_1s_num" name="imgstep3_1s_num" value="<%=num%>" type="hidden"/>
                             <%-- <input type="hidden" id="imgstep3_1" name="imgstep3_1" value="images/mgcaraddimg.jpg">
                             <input type="file" id="upload_imgstep3_1" runat="server" name="upload_immm" accept="image/*" style="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;" class="uploadfileclass">--%>
                             <div style="padding-top:20px;"><a href="javascript:addimgFileup('imgstep3_1s');">补充材料</a>
@@ -621,10 +578,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">当前状态</span>
                                 <select class="form-control" id="bc_status" name="bc_status">
-                                    <option value="0">请选择</option>
-                                    <option value="1">开卡成功</option>
-                                    <option value="2">开卡失败</option>
-                                    <option value="3">回退补件</option>
+                                    <%=Tools.dicopt(DataDic.dic_kk_status,infodb.get("bc_status"))%>
                                 </select>
                             </div>
                         </div>
@@ -645,22 +599,23 @@
     <script>
         //点击生成上传入口
         function addimgFileup(imgName) {
-            var num = $("#" + imgName).val();
+            var num = $("#" + imgName+"_num").val();
+            //alert(num);
             num++;
-            var newimgName = imgName + "_" + num;
-            $("#" + imgName).val(num);
+            var newimgName = imgName+num;
+            $("#" + imgName+"_num").val(num);
             $("#imgs_div").append(
                 "<div style=\"position: relative;width: 100px;height:140px;" +
                 "display: inline-block;text-align: center;margin: auto;" +
                 "\" id=\"div_" + newimgName + "\" class=\"gallerys\">\n" +
-                "<img id=\"" + newimgName + "_view\" name=\"" + newimgName + "_view\" src=\"images/mgcaraddimg.jpg\"" +
+                "<img id=\"" + imgName + "_view"+num+"\" name=\"" + imgName + "_view"+num+"\" src=\"images/mgcaraddimg.jpg\"" +
                 " class=\"imgclass gallery-pic\" style=\"width: 100%;height:100px;border-radius:10px;\">\n" +
-                "<img id=\"" + newimgName + "_views\" name=\"" + newimgName + "_views\" style=\"float:center;" +
+                "<img id=\"" + imgName + "_view"+num+"s\" name=\"" + imgName + "_view"+num+"s\" style=\"float:center;" +
                 "width:12px;height:12px;text-align:center;display:none;\" src=\"iframe/dist/img/loading/loading-spinner-grey.gif\" />" +
                 "<input type=\"hidden\" id=\"" + newimgName + "\" name=\"" + newimgName + "\" value=\"images/mgcaraddimg.jpg\" />" +
                 "<input type=\"file\" id=\"upload_" + newimgName + "\" runat=\"server\" name=\"upload_immm\" accept=\"image/*\" style=\"position: absolute;left: 0;top: 0;height: 80%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0\" class=\"uploadfileclass\">" +
                 "<div style=\"padding-top:20px;\">" +
-                "<a onclick=\"$.openPhotoGallery($('#" + newimgName + "_view'));\">新增补充材料</a></div>" +
+                "<a onclick=\"$.openPhotoGallery($('#" + imgName + "_view"+num+"'));\">新增补充材料</a></div>" +
                 "</div>" +
                 "<script>" +
                 "$('#upload_" + newimgName + "').fileUpload({" +
@@ -677,8 +632,8 @@
                 "alert(msg);" +
                 "} else {" +
                 "$('#" + newimgName + "').val(imgstep3_9);" +
-                "$('#" + newimgName + "_view').attr('src', smallimgstep3_9);" +
-                "$('#" + newimgName + "_view').parents('div.hide:first').removeClass('hide');" +
+                "$('#" + imgName + "_view"+num+"').attr('src', smallimgstep3_9);" +
+                "$('#" + imgName + "_view"+num+"').parents('div.hide:first').removeClass('hide');" +
                 "}" +
                 "} else {" +
                 "if (msg) {" +
@@ -686,7 +641,7 @@
                 "}" +
                 "}" +
                 "if (typeof (cloaseuplayer) == 'function') {" +
-                "cloaseuplayer(\"#" + newimgName + "_view\");" +
+                "cloaseuplayer(\"#" + imgName + "_view"+num+"\");" +
                 "}" +
                 "}," +
                 "'fail': function (res) {" +
@@ -699,7 +654,7 @@
                 "});" +
                 "$('#upload_" + newimgName + "').on('change', function () {" +
                 "if (typeof (beforeup) == 'function') {" +
-                "beforeup(\"#" + newimgName + "_view\");}" +
+                "beforeup(\"#" + imgName + "_view"+num+"\");}" +
                 "});</" + "script>"
             );
         }

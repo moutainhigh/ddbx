@@ -2,16 +2,16 @@
  * @Description: 常用功能方法汇总。包括字符串类，数据库类，日期操作类，文件类
  * @Author: tt
  * @Date: 2018-12-12 17:55:41
- * @LastEditTime: 2019-02-26 14:03:03
+ * @LastEditTime: 2019-03-17 22:34:21
  * @LastEditors: tt
  */
 package com.example.ddbx.tt.tool;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
+
 import net.sf.json.JSONObject;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -580,9 +580,34 @@ public class Tools {
 
   // =================================数据库相关处理方法=================================
   /**
+   * undic获取id为nid的值
+   */
+  public static String unDic(TtMap tbName, String nid) {
+    return tbName.get(nid);
+  }
+
+  /**
+   * undic获取id为nid的值
+   */
+  public static String unDic(TtMap tbName, long nid) {
+    return tbName.get(longToStr(nid));
+  }
+
+  /**
    * undic("kjb_user",3);获取id为3的name值
    */
   public static String unDic(String tbName, long nid) {
+    DbTools dbt = new DbTools();
+    String result = null;
+    try {
+      result = dbt.unDic(tbName, nid);
+    } finally {
+      dbt.closeConn();
+    }
+    return result;
+  }
+
+  public static String unDic(String tbName, String nid) {
     DbTools dbt = new DbTools();
     String result = null;
     try {
@@ -703,6 +728,49 @@ public class Tools {
   }
 
   /**
+   * dicOpt_c,显示某个表里所有的id和name值的<option value=
+   * "id">name</option>的HTML代码，指定name字段名和id字段名
+   * ttDic为字典名称，演示在DataDic里面的字典，defValue为默认选中的值
+   */
+  public static String dicopt(TtMap ttDic, String defValue) {
+    String result = "";
+    for (String key : ttDic.keySet()) {
+      result = result + "<option value=\"" + key + "\"" + (key.equals(defValue) ? " selected" : "") + ">"
+              + ttDic.get(key) + "</option>";
+    }
+    return result;
+  }
+
+  /**
+   * dicOpt_c,显示某个表里所有的id和name值的<option value=
+   * "id">name</option>的HTML代码，指定name字段名和id字段名 tbName为表名，id为默认选中id
+   */
+  public static String dicopt_c(String tbName, long id, String nameFiled, String idField) {
+    if (Tools.myIsNull(nameFiled)) {
+      nameFiled = "name";
+    }
+    if (Tools.myIsNull(idField)) {
+      idField = "id";
+    }
+    String result = "";
+    DbCtrl dbt = new DbCtrl(tbName);
+    dbt.showall = true;
+    dbt.getall = true;
+    dbt.nopage = true;
+    try {
+      TtList lttmp = dbt.lists("", "t." + nameFiled + ",t." + idField);
+      for (int i = 0; i < lttmp.size(); i++) {
+        long nowid = Long.parseLong(lttmp.get(i).get("id"));
+        result = result + "<option value=\"" + lttmp.get(i).get(idField) + "\"" + (nowid == id ? " selected" : "") + ">"
+                + lttmp.get(i).get(nameFiled) + "</option>";
+      }
+    } finally {
+      dbt.closeConn();
+    }
+    return result;
+  }
+
+  /**
    * dicOpt,显示某个表里所有的id和name值的<option value="id">name</option>的HTML代码
    * tbName为表名，id为默认选中id
    */
@@ -727,7 +795,7 @@ public class Tools {
 
   /**
    * @description: dicOpt,带条件和返回格式的显示某个表里所有的id和name值的<option value=
-   *               "id">name</option>的HTML代码
+	 *               "id">name</option>的HTML代码
    * @param wheres 带条件
    * @param re     re为返回格式，为"json"时，返回json格式
    * @return 演示<option value="1">xxxx</option><option value="2">yyyy</option>
@@ -1443,5 +1511,17 @@ public class Tools {
    */
   public static String trimLeft(String s, int n) {
     return s.substring(n);
+  }
+
+  /* 输出日期选择框的html */
+  public static String htmlDate(String fieldName,String dataFormat,String defValue,String width){
+    if (myIsNull(dataFormat)){
+      dataFormat = "yyyy-mm-dd";
+    }
+    if (Tools.myIsNull(width)){
+      width = "4";
+    }
+    String result = "<div style=\"padding-left:15px;\" class=\"input-group date form_datetime col-md-"+width+"\" data-date=\"\" data-date-format=\""+dataFormat+"\" data-link-field=\""+fieldName+"\"><input class=\"form-control\" size=\"16\" type=\"text\" value=\""+defValue+"\" readonly><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-remove\"></span></span><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-th\"></span></span></div><input type=\"hidden\" id=\""+fieldName+"\" name=\""+fieldName+"\" value=\"\" /><br/>";
+    return result;
   }
 }

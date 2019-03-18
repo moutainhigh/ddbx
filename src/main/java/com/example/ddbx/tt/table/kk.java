@@ -100,7 +100,13 @@ public class kk extends DbCtrl {
 
     @Override//遍历form
     public void doGetForm(HttpServletRequest request, TtMap post) {
+
         long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
+
+        //获取补充材料信息
+        TtList bclist=Tools.reclist("select * from icbc_kk_bcxx where kk_id="+nid);
+        request.setAttribute("bclist", bclist);
+
         TtMap info = info(nid);
         String jsonInfo = Tools.jsonEncode(info);
         request.setAttribute("info", jsonInfo);//info为json后的info
@@ -110,53 +116,110 @@ public class kk extends DbCtrl {
 
     @Override//添加更新
     public void doPost(TtMap post, long id, TtMap result2) {
-        TtMap newpost=post;
+        //chk(post,id);//验证
+        //System.out.println("接收到的post：" + Tools.jsonEncode(post));
+        TtMap newpost = Tools.jsonDeCode_mp(Tools.jsonEncode(post));
         topost(post);//图片处理
         if (id > 0) { // id为0时，新增
             edit(post, id);
             //补充材料信息处理
             for (int l = 1; l <= 4; l++) {
                 TtMap oldmap = Tools.recinfo("select * from icbc_kk_bcxx where icbc_id=" + post.get("icbc_id") + " and kk_id=" + id + " and bc_type=" + l);
-                if (oldmap != null && !oldmap.equals("")) {
-                    TtMap map = new TtMap();
+                System.out.println("婚姻状况：" + newpost.get("hyzk" + l));
+                TtMap map = new TtMap();
+                if (!Tools.myIsNull(newpost.get("hyzk" + l))) {
+                    System.out.println("1");
                     map.put("hyzk", newpost.get("hyzk" + l));
+                }else{
+                    map.put("hyzk", "0");
+                }
+                if (!Tools.myIsNull(newpost.get("ysr" + l))) {
+                    System.out.println("2");
                     map.put("ysr", newpost.get("ysr" + l));
+                }else{
+                    map.put("ysr","0");
+                }
+                if (!Tools.myIsNull(newpost.get("xl" + l))) {
+                    System.out.println("3");
                     map.put("xl", newpost.get("xl" + l));
+                }else{
+                    map.put("xl","0");
+                }
+                if (!Tools.myIsNull(newpost.get("jzzk" + l))) {
                     map.put("jzzk", newpost.get("jzzk" + l));
+                }else{
+                    map.put("jzzk","0");
+                }
+                if (!Tools.myIsNull(newpost.get("xzdz" + l))) {
                     map.put("xzdz", newpost.get("xzdz" + l));
+                }else{
+                    map.put("xzdz","");
+                }
+                if (!Tools.myIsNull(newpost.get("yzbm" + l))) {
                     map.put("yzbm", newpost.get("yzbm" + l));
+                }else{
+                    map.put("yzbm","");
+                }
+                if (!Tools.myIsNull(newpost.get("gzdw" + l))) {
                     map.put("gzdw", newpost.get("gzdw" + l));
+                }else{
+                    map.put("gzdw","");
+                }
+
+                if (!Tools.myIsNull(newpost.get("dwdh" + l))) {
                     map.put("dwdh", newpost.get("dwdh" + l));
+                }else{
+                    map.put("dwdh","");
+                }
+                if (!Tools.myIsNull(newpost.get("dwdz" + l))) {
                     map.put("dwdz", newpost.get("dwdz" + l));
-                    map.put("wsdz", newpost.get("wsdz" + l));
-                    map.put("wssddz", newpost.get("wssddz" + l));
+                }else{
+                    map.put("dwdz","");
+                }
+                if (!Tools.myIsNull(newpost.get("dwxz" + l))) {
                     map.put("dwxz", newpost.get("dwxz" + l));
+                }else{
+                    map.put("dwxz","");
+                }
+                if (!Tools.myIsNull(newpost.get("wsdz" + l))) {
+                    map.put("wsdz", newpost.get("wsdz" + l));
+                }else{
+                    map.put("wsdz","");
+                }
+                if (!Tools.myIsNull(newpost.get("wssddz" + l))) {
+                    map.put("wssddz", newpost.get("wssddz" + l));
+                }else{
+                    map.put("wssddz","");
+                }
+                if (!Tools.myIsNull(newpost.get("sshy" + l))) {
                     map.put("sshy", newpost.get("sshy" + l));
+                }else{
+                    map.put("sshy","0");
+                }
+                if (!Tools.myIsNull(newpost.get("zy" + l))) {
                     map.put("zy", newpost.get("zy" + l));
+                }else{
+                    map.put("zy","0");
+                }
+                if (!Tools.myIsNull(newpost.get("zw" + l))) {
                     map.put("zw", newpost.get("zw" + l));
+                }else{
+                    map.put("zw","0");
+                }
+                if (!Tools.myIsNull(newpost.get("gznx" + l))) {
                     map.put("gznx", newpost.get("gznx" + l));
+                }else{
+                    map.put("gznx","");
+                }
+                System.out.println("oldmap:"+oldmap);
+                if (!oldmap.isEmpty()) {
                     Tools.recEdit(map, "icbc_kk_bcxx", Long.valueOf(oldmap.get("id")));
                 } else {
-                    TtMap map = new TtMap();
+                    System.out.println("?????:"+newpost.get("icbc_id"));
                     map.put("kk_id", String.valueOf(id));
                     map.put("icbc_id", newpost.get("icbc_id"));
                     map.put("bc_type", String.valueOf(l));
-                    map.put("hyzk", newpost.get("hyzk" + l));
-                    map.put("ysr", newpost.get("ysr" + l));
-                    map.put("xl", newpost.get("xl" + l));
-                    map.put("jzzk", newpost.get("jzzk" + l));
-                    map.put("xzdz", newpost.get("xzdz" + l));
-                    map.put("yzbm", newpost.get("yzbm" + l));
-                    map.put("gzdw", newpost.get("gzdw" + l));
-                    map.put("dwdh", newpost.get("dwdh" + l));
-                    map.put("dwdz", newpost.get("dwdz" + l));
-                    map.put("wsdz", newpost.get("wsdz" + l));
-                    map.put("wssddz", newpost.get("wssddz" + l));
-                    map.put("dwxz", newpost.get("dwxz" + l));
-                    map.put("sshy", newpost.get("sshy" + l));
-                    map.put("zy", newpost.get("zy" + l));
-                    map.put("zw", newpost.get("zw" + l));
-                    map.put("gznx", newpost.get("gznx" + l));
+                    System.out.println("纯属数据："+map);
                     Tools.recAdd(map, "icbc_kk_bcxx");
                 }
             }
@@ -168,22 +231,55 @@ public class kk extends DbCtrl {
                 map.put("kk_id", String.valueOf(kid));
                 map.put("icbc_id", newpost.get("icbc_id"));
                 map.put("bc_type", String.valueOf(l));
-                map.put("hyzk", newpost.get("hyzk" + l));
-                map.put("ysr", newpost.get("ysr" + l));
-                map.put("xl", newpost.get("xl" + l));
-                map.put("jzzk", newpost.get("jzzk" + l));
-                map.put("xzdz", newpost.get("xzdz" + l));
-                map.put("yzbm", newpost.get("yzbm" + l));
-                map.put("gzdw", newpost.get("gzdw" + l));
-                map.put("dwdh", newpost.get("dwdh" + l));
-                map.put("dwdz", newpost.get("dwdz" + l));
-                map.put("wsdz", newpost.get("wsdz" + l));
-                map.put("wssddz", newpost.get("wssddz" + l));
-                map.put("dwxz", newpost.get("dwxz" + l));
-                map.put("sshy", newpost.get("sshy" + l));
-                map.put("zy", newpost.get("zy" + l));
-                map.put("zw", newpost.get("zw" + l));
-                map.put("gznx", newpost.get("gznx" + l));
+                if (!Tools.myIsNull(newpost.get("hyzk" + l))) {
+                    map.put("hyzk", newpost.get("hyzk" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("ysr" + l))) {
+                    map.put("ysr", newpost.get("ysr" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("xl" + l))) {
+                    map.put("xl", newpost.get("xl" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("jzzk" + l))) {
+                    map.put("jzzk", newpost.get("jzzk" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("xzdz" + l))) {
+                    map.put("xzdz", newpost.get("xzdz" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("yzbm" + l))) {
+                    map.put("yzbm", newpost.get("yzbm" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("gzdw" + l))) {
+                    map.put("gzdw", newpost.get("gzdw" + l));
+                }
+
+                if (!Tools.myIsNull(newpost.get("dwdh" + l))) {
+                    map.put("dwdh", newpost.get("dwdh" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("dwdz" + l))) {
+                    map.put("dwdz", newpost.get("dwdz" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("dwxz" + l))) {
+                    map.put("dwxz", newpost.get("dwxz" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("wsdz" + l))) {
+                    map.put("wsdz", newpost.get("wsdz" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("wssddz" + l))) {
+                    map.put("wssddz", newpost.get("wssddz" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("sshy" + l))) {
+                    map.put("sshy", newpost.get("sshy" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("zy" + l))) {
+                    map.put("zy", newpost.get("zy" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("zw" + l))) {
+                    map.put("zw", newpost.get("zw" + l));
+                }
+                if (!Tools.myIsNull(newpost.get("gznx" + l))) {
+                    map.put("gznx", newpost.get("gznx" + l));
+                }
                 Tools.recAdd(map, "icbc_kk_bcxx");
             }
         }
@@ -196,10 +292,10 @@ public class kk extends DbCtrl {
     //其他处理
     public void topost(TtMap post) {
         //补充材料文件处理 “,” 隔开
-        if (!Tools.myIsNull(post.get("imgstep3_1s"))) {
+        if (!Tools.myIsNull(post.get("imgstep3_1s_num"))) {
             String imgstep3_1s = "";
-            for (int i = 1; i <= Integer.parseInt(post.get("imgstep3_1s")); i++) {
-                imgstep3_1s = imgstep3_1s + post.get("imgstep3_1s_" + i) + ",";
+            for (int i = 1; i <= Integer.parseInt(post.get("imgstep3_1s_num")); i++) {
+                imgstep3_1s = imgstep3_1s + post.get("imgstep3_1s" + i) + ",";
             }
             post.put("imgstep3_1s", imgstep3_1s);
         }
@@ -237,5 +333,42 @@ public class kk extends DbCtrl {
         // imgstep3_1s=2, xzdz1=上海, xzdz2=, gzdw1=上海, xzdz3=, zy2=0, zy1=0,
         // zy4=0, zy3=0, wssddz3=, wssddz4=, jzzk4=0, jzzk3=0, jzzk2=0, jzzk1=0,
         // aj_lv=0.1, sfje=1200, mid_edit=21}
+    }
+
+    @Override
+    public boolean chk(TtMap array, long id) {
+        if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
+            return false;
+        }
+        if (!Tools.myIsNull(array.get("fromcommand"))) { // 从ManagerCmd来的。不用过滤参数
+        } else {
+            String myErroMsg = "";
+            if (Tools.myIsNull(array.get("dk_total_price"))) {
+                myErroMsg += "您忘记输入贷款总额啦！\n";
+            }
+            if (Tools.myIsNull(array.get("gcfqbj"))) {
+                myErroMsg += "您忘记输入购车分期本金啦！\n";
+            }
+            if (Tools.myIsNull(array.get("kp_price"))) {
+                myErroMsg += "您忘记输入开票价啦！\n";
+            }
+            if (Tools.myIsNull(array.get("jrfw_price"))) {
+                myErroMsg += "您忘记输入金融服务费啦！\n";
+            }
+            if (Tools.myIsNull(array.get("sfje"))) {
+                myErroMsg += "您忘记输入首付金额啦！\n";
+            }
+            if (array.get("icbc_id").equals("0")) {
+                myErroMsg += "您忘记选择关联客户啦！\n";
+            }
+            if (Tools.myIsNull(array.get("aj_lv"))) {
+                myErroMsg += "您忘记输入按揭利率啦！\n";
+            }
+            super.errorMsg = super.chkMsg = myErroMsg;
+            if (!Tools.myIsNull(myErroMsg)) {
+                super.errorCode = 888;
+            }
+        }
+        return super.errorCode == 0;
     }
 }
