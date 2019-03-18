@@ -1,0 +1,190 @@
+[09:30:44] Config - Tools.logError:null
+[09:30:44] Config - Tools.logError:null
+[09:33:48] Config - Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+[09:33:48] Config - Tools.logError:Cannot run program "chmod": CreateProcess error=2, 系统找不到指定的文件。
+[09:38:03] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D48%26type_id%3D42%26icbc_id%3D46%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp] at line [76]
+
+73: 
+74:                 <div ${param.tab eq 6?"class='tab-pane active'":"class='tab-pane'"} id="tab_6">
+75:                     <c:if test="${param.tab eq 6}">
+76:                         <jsp:include page="<%=rwcl_path%>"></jsp:include>
+77:                     </c:if>
+78:                 </div>
+79: 
+
+
+Stacktrace:
+[09:38:03] Config - Tools.logError:sql injection violation, syntax error: syntax error, error in :'ass='tab-pane active'":"class='tab-', expect IDENTIFIER, actual IDENTIFIER pos 426, line 4, column 55, token IDENTIFIER tab : insert into sys_error set `dt_add`='2019-03-12 09:38:03', `errormsg`='http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D48%26type_id%3D42%26icbc_id%3D46%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp] at line [76]
+
+73: 
+74:                 <div ${param.tab eq 6?"class='tab-pane active'":"class='tab-pane'"} id="tab_6">
+75:                     <c:if test="${param.tab eq 6}">
+76:                         <jsp:include page="<%=rwcl_path%>"></jsp:include>
+77:                     </c:if>
+78:                 </div>
+79: 
+
+
+Stacktrace:'
+[09:49:35] Config - Tools.logError:null
+[09:50:11] Config - Tools.logError:null
+[09:52:37] Config - Tools.logError:sql injection violation, syntax error: error pos 18, line 1, column 18, token EOF : SHOW COLUMNS FROM 
+[09:52:37] Config - Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！
+[09:52:37] Config - Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+[09:53:59] Config - Tools.logError:sql injection violation, syntax error: error pos 18, line 1, column 18, token EOF : SHOW COLUMNS FROM 
+[09:53:59] Config - Tools.logError:DbCtrl:TT异常：获取数据表所有字段名失败！
+[09:53:59] Config - Tools.logError:DbCtrl:<----------------ERROR,获取字段出错---------------->
+[09:57:43] Config - Tools.logError:null
+[09:57:43] Config - Tools.logError:null
+[09:57:43] Config - Tools.logError:null
+[09:58:22] Config - Tools.logError:null
+[09:58:22] Config - Tools.logError:null
+[09:58:22] Config - Tools.logError:null
+[09:58:26] Config - Tools.logError:null
+[09:58:26] Config - Tools.logError:null
+[09:58:26] Config - Tools.logError:null
+[09:58:36] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D51%26type_id%3D70%26icbc_id%3D46%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [130]
+
+127: 
+128: 
+129:                         %>
+130:                         <jsp:include page="<%=erp_msg%>" >
+131:                             <jsp:param name="result_value" value="<%=result_value%>"/>
+132:                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
+133:                             <jsp:param name="s_time" value="<%=s_time%>"/>
+
+
+Stacktrace:
+[09:58:46] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D51%26type_id%3D70%26icbc_id%3D46%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [130]
+
+127: 
+128: 
+129:                         %>
+130:                         <jsp:include page="<%=erp_msg%>" >
+131:                             <jsp:param name="result_value" value="<%=result_value%>"/>
+132:                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
+133:                             <jsp:param name="s_time" value="<%=s_time%>"/>
+
+
+Stacktrace:
+[09:58:53] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D51%26type_id%3D70%26icbc_id%3D46%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [130]
+
+127: 
+128: 
+129:                         %>
+130:                         <jsp:include page="<%=erp_msg%>" >
+131:                             <jsp:param name="result_value" value="<%=result_value%>"/>
+132:                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
+133:                             <jsp:param name="s_time" value="<%=s_time%>"/>
+
+
+Stacktrace:
+[09:58:59] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D51%26type_id%3D70%26icbc_id%3D46%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [130]
+
+127: 
+128: 
+129:                         %>
+130:                         <jsp:include page="<%=erp_msg%>" >
+131:                             <jsp:param name="result_value" value="<%=result_value%>"/>
+132:                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
+133:                             <jsp:param name="s_time" value="<%=s_time%>"/>
+
+
+Stacktrace:
+[09:59:06] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D51%26type_id%3D70%26icbc_id%3D46%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [130]
+
+127: 
+128: 
+129:                         %>
+130:                         <jsp:include page="<%=erp_msg%>" >
+131:                             <jsp:param name="result_value" value="<%=result_value%>"/>
+132:                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
+133:                             <jsp:param name="s_time" value="<%=s_time%>"/>
+
+
+Stacktrace:
+[09:59:09] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D46%26sdo%3Dform%26id%3D51%26type_id%3D70%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [130]
+
+127: 
+128: 
+129:                         %>
+130:                         <jsp:include page="<%=erp_msg%>" >
+131:                             <jsp:param name="result_value" value="<%=result_value%>"/>
+132:                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
+133:                             <jsp:param name="s_time" value="<%=s_time%>"/>
+
+
+Stacktrace:
+[10:01:45] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D46%26sdo%3Dform%26id%3D51%26type_id%3D70%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [130]
+
+127: 
+128: 
+129:                         %>
+130:                         <jsp:include page="<%=erp_msg%>" >
+131:                             <jsp:param name="result_value" value="<%=result_value%>"/>
+132:                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
+133:                             <jsp:param name="s_time" value="<%=s_time%>"/>
+
+
+Stacktrace:
+[10:01:48] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D46%26sdo%3Dform%26id%3D51%26type_id%3D70%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [130]
+
+127: 
+128: 
+129:                         %>
+130:                         <jsp:include page="<%=erp_msg%>" >
+131:                             <jsp:param name="result_value" value="<%=result_value%>"/>
+132:                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
+133:                             <jsp:param name="s_time" value="<%=s_time%>"/>
+
+
+Stacktrace:
+[10:22:20] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D51%26type_id%3D70%26icbc_id%3D46%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [130]
+
+127: 
+128: 
+129:                         %>
+130:                         <jsp:include page="<%=erp_msg%>" >
+131:                             <jsp:param name="result_value" value="<%=result_value%>"/>
+132:                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
+133:                             <jsp:param name="s_time" value="<%=s_time%>"/>
+
+
+Stacktrace:
+[10:22:22] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D46%26sdo%3Dform%26id%3D51%26type_id%3D70%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [130]
+
+127: 
+128: 
+129:                         %>
+130:                         <jsp:include page="<%=erp_msg%>" >
+131:                             <jsp:param name="result_value" value="<%=result_value%>"/>
+132:                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
+133:                             <jsp:param name="s_time" value="<%=s_time%>"/>
+
+
+Stacktrace:
+[10:26:45] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26sdo%3Dform%26id%3D51%26type_id%3D70%26icbc_id%3D46%26tab%3D6:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [130]
+
+127: 
+128: 
+129:                         %>
+130:                         <jsp:include page="<%=erp_msg%>" >
+131:                             <jsp:param name="result_value" value="<%=result_value%>"/>
+132:                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
+133:                             <jsp:param name="s_time" value="<%=s_time%>"/>
+
+
+Stacktrace:
+[10:26:46] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D46%26sdo%3Dform%26id%3D51%26type_id%3D70%26tab%3D0:An exception occurred processing [/WEB-INF/jsp/manager/rwcl/rwcl.jsp] at line [130]
+
+127: 
+128: 
+129:                         %>
+130:                         <jsp:include page="<%=erp_msg%>" >
+131:                             <jsp:param name="result_value" value="<%=result_value%>"/>
+132:                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
+133:                             <jsp:param name="s_time" value="<%=s_time%>"/>
+
+
+Stacktrace:
+[11:02:29] Config - Tools.logError:com.example.ddbx.tt.table.sys_modal

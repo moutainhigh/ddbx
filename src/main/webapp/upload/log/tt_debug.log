@@ -1,0 +1,1086 @@
+2019-03-18 09:25:21  [ http-nio-8092-exec-1:0 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:开始初始化..
+2019-03-18 09:25:21  [ http-nio-8092-exec-1:2 ] - [ DEBUG ]  DbConfig:开始连接数据库：ddbxdb
+2019-03-18 09:25:21  [ http-nio-8092-exec-1:35 ] - [ DEBUG ]  DbConfig:Goodbye!
+2019-03-18 09:25:21  [ http-nio-8092-exec-1:36 ] - [ DEBUG ]  DbConfig:开始连接数据库：ttdemo
+2019-03-18 09:25:21  [ http-nio-8092-exec-1:36 ] - [ DEBUG ]  DbConfig:Goodbye!
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:154 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:154 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:155 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select id,isadmin from admin where username='admin' AND password='41f347d047e225bb2cb8fcd5e0f13329'
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:249 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:2
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:252 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:253 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:254 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:254 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:255 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:update sys_session set outdt='1552872322',outip='0:0:0:0:0:0:0:1' where mid='21' and outdt=0
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:330 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:331 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:332 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:332 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:332 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:insert into sys_session set idmd5='195fa773da2d136d88d09f0a95d3a987', mid='21',logdt='1552872322',logip='0:0:0:0:0:0:0:1'
+2019-03-18 09:25:22  [ http-nio-8092-exec-1:337 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:356 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:358 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:358 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:358 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:361 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:362 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:364 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:364 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:364 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM sys_modal
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:380 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:388 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:388 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:388 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:392 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:393 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:399 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:399 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:399 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:401 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:401 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:402 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:405 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:406 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:406 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.icohtml,t.urlotherstr from sys_modal t     where level=1 AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:415 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：5
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:416 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:419 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:419 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='21' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:424 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:424 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:425 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:425 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='5' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:428 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:428 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:429 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:429 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='27' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:432 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:432 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:433 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:433 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='31' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:434 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:435 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:435 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:436 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='144' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:439 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:440 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:440 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:441 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='6' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:443 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:444 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:445 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:25:22  [ http-nio-8092-exec-7:446 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93889 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93899 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93899 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93899 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93900 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93901 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93901 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93901 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93902 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM sys_modal
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93903 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93906 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93906 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93907 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93908 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93909 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93911 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93912 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93912 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93913 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93913 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93913 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93915 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93916 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93916 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.icohtml,t.urlotherstr from sys_modal t     where level=1 AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93922 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：5
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93923 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93923 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93924 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='21' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93929 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93930 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93931 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93931 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='5' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93935 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93936 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93936 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93937 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='27' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93940 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93940 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93941 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93941 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='31' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93943 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93943 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93944 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93944 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='144' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93947 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93948 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93948 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93949 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='6' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93951 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93952 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93953 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93953 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93955 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93955 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93955 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM icbc_kk
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93961 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93963 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93963 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93963 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93966 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93966 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93966 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93967 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93967 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93968 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93968 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93968 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93970 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93970 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93971 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93971 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93971 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where id='32'
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93973 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93974 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93974 ] - [ INFO ]  权限检查成功！
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93974 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93974 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93975 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93975 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93975 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93976 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93977 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93977 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.* from icbc_kk t     where true ORDER BY dt_add DESC   limit 0,10 
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93982 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：114
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93985 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93986 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:55  [ http-nio-8092-exec-5:93989 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96436 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96437 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96438 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96438 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96440 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96441 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96441 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96441 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96441 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM sys_modal
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96443 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96444 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96444 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96444 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96446 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96447 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96447 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96448 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96448 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96449 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96449 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96450 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96450 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96451 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96451 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.icohtml,t.urlotherstr from sys_modal t     where level=1 AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96454 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：5
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96454 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96455 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96455 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='21' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96457 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96457 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96458 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96458 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='5' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96461 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96461 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96462 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96462 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='27' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96464 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96465 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96465 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96466 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='31' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96467 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96467 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96468 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96468 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='144' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96471 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96471 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96472 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96472 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='6' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96475 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96475 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96476 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96476 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96477 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96477 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96477 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM icbc_kk
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96479 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96480 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96481 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96481 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96482 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96483 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96483 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96483 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96483 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96484 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96485 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96485 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96485 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96485 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96486 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96486 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96486 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where id='32'
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96487 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96487 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96487 ] - [ INFO ]  权限检查成功！
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96487 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96487 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from icbc_kk t    where t.id='174'   
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96489 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:114
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96489 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96664 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96665 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96665 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96665 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select id,c_name from dd_icbc
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96670 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：2
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96671 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96672 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96673 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96674 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96674 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from icbc_banklist
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96677 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：4
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96678 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96679 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96680 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96680 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM comm_states
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96683 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96683 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id from comm_states t        
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96686 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：2
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96687 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96689 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:58  [ http-nio-8092-exec-9:96689 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-1:96744 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-1:96744 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-1:96744 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM comm_citys
+2019-03-18 09:26:58  [ http-nio-8092-exec-2:96744 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:26:58  [ http-nio-8092-exec-2:96745 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:26:58  [ http-nio-8092-exec-2:96745 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM comm_citys
+2019-03-18 09:26:58  [ http-nio-8092-exec-1:96747 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:26:58  [ http-nio-8092-exec-1:96748 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id from comm_citys t     where state_id='6'    
+2019-03-18 09:26:58  [ http-nio-8092-exec-2:96748 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:26:58  [ http-nio-8092-exec-2:96749 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id from comm_citys t     where state_id='5'    
+2019-03-18 09:26:58  [ http-nio-8092-exec-2:96752 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：2
+2019-03-18 09:26:58  [ http-nio-8092-exec-1:96752 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：2
+2019-03-18 09:26:58  [ http-nio-8092-exec-2:96752 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:58  [ http-nio-8092-exec-1:96752 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:26:58  [ http-nio-8092-exec-2:96754 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:58  [ http-nio-8092-exec-1:96754 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:26:58  [ http-nio-8092-exec-2:96754 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:26:58  [ http-nio-8092-exec-1:96754 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520920 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520924 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520924 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520924 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520926 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520926 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520926 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520926 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520926 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM sys_modal
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520928 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520940 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520940 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520940 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520943 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520943 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520949 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520949 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520949 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520951 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520952 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520952 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520953 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520954 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520954 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.icohtml,t.urlotherstr from sys_modal t     where level=1 AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520958 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：5
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520958 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520959 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520959 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='21' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520962 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520963 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520963 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520964 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='5' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520967 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520967 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520968 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520968 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='27' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520970 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520970 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520971 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520972 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='31' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520973 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520973 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520974 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520974 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='144' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520976 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520976 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520977 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520977 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='6' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520979 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520980 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520981 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520981 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520982 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520982 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520983 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM dd_icbc_erp
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520994 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520995 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520995 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520995 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520997 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520997 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520998 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520998 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520998 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520999 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520999 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:520999 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521000 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521001 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521001 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521001 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521001 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where id='32'
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521002 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521002 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521002 ] - [ INFO ]  权限检查成功！
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521002 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521003 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521003 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521003 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521003 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521004 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521004 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521005 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.*,a.name as admin_name,f.name as fs_name,sm.name as type_name,(select name from sys_modal  where type='rwcl' and id_uplevel=t.type_id and sort=t.later_status) as later_name,(select name from sys_modal  where type='rwcl' and id_uplevel=t.type_id and sort=t.now_status) as now_name  from dd_icbc_erp t LEFT JOIN admin a on a.id=t.gems_id LEFT JOIN fs f on f.id=t.gems_fs_id LEFT JOIN sys_modal sm ON sm.id=t.type_id     where t.gems_fs_id=33 ORDER BY dt_add DESC   limit 0,10 
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521015 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：22
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521016 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521017 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:02  [ http-nio-8092-exec-8:521018 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523241 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523241 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523242 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523242 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523243 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523244 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523244 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523244 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523245 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM sys_modal
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523247 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523248 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523249 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523249 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523250 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523251 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523251 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523252 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523252 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523253 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523253 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523254 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523255 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523255 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523255 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.icohtml,t.urlotherstr from sys_modal t     where level=1 AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523258 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：5
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523259 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523260 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523260 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='21' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523263 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523264 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523265 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523265 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='5' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523267 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523268 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523268 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523268 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='27' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523271 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523271 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523272 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523272 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='31' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523273 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523273 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523274 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523274 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='144' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523276 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523276 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523277 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523277 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='6' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523280 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523280 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523281 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523281 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523281 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523282 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523282 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM dd_icbc_erp
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523284 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523285 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523285 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523285 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523287 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523287 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523287 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523287 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523288 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523288 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523289 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523289 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523290 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523290 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523291 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523291 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523291 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where id='32'
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523292 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523292 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523293 ] - [ INFO ]  权限检查成功！
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523293 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523293 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from dd_icbc_erp t    where t.id='52'   
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523294 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523295 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523295 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523295 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523296 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523297 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：17
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523299 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523299 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523299 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523299 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523299 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523300 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：17
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523301 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523302 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523302 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523302 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523302 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523303 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：17
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523304 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523304 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523305 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523305 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523305 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select  e.*,  (select   s2.name as now_name  from   (select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort) s1  LEFT JOIN sys_modal s2 ON s2.id_uplevel=s1.id  where s1.id=e.type_id and s2.sort=e.now_status) as now_name, a.name as admin_name from dd_icbc_erp_result e LEFT JOIN admin a ON a.id=e.mid_add where e.qryid=52 and e.type_id=98
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523320 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：18
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523321 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523321 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523321 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523321 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523322 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select r1.id,r1.dt_edit from  dd_icbc_erp_result r1 where r1.qryid=52 and r1.type_id=98 and r1.id!=161 and r1.id<161 ORDER BY r1.id  DESC limit 1
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523323 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:2
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523323 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523324 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523324 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523324 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523324 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select r.* from dd_icbc_erp_result r where r.qryid=52 ORDER BY r.id DESC limit 1
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523325 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:16
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523326 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523326 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523326 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523326 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523326 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from dd_icbc_erp where icbc_id=46
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523327 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：17
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523328 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523328 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523328 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523328 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523328 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where id_uplevel=98 and sort=57
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523329 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523329 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523330 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523330 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523330 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523330 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from  dd_icbc i LEFT JOIN dd_icbc_materials im ON im.icbc_id=i.id where i.id=46
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523331 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:131
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523332 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:05  [ http-nio-8092-exec-4:523332 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524876 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524877 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524877 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524877 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524878 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524878 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524878 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524879 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524879 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM sys_modal
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524880 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524881 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524881 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524881 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524883 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524883 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524883 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524883 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524883 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524884 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524884 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524884 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524885 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524885 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524886 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.icohtml,t.urlotherstr from sys_modal t     where level=1 AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524888 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：5
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524888 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524889 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524889 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='21' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524892 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524892 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524892 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524892 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='5' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524895 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524896 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524897 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524897 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='27' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524900 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524900 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524900 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524901 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='31' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524902 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524902 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524902 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524902 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='144' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524905 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524905 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524905 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524906 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='6' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524908 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524909 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524909 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524909 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524910 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524910 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524910 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM dd_icbc_erp
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524912 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524912 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524912 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524912 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524913 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524914 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524914 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524914 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524914 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524915 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524915 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524915 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524916 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524916 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524916 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524917 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524917 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where id='32'
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524917 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524918 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524918 ] - [ INFO ]  权限检查成功！
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524918 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524918 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from dd_icbc_erp t    where t.id='52'   
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524920 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524920 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524921 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524921 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524921 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524923 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：17
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524924 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524924 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524924 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524924 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524924 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524926 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：17
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524926 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524926 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524927 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524927 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524927 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524928 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：17
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524928 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524929 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524929 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524929 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524929 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select  e.*,  (select   s2.name as now_name  from   (select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort) s1  LEFT JOIN sys_modal s2 ON s2.id_uplevel=s1.id  where s1.id=e.type_id and s2.sort=e.now_status) as now_name, a.name as admin_name from dd_icbc_erp_result e LEFT JOIN admin a ON a.id=e.mid_add where e.qryid=52 and e.type_id=98
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524930 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：18
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524931 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524931 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524931 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524931 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524931 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select r1.id,r1.dt_edit from  dd_icbc_erp_result r1 where r1.qryid=52 and r1.type_id=98 and r1.id!=161 and r1.id<161 ORDER BY r1.id  DESC limit 1
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524932 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:2
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524932 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524932 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524932 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524933 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524933 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select r.* from dd_icbc_erp_result r where r.qryid=52 ORDER BY r.id DESC limit 1
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524933 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:16
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524933 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524934 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524934 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524934 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524934 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from dd_icbc_erp where icbc_id=46
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524935 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：17
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524935 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524935 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524935 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524935 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524935 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where id_uplevel=98 and sort=57
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524936 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524936 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524936 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524936 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524937 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524937 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from  dd_icbc i LEFT JOIN dd_icbc_materials im ON im.icbc_id=i.id where i.id=46
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524938 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:131
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524938 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:34:06  [ http-nio-8092-exec-2:524938 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681455 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681460 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681460 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681460 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681461 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681461 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681462 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681462 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681462 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM sys_modal
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681463 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681466 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681466 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681466 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681467 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681468 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681471 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681471 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681471 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681472 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681472 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681472 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681473 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681473 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681473 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.icohtml,t.urlotherstr from sys_modal t     where level=1 AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681475 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：5
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681475 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681476 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681476 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='21' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681478 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681478 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681478 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681479 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='5' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681481 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681481 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681482 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681482 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='27' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681485 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681485 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681486 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681486 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='31' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681487 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681487 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681488 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681488 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='144' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681491 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681491 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681492 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681492 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='6' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681495 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681495 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681496 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681496 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681496 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681496 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681497 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM dd_icbc_erp
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681498 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681498 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681498 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681499 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681500 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681500 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681500 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681500 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681500 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681501 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681501 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681501 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681502 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681502 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681502 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681502 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681503 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where id='32'
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681503 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681503 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681503 ] - [ INFO ]  权限检查成功！
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681504 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681504 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from dd_icbc_erp t    where t.id='52'   
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681504 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681504 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681504 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681504 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681504 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681506 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：17
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681506 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681506 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681506 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681506 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681506 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681507 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：17
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681508 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681508 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681508 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681508 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681508 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681509 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：17
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681510 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681510 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681510 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681510 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681510 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select  e.*,  (select   s2.name as now_name  from   (select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort) s1  LEFT JOIN sys_modal s2 ON s2.id_uplevel=s1.id  where s1.id=e.type_id and s2.sort=e.now_status) as now_name, a.name as admin_name from dd_icbc_erp_result e LEFT JOIN admin a ON a.id=e.mid_add where e.qryid=52 and e.type_id=98
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681511 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：18
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681512 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681512 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681512 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681512 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681513 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select r1.id,r1.dt_edit from  dd_icbc_erp_result r1 where r1.qryid=52 and r1.type_id=98 and r1.id!=161 and r1.id<161 ORDER BY r1.id  DESC limit 1
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681514 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:2
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681514 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681514 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681515 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681515 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681515 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select r.* from dd_icbc_erp_result r where r.qryid=52 ORDER BY r.id DESC limit 1
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681516 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:16
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681516 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681516 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681517 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681517 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681517 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from dd_icbc_erp where icbc_id=46
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681518 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：17
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681518 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681519 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681519 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681519 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681519 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where id_uplevel=98 and sort=57
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681520 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681520 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681520 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681521 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681521 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681521 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from  dd_icbc i LEFT JOIN dd_icbc_materials im ON im.icbc_id=i.id where i.id=46
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681522 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:131
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681522 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:43  [ http-nio-8092-exec-9:681522 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683974 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683975 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683975 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683975 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683976 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683976 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683976 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683976 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683976 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM sys_modal
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683977 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683978 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683978 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683978 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683979 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683980 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683980 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683980 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683980 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683982 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683982 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683982 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683983 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683983 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683984 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.icohtml,t.urlotherstr from sys_modal t     where level=1 AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683986 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：5
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683986 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683987 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683987 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='21' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683989 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683989 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683990 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683990 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='5' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683992 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683992 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683993 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683993 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='27' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683996 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683997 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683997 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683998 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='31' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683999 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683999 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:683999 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684000 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='144' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684002 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684002 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684003 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684003 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='6' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684005 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684005 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684006 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684006 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684006 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684006 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684006 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM icbc_kk
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684009 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684009 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684009 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684010 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684011 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684012 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684012 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684013 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684013 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684014 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684014 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684014 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684015 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684015 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684016 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684016 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684016 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where id='32'
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684016 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684016 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684016 ] - [ INFO ]  权限检查成功！
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684017 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684017 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684017 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684017 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684017 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684018 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684018 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684018 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.* from icbc_kk t     where true ORDER BY dt_add DESC   limit 0,10 
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684019 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：114
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684019 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684020 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:45  [ http-nio-8092-exec-2:684020 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685756 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685757 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685757 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685758 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685758 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685759 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685759 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685759 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685759 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM sys_modal
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685761 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685762 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685763 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685763 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685765 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685765 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685766 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685766 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685766 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685767 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685767 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685767 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685768 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685768 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685768 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.icohtml,t.urlotherstr from sys_modal t     where level=1 AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685770 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：5
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685771 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685771 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685772 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='21' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685774 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685774 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685774 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685775 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='5' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685777 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685777 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685777 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685778 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='27' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685780 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685781 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685781 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685781 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='31' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685782 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685782 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685783 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685783 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='144' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685785 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685786 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685786 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685787 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='6' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685789 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685789 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685789 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685790 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685790 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685790 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685790 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM icbc_kk
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685792 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685793 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685793 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685793 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685794 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685795 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685795 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685795 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685795 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685797 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685797 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685797 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685798 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685798 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685799 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685799 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685799 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where id='32'
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685800 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685800 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685800 ] - [ INFO ]  权限检查成功！
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685800 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685800 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from icbc_kk t    where t.id='174'   
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685801 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:114
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685801 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685808 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685808 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685808 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685808 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select id,c_name from dd_icbc
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685809 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：2
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685809 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685810 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685810 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685811 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685811 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from icbc_banklist
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685811 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：4
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685812 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685812 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685812 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685813 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM comm_states
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685815 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685815 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id from comm_states t        
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685818 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：2
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685818 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685819 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:47  [ http-nio-8092-exec-1:685820 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:48  [ http-nio-8092-exec-3:686145 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:48  [ http-nio-8092-exec-3:686145 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:48  [ http-nio-8092-exec-3:686145 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM comm_citys
+2019-03-18 09:36:48  [ http-nio-8092-exec-1:686148 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:48  [ http-nio-8092-exec-3:686148 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:48  [ http-nio-8092-exec-3:686153 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id from comm_citys t     where state_id='6'    
+2019-03-18 09:36:48  [ http-nio-8092-exec-1:686154 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:48  [ http-nio-8092-exec-3:686155 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：2
+2019-03-18 09:36:48  [ http-nio-8092-exec-1:686156 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM comm_citys
+2019-03-18 09:36:48  [ http-nio-8092-exec-3:686156 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:48  [ http-nio-8092-exec-3:686157 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:48  [ http-nio-8092-exec-3:686157 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:48  [ http-nio-8092-exec-1:686158 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:48  [ http-nio-8092-exec-1:686159 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id from comm_citys t     where state_id='5'    
+2019-03-18 09:36:48  [ http-nio-8092-exec-1:686161 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：2
+2019-03-18 09:36:48  [ http-nio-8092-exec-1:686161 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:48  [ http-nio-8092-exec-1:686162 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:48  [ http-nio-8092-exec-1:686163 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696639 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696639 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696639 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696639 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696640 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696641 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696641 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696641 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696641 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM sys_modal
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696643 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696643 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696644 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696644 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696645 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696645 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696645 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696645 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696645 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696647 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696647 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696648 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696649 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696650 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696650 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.icohtml,t.urlotherstr from sys_modal t     where level=1 AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696653 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：5
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696653 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696654 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696654 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='21' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696656 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696656 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696657 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696657 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='5' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696659 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696660 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696661 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696661 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='27' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696665 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696666 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696666 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696666 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='31' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696667 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696667 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696668 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696668 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='144' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696670 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696671 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696671 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696671 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id,t.showmmenuname,t.cn,t.type,t.icohtml,t.sdo,t.urlotherstr from sys_modal t     where level=2 AND id_uplevel='6' AND showmmenutag=1 ORDER BY t.sort,t.showmmenuname   
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696673 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：8
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696674 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696676 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696676 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696677 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696678 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696678 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM icbc_kk
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696682 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696683 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696683 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696684 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM admin_agp
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696685 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696686 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696686 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696686 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696686 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from admin where id=21
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696687 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:23
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696687 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696687 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from admin_agp t    where t.id='9'   
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696688 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:8
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696688 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696689 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696689 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696689 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from sys_modal where id='32'
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696690 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:17
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696690 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696691 ] - [ INFO ]  权限检查成功！
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696691 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696691 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select t.* from icbc_kk t    where t.id='174'   
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696692 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:114
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696693 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696705 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696705 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696706 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696706 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select id,c_name from dd_icbc
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696707 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：2
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696708 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696708 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:已经初始化过的..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696709 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:获取新的2Connection..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696710 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696711 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select * from icbc_banklist
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696712 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：4
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696713 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696714 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696714 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696714 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM comm_states
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696717 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696717 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id from comm_states t        
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696719 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：2
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696719 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696720 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:58  [ http-nio-8092-exec-3:696721 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:59  [ http-nio-8092-exec-9:697207 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:59  [ http-nio-8092-exec-9:697207 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:59  [ http-nio-8092-exec-9:697207 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM comm_citys
+2019-03-18 09:36:59  [ http-nio-8092-exec-2:697208 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:使用指定的Connection..
+2019-03-18 09:36:59  [ http-nio-8092-exec-2:697208 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:createStatement
+2019-03-18 09:36:59  [ http-nio-8092-exec-2:697208 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SHOW COLUMNS FROM comm_citys
+2019-03-18 09:36:59  [ http-nio-8092-exec-9:697211 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:59  [ http-nio-8092-exec-9:697211 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id from comm_citys t     where state_id='6'    
+2019-03-18 09:36:59  [ http-nio-8092-exec-2:697212 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：6
+2019-03-18 09:36:59  [ http-nio-8092-exec-2:697212 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:select SQL_CALC_FOUND_ROWS t.name,t.id from comm_citys t     where state_id='5'    
+2019-03-18 09:36:59  [ http-nio-8092-exec-9:697213 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：2
+2019-03-18 09:36:59  [ http-nio-8092-exec-9:697214 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:59  [ http-nio-8092-exec-2:697215 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:字段数：2
+2019-03-18 09:36:59  [ http-nio-8092-exec-9:697215 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:59  [ http-nio-8092-exec-2:697215 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:SELECT FOUND_ROWS() as rno;
+2019-03-18 09:36:59  [ http-nio-8092-exec-9:697215 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
+2019-03-18 09:36:59  [ http-nio-8092-exec-2:697216 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:columnCount:1
+2019-03-18 09:36:59  [ http-nio-8092-exec-2:697217 ] - [ DEBUG ]  class com.example.ddbx.tt.tool.DbTools:dbTools关闭连接
