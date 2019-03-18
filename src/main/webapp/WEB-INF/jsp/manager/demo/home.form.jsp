@@ -1,847 +1,510 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ page import="java.util.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ taglib prefix="Tools" uri="/tld/manager" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 
-<div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-speedometer"></i></span>
+<script type="text/javascript" src="${pageContext.request.contextPath }/manager/js/visual/echarts.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/manager/css/visual/Visual.css"  />
 
-                <div class="info-box-content">
-                    <span class="info-box-text">Git链接</span>
-                    <span class="info-box-number">https://github.com/superadmini/tt</span>
-                    <span class="info-box-number"><a href="https://github.com/superadmini/tt" target="blank"><small>前往</small></a></span>
+
+<!-- 可视化数据图 -->
+<div class="content_visual">
+    <div class="form_visual" >
+        <!-- <%--  数据图一  --%> -->
+        <div class="form_visual_form1" id="form_visual_form1" style="width: 1670px; height: 800px;display: block;">
+            <div class="visual_form_top_box">
+                <!-- 报单统计开始 -->
+                <div class="visual_form_box">
+
+                    <div class="baodan_left">
+                        <div class="  font_color_title" style="margin-bottom: 2%;">报单统计</div>
+                        <div style="width: 100%;height: 7%;">
+                            <ul class="font_color_1 condition1" >
+                                <li>
+                                    <input type="text" placeholder="请输入代理商" />
+                                </li>
+                                <li>
+                                    <div>请选择省份<i>></i></div>
+                                </li>
+                                <li>
+                                    <div>请选择时间<i>></i></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="height: 80%;width: 100%; position: relative; top: -20px; padding-left: 4%;" id="baodan">
+                        </div>
+                    </div>
+                    <div class="baodan_right">
+                        <div class="paiming_top" >
+                            <div class="paiming_top_border" style="width:40%;">
+                                <p class="danshu_style font_color_2">568<font>笔</font></p>
+                                <p class="font_color_2 font_size_1">本月报单总量</p>
+                            </div>
+                        </div>
+                        <div class="paiming_table">
+                            <table  class="paiming_table_style">
+                                <tr>
+                                    <th >省份</th>
+                                    <th colspan="3" class="font_color_1">排名</th>
+                                    <th >代理商</th>
+                                </tr>
+
+                                <tr>
+                                    <td class="font_color_3">上海市</td>
+                                    <td class="font_size_3 font_color_4">232</td>
+                                    <td ><div class="paiming_rank">1</div></td>
+                                    <td class="font_size_3 font_color_4">261</td>
+                                    <td class="font_color_3">快车道</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_color_3">北京市</td>
+                                    <td class="font_size_3 font_color_4">221</td>
+                                    <td ><div class="paiming_rank">2</div></td>
+                                    <td class="font_size_3 font_color_4">256</td>
+                                    <td class="font_color_3">快金所</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_color_3">广东省</td>
+                                    <td class="font_size_3 font_color_4">212</td>
+                                    <td ><div class="paiming_rank">3</div></td>
+                                    <td class="font_size_3 font_color_4">243</td>
+                                    <td class="font_color_3">快加认证</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_color_3">深圳市</td>
+                                    <td class="font_size_3 font_color_4">209</td>
+                                    <td ><div class="paiming_rank">4</div></td>
+                                    <td class="font_size_3 font_color_4">232</td>
+                                    <td class="font_color_3">金稻谷</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_color_3">福建市</td>
+                                    <td class="font_size_3 font_color_4">201</td>
+                                    <td ><div class="paiming_rank">5</div></td>
+                                    <td class="font_size_3 font_color_4">221</td>
+                                    <td class="font_color_3">中投信安</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div style="width: 100%; height: 10%;margin-top: 2%;">
+                            <button class="paiming_button">更多</button>
+                        </div>
+                    </div>
                 </div>
-                <!-- /.info-box-content -->
+                <!-- 报单统计结束 -->
+                <!-- 汽车贷款开始 -->
+                <div class="visual_form_box">
+                    <div class="baodan_left">
+                        <div class="font_color_title" style="margin-bottom: 2%;">过件率(汽车贷款通过)</div>
+                        <div style="width: 100%;height: 7%;">
+                            <ul class="font_color_1 condition1" >
+                                <li>
+                                    <input type="text" placeholder="请输入代理商" />
+                                </li>
+                                <li>
+                                    <div>请选择省份<i>></i></div>
+                                </li>
+                                <li>
+                                    <div>请选择时间<i>></i></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="height: 80%;width: 100%; position: relative; top: -20px; padding-left: 4%;" id="qichedaikuan">
+                        </div>
+                    </div>
+                    <div class="baodan_right">
+                        <div class="paiming_top" >
+                            <div class="paiming_top_border" style="width:40%;">
+                                <p class="danshu_style font_color_2">89<font>%</font></p>
+                                <p class="font_color_2 font_size_1">本月报单总量</p>
+                            </div>
+                        </div>
+                        <div class="paiming_table">
+                            <table  class="paiming_table_style">
+                                <tr>
+                                    <th >省份</th>
+                                    <th colspan="3" class="font_color_1">排名</th>
+                                    <th >代理商</th>
+                                </tr>
+
+                                <tr>
+                                    <td class="font_color_3">上海市</td>
+                                    <td class="font_size_3 font_color_4">95%</td>
+                                    <td ><div class="paiming_rank">1</div></td>
+                                    <td class="font_size_3 font_color_4">92%</td>
+                                    <td class="font_color_3">快车道</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_color_3">北京市</td>
+                                    <td class="font_size_3 font_color_4">91%</td>
+                                    <td ><div class="paiming_rank">2</div></td>
+                                    <td class="font_size_3 font_color_4">90%</td>
+                                    <td class="font_color_3">快金所</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_color_3">广东省</td>
+                                    <td class="font_size_3 font_color_4">88%</td>
+                                    <td ><div class="paiming_rank">3</div></td>
+                                    <td class="font_size_3 font_color_4">89%</td>
+                                    <td class="font_color_3">快加认证</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_color_3">深圳市</td>
+                                    <td class="font_size_3 font_color_4">85%</td>
+                                    <td ><div class="paiming_rank">4</div></td>
+                                    <td class="font_size_3 font_color_4">86%</td>
+                                    <td class="font_color_3">金稻谷</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_color_3">福建市</td>
+                                    <td class="font_size_3 font_color_4">82%</td>
+                                    <td ><div class="paiming_rank">5</div></td>
+                                    <td class="font_size_3 font_color_4">81%</td>
+                                    <td class="font_color_3">中投信安</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div style="width: 100%; height: 10%;margin-top: 2%;">
+                            <button class="paiming_button">更多</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- /.info-box -->
+            <!-- 汽车贷款结束 -->
+            <div class="visual_form_bottom_box">
+                <!-- 放款统计分析开始 -->
+                <div class="visual_form_box">
+                    <div class="baodan_left">
+                        <div class="font_color_title" style="margin-bottom: 2%;">放款统计分析</div>
+                        <div style="width: 100%;height: 5%;">
+                            <ul class="font_color_1 condition1" >
+                                <li>
+                                    <input type="text" placeholder="请输入代理商" />
+                                </li>
+                                <li>
+                                    <div>请选择省份<i>></i></div>
+                                </li>
+                                <li>
+                                    <div>请选择时间<i>></i></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="height: 88%;width: 92%;display: inline-block">
+
+                            <div style="height: 35%; width: 50%; float: left; " id="fangkuan_1"></div>
+                            <div style="height: 35%; width: 48%; float: right; " id="fangkuan_2"></div>
+
+                            <div style="height: 63%;width: 100%;margin-left: 10px; display: inline-block" id="fangkuan_3">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="baodan_right">
+                        <div class="paiming_top" style="margin-top: 10%;">
+                            <div class="paiming_top_border" style="width:45%;float: left;">
+                                <p class="danshu_style font_color_2">598<font>笔</font></p>
+                                <p class="font_color_2 font_size_1">本月放款总订单</p>
+                            </div>
+                            <div class="paiming_top_border" style="width: 50%;float: right;">
+                                <p class="danshu_style font_color_2">5625263.23<font>元</font></p>
+                                <p class="font_color_2 font_size_1">本月放款均金额</p>
+                            </div>
+                        </div>
+
+                        <div class="paiming_top_border" style="width: 100%; margin-top: 5%;">
+                            <p class="danshu_style font_color_2">6585245.26<font>元</font></p>
+                            <p class="font_color_2 font_size_1">本月累计放款总订单总金额</p>
+                        </div>
+                        <div class="paiming_table">
+                            <table  class="paiming_table_style">
+                                <tr>
+                                    <th >省份</th>
+                                    <th colspan="3" class="font_color_1">排名</th>
+                                    <th >代理商</th>
+                                </tr>
+
+                                <tr>
+                                    <td class="font_color_3">上海市</td>
+                                    <td class="font_size_3 font_color_4">92</td>
+                                    <td ><div class="paiming_rank">1</div></td>
+                                    <td class="font_size_3 font_color_4">92</td>
+                                    <td class="font_color_3">快车道</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_color_3">北京市</td>
+                                    <td class="font_size_3 font_color_4">91</td>
+                                    <td ><div class="paiming_rank">2</div></td>
+                                    <td class="font_size_3 font_color_4">90</td>
+                                    <td class="font_color_3">快金所</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_color_3">广东省</td>
+                                    <td class="font_size_3 font_color_4">88</td>
+                                    <td ><div class="paiming_rank">3</div></td>
+                                    <td class="font_size_3 font_color_4">89</td>
+                                    <td class="font_color_3">快加认证</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_color_3">深圳市</td>
+                                    <td class="font_size_3 font_color_4">85</td>
+                                    <td ><div class="paiming_rank">4</div></td>
+                                    <td class="font_size_3 font_color_4">86</td>
+                                    <td class="font_color_3">金稻谷</td>
+                                </tr>
+                                <tr>
+                                    <td class="font_color_3">福建市</td>
+                                    <td class="font_size_3 font_color_4">82</td>
+                                    <td ><div class="paiming_rank">5</div></td>
+                                    <td class="font_size_3 font_color_4">81</td>
+                                    <td class="font_color_3">中投信安</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div style="width: 100%; height: 10%;margin-top: 2%;">
+                            <button class="paiming_button">更多</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 放款统计分析结束 -->
+
+                <!-- 抵押材料开始 -->
+                <div class="visual_form_box" style="float: left;">
+                    <div class="baodan_right_1">
+                        <div class="  font_color_title" style="margin-bottom: 2%;">抵押完成情况</div>
+                        <div class="paiming_top" style="margin-top: 0;">
+                            <div class="paiming_bottom_border" style="width:46%;float: left;">
+                                <p class="danshu_style font_color_2">298<font>笔</font></p>
+                                <p class="font_color_2 font_size_1">本月已放款未完成</p>
+                                <p class="font_color_2 font_size_1">抵押的订单总数</p>
+                            </div>
+                            <div class="paiming_bottom_border" style="width: 50%;float: right;">
+                                <p class="danshu_style font_color_2">2325263.23<font>元</font></p>
+                                <p class="font_color_2 font_size_1">本月已放款未完成</p>
+                                <p class="font_color_2 font_size_1">抵押的订单金额</p>
+                            </div>
+                        </div>
+                        <div style="width: 100%;height: 5%;margin-top: 25px;">
+                            <ul class="font_color_1 condition1" >
+                                <li>
+                                    <input type="text" placeholder="请输入代理商" />
+                                </li>
+                                <li>
+                                    <div>请选择省份<i>></i></div>
+                                </li>
+                                <li>
+                                    <div>请选择时间<i>></i></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="height: 68%;width: 92%; position: relative;" id="diyawancheng">
+
+                        </div>
+                    </div>
+                    <div class="baodan_right_1" style="float: right;">
+                        <div class="  font_color_title" style="margin-bottom: 2%;">材料回收情况</div>
+                        <div style="width: 100%;height: 7%;">
+                            <ul class="font_color_1 condition1" >
+                                <li>
+                                    <input type="text" placeholder="请输入代理商" />
+                                </li>
+                                <li>
+                                    <div>请选择省份<i>></i></div>
+                                </li>
+                                <li>
+                                    <div>请选择时间<i>></i></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="height: 80%;width: 100%; position: relative; top: 10px; padding-left: 4%;" id="cailiaohuishou">
+                        </div>
+                    </div>
+                </div>
+                <!-- 抵押材料结束 -->
+            </div>
         </div>
+
+        <!--  数据图切换按钮  -->
+        <div class="qiehuanbutton" id="qiehuanbutton" onclick="visualTransform()">切</br>换</div>
+
+
+        <!--   数据图二   -->
+        <div class="form_visual_form2" id="form_visual_form2" style="width: 1670px; height: 800px;">
+            <div class="visual_form2_box">
+                <!-- 逾期率开始 -->
+                <div class="form2_box" style="margin-bottom: 20px;">
+                    <div class="form2_box_left">
+                        <div style="height: 100%;width: 40%; float: left;">
+                            <div class="  font_color_title" style="margin-bottom: 2%;">逾期率</div>
+                            <div style="width: 100%;height: 7%;">
+                                <ul class="font_color_1 condition2" >
+                                    <li>
+                                        <input type="text" placeholder="请输入代理商" />
+                                    </li>
+                                    <li>
+                                        <div>请选择省份<i>></i></div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div style="height: 80%;width: 100%; padding-left: 4%;" id="yuqilv_1">
+                            </div>
+
+                        </div>
+                        <div style="height: 100%;width: 18%; float: left;">
+                            <div style="height: 20%;width: 100%;margin-top: 20%;">
+                                <div class="graph_statistics_content" style="width: 60%;height: 65%;margin-top: 10%;margin: auto;">
+                                    <img src="${pageContext.request.contextPath }/manager/images/724618841177387879.png" style="width: 23px;height: 23px;padding-top: 5px;"/>
+                                    <p style="color:#2F4554;font-size: 12px;padding-top: 2px;">逾期率预警</p>
+                                </div>
+                            </div>
+                            <table class="graph_overdue_center">
+                                <tr>
+                                    <th>代理商</th>
+                                    <th>逾期率</th>
+                                </tr>
+                                <tr>
+                                    <td>金稻谷</td>
+                                    <td>0.98%</td>
+                                </tr>
+                                <tr>
+                                    <td>联众</td>
+                                    <td>0.96%</td>
+                                </tr>
+                                <tr>
+                                    <td>厦门远景</td>
+                                    <td>0.94%</td>
+                                </tr>
+                                <tr>
+                                    <td>灿谷</td>
+                                    <td>0.88%</td>
+                                </tr>
+                                <tr>
+                                    <td>泰州索普</td>
+                                    <td>0.83%</td>
+                                </tr>
+                            </table>
+                            <div style="width: 100%; height: 10%;margin-top: 2%;">
+                                <button class="paiming_button">更多</button>
+                            </div>
+                        </div>
+                        <div style="height: 100%;width: 36%; float: left;">
+                            <ul class="graph_overdue_right" style="margin-top:15%;" class="font_color_3">
+                                <li>
+                                    <div  class="paiming_button" style="margin: 0;float: left;">省份</div>
+                                </li>
+                                <li class="font_color_3">代理商</li>
+                                <li class="font_color_3">客户年龄</li>
+                                <li class="font_color_3">贷款金额</li>
+                            </ul>
+                            <div style="width: 100%;height:80%; margin-left: 5%;" id="yuqilv_2">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="form2_box_right">
+
+                    </div> -->
+                </div>
+                <!-- 逾期率结束 -->
+
+                <div class="form2_box1" style="margin-bottom: 20px;">
+                    <!-- 代理商综合能力分析开始 -->
+                    <div class="form2_box_1">
+                        <div class="  font_color_title" style="margin-bottom: 2%;">代理商综合能力分析</div>
+                        <div style="width: 100%;height: 5%;">
+                            <ul class="font_color_1 condition1" >
+                                <li style="margin-left: 5px;">
+                                    <input type="text" placeholder="请输入代理商" />
+                                </li>
+                                <li>
+                                    <div>请选择时间<i>></i></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="height: 90%;width: 100%;" id="dalifenxi">
+                        </div>
+
+                    </div>
+                    <!-- 代理商综合能力分析结束 -->
+
+                    <!-- 征信查询通过率开始 -->
+                    <div class="form2_box_2">
+                        <div class="  font_color_title" style="margin-bottom: 2%;">征信查询通过率</div>
+                        <div style="width: 100%;height: 5%;margin-top: 25px;">
+                            <ul class="font_color_1 condition1" >
+                                <li>
+                                    <input type="text" placeholder="请输入代理商" />
+                                </li>
+                                <li>
+                                    <div>请选择省份<i>></i></div>
+                                </li>
+                                <li>
+                                    <div>请选择时间<i>></i></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="height: 80%;width: 100%;" id="zhengxinchaxun">
+                        </div>
+                    </div>
+                    <!-- 征信查询通过率结束 -->
+                </div>
+            </div>
+            <!-- 数据图二下 -->
+            <div class="visual_form2_box">
+                <!-- 客户和车辆画像开始 -->
+                <div class="form2_box">
+                    <div class="  font_color_title" style="margin-bottom: 1%;width: 100%;">客户和车辆画像</div>
+                    <div style="height: 87%;width: 100%;" >
+                        <div class="form2_box_1">
+                            <div style="height: 9%;width: 100%; ">
+                                <div class="font_color_1 " style="margin-top: 7px;float: left;margin-left: 10px;">所属省份</div>
+                                <button class="paiming_button" style="float: left;margin-left: 8px;margin-top: 4px;">客户年龄</button>
+                            </div>
+                            <div id="kehunianling" style="height: 90%;width: 100%;position: relative; top: -20px; ">
+                            </div>
+                        </div>
+                        <div class="form2_box_1">
+                            <div style="height: 9%;width: 100%; margin-left: 20%;">
+                                <div class="font_color_1 " style=" margin-top: 7px;float: left;">新车</div>
+                                <button class="paiming_button" style="float: left;margin-left: 8px;margin-top: 4px;">车龄</button>
+                            </div>
+                            <div id="cheliangnianling" style="height: 90%;width: 100%;position: relative; top: -20px; ">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 客户和车辆画像结束 -->
+
+                <!-- 资金周转时长(垫资方)开始 -->
+                <div class="form2_box1">
+                    <div class="  font_color_title" style="margin-bottom: 2%;">资金周转时长(垫资方)</div>
+                    <div style="width: 100%;height: 5%;margin-top: 25px;">
+                        <ul class="font_color_1 condition1"  >
+                            <li style="text-align: left; margin-left: 5px;">
+                                <div>请选择时间<i>></i></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="height: 80%;width: 100%;" id="zijinzhouzhuan">
+                    </div>
+                </div>
+                <!-- 资金周转时长(垫资方)结束 -->
+            </div>
+        </div>
+    </div>
 </div>
 
- <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
-                <div class="info-box-content">
-                    <span class="info-box-text">CPU Traffic</span>
-                    <span class="info-box-number">90<small>%</small></span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+<script type="text/javascript" src="${pageContext.request.contextPath }/manager/js/visual/visual.js"></script>
+<script type="text/javascript">
+    window.onload =function(){
+        document.getElementById("form_visual_form2").style.display="none";
+    };
 
-                <div class="info-box-content">
-                    <span class="info-box-text">Likes</span>
-                    <span class="info-box-number">41,410</span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
 
-        <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
+</script>
 
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
 
-                <div class="info-box-content">
-                    <span class="info-box-text">Sales</span>
-                    <span class="info-box-number">760</span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-            <div class="info-box">
-                <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
-                <div class="info-box-content">
-                    <span class="info-box-text">New Members</span>
-                    <span class="info-box-number">2,000</span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-        </div>
-        <!-- /.col -->
-    </div>
-    <!-- /.row -->
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Monthly Recap Report</h3>
 
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-wrench"></i></button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <p class="text-center">
-                                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                            </p>
-
-                            <div class="chart">
-                                <!-- Sales Chart Canvas -->
-                                <canvas id="salesChart" style="height: 180px;"></canvas>
-                            </div>
-                            <!-- /.chart-responsive -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-md-4">
-                            <p class="text-center">
-                                <strong>Goal Completion</strong>
-                            </p>
-
-                            <div class="progress-group">
-                                <span class="progress-text">Add Products to Cart</span>
-                                <span class="progress-number"><b>160</b>/200</span>
-
-                                <div class="progress sm">
-                                    <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group">
-                                <span class="progress-text">Complete Purchase</span>
-                                <span class="progress-number"><b>310</b>/400</span>
-
-                                <div class="progress sm">
-                                    <div class="progress-bar progress-bar-red" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group">
-                                <span class="progress-text">Visit Premium Page</span>
-                                <span class="progress-number"><b>480</b>/800</span>
-
-                                <div class="progress sm">
-                                    <div class="progress-bar progress-bar-green" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                            <div class="progress-group">
-                                <span class="progress-text">Send Inquiries</span>
-                                <span class="progress-number"><b>250</b>/500</span>
-
-                                <div class="progress sm">
-                                    <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-                                </div>
-                            </div>
-                            <!-- /.progress-group -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- ./box-body -->
-                <div class="box-footer">
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-6">
-                            <div class="description-block border-right">
-                                <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
-                                <h5 class="description-header">$35,210.43</h5>
-                                <span class="description-text">TOTAL REVENUE</span>
-                            </div>
-                            <!-- /.description-block -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-3 col-xs-6">
-                            <div class="description-block border-right">
-                                <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
-                                <h5 class="description-header">$10,390.90</h5>
-                                <span class="description-text">TOTAL COST</span>
-                            </div>
-                            <!-- /.description-block -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-3 col-xs-6">
-                            <div class="description-block border-right">
-                                <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
-                                <h5 class="description-header">$24,813.53</h5>
-                                <span class="description-text">TOTAL PROFIT</span>
-                            </div>
-                            <!-- /.description-block -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-sm-3 col-xs-6">
-                            <div class="description-block">
-                                <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
-                                <h5 class="description-header">1200</h5>
-                                <span class="description-text">GOAL COMPLETIONS</span>
-                            </div>
-                            <!-- /.description-block -->
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.box-footer -->
-            </div>
-            <!-- /.box -->
-        </div>
-        <!-- /.col -->
-    </div>
-    <!-- /.row -->
-
-    <!-- Main row -->
-    <div class="row">
-        <!-- Left col -->
-        <div class="col-md-8">
-            <!-- MAP & BOX PANE -->
-            <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Visitors Report</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body no-padding">
-                    <div class="row">
-                        <div class="col-md-9 col-sm-8">
-                            <div class="pad">
-                                <!-- Map will be created here -->
-                                <div id="world-map-markers" style="height: 325px;"></div>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-md-3 col-sm-4">
-                            <div class="pad box-pane-right bg-green" style="min-height: 280px">
-                                <div class="description-block margin-bottom">
-                                    <div class="sparkbar pad" data-color="#fff">90,70,90,70,75,80,70</div>
-                                    <h5 class="description-header">8390</h5>
-                                    <span class="description-text">Visits</span>
-                                </div>
-                                <!-- /.description-block -->
-                                <div class="description-block margin-bottom">
-                                    <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
-                                    <h5 class="description-header">30%</h5>
-                                    <span class="description-text">Referrals</span>
-                                </div>
-                                <!-- /.description-block -->
-                                <div class="description-block">
-                                    <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
-                                    <h5 class="description-header">70%</h5>
-                                    <span class="description-text">Organic</span>
-                                </div>
-                                <!-- /.description-block -->
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- DIRECT CHAT -->
-                    <div class="box box-warning direct-chat direct-chat-warning">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Direct Chat</h3>
-
-                            <div class="box-tools pull-right">
-                                <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">3</span>
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Contacts" data-widget="chat-pane-toggle">
-                                    <i class="fa fa-comments"></i></button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <!-- Conversations are loaded here -->
-                            <div class="direct-chat-messages">
-                                <!-- Message. Default to the left -->
-                                <div class="direct-chat-msg">
-                                    <div class="direct-chat-info clearfix">
-                                        <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                                        <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                                    </div>
-                                    <!-- /.direct-chat-info -->
-                                    <img class="direct-chat-img" src="iframe/dist/img/user1-128x128.jpg" alt="message user image"><!-- /.direct-chat-img -->
-                                    <div class="direct-chat-text">
-                                        Is this template really for free? That's unbelievable!
-                                    </div>
-                                    <!-- /.direct-chat-text -->
-                                </div>
-                                <!-- /.direct-chat-msg -->
-
-                                <!-- Message to the right -->
-                                <div class="direct-chat-msg right">
-                                    <div class="direct-chat-info clearfix">
-                                        <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                                        <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-                                    </div>
-                                    <!-- /.direct-chat-info -->
-                                    <img class="direct-chat-img" src="iframe/dist/img/user3-128x128.jpg" alt="message user image"><!-- /.direct-chat-img -->
-                                    <div class="direct-chat-text">
-                                        You better believe it!
-                                    </div>
-                                    <!-- /.direct-chat-text -->
-                                </div>
-                                <!-- /.direct-chat-msg -->
-
-                                <!-- Message. Default to the left -->
-                                <div class="direct-chat-msg">
-                                    <div class="direct-chat-info clearfix">
-                                        <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                                        <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
-                                    </div>
-                                    <!-- /.direct-chat-info -->
-                                    <img class="direct-chat-img" src="iframe/dist/img/user1-128x128.jpg" alt="message user image"><!-- /.direct-chat-img -->
-                                    <div class="direct-chat-text">
-                                        Working with AdminLTE on a great new app! Wanna join?
-                                    </div>
-                                    <!-- /.direct-chat-text -->
-                                </div>
-                                <!-- /.direct-chat-msg -->
-
-                                <!-- Message to the right -->
-                                <div class="direct-chat-msg right">
-                                    <div class="direct-chat-info clearfix">
-                                        <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                                        <span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
-                                    </div>
-                                    <!-- /.direct-chat-info -->
-                                    <img class="direct-chat-img" src="iframe/dist/img/user3-128x128.jpg" alt="message user image"><!-- /.direct-chat-img -->
-                                    <div class="direct-chat-text">
-                                        I would love to.
-                                    </div>
-                                    <!-- /.direct-chat-text -->
-                                </div>
-                                <!-- /.direct-chat-msg -->
-
-                            </div>
-                            <!--/.direct-chat-messages-->
-
-                            <!-- Contacts are loaded here -->
-                            <div class="direct-chat-contacts">
-                                <ul class="contacts-list">
-                                    <li>
-                                        <a href="#">
-                                            <img class="contacts-list-img" src="iframe/dist/img/user1-128x128.jpg" alt="User Image">
-
-                                            <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Count Dracula
-                                  <small class="contacts-list-date pull-right">2/28/2015</small>
-                                </span>
-                                                <span class="contacts-list-msg">How have you been? I wasiframe.</span>
-                                            </div>
-                                            <!-- /.contacts-list-info -->
-                                        </a>
-                                    </li>
-                                    <!-- End Contact Item -->
-                                    <li>
-                                        <a href="#">
-                                            <img class="contacts-list-img" src="iframe/dist/img/user7-128x128.jpg" alt="User Image">
-
-                                            <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Sarah Doe
-                                  <small class="contacts-list-date pull-right">2/23/2015</small>
-                                </span>
-                                                <span class="contacts-list-msg">I will be waiting foriframe.</span>
-                                            </div>
-                                            <!-- /.contacts-list-info -->
-                                        </a>
-                                    </li>
-                                    <!-- End Contact Item -->
-                                    <li>
-                                        <a href="#">
-                                            <img class="contacts-list-img" src="iframe/dist/img/user3-128x128.jpg" alt="User Image">
-
-                                            <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Nadia Jolie
-                                  <small class="contacts-list-date pull-right">2/20/2015</small>
-                                </span>
-                                                <span class="contacts-list-msg">I'll call you back atiframe.</span>
-                                            </div>
-                                            <!-- /.contacts-list-info -->
-                                        </a>
-                                    </li>
-                                    <!-- End Contact Item -->
-                                    <li>
-                                        <a href="#">
-                                            <img class="contacts-list-img" src="iframe/dist/img/user5-128x128.jpg" alt="User Image">
-
-                                            <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Nora S. Vans
-                                  <small class="contacts-list-date pull-right">2/10/2015</small>
-                                </span>
-                                                <span class="contacts-list-msg">Where is your newiframe.</span>
-                                            </div>
-                                            <!-- /.contacts-list-info -->
-                                        </a>
-                                    </li>
-                                    <!-- End Contact Item -->
-                                    <li>
-                                        <a href="#">
-                                            <img class="contacts-list-img" src="iframe/dist/img/user6-128x128.jpg" alt="User Image">
-
-                                            <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  John K.
-                                  <small class="contacts-list-date pull-right">1/27/2015</small>
-                                </span>
-                                                <span class="contacts-list-msg">Can I take a look atiframe.</span>
-                                            </div>
-                                            <!-- /.contacts-list-info -->
-                                        </a>
-                                    </li>
-                                    <!-- End Contact Item -->
-                                    <li>
-                                        <a href="#">
-                                            <img class="contacts-list-img" src="iframe/dist/img/user8-128x128.jpg" alt="User Image">
-
-                                            <div class="contacts-list-info">
-                                <span class="contacts-list-name">
-                                  Kenneth M.
-                                  <small class="contacts-list-date pull-right">1/4/2015</small>
-                                </span>
-                                                <span class="contacts-list-msg">Never mind I foundiframe.</span>
-                                            </div>
-                                            <!-- /.contacts-list-info -->
-                                        </a>
-                                    </li>
-                                    <!-- End Contact Item -->
-                                </ul>
-                                <!-- /.contatcts-list -->
-                            </div>
-                            <!-- /.direct-chat-pane -->
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer">
-                            <form action="#" method="post">
-                                <div class="input-group">
-                                    <input type="text" name="message" placeholder="Type Message iframe." class="form-control">
-                                    <span class="input-group-btn">
-                            <button type="button" class="btn btn-warning btn-flat">Send</button>
-                          </span>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- /.box-footer-->
-                    </div>
-                    <!--/.direct-chat -->
-                </div>
-                <!-- /.col -->
-
-                <div class="col-md-6">
-                    <!-- USERS LIST -->
-                    <div class="box box-danger">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Latest Members</h3>
-
-                            <div class="box-tools pull-right">
-                                <span class="label label-danger">8 New Members</span>
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                </button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body no-padding">
-                            <ul class="users-list clearfix">
-                                <li>
-                                    <img src="iframe/dist/img/user1-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Alexander Pierce</a>
-                                    <span class="users-list-date">Today</span>
-                                </li>
-                                <li>
-                                    <img src="iframe/dist/img/user8-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Norman</a>
-                                    <span class="users-list-date">Yesterday</span>
-                                </li>
-                                <li>
-                                    <img src="iframe/dist/img/user7-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Jane</a>
-                                    <span class="users-list-date">12 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="iframe/dist/img/user6-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">John</a>
-                                    <span class="users-list-date">12 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="iframe/dist/img/user2-160x160.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Alexander</a>
-                                    <span class="users-list-date">13 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="iframe/dist/img/user5-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Sarah</a>
-                                    <span class="users-list-date">14 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="iframe/dist/img/user4-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Nora</a>
-                                    <span class="users-list-date">15 Jan</span>
-                                </li>
-                                <li>
-                                    <img src="iframe/dist/img/user3-128x128.jpg" alt="User Image">
-                                    <a class="users-list-name" href="#">Nadia</a>
-                                    <span class="users-list-date">15 Jan</span>
-                                </li>
-                            </ul>
-                            <!-- /.users-list -->
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer text-center">
-                            <a href="javascript:void(0)" class="uppercase">View All Users</a>
-                        </div>
-                        <!-- /.box-footer -->
-                    </div>
-                    <!--/.box -->
-                </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
-
-            <!-- TABLE: LATEST ORDERS -->
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Latest Orders</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="table-responsive">
-                        <table class="table no-margin">
-                            <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Item</th>
-                                <th>Status</th>
-                                <th>Popularity</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td><span class="label label-success">Shipped</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td><span class="label label-danger">Delivered</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="label label-info">Processing</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td><span class="label label-danger">Delivered</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td><span class="label label-success">Shipped</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.table-responsive -->
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer clearfix">
-                    <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-                    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
-                </div>
-                <!-- /.box-footer -->
-            </div>
-            <!-- /.box -->
-        </div>
-        <!-- /.col -->
-
-        <div class="col-md-4">
-            <!-- Info Boxes Style 2 -->
-            <div class="info-box bg-yellow">
-                <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Inventory</span>
-                    <span class="info-box-number">5,200</span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 50%"></div>
-                    </div>
-                    <span class="progress-description">
-                    50% Increase in 30 Days
-                  </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-            <div class="info-box bg-green">
-                <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Mentions</span>
-                    <span class="info-box-number">92,050</span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 20%"></div>
-                    </div>
-                    <span class="progress-description">
-                    20% Increase in 30 Days
-                  </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-            <div class="info-box bg-red">
-                <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Downloads</span>
-                    <span class="info-box-number">114,381</span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 70%"></div>
-                    </div>
-                    <span class="progress-description">
-                    70% Increase in 30 Days
-                  </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-            <div class="info-box bg-aqua">
-                <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
-
-                <div class="info-box-content">
-                    <span class="info-box-text">Direct Messages</span>
-                    <span class="info-box-number">163,921</span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 40%"></div>
-                    </div>
-                    <span class="progress-description">
-                    40% Increase in 30 Days
-                  </span>
-                </div>
-                <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-
-            <div class="box box-default">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Browser Usage</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="chart-responsive">
-                                <canvas id="pieChart" height="150"></canvas>
-                            </div>
-                            <!-- ./chart-responsive -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-md-4">
-                            <ul class="chart-legend clearfix">
-                                <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
-                                <li><i class="fa fa-circle-o text-green"></i> IE</li>
-                                <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
-                                <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
-                                <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
-                                <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
-                            </ul>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer no-padding">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#">United States of America
-                            <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
-                        <li><a href="#">India <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 4%</span></a>
-                        </li>
-                        <li><a href="#">China
-                            <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
-                    </ul>
-                </div>
-                <!-- /.footer -->
-            </div>
-            <!-- /.box -->
-
-            <!-- PRODUCT LIST -->
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Recently Added Products</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <ul class="products-list product-list-in-box">
-                        <li class="item">
-                            <div class="product-img">
-                                <img src="iframe/dist/img/default-50x50.gif" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                                <a href="javascript:void(0)" class="product-title">Samsung TV
-                                    <span class="label label-warning pull-right">$1800</span></a>
-                                <span class="product-description">
-                          Samsung 32" 1080p 60Hz LED Smart HDTV.
-                        </span>
-                            </div>
-                        </li>
-                        <!-- /.item -->
-                        <li class="item">
-                            <div class="product-img">
-                                <img src="iframe/dist/img/default-50x50.gif" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                                <a href="javascript:void(0)" class="product-title">Bicycle
-                                    <span class="label label-info pull-right">$700</span></a>
-                                <span class="product-description">
-                          26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                        </span>
-                            </div>
-                        </li>
-                        <!-- /.item -->
-                        <li class="item">
-                            <div class="product-img">
-                                <img src="iframe/dist/img/default-50x50.gif" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                                <a href="javascript:void(0)" class="product-title">Xbox One <span class="label label-danger pull-right">$350</span></a>
-                                <span class="product-description">
-                          Xbox One Console Bundle with Halo Master Chief Collection.
-                        </span>
-                            </div>
-                        </li>
-                        <!-- /.item -->
-                        <li class="item">
-                            <div class="product-img">
-                                <img src="iframe/dist/img/default-50x50.gif" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                                <a href="javascript:void(0)" class="product-title">PlayStation 4
-                                    <span class="label label-success pull-right">$399</span></a>
-                                <span class="product-description">
-                          PlayStation 4 500GB Console (PS4)
-                        </span>
-                            </div>
-                        </li>
-                        <!-- /.item -->
-                    </ul>
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer text-center">
-                    <a href="javascript:void(0)" class="uppercase">View All Products</a>
-                </div>
-                <!-- /.box-footer -->
-            </div>
-            <!-- /.box -->
-        </div>
-        <!-- /.col -->
-    </div>
-    
-    <script src="iframe/plugins/sparkline/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="iframe/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="iframe/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- SlimScroll 1.3.0 -->
-<script src="iframe/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- ChartJS 1.0.1 -->
-<script src="iframe/plugins/chartjs/Chart.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="iframe/dist/js/pages/dashboard2.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="iframe/dist/js/demo.js"></script>
