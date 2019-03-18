@@ -32,7 +32,7 @@ var option_baodan = {
                 padding: [0, 0, 0, -8]
             },
 
-            axisLine :{symbol:['none', 'arrow'],symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
+            axisLine :{symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
             data : ['2018-07','2018-08','2018-09','2018-10','2018-11','2018-12','2019-01','2019-02','2019-03']
         }
     ],
@@ -98,7 +98,7 @@ var option_qichedaikuan = {
                 padding: [0, 0, 0, -8]
             },
 
-            axisLine :{symbol:['none', 'arrow'],symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
+            axisLine :{symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
             data : ['2018-07','2018-08','2018-09','2018-10','2018-11','2018-12','2019-01','2019-02','2019-03']
         }
     ],
@@ -411,7 +411,7 @@ option_cailiaohuishou = {
         {
             type : 'category',
             data : ['2018-07','2018-08','2018-09','2018-10','2018-11','2018-12','2019-01','2019-02','2019-03'],
-            axisLine :{symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
+            axisLine :{symbol:['none', 'arrow'],symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
         }
     ],
     yAxis : [
@@ -597,7 +597,7 @@ var option_zijinzhouzhuan = {
             name: '资金使用时长(天)',
             type : 'value',
             axisTick:axistick,
-            axisLine :{symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
+            axisLine :{symbol:['none', 'arrow'],symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
             splitLine:{show: false},//去除网格线
         }
     ],
