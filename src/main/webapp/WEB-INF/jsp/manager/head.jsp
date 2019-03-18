@@ -70,6 +70,7 @@
   <script type="text/javascript" src="js/megapic-image.js"></script>
   <%-- app.iframe --%>
   <link href="dist/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/common.css" rel="stylesheet" type="text/css">
   <script src="js/index.js" type="text/javascript"></script>
   <!-- 图片旋转放大等 -->
   <script src="js/jquery-photo-gallery/jquery.photo.gallery.js"></script>

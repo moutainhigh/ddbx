@@ -1,21 +1,21 @@
 html, body, div, span{
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
 }
 body, html, .box {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
 }
 body {
-  font: 400 16px/24px "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
-  letter-spacing: 0.01em;
-  cursor: default;
-  -webkit-user-select: none;
-  -webkit-font-smoothing: antialiased;
+    font: 400 16px/24px "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+    letter-spacing: 0.01em;
+    cursor: default;
+    -webkit-user-select: none;
+    -webkit-font-smoothing: antialiased;
 }
 .box {
     position: relative;
@@ -27,7 +27,7 @@ header{
     width: 100%;
 }
 .winControl {
-	position: absolute;
+    position: absolute;
     right: 0;
     top: 0;
     z-index: 99999;
@@ -49,77 +49,77 @@ header{
 }
 i{
     position: relative;
-	z-index:99999;
-	display: inline-block;
+    z-index:99999;
+    display: inline-block;
 }
 .icon_close-big{
     width: 18px;
     height: 18px;
-	background-image: url('icon/close_big.png');
+    background-image: url('icon/close_big.png');
 }
 .icon_close-small{
     width: 13px;
     height: 13px;
-	background-image: url('icon/close_small.png');
-	display: inline-block;
+    background-image: url('icon/close_small.png');
+    display: inline-block;
 }
 .icon_tool-fullscreen{
     width: 18px;
     height: 18px;
-	background-image: url('icon/full_screen.png');
+    background-image: url('icon/full_screen.png');
 }
 .icon_tool-bigger{
     width: 20px;
     height: 19px;
-	background-image: url('icon/bigger.png');
+    background-image: url('icon/bigger.png');
 }
 .icon_tool-smaller{
     width: 20px;
     height: 19px;
-	background-image: url('icon/smaller.png');
+    background-image: url('icon/smaller.png');
 }
 .icon_tool-rotate{
     width: 17px;
     height: 20px;
-	background-image: url('icon/rotate.png');
+    background-image: url('icon/rotate.png');
 }
 .icon_tool-download{
     width: 16px;
     height: 20px;
-	background-image: url('icon/download.png');
+    background-image: url('icon/download.png');
 }
 .icon_tool-prev{
     width: 22px;
     height: 38px;
-	background-image: url('icon/prev.png');
+    background-image: url('icon/prev.png');
 }
 .icon_tool-next{
     width: 22px;
     height: 38px;
-	background-image: url('icon/next.png');
+    background-image: url('icon/next.png');
 }
 /* 效果 */
-.rotate0{ 
-	transform: rotate(0deg); 
-	-webkit-transform: rotate(0deg); 
-} 
-.rotate90{ 
-	transform: rotate(90deg); 
-	-webkit-transform: rotate(90deg); 
-} 
-.rotate180{ 
-	transform: rotate(180deg); 
-	-webkit-transform: rotate(180deg); 
-} 
-.rotate270{ 
-	transform: rotate(270deg); 
-	-webkit-transform: rotate(270deg); 
-} 
+.rotate0{
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+}
+.rotate90{
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+}
+.rotate180{
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+.rotate270{
+    transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
+}
 
 .gallery{
-	width: 100%;
+    width: 100%;
     height: 100%;
-	background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3);
 }
 .gallery .image{
     position: absolute;
@@ -129,7 +129,7 @@ i{
     display: none;
 }
 .gallery .image.active{
-	display:block;
+    display:block;
 }
 .gallery .tool{
     position: absolute;
@@ -151,11 +151,11 @@ i{
     margin-right: 20px;
 }
 .gallery .toolct i{
-	display: inline-block;
-	cursor: pointer;
+    display: inline-block;
+    cursor: pointer;
 }
 .gallery .percentTip{
-	position: absolute;
+    position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
@@ -169,14 +169,14 @@ i{
     font-size: 16px;
     border-radius: 8px;
     color: #ffffff;
-	filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#4F504E',endColorStr='#151313',gradientType='1'); 
-	background: linear-gradient(315deg, #4F504E, #151313); 
-	background: -moz-linear-gradient(315deg, #4F504E, #151313); 
-	background: -o-linear-gradient(left,#4F504E, #151313); 
-	background: -webkit-gradient(linear,100%  0%, 100% 0%, from(#4F504E), to(#151313)); 
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#4F504E',endColorStr='#151313',gradientType='1');
+    background: linear-gradient(315deg, #4F504E, #151313);
+    background: -moz-linear-gradient(315deg, #4F504E, #151313);
+    background: -o-linear-gradient(left,#4F504E, #151313);
+    background: -webkit-gradient(linear,100%  0%, 100% 0%, from(#4F504E), to(#151313));
 }
 .gallery .thumbnails{
-	position: absolute;
+    position: absolute;
     right: 1px;
     bottom: 1px;
     border: 1px solid #ffffff;
@@ -191,18 +191,18 @@ i{
     bottom: 0;
     width: 100px;
     height: 100px;
-    border: 1px solid black;   
-    box-sizing: border-box;      
+    border: 1px solid black;
+    box-sizing: border-box;
 }
 .gallery .thumbnails .thumbDrag span{
-	width:100%;
-	height:100%;   
-	border: 1px solid white;
-	display: block;
-    box-sizing: border-box;  
+    width:100%;
+    height:100%;
+    border: 1px solid white;
+    display: block;
+    box-sizing: border-box;
 }
 .gallery .thumbnails .thumbClose{
-	position: absolute;
+    position: absolute;
     right: 1px;
     top: -2px;
     cursor: pointer;
@@ -234,17 +234,17 @@ i{
     cursor: pointer;
 }
 .gallery .oper span{
-	width: 22px;
+    width: 22px;
     height: 38px;
 }
 .gallery .oper .prev{
-	float:left;
-	margin-left: 9px;
+    float:left;
+    margin-left: 9px;
 }
 .gallery .oper .next{
-	float:right;
-	margin-right: 9px;
+    float:right;
+    margin-right: 9px;
 }
 .gallery .oper .prev.active i, .gallery .oper .next.active i{
-	display: inline-block;
+    display: inline-block;
 }

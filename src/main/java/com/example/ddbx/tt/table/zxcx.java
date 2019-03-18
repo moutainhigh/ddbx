@@ -63,73 +63,95 @@ public class zxcx extends DbCtrl {
         addicbc_erp_zx(post);
         String type_id = post.get("type_id");
         System.out.println("type_id:" + type_id);
-        String zx_status=post.get("zx_status");
-        String tr_status=post.get("tr_status");
-        System.out.println("状态值"+zx_status+"------"+tr_status);
+        String zx_status = post.get("zx_status");
+        String tr_status = post.get("tr_status");
+        System.out.println("状态值" + zx_status + "------" + tr_status);
         if (id > 0) { // id为0时，新增
             edit(post, id);
-            String icbc_status_id=Tools.unDic("dd_icbc_status",String.valueOf(id),"id","icbc_id");
-            if(!Tools.myIsNull(icbc_status_id)){
+            String icbc_status_id = Tools.unDic("dd_icbc_status", String.valueOf(id), "id", "icbc_id");
+            if (!Tools.myIsNull(icbc_status_id)) {
                 TtMap icbc_status = new TtMap();
-                System.out.println("status:"+post+"****");
-                icbc_status.put("icbc_id",String.valueOf(id));
-                icbc_status.put("zx_status",zx_status);
-                icbc_status.put("tr_status",tr_status);
-                Tools.recEdit(icbc_status, "dd_icbc_status",Long.valueOf(icbc_status_id));
-            }else {
+                System.out.println("status:" + post + "****");
+                icbc_status.put("icbc_id", String.valueOf(id));
+                icbc_status.put("zx_status", zx_status);
+                icbc_status.put("tr_status", tr_status);
+                Tools.recEdit(icbc_status, "dd_icbc_status", Long.valueOf(icbc_status_id));
+            } else {
                 TtMap icbc_status = new TtMap();
-                System.out.println("status:"+post+"****");
-                icbc_status.put("icbc_id",String.valueOf(id));
-                icbc_status.put("zx_status",zx_status);
-                icbc_status.put("tr_status",tr_status);
+                System.out.println("status:" + post + "****");
+                icbc_status.put("icbc_id", String.valueOf(id));
+                icbc_status.put("zx_status", zx_status);
+                icbc_status.put("tr_status", tr_status);
                 Tools.recAdd(icbc_status, "dd_icbc_status");
             }
-            if(zx_status.equals("2")){
+            if (zx_status.equals("2")) {
                 //获取征信板块erp表信息
-                TtMap erpmap=Tools.recinfo("select * from dd_icbc_erp where icbc_id="+id+" and type_id=36");
+                TtMap erpmap = Tools.recinfo("select * from dd_icbc_erp where icbc_id=" + id + " and type_id=36");
                 //更新erp表节点状态
-                TtMap erp=new TtMap();
-                erp.put("now_status","2");
-                erp.put("later_status","3");
-                Tools.recEdit(erp,"dd_icbc_erp",Long.valueOf(erpmap.get("id")));
+                TtMap erp = new TtMap();
+                erp.put("now_status", "2");
+                erp.put("later_status", "3");
+                Tools.recEdit(erp, "dd_icbc_erp", Long.valueOf(erpmap.get("id")));
                 //新增erp_result表处理信息
-                TtMap erp_result=new TtMap();
-                erp_result.put("qryid",erpmap.get("id"));
-                erp_result.put("now_status","2");
-                erp_result.put("later_status","3");
+                TtMap erp_result = new TtMap();
+                erp_result.put("qryid", erpmap.get("id"));
+                erp_result.put("now_status", "2");
+                erp_result.put("later_status", "3");
                 erp_result.put("result_value", Tools.jsonEncode(post));
-                erp_result.put("type_id","36");
-                erp_result.put("icbc_id",String.valueOf(id));
-                erp_result.put("gems_id",post.get("gems_id"));
-                erp_result.put("gems_fs_id",post.get("gems_fs_id"));
-                Tools.recAdd(erp_result,"dd_icbc_erp_result");
+                erp_result.put("type_id", "36");
+                erp_result.put("icbc_id", String.valueOf(id));
+                erp_result.put("gems_id", post.get("gems_id"));
+                erp_result.put("gems_fs_id", post.get("gems_fs_id"));
+                Tools.recAdd(erp_result, "dd_icbc_erp_result");
             }
-            if(tr_status.equals("1")){
-                //add 通融板块
-                TtMap ttMap1 = new TtMap();
-                ttMap1.put("now_status", "5");
-                ttMap1.put("later_status", "6");
-                ttMap1.put("icbc_id", String.valueOf(id));
-                ttMap1.put("gems_id", post.get("gems_id"));
-                ttMap1.put("gems_fs_id", post.get("gems_fs_id"));
-                ttMap1.put("type_id", "42");
-                ttMap1.put("c_name", post.get("c_name"));
-                ttMap1.put("c_cardno", post.get("c_cardno"));
-                ttMap1.put("c_tel", post.get("c_tel"));
-                System.out.println("icbc_erp_map:" + ttMap1);
-                long qryid = Tools.recAdd(ttMap1, "dd_icbc_erp");
-                //add 通融板块 result
-                TtMap ttMap_res = new TtMap();
-                ttMap_res.put("qryid", String.valueOf(qryid));
-                ttMap_res.put("now_status", "5");
-                ttMap_res.put("later_status", "6");
-                ttMap_res.put("icbc_id", String.valueOf(id));
-                ttMap_res.put("gems_id", post.get("gems_id"));
-                ttMap_res.put("gems_fs_id", post.get("gems_fs_id"));
-                ttMap_res.put("type_id", "42");
-                ttMap_res.put("result_msg",post.get("tr_msg"));
-                ttMap_res.put("result_value", Tools.jsonEncode(post));
-                Tools.recAdd(ttMap_res, "dd_icbc_erp_result");
+            if (tr_status.equals("1")) {
+                TtMap erpmap = Tools.recinfo("select * from dd_icbc_erp where icbc_id=" + id + " and type_id=42");
+                if (erpmap != null && !erpmap.equals("")) {
+                     //edit 通融板块
+                    TtMap ttMap1 = new TtMap();
+                    ttMap1.put("now_status", "5");
+                    ttMap1.put("later_status", "6");
+                    Tools.recEdit(ttMap1,"dd_icbc_erp",Long.valueOf(erpmap.get("id")));
+                    //add 通融板块 result
+                    TtMap ttMap_res = new TtMap();
+                    ttMap_res.put("qryid", String.valueOf(erpmap.get("id")));
+                    ttMap_res.put("now_status", "5");
+                    ttMap_res.put("later_status", "6");
+                    ttMap_res.put("icbc_id", String.valueOf(id));
+                    ttMap_res.put("gems_id", post.get("gems_id"));
+                    ttMap_res.put("gems_fs_id", post.get("gems_fs_id"));
+                    ttMap_res.put("type_id", "42");
+                    ttMap_res.put("result_msg", post.get("tr_msg"));
+                    ttMap_res.put("result_value", Tools.jsonEncode(post));
+                    Tools.recAdd(ttMap_res, "dd_icbc_erp_result");
+
+                } else {
+                    //add 通融板块
+                    TtMap ttMap1 = new TtMap();
+                    ttMap1.put("now_status", "5");
+                    ttMap1.put("later_status", "6");
+                    ttMap1.put("icbc_id", String.valueOf(id));
+                    ttMap1.put("gems_id", post.get("gems_id"));
+                    ttMap1.put("gems_fs_id", post.get("gems_fs_id"));
+                    ttMap1.put("type_id", "42");
+                    ttMap1.put("c_name", post.get("c_name"));
+                    ttMap1.put("c_cardno", post.get("c_cardno"));
+                    ttMap1.put("c_tel", post.get("c_tel"));
+                    System.out.println("icbc_erp_map:" + ttMap1);
+                    long qryid = Tools.recAdd(ttMap1, "dd_icbc_erp");
+                    //add 通融板块 result
+                    TtMap ttMap_res = new TtMap();
+                    ttMap_res.put("qryid", String.valueOf(qryid));
+                    ttMap_res.put("now_status", "5");
+                    ttMap_res.put("later_status", "6");
+                    ttMap_res.put("icbc_id", String.valueOf(id));
+                    ttMap_res.put("gems_id", post.get("gems_id"));
+                    ttMap_res.put("gems_fs_id", post.get("gems_fs_id"));
+                    ttMap_res.put("type_id", "42");
+                    ttMap_res.put("result_msg", post.get("tr_msg"));
+                    ttMap_res.put("result_value", Tools.jsonEncode(post));
+                    Tools.recAdd(ttMap_res, "dd_icbc_erp_result");
+                }
             }
         } else {
             long icbc_id = 0;
@@ -186,20 +208,20 @@ public class zxcx extends DbCtrl {
 
 
             //erp业务result类型添加 erp_2
-            String icbc_status_id=Tools.unDic("dd_icbc_status",String.valueOf(icbc_id),"id","icbc_id");
-            if(!Tools.myIsNull(icbc_status_id)){
+            String icbc_status_id = Tools.unDic("dd_icbc_status", String.valueOf(icbc_id), "id", "icbc_id");
+            if (!Tools.myIsNull(icbc_status_id)) {
                 TtMap icbc_status = new TtMap();
-                System.out.println("status:"+post+"****");
-                icbc_status.put("icbc_id",String.valueOf(icbc_id));
-                icbc_status.put("zx_status",zx_status);
-                icbc_status.put("tr_status",tr_status);
-                Tools.recEdit(icbc_status, "dd_icbc_status",Long.valueOf(icbc_status_id));
-            }else {
+                System.out.println("status:" + post + "****");
+                icbc_status.put("icbc_id", String.valueOf(icbc_id));
+                icbc_status.put("zx_status", zx_status);
+                icbc_status.put("tr_status", tr_status);
+                Tools.recEdit(icbc_status, "dd_icbc_status", Long.valueOf(icbc_status_id));
+            } else {
                 TtMap icbc_status = new TtMap();
-                System.out.println("status:"+post+"****");
-                icbc_status.put("icbc_id",String.valueOf(icbc_id));
-                icbc_status.put("zx_status",zx_status);
-                icbc_status.put("tr_status",tr_status);
+                System.out.println("status:" + post + "****");
+                icbc_status.put("icbc_id", String.valueOf(icbc_id));
+                icbc_status.put("zx_status", zx_status);
+                icbc_status.put("tr_status", tr_status);
                 Tools.recAdd(icbc_status, "dd_icbc_status");
             }
 
@@ -293,10 +315,10 @@ public class zxcx extends DbCtrl {
                 admin.closeConn();
             }
         }
-        String f="t.*,dis.zx_status as zx_status,dis.tr_status as tr_status";
-        leftsql="LEFT JOIN dd_icbc_status dis ON dis.icbc_id=t.id";
+        String f = "t.*,dis.zx_status as zx_status,dis.tr_status as tr_status";
+        leftsql = "LEFT JOIN dd_icbc_status dis ON dis.icbc_id=t.id";
         long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
-        TtMap info = info(nid,f);
+        TtMap info = info(nid, f);
         String jsonInfo = Tools.jsonEncode(info);
         request.setAttribute("info", jsonInfo);//info为json后的info
         request.setAttribute("infodb", info);//infodb为TtMap的info
@@ -315,7 +337,7 @@ public class zxcx extends DbCtrl {
         String dtbe = ""; // 搜索日期选择
         int pageInt = Integer.valueOf(Tools.myIsNull(post.get("p")) == false ? post.get("p") : "1"); // 当前页
         int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
-        String whereString = "t.gems_fs_id="+minfo.get("fsid");
+        String whereString = "t.gems_fs_id=" + minfo.get("fsid");
         String tmpWhere = "";
         String fieldsString = "t.*,a.name as admin_name,f.name as fs_name,s.zx_status as zx_status,s.tr_status as tr_status"; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
         TtList list = null;
@@ -344,7 +366,7 @@ public class zxcx extends DbCtrl {
         limit = limtInt; // 每页显示记录数
         showall = true; // 忽略deltag和showtag
         leftsql = "LEFT JOIN admin a on a.id=t.gems_id " +
-                "LEFT JOIN fs f on f.id=t.gems_fs_id "+
+                "LEFT JOIN fs f on f.id=t.gems_fs_id " +
                 "LEFT JOIN dd_icbc_status s on s.icbc_id=t.id ";
         list = lists(whereString, fieldsString);
 

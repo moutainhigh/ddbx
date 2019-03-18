@@ -28,8 +28,8 @@ public class ManagerTools {
         String[] allowCnList = {
                 "admin", "assess_admin", "home", "admin2", "button", "demo_upfile", "icon", "general",
                 "admin_agp", "Timeline", "Modals", "table", "comm_citys", "sys_modal", "fs_agp", "readme", "sys_error", "readmedev",
-                "fs","spmq","car_loan","qcpg",
-                "gems", "dd_icbc", "zxcx", "alltask", "mytask", "my_job", "sys_config", "sys_config_son","dd_icbc_status"
+                "fs", "spmq", "car_loan", "qcpg",
+                "gems", "dd_icbc", "zxcx", "alltask", "mytask", "my_job", "sys_config", "sys_config_son", "dd_icbc_status", "kk"
         }; // 允许的cn,只有在列表中的cn才允许访问
         return Tools.arrayIndexOf(allowCnList, cn);
     }
@@ -52,9 +52,9 @@ public class ManagerTools {
                 "spmq",
                 "qcpg",
                 "dd_icbc",
-                "alltask", "zxcx","car_loan","visual",
+                "alltask", "zxcx", "car_loan", "visual",
 
-                "mytask", "sys_config", "sys_config_son","dd_icbc_status"
+                "mytask", "sys_config", "sys_config_son", "dd_icbc_status", "kk"
         }; // 允许的cn,只有在列表中的cn才使用数据库，
         return Tools.arrayIndexOf(allowCnList, cn);
     }
@@ -95,6 +95,8 @@ public class ManagerTools {
     public static String getRealCn(String cn) {
         switch (cn) {
             // 需要用到数据库的CN
+            case "kk":
+                return "kk";
             case "erp":
                 return "erp";
             case "fs_agp":

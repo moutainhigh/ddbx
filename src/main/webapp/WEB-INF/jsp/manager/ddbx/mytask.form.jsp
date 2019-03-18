@@ -233,7 +233,7 @@
                                             <select id="loan_level" name="loan_level" class="form-control">
                                                 <option value="0">请选择业务等级</option>
                                                 <option value="1" ${icbc.loan_level eq 1?"selected='selected'":''}>预期贷款额10万以下（含10万）</option>
-                                                <option value="2" ${icbc.loan_level eq 1?"selected='selected'":''}>预期贷款额10万以上</option>
+                                                <option value="2" ${icbc.loan_level eq 2?"selected='selected'":''}>预期贷款额10万以上</option>
                                             </select>
                                         </div>
                                     </div>
@@ -355,10 +355,18 @@
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">姓名</span>
-                                                        <input type="text" class="form-control" name="c_name"
-                                                               id="c_name" value="${icbc.c_name}">
+                                                        <input type="text" class="form-control" name="c_name_2"
+                                                               id="c_name_2" value="${icbc.c_name}">
                                                     </div>
                                                 </div>
+                                                <script>
+                                                    $(document).ready(function() {
+                                                        var name='${icbc.c_name}';
+                                                        var py=getPinYinFirstCharacter(name,"","");
+                                                        py = py.replace(/\ +/g,"").replace(/[\r\n]/g,"");
+                                                        document.getElementById("c_name_py").value=py;
+                                                    });
+                                                </script>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">拼音</span>
@@ -390,7 +398,7 @@
                                                     <div class="input-group">
                                                         <span class="input-group-addon">身份证号</span>
                                                         <input type="text" class="form-control" name=""
-                                                               id="" value="">
+                                                               id="" value="${icbc.c_name}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
@@ -404,14 +412,14 @@
                                                     <div class="input-group">
                                                         <span class="input-group-addon">所属机构</span>
                                                         <input type="text" class="form-control" name=""
-                                                               id="" value="">
+                                                               id="" value="${icbc.c_name}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="input-group">
                                                         <span class="input-group-addon">手机号码</span>
                                                         <input type="text" class="form-control" name=""
-                                                               id="" value="">
+                                                               id="" value="${icbc.c_tel}">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">

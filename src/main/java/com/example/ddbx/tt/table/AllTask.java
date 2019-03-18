@@ -154,8 +154,10 @@ public class AllTask extends DbCtrl {
         }
         if (post.get("type_id") != null && !post.get("type_id").equals("")) {
             request.setAttribute("type_id", post.get("type_id"));
-            if (geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))) != null && geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))).size() > 0) {
-                request.setAttribute("erplist", geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
+
+            TtList erplist= geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id")));
+            if ( erplist!= null && erplist.size() > 0) {
+                request.setAttribute("erplist",erplist);
             }
         }
         //获取当前任务节点信息

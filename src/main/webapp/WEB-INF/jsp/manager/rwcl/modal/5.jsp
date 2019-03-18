@@ -17,7 +17,7 @@
     }
 %>
 
-<li class="text-primary"><em>开始：</em>
+<li class="text-primary"><em>申请通融：</em>
     <div class="big-conte" style="display: none;">
         <div style="float: left; margin-left: 20px; width: 300px;">
             <strong>开始时间：</strong>
