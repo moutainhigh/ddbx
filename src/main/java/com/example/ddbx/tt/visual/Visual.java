@@ -66,68 +66,11 @@ public class Visual {
     }
 
     //前台数据后台获取
-   /* public  void management(HttpServletRequest request) {
-        PageData pdLoginSession= (PageData)request.getSession().getAttribute("pd");
-        assess_fs.setId(Integer.parseInt(pdLoginSession.get("fs_id").toString()));//Integer.parseInt(pdLoginSession.get("fs_id").toString())
-        assess_fs.setUp_id(Integer.parseInt(pdLoginSession.get("fs_id").toString()));
-        List<HashMap> loanlist=kj_icbcService.SelectLoan(assess_fs);//本月已放款单数，总金额   amount=0/money=null
-        if(loanlist.get(0).get("amount").equals(0) ){
-            loanlist.get(0).put("money",0);
-        }
-        List<HashMap> fklist=kj_icbcService.SelectFk(assess_fs);//本月已放款未抵押单数，总金额   amount=0/money=null
-        if(fklist.get(0).get("amount").equals(0)){
-            fklist.get(0).put("money",0);
-        }
+    public static void management(HttpServletRequest request) {
 
-        List<HashMap> rankinglist=kj_icbcService.SelectStates(assess_fs);//每月总订单数各省排名     sell,name=null
-        for(int i=0;i<rankinglist.size();i++){
-            if(rankinglist.get(i).get("sell")==null && rankinglist.get(0).get("sell").equals("")){
-                rankinglist.get(i).put("sell",0);
-                rankinglist.get(i).put("name"," ");
-            }
-        }
 
-        List<HashMap> gemslist=kj_icbcService.SelectGems(assess_fs);//每月总订单数各代理商排名    gems,name=null
-        for(int i=0;i<gemslist.size();i++){
-            if(gemslist.get(i).get("gems")==null && gemslist.get(0).get("gems").equals("")){
-                gemslist.get(i).put("gems",0);
-                gemslist.get(i).put("name"," ");
-            }
-        }
 
-        List<HashMap> rankingloanlist=kj_icbcService.SelectLoanStates(assess_fs);//每月放款单数各省排名	 sell,name=null
-        for(int i=0;i<rankingloanlist.size();i++){
-            if(rankingloanlist.get(i).get("sell")==null && rankingloanlist.get(0).get("sell").equals("")){
-                rankingloanlist.get(i).put("sell",0);
-                rankingloanlist.get(i).put("name"," ");
-            }
-        }
-
-        List<HashMap> gemsloanlist=kj_icbcService.SelectLoanGems(assess_fs);//每月放款单数各代理商排名         gems,name=null
-        for(int i=0;i<gemsloanlist.size();i++){
-            if(gemsloanlist.get(i).get("gems")==null && gemsloanlist.get(0).get("gems").equals("")){
-                gemsloanlist.get(i).put("gems",0);
-                gemsloanlist.get(i).put("name"," ");
-            }
-        }
-
-        List<HashMap> cardpasscomm=kj_icbcService.SelectCarPassComm(assess_fs);//每月汽车贷款过件率各省排名     rate,name=null
-        for(int i=0;i<cardpasscomm.size();i++){
-            if(cardpasscomm.get(i).get("rate")==null && cardpasscomm.get(0).get("rate").equals("")){
-                cardpasscomm.get(i).put("rate",0);
-                cardpasscomm.get(i).put("name"," ");
-            }
-        }
-
-        List<HashMap> cardpassgems=kj_icbcService.SelectCarPassGems(assess_fs);//每月汽车贷款过件率各代理商排名    rate,name=null
-        for(int i=0;i<cardpassgems.size();i++){
-            if(cardpassgems.get(i).get("rate")==null && cardpassgems.get(0).get("rate").equals("")){
-                cardpassgems.get(i).put("rate",0);
-                cardpassgems.get(i).put("name"," ");
-            }
-        }
-
-        request.setAttribute("billlist",kj_icbcService.SelectBill(assess_fs));//每月报单总量     0
+       /* request.setAttribute("billlist",kj_icbcService.SelectBill(assess_fs));//每月报单总量     0
         request.setAttribute("loanlist",loanlist);//每月已放款单数，总金额
         request.setAttribute("fklist",fklist);//每月已放款未抵押单数，总金额
         request.setAttribute("carselect",kj_icbcService.CountSelect(assess_fs));//所有汽车贷款     0
@@ -137,18 +80,19 @@ public class Visual {
         request.setAttribute("rankingloanlist",rankingloanlist);//每月总订过件单数各省排名
         request.setAttribute("gemsloanlist",gemsloanlist);//每月总订单数过件各代理商排名
         request.setAttribute("cardpasscomm",cardpasscomm );//每月汽车贷款过件率各省排名
-        request.setAttribute("cardpassgems",cardpassgems );//每月汽车贷款过件率各代理商排名
-    }*/
+        request.setAttribute("cardpassgems",cardpassgems );//每月汽车贷款过件率各代理商排名*/
+    }
+
     //每月数据总单数折线图ajax前台获取           null,null,null
     @RequestMapping("/manager/visual/getPathMap.do")
     @ResponseBody
     public Object[][] getPathMap(HttpServletRequest request, HttpServletResponse response){
         /*** 根据条件取值生成二维数据，并转成json ***/
         String sql="";
-        TtList chart=selectSQL(sql);
+        //TtList chart=selectSQL(sql);
 
         object=new Object[2][9];
-        if(chart.size()<9){
+        /*if(chart.size()<9){
             for(int i=0;i<chart.size();i++){
                 object[1][i]=(chart.get(i).get("year")+"-"+chart.get(i).get("month"));//把日期格式输出放入二维数组xxxx-xx
                 object[0][i]=(chart.get(i).get("total"));//把每月数据放入二维数组
@@ -162,7 +106,8 @@ public class Visual {
                 object[1][i]=(chart.get(i).get("year")+"-"+chart.get(i).get("month"));//把日期格式输出放入二维数组xxxx-xx
                 object[0][i]=(chart.get(i).get("total"));//把每月数据放入二维数组
             }
-        }
+        }*/
+        object[0][1]=1;
     return object;
     }
     //汽车贷款通过率折线图ajax前台获取
@@ -170,11 +115,10 @@ public class Visual {
     @ResponseBody
     public Object[][] getCarPathMap(HttpServletRequest request, HttpServletResponse response) {
         /*** 根据条件取值生成二维数据，并转成json ***/
-
         String sql="";
         TtList chart=selectSQL(sql);
         object=new Object[2][9];
-        if(chart.size()<9){
+        /*if(chart.size()<9){
             for(int i=0;i<chart.size();i++){
                 object[1][i]=(chart.get(i).get("year")+"-"+chart.get(i).get("month"));//把日期格式输出放入二维数组xxxx-xx
                 object[0][i]=(chart.get(i).get("total"));//把每月数据放入二维数组
@@ -189,8 +133,8 @@ public class Visual {
                 object[0][i]=(chart.get(i).get("total"));//把每月数据放入二维数组
                 object[1][i]=(chart.get(i).get("year")+"-"+chart.get(i).get("month"));//把日期格式输出放入二维数组xxxx-xx
             }
-        }
-
+        }*/
+        object[0][1]=2;
     return object;
     }
     //新旧汽车贷款分布扇形图ajax前台获取
@@ -198,12 +142,11 @@ public class Visual {
     @ResponseBody
     public String[] getCarFkPathMap(HttpServletRequest request, HttpServletResponse response) {
         /*** 根据条件取值生成二维数据，并转成json ***/
-
         String sql="";
         TtList chart=selectSQL(sql);
 
         string = new String[2];
-        if(chart.size() < 2){
+        /*if(chart.size() < 2){
             if(chart.size()<1){
                 for(int i=0;i<2;i++){
                     string[i]="0";
@@ -221,8 +164,8 @@ public class Visual {
             for(int i=0;i<2;i++){
                 string[i]=chart.get(i).get("cartotal");
             }
-        }
-
+        }*/
+    string[0]="3";
     return string;
     }
     //贷款金额分布扇形图ajax前台获取     null,null,null,null
@@ -230,12 +173,11 @@ public class Visual {
     @ResponseBody
     public String[] getMoneyPathMap(HttpServletRequest request, HttpServletResponse response) {
         /*** 根据条件取值生成二维数据，并转成json ***/
-
         String sql="";
         TtList chart=selectSQL(sql);
 
         string = new String[4];
-        if(chart.get(0) == null){
+        /*if(chart.get(0) == null){
             for(int i=0;i<4;i++){
                 string[i]="0";
             }
@@ -247,22 +189,20 @@ public class Visual {
                     string[i-1]=chart.get(0).get("singular"+i);
                 }
             }
-        }
-
+        }*/
+        string[0]="4";
     return string;
     }
     //抵押完成天数分布扇形图ajax前台获取
     @RequestMapping("/manager/visual/getPawnPathMap.do")
     @ResponseBody
     public String[] getPawnPathMap(HttpServletRequest request, HttpServletResponse response) {
-
         /*** 根据条件取值生成二维数据，并转成json ***/
-
         String sql="";
         TtList chart=selectSQL(sql);
 
         string = new String[5];
-        if(chart.get(0) == null){
+        /*if(chart.get(0) == null){
             for(int i=0;i<5;i++){
                 string[i]="0";
             }
@@ -274,8 +214,8 @@ public class Visual {
                     string[i-1]=chart.get(0).get("paw"+i);
                 }
             }
-        }
-
+        }*/
+        string[0]="5";
         return string;
     }
     //征信查询分布扇形图ajax前台获取   null,null       0,1
@@ -283,12 +223,11 @@ public class Visual {
     @ResponseBody
     public String[] getCreditPathMap(HttpServletRequest request, HttpServletResponse response) {
         /*** 根据条件取值生成二维数据，并转成json ***/
-
         String sql="";
         TtList credit=selectSQL(sql);
 
         string = new String[3];
-        if(credit.size() < 3){
+       /* if(credit.size() < 3){
             if(credit.size()<1){
                 for(int i=0;i<3;i++){
                     string[i]="0";
@@ -310,8 +249,8 @@ public class Visual {
             for(int i=0;i<3;i++){
                 string[i]=credit.get(i).get("zxok");
             }
-        }
-
+        }*/
+        string[0]="6";
         return string;
     }
     //客户年龄分布扇形图ajax前台获取      null,null,null,null
@@ -319,13 +258,11 @@ public class Visual {
     @ResponseBody
     public String[] getAgePathMap(HttpServletRequest request, HttpServletResponse response) {
         /*** 根据条件取值生成二维数据，并转成json ***/
-
-
         String sql="";
         TtList credit=selectSQL(sql);
 
         string = new String[4];
-        if(credit.get(0) == null){
+        /*if(credit.get(0) == null){
             for(int i=0;i<4;i++){
                 string[i]="0";
             }
@@ -337,22 +274,20 @@ public class Visual {
                     string[i-1]=credit.get(0).get("age"+i);
                 }
             }
-        }
-
+        }*/
+        string[0]="7";
         return string;
     }
     //新车年龄分布扇形图ajax前台获取    null,null,null,null
     @RequestMapping("/manager/visual/getCarsAgePathMap.do")
     @ResponseBody
     public String[] getCarsAgePathMap(HttpServletRequest request, HttpServletResponse response) {
-            /*** 根据条件取值生成二维数据，并转成json ***/
-
-
+        /*** 根据条件取值生成二维数据，并转成json ***/
         String sql="";
         TtList carsage=selectSQL(sql);
 
         string = new String[4];
-        if(carsage.get(0) == null){
+        /*if(carsage.get(0) == null){
             for(int i=0;i<4;i++){
                 string[i]="0";
             }
@@ -364,8 +299,8 @@ public class Visual {
                     string[i-1]=carsage.get(0).get("age"+i);
                 }
             }
-        }
-
+        }*/
+        string[0]="8";
         return string;
     }
     //垫资天数分布图ajax前台获取   null,null,null
@@ -376,7 +311,7 @@ public class Visual {
         TtList fund=selectSQL(sql);
 
         object=new Object[2][12];
-        if(fund.size()<12){
+        /*if(fund.size()<12){
             for(int i=0;i<fund.size();i++){
                 object[1][i]=(fund.get(i).get("year")+"-"+fund.get(i).get("month"));//把日期格式输出放入二维数组xxxx-xx
                 object[0][i]=(fund.get(i).get("adate"));//把每月数据放入二维数组
@@ -391,9 +326,9 @@ public class Visual {
                 object[0][i]=(fund.get(i).get("adate"));//把每月数据放入二维数组
                 object[1][i]=(fund.get(i).get("year")+"-"+fund.get(i).get("month"));//把日期格式输出放入二维数组xxxx-xx
             }
-        }
+        }*/
 
-
+        object[0][1]=9;
         return object;
     }
     //抵押材料回收分布图ajax前台获取   null,null,null
@@ -405,7 +340,7 @@ public class Visual {
         TtList fund=selectSQL(sql);
 
         object=new Object[2][9];
-        if(fund.size()<9){
+        /*if(fund.size()<9){
             for(int i=0;i<fund.size();i++){
                 object[1][i]=(fund.get(i).get("year")+"-"+fund.get(i).get("month"));//把日期格式输出放入二维数组xxxx-xx
                 object[0][i]=(fund.get(i).get("total"));//把每月数据放入二维数组
@@ -420,21 +355,19 @@ public class Visual {
                 object[0][i]=(fund.get(i).get("total"));//把每月数据放入二维数组
                 object[1][i]=(fund.get(i).get("year")+"-"+fund.get(i).get("month"));//把日期格式输出放入二维数组xxxx-xx
             }
-        }
-
+        }*/
+        object[0][1]=10;
         return object;
     }
     //新旧车放款分布图ajax前台获取    null,null,null,null
     @RequestMapping("/manager/visual/getNewOldCarsPathMap.do")
     @ResponseBody
     public Object[][] getNewOldCarsPathMap(HttpServletRequest request, HttpServletResponse response) {
-
-
         String sql="";
         TtList newcars=selectSQL(sql);
 
         object=new Object[5][12];
-        if(newcars.size()<12){
+        /*if(newcars.size()<12){
             for(int i=0;i<newcars.size();i++){
                 object[0][i]=(newcars.get(i).get("year1")+"-"+newcars.get(i).get("month1"));//把日期格式输出放入二维数组xxxx-xx
                 object[1][i]=(newcars.get(i).get("newcon"));//把新车每月放款单数放入二维数组
@@ -458,7 +391,8 @@ public class Visual {
                 object[3][i]=(newcars.get(i).get("oldcon"));//把二手车每月放款单数放入二维数组
                 object[4][i]=(newcars.get(i).get("oldmoney"));//把二手车每月放款总金额放入二维数组
             }
-        }
+        }*/
+        object[0][1]=11;
         return object;
     }
 
