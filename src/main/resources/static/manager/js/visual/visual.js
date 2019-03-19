@@ -15,9 +15,18 @@ var axistick="{lineStyle:{color:'white',type:'dashed'}}";//刻度
 
 /* -----------------------------------------报单统计开始----------------------------------------- */
 var baodan = echarts.init(document.getElementById('baodan'));
+//前台数据图后台获取数据绘制
+$.ajax({
+    dataType : "json",
+    type : "POST",
+    url : "/manager/visual/getPathMap.do",
+    success : function(data) {
+        var summarydata = [];
+        var timeline = [];
+        alert(data);
+
 //数据图绘制
 var option_baodan = {
-
     tooltip : {
         trigger: 'axis',
         formatter: "{a} <br/>{b} : {c} "
@@ -77,10 +86,26 @@ var option_baodan = {
     ]
 };
 baodan.setOption(option_baodan);
+//ajax结尾
+    },
+    error : function(e, type, msg) {
+        alert(type + "=报单统计=" + msg);
+    }
+})
+
 /* -----------------------------------------报单统计结束----------------------------------------- */
 
-/* -----------------------------------------汽车贷款开始 ---------------------------------------*/
+/* -----------------------------------------汽车贷款开始 --------------------------------------- */
 var qichedaikuan = echarts.init(document.getElementById('qichedaikuan'));
+//前台数据图后台获取数据绘制
+$.ajax({
+    dataType : "json",
+    type : "POST",
+    url : "/manager/visual/getCarPathMap.do",
+    success : function(data) {
+        var summarydata = [];
+        var timeline = [];
+        alert(data);
 //数据图绘制
 var option_qichedaikuan = {
 
@@ -143,9 +168,22 @@ var option_qichedaikuan = {
     ]
 };
 qichedaikuan.setOption(option_qichedaikuan);
-
+//ajax结尾
+},
+error : function(e, type, msg) {
+    alert(type + "=报单统计=" + msg);
+}
+})
 /* -------------------------------------------新车二手车放款开始--------------------------------------- */
 var fangkuan_1 = echarts.init(document.getElementById('fangkuan_1'));
+$.ajax({
+    dataType : "json",
+    type : "POST",
+    url : "/manager/visual/getCarFkPathMap.do",
+    success : function(data) {
+        var summarydata = [];
+        var timeline = [];
+        alert(data);
 var option_fangkuan_1 = {
     title : {
         show:true,
@@ -198,10 +236,24 @@ var option_fangkuan_1 = {
     ]
 };
 fangkuan_1.setOption(option_fangkuan_1);
+//ajax结尾
+},
+error : function(e, type, msg) {
+    alert(type + "=报单统计=" + msg);
+}
+})
 /* -------------------------------------------新车二手车放款结束--------------------------------------- */
 
 /* -------------------------------------------放款金额分布开始--------------------------------------- */
 var fangkuan_2 = echarts.init(document.getElementById('fangkuan_2'));
+$.ajax({
+    dataType : "json",
+    type : "POST",
+    url : "/manager/visual/getMoneyPathMap.do",
+    success : function(data) {
+        var summarydata = [];
+        var timeline = [];
+        alert(data);
 var option_fangkuan_2 = {
     title : {
         show:true,
@@ -257,10 +309,24 @@ var option_fangkuan_2 = {
     ]
 };
 fangkuan_2.setOption(option_fangkuan_2);
+//ajax结尾
+},
+error : function(e, type, msg) {
+    alert(type + "=报单统计=" + msg);
+}
+})
 /* -------------------------------------------放款金额分布结束--------------------------------------- */
 
 /* -------------------------------------------新车二手车放款金额单数开始--------------------------------------- */
 var fangkuan_3 = echarts.init(document.getElementById('fangkuan_3'));
+$.ajax({
+    dataType : "json",
+    type : "POST",
+    url : "/manager/visual/getNewOldCarsPathMap.do",
+    success : function(data) {
+        var summarydata = [];
+        var timeline = [];
+        alert(data);
 option_fangkuan_3 = {
     tooltip : {
         trigger: 'axis',
@@ -343,10 +409,24 @@ option_fangkuan_3 = {
     /* color:['#e07805','#344bb1'] //全局调色板  好用到爆炸 */
 };
 fangkuan_3.setOption(option_fangkuan_3);
+//ajax结尾
+},
+error : function(e, type, msg) {
+    alert(type + "=报单统计=" + msg);
+}
+})
 /* -------------------------------------------新车二手车放款金额单数结束--------------------------------------- */
 
-/* -------------------------------------------放款金额分布开始--------------------------------------- */
+/* -------------------------------------------抵押完成天数分布开始--------------------------------------- */
 var diyawancheng = echarts.init(document.getElementById('diyawancheng'));
+$.ajax({
+    dataType : "json",
+    type : "POST",
+    url : "/manager/visual/getPawnPathMap.do",
+    success : function(data) {
+        var summarydata = [];
+        var timeline = [];
+        alert(data);
 var option_diyawancheng = {
     tooltip : {
         trigger: 'item',
@@ -382,9 +462,23 @@ var option_diyawancheng = {
     ]
 };
 diyawancheng.setOption(option_diyawancheng);
-/* -------------------------------------------放款金额分布结束--------------------------------------- */
-/* -------------------------------------------抵押完成开始--------------------------------------- */
+//ajax结尾
+},
+error : function(e, type, msg) {
+    alert(type + "=报单统计=" + msg);
+}
+})
+/* -------------------------------------------抵押完成天数分布结束--------------------------------------- */
+/* -------------------------------------------抵押材料回收开始--------------------------------------- */
 var cailiaohuishou = echarts.init(document.getElementById('cailiaohuishou'));
+$.ajax({
+    dataType : "json",
+    type : "POST",
+    url : "/manager/visual/getRecyclePathMap.do",
+    success : function(data) {
+        var summarydata = [];
+        var timeline = [];
+        alert(data);
 option_cailiaohuishou = {
     tooltip : {
         trigger: 'axis'
@@ -434,12 +528,25 @@ option_cailiaohuishou = {
     /* color:['#e07805','#344bb1'] //全局调色板  好用到爆炸 */
 };
 cailiaohuishou.setOption(option_cailiaohuishou);
+//ajax结尾
+},
+error : function(e, type, msg) {
+    alert(type + "=报单统计=" + msg);
+}
+})
 /* -------------------------------------------抵押完成结束--------------------------------------- */
 
-
-
 /* -------------------------------------------征信查询开始--------------------------------------- */
+
 var zhengxinchaxun = echarts.init(document.getElementById('zhengxinchaxun'));
+$.ajax({
+    dataType : "json",
+    type : "POST",
+    url : "/manager/visual/getCreditPathMap.do",
+    success : function(data) {
+        var summarydata = [];
+        var timeline = [];
+        alert(data);
 var option_zhengxinchaxun = {
     tooltip : {
         trigger: 'item',
@@ -470,10 +577,24 @@ var option_zhengxinchaxun = {
 };
 
 zhengxinchaxun.setOption(option_zhengxinchaxun);
+//ajax结尾
+},
+error : function(e, type, msg) {
+    alert(type + "=报单统计=" + msg);
+}
+})
 /* -------------------------------------------征信查询结束--------------------------------------- */
 
 /* -------------------------------------------客户年龄开始--------------------------------------- */
 var kehunianling = echarts.init(document.getElementById('kehunianling'));
+$.ajax({
+    dataType : "json",
+    type : "POST",
+    url : "/manager/visual/getAgePathMap.do",
+    success : function(data) {
+        var summarydata = [];
+        var timeline = [];
+        alert(data);
 var option_kehunianling = {
     tooltip : {
         trigger: 'item',
@@ -509,11 +630,25 @@ var option_kehunianling = {
 };
 
 kehunianling.setOption(option_kehunianling);
+//ajax结尾
+},
+error : function(e, type, msg) {
+    alert(type + "=报单统计=" + msg);
+}
+})
 /* -------------------------------------------客户年龄结束--------------------------------------- */
 
 
 /* -------------------------------------------车辆年龄开始--------------------------------------- */
 var cheliangnianling = echarts.init(document.getElementById('cheliangnianling'));
+$.ajax({
+    dataType : "json",
+    type : "POST",
+    url : "/manager/visual/getCarsAgePathMap.do",
+    success : function(data) {
+        var summarydata = [];
+        var timeline = [];
+        alert(data);
 var option_cheliangnianling = {
     tooltip : {
         trigger: 'item',
@@ -550,10 +685,24 @@ var option_cheliangnianling = {
 };
 
 cheliangnianling.setOption(option_cheliangnianling);
+//ajax结尾
+},
+error : function(e, type, msg) {
+    alert(type + "=报单统计=" + msg);
+}
+})
 /* -------------------------------------------车辆年龄结束--------------------------------------- */
 
 /* -------------------------------------------资金使用时长开始--------------------------------------- */
 var zijinzhouzhuan = echarts.init(document.getElementById('zijinzhouzhuan'));
+$.ajax({
+    dataType : "json",
+    type : "POST",
+    url : "/manager/visual/getAdvanceFundPathMap.do",
+    success : function(data) {
+        var summarydata = [];
+        var timeline = [];
+        alert(data);
 var option_zijinzhouzhuan = {
     tooltip : {
         trigger: 'axis',
@@ -612,6 +761,12 @@ var option_zijinzhouzhuan = {
     ]
 };
 zijinzhouzhuan.setOption(option_zijinzhouzhuan);
+//ajax结尾
+},
+error : function(e, type, msg) {
+    alert(type + "=报单统计=" + msg);
+}
+})
 /* -------------------------------------------资金使用时长结束--------------------------------------- */
 
 /* -------------------------------------------代理商综合能力分析开始--------------------------------------- */
@@ -724,6 +879,7 @@ var option_dalifenxi = {
 };
 
 dalifenxi.setOption(option_dalifenxi);
+
 /* -------------------------------------------代理商综合能力分析结束--------------------------------------- */
 
 /* -------------------------------------------逾期率开始--------------------------------------- */
@@ -890,4 +1046,5 @@ option_yuqilv_2= {
 
 };
 yuqilv_2.setOption(option_yuqilv_2);
+
 /* -------------------------------------------逾期率结束--------------------------------------- */

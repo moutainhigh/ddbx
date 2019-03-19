@@ -13,6 +13,7 @@ import com.example.ddbx.tt.tool.Config;
 import com.example.ddbx.tt.tool.DbCtrl;
 import com.example.ddbx.tt.tool.DbTools;
 import com.example.ddbx.tt.tool.Tools;
+import com.example.ddbx.tt.visual.Visual;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,7 +50,7 @@ public class Manager {
             }
             return sLogin + "?refer=" + newUrl;
         }
-
+        Visual.management(request);
         return new ManagerGet().doGet(cn, type, sdo, id, request, resp);
     }
 
@@ -68,7 +69,7 @@ public class Manager {
         if (!Tools.myIsNull(sLogin)) {// 如未登陆跳转到登陆页面
             return sLogin + "?refer=" + URLEncoder.encode(Tools.urlKill(""), "UTF-8");
         }
-
+        Visual.management(request);
         return Tools.jsonEncode(new ManagerPost().doPost(request));
     }
 
