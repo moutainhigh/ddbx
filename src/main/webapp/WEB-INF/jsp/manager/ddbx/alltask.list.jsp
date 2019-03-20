@@ -84,8 +84,8 @@
 								</td>
 								<td class="text-center">
 									<div class="table-button">
-										<a href="<%=url%>${u.id}&type_id=${u.type_id}&icbc_id=${u.icbc_id}&tab=6" class="btn btn-default">
-											<i class="fa fa-pencil"></i>
+										<a href="<%=url%>${u.id}&type_id=${u.type_id}&icbc_id=${u.icbc_id}&tab=0" class="btn btn-default">
+											<i class="fa fa-search"></i>
 										</a>
 									</div>
 								</td>

@@ -3,6 +3,7 @@
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ page import="com.example.ddbx.tt.data.TtList" %>
 <%@ page import="com.example.ddbx.tt.tool.DataDic" %>
+<%@ page import="static com.example.ddbx.tt.utils.MapUtil.nullToEmpty" %>
 <%--
   Created by IntelliJ IDEA.
   User: 86176
@@ -59,6 +60,12 @@
                             <div class="input-group">
                                 <span class="input-group-addon">客户姓名</span>
                                 <input type="text" class="form-control" id="c_name" name="c_name" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">身份证号码</span>
+                                <input type="text" class="form-control" id="c_cardno" name="c_cardno" placeholder="">
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -232,8 +239,13 @@
                     <div id="clTabContent" class="tab-content">
                         <%
                             TtList bclist =(TtList)request.getAttribute("bclist");
+
                             for (int i = 1; i <= 4; i++) {
-                              TtMap bcmap=bclist.get(i-1);
+                                TtMap bcmap=new TtMap();
+                                if(!bclist.isEmpty()&&bclist.size()>0){
+                                   bcmap=bclist.get(i-1);
+                                   request.setAttribute("bcmap",bcmap);
+                                }
                                 if (i == 1) {
                         %>
 
@@ -260,7 +272,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">个人月收入</span>
-                                                    <input value="<%=bcmap.get("ysr")%>" step="0.01" type="number" class="form-control" id="ysr<%=i%>"
+                                                    <input value="${bcmap.ysr}" step="0.01" type="number" class="form-control" id="ysr<%=i%>"
                                                            name="ysr<%=i%>"
                                                            placeholder="">
                                                     <span class="input-group-addon" style="font-size: 16px;">元</span>
@@ -285,7 +297,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">现住地址</span>
-                                                    <input value="<%=bcmap.get("xzdz")%>" type="text" class="form-control" id="xzdz<%=i%>"
+                                                    <input value="${bcmap.xzdz}" type="text" class="form-control" id="xzdz<%=i%>"
                                                            name="xzdz<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -293,7 +305,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">邮政编码</span>
-                                                    <input value="<%=bcmap.get("yzbm")%>" type="text" class="form-control" id="yzbm<%=i%>"
+                                                    <input value="${bcmap.yzbm}" type="text" class="form-control" id="yzbm<%=i%>"
                                                            name="yzbm<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -301,7 +313,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">工作单位</span>
-                                                    <input value="<%=bcmap.get("gzdw")%>"  type="text" class="form-control" id="gzdw<%=i%>"
+                                                    <input value="${bcmap.gzdw}"  type="text" class="form-control" id="gzdw<%=i%>"
                                                            name="gzdw<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -309,7 +321,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">单位电话</span>
-                                                    <input value="<%=bcmap.get("dwdh")%>" type="text" class="form-control" id="dwdh<%=i%>"
+                                                    <input value="${bcmap.dwdh}" type="text" class="form-control" id="dwdh<%=i%>"
                                                            name="dwdh<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -317,7 +329,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">单位地址</span>
-                                                    <input value="<%=bcmap.get("dwdz")%>" type="text" class="form-control" id="dwdz<%=i%>"
+                                                    <input value="${bcmap.dwdz}" type="text" class="form-control" id="dwdz<%=i%>"
                                                            name="dwdz<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -325,7 +337,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">文书地址</span>
-                                                    <input value="<%=bcmap.get("wsdz")%>" type="text" class="form-control" id="wsdz<%=i%>"
+                                                    <input value="${bcmap.wsdz}" type="text" class="form-control" id="wsdz<%=i%>"
                                                            name="wsdz<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -333,7 +345,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">文书送达地址</span>
-                                                    <input value="<%=bcmap.get("wssddz")%>" type="text" class="form-control" id="wssddz<%=i%>"
+                                                    <input value="${bcmap.wssddz}" type="text" class="form-control" id="wssddz<%=i%>"
                                                            name="wssddz<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -373,7 +385,7 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">工作年限</span>
-                                                    <input value="<%=bcmap.get("gznx")%>" type="text" class="form-control" id="gznx<%=i%>"
+                                                    <input value="${bcmap.gznx}" type="text" class="form-control" id="gznx<%=i%>"
                                                            name="gznx<%=i%>"
                                                            placeholder="">
                                                 </div>

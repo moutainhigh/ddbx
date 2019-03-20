@@ -141,8 +141,9 @@ public class DataDic {
         dic_zw.put("4", "职员");
         /*开卡审核状态*/
         dic_kk_status.put("0", "请选择");
-        dic_kk_status.put("1", "开卡成功");
-        dic_kk_status.put("2", "开卡失败");
-        dic_kk_status.put("3", "回退补件");
+        dic_kk_status.put("1", "提交申请");
+        dic_kk_status.put("2", "开卡成功");
+        dic_kk_status.put("3", "开卡失败");
+        dic_kk_status.put("4", "回退补件");
     }
 }
