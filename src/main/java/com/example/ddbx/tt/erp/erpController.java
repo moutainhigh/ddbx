@@ -56,6 +56,8 @@ public class erpController {
         erp_result.put("gems_fs_id",minfo.get("fsid"));
         //查询主订单信息
         TtMap icbcMap=Tools.recinfo("select * from dd_icbc where id="+post.get("icbc_id"));
+        //查询开卡信息
+        TtMap kkMap=Tools.recinfo("select * from icbc_kk where icbc_id="+post.get("icbc_id")+" order by dt_add DESC limit 1");
         //查询 dd_icbc_status id
         TtMap icbc_status = new TtMap();
         String status_id = Tools.unDic("dd_icbc_status", post.get("icbc_id"), "id", "icbc_id");
@@ -298,6 +300,70 @@ public class erpController {
                     erp_result_end.put("later_status", "87");
                     erp_result_end.put("now_status", "87");
                     Tools.recAdd(erp_result_end, "dd_icbc_erp_result");
+                }
+                break;
+            case "8"://身份核查结果
+                TtMap kk1=new TtMap();
+                erp_result.put("now_status","19");
+                erp.put("now_status","19");
+                switch (post.get("result_code")) {
+                    case "1":
+                        erp.put("later_status","20");
+                        erp_result.put("later_status","20");
+                        break;
+                    case "2":
+                    case "3":
+                        erp.put("later_status","18");
+                        erp_result.put("later_status","18");
+                        kk1.put("bc_status","4");
+                        if(!kkMap.isEmpty()&&kkMap.size()>0){
+                            Tools.recEdit(kk1,"icbc_kk",Long.valueOf(kkMap.get("id")));
+                        }
+                        break;
+                }
+                Tools.recEdit(erp,"dd_icbc_erp",Long.valueOf(post.get("id")));
+                erp_result.put("qryid",post.get("id"));
+                erp_result.put("result_msg",post.get("result_msg"));
+                erp_result.put("result_value", Tools.jsonEncode(post));
+                Tools.recAdd(erp_result,"dd_icbc_erp_result");
+                break;
+            case "9"://反馈开卡结果
+                TtMap kk2=new TtMap();
+                erp_result.put("now_status","20");
+                switch (post.get("result_code")) {
+                    case "1":
+                        kk2.put("bc_status","2");
+                        erp.put("now_status","21");
+                        erp.put("later_status","21");
+                        erp_result.put("later_status","21");
+                        kk2.put("kk_kh",post.get("kk_kh"));
+                        kk2.put("kk_date",post.get("kk_date"));
+                        break;
+                    case "2":
+                        kk2.put("bc_status","3");
+                        erp.put("now_status","21");
+                        erp.put("later_status","21");
+                        erp_result.put("later_status","21");
+                        break;
+                    case "3":
+                        kk2.put("bc_status","4");
+                        erp.put("now_status","20");
+                        erp.put("later_status","18");
+                        erp_result.put("later_status","18");
+                        break;
+                }
+                Tools.recEdit(erp,"dd_icbc_erp",Long.valueOf(post.get("id")));
+                erp_result.put("qryid",post.get("id"));
+                erp_result.put("result_msg",post.get("result_msg"));
+                erp_result.put("result_value", Tools.jsonEncode(post));
+                Tools.recAdd(erp_result,"dd_icbc_erp_result");
+                if (post.get("result_code").equals("1")||post.get("result_code").equals("2")) {
+                    erp_result_end.put("later_status", "21");
+                    erp_result_end.put("now_status", "21");
+                    Tools.recAdd(erp_result_end, "dd_icbc_erp_result");
+                }
+                if(!kkMap.isEmpty()&&kkMap.size()>0){
+                    Tools.recEdit(kk2,"icbc_kk",Long.valueOf(kkMap.get("id")));
                 }
                 break;
             default:

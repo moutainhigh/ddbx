@@ -50,20 +50,19 @@
                                 <td class="text-center">
 									<span class="label label-success">
 									 <c:choose>
-                                         <c:when test="${u.zx_status eq 1}">草稿箱</c:when>
-                                         <c:when test="${u.zx_status eq 2}">提交查询</c:when>
-                                         <c:when test="${u.zx_status eq 3}">征信通过</c:when>
-                                         <c:when test="${u.zx_status eq 4}">回退补件</c:when>
-                                         <c:when test="${u.zx_status eq 5}">征信不通过</c:when>
+                                         <c:when test="${u.bc_status eq 1}">提交查询</c:when>
+                                         <c:when test="${u.bc_status eq 2}">开卡成功</c:when>
+                                         <c:when test="${u.bc_status eq 3}">开卡失败</c:when>
+                                         <c:when test="${u.bc_status eq 4}">回退补件</c:when>
                                          <c:otherwise>草稿箱</c:otherwise>
                                      </c:choose>
 									</span>
                                 </td>
                                 <td class="text-center">
-                                        ${u.c_name}
+                                        ${u.fsname}-${u.adminname}
                                 </td>
                                 <td class="hidden-xs text-center">
-                                        ${u.c_name}
+                                        ${u.dt_add}/${u.dt_edit}
                                 </td>
                                 <td class="text-center">
                                     <div class="table-button">

@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.io.InputStream" %>
+<%@ page import="java.io.FileInputStream" %>
+<%@ page import="java.util.*" %>
 <%@ page import="com.example.ddbx.tt.tool.CookieTools" %>
 <%
     String name = minfo.get("name");
@@ -31,6 +33,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
+                <%if(false){%>
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
@@ -236,7 +239,7 @@
                             <a href="#">View all tasks</a>
                         </li>
                     </ul>
-                </li>
+                </li><%}%>
                 <li class="notifications-menu">
                     <a onclick="doFont(0);" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa  fa-font"></i>
@@ -304,7 +307,6 @@
                     if (havebtnfile){
                 %>
                 <li><a href="#" data-toggle="control-sidebar"><i class="fa fa-search"></i></a></li>
-
                 <%
                     }
                 %>
@@ -327,16 +329,14 @@
                     type="hidden"
                     name="sdo"
                     value="list" />
-            <jsp:include page="<%=msgSearch%>"></jsp:include>
-
-        </form>
+            <jsp:include page="<%=msgSearch%>"></jsp:include></form>
     </div>
 </aside>
 <%
     }
 %>
 <script>
-      <%
+    <%
         String afontSize = CookieTools.get("fontsize");
         if (Tools.myIsNull(afontSize) ){
           if ( !Tools.myIsNull(Config.UI_FONT_SIZE)){
@@ -346,7 +346,7 @@
           }
         }
       %>
-    var afontSize='<%=afontSize%>';
+    var afontSize= <%=afontSize%>;
     function dologout(){
         $.post("/manager/login", {
                 sdo: "logout",

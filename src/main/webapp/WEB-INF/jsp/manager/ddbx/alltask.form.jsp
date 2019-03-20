@@ -1,4 +1,3 @@
-
 <%@ page import="com.example.ddbx.tt.data.TtList" %>
 <%@ page import="com.example.ddbx.tt.data.TtMap" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
@@ -19,7 +18,7 @@
     TtMap modals = (TtMap) request.getAttribute("modals");
 
     String rwcl_path = "/WEB-INF/jsp/manager/rwcl/";
-    if (modals!=null&&!modals.equals("")){
+    if (modals != null && !modals.equals("")) {
         switch (modals.get("name")) {
 
             case "开始":
@@ -38,14 +37,14 @@
         }
 
     } else {
-        rwcl_path=rwcl_path+"modal_son/null.jsp";
+        rwcl_path = rwcl_path + "modal_son/null.jsp";
     }
 
     TtList erp_stylelist = (TtList) request.getAttribute("erp_stylelist");
 
     TtList jdlist = (TtList) request.getAttribute("jdlist");
 
-    TtList clgc_list= (TtList) request.getAttribute("clgc_list");
+    TtList clgc_list = (TtList) request.getAttribute("clgc_list");
 %>
 <head>
     <script src="js/jQueryRotate.2.2.js" type="text/javascript"></script>
@@ -58,26 +57,33 @@
 
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-                <li ${param.tab eq 6?"class='active'":''}>
-                    <a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=6">任务处理</a>
-                </li>
+                <c:if test="${param.cn eq 'mytask'}">
+                    <li ${param.tab eq 6?"class='active'":''}>
+                        <a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=6">任务处理</a>
+                    </li>
+                </c:if>
                 <li ${param.tab eq 0?"class='active'":''}>
                     <a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=0">处理过程</a>
                 </li>
-                <li ${param.tab eq 1?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=1">基础信息</a></li>
-                <li ${param.tab eq 2?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=2">客户管理</a></li>
-                <li ${param.tab eq 3?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=3">贷款管理</a></li>
-                <li ${param.tab eq 4?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=4">车辆信息</a></li>
-                <li ${param.tab eq 5?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=5">影音材料</a></li>
+                <li ${param.tab eq 1?"class='active'":''}><a
+                        href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=1">基础信息</a></li>
+                <li ${param.tab eq 2?"class='active'":''}><a
+                        href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=2">客户管理</a></li>
+                <li ${param.tab eq 3?"class='active'":''}><a
+                        href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=3">贷款管理</a></li>
+                <li ${param.tab eq 4?"class='active'":''}><a
+                        href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=4">车辆信息</a></li>
+                <li ${param.tab eq 5?"class='active'":''}><a
+                        href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=5">影音材料</a></li>
             </ul>
             <div class="tab-content">
-
-                <div ${param.tab eq 6?"class='tab-pane active'":"class='tab-pane'"} id="tab_6">
-                    <c:if test="${param.tab eq 6}">
-                        <jsp:include page="<%=rwcl_path%>"></jsp:include>
-                    </c:if>
-                </div>
-
+                <c:if test="${param.cn eq 'mytask'}">
+                    <div ${param.tab eq 6?"class='tab-pane active'":"class='tab-pane'"} id="tab_6">
+                        <c:if test="${param.tab eq 6}">
+                            <jsp:include page="<%=rwcl_path%>"></jsp:include>
+                        </c:if>
+                    </div>
+                </c:if>
                 <div ${param.tab eq 0?"class='tab-pane active'":"class='tab-pane'"} id="tab_0">
                     <div class="box-body">
                         <div style="border:1px solid #478FCA;   margin:5px; padding:20px;border-radius: 10px;">
@@ -186,9 +192,12 @@
                                             <span class="input-group-addon">按揭银行</span>
                                             <select id="bank_id_1" name="bank_id_1" class="form-control">
                                                 <option value="0">请选择按揭银行</option>
-                                                <option value="1" ${icbc.bank_id eq 1?"selected='selected'":''}>工行绍兴分行</option>
-                                                <option value="2" ${icbc.bank_id eq 2?"selected='selected'":''}>工行武林支行</option>
-                                                <option value="3" ${icbc.bank_id eq 3?"selected='selected'":''}>工行义乌支行</option>
+                                                <option value="1" ${icbc.bank_id eq 1?"selected='selected'":''}>工行绍兴分行
+                                                </option>
+                                                <option value="2" ${icbc.bank_id eq 2?"selected='selected'":''}>工行武林支行
+                                                </option>
+                                                <option value="3" ${icbc.bank_id eq 3?"selected='selected'":''}>工行义乌支行
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -197,7 +206,8 @@
                                             <span class="input-group-addon">贷款产品</span>
                                             <select name="loan_tpid_1" id="loan_tpid_1" class="form-control">
                                                 <option value="0">请选择贷款产品</option>
-                                                <option value="1" ${icbc.loan_tpid eq 1?"selected='selected'":''}>卡分期</option>
+                                                <option value="1" ${icbc.loan_tpid eq 1?"selected='selected'":''}>卡分期
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -206,8 +216,12 @@
                                             <span class="input-group-addon">业务等级</span>
                                             <select id="loan_level" name="loan_level" class="form-control">
                                                 <option value="0">请选择业务等级</option>
-                                                <option value="1" ${icbc.loan_level eq 1?"selected='selected'":''}>预期贷款额10万以下（含10万）</option>
-                                                <option value="2" ${icbc.loan_level eq 1?"selected='selected'":''}>预期贷款额10万以上</option>
+                                                <option value="1" ${icbc.loan_level eq 1?"selected='selected'":''}>
+                                                    预期贷款额10万以下（含10万）
+                                                </option>
+                                                <option value="2" ${icbc.loan_level eq 1?"selected='selected'":''}>
+                                                    预期贷款额10万以上
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
