@@ -119,13 +119,6 @@ public class qcpg extends DbCtrl {
             ttMap1.put("icbc_id", ontCustomer.get("id"));
             Tools.recAdd(ttMap1, "dd_icbc_erp_result");
 
-            TtMap ttMap2 = new TtMap();
-            ttMap2.put("qryid", qryid + "");
-            ttMap2.put("now_status", "10");
-            ttMap2.put("later_status", "11");
-            ttMap2.put("type_id", "47");
-            ttMap2.put("icbc_id", ontCustomer.get("id"));
-            Tools.recAdd(ttMap2, "dd_icbc_erp_result");
 
             // 本表操作添加数据
             ary.put("icbc_id", ontCustomer.get("id"));
@@ -151,6 +144,15 @@ public class qcpg extends DbCtrl {
                     + ary.get("imgstep9_2ss9") + ","
                     + ary.get("imgstep9_2ss10");
             ary.put("imgstep9_2ss", imgstep9_2ss);
+
+            TtMap ttMap2 = new TtMap();
+            ttMap2.put("qryid", qryid + "");
+            ttMap2.put("now_status", "10");
+            ttMap2.put("later_status", "11");
+            ttMap2.put("type_id", "47");
+            ttMap2.put("result_value", Tools.jsonEncode(ary));
+            ttMap2.put("icbc_id", ontCustomer.get("id"));
+            Tools.recAdd(ttMap2, "dd_icbc_erp_result");
 
             System.out.println("ary:"+ary);
 
@@ -294,6 +296,16 @@ public class qcpg extends DbCtrl {
                 + ary.get("imgstep9_2ss10");
         ary.put("imgstep9_2ss", imgstep9_2ss);
 
+        TtMap erpMap = Tools.recinfo("select * from dd_icbc_erp where icbc_id="+ary.get("icbc_id")+" and type_id=47");
+
+        TtMap ttMap2 = new TtMap();
+        ttMap2.put("qryid", String.valueOf(erpMap.get("id")));
+        ttMap2.put("now_status", "10");
+        ttMap2.put("later_status", "11");
+        ttMap2.put("type_id", "47");
+        ttMap2.put("result_value", Tools.jsonEncode(ary));
+        ttMap2.put("icbc_id", erpMap.get("icbc_id"));
+        Tools.recAdd(ttMap2, "dd_icbc_erp_result");
 
         return super.edit(ary, id);
     }

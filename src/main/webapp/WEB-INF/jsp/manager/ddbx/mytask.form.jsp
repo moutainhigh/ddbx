@@ -67,7 +67,9 @@
                 <li ${param.tab eq 2?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=2">客户管理</a></li>
                 <li ${param.tab eq 3?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=3">贷款管理</a></li>
                 <li ${param.tab eq 4?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=4">车辆信息</a></li>
-                <li ${param.tab eq 5?"class='active'":''}><a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=5">影音材料</a></li>
+                <li ${param.tab eq 5?"class='active'":''}>
+                    <a href="<%=url%><%=infodb.get("id")%>&type_id=${infodb.type_id}&tab=5">影音材料</a>
+                </li>
             </ul>
             <div class="tab-content">
 
@@ -1598,28 +1600,40 @@
                 <div ${param.tab eq 5?"class='tab-pane active'":"class='tab-pane'"} id="tab_5">
                     <div class="box-header with-border">
                         <h3 class="box-title">征信材料</h3>
-
                     </div>
                     <div class="box-body">
                         <div class="form-group">
                             <label class="col-sm-1 control-label">主贷人材料</label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
+                                    <%
+                                        TtList zx_list = (TtList) request.getAttribute("zx_list");
+                                        if (zx_list != null && zx_list.size() > 0) {
+                                        TtMap ttMap = Tools.jsonDeCode_mpob(zx_list.get(zx_list.size()-1).get("result_value"));
+                                        String imgstep1_1ss = ttMap.get("imgstep1_1ss");
+                                        String[] ssImgs1 = { };
+                                        ssImgs1 = imgstep1_1ss.split(",");
+                                        for (int i = 0; i < ssImgs1.length; i++){
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
+                                                 src="<%=  ssImgs1[i]%>">
                                             <a class="btn btn-primary btn-download"
                                                style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
                                                href="">↓</a>
                                             <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
+                                               style="position:absolute;top:100px;left:15px;font-size:12px;"><%= ttMap.get("dt_edit")%></a>
                                         </div>
                                     </div>
+                                    <%
+                                        }
+                                     }
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
+                                            <button type="button" onclick="show_bjls('zx_zdr')" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1629,33 +1643,33 @@
                             <label class="col-sm-1 control-label">主贷人配偶材料</label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
+                                    <%
+                                        if (zx_list != null && zx_list.size() > 0) {
+                                        TtMap ttMap = Tools.jsonDeCode_mpob(zx_list.get(zx_list.size()-1).get("result_value"));
+                                        String imgstep1_2ss = ttMap.get("imgstep1_2ss");
+                                        String[] ssImgs2 = { };
+                                        ssImgs2 = imgstep1_2ss.split(",");
+                                        for (int i = 0; i < ssImgs2.length; i++){
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
+                                                 src="<%=ssImgs2[i]%>">
                                             <a class="btn btn-primary btn-download"
                                                style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
                                                href="">↓</a>
                                             <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
+                                               style="position:absolute;top:100px;left:15px;font-size:12px;"><%= ttMap.get("dt_edit")%></a>
                                         </div>
                                     </div>
+                                    <%
+                                            }
+                                        }
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
-                                                 style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
-                                            <a class="btn btn-primary btn-download"
-                                               style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
-                                               href="">↓</a>
-                                            <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
+                                            <button type="button" onclick="show_bjls('zx_po')" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1665,33 +1679,33 @@
                             <label class="col-sm-1 control-label">共还人1材料</label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
+                                    <%
+                                        if (zx_list != null && zx_list.size() > 0) {
+                                        TtMap ttMap = Tools.jsonDeCode_mpob(zx_list.get(zx_list.size()-1).get("result_value"));
+                                        String imgstep1_3ss = ttMap.get("imgstep1_3ss");
+                                        String[] ssImgs3 = { };
+                                        ssImgs3 = imgstep1_3ss.split(",");
+                                        for (int i = 0; i < ssImgs3.length; i++){
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
+                                                 src="<%=ssImgs3[i]%>">
                                             <a class="btn btn-primary btn-download"
                                                style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
                                                href="">↓</a>
                                             <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
+                                               style="position:absolute;top:100px;left:15px;font-size:12px;"><%= ttMap.get("dt_edit")%></a>
                                         </div>
                                     </div>
+                                    <%
+                                        }
+                                        }
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
-                                                 style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
-                                            <a class="btn btn-primary btn-download"
-                                               style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
-                                               href="">↓</a>
-                                            <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
+                                            <button type="button" onclick="show_bjls('zx_gh1')" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1701,33 +1715,33 @@
                             <label class="col-sm-1 control-label">共还人2材料</label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
+                                    <%
+                                        if (zx_list != null && zx_list.size() > 0) {
+                                        TtMap ttMap = Tools.jsonDeCode_mpob(zx_list.get(zx_list.size()-1).get("result_value"));
+                                        String imgstep1_4ss = ttMap.get("imgstep1_4ss");
+                                        String[] ssImgs4 = { };
+                                        ssImgs4 = imgstep1_4ss.split(",");
+                                        for (int i = 0; i < ssImgs4.length; i++){
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
+                                                 src="<%=ssImgs4[i]%>">
                                             <a class="btn btn-primary btn-download"
                                                style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
                                                href="">↓</a>
                                             <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
+                                               style="position:absolute;top:100px;left:15px;font-size:12px;"><%= ttMap.get("dt_edit")%></a>
                                         </div>
                                     </div>
+                                    <%
+                                        }
+                                        }
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
-                                                 style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
-                                            <a class="btn btn-primary btn-download"
-                                               style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
-                                               href="">↓</a>
-                                            <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
+                                            <button type="button" onclick="show_bjls('zx_gh2')" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1742,33 +1756,34 @@
                             <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
+                                    <%
+                                        TtList tr_list = (TtList) request.getAttribute("tr_list");
+                                        if (tr_list.size() > 0) {
+                                            TtMap trMap = Tools.jsonDeCode_mpob(tr_list.get(tr_list.size()-1).get("result_value"));
+                                            String imgstep1_5ss = trMap.get("imgstep1_5ss");
+                                            String[] ssImgs5 = { };
+                                            ssImgs5 = imgstep1_5ss.split(",");
+                                            for (int i = 0; i < ssImgs5.length; i++){
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
+                                                 src="<%= ssImgs5[i]%>">
                                             <a class="btn btn-primary btn-download"
                                                style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
                                                href="">↓</a>
                                             <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
+                                               style="position:absolute;top:100px;left:15px;font-size:12px;"></a>
                                         </div>
                                     </div>
+                                    <%
+                                            }
+                                        }
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
-                                                 style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
-                                            <a class="btn btn-primary btn-download"
-                                               style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
-                                               href="">↓</a>
-                                            <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
+                                            <button type="button" onclick="show_bjls('zxtr')" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1780,36 +1795,71 @@
                     </div>
                     <div class="box-body">
                         <div class="form-group">
-                            <label class="col-sm-1 control-label"></label>
+                            <label class="col-sm-1 control-label">评估材料信息</label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
+                                    <%
+                                        TtMap qc_Map = (TtMap) request.getAttribute("qc_Map");
+                                        if (qc_Map.size() > 0) {
+                                            String imgstep9_1ss = qc_Map.get("imgstep9_1ss");
+                                            String[] ssImgs5 = { };
+                                            ssImgs5 = imgstep9_1ss.split(",");
+                                            for (int i = 0; i < ssImgs5.length; i++){
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
+                                                 src="<%= ssImgs5[i]%>">
                                             <a class="btn btn-primary btn-download"
                                                style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
                                                href="">↓</a>
                                             <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
+                                               style="position:absolute;top:100px;left:15px;font-size:12px;"><%= qc_Map.get("dt_edit")%></a>
                                         </div>
                                     </div>
+                                    <%
+                                        }
+                                    }
+                                    %>
+                                    <div class="col-sm-2">
+                                        <div class="input-group">
+                                            <button type="button" onclick="show_bjls('qcpg_cl')" class="btn btn-block btn-primary">补件历史</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">车辆评估车辆照片</label>
+                            <div class="col-sm-10">
+                                <div class="row inline-from">
+                                    <%
+                                        if (qc_Map.size() > 0) {
+                                            String imgstep9_2ss = qc_Map.get("imgstep9_2ss");
+                                            String[] ssImgs5 = { };
+                                            ssImgs5 = imgstep9_2ss.split(",");
+                                            for (int i = 0; i < ssImgs5.length; i++){
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
+                                                 src="<%= ssImgs5[i]%>">
                                             <a class="btn btn-primary btn-download"
                                                style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
                                                href="">↓</a>
                                             <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
+                                               style="position:absolute;top:100px;left:15px;font-size:12px;"><%= qc_Map.get("dt_edit")%></a>
                                         </div>
                                     </div>
+                                    <%
+                                            }
+                                        }
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
+                                            <button type="button" onclick="show_bjls('qcpg_zp')" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1850,7 +1900,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
+                                            <button type="button" onclick="show_bjls('kasq')" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1891,7 +1941,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
+                                            <button type="button" onclick="show_bjls('kasqpdf')" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1932,48 +1982,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-header with-border">
-                        <h3 class="box-title">合同材料</h3>
-                    </div>
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label class="col-sm-1 control-label"></label>
-                            <div class="col-sm-10">
-                                <div class="row inline-from">
-                                    <div class="col-sm-2">
-                                        <div class="input-group">
-                                            <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
-                                                 style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
-                                            <a class="btn btn-primary btn-download"
-                                               style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
-                                               href="">↓</a>
-                                            <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="input-group">
-                                            <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
-                                                 style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
-                                            <a class="btn btn-primary btn-download"
-                                               style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
-                                               href="">↓</a>
-                                            <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
+                                            <button type="button" onclick="show_bjls('spmq')" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1988,33 +1997,73 @@
                             <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
+                                    <%
+                                        TtMap dk_Map = (TtMap) request.getAttribute("dk_Map");
+                                        if (dk_Map.size() > 0) {
+                                            String imgstep9_1ss = dk_Map.get("imgstep9_1ss");
+                                            String[] ssImgs5 = { };
+                                            ssImgs5 = imgstep9_1ss.split(",");
+                                            for (int i = 0; i < ssImgs5.length; i++){
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
+                                                 src="<%= ssImgs5[i]%>">
                                             <a class="btn btn-primary btn-download"
                                                style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
                                                href="">↓</a>
                                             <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
+                                               style="position:absolute;top:100px;left:15px;font-size:12px;"><%= dk_Map.get("dt_edit")%></a>
                                         </div>
                                     </div>
+                                    <%
+                                            }
+                                        }
+                                    %>
+                                    <div class="col-sm-2">
+                                        <div class="input-group">
+                                            <button type="button" onclick="show_bjls('zmcl')" class="btn btn-block btn-primary">补件历史</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-header with-border">
+                        <h3 class="box-title">合同材料</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label"></label>
+                            <div class="col-sm-10">
+                                <div class="row inline-from">
+                                    <%
+                                        if (dk_Map.size() > 0) {
+                                            String imgstep9_2ss = dk_Map.get("imgstep9_2ss");
+                                            String[] ssImgs5 = { };
+                                            ssImgs5 = imgstep9_2ss.split(",");
+                                            for (int i = 0; i < ssImgs5.length; i++){
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
+                                                 src="<%= ssImgs5[i]%>">
                                             <a class="btn btn-primary btn-download"
                                                style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
                                                href="">↓</a>
                                             <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
+                                               style="position:absolute;top:100px;left:15px;font-size:12px;"><%= dk_Map.get("dt_edit")%></a>
                                         </div>
                                     </div>
+                                    <%
+                                            }
+                                        }
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
+                                            <button type="button" onclick="show_bjls('htcl')" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
                                     </div>
                                 </div>
@@ -2029,33 +2078,32 @@
                             <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
+                                    <%
+                                        if (dk_Map.size() > 0) {
+                                            String imgstep9_3ss = dk_Map.get("imgstep9_3ss");
+                                            String[] ssImgs5 = { };
+                                            ssImgs5 = imgstep9_3ss.split(",");
+                                            for (int i = 0; i < ssImgs5.length; i++){
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
+                                                 src="<%= ssImgs5[i]%>">
                                             <a class="btn btn-primary btn-download"
                                                style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
                                                href="">↓</a>
                                             <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
+                                               style="position:absolute;top:100px;left:15px;font-size:12px;"><%= dk_Map.get("dt_edit")%></a>
                                         </div>
                                     </div>
+                                    <%
+                                            }
+                                        }
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
-                                                 style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
-                                            <a class="btn btn-primary btn-download"
-                                               style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
-                                               href="">↓</a>
-                                            <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
+                                            <button type="button" onclick="show_bjls('qtcl')" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
                                     </div>
                                 </div>
@@ -2070,33 +2118,32 @@
                             <label class="col-sm-1 control-label"></label>
                             <div class="col-sm-10">
                                 <div class="row inline-from">
+                                    <%
+                                        if (dk_Map.size() > 0) {
+                                            String imgstep9_4ss = dk_Map.get("imgstep9_4ss");
+                                            String[] ssImgs5 = { };
+                                            ssImgs5 = imgstep9_4ss.split(",");
+                                            for (int i = 0; i < ssImgs5.length; i++){
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
                                             <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
                                                  style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
+                                                 src="<%= ssImgs5[i]%>">
                                             <a class="btn btn-primary btn-download"
                                                style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
                                                href="">↓</a>
                                             <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
+                                               style="position:absolute;top:100px;left:15px;font-size:12px;"><%= dk_Map.get("dt_edit")%></a>
                                         </div>
                                     </div>
+                                    <%
+                                            }
+                                        }
+                                    %>
                                     <div class="col-sm-2">
                                         <div class="input-group">
-                                            <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
-                                                 style="width: 100px;height: 100px;"
-                                                 src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
-                                            <a class="btn btn-primary btn-download"
-                                               style="width:30px;height:30px;position:absolute;top:35px;left:35px;"
-                                               href="">↓</a>
-                                            <a class="fileUpload_filename ng-binding"
-                                               style="position:absolute;top:100px;left:15px;font-size:12px;">2019-01-24</a>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <div class="input-group">
-                                            <button type="button" class="btn btn-block btn-primary">补件历史</button>
+                                            <button type="button" onclick="show_bjls('bccl')" class="btn btn-block btn-primary">补件历史</button>
                                         </div>
                                     </div>
                                 </div>
@@ -2111,7 +2158,137 @@
         </div>
 
 
+        <div class="modal fade in" id="addModal_tdtf" tabindex="-1" role="dialog" aria-labelledby="imgs_yyclLabel" aria-hidden="false">
+            <div class="modal-dialog modal-lg" style="width: 900px;height: 800px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" align="center" id="aayyclModalLabel">补件历史</h4>
+                    </div>
+                    <div class="modal-body" style="height:450px;border:1px solid #ccc;background-color:#F7F7F7;border-radius: 10px;margin:30px;">
+                        <table class="table table-bordered table-hover" id="table">
+                            <tbody>
+                                <%--<tr>--%>
+                                    <%--<td width="100px">1</td>--%>
+                                    <%--<td>--%>
+                                        <%--<div class="col-sm-2">--%>
+                                            <%--<div class="input-group">--%>
+                                                <%--<img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"--%>
+                                                     <%--style="width: 100px;height: 100px;"--%>
+                                                     <%--src="">--%>
+                                                <%--<a class="btn btn-primary btn-download"--%>
+                                                   <%--style="width:30px;height:30px;position:absolute;top:35px;left:35px;"--%>
+                                                   <%--href="">↓</a>--%>
+                                                <%--<a class="fileUpload_filename ng-binding"--%>
+                                                   <%--style="position:absolute;top:100px;left:15px;font-size:12px;">1111</a>--%>
+                                            <%--</div>--%>
+                                        <%--</div>--%>
+                                    <%--</td>--%>
+                                <%--</tr>--%>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closet" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </div>
 <script>
+
+    function show_bjls(cl_type){
+
+        var icbc_id = <%= infodb.get("icbc_id")%>;
+
+        $.ajax({
+            type: "POST",      //data 传送数据类型。post 传递
+            dataType: 'json',  // 返回数据的数据类型json
+            url: "/manager/bjlspost",  // 控制器方法
+            data:{
+                icbc_id : icbc_id,
+                cl_type : cl_type
+            },//使用变量sendData
+            //执行成功的回调函数
+            success:function(data) {
+
+                $("#table tr").html("");    //清空table中的数据
+
+                var arr = data.zxlist;      //获取到erp_result表中记录的list
+                var data1 = "";
+                for (var i = 1; i < data.zxlist.length; i++) {      //循环获取到的list
+                   var result_value = arr[i].result_value;          //取出list中每条数据的result_value值
+                   var result_value_json = eval('(' + result_value + ')');  //转为json
+                   var imgstep1_1ss;
+                   if (cl_type == 'zx_zdr') {   //主贷人材料
+                       imgstep1_1ss = result_value_json.imgstep1_1ss;       //根据点击不同的补件历史取出图片信息
+                   }
+                   if (cl_type == 'zx_po') {    //主贷人配偶材料
+                       imgstep1_1ss = result_value_json.imgstep1_2ss;
+                   }
+                   if (cl_type == 'zx_gh1') {  //共还人1材料
+                       imgstep1_1ss = result_value_json.imgstep1_3ss;
+                   }
+                   if (cl_type == 'zx_gh2') {  //共还人2材料
+                       imgstep1_1ss = result_value_json.imgstep1_4ss;
+                   }
+                   if (cl_type == 'zxtr') {     //征信通融材料
+                       imgstep1_1ss = result_value_json.imgstep1_5ss;
+                   }
+                   if (cl_type == 'qcpg_cl' || cl_type == 'zmcl') {  //汽车评估材料 或者 汽车贷款的证明材料
+                       imgstep1_1ss = result_value_json.imgstep9_1ss;
+                   }
+                   if (cl_type == 'qcpg_zp' || cl_type == 'htcl') {  //汽车评估车辆照片材料 或者 汽车贷款的合同材料
+                       imgstep1_1ss = result_value_json.imgstep9_2ss;
+                   }
+                   if (cl_type == 'qtcl') {
+                       imgstep1_1ss = result_value_json.imgstep9_3ss;   //汽车贷款的其他材料
+                   }
+                   if (cl_type == 'bccl') {
+                      imgstep1_1ss = result_value_json.imgstep9_4ss;    //汽车贷款的补充材料
+                   }
+                   var imgstep1_1ssarr = imgstep1_1ss.split(",");
+
+                   //由于征信的图片拼接的字符串最后有一个逗号, 所以长度要减一
+                   if (cl_type == 'zx_zdr' || cl_type == 'zx_po' || cl_type == 'zx_gh1' || cl_type == 'zx_gh2') {
+                       imgstep1_1ssarr.length = imgstep1_1ssarr.length - 1;
+                   }
+
+                   for (var j = 0; j < imgstep1_1ssarr.length; j++) {       //根据图片存放的数组长度循环把图片放入td里面
+                        console.log(imgstep1_1ssarr[j]);
+
+                       data1 = data1 + '<td>\n' +
+                           '<div class="col-sm-2">\n' +
+                           '<div class="input-group" style="width: 100px;height: 100px;">\n' +
+                           '<img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"\n' +
+                           'style="width: 100px;height: 100px;"\n' +
+                           'src="'+imgstep1_1ssarr[j]+'">\n' +
+                           '<a class="btn btn-primary btn-download"\n' +
+                           'style="width:30px;height:30px;position:absolute;top:35px;left:35px;"\n' +
+                           'href="">↓</a>\n' +
+                           '<a class="fileUpload_filename ng-binding"\n' +
+                           'style="position:absolute;top:100px;left:15px;font-size:12px;">'+arr[i].dt_edit+'</a>\n' +
+                           '</div>\n' +
+                           '</div>\n' +
+                           '</td>';
+                   }
+                    $("#table").prepend('<tr><td width="100px">第'+i+'次补件</td>'+data1+'</tr>');
+                    data1 = "";     //添加td后清空
+                }
+            },
+            //执行失败或错误的回调函数
+            error:function(data) {
+                alert("失败！");
+            }
+        });
+
+
+        $('#addModal_tdtf').modal({ show: true });
+
+    }
+
+
 </script>

@@ -77,7 +77,26 @@ public class MyTask extends DbCtrl {
                     break;
                 case "5":
 
+                        String icbcid = info.get("icbc_id");
+//                        System.out.println("id::"+id);
+                        //征信查询
+                        String zxsql = "SELECT * FROM dd_icbc_erp_result WHERE icbc_id =" + icbcid + " and now_status = 2";
+                        TtList zxlist = Tools.reclist(zxsql);
+                        request.setAttribute("zx_list", zxlist);
+                        //征信通融
+                        String trsql = "SELECT * FROM dd_icbc_erp_result WHERE icbc_id =" + icbcid + " AND now_status = 7";
+                        TtList trlist = Tools.reclist(trsql);
+                        request.setAttribute("tr_list", trlist);
+                        //汽车评估
+                        String qcsql = "SELECT * FROM dd_icbc_cars WHERE icbc_id =" + icbcid;
+                        TtMap qcMap = Tools.recinfo(qcsql);
+                        request.setAttribute("qc_Map", qcMap);
+                        //开卡申请
 
+                        //汽车贷款
+                        String dksql = "SELECT * FROM dd_icbc_materials WHERE icbc_id =" + icbcid;
+                        TtMap dkMap = Tools.recinfo(dksql);
+                        request.setAttribute("dk_Map", dkMap);
 
                     break;
                 default:
