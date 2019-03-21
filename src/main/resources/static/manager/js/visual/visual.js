@@ -23,7 +23,7 @@ $.ajax({
     success : function(data) {
         var summarydata = [];
         var timeline = [];
-        alert(data);
+        
 
 //数据图绘制
 var option_baodan = {
@@ -105,7 +105,7 @@ $.ajax({
     success : function(data) {
         var summarydata = [];
         var timeline = [];
-        alert(data);
+       
 //数据图绘制
 var option_qichedaikuan = {
 
@@ -183,7 +183,7 @@ $.ajax({
     success : function(data) {
         var summarydata = [];
         var timeline = [];
-        alert(data);
+       
 var option_fangkuan_1 = {
     title : {
         show:true,
@@ -253,7 +253,7 @@ $.ajax({
     success : function(data) {
         var summarydata = [];
         var timeline = [];
-        alert(data);
+       
 var option_fangkuan_2 = {
     title : {
         show:true,
@@ -326,7 +326,7 @@ $.ajax({
     success : function(data) {
         var summarydata = [];
         var timeline = [];
-        alert(data);
+       
 option_fangkuan_3 = {
     tooltip : {
         trigger: 'axis',
@@ -426,7 +426,7 @@ $.ajax({
     success : function(data) {
         var summarydata = [];
         var timeline = [];
-        alert(data);
+       
 var option_diyawancheng = {
     tooltip : {
         trigger: 'item',
@@ -478,7 +478,7 @@ $.ajax({
     success : function(data) {
         var summarydata = [];
         var timeline = [];
-        alert(data);
+       
 option_cailiaohuishou = {
     tooltip : {
         trigger: 'axis'
@@ -546,7 +546,7 @@ $.ajax({
     success : function(data) {
         var summarydata = [];
         var timeline = [];
-        alert(data);
+       
 var option_zhengxinchaxun = {
     tooltip : {
         trigger: 'item',
@@ -594,7 +594,7 @@ $.ajax({
     success : function(data) {
         var summarydata = [];
         var timeline = [];
-        alert(data);
+      
 var option_kehunianling = {
     tooltip : {
         trigger: 'item',
@@ -648,7 +648,7 @@ $.ajax({
     success : function(data) {
         var summarydata = [];
         var timeline = [];
-        alert(data);
+      
 var option_cheliangnianling = {
     tooltip : {
         trigger: 'item',
@@ -702,7 +702,7 @@ $.ajax({
     success : function(data) {
         var summarydata = [];
         var timeline = [];
-        alert(data);
+       
 var option_zijinzhouzhuan = {
     tooltip : {
         trigger: 'axis',
