@@ -77,7 +77,26 @@ public class MyTask extends DbCtrl {
                     break;
                 case "5":
 
+                        String icbcid = info.get("icbc_id");
+//                        System.out.println("id::"+id);
+                        //征信查询
+                        String zxsql = "SELECT * FROM dd_icbc_erp_result WHERE icbc_id =" + icbcid + " and now_status = 2";
+                        TtList zxlist = Tools.reclist(zxsql);
+                        request.setAttribute("zx_list", zxlist);
+                        //征信通融
+                        String trsql = "SELECT * FROM dd_icbc_erp_result WHERE icbc_id =" + icbcid + " AND now_status = 7";
+                        TtList trlist = Tools.reclist(trsql);
+                        request.setAttribute("tr_list", trlist);
+                        //汽车评估
+                        String qcsql = "SELECT * FROM dd_icbc_cars WHERE icbc_id =" + icbcid;
+                        TtMap qcMap = Tools.recinfo(qcsql);
+                        request.setAttribute("qc_Map", qcMap);
+                        //开卡申请
 
+                        //汽车贷款
+                        String dksql = "SELECT * FROM dd_icbc_materials WHERE icbc_id =" + icbcid;
+                        TtMap dkMap = Tools.recinfo(dksql);
+                        request.setAttribute("dk_Map", dkMap);
 
                     break;
                 default:
@@ -91,9 +110,8 @@ public class MyTask extends DbCtrl {
         }
         if (post.get("type_id") != null && !post.get("type_id").equals("")) {
             request.setAttribute("type_id", post.get("type_id"));
-            TtList erplist= geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id")));
-            if ( erplist!= null && erplist.size() > 0) {
-                request.setAttribute("erplist",erplist);
+            if (geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))) != null && geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))).size() > 0) {
+                request.setAttribute("erplist", geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
             }
         }
         //获取当前任务节点信息

@@ -126,6 +126,27 @@ public class CarLoan extends DbCtrl {
                         +ary.get("imgstep9_4ss3")+","
                         +ary.get("imgstep9_4ss4");
         ary.put("imgstep9_4ss",imgstep9_4ss);
+
+        TtMap erpMap = Tools.recinfo("select * from dd_icbc_erp where icbc_id="+ary.get("icbc_id")+" and type_id=70");
+
+        //向dd_icbc_erp_result表中添加数据 start
+        DbCtrl dbCtrl2 = new DbCtrl("dd_icbc_erp_result");
+        try {
+            //添加 提交查询
+            TtMap ttMap2 = new TtMap();
+            ttMap2.put("qryid",String.valueOf(erpMap.get("id")));
+            ttMap2.put("icbc_id",erpMap.get("icbc_id"));
+            ttMap2.put("type_id","70");
+            ttMap2.put("later_status","33");
+            ttMap2.put("now_status","32");
+            ttMap2.put("result_value",Tools.jsonEncode(ary));
+            dbCtrl2.add(ttMap2);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            dbCtrl2.closeConn();
+        }
+        //向dd_icbc_erp_result表中添加数据 end
         return super.edit(ary, id);
     }
 
@@ -309,6 +330,7 @@ public class CarLoan extends DbCtrl {
                 ttMap2.put("type_id","70");
                 ttMap2.put("later_status","33");
                 ttMap2.put("now_status","32");
+                ttMap2.put("result_value",Tools.jsonEncode(ary));
                 dbCtrl2.add(ttMap2);
             }catch (Exception e){
                 e.printStackTrace();
