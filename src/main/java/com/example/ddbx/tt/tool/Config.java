@@ -24,7 +24,7 @@ public class Config {
     public final static long FILEUP_MAXSIZE_ISADMIN = 1024 * 1024 * 50;
     public final static String FILEUP_SAVEPATH = TESTMODE 
             ? "src/main/webapp/upload/" /* 测试模式上传文件保存路径，/\开头的为绝对路径，否则是相对路径 */
-            : "/KCDIMG/kjbtest-upload/"; /* 生产模式上传文件保存路径，/\开头的为绝对路径，否则是相对路径 */
+            : "/KCDIMG/ddbx-upload/"; /* 生产模式上传文件保存路径，/\开头的为绝对路径，否则是相对路径 */
     public final static String FILEUP_URLPRE = TESTMODE ? "/upload/" :"/upload/";/* 对应访问的url前缀 */
     public final static int FILEUP_WRITEBLOCKSIZE = 1024 * 8;/* 写文件时每次写入的块大小，默认8KB每次读写量 */
     
@@ -37,14 +37,20 @@ public class Config {
     public final static String[] DB_CONFIG = TESTMODE/* 数据源配置，格式：数据库名/用户名/密码，每三个一组为一个数据源 */
             ? new String[] { //测试环境
             "ddbxdb", "root", "root",//ttdemo
-            "ttdemo", "root", "root" //ddbxdb
-
-            }
+            "kcway2", "root", "root" //ddbxdb
+            //"kjbdb", "root", "root",
+    }
             : new String[] { //生产环境    
-                "ttdemo","ttdemou","t8ULusDrp5FxXUuJ",
-                "kgcdb", "kgcu","nULbhh9fZ79jQfUW" ,
-                "kjbdb", "kjb", "exxH29nVn232mDMS", 
+                "ddbxdb","ddbxu","xDCnx5G9Wv2Ah4rc",
+                "kcway2", "kcway","NDXppG2qUNB6pXcA" ,
+               // "kjbdb", "kjb", "exxH29nVn232mDMS",
             };
+/*  服务器  mysql:
+
+
+    库： ddbxdb
+    用户：ddbxu
+    密码：xDCnx5G9Wv2Ah4rc*/
     public final static String DB_ENDCONNSTR = "?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&useSSL=false&serverTimezone=GMT%2B8";/* 数据库连接字符串尾端配置，指定配置的一些参数，SSL，字符编码等 */
     public final static String DB_USERTABLENAME="admin";
 

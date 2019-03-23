@@ -10,7 +10,6 @@ import com.example.ddbx.tt.tool.Tools;
 import javax.servlet.http.HttpServletRequest;
 
 
-
 public class MyTask extends DbCtrl {
     private final String title = "我的任务";
     private String orderString = "ORDER BY dt_edit DESC"; // 默认排序
@@ -18,7 +17,6 @@ public class MyTask extends DbCtrl {
     private boolean canAdd = false;
     private final String classAgpId = "33"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
     public boolean agpOK = false;// 默认无权限
-
 
     public MyTask() {
         super("dd_icbc_erp");
@@ -77,26 +75,29 @@ public class MyTask extends DbCtrl {
                     break;
                 case "5":
 
-                        String icbcid = info.get("icbc_id");
+                    String icbcid = info.get("icbc_id");
 //                        System.out.println("id::"+id);
-                        //征信查询
-                        String zxsql = "SELECT * FROM dd_icbc_erp_result WHERE icbc_id =" + icbcid + " and now_status = 2";
-                        TtList zxlist = Tools.reclist(zxsql);
-                        request.setAttribute("zx_list", zxlist);
-                        //征信通融
-                        String trsql = "SELECT * FROM dd_icbc_erp_result WHERE icbc_id =" + icbcid + " AND now_status = 7";
-                        TtList trlist = Tools.reclist(trsql);
-                        request.setAttribute("tr_list", trlist);
-                        //汽车评估
-                        String qcsql = "SELECT * FROM dd_icbc_cars WHERE icbc_id =" + icbcid;
-                        TtMap qcMap = Tools.recinfo(qcsql);
-                        request.setAttribute("qc_Map", qcMap);
-                        //开卡申请
-
-                        //汽车贷款
-                        String dksql = "SELECT * FROM dd_icbc_materials WHERE icbc_id =" + icbcid;
-                        TtMap dkMap = Tools.recinfo(dksql);
-                        request.setAttribute("dk_Map", dkMap);
+                    //征信查询
+                    String zxsql = "SELECT * FROM dd_icbc_erp_result WHERE icbc_id =" + icbcid + " and now_status = 2";
+                    TtList zxlist = Tools.reclist(zxsql);
+                    request.setAttribute("zx_list", zxlist);
+                    //征信通融
+                    String trsql = "SELECT * FROM dd_icbc_erp_result WHERE icbc_id =" + icbcid + " AND now_status = 7";
+                    TtList trlist = Tools.reclist(trsql);
+                    request.setAttribute("tr_list", trlist);
+                    //汽车评估
+                    String qcsql = "SELECT * FROM dd_icbc_cars WHERE icbc_id =" + icbcid;
+                    TtMap qcMap = Tools.recinfo(qcsql);
+                    request.setAttribute("qc_Map", qcMap);
+                    //开卡申请
+                    String kksql = "SELECT * FROM icbc_kk WHERE icbc_id =" + icbcid;
+                    TtMap kkMap = Tools.recinfo(kksql);
+                    System.out.println("kk:" + kkMap);
+                    request.setAttribute("kkMap", kkMap);
+                    //汽车贷款
+                    String dksql = "SELECT * FROM dd_icbc_materials WHERE icbc_id =" + icbcid;
+                    TtMap dkMap = Tools.recinfo(dksql);
+                    request.setAttribute("dk_Map", dkMap);
 
                     break;
                 default:
@@ -105,23 +106,25 @@ public class MyTask extends DbCtrl {
 
             }
         }
-        if (getclgc() != null && getclgc().size() > 0) {
-            request.setAttribute("clgc_list", getclgc());
+        TtList clgc_list=getclgc();
+        if (clgc_list!= null && clgc_list.size() > 0) {
+            request.setAttribute("clgc_list",clgc_list);
         }
         if (post.get("type_id") != null && !post.get("type_id").equals("")) {
             request.setAttribute("type_id", post.get("type_id"));
-            if (geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))) != null && geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))).size() > 0) {
-                request.setAttribute("erplist", geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id"))));
+            TtList erplist = geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id")));
+            if (erplist != null && erplist.size() > 0) {
+                request.setAttribute("erplist", erplist);
             }
         }
         //获取当前任务节点信息
-        TtMap erp_result=Tools.recinfo("select r.* from dd_icbc_erp_result r where r.qryid="+nid+" ORDER BY r.id DESC limit 1");
+        TtMap erp_result = Tools.recinfo("select r.* from dd_icbc_erp_result r where r.qryid=" + nid + " ORDER BY r.id DESC limit 1");
         request.setAttribute("erp_result", erp_result);
-        if(erp_result.get("result_value")!=null&&!erp_result.get("result_value").equals("")) {
+        if (erp_result.get("result_value") != null && !erp_result.get("result_value").equals("")) {
             request.setAttribute("erp_result_value", Tools.jsonDeCode_mp(erp_result.get("result_value")));
         }
         //进度板块处理  erp id  不对应问题
-        TtList jdlist=Tools.reclist("select * from dd_icbc_erp where icbc_id="+post.get("icbc_id"));
+        TtList jdlist = Tools.reclist("select * from dd_icbc_erp where icbc_id=" + post.get("icbc_id"));
         request.setAttribute("jdlist", jdlist);
 
 
@@ -134,7 +137,7 @@ public class MyTask extends DbCtrl {
         request.setAttribute("info", jsonInfo);//info为json后的info
         request.setAttribute("infodb", info);//infodb为TtMap的info
         request.setAttribute("id", nid);
-        request.setAttribute("sHideButton","true");//隐藏保存提交和取消返回标志
+        request.setAttribute("sHideButton", "true");//隐藏保存提交和取消返回标志
     }
 
     /**
@@ -167,10 +170,28 @@ public class MyTask extends DbCtrl {
      * @param request
      */
     public TtList getclgc() {
+        TtMap minfo = Tools.minfo();// 当前登陆用户信息
+        TtMap infoAgp =Tools.recinfo("select * from fs where id="+minfo.get("fsid"));// 用户所属角色组信息
+        String strAgp = "," + infoAgp.get("purview_map"); // 此角色组拥有的权限集合
+        System.out.println("purview_map:"+strAgp);
         String sql = "select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort";
-        return Tools.reclist(sql);
+        TtList ttList=Tools.reclist(sql);
+        TtList newlist=new TtList();
+        for(int i=0;i<ttList.size();i++){
+            TtMap map=ttList.get(i);
+            if(strAgp.contains(","+map.get("id")+",")){
+                TtMap nmap=ttList.get(i);
+                newlist.add(nmap);
+            }
+        }
+        System.out.println("newlist:"+Tools.jsonEncode(newlist));
+        return newlist;
     }
 
+//    public static void main(String[] args) {
+//    String s=",21,10,27,22,26,11,66,67,89,64,65,110,111,112,9,31,36,113,114,1,115,144,5,14,88,148,149,81,98,127,126,125,13,124,123,122,121,146,120,145,93,92,91,90,97,96,95,94,23,25,6,38,63,102,101,104,103,106,20,105,119,108,109,118,39,107,117,72,71,74,73,76,100,75,43,44,45,46,51,24,50,33,32,41,40,80,48,78,49,77,79,82,83,70,84,85,86,19,87,42,47,28,29,116,8,7,4,99,3,30,";
+//    System.out.println("hahah:"+s.contains(",63,"));
+//    }
     /**
      * 获取订单单个版块类型 所有进度数据
      *
@@ -190,12 +211,12 @@ public class MyTask extends DbCtrl {
                 "LEFT JOIN admin a ON a.id=e.mid_add " +
                 "where e.qryid=" + id + " and e.type_id=" + type_id;
         TtList list = Tools.reclist(sql);
-        for(int i=0;i<list.size();i++){
-            TtMap map=list.get(i);
-            TtMap map1=Tools.recinfo("select r1.id,r1.dt_edit from  dd_icbc_erp_result r1 where r1.qryid="+id+" and r1.type_id="+type_id+" and r1.id!="+map.get("id")+" and r1.id<"+map.get("id")+" ORDER BY r1.id  DESC limit 1");
-            map.put("s_time",map1.get("dt_edit"));
+        for (int i = 0; i < list.size(); i++) {
+            TtMap map = list.get(i);
+            TtMap map1 = Tools.recinfo("select r1.id,r1.dt_edit from  dd_icbc_erp_result r1 where r1.qryid=" + id + " and r1.type_id=" + type_id + " and r1.id!=" + map.get("id") + " and r1.id<" + map.get("id") + " ORDER BY r1.id  DESC limit 1");
+            map.put("s_time", map1.get("dt_edit"));
         }
-        System.out.println("list:"+list);
+        System.out.println("list:" + list);
         return list;
     }
 
@@ -205,12 +226,12 @@ public class MyTask extends DbCtrl {
             request.setAttribute("errorMsg", errorMsg);
             return;
         }
-        TtMap minfo= Tools.minfo();//获取当前登录用户信息
+        TtMap minfo = Tools.minfo();//获取当前登录用户信息
         String kw = ""; // 搜索关键字
         String dtbe = ""; // 搜索日期选择
         int pageInt = Integer.valueOf(Tools.myIsNull(post.get("p")) == false ? post.get("p") : "1"); // 当前页
         int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
-        String whereString = "t.gems_fs_id="+minfo.get("fsid");
+        String whereString = "t.gems_fs_id=" + minfo.get("fsid");
         String tmpWhere = "";
         String fieldsString = "t.*,a.name as admin_name,f.name as fs_name" +
                 ",sm.name as type_name" +
@@ -319,6 +340,7 @@ public class MyTask extends DbCtrl {
      * @return
      */
     public static TtMap get_sys_modal_name(int type_id, int id) {
+
         String sql = "select * from sys_modal where id_uplevel=" + type_id + " and sort=" + id;
         return Tools.recinfo(sql);
     }
