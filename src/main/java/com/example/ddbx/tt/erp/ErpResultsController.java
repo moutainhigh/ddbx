@@ -346,6 +346,9 @@ public class ErpResultsController {
                             erp.put("later_status", "65");
                             erp_result.put("now_status","62");
                             erp_result.put("later_status","65");
+                            TtMap icbcUpdatePledge = new TtMap();
+                            icbcUpdatePledge.put("pledge_result","2"); //抵押归档未完成
+                            Tools.recEdit(icbcUpdatePledge,"dd_icbc", Long.valueOf(post.get("icbc_id")));
                         }else if(post.get("result_code").equals("2") || post.get("result_code").equals("3")){ //收款金额不符and未收到款项 进入上一个状态 银行放款结果
                             erp.put("now_status", "62");
                             erp.put("later_status", "61");
@@ -602,9 +605,13 @@ public class ErpResultsController {
             if(erp.get("later_status").equals("65")){
                 addEnd(post,minfo,"65","65");
             }
-            //添加 银行贷款 完成 状态
+            //添加 抵押归档 完成 状态
             if(erp.get("later_status").equals("82")){
                 addEnd(post,minfo,"82","82");
+                //在icbc主表中添加字段
+                TtMap icbcTableUpdate = new TtMap();
+                icbcTableUpdate.put("pledge_result","1"); //抵押归档完成
+                Tools.recEdit(icbcTableUpdate,"dd_icbc", Long.valueOf(post.get("icbc_id")));
             }
         }
         //汽车贷款end
