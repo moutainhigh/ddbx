@@ -102,7 +102,7 @@ public class Visual {
 //                " and gems_fs_id in(select id from fs where up_id=${up_id} or id =${id}) " +
                 "";
         TtList billlist=selectSQL(sql);
-        request.setAttribute("billlist",billlist.get(0).get("amount"));//每月报单总量     0
+        request.setAttribute("billlist",billlist);//每月报单总量     0
 
 
 
@@ -141,6 +141,13 @@ public class Visual {
                 "";
         TtList loanlist=selectSQL(sql);
         request.setAttribute("loanlist",loanlist);//每月已放款单数，总金额
+        double loan;
+        if(loanlist.get(0).get("amount").equals("0")){
+            loan=0.00;
+        }else{
+            loan=Double.parseDouble(loanlist.get(0).get("money"))/Double.parseDouble(loanlist.get(0).get("amount"));
+        }
+        request.setAttribute("loan",loan);//每月已放款单数，总金额
 
 
 
@@ -183,20 +190,15 @@ public class Visual {
 
 
 
-
-        sql="select count(*) from dd_icbc_cars dic,dd_icbc di  " +
+        sql="select count(*) amount from dd_icbc_cars dic,dd_icbc di  " +
                 "  where month(dic.dt_add)=MONTH(SYSDATE()) " +
                 "   and YEAR(dic.dt_add)=year(SYSDATE()) " +
                 "   and di.id=dic.icbc_id  " +
 //                "   and di.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})" +
                 "";
         TtList carselect=selectSQL(sql);
-        request.setAttribute("carselect",carselect);//所有汽车贷款     0
 
-
-
-
-        sql="select count(*) from dd_icbc_cars dic,dd_icbc di  " +
+        sql="select count(*) amount from dd_icbc_cars dic,dd_icbc di  " +
                 "  where month(dic.dt_add)=MONTH(SYSDATE())  " +
                 "  and YEAR(dic.dt_add)=year(SYSDATE()) " +
                 "   and dic.bc_status=3  " +
@@ -204,7 +206,13 @@ public class Visual {
 //                "   and di.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})" +
                 "";
         TtList carpass=selectSQL(sql);
-        request.setAttribute("carpass",carpass);//汽车贷款通过          0
+        int carspass;
+        if(carpass.size() == 0 || carpass == null){
+            carspass=0;
+        }else{
+            carspass=Integer.parseInt(carpass.get(0).get("amount"))/Integer.parseInt(carselect.get(0).get("amount"));
+        }
+        request.setAttribute("carspass",carspass);//汽车贷款通过          0
 
 
 

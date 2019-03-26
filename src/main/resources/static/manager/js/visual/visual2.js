@@ -29,12 +29,7 @@ function baodanselect(){
         success : function(data) {
             var summarydata = [];
             var timeline = [];
-            var j;
-            for(var i=0;i<9;i++){
-                j=8-i;
-                timeline[i]=data[1][j]=null?'2019-'+i:data[1][j];
-                summarydata[i]=data[0][j]=null?'0':data[0][j];
-            }
+
 
 //数据图绘制
             var option_baodan = {
@@ -53,7 +48,7 @@ function baodanselect(){
                         },
 
                         axisLine :{symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
-                        data : timeline
+                        data : ['2018-07','2018-08','2018-09','2018-10','2018-11','2018-12','2019-01','2019-02','2019-03']
                     }
                 ],
                 yAxis : [
@@ -92,7 +87,7 @@ function baodanselect(){
                             } */
                         },
                         /* itemStyle: {normal: {areaStyle: {type: 'default',color:'rgb(242,162,42)'}}}, */
-                        data:summarydata
+                        data:[265,120,260,160, 312, 621, 254, 260, 830, 710]
                     }
                 ]
             };
@@ -100,7 +95,7 @@ function baodanselect(){
 //ajax结尾
         },
         error : function(e, type, msg) {
-            console.log(type + "=报单统计=" + msg);
+            alert(type + "=报单统计=" + msg);
         }
     })
 }
@@ -116,21 +111,14 @@ function guojianselect() {
     var obj = document.getElementById('guojiansel'); //定位id
     var index = obj.selectedIndex; // 选中索引
     var value = obj.options[index].value; // 选中值
-
     $.ajax({
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getCarPathMap.do",
         data : {guojianname:sel,guojiancity:value},
         success: function (data) {
-            var carpasstime = [];
-            var carpassdata = [];
-            var j;
-            for(var i=0;i<9;i++){
-                j=8-i;
-                carpasstime[i]=data[1][j]=null?'2019-'+i:data[1][j];
-                carpassdata[i]=data[0][j]=null?'0':data[0][j];
-            }
+            var summarydata = [];
+            var timeline = [];
 
 //数据图绘制
             var option_qichedaikuan = {
@@ -150,7 +138,7 @@ function guojianselect() {
                         },
 
                         axisLine: {symbolSize: ['10', '13'], lineStyle: {color: '#6A5046'}},//轴线
-                        data: carpasstime,
+                        data: ['2018-07', '2018-08', '2018-09', '2018-10', '2018-11', '2018-12', '2019-01', '2019-02', '2019-03']
                     }
                 ],
                 yAxis: [
@@ -189,7 +177,7 @@ function guojianselect() {
                             } */
                         },
                         /*            itemStyle: {normal: {areaStyle: {type: 'default',color:'rgb(242,162,42)'}}}, */
-                        data: carpassdata,
+                        data: [265, 120, 260, 102, 112, 219, 504, 260, 830, 710],
                     }
                 ]
             };
@@ -197,7 +185,7 @@ function guojianselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            console.log(type + "=汽车贷款=" + msg);
+            alert(type + "=汽车贷款=" + msg);
         }
     })
 }
@@ -215,8 +203,8 @@ function fangkuanselect() {
         url: "/manager/visual/getCarFkPathMap.do",
         data: {fangkuanname: sel,fangkuancity:value},
         success: function (data) {
-            var newcar=data[0]=null?'0':data[0];
-            var oldcar=data[1]=null?'0':data[1];
+            var summarydata = [];
+            var timeline = [];
 
             var option_fangkuan_1 = {
                 title: {
@@ -263,8 +251,8 @@ function fangkuanselect() {
                             length2: 5, //视觉引导项第二段的长度。
                         },
                         data: [
-                            {value: newcar, name: '新车'},
-                            {value: oldcar, name: '二手车'},
+                            {value: 335, name: '新车'},
+                            {value: 310, name: '二手车'},
                         ],
                     }
                 ]
@@ -273,7 +261,7 @@ function fangkuanselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            console.log(type + "=新车二手车放款=" + msg);
+            alert(type + "=新车二手车放款=" + msg);
         }
     })
 
@@ -288,10 +276,8 @@ function fangkuanselect() {
         url: "/manager/visual/getMoneyPathMap.do",
         data: {fangkuanname: sel,fangkuancity:value},
         success: function (data) {
-            var singular1=data[0]=null?'0':data[0];
-            var singular2=data[1]=null?'0':data[1];
-            var singular3=data[2]=null?'0':data[2];
-            var singular4=data[3]=null?'0':data[3];
+            var summarydata = [];
+            var timeline = [];
 
             var option_fangkuan_2 = {
                 title: {
@@ -339,10 +325,10 @@ function fangkuanselect() {
                             length: 2,//视觉引导线第一段的长度。
                             length2: 5, //视觉引导项第二段的长度。
                         },
-                        data: [{value: singular1, name: '3-10万'},
-                            {value: singular2, name: '10-20万'},
-                            {value: singular3, name: '20-50万'},
-                            {value: singular4, name: '50万以上'},
+                        data: [{value: 335, name: '3-10万'},
+                            {value: 310, name: '10-20万'},
+                            {value: 340, name: '20-50万'},
+                            {value: 330, name: '50万以上'},
                         ],
                     }
                 ]
@@ -351,7 +337,7 @@ function fangkuanselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            console.log(type + "=放款金额分布=" + msg);
+            alert(type + "=放款金额分布=" + msg);
         }
     })
     /* -------------------------------------------放款金额分布结束--------------------------------------- */
@@ -364,21 +350,10 @@ function fangkuanselect() {
         url: "/manager/visual/getNewOldCarsPathMap.do",
         data: {fangkuanname: sel,fangkuancity:value},
         success: function (data) {
-            var carstime = [];
-            var newcars = [];
-            var newcarsmoney = [];
-            var oldcars = [];
-            var oldcarsmoney = [];
-            var j;
-            for(var i=0;i<12;i++){
-                j=11-i;
-                carstime[i]=data[0][j]=null?'2019-'+i:data[0][j];
-                newcars[i]=data[1][j]=null?'0':data[1][j];
-                newcarsmoney[i]=data[2][j]=null?'0':data[2][j];
-                oldcars[i]=data[3][j]=null?'0':data[3][j];
-                oldcarsmoney[i]=data[4][j]=null?'0':data[4][j];
-            }
-            var option_fangkuan_3 = {
+            var summarydata = [];
+            var timeline = [];
+
+            option_fangkuan_3 = {
                 tooltip: {
                     trigger: 'axis',
                     axisPointer: { //坐标轴指示器配置项。
@@ -411,7 +386,7 @@ function fangkuanselect() {
                         axisPointer: {//坐标轴指示器配置项。
                             type: 'shadow'
                         },
-                        data: carstime,
+                        data: ['2018-04', '2018-05', '2018-06', '2018-07', '2018-08', '2018-09', '2018-10', '2018-11', '2018-12', '2019-01', '2019-02', '2019-03'],
                         axisLine: {symbolSize: ['10', '13'], lineStyle: {color: '#6A5046'}},//轴线
                     }
                 ],
@@ -436,25 +411,25 @@ function fangkuanselect() {
                     {
                         name: '新车放款订单数',
                         type: 'bar',
-                        data: newcars,
+                        data: [12, 39, 27, 23, 25, 76, 135, 162, 32, 20, 36, 33]
                     },
                     {
                         name: '新车放贷金额',
                         type: 'line',
                         yAxisIndex: 1,
-                        data: newcarsmoney,
+                        data: [32.0, 12.2, 33.3, 45.5, 46.3, 19.2, 28.3, 25.4, 43.0, 56.5, 18.0, 26.2]
                     },
                     {
                         name: '二手车放款订单数',
                         type: 'bar',
-                        data: oldcars,
+                        data: [26, 59, 90, 264, 287, 70, 175, 182, 48, 18, 60, 23]
                     },
 
                     {
                         name: '二手车放贷金额',
                         type: 'line',
                         yAxisIndex: 1,
-                        data: oldcarsmoney,
+                        data: [12.5, 22.2, 31.3, 14.5, 26.3, 10.2, 20.3, 23.4, 23.0, 16.5, 19.0, 16.2]
                     }
                 ],
                 /* color:['#e07805','#344bb1'] //全局调色板  好用到爆炸 */
@@ -463,7 +438,7 @@ function fangkuanselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            console.log(type + "=新车二手车放款金额=" + msg);
+            alert(type + "=新车二手车放款金额=" + msg);
         }
     })
 }
@@ -482,11 +457,8 @@ function diyaselect() {
         url: "/manager/visual/getPawnPathMap.do",
         data: {diyaname: sel,diyacity:value},
         success: function (data) {
-            var paw1=data[0]=null?'0':data[0];
-            var paw2=data[1]=null?'0':data[1];
-            var paw3=data[2]=null?'0':data[2];
-            var paw4=data[3]=null?'0':data[3];
-            var paw5=data[4]=null?'0':data[4];
+            var summarydata = [];
+            var timeline = [];
 
             var option_diyawancheng = {
                 tooltip: {
@@ -504,11 +476,11 @@ function diyaselect() {
                             length2: 7 //视觉引导项第二段的长度。
                         },
                         data: [
-                            {value: paw5, name: '60天以上'},
-                            {value: paw1, name: '0-15天', itemStyle: {color: '#985858'}},
-                            {value: paw2, name: '15-30天'},
-                            {value: paw3, name: '30-45天'},
-                            {value: paw4, name: '45-60天'}
+                            {value: 26, name: '60天以上'},
+                            {value: 49, name: '0-15天', itemStyle: {color: '#985858'}},
+                            {value: 42, name: '15-30天'},
+                            {value: 32, name: '30-45天'},
+                            {value: 29, name: '45-60天'}
                         ],
                         label: {
                             normal: {
@@ -526,7 +498,7 @@ function diyaselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            console.log(type + "=抵押完成天数=" + msg);
+            alert(type + "=抵押完成天数=" + msg);
         }
     })
 }
@@ -544,14 +516,8 @@ function cailiaoselect() {
         url: "/manager/visual/getRecyclePathMap.do",
         data: {cailiaoname: sel,cailiaocity:value},
         success: function (data) {
-            var recycletime = [];
-            var recycledata = [];
-            var j;
-            for(var i=0;i<9;i++){
-                j=8-i;
-                recycledata[i]=data[0][j]=null?'0':data[0][j];
-                recycletime[i]=data[1][j]=null?'2019-'+i:data[1][j];
-            }
+            var summarydata = [];
+            var timeline = [];
 
             var option_cailiaohuishou = {
                 tooltip: {
@@ -578,7 +544,7 @@ function cailiaoselect() {
                 xAxis: [
                     {
                         type: 'category',
-                        data: recycletime,
+                        data: ['2018-07', '2018-08', '2018-09', '2018-10', '2018-11', '2018-12', '2019-01', '2019-02', '2019-03'],
                         axisLine: {symbol: ['none', 'arrow'], symbolSize: ['10', '13'], lineStyle: {color: '#6A5046'}},//轴线
                     }
                 ],
@@ -595,7 +561,7 @@ function cailiaoselect() {
                     {
                         name: '材料回收',
                         type: 'line',
-                        data: recycledata
+                        data: [26, 59, 90, 264, 287, 70, 175, 182, 48]
                     },
 
                 ],
@@ -605,7 +571,7 @@ function cailiaoselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            console.log(type + "=抵押完成=" + msg);
+            alert(type + "=抵押完成=" + msg);
         }
     })
 }
@@ -625,8 +591,8 @@ function zhengxinselect() {
         url: "/manager/visual/getCreditPathMap.do",
         data: {zhengxinname: sel,zhengxincity:value},
         success: function (data) {
-            var credit1= data[0]=null?'0':data[0];
-            var credit2= data[1]=null?'0':data[1];
+            var summarydata = [];
+            var timeline = [];
 
             var option_zhengxinchaxun = {
                 tooltip: {
@@ -650,8 +616,8 @@ function zhengxinselect() {
                         radius: '62%',
                         center: ['51%', '45%'],//圆心位置[width，height]
                         data: [
-                            {value: credit1, name: '征信通过'},
-                            {value: credit2, name: '征信不通过'},
+                            {value: 335, name: '征信通过'},
+                            {value: 310, name: '征信不通过'},
                         ]
                     }
                 ]
@@ -661,7 +627,7 @@ function zhengxinselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            console.log(type + "=征信查询=" + msg);
+            alert(type + "=征信查询=" + msg);
         }
     })
 }
@@ -674,10 +640,8 @@ $.ajax({
     type : "POST",
     url : "/manager/visual/getAgePathMap.do",
     success : function(data) {
-        var age1=data[0]=null?'0':data[0];
-        var age2=data[1]=null?'0':data[1];
-        var age3=data[2]=null?'0':data[2];
-        var age4=data[3]=null?'0':data[3];
+        var summarydata = [];
+        var timeline = [];
          
 var option_kehunianling = {
     tooltip : {
@@ -704,10 +668,10 @@ var option_kehunianling = {
             radius : '65%',
             center: ['50%', '45%'],//圆心位置[width，height]
             data:[
-                {value:age1, name:'18-30岁'},
-                {value:age2, name:'30-40岁'},
-                {value:age3, name:'40-50岁'},
-                {value:age4, name:'50岁以上'}
+                {value:335, name:'18-30岁'},
+                {value:265, name:'30-40岁'},
+                {value:198, name:'40-50岁'},
+                {value:232, name:'50岁以上'}
             ]
         }
     ]
@@ -717,7 +681,7 @@ kehunianling.setOption(option_kehunianling);
 //ajax结尾
 },
 error : function(e, type, msg) {
-    console.log(type + "=客户年龄=" + msg);
+    alert(type + "=客户年龄=" + msg);
 }
 })
 /* -------------------------------------------客户年龄结束--------------------------------------- */
@@ -730,10 +694,8 @@ $.ajax({
     type : "POST",
     url : "/manager/visual/getCarsAgePathMap.do",
     success : function(data) {
-        var age1=data[0]=null?'0':data[0];
-        var age2=data[1]=null?'0':data[1];
-        var age3=data[2]=null?'0':data[2];
-        var age4=data[3]=null?'0':data[3];
+        var summarydata = [];
+        var timeline = [];
          
 var option_cheliangnianling = {
     tooltip : {
@@ -761,10 +723,10 @@ var option_cheliangnianling = {
             radius : '62%',
             center: ['50%', '45%'],//圆心位置[width，height]
             data:[
-                {value:age1, name:'1-3年'},
-                {value:age2, name:'3-6年'},
-                {value:age3, name:'6-9年'},
-                {value:age4, name:'9年以上'}
+                {value:335, name:'1-3年'},
+                {value:310, name:'3-6年'},
+                {value:256, name:'6-9年'},
+                {value:159, name:'9年以上'}
             ]
         }
     ]
@@ -774,7 +736,7 @@ cheliangnianling.setOption(option_cheliangnianling);
 //ajax结尾
 },
 error : function(e, type, msg) {
-    console.log(type + "=车辆年龄=" + msg);
+    alert(type + "=车辆年龄=" + msg);
 }
 })
 /* -------------------------------------------车辆年龄结束--------------------------------------- */
