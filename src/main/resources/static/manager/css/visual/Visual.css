@@ -241,6 +241,7 @@ select::-ms-expand { display: none; }
 }
 .paiming_table_style tr{
 	height: 35px;
+	width: 100px;
 }
 .paiming_table_style th:last-child,th:first-child{
 	color:#000000;

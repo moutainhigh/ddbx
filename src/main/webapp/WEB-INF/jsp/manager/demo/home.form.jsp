@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="${pageContext.request.contextPath }/manager/js/visual/echarts.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/manager/css/visual/Visual.css"  />
-
 
 <!-- 可视化数据图 -->
 <div class="content_visual">
@@ -19,23 +18,34 @@
                         <div style="width: 100%;height: 7%;">
                             <ul class="font_color_1 condition1" >
                                 <li>
-                                    <input type="text" placeholder="请输入代理商" />
+                                    <input type="text"  value="请输入代理商" onblur="baodanselect()"
+                                           onfocus="javascript:if(this.value=='请输入代理商')this.value='';" id="baodanval"/>
                                 </li>
                                 <li>
-                                    <div>请选择省份<i>></i></div>
+                                    <select id="baodansel" onchange="baodanselect()" >
+                                        <option selected value="0"> 请选择省份</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="list" items="${comm_city}">
+                                            <option value="${list.id}">${list.name}</option>
+                                        </c:forEach>
+                                    </select><i style="padding-left: 5px">></i>
                                 </li>
                                 <li>
-                                    <div>请选择时间<i>></i></div>
+                                    <select>
+                                        <option> 请选择时间</option>
+                                        <option> 10 per page</option>
+                                        <option> 5 per page</option>
+                                    </select><i>></i>
                                 </li>
                             </ul>
                         </div>
-                        <div style="height: 80%;width: 100%; position: relative; top: -20px; padding-left: 4%;" id="baodan">
+                        <div style="height: 80%;width: 100%; position: relative; top: -10px; padding-left: 4%;" id="baodan">
                         </div>
                     </div>
                     <div class="baodan_right">
                         <div class="paiming_top" >
                             <div class="paiming_top_border" style="width:40%;">
-                                <p class="danshu_style font_color_2">568<font>笔</font></p>
+                                <p class="danshu_style font_color_2">${billlist[0].amount }<font>笔</font></p>
                                 <p class="font_color_2 font_size_1">本月报单总量</p>
                             </div>
                         </div>
@@ -48,39 +58,39 @@
                                 </tr>
 
                                 <tr>
-                                    <td class="font_color_3">上海市</td>
-                                    <td class="font_size_3 font_color_4">232</td>
+                                    <td class="font_color_3">${rankinglist[0].name }</td>
+                                    <td class="font_size_3 font_color_4">${rankinglist[0].sell }</td>
                                     <td ><div class="paiming_rank">1</div></td>
-                                    <td class="font_size_3 font_color_4">261</td>
-                                    <td class="font_color_3">快车道</td>
+                                    <td class="font_size_3 font_color_4">${gemslist[0].gems}</td>
+                                    <td class="font_color_3">${gemslist[0].name}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">北京市</td>
-                                    <td class="font_size_3 font_color_4">221</td>
+                                    <td class="font_color_3">${rankinglist[1].name }</td>
+                                    <td class="font_size_3 font_color_4">${rankinglist[1].sell }</td>
                                     <td ><div class="paiming_rank">2</div></td>
-                                    <td class="font_size_3 font_color_4">256</td>
-                                    <td class="font_color_3">快金所</td>
+                                    <td class="font_size_3 font_color_4">${gemslist[1].gems}</td>
+                                    <td class="font_color_3">${gemslist[1].name}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">广东省</td>
-                                    <td class="font_size_3 font_color_4">212</td>
+                                    <td class="font_color_3">${rankinglist[2].name }</td>
+                                    <td class="font_size_3 font_color_4">${rankinglist[2].sell }</td>
                                     <td ><div class="paiming_rank">3</div></td>
-                                    <td class="font_size_3 font_color_4">243</td>
-                                    <td class="font_color_3">快加认证</td>
+                                    <td class="font_size_3 font_color_4">${gemslist[2].gems}</td>
+                                    <td class="font_color_3">${gemslist[2].name}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">深圳市</td>
-                                    <td class="font_size_3 font_color_4">209</td>
+                                    <td class="font_color_3">${rankinglist[3].name }</td>
+                                    <td class="font_size_3 font_color_4">${rankinglist[3].sell }</td>
                                     <td ><div class="paiming_rank">4</div></td>
-                                    <td class="font_size_3 font_color_4">232</td>
-                                    <td class="font_color_3">金稻谷</td>
+                                    <td class="font_size_3 font_color_4">${gemslist[3].gems}</td>
+                                    <td class="font_color_3">${gemslist[3].name}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">福建市</td>
-                                    <td class="font_size_3 font_color_4">201</td>
+                                    <td class="font_color_3">${rankinglist[4].name }</td>
+                                    <td class="font_size_3 font_color_4">${rankinglist[4].sell }</td>
                                     <td ><div class="paiming_rank">5</div></td>
-                                    <td class="font_size_3 font_color_4">221</td>
-                                    <td class="font_color_3">中投信安</td>
+                                    <td class="font_size_3 font_color_4">${gemslist[4].gems}</td>
+                                    <td class="font_color_3">${gemslist[4].name}</td>
                                 </tr>
 
                             </table>
@@ -98,23 +108,34 @@
                         <div style="width: 100%;height: 7%;">
                             <ul class="font_color_1 condition1" >
                                 <li>
-                                    <input type="text" placeholder="请输入代理商" />
+                                    <input type="text"  value="请输入代理商" onblur="guojianselect()"
+                                           onfocus="javascript:if(this.value=='请输入代理商')this.value='';" id="guojianval"/>
                                 </li>
                                 <li>
-                                    <div>请选择省份<i>></i></div>
+                                    <select id="guojiansel" onchange="guojianselect()" >
+                                        <option selected value="0"> 请选择省份</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="list" items="${comm_city}">
+                                            <option value="${list.id}">${list.name}</option>
+                                        </c:forEach>
+                                    </select><i style="padding-left: 5px">></i>
                                 </li>
                                 <li>
-                                    <div>请选择时间<i>></i></div>
+                                    <select>
+                                        <option> 请选择时间</option>
+                                        <option> 10 per page</option>
+                                        <option> 5 per page</option>
+                                    </select><i>></i>
                                 </li>
                             </ul>
                         </div>
-                        <div style="height: 80%;width: 100%; position: relative; top: -20px; padding-left: 4%;" id="qichedaikuan">
+                        <div style="height: 80%;width: 100%; position: relative; top: -10px; padding-left: 4%;" id="qichedaikuan">
                         </div>
                     </div>
                     <div class="baodan_right">
                         <div class="paiming_top" >
                             <div class="paiming_top_border" style="width:40%;">
-                                <p class="danshu_style font_color_2">89<font>%</font></p>
+                                <p class="danshu_style font_color_2">${carspass }<font>%</font></p>
                                 <p class="font_color_2 font_size_1">本月报单总量</p>
                             </div>
                         </div>
@@ -179,13 +200,24 @@
                         <div style="width: 100%;height: 5%;">
                             <ul class="font_color_1 condition1" >
                                 <li>
-                                    <input type="text" placeholder="请输入代理商" />
+                                    <input type="text"  value="请输入代理商" onblur="fangkuanselect()"
+                                           onfocus="javascript:if(this.value=='请输入代理商')this.value='';" id="fangkuanval"/>
                                 </li>
                                 <li>
-                                    <div>请选择省份<i>></i></div>
+                                    <select id="fangkuansel" onchange="fangkuanselect()">
+                                        <option selected value="0"> 请选择省份</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="list" items="${comm_city}">
+                                            <option value="${list.id}">${list.name}</option>
+                                        </c:forEach>
+                                    </select><i style="padding-left: 5px">></i>
                                 </li>
                                 <li>
-                                    <div>请选择时间<i>></i></div>
+                                    <select>
+                                        <option> 请选择时间</option>
+                                        <option> 10 per page</option>
+                                        <option> 5 per page</option>
+                                    </select><i>></i>
                                 </li>
                             </ul>
                         </div>
@@ -201,17 +233,17 @@
                     <div class="baodan_right">
                         <div class="paiming_top" style="margin-top: 10%;">
                             <div class="paiming_top_border" style="width:45%;float: left;">
-                                <p class="danshu_style font_color_2">598<font>笔</font></p>
+                                <p class="danshu_style font_color_2">${loanlist[0].amount}<font>笔</font></p>
                                 <p class="font_color_2 font_size_1">本月放款总订单</p>
                             </div>
                             <div class="paiming_top_border" style="width: 50%;float: right;">
-                                <p class="danshu_style font_color_2">5625263.23<font>元</font></p>
+                                <p class="danshu_style font_color_2">${Math.round(loan * 100)/100}<font>元</font></p>
                                 <p class="font_color_2 font_size_1">本月放款均金额</p>
                             </div>
                         </div>
 
                         <div class="paiming_top_border" style="width: 100%; margin-top: 5%;">
-                            <p class="danshu_style font_color_2">6585245.26<font>元</font></p>
+                            <p class="danshu_style font_color_2">${Math.ceil(loanlist[0].money) }<font>元</font></p>
                             <p class="font_color_2 font_size_1">本月累计放款总订单总金额</p>
                         </div>
                         <div class="paiming_table">
@@ -273,12 +305,12 @@
                         <div class="  font_color_title" style="margin-bottom: 2%;">抵押完成情况</div>
                         <div class="paiming_top" style="margin-top: 0;">
                             <div class="paiming_bottom_border" style="width:46%;float: left;">
-                                <p class="danshu_style font_color_2">298<font>笔</font></p>
+                                <p class="danshu_style font_color_2">${fklist[0].amount }<font>笔</font></p>
                                 <p class="font_color_2 font_size_1">本月已放款未完成</p>
                                 <p class="font_color_2 font_size_1">抵押的订单总数</p>
                             </div>
                             <div class="paiming_bottom_border" style="width: 50%;float: right;">
-                                <p class="danshu_style font_color_2">2325263.23<font>元</font></p>
+                                <p class="danshu_style font_color_2">${Math.ceil(fklist[0].money) }<font>元</font></p>
                                 <p class="font_color_2 font_size_1">本月已放款未完成</p>
                                 <p class="font_color_2 font_size_1">抵押的订单金额</p>
                             </div>
@@ -286,13 +318,24 @@
                         <div style="width: 100%;height: 5%;margin-top: 25px;">
                             <ul class="font_color_1 condition1" >
                                 <li>
-                                    <input type="text" placeholder="请输入代理商" />
+                                    <input type="text"  value="请输入代理商" onblur="diyaselect()"
+                                           onfocus="javascript:if(this.value=='请输入代理商')this.value='';" id="diyaval"/>
                                 </li>
                                 <li>
-                                    <div>请选择省份<i>></i></div>
+                                    <select id="diyasel" onchange="diyaselect()">
+                                        <option selected value="0"> 请选择省份</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="list" items="${comm_city}">
+                                            <option value="${list.id}">${list.name}</option>
+                                        </c:forEach>
+                                    </select><i style="padding-left: 5px">></i>
                                 </li>
                                 <li>
-                                    <div>请选择时间<i>></i></div>
+                                    <select>
+                                        <option> 请选择时间</option>
+                                        <option> 10 per page</option>
+                                        <option> 5 per page</option>
+                                    </select><i>></i>
                                 </li>
                             </ul>
                         </div>
@@ -305,13 +348,24 @@
                         <div style="width: 100%;height: 7%;">
                             <ul class="font_color_1 condition1" >
                                 <li>
-                                    <input type="text" placeholder="请输入代理商" />
+                                    <input type="text"  value="请输入代理商" onblur="cailiaoselect()"
+                                           onfocus="javascript:if(this.value=='请输入代理商')this.value='';" id="cailiaoval"/>
                                 </li>
                                 <li>
-                                    <div>请选择省份<i>></i></div>
+                                    <select id="cailiaosel" onchange="cailiaoselect()">
+                                        <option selected value="0"> 请选择省份</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="list" items="${comm_city}">
+                                            <option value="${list.id}">${list.name}</option>
+                                        </c:forEach>
+                                    </select><i style="padding-left: 5px">></i>
                                 </li>
                                 <li>
-                                    <div>请选择时间<i>></i></div>
+                                    <select>
+                                        <option> 请选择时间</option>
+                                        <option> 10 per page</option>
+                                        <option> 5 per page</option>
+                                    </select><i>></i>
                                 </li>
                             </ul>
                         </div>
@@ -338,11 +392,19 @@
                             <div style="width: 100%;height: 7%;">
                                 <ul class="font_color_1 condition2" >
                                     <li>
-                                        <input type="text" placeholder="请输入代理商" />
+                                        <input type="text"  value="请输入代理商" onblur="yuqiselect()"
+                                               onfocus="javascript:if(this.value=='请输入代理商')this.value='';" id="yuqival"/>
                                     </li>
                                     <li>
-                                        <div>请选择省份<i>></i></div>
+                                        <select id="yuqisel" onchange="yuqiselect()">
+                                            <option selected value="0"> 请选择省份</option>
+                                            <option value="0"> 全部</option>
+                                            <c:forEach var="list" items="${comm_city}">
+                                                <option value="${list.id}">${list.name}</option>
+                                            </c:forEach>
+                                        </select><i style="padding-left: 5px">></i>
                                     </li>
+
                                 </ul>
 
                             </div>
@@ -413,10 +475,16 @@
                         <div style="width: 100%;height: 5%;">
                             <ul class="font_color_1 condition1" >
                                 <li style="margin-left: 5px;">
-                                    <input type="text" placeholder="请输入代理商" />
+                                    <input type="text"  value="请输入代理商" onblur="dailiselect()"
+                                           onfocus="javascript:if(this.value=='请输入代理商')this.value='';" id="dailival"/>
                                 </li>
+
                                 <li>
-                                    <div>请选择时间<i>></i></div>
+                                    <select>
+                                        <option> 请选择时间</option>
+                                        <option> 10 per page</option>
+                                        <option> 5 per page</option>
+                                    </select><i>></i>
                                 </li>
                             </ul>
                         </div>
@@ -432,13 +500,24 @@
                         <div style="width: 100%;height: 5%;margin-top: 25px;">
                             <ul class="font_color_1 condition1" >
                                 <li>
-                                    <input type="text" placeholder="请输入代理商" />
+                                    <input type="text"  value="请输入代理商" onblur="zhengxinselect()"
+                                           onfocus="javascript:if(this.value=='请输入代理商')this.value='';" id="zhengxinval"/>
                                 </li>
                                 <li>
-                                    <div>请选择省份<i>></i></div>
+                                    <select id="zhengxinsel" onchange="zhengxinselect()">
+                                        <option selected value="0"> 请选择省份</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="list" items="${comm_city}">
+                                            <option value="${list.id}">${list.name}</option>
+                                        </c:forEach>
+                                    </select><i style="padding-left: 5px">></i>
                                 </li>
                                 <li>
-                                    <div>请选择时间<i>></i></div>
+                                    <select>
+                                        <option> 请选择时间</option>
+                                        <option> 10 per page</option>
+                                        <option> 5 per page</option>
+                                    </select><i>></i>
                                 </li>
                             </ul>
                         </div>
@@ -481,8 +560,15 @@
                     <div style="width: 100%;height: 5%;margin-top: 25px;">
                         <ul class="font_color_1 condition1"  >
                             <li style="text-align: left; margin-left: 5px;">
-                                <div>请选择时间<i>></i></div>
+                                <select id="dianzisel" onchange="dianziselect()" >
+                                    <option selected value="0"> 请选择省份</option>
+                                    <option value="0"> 全部</option>
+                                    <c:forEach var="list" items="${comm_city}">
+                                        <option value="${list.id}">${list.name}</option>
+                                    </c:forEach>
+                                </select><i style="padding-left: 5px">></i>
                             </li>
+
                         </ul>
                     </div>
                     <div style="height: 80%;width: 100%;" id="zijinzhouzhuan">
@@ -499,10 +585,21 @@
 <script type="text/javascript">
     window.onload =function(){
         document.getElementById("form_visual_form2").style.display="none";
+
+        //加载可视化组件
+        baodanselect();
+        guojianselect();
+        fangkuanselect();
+        diyaselect();
+        cailiaoselect();
+        zhengxinselect();
+        dailiselect();
+        yuqiselect();
+        dianziselect();
     };
-
-
 </script>
+
+
 
 
 
