@@ -100,7 +100,7 @@ function baodanselect(){
 //ajax结尾
         },
         error : function(e, type, msg) {
-            alert(type + "=报单统计=" + msg);
+            console.log(type + "=报单统计=" + msg);
         }
     })
 }
@@ -197,7 +197,7 @@ function guojianselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            alert(type + "=汽车贷款=" + msg);
+            console.log(type + "=汽车贷款=" + msg);
         }
     })
 }
@@ -273,7 +273,7 @@ function fangkuanselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            alert(type + "=新车二手车放款=" + msg);
+            console.log(type + "=新车二手车放款=" + msg);
         }
     })
 
@@ -351,7 +351,7 @@ function fangkuanselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            alert(type + "=放款金额分布=" + msg);
+            console.log(type + "=放款金额分布=" + msg);
         }
     })
     /* -------------------------------------------放款金额分布结束--------------------------------------- */
@@ -463,7 +463,7 @@ function fangkuanselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            alert(type + "=新车二手车放款金额=" + msg);
+            console.log(type + "=新车二手车放款金额=" + msg);
         }
     })
 }
@@ -526,7 +526,7 @@ function diyaselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            alert(type + "=抵押完成天数=" + msg);
+            console.log(type + "=抵押完成天数=" + msg);
         }
     })
 }
@@ -605,7 +605,7 @@ function cailiaoselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            alert(type + "=抵押完成=" + msg);
+            console.log(type + "=抵押完成=" + msg);
         }
     })
 }
@@ -661,7 +661,7 @@ function zhengxinselect() {
 //ajax结尾
         },
         error: function (e, type, msg) {
-            alert(type + "=征信查询=" + msg);
+            console.log(type + "=征信查询=" + msg);
         }
     })
 }
@@ -717,7 +717,7 @@ kehunianling.setOption(option_kehunianling);
 //ajax结尾
 },
 error : function(e, type, msg) {
-    alert(type + "=客户年龄=" + msg);
+    console.log(type + "=客户年龄=" + msg);
 }
 })
 /* -------------------------------------------客户年龄结束--------------------------------------- */
@@ -774,7 +774,7 @@ cheliangnianling.setOption(option_cheliangnianling);
 //ajax结尾
 },
 error : function(e, type, msg) {
-    alert(type + "=车辆年龄=" + msg);
+    console.log(type + "=车辆年龄=" + msg);
 }
 })
 /* -------------------------------------------车辆年龄结束--------------------------------------- */
