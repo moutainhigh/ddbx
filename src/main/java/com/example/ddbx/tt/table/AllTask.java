@@ -1,21 +1,23 @@
 package com.example.ddbx.tt.table;
 
-import com.alibaba.druid.pool.DruidPooledConnection;
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
-import com.example.ddbx.tt.tool.*;
+import com.example.ddbx.tt.tool.Config;
+import com.example.ddbx.tt.tool.DbCtrl;
+import com.example.ddbx.tt.tool.DbTools;
+import com.example.ddbx.tt.tool.Tools;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
+
+
 
 public class AllTask extends DbCtrl {
     private final String title = "全部任务";
-    private String orderString = "ORDER BY dt_add DESC"; // 默认排序
+    private String orderString = "ORDER BY dt_edit DESC"; // 默认排序
     private boolean canDel = false;
     private boolean canAdd = false;
     private final String classAgpId = "32"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
     public boolean agpOK = false;// 默认无权限
-
     public AllTask() {
         super("dd_icbc_erp");
         AdminAgp adminAgp = new AdminAgp();
@@ -33,74 +35,7 @@ public class AllTask extends DbCtrl {
             adminAgp.closeConn();
         }
     }
-    /**
-     * 获取处理过程显示数据
-     * @param request
-     */
-    public TtList getclgc(){
-        DbTools myDbTools=new DbTools();
-        String sql="select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort";
-        TtList clgc_list = null;
-        try {
-            clgc_list = myDbTools.reclist(sql);
-        }catch (Exception e) {
-            Tools.logError(e.getMessage(), true, false);
-        }finally {
-            myDbTools.closeConn();
-        }
-        return clgc_list;
 
-
-
-    }
-    /**
-     * 查询订单下所有任务板块
-     * @return
-     */
-    public TtList getdd_icbc_erp(int icbc_id) {
-        String sql="select type_id from dd_icbc_erp where icbc_id="+icbc_id;
-        return Tools.reclist(sql);
-    }
-    /**
-     * 获取订单单个版块类型 所有进度数据
-     *
-     * @return
-     */
-    public TtList geterplist(int id, int type_id) {
-        String sql = "select " +
-                " e.*, " +
-                " (select  " +
-                " s2.name as now_name " +
-                " from  " +
-                " (select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort) s1 " +
-                " LEFT JOIN sys_modal s2 ON s2.id_uplevel=s1.id " +
-                " where s1.id=e.type_id and s2.sort=e.now_status) as now_name," +
-                " a.name as admin_name" +
-                " from dd_icbc_erp_result e " +
-                "LEFT JOIN admin a ON a.id=e.mid_add " +
-                "where e.qryid=" + id + " and e.type_id=" + type_id;
-        TtList list = Tools.reclist(sql);
-        for(int i=0;i<list.size();i++){
-            TtMap map=list.get(i);
-            TtMap map1=Tools.recinfo("select r1.id,r1.dt_edit from  dd_icbc_erp_result r1 where r1.qryid="+id+" and r1.type_id="+type_id+" and r1.id!="+map.get("id")+" and r1.id<"+map.get("id")+" ORDER BY r1.id  DESC limit 1");
-            map.put("s_time",map1.get("dt_edit"));
-        }
-        System.out.println("list:"+list);
-        return list;
-    }
-    /**
-     * 获取订单详细信息
-     *
-     * @param id
-     * @return
-     */
-    public TtMap geticbc_detail(int id) {
-        String sql = "select * from  " +
-                "dd_icbc i " +
-                "LEFT JOIN dd_icbc_materials im ON im.icbc_id=i.id " +
-                "where i.id=" + id;
-        return Tools.recinfo(sql);
-    }
 
     /**
      * @param {type} {type}
@@ -140,7 +75,29 @@ public class AllTask extends DbCtrl {
                     break;
                 case "5":
 
-
+                    String icbcid = info.get("icbc_id");
+//                        System.out.println("id::"+id);
+                    //征信查询
+                    String zxsql = "SELECT * FROM dd_icbc_erp_result WHERE icbc_id =" + icbcid + " and now_status = 2";
+                    TtList zxlist = Tools.reclist(zxsql);
+                    request.setAttribute("zx_list", zxlist);
+                    //征信通融
+                    String trsql = "SELECT * FROM dd_icbc_erp_result WHERE icbc_id =" + icbcid + " AND now_status = 7";
+                    TtList trlist = Tools.reclist(trsql);
+                    request.setAttribute("tr_list", trlist);
+                    //汽车评估
+                    String qcsql = "SELECT * FROM dd_icbc_cars WHERE icbc_id =" + icbcid;
+                    TtMap qcMap = Tools.recinfo(qcsql);
+                    request.setAttribute("qc_Map", qcMap);
+                    //开卡申请
+                    String kksql = "SELECT * FROM icbc_kk WHERE icbc_id =" + icbcid;
+                    TtMap kkMap = Tools.recinfo(kksql);
+                    System.out.println("kk:"+kkMap);
+                    request.setAttribute("kkMap", kkMap);
+                    //汽车贷款
+                    String dksql = "SELECT * FROM dd_icbc_materials WHERE icbc_id =" + icbcid;
+                    TtMap dkMap = Tools.recinfo(dksql);
+                    request.setAttribute("dk_Map", dkMap);
 
                     break;
                 default:
@@ -154,9 +111,8 @@ public class AllTask extends DbCtrl {
         }
         if (post.get("type_id") != null && !post.get("type_id").equals("")) {
             request.setAttribute("type_id", post.get("type_id"));
-
-            TtList erplist= geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id")));
-            if ( erplist!= null && erplist.size() > 0) {
+            TtList erplist=geterplist(Integer.valueOf(post.get("id")), Integer.valueOf(post.get("type_id")));
+            if ( erplist!= null &&erplist.size() > 0) {
                 request.setAttribute("erplist",erplist);
             }
         }
@@ -181,6 +137,82 @@ public class AllTask extends DbCtrl {
         request.setAttribute("infodb", info);//infodb为TtMap的info
         request.setAttribute("id", nid);
         request.setAttribute("sHideButton","true");//隐藏保存提交和取消返回标志
+    }
+
+    /**
+     * 获取订单详细信息
+     *
+     * @param id
+     * @return
+     */
+    public TtMap geticbc_detail(int id) {
+        String sql = "select * from  " +
+                "dd_icbc i " +
+                "LEFT JOIN dd_icbc_materials im ON im.icbc_id=i.id " +
+                "where i.id=" + id;
+        return Tools.recinfo(sql);
+    }
+
+    /**
+     * 查询订单下所有任务板块
+     *
+     * @return
+     */
+    public TtList getdd_icbc_erp(int icbc_id) {
+        String sql = "select type_id from dd_icbc_erp where icbc_id=" + icbc_id;
+        return Tools.reclist(sql);
+    }
+
+    /**
+     * 获取处理过程显示数据
+     *
+     * @param request
+     */
+    public TtList getclgc() {
+        TtMap minfo = Tools.minfo();// 当前登陆用户信息
+        TtMap infoAgp =Tools.recinfo("select * from fs where id="+minfo.get("fsid"));// 用户所属角色组信息
+        String strAgp = "," + infoAgp.get("purview_map"); // 此角色组拥有的权限集合
+        System.out.println("purview_map:"+strAgp);
+        String sql = "select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort";
+        TtList ttList=Tools.reclist(sql);
+        TtList newlist=new TtList();
+        for(int i=0;i<ttList.size();i++){
+            TtMap map=ttList.get(i);
+            if(strAgp.contains(","+map.get("id")+",")){
+                TtMap nmap=ttList.get(i);
+                newlist.add(nmap);
+            }
+        }
+        System.out.println("newlist:"+Tools.jsonEncode(newlist));
+        return newlist;
+    }
+
+    /**
+     * 获取订单单个版块类型 所有进度数据
+     *
+     * @return
+     */
+    public TtList geterplist(int id, int type_id) {
+        String sql = "select " +
+                " e.*, " +
+                " (select  " +
+                " s2.name as now_name " +
+                " from  " +
+                " (select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort) s1 " +
+                " LEFT JOIN sys_modal s2 ON s2.id_uplevel=s1.id " +
+                " where s1.id=e.type_id and s2.sort=e.now_status) as now_name," +
+                " a.name as admin_name" +
+                " from dd_icbc_erp_result e " +
+                "LEFT JOIN admin a ON a.id=e.mid_add " +
+                "where e.qryid=" + id + " and e.type_id=" + type_id;
+        TtList list = Tools.reclist(sql);
+        for(int i=0;i<list.size();i++){
+            TtMap map=list.get(i);
+            TtMap map1=Tools.recinfo("select r1.id,r1.dt_edit from  dd_icbc_erp_result r1 where r1.qryid="+id+" and r1.type_id="+type_id+" and r1.id!="+map.get("id")+" and r1.id<"+map.get("id")+" ORDER BY r1.id  DESC limit 1");
+            map.put("s_time",map1.get("dt_edit"));
+        }
+        System.out.println("list:"+list);
+        return list;
     }
 
     //list 处理
@@ -253,23 +285,23 @@ public class AllTask extends DbCtrl {
         super.closeConn();
     }
 
-
     /**
      * 获取erp所有版块类型数据
+     *
      * @return
      */
-    public static TtList geticbc_erp_type(){
-        TtList ttList=new TtList();
-        DbTools dbTools=new DbTools();
-        String sql="select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort";
-        try{
-            ttList=dbTools.reclist(sql);
-        }catch(Exception e){
+    public static TtList geticbc_erp_type() {
+        TtList ttList = new TtList();
+        DbTools dbTools = new DbTools();
+        String sql = "select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort";
+        try {
+            ttList = dbTools.reclist(sql);
+        } catch (Exception e) {
             Tools.logError(e.getMessage());
             if (Config.DEBUGMODE) {
                 e.printStackTrace();
             }
-        }finally{
+        } finally {
             dbTools.closeConn();
         }
         return ttList;
@@ -277,61 +309,13 @@ public class AllTask extends DbCtrl {
 
     /**
      * 获取erp 单个类型name
-     * @return
-     */
-    public static TtMap geticbc_erp_status(int id){
-        TtMap ttMap=new TtMap();
-        DbTools dbTools=new DbTools();
-        String sql="select id,name,sort from sys_modal where id="+id;
-        try{
-            ttMap=dbTools.recinfo(sql);
-        }catch(Exception e){
-            Tools.logError(e.getMessage());
-            if (Config.DEBUGMODE) {
-                e.printStackTrace();
-            }
-        }finally{
-            dbTools.closeConn();
-        }
-        return ttMap;
-    }
-    /**
-     * 获取erp 任务节点name
-     * @return
-     */
-    public static TtMap geticbc_erp_status_node(int type_id,int id1,int id2){
-        TtMap ttMap=new TtMap();
-        DbTools dbTools=new DbTools();
-        String sql="select " +
-                "s1.name as type_name, " +
-                "s2.name as now_name, " +
-                "s3.name as later_name " +
-                "from  " +
-                "(select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort) s1 " +
-                "LEFT JOIN sys_modal s2 ON s2.id_uplevel=s1.id " +
-                "LEFT JOIN sys_modal s3 ON s3.id_uplevel=s1.id " +
-                "where s1.id="+type_id+" and s2.sort="+id1+" and s3.sort="+id2;
-        try{
-            ttMap=dbTools.recinfo(sql);
-        }catch(Exception e){
-            Tools.logError(e.getMessage());
-            if (Config.DEBUGMODE) {
-                e.printStackTrace();
-            }
-        }finally{
-            dbTools.closeConn();
-        }
-        return ttMap;
-    }
-    /**
-     * 获取erp 任务节点name1
      *
      * @return
      */
-    public static TtMap get_sys_modal_name(int type_id, int id) {
+    public static TtMap geticbc_erp_status(int id) {
         TtMap ttMap = new TtMap();
         DbTools dbTools = new DbTools();
-        String sql = "select * from sys_modal where id_uplevel="+type_id+" and sort="+id;
+        String sql = "select id,name,sort from sys_modal where id=" + id;
         try {
             ttMap = dbTools.recinfo(sql);
         } catch (Exception e) {
@@ -344,4 +328,51 @@ public class AllTask extends DbCtrl {
         }
         return ttMap;
     }
+
+    /**
+     * 获取erp 任务节点name1
+     *
+     * @return
+     */
+    public static TtMap get_sys_modal_name(int type_id, int id) {
+        String sql = "select * from sys_modal where id_uplevel=" + type_id + " and sort=" + id;
+        return Tools.recinfo(sql);
+    }
+
+    /**
+     * 获取erp 任务节点name2
+     *
+     * @return
+     */
+    public static TtMap geticbc_erp_status_node(int type_id, int id1, int id2) {
+        TtMap ttMap = new TtMap();
+        DbTools dbTools = new DbTools();
+        String sql = "select  " +
+                "s1.name as type_name, " +
+                "s2.name as now_name, " +
+                "s3.name as later_name " +
+                "from  " +
+                "(select id,name,sort from sys_modal where type='rwcl' and id_uplevel=0 order by sort) s1 " +
+                "LEFT JOIN sys_modal s2 ON s2.id_uplevel=s1.id " +
+                "LEFT JOIN sys_modal s3 ON s3.id_uplevel=s1.id " +
+                "where s1.id=" + type_id + " and s2.sort=" + id1 + " and s3.sort=" + id2;
+        try {
+            ttMap = dbTools.recinfo(sql);
+        } catch (Exception e) {
+            Tools.logError(e.getMessage());
+            if (Config.DEBUGMODE) {
+                e.printStackTrace();
+            }
+        } finally {
+            dbTools.closeConn();
+        }
+        return ttMap;
+    }
+//    public static void main(String[] args) {
+//        TtMap ttMap= geticbc_erp_status_node(36,2);
+//
+//        System.out.println(ttMap);
+//    }
+
+
 }

@@ -26,6 +26,10 @@ import java.util.Map;
 
 @Controller
 public class HelloController {
+    /**
+     * 测试服务器上是否安好
+     * @return
+     */
     @RequestMapping("/")
     @ResponseBody
     public String hello() {

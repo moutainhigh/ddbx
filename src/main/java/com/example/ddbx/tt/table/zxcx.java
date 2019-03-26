@@ -106,7 +106,7 @@ public class zxcx extends DbCtrl {
             }
             if (tr_status.equals("1")) {
                 TtMap erpmap = Tools.recinfo("select * from dd_icbc_erp where icbc_id=" + id + " and type_id=42");
-                if (erpmap != null && !erpmap.equals("")) {
+                if (!erpmap.isEmpty()) {
                      //edit 通融板块
                     TtMap ttMap1 = new TtMap();
                     ttMap1.put("now_status", "5");

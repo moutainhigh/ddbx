@@ -76,4 +76,6 @@
   <script src="js/jquery-photo-gallery/jquery.photo.gallery.js"></script>
   <!-- 汉字拼音获取 -->
   <script src="js/namepy/namePY.js"></script>
+  <!-- laydate 日期选择器 -->
+  <script src="laydate/laydate.js"></script>
 </head>

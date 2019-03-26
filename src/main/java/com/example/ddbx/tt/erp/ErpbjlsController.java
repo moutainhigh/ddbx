@@ -26,6 +26,7 @@ public class ErpbjlsController {
     @ResponseBody
     public Map ajaxpost(String cl_type, int icbc_id, HttpServletResponse response) throws IOException{
 
+        System.out.println("类型："+cl_type);
         Map map = new HashMap();
 
         if("zx_zdr".equals(cl_type) || "zx_po".equals(cl_type) || "zx_gh1".equals(cl_type) || "zx_gh2".equals(cl_type)){
@@ -52,6 +53,12 @@ public class ErpbjlsController {
             TtList dklist = Tools.reclist(dksql);
             map.put("zxlist", dklist);
             System.out.println("dkkkkk"+dklist);
+        }
+        if("kasq".equals(cl_type)){
+            String qcsql = "SELECT * FROM dd_icbc_erp_result WHERE icbc_id =" + icbc_id + " AND now_status = 18";
+            TtList qclist = Tools.reclist(qcsql);
+            System.out.println("开卡申请："+qclist);
+            map.put("zxlist", qclist);
         }
 
         return map;

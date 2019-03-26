@@ -22,16 +22,21 @@ public class DataDic {
     public static TtMap dic_tr_status = new TtMap();
     public static TtMap dic_zx1_tag = new TtMap();
     public static TtMap dic_cars_type = new TtMap();
-    public static TtMap dic_aj_date= new TtMap();
-    public static TtMap dic_dz_type= new TtMap();
-    public static TtMap dic_hyzk= new TtMap();
-    public static TtMap dic_xl= new TtMap();
-    public static TtMap dic_jzzk= new TtMap();
-    public static TtMap dic_dwxz= new TtMap();
-    public static TtMap dic_sshy= new TtMap();
-    public static TtMap dic_zy= new TtMap();
-    public static TtMap dic_zw= new TtMap();
-    public static TtMap dic_kk_status= new TtMap();
+    public static TtMap dic_aj_date = new TtMap();
+    public static TtMap dic_dz_type = new TtMap();
+    public static TtMap dic_hyzk = new TtMap();
+    public static TtMap dic_xl = new TtMap();
+    public static TtMap dic_jzzk = new TtMap();
+    public static TtMap dic_dwxz = new TtMap();
+    public static TtMap dic_sshy = new TtMap();
+    public static TtMap dic_zy = new TtMap();
+    public static TtMap dic_zw = new TtMap();
+    public static TtMap dic_kk_status = new TtMap();
+    public static TtMap dic_cars_source = new TtMap();
+    public static TtMap dic_cars_property = new TtMap();
+    public static TtMap dic_car_status = new TtMap();
+    public static TtMap dic_car_gear_box = new TtMap();
+    public static TtMap dic_car_color = new TtMap();
     public static synchronized void initDic() {
         if (dicYesOrNo.size() > 0) { // 已经初始化过了
             return;
@@ -145,5 +150,45 @@ public class DataDic {
         dic_kk_status.put("2", "开卡成功");
         dic_kk_status.put("3", "开卡失败");
         dic_kk_status.put("4", "回退补件");
+        /*国产/进口*/
+        dic_cars_source.put("0", "请选择");
+        dic_cars_source.put("1", "国产");
+        dic_cars_source.put("2", "进口");
+        /*使用性质*/
+        dic_cars_property.put("0", "请选择");
+        dic_cars_property.put("1", "营运");
+        dic_cars_property.put("2", "非营运");
+        /*车辆状况*/
+        dic_car_status.put("0", "请选择");
+        dic_car_status.put("1", "优秀");
+        dic_car_status.put("2", "良好");
+        dic_car_status.put("3", "一般");
+        /*变速箱*/
+        dic_car_gear_box.put("0", "请选择");
+        dic_car_gear_box.put("1","自动");
+        dic_car_gear_box.put("2","手动");
+        /*车辆颜色*/
+        dic_car_color.put("0", "请选择");
+        dic_car_color.put("1","黑");
+        dic_car_color.put("2","白");
+        dic_car_color.put("3","灰");
+        dic_car_color.put("4","红");
+        dic_car_color.put("5","银");
+        dic_car_color.put("6","蓝");
+        dic_car_color.put("7","金");
+        dic_car_color.put("8","棕");
+        dic_car_color.put("9","橙");
+        dic_car_color.put("10","黄");
+        dic_car_color.put("11","紫");
+        dic_car_color.put("12","绿");
+        dic_car_color.put("13","褐");
+        dic_car_color.put("14","栗");
+        dic_car_color.put("15","米");
+        dic_car_color.put("16","银灰");
+        dic_car_color.put("17","青");
+        dic_car_color.put("18","香槟");
+        dic_car_color.put("19","咖啡");
+        dic_car_color.put("20","天山");
+        dic_car_color.put("21","其他色");
     }
 }

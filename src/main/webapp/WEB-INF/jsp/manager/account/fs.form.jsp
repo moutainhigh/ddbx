@@ -180,8 +180,8 @@
 														/ttAjax?do=opt&cn=kjb_user&id=3&mid_add=100000
 														//显示创建人id为100000的所有用户，默认选择id为3的记录
 														* */
-				objacl('#state_id', '#city_id', '/ttAjax?do=opt&cn=comm_citys&id=3&state_id=', '${infodb.state_id}', '${infodb.city_id}');
-				objacl('#city_id', '#zone_id', '/ttAjax?do=opt&cn=comm_zones&id=3&cityid=', '${infodb.city_id}', '${infodb.zone_id}');
+				objacl('#state_id', '#city_id', '/ttAjax?do=opt&cn=comm_citys&id=0&state_id=', '${infodb.state_id}', '${infodb.city_id}');
+				objacl('#city_id', '#zone_id', '/ttAjax?do=opt&cn=comm_zones&id=0&cityid=', '${infodb.city_id}', '${infodb.zone_id}');
 			</script>
 		</div>
 	</div>
