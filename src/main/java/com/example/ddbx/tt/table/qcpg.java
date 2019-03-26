@@ -313,14 +313,22 @@ public class qcpg extends DbCtrl {
     @Override
     public void doGetForm(HttpServletRequest request, TtMap post) {
 
+        long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
+        TtMap info = info(nid);
+        System.out.println("info:---"+info);
+        String icbcid = info.get("icbc_id");
+
         //查询进件客户列表
         qcpg qcpg = new qcpg();
         TtList getAllOrderName1 = qcpg.selectAllOrderName();
         request.setAttribute("names",getAllOrderName1);
 
-        long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
-        TtMap info = info(nid);
-        System.out.println("info:---"+info);
+        //车辆信息
+        String sql = "select * from dd_icbc_cars where icbc_id=" + icbcid;
+        TtMap cars = Tools.recinfo(sql);
+        request.setAttribute("cars", cars);
+
+
         String jsonInfo = Tools.jsonEncode(info);
         request.setAttribute("info", jsonInfo);//info为json后的info
         request.setAttribute("infodb", info);//infodb为TtMap的info

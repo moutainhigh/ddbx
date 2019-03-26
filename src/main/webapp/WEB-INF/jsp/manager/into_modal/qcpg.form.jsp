@@ -10,6 +10,7 @@
     if (!Tools.myIsNull(infodb.get("id_uplevel"))) {
         id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
     }
+    TtMap cars = (TtMap) request.getAttribute("cars");
 %>
 <input id="gems_id" name="gems_id" value="<%=minfo.get("id")%>" type="hidden" />
 <input id="gems_fs_id" name="gems_fs_id" value="<%=minfo.get("fsid")%>" type="hidden" />
@@ -82,46 +83,52 @@
                 </div>
             </div>
 
+            <%
+
+                int brid = 0;
+                if (cars.get("brid") != null && !cars.get("brid").equals("")) {
+                    brid = Integer.parseInt(cars.get("brid"));
+                }
+
+                String sp = Tools.dicopt("car_brand_v2", brid);//品牌
+
+            %>
             <div class="form-group">
-                <label class="col-sm-2 control-label"></label>
+                <label class="col-sm-2 control-label">品牌车型</label>
                 <div class="col-sm-10">
                     <div class="row inline-from">
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <span class="input-group-addon">车型</span>
-                                <select class="form-control" id="" name="carid">
-                                    <option selected = "selected">请选择</option>
-                                    <option value="1">本田</option>
-                                    <option value="2">别克</option>
-                                    <option value="3">宝马</option>
+                                <span class="input-group-addon">品牌</span>
+                                <select name="carid" id="carid" class="form-control">
+                                    <option value="0">请选择</option>
+                                    <%=sp%>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <span class="input-group-addon"></span>
-                                <select class="form-control" id="" name="seid">
-                                    <option selected = "selected">请选择</option>
-                                    <option value="1">本田</option>
-                                    <option value="2">别克</option>
-                                    <option value="3">宝马</option>
+                                <span class="input-group-addon">车系</span>
+                                <select name="seid" id="seid" class="form-control">
+                                    <option value="0">请选择</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <span class="input-group-addon"></span>
-                                <select class="form-control" id="" name="brid">
-                                    <option selected = "selected">请选择</option>
-                                    <option value="1">本田</option>
-                                    <option value="2">别克</option>
-                                    <option value="3">宝马</option>
+                                <span class="input-group-addon">型号</span>
+                                <select name="brid" id="brid" class="form-control">
+                                    <option value="0">请选择</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <script>
+                objacl('#carid', '#seid', '/ttAjax?do=opt&cn=car_series_v2&id=0&brand_id=', '${cars.brid}', '${cars.seid}');
+                objacl('#seid', '#brid', '/ttAjax?do=opt&cn=car_model_v2&id=0&series_id=', '${infodb.seid}', '${infodb.carid}');
+            </script>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label"></label>
@@ -185,38 +192,43 @@
                 </div>
             </div>
 
+
+            <%
+                String sh = Tools.dicopt("comm_states", 0);//省
+            %>
             <div class="form-group">
-                <label class="col-sm-2 control-label"></label>
+                <label class="col-sm-2 control-label">上牌地址</label>
                 <div class="col-sm-10">
                     <div class="row inline-from">
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">所在省</span>
-                                <select class="form-control" id="" name="local_states">
-                                    <option selected = "selected">请选择</option>
-                                    <option value="1">安徽省</option>
-                                    <option value="2">北京市</option>
-                                    <option value="3">福建省</option>
-                                    <option value="4">甘肃省</option>
-                                    <option value="5">贵州省</option>
-                                    <option value="6">广西省</option>
+                                <select name="local_states" id="local_states" class="form-control">
+                                    <option value="0">请选择</option>
+                                    <%=sh%>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">所在市</span>
-                                <select class="form-control" id="" name="local_citys">
-                                    <option selected = "selected">请选择</option>
-                                    <option value="1">安徽省</option>
-                                    <option value="2">北京市</option>
-                                    <option value="3">福建省</option>
-                                    <option value="4">甘肃省</option>
-                                    <option value="5">贵州省</option>
-                                    <option value="6">广西省</option>
+                                <select name="local_citys" id="local_citys" class="form-control">
+                                    <option value="0">请选择</option>
                                 </select>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                objacl('#local_states', '#local_citys', '/ttAjax?do=opt&cn=comm_citys&id=0&state_id=', '${cars.local_states}', '${cars.local_citys}');
+            </script>
+
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <div class="row inline-from">
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">车牌号码</span>
