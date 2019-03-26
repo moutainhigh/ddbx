@@ -2,7 +2,7 @@
  * @Description: 常用功能方法汇总。包括字符串类，数据库类，日期操作类，文件类
  * @Author: tt
  * @Date: 2018-12-12 17:55:41
- * @LastEditTime: 2019-03-17 22:34:21
+ * @LastEditTime: 2019-03-18 17:48:49
  * @LastEditors: tt
  */
 package com.example.ddbx.tt.tool;
@@ -728,7 +728,7 @@ public class Tools {
   }
 
   /**
-   * dicOpt_c,显示某个表里所有的id和name值的<option value=
+   * dicOpt,显示某个表里所有的id和name值的<option value=
    * "id">name</option>的HTML代码，指定name字段名和id字段名
    * ttDic为字典名称，演示在DataDic里面的字典，defValue为默认选中的值
    */
@@ -743,9 +743,9 @@ public class Tools {
 
   /**
    * dicOpt_c,显示某个表里所有的id和name值的<option value=
-   * "id">name</option>的HTML代码，指定name字段名和id字段名 tbName为表名，id为默认选中id
+   * "id">name</option>的HTML代码，指定name字段名和id字段名 tbName为表名，id为默认选中id,暂未使用。
    */
-  public static String dicopt_c(String tbName, long id, String nameFiled, String idField) {
+  public static String dicopt(String tbName, long id, String nameFiled, String idField, String re) {
     if (Tools.myIsNull(nameFiled)) {
       nameFiled = "name";
     }
@@ -1524,4 +1524,5 @@ public class Tools {
     String result = "<div style=\"padding-left:15px;\" class=\"input-group date form_datetime col-md-"+width+"\" data-date=\"\" data-date-format=\""+dataFormat+"\" data-link-field=\""+fieldName+"\"><input class=\"form-control\" size=\"16\" type=\"text\" value=\""+defValue+"\" readonly><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-remove\"></span></span><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-th\"></span></span></div><input type=\"hidden\" id=\""+fieldName+"\" name=\""+fieldName+"\" value=\"\" /><br/>";
     return result;
   }
+
 }

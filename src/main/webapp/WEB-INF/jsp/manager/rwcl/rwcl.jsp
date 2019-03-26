@@ -109,7 +109,7 @@
                                                 &&ttMap.get("now_status")!=null
                                                 &&!ttMap.get("now_status").equals("")
                                         ){
-                                            System.out.println("***********88"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
+                                            System.out.println("***********"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
                                             switch (ttMap.get("now_name")){
                                                 case "开始":
                                                     erp_msg=erp_msg+"modal/begin.jsp";

@@ -49,6 +49,7 @@ public class MyTask extends DbCtrl {
         System.out.println("tab:" + post.get("tab"));
         System.out.println("type_id:" + info.get("type_id"));
         System.out.println("later_status:" + info.get("later_status"));
+        String icbcid = info.get("icbc_id");
         //erp任务各板块处理
         if (post.get("tab") != null && !post.get("tab").equals("")) {
             switch (post.get("tab")) {
@@ -71,12 +72,13 @@ public class MyTask extends DbCtrl {
 
                     break;
                 case "4":
-
+                    //车辆信息
+                    String sql = "select * from dd_icbc_cars where icbc_id=" + icbcid;
+                    TtMap cars = Tools.recinfo(sql);
+                    request.setAttribute("cars", cars);
                     break;
                 case "5":
-
-                    String icbcid = info.get("icbc_id");
-//                        System.out.println("id::"+id);
+                    //System.out.println("id::"+id);
                     //征信查询
                     String zxsql = "SELECT * FROM dd_icbc_erp_result WHERE icbc_id =" + icbcid + " and now_status = 2";
                     TtList zxlist = Tools.reclist(zxsql);
@@ -106,9 +108,14 @@ public class MyTask extends DbCtrl {
 
             }
         }
-        TtList clgc_list=getclgc();
-        if (clgc_list!= null && clgc_list.size() > 0) {
-            request.setAttribute("clgc_list",clgc_list);
+        //主板块信息
+        TtMap icbc = geticbc_detail(Integer.valueOf(post.get("icbc_id")));
+        request.setAttribute("icbc", icbc);
+
+
+        TtList clgc_list = getclgc();
+        if (clgc_list != null && clgc_list.size() > 0) {
+            request.setAttribute("clgc_list", clgc_list);
         }
         if (post.get("type_id") != null && !post.get("type_id").equals("")) {
             request.setAttribute("type_id", post.get("type_id"));
@@ -131,7 +138,7 @@ public class MyTask extends DbCtrl {
         TtMap modals = get_sys_modal_name(Integer.valueOf(post.get("type_id")), Integer.valueOf(info.get("later_status")));
         request.setAttribute("modals", modals);
 
-        request.setAttribute("icbc", geticbc_detail(Integer.valueOf(post.get("icbc_id"))));
+
         String jsonInfo = Tools.jsonEncode(info);
 
         request.setAttribute("info", jsonInfo);//info为json后的info
@@ -147,9 +154,14 @@ public class MyTask extends DbCtrl {
      * @return
      */
     public TtMap geticbc_detail(int id) {
-        String sql = "select * from  " +
+        String sql = "select *," +
+                "a.name as admin_name," +
+                "f.name as fs_name" +
+                " from  " +
                 "dd_icbc i " +
                 "LEFT JOIN dd_icbc_materials im ON im.icbc_id=i.id " +
+                "LEFT JOIN admin a ON a.id=i.gems_id " +
+                "LEFT JOIN fs f ON f.id=i.gems_fs_id " +
                 "where i.id=" + id;
         return Tools.recinfo(sql);
     }
@@ -171,20 +183,20 @@ public class MyTask extends DbCtrl {
      */
     public TtList getclgc() {
         TtMap minfo = Tools.minfo();// 当前登陆用户信息
-        TtMap infoAgp =Tools.recinfo("select * from fs where id="+minfo.get("fsid"));// 用户所属角色组信息
+        TtMap infoAgp = Tools.recinfo("select * from fs where id=" + minfo.get("fsid"));// 用户所属角色组信息
         String strAgp = "," + infoAgp.get("purview_map"); // 此角色组拥有的权限集合
-        System.out.println("purview_map:"+strAgp);
+        System.out.println("purview_map:" + strAgp);
         String sql = "select * from sys_modal where type='rwcl' and id_uplevel=0 order by sort";
-        TtList ttList=Tools.reclist(sql);
-        TtList newlist=new TtList();
-        for(int i=0;i<ttList.size();i++){
-            TtMap map=ttList.get(i);
-            if(strAgp.contains(","+map.get("id")+",")){
-                TtMap nmap=ttList.get(i);
+        TtList ttList = Tools.reclist(sql);
+        TtList newlist = new TtList();
+        for (int i = 0; i < ttList.size(); i++) {
+            TtMap map = ttList.get(i);
+            if (strAgp.contains("," + map.get("id") + ",")) {
+                TtMap nmap = ttList.get(i);
                 newlist.add(nmap);
             }
         }
-        System.out.println("newlist:"+Tools.jsonEncode(newlist));
+        System.out.println("newlist:" + Tools.jsonEncode(newlist));
         return newlist;
     }
 
@@ -192,6 +204,7 @@ public class MyTask extends DbCtrl {
 //    String s=",21,10,27,22,26,11,66,67,89,64,65,110,111,112,9,31,36,113,114,1,115,144,5,14,88,148,149,81,98,127,126,125,13,124,123,122,121,146,120,145,93,92,91,90,97,96,95,94,23,25,6,38,63,102,101,104,103,106,20,105,119,108,109,118,39,107,117,72,71,74,73,76,100,75,43,44,45,46,51,24,50,33,32,41,40,80,48,78,49,77,79,82,83,70,84,85,86,19,87,42,47,28,29,116,8,7,4,99,3,30,";
 //    System.out.println("hahah:"+s.contains(",63,"));
 //    }
+
     /**
      * 获取订单单个版块类型 所有进度数据
      *
