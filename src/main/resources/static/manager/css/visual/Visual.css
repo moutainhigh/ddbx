@@ -130,11 +130,7 @@ select::-ms-expand { display: none; }
 	text-align: center;
 	border-radius:4px;
 	margin: auto;
-	margin-top: 5px;
-}
-.paiming_table{
-	margin-top:5%;
-	width: 100%;
+    margin-top:5px;
 }
 .paiming_button{
 	background: #F7A043;
@@ -232,16 +228,22 @@ select::-ms-expand { display: none; }
 
 
 /* 表格排名样式 */
+
+.paiming_table{
+	margin-top:5%;
+	width: 100%;
+}
 .paiming_table_style{
 	width: 90%;
 	margin: auto;
+
 }
 .paiming_table_style th{
 	font-size: 13px;
+	width: 100px;
 }
 .paiming_table_style tr{
 	height: 35px;
-	width: 100px;
 }
 .paiming_table_style th:last-child,th:first-child{
 	color:#000000;
@@ -251,14 +253,22 @@ select::-ms-expand { display: none; }
 	font-size: 14px;
 }
 .paiming_table_style th:last-child,td:last-child{
-	text-align:left;
+	text-align: left;
 }
 .paiming_table_style th:first-child,td:first-child{
 	text-align: right;
 }
-.paiming_table_style .font_color_1{
+
+.paiming_table_style .font_color_4{
 	text-align: center;
 	width: 35px;
+}
+.paiming_table_style  .asdf{
+	width: 40px;
+}
+.paiming_table_style tr td:nth-child(3){
+	width: 32px;
+	text-align: center;
 }
 
 

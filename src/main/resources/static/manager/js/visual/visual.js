@@ -21,11 +21,14 @@ function baodanselect(){
     var obj = document.getElementById('baodansel'); //定位id
     var index = obj.selectedIndex; // 选中索引
     var value = obj.options[index].value; // 选中值
+    var obj1 = document.getElementById('baodantime'); //定位id
+    var index1 = obj1.selectedIndex; // 选中索引
+    var time = obj1.options[index1].value; // 选中值
     $.ajax({
         dataType : "json",
         type : "POST",
         url : "/manager/visual/getPathMap.do",
-        data : {baodanname:sel,baodancity:value},
+        data : {baodanname:sel,baodancity:value,baodantime:time},
         success : function(data) {
             var summarydata = [];
             var timeline = [];
@@ -116,12 +119,14 @@ function guojianselect() {
     var obj = document.getElementById('guojiansel'); //定位id
     var index = obj.selectedIndex; // 选中索引
     var value = obj.options[index].value; // 选中值
-
+    var obj1 = document.getElementById('guojiantime'); //定位id
+    var index1 = obj1.selectedIndex; // 选中索引
+    var time = obj1.options[index1].value; // 选中值
     $.ajax({
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getCarPathMap.do",
-        data : {guojianname:sel,guojiancity:value},
+        data : {guojianname:sel,guojiancity:value,guojiantime:time},
         success: function (data) {
             var carpasstime = [];
             var carpassdata = [];
@@ -209,11 +214,14 @@ function fangkuanselect() {
     var obj = document.getElementById('fangkuansel'); //定位id
     var index = obj.selectedIndex; // 选中索引
     var value = obj.options[index].value; // 选中值
+    var obj1 = document.getElementById('fangkuantime'); //定位id
+    var index1 = obj1.selectedIndex; // 选中索引
+    var time = obj1.options[index1].value; // 选中值
     $.ajax({
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getCarFkPathMap.do",
-        data: {fangkuanname: sel,fangkuancity:value},
+        data: {fangkuanname: sel,fangkuancity:value,fangkuantime:time},
         success: function (data) {
             var newcar=data[0]=null?'0':data[0];
             var oldcar=data[1]=null?'0':data[1];
@@ -286,7 +294,7 @@ function fangkuanselect() {
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getMoneyPathMap.do",
-        data: {fangkuanname: sel,fangkuancity:value},
+        data: {fangkuanname: sel,fangkuancity:value,fangkuantime:time},
         success: function (data) {
             var singular1=data[0]=null?'0':data[0];
             var singular2=data[1]=null?'0':data[1];
@@ -362,7 +370,7 @@ function fangkuanselect() {
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getNewOldCarsPathMap.do",
-        data: {fangkuanname: sel,fangkuancity:value},
+        data: {fangkuanname: sel,fangkuancity:value,fangkuantime:time},
         success: function (data) {
             var carstime = [];
             var newcars = [];
@@ -476,11 +484,14 @@ function diyaselect() {
     var obj = document.getElementById('diyasel'); //定位id
     var index = obj.selectedIndex; // 选中索引
     var value = obj.options[index].value; // 选中值
+    var obj1 = document.getElementById('diyatime'); //定位id
+    var index1 = obj1.selectedIndex; // 选中索引
+    var time = obj1.options[index1].value; // 选中值
     $.ajax({
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getPawnPathMap.do",
-        data: {diyaname: sel,diyacity:value},
+        data: {diyaname: sel,diyacity:value,diyatime:time},
         success: function (data) {
             var paw1=data[0]=null?'0':data[0];
             var paw2=data[1]=null?'0':data[1];
@@ -497,11 +508,11 @@ function diyaselect() {
                     {
                         name: '抵押完成情况',
                         type: 'pie',
-                        radius: '80%',
+                        radius: '75%',
                         roseType: 'angle',
                         labelLine: {
-                            length: 7,//视觉引导线第一段的长度。
-                            length2: 7 //视觉引导项第二段的长度。
+                            length: 3,//视觉引导线第一段的长度。
+                            length2: 5 //视觉引导项第二段的长度。
                         },
                         data: [
                             {value: paw5, name: '60天以上'},
@@ -514,7 +525,7 @@ function diyaselect() {
                             normal: {
                                 textStyle: {
                                     color: 'rgba(255, 255, 255, 0.3)',
-                                    fontSize: 13,
+                                    fontSize: 12,
                                     color: '#505050'
                                 }
                             }
@@ -538,11 +549,14 @@ function cailiaoselect() {
     var obj = document.getElementById('cailiaosel'); //定位id
     var index = obj.selectedIndex; // 选中索引
     var value = obj.options[index].value; // 选中值
+    var obj1 = document.getElementById('cailiaotime'); //定位id
+    var index1 = obj1.selectedIndex; // 选中索引
+    var time = obj1.options[index1].value; // 选中值
     $.ajax({
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getRecyclePathMap.do",
-        data: {cailiaoname: sel,cailiaocity:value},
+        data: {cailiaoname: sel,cailiaocity:value,cailiaotime:time},
         success: function (data) {
             var recycletime = [];
             var recycledata = [];
@@ -619,11 +633,14 @@ function zhengxinselect() {
     var obj = document.getElementById('zhengxinsel'); //定位id
     var index = obj.selectedIndex; // 选中索引
     var value = obj.options[index].value; // 选中值
+    var obj1 = document.getElementById('zhengxintime'); //定位id
+    var index1 = obj1.selectedIndex; // 选中索引
+    var time = obj1.options[index1].value; // 选中值
     $.ajax({
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getCreditPathMap.do",
-        data: {zhengxinname: sel,zhengxincity:value},
+        data: {zhengxinname: sel,zhengxincity:value,zhengxintime:time},
         success: function (data) {
             var credit1= data[0]=null?'0':data[0];
             var credit2= data[1]=null?'0':data[1];
@@ -780,7 +797,7 @@ error : function(e, type, msg) {
 /* -------------------------------------------车辆年龄结束--------------------------------------- */
 
 /* -------------------------------------------(垫资)资金使用时长开始--------------------------------------- */
-var zijinzhouzhuan = echarts.init(document.getElementById('zijinzhouzhuan'));
+/*var zijinzhouzhuan = echarts.init(document.getElementById('zijinzhouzhuan'));
 function dianziselect(){
     var obj = document.getElementById('dianzisel'); //定位id
     var index = obj.selectedIndex; // 选中索引
@@ -798,7 +815,7 @@ var option_zijinzhouzhuan = {
     legend: {
         x : 'center',//图例组件离容器下侧的距离
         width: 300,//图例组件的宽度
-        data:['资金使用时长',/*'资金周转率'*/],
+        data:['资金使用时长',/!*'资金周转率'*!/],
         itemWidth:15,//图例标记的图形宽度
         itemHeight:15,//图例标记的图形高度
         textStyle:{
@@ -843,7 +860,7 @@ var option_zijinzhouzhuan = {
     ]
 };
 zijinzhouzhuan.setOption(option_zijinzhouzhuan);
-}
+}*/
 /* -------------------------------------------(垫资)资金使用时长结束--------------------------------------- */
 
 /* -------------------------------------------代理商综合能力分析开始--------------------------------------- */
