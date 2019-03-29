@@ -552,7 +552,7 @@
                                 <div class="font_color_1 " style="margin-top: 7px;float: left;margin-left: 10px;">所属省份</div>
                                 <button class="paiming_button" style="float: left;margin-left: 8px;margin-top: 4px;">客户年龄</button>
                             </div>
-                            <div id="kehunianling" style="height: 90%;width: 100%;position: relative; top: -20px; ">
+                            <div id="kehunianling" style="height: 90%;width: 100%;position: relative; top: -10px; ">
                             </div>
                         </div>
                         <div class="form2_box_1">
@@ -560,7 +560,7 @@
                                 <div class="font_color_1 " style=" margin-top: 7px;float: left;">新车</div>
                                 <button class="paiming_button" style="float: left;margin-left: 8px;margin-top: 4px;">车龄</button>
                             </div>
-                            <div id="cheliangnianling" style="height: 90%;width: 100%;position: relative; top: -20px; ">
+                            <div id="cheliangnianling" style="height: 90%;width: 100%;position: relative; top: -10px; ">
                             </div>
                         </div>
                     </div>
