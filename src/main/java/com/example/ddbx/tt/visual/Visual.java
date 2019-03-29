@@ -37,17 +37,7 @@ public class Visual {
 
     //输入sql语句进行查询操作
     private static TtList selectSQL(String sql){
-        DbTools myDbTools=new DbTools();
-        TtList allCustomer = null;
-        try {
-            allCustomer = myDbTools.reclist(sql);
-            dbCtrl.recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
-        }catch (Exception e) {
-            Tools.logError(e.getMessage(), true, false);
-        }finally {
-            myDbTools.closeConn();
-        }
-        return allCustomer;
+        return Tools.reclist(sql);
     }
 
     //遍历查询到的数组，如果为空附一个初始值，并排序
