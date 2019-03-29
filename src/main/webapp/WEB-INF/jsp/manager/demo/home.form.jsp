@@ -8,7 +8,7 @@
 <div class="content_visual">
     <div class="form_visual" >
         <!-- <%--  数据图一  --%> -->
-        <div class="form_visual_form1" id="form_visual_form1" style="width: 1670px; height: 800px;display: block;">
+        <div class="form_visual_form1" id="form_visual_form1" style="width: 1690px; height: 840px;display: block;">
             <div class="visual_form_top_box">
                 <!-- 报单统计开始 -->
                 <div class="visual_form_box">
@@ -31,10 +31,12 @@
                                     </select><i style="padding-left: 5px">></i>
                                 </li>
                                 <li>
-                                    <select>
-                                        <option> 请选择时间</option>
-                                        <option> 10 per page</option>
-                                        <option> 5 per page</option>
+                                    <select id="baodantime" onchange="baodanselect()">
+                                        <option selected value="0"> 请选择时间</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="list" items="${years }" >
+                                            <option value="${list}">${list}</option>
+                                        </c:forEach>
                                     </select><i>></i>
                                 </li>
                             </ul>
@@ -49,11 +51,11 @@
                                 <p class="font_color_2 font_size_1">本月报单总量</p>
                             </div>
                         </div>
-                        <div class="paiming_table">
+                        <div class="paiming_table" style="display: inline-block">
                             <table  class="paiming_table_style">
                                 <tr>
                                     <th >省份</th>
-                                    <th colspan="3" class="font_color_1">排名</th>
+                                    <th colspan="3" class="font_color_1 font_color_4">排名</th>
                                     <th >代理商</th>
                                 </tr>
 
@@ -96,7 +98,7 @@
                             </table>
                         </div>
                         <div style="width: 100%; height: 10%;margin-top: 2%;">
-                            <button class="paiming_button">更多</button>
+                            <div class="paiming_button" onclick="show_bjls('baodan')" style="cursor:pointer">更多</div>
                         </div>
                     </div>
                 </div>
@@ -121,10 +123,12 @@
                                     </select><i style="padding-left: 5px">></i>
                                 </li>
                                 <li>
-                                    <select>
-                                        <option> 请选择时间</option>
-                                        <option> 10 per page</option>
-                                        <option> 5 per page</option>
+                                    <select id="guojiantime" onchange="guojianselect()">
+                                        <option selected value="0"> 请选择时间</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="list" items="${years }" >
+                                            <option value="${list}">${list}</option>
+                                        </c:forEach>
                                     </select><i>></i>
                                 </li>
                             </ul>
@@ -136,57 +140,57 @@
                         <div class="paiming_top" >
                             <div class="paiming_top_border" style="width:40%;">
                                 <p class="danshu_style font_color_2">${carspass }<font>%</font></p>
-                                <p class="font_color_2 font_size_1">本月报单总量</p>
+                                <p class="font_color_2 font_size_1">本月汽车过件率</p>
                             </div>
                         </div>
                         <div class="paiming_table">
                             <table  class="paiming_table_style">
                                 <tr>
                                     <th >省份</th>
-                                    <th colspan="3" class="font_color_1">排名</th>
+                                    <th colspan="3" class="font_color_1 font_color_4">排名</th>
                                     <th >代理商</th>
                                 </tr>
 
                                 <tr>
-                                    <td class="font_color_3">上海市</td>
-                                    <td class="font_size_3 font_color_4">95%</td>
+                                    <td class="font_color_3  asdf">${cardpasscomm[0].name }</td>
+                                    <td class="font_size_3 font_color_4">${Math.round(cardpasscomm[0].rate*100/1) }%</td>
                                     <td ><div class="paiming_rank">1</div></td>
-                                    <td class="font_size_3 font_color_4">92%</td>
-                                    <td class="font_color_3">快车道</td>
+                                    <td class="font_size_3 font_color_4">${Math.round(cardpassgems[0].rate*100/1) }%</td>
+                                    <td class="font_color_3  asdf">${cardpassgems[0].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">北京市</td>
-                                    <td class="font_size_3 font_color_4">91%</td>
+                                    <td class="font_color_3">${cardpasscomm[1].name }</td>
+                                    <td class="font_size_3 font_color_4">${Math.round(cardpasscomm[1].rate*100/1) }%</td>
                                     <td ><div class="paiming_rank">2</div></td>
-                                    <td class="font_size_3 font_color_4">90%</td>
-                                    <td class="font_color_3">快金所</td>
+                                    <td class="font_size_3 font_color_4">${Math.round(cardpassgems[1].rate*100/1) }%</td>
+                                    <td class="font_color_3">${cardpassgems[1].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">广东省</td>
-                                    <td class="font_size_3 font_color_4">88%</td>
+                                    <td class="font_color_3">${cardpasscomm[2].name }</td>
+                                    <td class="font_size_3 font_color_4">${Math.round(cardpasscomm[2].rate*100/1) }%</td>
                                     <td ><div class="paiming_rank">3</div></td>
-                                    <td class="font_size_3 font_color_4">89%</td>
-                                    <td class="font_color_3">快加认证</td>
+                                    <td class="font_size_3 font_color_4">${Math.round(cardpassgems[2].rate*100/1) }%</td>
+                                    <td class="font_color_3">${cardpassgems[2].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">深圳市</td>
-                                    <td class="font_size_3 font_color_4">85%</td>
+                                    <td class="font_color_3">${cardpasscomm[3].name }</td>
+                                    <td class="font_size_3 font_color_4">${Math.round(cardpasscomm[3].rate*100/1) }%</td>
                                     <td ><div class="paiming_rank">4</div></td>
-                                    <td class="font_size_3 font_color_4">86%</td>
-                                    <td class="font_color_3">金稻谷</td>
+                                    <td class="font_size_3 font_color_4">${Math.round(cardpassgems[3].rate*100/1) }%</td>
+                                    <td class="font_color_3">${cardpassgems[3].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">福建市</td>
-                                    <td class="font_size_3 font_color_4">82%</td>
+                                    <td class="font_color_3">${cardpasscomm[4].name }</td>
+                                    <td class="font_size_3 font_color_4">${Math.round(cardpasscomm[4].rate*100/1) }%</td>
                                     <td ><div class="paiming_rank">5</div></td>
-                                    <td class="font_size_3 font_color_4">81%</td>
-                                    <td class="font_color_3">中投信安</td>
+                                    <td class="font_size_3 font_color_4">${Math.round(cardpassgems[4].rate*100/1) }%</td>
+                                    <td class="font_color_3">${cardpassgems[4].name }</td>
                                 </tr>
 
                             </table>
                         </div>
                         <div style="width: 100%; height: 10%;margin-top: 2%;">
-                            <button class="paiming_button">更多</button>
+                            <div class="paiming_button" onclick="show_bjls('guojian')" style="cursor:pointer">更多</div>
                         </div>
                     </div>
                 </div>
@@ -213,10 +217,12 @@
                                     </select><i style="padding-left: 5px">></i>
                                 </li>
                                 <li>
-                                    <select>
-                                        <option> 请选择时间</option>
-                                        <option> 10 per page</option>
-                                        <option> 5 per page</option>
+                                    <select id="fangkuantime" onchange="fangkuanselect()">
+                                        <option selected value="0"> 请选择时间</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="list" items="${years }" >
+                                            <option value="${list}">${list}</option>
+                                        </c:forEach>
                                     </select><i>></i>
                                 </li>
                             </ul>
@@ -250,50 +256,50 @@
                             <table  class="paiming_table_style">
                                 <tr>
                                     <th >省份</th>
-                                    <th colspan="3" class="font_color_1">排名</th>
+                                    <th colspan="3" class="font_color_1 font_color_4">排名</th>
                                     <th >代理商</th>
                                 </tr>
 
                                 <tr>
-                                    <td class="font_color_3">上海市</td>
-                                    <td class="font_size_3 font_color_4">92</td>
+                                    <td class="font_color_3">${rankingloanlist[0].name }</td>
+                                    <td class="font_size_3 font_color_4">${rankingloanlist[0].sell }</td>
                                     <td ><div class="paiming_rank">1</div></td>
-                                    <td class="font_size_3 font_color_4">92</td>
-                                    <td class="font_color_3">快车道</td>
+                                    <td class="font_size_3 font_color_4">${gemsloanlist[0].gems }</td>
+                                    <td class="font_color_3">${gemsloanlist[0].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">北京市</td>
-                                    <td class="font_size_3 font_color_4">91</td>
+                                    <td class="font_color_3">${rankingloanlist[1].name }</td>
+                                    <td class="font_size_3 font_color_4">${rankingloanlist[1].sell }</td>
                                     <td ><div class="paiming_rank">2</div></td>
-                                    <td class="font_size_3 font_color_4">90</td>
-                                    <td class="font_color_3">快金所</td>
+                                    <td class="font_size_3 font_color_4">${gemsloanlist[1].gems }</td>
+                                    <td class="font_color_3">${gemsloanlist[1].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">广东省</td>
-                                    <td class="font_size_3 font_color_4">88</td>
+                                    <td class="font_color_3">${rankingloanlist[2].name }</td>
+                                    <td class="font_size_3 font_color_4">${rankingloanlist[2].sell }</td>
                                     <td ><div class="paiming_rank">3</div></td>
-                                    <td class="font_size_3 font_color_4">89</td>
-                                    <td class="font_color_3">快加认证</td>
+                                    <td class="font_size_3 font_color_4">${gemsloanlist[2].gems }</td>
+                                    <td class="font_color_3">${gemsloanlist[2].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">深圳市</td>
-                                    <td class="font_size_3 font_color_4">85</td>
+                                    <td class="font_color_3">${rankingloanlist[3].name }</td>
+                                    <td class="font_size_3 font_color_4">${rankingloanlist[3].sell }</td>
                                     <td ><div class="paiming_rank">4</div></td>
-                                    <td class="font_size_3 font_color_4">86</td>
-                                    <td class="font_color_3">金稻谷</td>
+                                    <td class="font_size_3 font_color_4">${gemsloanlist[3].gems }</td>
+                                    <td class="font_color_3">${gemsloanlist[3].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">福建市</td>
-                                    <td class="font_size_3 font_color_4">82</td>
+                                    <td class="font_color_3">${rankingloanlist[4].name }</td>
+                                    <td class="font_size_3 font_color_4">${rankingloanlist[4].sell }</td>
                                     <td ><div class="paiming_rank">5</div></td>
-                                    <td class="font_size_3 font_color_4">81</td>
-                                    <td class="font_color_3">中投信安</td>
+                                    <td class="font_size_3 font_color_4">${gemsloanlist[4].gems }</td>
+                                    <td class="font_color_3">${gemsloanlist[4].name }</td>
                                 </tr>
 
                             </table>
                         </div>
                         <div style="width: 100%; height: 10%;margin-top: 2%;">
-                            <button class="paiming_button">更多</button>
+                            <div class="paiming_button" onclick="show_bjls('fangkan')" style="cursor:pointer">更多</div>
                         </div>
                     </div>
                 </div>
@@ -331,15 +337,17 @@
                                     </select><i style="padding-left: 5px">></i>
                                 </li>
                                 <li>
-                                    <select>
-                                        <option> 请选择时间</option>
-                                        <option> 10 per page</option>
-                                        <option> 5 per page</option>
+                                    <select id="diyatime" onchange="diyaselect()">
+                                        <option selected value="0"> 请选择时间</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="list" items="${years }" >
+                                            <option value="${list}">${list}</option>
+                                        </c:forEach>
                                     </select><i>></i>
                                 </li>
                             </ul>
                         </div>
-                        <div style="height: 68%;width: 92%; position: relative;" id="diyawancheng">
+                        <div style="height: 68%;width: 90%; position: relative;" id="diyawancheng">
 
                         </div>
                     </div>
@@ -361,10 +369,12 @@
                                     </select><i style="padding-left: 5px">></i>
                                 </li>
                                 <li>
-                                    <select>
-                                        <option> 请选择时间</option>
-                                        <option> 10 per page</option>
-                                        <option> 5 per page</option>
+                                    <select id="cailiaotime" onchange="cailiaoselect()">
+                                        <option selected value="0"> 请选择时间</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="list" items="${years }" >
+                                            <option value="${list}">${list}</option>
+                                        </c:forEach>
                                     </select><i>></i>
                                 </li>
                             </ul>
@@ -446,7 +456,7 @@
                                 </tr>
                             </table>
                             <div style="width: 100%; height: 10%;margin-top: 2%;">
-                                <button class="paiming_button">更多</button>
+                                <div class="paiming_button" onclick="show_bjls('yuqi')" style="cursor:pointer">更多</div>
                             </div>
                         </div>
                         <div style="height: 100%;width: 36%; float: left;">
@@ -480,10 +490,12 @@
                                 </li>
 
                                 <li>
-                                    <select>
-                                        <option> 请选择时间</option>
-                                        <option> 10 per page</option>
-                                        <option> 5 per page</option>
+                                    <select id="dailitime" onchange="dailiselect()">
+                                        <option selected value="0"> 请选择时间</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="list" items="${years }" >
+                                            <option value="${list}">${list}</option>
+                                        </c:forEach>
                                     </select><i>></i>
                                 </li>
                             </ul>
@@ -513,10 +525,12 @@
                                     </select><i style="padding-left: 5px">></i>
                                 </li>
                                 <li>
-                                    <select>
-                                        <option> 请选择时间</option>
-                                        <option> 10 per page</option>
-                                        <option> 5 per page</option>
+                                    <select id="zhengxintime" onchange="zhengxinselect()">
+                                        <option selected value="0"> 请选择时间</option>
+                                        <option value="0"> 全部</option>
+                                        <c:forEach var="year" items="${years }" >
+                                            <option value="${year}">${year}</option>
+                                        </c:forEach>
                                     </select><i>></i>
                                 </li>
                             </ul>
@@ -538,7 +552,7 @@
                                 <div class="font_color_1 " style="margin-top: 7px;float: left;margin-left: 10px;">所属省份</div>
                                 <button class="paiming_button" style="float: left;margin-left: 8px;margin-top: 4px;">客户年龄</button>
                             </div>
-                            <div id="kehunianling" style="height: 90%;width: 100%;position: relative; top: -20px; ">
+                            <div id="kehunianling" style="height: 90%;width: 100%;position: relative; top: -10px; ">
                             </div>
                         </div>
                         <div class="form2_box_1">
@@ -546,7 +560,7 @@
                                 <div class="font_color_1 " style=" margin-top: 7px;float: left;">新车</div>
                                 <button class="paiming_button" style="float: left;margin-left: 8px;margin-top: 4px;">车龄</button>
                             </div>
-                            <div id="cheliangnianling" style="height: 90%;width: 100%;position: relative; top: -20px; ">
+                            <div id="cheliangnianling" style="height: 90%;width: 100%;position: relative; top: -10px; ">
                             </div>
                         </div>
                     </div>
@@ -555,7 +569,7 @@
                 <!-- 客户和车辆画像结束 -->
 
                 <!-- 资金周转时长(垫资方)开始 -->
-                <div class="form2_box1">
+                <%--<div class="form2_box1">
                     <div class="  font_color_title" style="margin-bottom: 2%;">资金周转时长(垫资方)</div>
                     <div style="width: 100%;height: 5%;margin-top: 25px;">
                         <ul class="font_color_1 condition1"  >
@@ -573,13 +587,53 @@
                     </div>
                     <div style="height: 80%;width: 100%;" id="zijinzhouzhuan">
                     </div>
-                </div>
+                </div>--%>
                 <!-- 资金周转时长(垫资方)结束 -->
             </div>
         </div>
     </div>
 </div>
 
+
+<div class="modal fade in" id="addModal_tdtf" tabindex="-1" role="dialog" aria-labelledby="imgs_yyclLabel"
+     aria-hidden="false">
+    <div class="modal-dialog modal-lg" style="width: 400px;height: 600px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" align="center" id="aayyclModalLabel">代理商/省份排名</h4>
+            </div>
+            <div id="modal_add" class="modal-body modal-open"
+                 style="height:100%;border:1px solid #ccc;background-color:#F7F7F7;border-radius: 10px;margin:30px;">
+                <div class="paiming_table">
+                    <table  class="paiming_table_style">
+                        <tr>
+                            <th >省份</th>
+                            <th colspan="3" class="font_color_1 font_color_4">排名</th>
+                            <th >代理商</th>
+                        </tr>
+                        <%
+
+                            for(int i=0;i<10;i++ ){
+                        %>
+                            <tr>
+                                <td class="font_color_3">${rankingloanlist[0].name }</td>
+                                <td class="font_size_3 font_color_4">${rankingloanlist[0].sell }</td>
+                                <td ><div class="paiming_rank"><%= i+1%></div></td>
+                                <td class="font_size_3 font_color_4">${gemsloanlist[0].gems }</td>
+                                <td class="font_color_3">${gemsloanlist[0].name }</td>
+                            </tr>
+
+                        <% } %>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="closet" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/manager/js/visual/visual.js"></script>
 <script type="text/javascript">
@@ -595,8 +649,25 @@
         zhengxinselect();
         dailiselect();
         yuqiselect();
-        dianziselect();
+        /*dianziselect();*/
     };
+
+    function show_bjls(type) {
+        if(type == 'baodan'){
+
+        }
+        if(type == 'guojian'){
+
+        }
+        if(type == 'fangkuan'){
+
+        }
+        if(type == 'yuqi'){
+
+        }
+
+        $('#addModal_tdtf').modal({show: true});
+    }
 </script>
 
 

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  *  import java.io.IOException;
@@ -90,6 +92,7 @@ public class Visual {
         }
         return s;
     }
+
 
 
     //前台数据后台获取
@@ -190,27 +193,25 @@ public class Visual {
 
 
 
-        sql="select count(*) amount from dd_icbc_cars dic,dd_icbc di  " +
-                "  where month(dic.dt_add)=MONTH(SYSDATE()) " +
-                "   and YEAR(dic.dt_add)=year(SYSDATE()) " +
-                "   and di.id=dic.icbc_id  " +
-//                "   and di.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})" +
+        sql="select count(*) amount from dd_icbc_cars  " +
+                "  where month(dt_add)=MONTH(SYSDATE()) " +
+                "   and YEAR(dt_add)=year(SYSDATE()) " +
+//                "   and gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})" +
                 "";
         TtList carselect=selectSQL(sql);
 
-        sql="select count(*) amount from dd_icbc_cars dic,dd_icbc di  " +
-                "  where month(dic.dt_add)=MONTH(SYSDATE())  " +
-                "  and YEAR(dic.dt_add)=year(SYSDATE()) " +
-                "   and dic.bc_status=3  " +
-                "   and di.id=kic.icbc_id  " +
-//                "   and di.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})" +
+        sql="select count(*) amount from dd_icbc_cars  " +
+                "  where month(dt_add)=MONTH(SYSDATE())  " +
+                "  and YEAR(dt_add)=year(SYSDATE()) " +
+                "   and bc_status=3  " +
+//                "   and gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})" +
                 "";
         TtList carpass=selectSQL(sql);
         int carspass;
         if(carpass.size() == 0 || carpass == null){
             carspass=0;
         }else{
-            carspass=Integer.parseInt(carpass.get(0).get("amount"))/Integer.parseInt(carselect.get(0).get("amount"));
+            carspass=Integer.parseInt(carpass.get(0).get("amount"))*100/Integer.parseInt(carselect.get(0).get("amount"));
         }
         request.setAttribute("carspass",carspass);//汽车贷款通过          0
 
@@ -267,43 +268,44 @@ public class Visual {
         sql="select id,name from comm_states";
         TtList comm_city=selectSQL(sql);
         request.setAttribute("comm_city",comm_city );//省份列表
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+        Date date = new Date();
+        int formatDate = Integer.parseInt(sdf.format(date));
+        int[] years=new int[5];
+        for(int i=0;i<5;i++){
+            years[i]=formatDate-i;
+        }
+        request.setAttribute("years",years );//年份列表
     }
 
     //每月数据总单数折线图ajax前台获取           null,null,null
     @RequestMapping("/manager/visual/getPathMap.do")
     @ResponseBody
-    public Object[][] getPathMap(String baodanname,String baodancity){
+    public Object[][] getPathMap(String baodanname,String baodancity,String baodantime){
 
         //提取sql语句共同的部分
         String sql="select year(dt_add) year,month(dt_add) month,count(*) total " +
                    "  from dd_icbc " +
-                   "  where year(SYSDATE())-year(dt_add) < 2 " +
+                   "  where year(SYSDATE())-year(dt_add) < 6 " +
 //                   "  and gems_fs_id in(select id from fs where up_id=${up_id} or id =${id}) ";
                    "";
-        String sqlEdit=" GROUP BY year(dt_add),month(dt_add) ORDER BY dt_add DESC limit 9";
+        String sqlEdit="  GROUP BY year(dt_add),month(dt_add) ORDER BY dt_add DESC limit 9 ";
         //判断是否输入代理商,是否选择省份
         String gems_id=selectGemsId(baodanname);
-        if(baodanname.equals("请输入代理商") || baodanname.equals("") || baodanname == null){
-            if(baodancity.equals("0")){
-                sql += sqlEdit;
-            }else{
-                sql += "  and state_id= " +baodancity + sqlEdit;
-            }
-        }else{
-            if(baodancity.equals("0")){
-                sql += "  and gems_fs_id= " + gems_id + sqlEdit;
-            }else{
-                sql += "  and gems_fs_id= " + gems_id +
-                       "  and state_id= " + baodancity +sqlEdit;
-            }
-
+        if(!baodanname.equals("请输入代理商") && !baodanname.equals("")) {
+            sql += "  and gems_fs_id= " + gems_id;
         }
-
-        TtList chart=selectSQL(sql);//数据库查询操作
-        System.out.println(chart+"22222222222");
+        if(!baodancity.equals("0")){
+            sql += "  and state_id= " + baodancity;
+        }
+        //判断是否选择时间
+        if(!baodantime.equals("0")){
+            sql += " and year(dt_add)="+ baodantime;
+        }
+        TtList chart=selectSQL(sql+sqlEdit);//数据库查询操作
         object=new Object[2][9];
         object=returnList(chart);//遍历查询判断是否为空，排序，返回处理过的数据
-        System.out.println(object+"1111111111");
     return object;
     }
 
@@ -311,33 +313,29 @@ public class Visual {
     //汽车贷款通过率折线图ajax前台获取
     @RequestMapping("/manager/visual/getCarPathMap.do")
     @ResponseBody
-    public Object[][] getCarPathMap(String guojianname,String guojiancity) {
+    public Object[][] getCarPathMap(String guojianname,String guojiancity,String guojiantime) {
         //提取sql语句共同的部分
         String sql=" select year(dt_add) year,month(dt_add) month,count(*) total " +
                 " from dd_icbc_cars " +
                 " where bc_status=3 " +
 //                " and gems_fs_id in(select id from fs af where up_id=${up_id} or id =${id}) " +
-                " and year(SYSDATE())-year(dt_add) < 2 ";
+                " and year(SYSDATE())-year(dt_add) < 6 ";
         String sqlEdit=" GROUP BY year(dt_add),month(dt_add) ORDER BY dt_add DESC limit 9";
 
         //判断是否输入代理商，是否选择省份
         String gems_id=selectGemsId(guojianname);//获取输入代理商的id
-        if(guojianname.equals("请输入代理商") || guojianname.equals("") || guojianname == null){
-            if(guojiancity.equals("0")){
-                sql +=  sqlEdit;
-            }else{
-                sql += " and local_states=" + guojiancity + sqlEdit;
-            }
-        }else{
-            if(guojiancity.equals("0")){
-                sql += " and gems_fs_id=" + gems_id + sqlEdit;
-            }else{
-                sql += " and gems_fs_id=" + gems_id +
-                       " and local_states=" + guojiancity + sqlEdit;
-            }
+        if(!guojianname.equals("请输入代理商") && !guojianname.equals("")){
+            sql += " and gems_fs_id=" + gems_id;
         }
-
-        TtList chart=selectSQL(sql);//数据库查询操作
+        //判断是否选择省份
+        if(!guojiancity.equals("0")){
+            sql += " and local_states=" + guojiancity;
+        }
+        //判断是否选择时间
+        if(!guojiantime.equals("0")){
+            sql += " and year(dt_add)="+ guojiantime;
+        }
+        TtList chart=selectSQL(sql+sqlEdit);//数据库查询操作
         object=new Object[2][9];
         object=returnList(chart);//遍历查询判断是否为空，排序，返回处理过的数据
     return object;
@@ -347,7 +345,7 @@ public class Visual {
     //新旧汽车贷款分布扇形图ajax前台获取
     @RequestMapping("/manager/visual/getCarFkPathMap.do")
     @ResponseBody
-    public String[] getCarFkPathMap(String fangkuanname,String fangkuancity) {
+    public String[] getCarFkPathMap(String fangkuanname,String fangkuancity,String fangkuantime) {
         //拼接sql语句
         String sql="  select dic.car_type cartype,count(dic.car_type) cartotal  " +
                    "  from dd_icbc_cars dic  " +
@@ -362,23 +360,19 @@ public class Visual {
         String sqlEdit=" )  GROUP BY dic.car_type  ORDER BY dic.car_type ";
         //判断是否输入代理商
         String gems_id=selectGemsId(fangkuanname);
+        if(!fangkuanname.equals("") && !fangkuanname.equals("请输入代理商")){
+            sql += " and di.gems_fs_id= " + gems_id;
+        }
+        //判断是否选择省份
+        if(!fangkuancity.equals("0")){
+            sql += " and di.state_id= " + fangkuancity;
+        }
+        //判断是否选择时间
+        if(!fangkuantime.equals("0")){
 
-        if(fangkuanname.equals("请输入代理商") || fangkuanname.equals("") || fangkuanname == null){
-            if(fangkuancity.equals("0")){
-                sql += sqlEdit;
-            }else{
-                sql += " and di.state_id= " + fangkuancity + sqlEdit;
-            }
-        }else{
-            if(fangkuancity.equals("0")){
-                sql += " and di.gems_fs_id= " + gems_id + sqlEdit;
-            }else{
-                sql += " and di.state_id= " + fangkuancity +
-                       " and di.gems_fs_id= " + gems_id + sqlEdit;
-            }
         }
         //判读是否为空
-        TtList chart=selectSQL(sql);
+        TtList chart=selectSQL(sql+sqlEdit);
         string = new String[2];
         if(chart.size() < 2){
             if(chart.size()<1){
@@ -406,7 +400,7 @@ public class Visual {
     //贷款金额分布扇形图ajax前台获取     null,null,null,null
     @RequestMapping("/manager/visual/getMoneyPathMap.do")
     @ResponseBody
-    public String[] getMoneyPathMap(String fangkuanname,String fangkuancity) {
+    public String[] getMoneyPathMap(String fangkuanname,String fangkuancity,String fangkuantime) {
         //拼接sql语句
         String sql="select sum(case when di.lending_money >= 30000 and di.lending_money < 100000 then 1 end) singular1, " +
                 "     sum(case when di.lending_money >= 100000 and di.lending_money < 200000 then 1 end) singular2, " +
@@ -421,19 +415,16 @@ public class Visual {
 
         //判断是否输入代理商
         String gems_id=selectGemsId(fangkuanname);
-        if(fangkuanname.equals("请输入代理商") || fangkuanname.equals("") || fangkuanname == null){
-            if(fangkuancity.equals("0")){
-                sql = "";
-            }else{
-                sql += " and di.state_id= " + fangkuancity;
-            }
-        }else{
-            if(fangkuancity.equals("0")){
-                sql += " and di.gems_fs_id= " + gems_id;
-            }else{
-                sql += " and di.gems_fs_id= " + gems_id +
-                       " and di.state_id= " + fangkuancity;
-            }
+        if(!fangkuanname.equals("请输入代理商") && !fangkuanname.equals("")){
+            sql += " and di.gems_fs_id= " + gems_id;
+        }
+        //判断是否选择省份
+        if(!fangkuancity.equals("0")){
+            sql += " and di.state_id= " + fangkuancity;
+        }
+        //判断是否选择时间
+        if(!fangkuantime.equals("0")){
+
         }
         //判断是否为空
         TtList chart=selectSQL(sql);
@@ -458,7 +449,7 @@ public class Visual {
     //抵押完成天数分布扇形图ajax前台获取
     @RequestMapping("/manager/visual/getPawnPathMap.do")
     @ResponseBody
-    public String[] getPawnPathMap(String diyaname,String diyacity) {
+    public String[] getPawnPathMap(String diyaname,String diyacity,String diyatime) {
         //拼接sql语句
         String sql ="select sum(case when  to_days(pawn.d1) - to_days(pawn.d) < 15 then 1 end) paw1, " +
                 "       sum(case when to_days(pawn.d1) - to_days(pawn.d) >= 15 and to_days(pawn.d1) - to_days(pawn.d) < 30 then 1 end) paw2,  " +
@@ -479,23 +470,19 @@ public class Visual {
 
         //判断是否输入代理商
         String gems_id=selectGemsId(diyaname);
-        if(diyaname.equals("请输入代理商") || diyaname.equals("") || diyaname == null) {
-            if(diyacity.equals("0")){
-                sql += sqlEdit;
-            }else{
-                sql += " and di.state_id= " + diyacity + sqlEdit;
-            }
-        }else{
-            if(diyacity.equals("0")){
-                sql += " and di.gems_fs_id= " + gems_id + sqlEdit;
-            }else{
-                sql += " and di.gems_fs_id= " + gems_id +
-                       " and di.state_id= " + diyacity +sqlEdit;
-            }
+        if(!diyaname.equals("请输入代理商") && !diyaname.equals("")) {
+            sql += " and and di.gems_fs_id= " + gems_id;
         }
-
+        //判断是否选择城市
+        if(!diyacity.equals("0")){
+            sql += " and di.state_id= " + diyacity;
+        }
+        //判断是否选择时间
+        if(!diyatime.equals("0")){
+            sql += " and year(dier.dt_add)="+ diyatime;
+        }
         //判断是否为空
-        TtList chart=selectSQL(sql);
+        TtList chart=selectSQL(sql+sqlEdit);
         string = new String[5];
         for (int i = 1; i < 6; i++) {
             if(chart.size() == 0){
@@ -515,7 +502,7 @@ public class Visual {
     //征信查询分布扇形图ajax前台获取   null,null       0,1
     @RequestMapping("/manager/visual/getCreditPathMap.do")
     @ResponseBody
-    public String[] getCreditPathMap(String zhengxinname,String zhengxincity) {
+    public String[] getCreditPathMap(String zhengxinname,String zhengxincity,String zhengxintime) {
         //拼接sql语句
         String sql="select zx1.zxok_tag,zx2.zxok  " +
                 " from (select count(*) zxok_tag from dd_icbc_status dis,dd_icbc di " +
@@ -530,27 +517,22 @@ public class Visual {
 
         //判断是否输入代理商
         String gems_id=selectGemsId(zhengxinname);
-        if(zhengxinname.equals("请输入代理商") || zhengxinname.equals("") || zhengxinname == null) {
-            if(zhengxincity.equals("0")){
-                sql += sqlEdit + " ) zx2 ";
-            }else{
-                sql += " and di.state_id= "+ zhengxincity + sqlEdit +
-                       " and di.state_id= "+ zhengxincity +" ) zx2 ";
-            }
-        }else{
-            if(zhengxincity.equals("0")){
-                sql += " and di.gems_fs_id= "+ gems_id + sqlEdit +
-                       " and di.gems_fs_id= "+ gems_id +" ) zx2 ";
-            }else{
-                sql += " and di.gems_fs_id= "+ gems_id +
-                       " and di.state_id= "+ zhengxincity +sqlEdit +
-                       " and di.gems_fs_id= "+ gems_id +
-                       " and di.state_id= "+ zhengxincity +" ) zx2 ";
-            }
+        if(!zhengxinname.equals("请输入代理商") && !zhengxinname.equals("")){
+            sql += " and di.gems_fs_id= "+ gems_id;
+            sqlEdit += " and di.gems_fs_id= "+ gems_id;
         }
-
+        //判断是否点击选择城市
+        if(!zhengxincity.equals("0")){
+            sql += " and di.state_id= "+ zhengxincity;
+            sqlEdit += " and di.state_id= "+ zhengxincity;
+        }
+        //判断是否点击选择时间
+        if(!zhengxintime.equals("0")){
+            sql += " and YEAR(dis.dt_add)= "+ zhengxintime;
+            sqlEdit += " and YEAR(dis.dt_add)= "+ zhengxintime;
+        }
         //判断是否为空
-        TtList chart=selectSQL(sql);
+        TtList chart=selectSQL(sql+sqlEdit+" ) zx2 ");
         string = new String[2];
         if(chart.get(0).get("zxok_tag").equals("0")){
             string[0]="0";
@@ -623,35 +605,31 @@ public class Visual {
     //抵押材料回收分布图ajax前台获取   null,null,null
     @RequestMapping("/manager/visual/getRecyclePathMap.do")
     @ResponseBody
-    public Object[][] getRecyclePathMap(String cailiaoname,String cailiaocity) {
+    public Object[][] getRecyclePathMap(String cailiaoname,String cailiaocity,String cailiaotime) {
         //拼接sql语句
         String sql="select year(di.dt_add) year, " +
                    " month(di.dt_add) month,  " +
                    " count(*) total from dd_icbc di  " +
                    " where di.pledge=1  " +
 //                   " and di.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})  " +
-                   " and year(SYSDATE())-year(di.dt_add) < 2  " ;
+                   " and year(SYSDATE())-year(di.dt_add) < 6  " ;
         String sqlEdit= " GROUP BY year(di.dt_add),month(di.dt_add)  ORDER BY di.dt_add DESC limit 9";
 
         //判读是否输入代理商
         String gems_id=selectGemsId(cailiaoname);
-        if(cailiaoname.equals("请输入代理商") || cailiaoname.equals("") || cailiaoname == null) {
-            if(cailiaocity.equals("0")){
-                sql += sqlEdit;
-            }else{
-                sql += " and di.state_id= " + cailiaocity + sqlEdit;
-            }
-        }else{
-            if(cailiaocity.equals("0")){
-                sql += " and di.gems_fs_id= " + gems_id + sqlEdit;
-            }else{
-                sql += " and di.gems_fs_id= " + gems_id +
-                       " and di.state_id= " + cailiaocity +sqlEdit;
-            }
+        if(!cailiaoname.equals("请输入代理商") && !cailiaoname.equals("")) {
+            sql += " and di.gems_fs_id= " + gems_id;
         }
-
+        //判断是否选择城市
+        if(!cailiaocity.equals("0")){
+            sql += " and di.state_id= " + cailiaocity;
+        }
+        //判断是否选择时间
+        if(!cailiaotime.equals("0")){
+            sql += " and year(di.dt_add)="+ cailiaotime;
+        }
         //判断是否为空，并且排序
-        TtList chart=selectSQL(sql);
+        TtList chart=selectSQL(sql+sqlEdit);
         object=new Object[2][9];
         object=returnList(chart);
         return object;
@@ -661,33 +639,33 @@ public class Visual {
     //新旧车放款分布图ajax前台获取    null,null,null,null
     @RequestMapping("/manager/visual/getNewOldCarsPathMap.do")
     @ResponseBody
-    public Object[][] getNewOldCarsPathMap(String fangkuanname,String fangkuancity) {
+    public Object[][] getNewOldCarsPathMap(String fangkuanname,String fangkuancity,String fangkuantime) {
         //拼接sql语句
         String sql="   select newcars.year1,newcars.month1,oldcars.oldcon,oldcars.oldmoney,newcars.newcon,newcars.newmoney from " +
                 "  (select year(lending_date) year1,month(lending_date) month1, " +
                 "   count(*) oldcon,(sum(lending_money)/10000) oldmoney  " +
                 "   from dd_icbc  " +
-                "     where icbc_id in(select dic.icbc_id  " +
+                "     where id in(select dic.icbc_id  " +
                 "      from dd_icbc_cars dic,dd_icbc di  " +
                 "      where dic.car_type=2  " +
                 "      and di.id=dic.icbc_id  ";
         String sqlEdit=""+
 //                 "      and di.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})  " +
                 "     ) and lending_result=1  " +
-                "     and year(SYSDATE())-year(lending_date) < 2  " +
+                "     and year(SYSDATE())-year(lending_date) < 6  " +
                 "     GROUP BY year(lending_date),month(lending_date)  " +
                 "     ORDER BY lending_date DESC limit 12) oldcars, " +
                 "    (select year(lending_date) year1,month(lending_date) month1, " +
-                "   count(*) oldcon,(sum(lending_money)/10000) oldmoney  " +
+                "   count(*) newcon,(sum(lending_money)/10000) newmoney  " +
                 "   from dd_icbc  " +
-                "     where icbc_id in(select dic.icbc_id  " +
+                "     where id in(select dic.icbc_id  " +
                 "      from dd_icbc_cars dic,dd_icbc di  " +
                 "      where dic.car_type=1  " +
                 "      and di.id=dic.icbc_id  ";
         String sqlCar=""+
 //                "      and di.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})  " +
                 "     ) and lending_result=1  " +
-                "     and year(SYSDATE())-year(lending_date) < 2  " +
+                "     and year(SYSDATE())-year(lending_date) < 6  " +
                 "     GROUP BY year(lending_date),month(lending_date)  " +
                 "     ORDER BY lending_date DESC limit 12) newcars  " +
                 "  where oldcars.year1=newcars.year1  " +
@@ -695,28 +673,22 @@ public class Visual {
 
         //判断是否输入代理商
         String gems_id=selectGemsId(fangkuanname);
-        if(fangkuanname.equals("请输入代理商") || fangkuanname.equals("") || fangkuanname == null){
-            if(fangkuancity.equals("0")){
-                sql += sqlEdit + sqlCar;
-            }else{
-                sql += " and di.state_id=  " + fangkuancity + sqlEdit +
-                       " and di.state_id=  " + fangkuancity + sqlCar;
-            }
-        }else{
-            if(fangkuancity.equals("0")){
-                sql += " and di.gems_fs_id=  " + gems_id + sqlEdit +
-                       " and di.gems_fs_id=  " + gems_id + sqlCar;
-            }else{
-                sql += " and di.gems_fs_id=  " + gems_id +
-                       " and di.state_id=  " + fangkuancity + sqlEdit +
-                       " and di.gems_fs_id=  " + gems_id +
-                       " and di.state_id=  " + fangkuancity + sqlCar;
-            }
-
+        if(!fangkuanname.equals("请输入代理商") && !fangkuanname.equals("")){
+            sql += " and di.gems_fs_id=  " + gems_id;
+            sqlEdit += " and di.gems_fs_id=  " + gems_id;
         }
-
+        //判断是否选择城市
+        if(!fangkuancity.equals("0")){
+            sql += " and di.state_id=  " + fangkuancity;
+            sqlEdit += " and di.state_id=  " + fangkuancity;
+        }
+        //判断是否选择时间
+        if(!fangkuantime.equals("0")){
+            sql += " and year(di.lending_date)="+ fangkuantime;
+            sqlEdit += " and year(di.lending_date)="+ fangkuantime;
+        }
         //判断是否为空
-        TtList chart=selectSQL(sql);
+        TtList chart=selectSQL(sql+sqlEdit+sqlCar);
         object=new Object[5][12];
         if(chart.size()<12){
             for(int i=0;i<chart.size();i++){
