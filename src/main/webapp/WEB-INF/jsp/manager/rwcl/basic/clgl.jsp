@@ -214,7 +214,7 @@
         </div>
         <script>
             objacl('#car_brand_v2_id', '#car_series_v2_id', '/ttAjax?do=opt&cn=car_series_v2&id=0&brand_id=', '${cars.brid}', '${cars.seid}');
-            objacl('#car_series_v2_id', '#car_model_v2_id', '/ttAjax?do=opt&cn=car_model_v2&id=0&series_id=', '${infodb.seid}', '${infodb.carid}');
+            objacl('#car_series_v2_id', '#car_model_v2_id', '/ttAjax?do=opt&cn=car_model_v2&id=0&series_id=', '${cars.seid}', '${cars.carid}');
         </script>
         <%
             String sh = Tools.dicopt("comm_states", 0);//省
