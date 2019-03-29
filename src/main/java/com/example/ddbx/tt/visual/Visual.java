@@ -208,7 +208,7 @@ public class Visual {
                 "";
         TtList carpass=selectSQL(sql);
         int carspass;
-        if(carpass.size() == 0 || carpass == null){
+        if(carpass.size() == 0 || carpass.get(0).get("amount").equals("0") || carselect.get(0).get("amount").equals("0")){
             carspass=0;
         }else{
             carspass=Integer.parseInt(carpass.get(0).get("amount"))*100/Integer.parseInt(carselect.get(0).get("amount"));
@@ -530,6 +530,9 @@ public class Visual {
         if(!zhengxintime.equals("0")){
             sql += " and YEAR(dis.dt_add)= "+ zhengxintime;
             sqlEdit += " and YEAR(dis.dt_add)= "+ zhengxintime;
+        }else{
+            sql += " and YEAR(dis.dt_add)=YEAR(SYSDATE()) and MONTH(dis.dt_add)=MONTH(SYSDATE()) ";
+            sqlEdit += " and YEAR(dis.dt_add)=YEAR(SYSDATE()) and MONTH(dis.dt_add)=MONTH(SYSDATE()) ";
         }
         //判断是否为空
         TtList chart=selectSQL(sql+sqlEdit+" ) zx2 ");
@@ -610,7 +613,7 @@ public class Visual {
         String sql="select year(di.dt_add) year, " +
                    " month(di.dt_add) month,  " +
                    " count(*) total from dd_icbc di  " +
-                   " where di.pledge=1  " +
+                   " where di.pledge_result=1  " +
 //                   " and di.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})  " +
                    " and year(SYSDATE())-year(di.dt_add) < 6  " ;
         String sqlEdit= " GROUP BY year(di.dt_add),month(di.dt_add)  ORDER BY di.dt_add DESC limit 9";
