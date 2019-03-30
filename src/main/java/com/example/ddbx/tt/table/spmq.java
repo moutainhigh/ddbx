@@ -38,32 +38,14 @@ public class spmq extends DbCtrl {
     }
     //视频面签进件 查询全部征信订单并选择一个进件
     public TtList selectAllOrderName(){
-        DbTools myDbTools=new DbTools();
         String sql="select id,c_name from dd_icbc";
-        TtList allCustomer = null;
-        try {
-            allCustomer = myDbTools.reclist(sql);
-            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
-        }catch (Exception e) {
-            Tools.logError(e.getMessage(), true, false);
-        }finally {
-            myDbTools.closeConn();
-        }
+        TtList allCustomer = Tools.reclist(sql);
         return allCustomer;
     }
 
     public TtMap selectspmqPlate(String icbc_id) {
-        DbTools myDbTools = new DbTools();
         String sql = "select count(*) sum,e.* from dd_icbc_erp e where type_id=63 and icbc_id=" + icbc_id;
-        TtMap ontCustomer = null;
-        try {
-            ontCustomer = myDbTools.recinfo(sql);
-            recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
-        } catch (Exception e) {
-            Tools.logError(e.getMessage(), true, false);
-        } finally {
-            myDbTools.closeConn();
-        }
+        TtMap ontCustomer = Tools.recinfo(sql);
         return ontCustomer;
     }
     @Override
@@ -74,17 +56,8 @@ public class spmq extends DbCtrl {
         // 没有该板块添加
         if(ttMap.get("sum").equals("0")) {
             //从dd_icbc表中查询出id,gems_fs_id,gems_id,order_code
-            DbTools myDbTools = new DbTools();
             String sql = "select id,gems_fs_id,gems_id,c_name,c_tel,c_cardno from dd_icbc where id=" + ary.get("icbc_id");
-            TtMap ontCustomer = null;
-            try {
-                ontCustomer = myDbTools.recinfo(sql);
-                recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
-            } catch (Exception e) {
-                Tools.logError(e.getMessage(), true, false);
-            } finally {
-                myDbTools.closeConn();
-            }
+            TtMap ontCustomer = Tools.recinfo(sql);
 
             long qryid = 0;
             //向dd_icbc_erp表中添加数据
@@ -143,17 +116,9 @@ public class spmq extends DbCtrl {
         request.setAttribute("names",getAllOrderName1);
 
         if(post.get("id") != null){
-            DbTools myDbTools=new DbTools();
             String sql="select die.c_name from dd_icbc_materials dim,dd_icbc_erp die where dim.icbc_id=die.icbc_id and dim.id="+post.get("id");
-            TtMap ontCustomer = null;
-            try {
-                ontCustomer = myDbTools.recinfo(sql);
-                recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
-            }catch (Exception e) {
-                Tools.logError(e.getMessage(), true, false);
-            }finally {
-                myDbTools.closeConn();
-            }
+            TtMap ontCustomer = Tools.recinfo(sql);
+
             String c_name=ontCustomer.get("c_name");
             request.setAttribute("c_name", c_name);
         }
