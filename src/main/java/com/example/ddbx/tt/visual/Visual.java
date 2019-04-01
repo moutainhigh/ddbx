@@ -37,17 +37,8 @@ public class Visual {
 
     //输入sql语句进行查询操作
     private static TtList selectSQL(String sql){
-        DbTools myDbTools=new DbTools();
-        TtList allCustomer = null;
-        try {
-            allCustomer = myDbTools.reclist(sql);
-            dbCtrl.recs = Long.parseLong(myDbTools.recexec_getvalue("SELECT FOUND_ROWS() as rno;", "rno"));
-        }catch (Exception e) {
-            Tools.logError(e.getMessage(), true, false);
-        }finally {
-            myDbTools.closeConn();
-        }
-        return allCustomer;
+          return  Tools.reclist(sql);
+
     }
 
     //遍历查询到的数组，如果为空附一个初始值，并排序
@@ -167,7 +158,7 @@ public class Visual {
         request.setAttribute("rankingloanlist",rankingloanlist);//每月放款单数各省排名
 
 
-        
+
         sql="select count(di.gems_fs_id) gems,af.`name` name  " +
                 "    from dd_icbc di,fs af   " +
                 "    where di.gems_fs_id=af.id  " +
@@ -208,7 +199,7 @@ public class Visual {
                 "";
         TtList carpass=selectSQL(sql);
         int carspass;
-        if(carpass.size() == 0 || carpass == null){
+        if(carpass.size() == 0 || carpass.get(0).get("amount").equals("0") || carselect.get(0).get("amount").equals("0")){
             carspass=0;
         }else{
             carspass=Integer.parseInt(carpass.get(0).get("amount"))*100/Integer.parseInt(carselect.get(0).get("amount"));
@@ -218,48 +209,48 @@ public class Visual {
 
 
         sql="select round(other.Osell/count(other.Oid),2) rate,other.`name` name from  " +
-            "    (select loan.local_states Oid,count(loan.local_states) Osell,cs.`name`  " +
-            "      from (select dic.local_states   " +
-            "            from dd_icbc_cars dic " +
-            "            where dic.bc_status=3  " +
-            "            and month(dic.dt_add)=MONTH(SYSDATE())  " +
-            "            and YEAR(dic.dt_add)=year(SYSDATE())  " +
+                "    (select loan.local_states Oid,count(loan.local_states) Osell,cs.`name`  " +
+                "      from (select dic.local_states   " +
+                "            from dd_icbc_cars dic " +
+                "            where dic.bc_status=3  " +
+                "            and month(dic.dt_add)=MONTH(SYSDATE())  " +
+                "            and YEAR(dic.dt_add)=year(SYSDATE())  " +
 //            "            and dic.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})  " +
-            "            ) loan, " +
-            "      comm_states cs where loan.local_states=cs.id  " +
-            "      GROUP BY loan.local_states  " +
-            "      ORDER BY count(loan.local_states) DESC) other, " +
-            "           (select dic.local_states Aid  " +
-            "            from dd_icbc_cars dic  " +
-            "            where month(dic.dt_add)=MONTH(SYSDATE())  " +
-            "            and YEAR(dic.dt_add)=year(SYSDATE())  " +
+                "            ) loan, " +
+                "      comm_states cs where loan.local_states=cs.id  " +
+                "      GROUP BY loan.local_states  " +
+                "      ORDER BY count(loan.local_states) DESC) other, " +
+                "           (select dic.local_states Aid  " +
+                "            from dd_icbc_cars dic  " +
+                "            where month(dic.dt_add)=MONTH(SYSDATE())  " +
+                "            and YEAR(dic.dt_add)=year(SYSDATE())  " +
 //            "            and dic.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id} )   " +
-            "           ) amount  " +
-            "      where amount.Aid=other.Oid  " +
-            "    GROUP BY other.Oid  " +
-            "    ORDER BY rate DESC";
+                "           ) amount  " +
+                "      where amount.Aid=other.Oid  " +
+                "    GROUP BY other.Oid  " +
+                "    ORDER BY rate DESC";
         TtList cardpasscomm=selectSQL(sql);
         request.setAttribute("cardpasscomm",cardpasscomm);//每月汽车贷款过件率各省排名
 
 
-        
+
 
         sql="select round(other.gems/count(other.Oid),2) rate,other.`name` name from  " +
-            "    (select dic.gems_fs_id Oid,count(dic.gems_fs_id) gems,af.`name`  " +
-            "      from dd_icbc_cars dic,fs af  " +
-            "      where dic.gems_fs_id=af.id  " +
-            "      and month(dic.dt_add)=MONTH(SYSDATE())  " +
-            "      and YEAR(dic.dt_add)=year(SYSDATE())  " +
+                "    (select dic.gems_fs_id Oid,count(dic.gems_fs_id) gems,af.`name`  " +
+                "      from dd_icbc_cars dic,fs af  " +
+                "      where dic.gems_fs_id=af.id  " +
+                "      and month(dic.dt_add)=MONTH(SYSDATE())  " +
+                "      and YEAR(dic.dt_add)=year(SYSDATE())  " +
 //            "      and dic.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id} )  " +
-            "      and dic.bc_status=3 GROUP BY dic.gems_fs_id) other, " +
-            "    (select dic.gems_fs_id Aid from dd_icbc_cars dic  " +
-            "      where month(dic.dt_add)=MONTH(SYSDATE())  " +
-            "      and YEAR(dic.dt_add)=year(SYSDATE())  " +
+                "      and dic.bc_status=3 GROUP BY dic.gems_fs_id) other, " +
+                "    (select dic.gems_fs_id Aid from dd_icbc_cars dic  " +
+                "      where month(dic.dt_add)=MONTH(SYSDATE())  " +
+                "      and YEAR(dic.dt_add)=year(SYSDATE())  " +
 //            "      and dic.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id} )" +
-            "     ) amount  " +
-            "  where other.Oid=amount.Aid  " +
-            "  GROUP BY other.Oid  " +
-            "  ORDER BY rate DESC";
+                "     ) amount  " +
+                "  where other.Oid=amount.Aid  " +
+                "  GROUP BY other.Oid  " +
+                "  ORDER BY rate DESC";
         TtList cardpassgems=selectSQL(sql);
         request.setAttribute("cardpassgems",cardpassgems );//每月汽车贷款过件率各代理商排名
 
@@ -286,10 +277,10 @@ public class Visual {
 
         //提取sql语句共同的部分
         String sql="select year(dt_add) year,month(dt_add) month,count(*) total " +
-                   "  from dd_icbc " +
-                   "  where year(SYSDATE())-year(dt_add) < 6 " +
+                "  from dd_icbc " +
+                "  where year(SYSDATE())-year(dt_add) < 6 " +
 //                   "  and gems_fs_id in(select id from fs where up_id=${up_id} or id =${id}) ";
-                   "";
+                "";
         String sqlEdit="  GROUP BY year(dt_add),month(dt_add) ORDER BY dt_add DESC limit 9 ";
         //判断是否输入代理商,是否选择省份
         String gems_id=selectGemsId(baodanname);
@@ -306,7 +297,7 @@ public class Visual {
         TtList chart=selectSQL(sql+sqlEdit);//数据库查询操作
         object=new Object[2][9];
         object=returnList(chart);//遍历查询判断是否为空，排序，返回处理过的数据
-    return object;
+        return object;
     }
 
 
@@ -338,7 +329,7 @@ public class Visual {
         TtList chart=selectSQL(sql+sqlEdit);//数据库查询操作
         object=new Object[2][9];
         object=returnList(chart);//遍历查询判断是否为空，排序，返回处理过的数据
-    return object;
+        return object;
     }
 
 
@@ -348,15 +339,15 @@ public class Visual {
     public String[] getCarFkPathMap(String fangkuanname,String fangkuancity,String fangkuantime) {
         //拼接sql语句
         String sql="  select dic.car_type cartype,count(dic.car_type) cartotal  " +
-                   "  from dd_icbc_cars dic  " +
-                   "  where dic.icbc_id  " +
-                   "   in(select di.id  " +
-                   "    from dd_icbc di  " +
-                   "    where month(di.lending_date)=MONTH(SYSDATE())  " +
-                   "   and YEAR(di.lending_date)=year(SYSDATE()) " +
-                   "   and di.lending_result=1  " +
+                "  from dd_icbc_cars dic  " +
+                "  where dic.icbc_id  " +
+                "   in(select di.id  " +
+                "    from dd_icbc di  " +
+                "    where month(di.lending_date)=MONTH(SYSDATE())  " +
+                "   and YEAR(di.lending_date)=year(SYSDATE()) " +
+                "   and di.lending_result=1  " +
 //                   "  and di.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})" +
-                   "";
+                "";
         String sqlEdit=" )  GROUP BY dic.car_type  ORDER BY dic.car_type ";
         //判断是否输入代理商
         String gems_id=selectGemsId(fangkuanname);
@@ -393,7 +384,7 @@ public class Visual {
                 string[i]=chart.get(i).get("cartotal");
             }
         }
-    return string;
+        return string;
     }
 
 
@@ -442,7 +433,7 @@ public class Visual {
             }
 
         }
-    return string;
+        return string;
     }
 
 
@@ -530,6 +521,9 @@ public class Visual {
         if(!zhengxintime.equals("0")){
             sql += " and YEAR(dis.dt_add)= "+ zhengxintime;
             sqlEdit += " and YEAR(dis.dt_add)= "+ zhengxintime;
+        }else{
+            sql += " and YEAR(dis.dt_add)=YEAR(SYSDATE()) and MONTH(dis.dt_add)=MONTH(SYSDATE()) ";
+            sqlEdit += " and YEAR(dis.dt_add)=YEAR(SYSDATE()) and MONTH(dis.dt_add)=MONTH(SYSDATE()) ";
         }
         //判断是否为空
         TtList chart=selectSQL(sql+sqlEdit+" ) zx2 ");
@@ -608,11 +602,11 @@ public class Visual {
     public Object[][] getRecyclePathMap(String cailiaoname,String cailiaocity,String cailiaotime) {
         //拼接sql语句
         String sql="select year(di.dt_add) year, " +
-                   " month(di.dt_add) month,  " +
-                   " count(*) total from dd_icbc di  " +
-                   " where di.pledge=1  " +
+                " month(di.dt_add) month,  " +
+                " count(*) total from dd_icbc di  " +
+                " where di.pledge_result=1  " +
 //                   " and di.gems_fs_id in(select id from fs where up_id=${up_id} or id =${id})  " +
-                   " and year(SYSDATE())-year(di.dt_add) < 6  " ;
+                " and year(SYSDATE())-year(di.dt_add) < 6  " ;
         String sqlEdit= " GROUP BY year(di.dt_add),month(di.dt_add)  ORDER BY di.dt_add DESC limit 9";
 
         //判读是否输入代理商

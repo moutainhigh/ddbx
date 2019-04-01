@@ -140,21 +140,21 @@
                     <skip>true</skip>
                 </configuration>
             </plugin>
-            <!-- maven编译插件，指定编译器配置。
-           <plugin>
-               <artifactId>maven-compiler-plugin</artifactId>
-               <version>2.5.1</version>
-               <configuration>
-                   <source>1.8</source>
-                   <target>1.8</target>
-                   <encoding>UTF-8</encoding>
-                   <compilerArgument>-XDignore.symbol.file</compilerArgument>
-                   <compilerArguments>
-                       <bootclasspath>${java.home}/lib/rt.jar:${java.home}/lib/jce.jar</bootclasspath>
-                   </compilerArguments>
-               </configuration>
-           </plugin>
-           -->
+            <!-- maven编译插件，指定编译器配置。-->
+            <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>2.5.1</version>
+            <configuration>
+            <source>1.7</source>
+            <target>1.7</target>
+            <encoding>UTF-8</encoding>
+            <compilerArguments>
+            <verbose />
+            <bootclasspath>${java.home}\lib\rt.jar;${java.home}\lib\jce.jar</bootclasspath>
+            </compilerArguments>
+            </configuration>
+            </plugin>
+
         </plugins>
     </build>
 </project>

@@ -19,7 +19,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
-/**
+/*
+*
  * maven打包时提示上面3个包提示程序包不存在，在pom.xml的插件栏加入：
  * <plugin>
  * <artifactId>maven-compiler-plugin</artifactId>
@@ -34,7 +35,7 @@ import java.util.Random;
  * </compilerArguments>
  * </configuration>
  * </plugin>
- */
+*/
 
 public class ImgTools {
     /**
