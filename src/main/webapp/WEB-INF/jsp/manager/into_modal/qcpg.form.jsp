@@ -2,6 +2,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.example.ddbx.tt.data.TtMap" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
+<%@ page import="com.example.ddbx.tt.tool.DataDic" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     TtMap infodb = (TtMap) request.getAttribute("infodb");
@@ -41,7 +42,7 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">车辆类型</span>
-                                <select class="form-control" id="" name="car_type">
+                                <select class="form-control" id="car_type" name="car_type">
                                     <option selected = "selected">请选择</option>
                                     <option value="1">新车</option>
                                     <option value="2">二手车</option>
@@ -51,7 +52,7 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">国产/进口</span>
-                                <select class="form-control" id="" name="source_id">
+                                <select class="form-control" id="source_id" name="source_id">
                                     <option selected = "selected">请选择</option>
                                     <option value="1">国产</option>
                                     <option value="2">进口</option>
@@ -61,7 +62,7 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">使用性质</span>
-                                <select class="form-control" id="" name="property_id">
+                                <select class="form-control" id="property_id" name="property_id">
                                     <option selected = "selected">请选择</option>
                                     <option value="1">营运</option>
                                     <option value="2">非营运</option>
@@ -71,7 +72,7 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">变速箱</span>
-                                <select class="form-control" id="" name="gear_box_id">
+                                <select class="form-control" id="gear_box_id" name="gear_box_id">
                                     <option selected = "selected">请选择</option>
                                     <option value="1">自动</option>
                                     <option value="2">手动</option>
@@ -100,7 +101,7 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">品牌</span>
-                                <select name="carid" id="carid" class="form-control">
+                                <select name="brid" id="brid" class="form-control">
                                     <option value="0">请选择</option>
                                     <%=sp%>
                                 </select>
@@ -117,7 +118,7 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">型号</span>
-                                <select name="brid" id="brid" class="form-control">
+                                <select name="carid" id="carid" class="form-control">
                                     <option value="0">请选择</option>
                                 </select>
                             </div>
@@ -126,8 +127,8 @@
                 </div>
             </div>
             <script>
-                objacl('#carid', '#seid', '/ttAjax?do=opt&cn=car_series_v2&id=0&brand_id=', '${cars.brid}', '${cars.seid}');
-                objacl('#seid', '#brid', '/ttAjax?do=opt&cn=car_model_v2&id=0&series_id=', '${infodb.seid}', '${infodb.carid}');
+                objacl('#brid', '#seid', '/ttAjax?do=opt&cn=car_series_v2&id=0&brand_id=', '${infodb.brid}', '${infodb.seid}');
+                objacl('#seid', '#carid', '/ttAjax?do=opt&cn=car_model_v2&id=0&series_id=', '${infodb.seid}', '${infodb.carid}');
             </script>
 
             <div class="form-group">
@@ -138,10 +139,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">车辆状况</span>
                                 <select class="form-control" id="" name="car_status">
-                                    <option selected = "selected">请选择</option>
-                                    <option value="1">车辆优秀</option>
-                                    <option value="2">车辆良好</option>
-                                    <option value="3">车辆一般</option>
+                                    <%=Tools.dicopt(DataDic.dic_car_status,infodb.get("car_status"))%>
                                 </select>
                             </div>
                         </div>
@@ -154,7 +152,7 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">出厂日期</span>
-                                <input type="text" class="form-control" id="" name="cardt1" placeholder="">
+                                <input type="text" class="form-control" id="cardt1" name="cardt1" placeholder="">
                                 <span class="input-group-addon" style="font-size: 18px;">
                                     <i class="fa fa-calendar"></i>
                                 </span>
@@ -163,7 +161,7 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">初次登记日期</span>
-                                <input type="text" class="form-control" id="" name="cardt2" placeholder="">
+                                <input type="text" class="form-control" id="cardt2" name="cardt2" placeholder="">
                                 <span class="input-group-addon" style="font-size: 18px;">
                                     <i class="fa fa-calendar"></i>
                                 </span>
@@ -221,7 +219,7 @@
                 </div>
             </div>
             <script>
-                objacl('#local_states', '#local_citys', '/ttAjax?do=opt&cn=comm_citys&id=0&state_id=', '${cars.local_states}', '${cars.local_citys}');
+                objacl('#local_states', '#local_citys', '/ttAjax?do=opt&cn=comm_citys&id=0&state_id=', '${infodb.local_states}', '${infodb.local_citys}');
             </script>
 
 
@@ -388,5 +386,17 @@
                                             /ttAjax也可以单独使用，比如
                                             /ttAjax?do=opt&cn=kjb_user&id=3&mid_add=100000 //显示创建人id为100000的所有用户，默认选择id为3的记录
                                             * */
-    objacl('#state_id', '#city_id', '/ttAjax?do=opt&cn=comm_citys&id=3&state_id=', '${infodb.state_id}', '${infodb.city_id}');
+    objacl('#state_id', '#city_id', '/ttAjax?do=opt&cn=comm_citys&id=0&state_id=', '${infodb.state_id}', '${infodb.city_id}');
+</script>
+<script>
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#cardt2', //指定元素
+        type: 'date'
+    });
+    //执行一个laydate实例
+    laydate.render({
+        elem: '#cardt1', //指定元素
+        type: 'date'
+    });
 </script>

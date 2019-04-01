@@ -69,7 +69,10 @@ public class MyTask extends DbCtrl {
 
                     break;
                 case "3":
-
+                    //贷款管理
+                    String dkglsql = "SELECT kk.*, ic.pg_price, ic.old_owner FROM icbc_kk kk JOIN dd_icbc_cars ic ON kk.icbc_id = ic.icbc_id WHERE kk.icbc_id = " + icbcid;
+                    TtMap dkglMap = Tools.recinfo(dkglsql);
+                    request.setAttribute("dkgl", dkglMap);
                     break;
                 case "4":
                     //车辆信息

@@ -1,3 +1,6 @@
+<%@ page import="com.example.ddbx.tt.data.TtMap" %>
+<%@ page import="com.example.ddbx.tt.tool.Tools" %>
+<%@ page import="com.example.ddbx.tt.tool.DataDic" %>
 <%--
   Created by IntelliJ IDEA.
   User: 86176
@@ -6,6 +9,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    TtMap infodb=(TtMap) request.getAttribute("infodb");
+    TtMap dkglMap = (TtMap) request.getAttribute("dkgl");
+%>
 <div ${param.tab eq 3?"class='tab-pane active'":"class='tab-pane'"} id="tab_3">
     <div class="box-header with-border">
         <h3 class="box-title">贷款管理</h3>
@@ -20,7 +27,7 @@
                             <span class="input-group-addon">开票价(元)</span>
                             <input type="text" class="form-control"
                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                   id="">
+                                   id="" value="${dkgl.kp_price} ">
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -28,7 +35,7 @@
                             <span class="input-group-addon">评估价(元)</span>
                             <input type="text" class="form-control"
                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                   id="">
+                                   id="" value="${dkgl.pg_price} ">
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -36,7 +43,7 @@
                             <span class="input-group-addon">贷款本金(元)</span>
                             <input type="text" class="form-control"
                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                   id="">
+                                   id="" value="${dkgl.dk_price} ">
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -44,7 +51,7 @@
                             <span class="input-group-addon">金融服务费(元)</span>
                             <input type="text" class="form-control"
                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                   id="">
+                                   id="" value="${dkgl.jrfw_price} ">
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -52,7 +59,7 @@
                             <span class="input-group-addon">贷款总额(元)</span>
                             <input type="text" class="form-control"
                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                   id="">
+                                   id="" value="${dkgl.dk_total_price}">
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -60,7 +67,7 @@
                             <span class="input-group-addon">首付款(元)</span>
                             <input type="text" class="form-control"
                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                   id="">
+                                   id="" value="${dkgl.sfje}">
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -68,7 +75,7 @@
                             <span class="input-group-addon">首付比例(%)</span>
                             <input type="text" class="form-control"
                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                   id="">
+                                   id="" value="${dkgl.sfje}">
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -94,10 +101,7 @@
                         <div class="input-group">
                             <span class="input-group-addon">按揭期限</span>
                             <select name="" id="" class="form-control">
-                                <option value="">请选择</option>
-                                <option value="">12期</option>
-                                <option value="">24期</option>
-                                <option value="">36期</option>
+                                <%=Tools.dicopt(DataDic.dic_aj_date, dkglMap.get("aj_date"))%>
                             </select>
                         </div>
                     </div>
@@ -106,7 +110,7 @@
                             <span class="input-group-addon">贷款利率(%)</span>
                             <input type="text" class="form-control"
                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                   id="">
+                                   id="" value="${dkgl.dk_lv}">
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -114,7 +118,7 @@
                             <span class="input-group-addon">放贷账号</span>
                             <input type="text" class="form-control"
                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                   id="">
+                                   id="" value="${dkgl.dk_lv}">
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -122,7 +126,7 @@
                             <span class="input-group-addon">车辆使用人</span>
                             <input type="text" class="form-control"
                                    onblur="this.value=this.value.toUpperCase();this.value=this.value.trim();"
-                                   id="">
+                                   id="" value="${dkgl.old_owner}">
                         </div>
                     </div>
                     <div class="col-sm-3">
@@ -139,9 +143,7 @@
                         <div class="input-group">
                             <span class="input-group-addon">是否垫资</span>
                             <select name="" id="" class="form-control">
-                                <option value="">请选择</option>
-                                <option value="">提车垫资</option>
-                                <option value="">不垫资</option>
+                                <%=Tools.dicopt(DataDic.dic_dz_type, dkglMap.get("dz_type"))%>
                             </select>
                         </div>
                     </div>

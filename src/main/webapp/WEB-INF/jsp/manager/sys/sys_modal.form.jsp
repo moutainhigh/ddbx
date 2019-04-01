@@ -50,9 +50,8 @@
 				<div class="input-group">
 					<span class="input-group-addon">erp板块显示</span>
 					<select id="show_tag" name="show_tag" class="form-control">
-						<option value="">请选择</option>
-						<option value="1">显示</option>
 						<option value="0">隐藏</option>
+						<option value="1">显示</option>
 					</select>
 				</div>
 			</div>

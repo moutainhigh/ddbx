@@ -4,23 +4,30 @@
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    TtMap infodb = (TtMap) request.getAttribute("infodb");
+    TtMap minfo = (TtMap) request.getAttribute("minfo");
+    long id_uplevel = 0;
+    if (!Tools.myIsNull(infodb.get("id_uplevel"))) {
+        id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
+    }
+%>
 <div class="admin-content nav-tabs-custom box">
-    <div class="box-header with-border">
-        <div class="box-header with-border">
-            <h3 class="box-title">订单来自：快加云-秦扬</h3>
-            <h3 class="box-title">提交时间：2019-02-20 16:57:00</h3>
-            <div class="box-tools pull-right">
-                <h3 class="box-title">订单编号：</h3>
+        <c:if test="${id ne 0}">
+            <div class="box-header with-border">
+                <h3 class="box-title">订单来自：${gsnamemap.fs_name}-${gsnamemap.admin_name}</h3>
+                <h3 class="box-title">提交时间：${infodb.dt_add}</h3>
+                <div class="box-tools pull-right">
+
+                    <h3 class="box-title">订单编号：${infodb.order_code}</h3>
+                </div>
             </div>
-        </div>
-        <%
-            TtMap infodb = (TtMap) request.getAttribute("infodb");
-            TtMap minfo = (TtMap) request.getAttribute("minfo");
-            long id_uplevel = 0;
-            if (!Tools.myIsNull(infodb.get("id_uplevel"))) {
-                id_uplevel = Long.parseLong(infodb.get("id_uplevel"));
-            }
-        %>
+        </c:if>
+        <c:if test="${id eq 0}">
+            <div class="box-header with-border">
+                <h3 class="box-title">新增订单</h3>
+            </div>
+        </c:if>
         <div class="box-body" id="tab-content">
             <div class="form-group">
                 <label class="col-sm-2 control-label">汽车贷款</label>
