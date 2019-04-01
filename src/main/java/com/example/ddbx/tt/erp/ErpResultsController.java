@@ -66,9 +66,9 @@ public class ErpResultsController {
                                         erp_result.put("result_msg", post.get("result_msg"));
                                         erp_result.put("result_value", result_value);
                                     }else if(LOANMONEY<150000){//否则审核员审核完毕
-                                        erp.put("now_status", "33");
+                                        erp.put("now_status", "40");
                                         erp.put("later_status", "40");
-                                        erp_result.put("now_status","33");
+                                        erp_result.put("now_status","40");
                                         erp_result.put("later_status","40");
                                         erp_result.put("remark", "");
                                         erp_result.put("result_code", post.get("result_code"));
@@ -89,9 +89,9 @@ public class ErpResultsController {
                                         erp_result.put("result_msg", post.get("result_msg"));
                                         erp_result.put("result_value", result_value);
                                     }else if(LOANMONEY<300000){//否则主管审核完毕
-                                        erp.put("now_status", "35");
+                                        erp.put("now_status", "40");
                                         erp.put("later_status", "40");
-                                        erp_result.put("now_status","35");
+                                        erp_result.put("now_status","40");
                                         erp_result.put("later_status","40");
                                         erp_result.put("remark", "");
                                         erp_result.put("result_code", post.get("result_code"));
