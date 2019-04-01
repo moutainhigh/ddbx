@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ErpResultsController {
     //客户贷款金额
-    public static final int LOANMONEY = 1000000;
+//    public static final int LOANMONEY = 1000000;
     /**
      * 添加任务进度
      *
@@ -40,6 +40,9 @@ public class ErpResultsController {
              * 汽车贷款
              */
             case "70":
+                String dkglsql = "SELECT dk_price FROM icbc_kk WHERE icbc_id = " + post.get("icbc_id");
+                TtMap dkglMap = Tools.recinfo(dkglsql);
+                final int LOANMONEY = Integer.parseInt(dkglMap.get("dk_price"));
                 //判断是否是回退补件
                 if(post.get("result_code")!= null && !post.get("result_code").equals("")){
                     //回退补件
