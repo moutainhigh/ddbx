@@ -37,10 +37,20 @@ public class DataDic {
     public static TtMap dic_car_status = new TtMap();
     public static TtMap dic_car_gear_box = new TtMap();
     public static TtMap dic_car_color = new TtMap();
+    public static TtMap dic_isadmin = new TtMap();
+    public static TtMap dic_gs_type = new TtMap();
     public static synchronized void initDic() {
         if (dicYesOrNo.size() > 0) { // 已经初始化过了
             return;
         }
+        /*公司性质*/
+        dic_gs_type.put("0","公司");
+        dic_gs_type.put("1","银行");
+        /*账户登录权限*/
+        dic_isadmin.put("0","请选择");
+        dic_isadmin.put("1","后台账户");
+        dic_isadmin.put("2","APP账户");
+        dic_isadmin.put("3","小程序账户");
         /* 是/否 */
         dicYesOrNo.put("0", "否");
         dicYesOrNo.put("1", "是");

@@ -5,6 +5,7 @@
 <%@ page import="com.example.ddbx.tt.tool.DbTools" %>
 <%@ page import="com.example.ddbx.tt.data.TtMap" %>
 <%@ page import="com.example.ddbx.tt.data.TtList" %>
+<%@ page import="com.example.ddbx.tt.tool.DataDic" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="admin-content nav-tabs-custom box">
 	<div class="box-header with-border">
@@ -12,6 +13,14 @@
 			<h3 class="box-title">代理公司</h3>
 		</div>
 		<div class="box-body" id="tab-content">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">公司性质</label>
+				<div class="col-sm-6">
+					<select id="bank_id" name="bank_id" class="form-control">
+                       <%=Tools.dicopt(DataDic.dic_gs_type,"0")%>
+					</select>
+				</div>
+			</div>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">公司名称</label>
 				<div class="col-sm-6">
