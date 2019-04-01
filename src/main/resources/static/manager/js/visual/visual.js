@@ -265,6 +265,7 @@ function fangkuanselect() {
                         name: '放款分布',
                         type: 'pie',
                         radius: '55%',
+                        minAngle: 2,
                         hoverOffset: 3,//高亮扇区的偏移距离。
                         labelLine: {
                             length: 12,//视觉引导线第一段的长度。
@@ -341,6 +342,7 @@ function fangkuanselect() {
                     {
                         name: '金额分布',
                         type: 'pie',
+                        minAngle: 2,
                         radius: '55%',
                         hoverOffset: 3,//高亮扇区的偏移距离。
                         labelLine: {
@@ -508,11 +510,13 @@ function diyaselect() {
                     {
                         name: '抵押完成情况',
                         type: 'pie',
-                        radius: '75%',
-                        roseType: 'angle',
+                        radius:  '65%',
+                        minAngle: 5,
+
+                        roseType: 'radius',
                         labelLine: {
-                            length: 3,//视觉引导线第一段的长度。
-                            length2: 5 //视觉引导项第二段的长度。
+                            length: 14,//视觉引导线第一段的长度。
+                            length2: 8 //视觉引导项第二段的长度。
                         },
                         data: [
                             {value: paw5, name: '60天以上'},
@@ -664,6 +668,7 @@ function zhengxinselect() {
                     {
                         name: '征信查询通过率',
                         type: 'pie',
+                        minAngle: 2,
                         radius: '62%',
                         center: ['51%', '45%'],//圆心位置[width，height]
                         data: [
@@ -718,6 +723,7 @@ var option_kehunianling = {
         {
             name:'客户年龄分布',
             type:'pie',
+            minAngle: 2,
             radius : '65%',
             center: ['50%', '45%'],//圆心位置[width，height]
             data:[
@@ -776,6 +782,7 @@ var option_cheliangnianling = {
             name:'车辆年龄分布',
             type:'pie',
             radius : '62%',
+            minAngle: 2,
             center: ['50%', '45%'],//圆心位置[width，height]
             data:[
                 {value:age1, name:'1-3年'},
