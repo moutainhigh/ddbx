@@ -112,9 +112,9 @@ public class ErpResultsController {
                                         erp_result.put("result_msg", post.get("result_msg"));
                                         erp_result.put("result_value", result_value);
                                     }else if(LOANMONEY<600000){//否则经理审核完毕
-                                        erp.put("now_status", "37");
+                                        erp.put("now_status", "40");
                                         erp.put("later_status", "40");
-                                        erp_result.put("now_status","37");
+                                        erp_result.put("now_status","40");
                                         erp_result.put("later_status","40");
                                         erp_result.put("remark", "");
                                         erp_result.put("result_code", post.get("result_code"));
@@ -126,9 +126,9 @@ public class ErpResultsController {
                             case "39"://总监审核结果
                                 if(post.get("result_code").equals("1") || post.get("result_code").equals("2")){ //过件 || 过件附条件
                                     //总监审核完毕
-                                    erp.put("now_status", "39");
+                                    erp.put("now_status", "40");
                                     erp.put("later_status", "40");
-                                    erp_result.put("now_status","39");
+                                    erp_result.put("now_status","40");
                                     erp_result.put("later_status","40");
                                     erp_result.put("remark", "");
                                     erp_result.put("result_code", post.get("result_code"));
@@ -395,6 +395,14 @@ public class ErpResultsController {
                         erp_result.put("result_value", result_value);
                         break;
                     case "65": //完成就是完成  没有操作
+                        erp.put("now_status", "65");
+                        erp.put("later_status", "65");
+                        erp_result.put("now_status","65");
+                        erp_result.put("later_status","65");
+                        erp_result.put("remark", "");
+                        erp_result.put("result_code",post.get("result_code"));
+                        erp_result.put("result_msg", post.get("result_msg"));
+                        erp_result.put("result_value", result_value);
                         break;
                 }
                 break;
