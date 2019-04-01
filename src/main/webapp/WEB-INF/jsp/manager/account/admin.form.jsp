@@ -2,31 +2,40 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.example.ddbx.tt.data.TtMap" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
+<%@ page import="com.example.ddbx.tt.tool.DataDic" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    TtMap infodb = (TtMap) request.getAttribute("infodb");
+    boolean bAdd = Tools.myIsNull(request.getParameter("id"));
+    boolean bNotReadOnley = Tools.myIsNull(request.getParameter("id")) || Tools.myIsNull(infodb.get("username"));
+    TtMap minfo = (TtMap) request.getAttribute("minfo");
+
+    TtMap minfo_fsid = Tools.recinfo("select * from admin where id=" + infodb.get("id"));
+    System.out.println("用户id:" + infodb.get("id"));
+
+
+%>
 <div class="admin-content nav-tabs-custom box">
     <div class="box-header with-border">
         <div class="box-header with-border">
-            <h3 class="box-title">修改用户</h3>
+            <h3 class="box-title">编辑用户</h3>
         </div>
         <div class="box-body" id="tab-content">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">账户性质</label>
+                <div class="col-sm-10">
+                    <select id="isadmin" name="isadmin" class="form-control">
+                    <%=Tools.dicopt(DataDic.dic_isadmin,infodb.get("isadmin"))%>
+                    </select>
+                </div>
+            </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">姓名</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="name" name="name" placeholder="姓名">
                 </div>
             </div>
-            <%
-                TtMap infodb = (TtMap) request.getAttribute("infodb");
-                boolean bAdd = Tools.myIsNull(request.getParameter("id"));
-                boolean bNotReadOnley = Tools.myIsNull(request.getParameter("id")) || Tools.myIsNull(infodb.get("username"));
-                TtMap minfo = (TtMap) request.getAttribute("minfo");
-
-                TtMap minfo_fsid = Tools.recinfo("select * from admin where id=" + infodb.get("id"));
-                System.out.println("用户id:" + infodb.get("id"));
-
-
-            %>
             <div class="form-group">
                 <label class="col-sm-2 control-label">用户名</label>
                 <div class="col-sm-10">
