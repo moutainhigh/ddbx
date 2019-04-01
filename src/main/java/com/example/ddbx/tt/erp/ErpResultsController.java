@@ -43,7 +43,11 @@ public class ErpResultsController {
                 //判断是否是回退补件
                 if(post.get("result_code")!= null && !post.get("result_code").equals("")){
                     //回退补件
+                    DbTools dbTools = new DbTools(); //添加订单状态使用
                     if(post.get("result_code").equals("3")){
+                        //添加订单状态 start
+                        dbTools.recupdate("update dd_icbc_status set car_loan_status=4 where icbc_id="+post.get("icbc_id"));
+                        //添加订单状态 end
                         erp.put("now_status", getOneUserInfoErp.get("later_status"));
                         erp.put("later_status", "32");
                         erp_result.put("now_status",getOneUserInfoErp.get("later_status"));
@@ -53,6 +57,13 @@ public class ErpResultsController {
                         erp_result.put("result_msg", post.get("result_msg"));
                         erp_result.put("result_value", result_value);
                     }else{ //非回退补件
+                        //添加订单状态 start
+                        if(post.get("result_code").equals("1")){  //过件
+                            dbTools.recupdate("update dd_icbc_status set car_loan_status=2 where icbc_id="+post.get("icbc_id"));
+                        }else if(post.get("result_code").equals("2")){ //过件附条件
+                            dbTools.recupdate("update dd_icbc_status set car_loan_status=3 where icbc_id="+post.get("icbc_id"));
+                        }
+                        //添加订单状态 end
                         switch (getOneUserInfoErp.get("later_status")) {
                             case "33": //专员审核结果
                                 if(post.get("result_code").equals("1") || post.get("result_code").equals("2")){ //过件 || 过件附条件
