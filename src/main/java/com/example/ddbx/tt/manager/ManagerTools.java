@@ -52,7 +52,7 @@ public class ManagerTools {
                 "spmq",
                 "qcpg",
                 "dd_icbc",
-                "alltask", "zxcx", "car_loan", "visual",
+                "alltask", "zxcx", "car_loan",
 
                 "mytask", "sys_config", "sys_config_son", "dd_icbc_status", "kk"
         }; // 允许的cn,只有在列表中的cn才使用数据库，
@@ -129,8 +129,6 @@ public class ManagerTools {
                 return "CarLoan";
             case "qcpg":
                 return "qcpg";
-            case "visual":
-                return "visual";
             // 不需要使用数据库的CN
             case "home":
             case "button":
