@@ -42,10 +42,9 @@ public class qcpg extends DbCtrl {
         }
     }
 
-    //视频面签进件 查询全部征信订单并选择一个进件
     public TtList selectAllOrderName(){
         DbTools myDbTools = new DbTools();
-        String sql="select id,c_name from dd_icbc";
+        String sql="select id,c_name from dd_icbc WHERE id in ( SELECT icbc_id FROM dd_icbc_status WHERE zx_status = 3 or tr_status = 3 )";
         TtList allCustomer = null;
         try {
             allCustomer = myDbTools.reclist(sql);
@@ -79,6 +78,9 @@ public class qcpg extends DbCtrl {
         String icbc_id = ary.get("icbc_id");
         TtMap ttMap3 = selectqcpgPlate(icbc_id);
         System.err.println(ttMap3.get("sum") + "-99999999999999" + ttMap3.get("sum").equals("0"));
+        //添加订单状态
+        DbTools dbTools = new DbTools();
+        dbTools.recupdate("update dd_icbc_status set qcpg_status=1 where icbc_id="+icbc_id);
         // 没有该板块添加
         if(ttMap3.get("sum").equals("0")){
             DbTools myDbTools = new DbTools();
@@ -276,6 +278,10 @@ public class qcpg extends DbCtrl {
         String icbc_id = ary.get("icbc_id");
 
         Tools.recexec("update dd_icbc_erp set now_status=10,later_status=11 where type_id=47 and icbc_id="+icbc_id);
+
+        //添加订单状态
+        DbTools dbTools = new DbTools();
+        dbTools.recupdate("update dd_icbc_status set qcpg_status=1 where icbc_id="+icbc_id);
         //2 本表操作
         String imgstep9_1ss = ary.get("imgstep9_1ss1") + ","
                 + ary.get("imgstep9_1ss2") + ","
