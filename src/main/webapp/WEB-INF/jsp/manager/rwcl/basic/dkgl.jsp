@@ -150,6 +150,9 @@
                 </div>
             </div>
         </div>
+        <%
+            String sh = Tools.dicopt("comm_states", 0);//省
+        %>
         <div class="form-group">
             <label class="col-sm-2 control-label">开票所在地</label>
             <div class="col-sm-10">
@@ -157,52 +160,52 @@
                     <div class="col-sm-4">
                         <div class="input-group">
                             <span class="input-group-addon">所在省</span>
-                            <select name="" id="" class="form-control">
-                                <option value="">请选择</option>
-                                <option value="">1</option>
-                                <option value="">2</option>
+                            <select name="local_states" id="local_states" class="form-control">
+                                <option value="0">请选择</option>
+                                <%=sh%>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="input-group">
                             <span class="input-group-addon">所在市</span>
-                            <select name="" id="" class="form-control">
-                                <option value="">请选择</option>
-                                <option value="">1</option>
-                                <option value="">2</option>
+                            <select name="local_citys" id="local_citys" class="form-control">
+                                <option value="0">请选择</option>
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            objacl('#local_states', '#local_citys', '/ttAjax?do=opt&cn=comm_citys&id=0&state_id=', '${infodb.local_states}', '${infodb.local_citys}');
+        </script>
         <div class="form-group">
-            <label class="col-sm-2 control-label">上牌所在地</label>
+            <label class="col-sm-2 control-label">开票所在地</label>
             <div class="col-sm-10">
                 <div class="row inline-from">
                     <div class="col-sm-4">
                         <div class="input-group">
                             <span class="input-group-addon">所在省</span>
-                            <select name="" id="" class="form-control">
-                                <option value="">请选择</option>
-                                <option value="">1</option>
-                                <option value="">2</option>
+                            <select name="local_states1" id="local_states1" class="form-control">
+                                <option value="0">请选择</option>
+                                <%=sh%>
                             </select>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="input-group">
                             <span class="input-group-addon">所在市</span>
-                            <select name="" id="" class="form-control">
-                                <option value="">请选择</option>
-                                <option value="">1</option>
-                                <option value="">2</option>
+                            <select name="local_citys1" id="local_citys1" class="form-control">
+                                <option value="0">请选择</option>
                             </select>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            objacl('#local_states1', '#local_citys1', '/ttAjax?do=opt&cn=comm_citys&id=0&state_id=', '${infodb.local_states}', '${infodb.local_citys}');
+        </script>
     </div>
 </div>
