@@ -1,8 +1,8 @@
 call mvnw install -f pom.xml
-call del H:\¿ì³µµÀ\SVN·şÎñÆ÷2\kjb\ddbxm.war
-call move G:\gitHub\ddbx\target\ddbx-0.0.1-SNAPSHOT.war H:\¿ì³µµÀ\SVN·şÎñÆ÷2\kjb\ddbxm.war
+call del H:\å¿«è½¦é“\SVNæœåŠ¡å™¨2\kjb\ddbxm.war
+call move G:\gitHub\ddbx\target\ddbx-0.0.1-SNAPSHOT.war H:\å¿«è½¦é“\SVNæœåŠ¡å™¨2\kjb\ddbxm.war
 h:
-call cd \¿ì³µµÀ\SVN·şÎñÆ÷2\kjb\
+call cd \å¿«è½¦é“\SVNæœåŠ¡å™¨2\kjb\
 call svn ci -m "ddbx" ddbxm.war
 g:
 call cd g:\gitHub\ddbx\

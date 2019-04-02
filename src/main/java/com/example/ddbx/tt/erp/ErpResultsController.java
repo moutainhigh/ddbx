@@ -42,7 +42,7 @@ public class ErpResultsController {
             case "70":
                 String dkglsql = "SELECT dk_price FROM icbc_kk WHERE icbc_id = " + post.get("icbc_id");
                 TtMap dkglMap = Tools.recinfo(dkglsql);
-                final int LOANMONEY = Integer.parseInt(dkglMap.get("dk_price"));
+                final double LOANMONEY =Double.parseDouble(dkglMap.get("gcfqbj"));
                 //判断是否是回退补件
                 if(post.get("result_code")!= null && !post.get("result_code").equals("")){
                     //回退补件
