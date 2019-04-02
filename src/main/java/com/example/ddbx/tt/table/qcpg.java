@@ -182,7 +182,7 @@ public class qcpg extends DbCtrl {
         int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
         String whereString = "true";
         String tmpWhere = "";
-        String fieldsString = "t.*,a.name as admin_name,f.name as fs_name"; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
+        String fieldsString = "t.*,a.name as admin_name,f.name as fs_name, s.qcpg_status as qcpg_status"; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
         TtList list = null;
         /* 开始处理搜索过来的字段 */
         kw = post.get("kw");
@@ -209,7 +209,8 @@ public class qcpg extends DbCtrl {
         limit = limtInt; // 每页显示记录数
         showall = true; // 忽略deltag和showtag
         leftsql="LEFT JOIN admin a on a.id=t.gems_id " +
-                "LEFT JOIN fs f on f.id=t.gems_fs_id ";
+                "LEFT JOIN fs f on f.id=t.gems_fs_id " +
+                "LEFT JOIN dd_icbc_status s on s.icbc_id=t.icbc_id ";
         list = lists(whereString, fieldsString);
 
         if (!Tools.myIsNull(kw)) { // 搜索关键字高亮
@@ -218,6 +219,7 @@ public class qcpg extends DbCtrl {
                         info.get("c_name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
             }
         }
+
         request.setAttribute("list", list);// 列表list数据
         request.setAttribute("recs", recs); // 总记录数
         String htmlpages = getPage("", 0, false); // 分页html代码,
