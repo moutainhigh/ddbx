@@ -192,7 +192,7 @@ public class Visual {
         sql="select count(*) amount from dd_icbc_cars  " +
                 "  where month(dt_add)=MONTH(SYSDATE())  " +
                 "  and YEAR(dt_add)=year(SYSDATE()) " +
-                "   and bc_status=3  " +
+                "   and icbc_id in (select icbc_id from dd_icbc_status where car_loan_status in (2,3))  " +
                 "   and gems_fs_id in(select id from fs where up_id="+ fs_id +" or id ="+ fs_id +")" +
                 "";
         TtList carpass=selectSQL(sql);
@@ -210,7 +210,7 @@ public class Visual {
             "    (select loan.local_states Oid,count(loan.local_states) Osell,cs.`name`  " +
             "      from (select dic.local_states   " +
             "            from dd_icbc_cars dic " +
-            "            where dic.bc_status=3  " +
+            "            where dic.icbc_id in (select icbc_id from dd_icbc_status where car_loan_status in (2,3))  " +
             "            and month(dic.dt_add)=MONTH(SYSDATE())  " +
             "            and YEAR(dic.dt_add)=year(SYSDATE())  " +
             "            and dic.gems_fs_id in(select id from fs where up_id="+ fs_id +" or id ="+ fs_id +")  " +
@@ -240,7 +240,7 @@ public class Visual {
             "      and month(dic.dt_add)=MONTH(SYSDATE())  " +
             "      and YEAR(dic.dt_add)=year(SYSDATE())  " +
             "      and dic.gems_fs_id in(select id from fs where up_id="+ fs_id +" or id ="+ fs_id +" )  " +
-            "      and dic.bc_status=3 GROUP BY dic.gems_fs_id) other, " +
+            "      and dic.icbc_id in (select icbc_id from dd_icbc_status where car_loan_status in (2,3)) GROUP BY dic.gems_fs_id) other, " +
             "    (select dic.gems_fs_id Aid from dd_icbc_cars dic  " +
             "      where month(dic.dt_add)=MONTH(SYSDATE())  " +
             "      and YEAR(dic.dt_add)=year(SYSDATE())  " +
@@ -308,7 +308,7 @@ public class Visual {
         //提取sql语句共同的部分
         String sql=" select year(dt_add) year,month(dt_add) month,count(*) total " +
                 " from dd_icbc_cars " +
-                " where bc_status=3 " +
+                " where icbc_id in (select icbc_id from dd_icbc_status where car_loan_status in (2,3)) " +
                 " and gems_fs_id in(select id from fs af where up_id="+ fs_id +" or id ="+ fs_id +") " +
                 " and year(SYSDATE())-year(dt_add) < 6 ";
         String sqlEdit=" GROUP BY year(dt_add),month(dt_add) ORDER BY dt_add DESC limit 9";

@@ -35,7 +35,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">姓名</span>
                                         <input type="text" class="form-control" name="c_name"
-                                               id="c_name" value="${icbc.c_name}">
+                                               id="c_name" value="${khgl.c_name}">
                                     </div>
                                 </div>
                                 <script>
@@ -64,7 +64,8 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">性别</span>
                                         <select name="" id="" class="form-control">
-                                            <%=Tools.dicopt(DataDic.dicSex, icbc.get("c_sex"))%>
+                                            <option value="1" ${khgl.c_sex eq 1?"selected='selected'":''}>男</option>
+                                            <option value="2" ${khgl.c_sex eq 2?"selected='selected'":''}>女</option>
                                         </select>
                                     </div>
                                 </div>
@@ -72,28 +73,28 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">身份证号</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="${icbc.c_cardno}">
+                                               id="" value="${khgl.c_cardno}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">业务员姓名</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="${icbc.admin_name}">
+                                               id="" value="${khgl.admin_name}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">所属机构</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="${icbc.fs_name}">
+                                               id="" value="${khgl.fs_name}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">手机号码</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="${icbc.c_tel}">
+                                               id="" value="${khgl.c_tel}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -137,7 +138,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">邮编</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="" disabled>
+                                               id="" value="${khgl.zdr_yzbm}" disabled>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -152,35 +153,35 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">现住电话</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.zdr_dwdh}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">单位电话</span>
                                         <input type="text" class="form-control" name="remark"
-                                               id="" value="">
+                                               id="" value="${khgl.zdr_dwdh}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="input-group">
                                         <span class="input-group-addon">现住地址</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.zdr_xzdz}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="input-group">
                                         <span class="input-group-addon">工作单位</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.zdr_gzdw}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="input-group">
                                         <span class="input-group-addon">单位地址</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.zdr_dwdz}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -188,9 +189,9 @@
                                         <span class="input-group-addon">单位性质</span>
                                         <select name="" id="" class="form-control">
                                             <option value="0">请选择</option>
-                                            <option value="1">国有</option>
-                                            <option value="2">私有</option>
-                                            <option value="3">民营</option>
+                                            <option value="1" ${khgl.zdr_dwxz eq 1?"selected='selected'":''}>国有</option>
+                                            <option value="2" ${khgl.zdr_dwxz eq 2?"selected='selected'":''}>私有</option>
+                                            <option value="3" ${khgl.zdr_dwxz eq 3?"selected='selected'":''}>民营</option>
                                         </select>
                                     </div>
                                 </div>
@@ -199,9 +200,9 @@
                                         <span class="input-group-addon">职业</span>
                                         <select name="" id="" class="form-control">
                                             <option value="0">请选择</option>
-                                            <option value="1">公务员</option>
-                                            <option value="2">农民</option>
-                                            <option value="3">工人</option>
+                                            <option value="1" ${khgl.zdr_zy eq 1?"selected='selected'":''}>公务员</option>
+                                            <option value="2" ${khgl.zdr_zy eq 2?"selected='selected'":''}>农民</option>
+                                            <option value="3" ${khgl.zdr_zy eq 3?"selected='selected'":''}>工人</option>
                                         </select>
                                     </div>
                                 </div>
@@ -210,9 +211,9 @@
                                         <span class="input-group-addon">职务</span>
                                         <select name="" id="" class="form-control">
                                             <option value="0">请选择</option>
-                                            <option value="1">总经理</option>
-                                            <option value="2">部门经理</option>
-                                            <option value="3">职员</option>
+                                            <option value="1" ${khgl.zdr_zw eq 1?"selected='selected'":''}>总经理</option>
+                                            <option value="2" ${khgl.zdr_zw eq 2?"selected='selected'":''}>部门经理</option>
+                                            <option value="3" ${khgl.zdr_zw eq 3?"selected='selected'":''}>职员</option>
                                         </select>
                                     </div>
                                 </div>
@@ -220,21 +221,21 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">月收入(元)</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.zdr_grsr}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">工作年限(年)</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.zdr_gznx}">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="input-group">
                                         <span class="input-group-addon">文书送达地址</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.zdr_wsdz}">
                                     </div>
                                 </div>
                             </div>
@@ -277,14 +278,14 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">姓名</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.c_name_gj1}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">关系</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.gjr1_yzdrgx}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -311,35 +312,35 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">现住地址</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.gjr1_xzdz}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">邮政编码</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.gjr1_yzbm}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">工作单位</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.gjr1_gzdw}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">单位地址</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.gjr1_dwdz}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">文书送达地址</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.gjr1_wsdz}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -371,7 +372,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">手机号码</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.c_tel_gj1}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -399,7 +400,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">身份证号</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.c_cardno_gj1}">
                                     </div>
                                 </div>
                             </div>
@@ -421,21 +422,21 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">姓名</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.jjlxr_c_name}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">电话</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.jjlxr_c_tel}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">与主贷人关系</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.jjlxr_jdrgx}">
                                     </div>
                                 </div>
                             </div>
@@ -449,7 +450,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">地址</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.jjlxr_xzdz}">
                                     </div>
                                 </div>
                             </div>
@@ -463,21 +464,21 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">姓名</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.qtlxr_c_name}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">电话</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.qtlxr_c_tel}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">与主贷人关系</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.qtlxr_jdrgx}">
                                     </div>
                                 </div>
                             </div>
@@ -491,7 +492,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">地址</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.qtlxr_xzdz}">
                                     </div>
                                 </div>
                             </div>
@@ -537,14 +538,14 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">月收入(元)</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.zdr_grsr}">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="input-group">
                                         <span class="input-group-addon">家庭月收入(元)</span>
                                         <input type="text" class="form-control" name=""
-                                               id="" value="">
+                                               id="" value="${khgl.zdr_jtsr}">
                                     </div>
                                 </div>
                             </div>
