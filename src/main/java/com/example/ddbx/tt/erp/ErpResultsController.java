@@ -40,7 +40,7 @@ public class ErpResultsController {
              * 汽车贷款
              */
             case "70":
-                String dkglsql = "SELECT dk_price FROM icbc_kk WHERE icbc_id = " + post.get("icbc_id");
+                String dkglsql = "SELECT gcfqbj FROM icbc_kk WHERE icbc_id = " + post.get("icbc_id");
                 TtMap dkglMap = Tools.recinfo(dkglsql);
                 final double LOANMONEY =Double.parseDouble(dkglMap.get("gcfqbj"));
                 //判断是否是回退补件
@@ -687,5 +687,5 @@ public class ErpResultsController {
         }
         return ontCustomer;
     }
-//-----提取方法 end----------------------------------------------------------------------------------
+//-----提取方法 end----------------------------------------------------------------------------------}
 }
