@@ -16,13 +16,13 @@
                     <label class="col-sm-2 control-label">审核结果</label>
                     <div class="col-sm-8">
                         <label class="radio-inline">
-                            <input type="radio" value="1" name="result_code">通过
+                            <input type="radio" value="1" name="state_code">通过
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" value="2" name="result_code">不通过
+                            <input type="radio" value="2" name="state_code">不通过
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" value="3" name="result_code">回退补件
+                            <input type="radio" value="3" name="state_code">回退补件
                         </label>
                     </div>
                 </div>

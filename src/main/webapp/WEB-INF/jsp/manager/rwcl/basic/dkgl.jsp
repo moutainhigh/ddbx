@@ -181,7 +181,7 @@
             objacl('#local_states', '#local_citys', '/ttAjax?do=opt&cn=comm_citys&id=0&state_id=', '${infodb.local_states}', '${infodb.local_citys}');
         </script>
         <div class="form-group">
-            <label class="col-sm-2 control-label">开票所在地</label>
+            <label class="col-sm-2 control-label">上牌所在地</label>
             <div class="col-sm-10">
                 <div class="row inline-from">
                     <div class="col-sm-4">
