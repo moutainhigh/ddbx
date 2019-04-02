@@ -289,9 +289,9 @@ public class ErpResultsController {
                             erp_result.put("now_status","60");
                             erp_result.put("later_status","61");
                         }else if(post.get("result_code").equals("2")){
-                            erp.put("now_status", "60");
+                            erp.put("now_status", "65");
                             erp.put("later_status", "65");
-                            erp_result.put("now_status","60");
+                            erp_result.put("now_status","65");
                             erp_result.put("later_status","65");
                         }else if(post.get("result_code").equals("3")){
                             erp.put("now_status", "60");
@@ -356,9 +356,9 @@ public class ErpResultsController {
                         break;
                     case "62": //收款确认
                         if(post.get("result_code").equals("1")){ // 到账确认，本单已完整  进入下一个状态 完成
-                            erp.put("now_status", "62");
+                            erp.put("now_status", "65");
                             erp.put("later_status", "65");
-                            erp_result.put("now_status","62");
+                            erp_result.put("now_status","65");
                             erp_result.put("later_status","65");
                             TtMap icbcUpdatePledge = new TtMap();
                             icbcUpdatePledge.put("pledge_result","2"); //抵押归档未完成
@@ -376,9 +376,9 @@ public class ErpResultsController {
                         break;
                     case "63": //补充材料确认
                         if(post.get("result_code").equals("1")){ // 完整  进入下一个状态 完成
-                            erp.put("now_status", "63");
+                            erp.put("now_status", "65");
                             erp.put("later_status", "65");
-                            erp_result.put("now_status","63");
+                            erp_result.put("now_status","65");
                             erp_result.put("later_status","65");
                         }else if(post.get("result_code").equals("2")){ //材料不完整，需要机构补充
                             erp.put("now_status", "63");
@@ -535,9 +535,9 @@ public class ErpResultsController {
                         break;
                     case "81"://录入银行查验情况
                         if(post.get("examineCondition").equals("1")){ // 抵押 抵押查验情况 通过  进入下一步 抵押材料寄回
-                            erp.put("now_status", "81");
+                            erp.put("now_status", "82");
                             erp.put("later_status", "82");
-                            erp_result.put("now_status","81");
+                            erp_result.put("now_status","82");
                             erp_result.put("later_status","82");
                             //update erp set later_status:60改61 where icbc_id and type_id 98
                             //98银行审批结果 : 先抵押后放贷：选择这个界面暂时不往下级走，等“抵押归档”模块完成开启“银行放款结果”
