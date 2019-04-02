@@ -549,8 +549,8 @@
                     <div style="height: 87%;width: 100%;" >
                         <div class="form2_box_1">
                             <div style="height: 9%;width: 100%; ">
-                                <div class="font_color_1 " style="margin-top: 7px;float: left;margin-left: 10px;">所属省份</div>
-                                <button class="paiming_button" style="float: left;margin-left: 8px;margin-top: 4px;">客户年龄</button>
+                                <div class="font_color_1 " style="margin-top: 7px;float: left;margin-left: 10px;">所属用户</div>
+                                <div class="paiming_button" style="float: left;margin-left: 8px;margin-top: 4px;">客户年龄</div>
                             </div>
                             <div id="kehunianling" style="height: 90%;width: 100%;position: relative; top: -10px; ">
                             </div>
@@ -558,7 +558,7 @@
                         <div class="form2_box_1">
                             <div style="height: 9%;width: 100%; margin-left: 20%;">
                                 <div class="font_color_1 " style=" margin-top: 7px;float: left;">新车</div>
-                                <button class="paiming_button" style="float: left;margin-left: 8px;margin-top: 4px;">车龄</button>
+                                <div class="paiming_button" style="float: left;margin-left: 8px;margin-top: 4px;">车龄</div>
                             </div>
                             <div id="cheliangnianling" style="height: 90%;width: 100%;position: relative; top: -10px; ">
                             </div>
@@ -612,19 +612,18 @@
                             <th colspan="3" class="font_color_1 font_color_4">排名</th>
                             <th >代理商</th>
                         </tr>
-                        <%
-
-                            for(int i=0;i<10;i++ ){
-                        %>
+                        <c:forEach items="${ rankinglist }" var="rank" varStatus="lists">
                             <tr>
-                                <td class="font_color_3">${rankingloanlist[0].name }</td>
-                                <td class="font_size_3 font_color_4">${rankingloanlist[0].sell }</td>
-                                <td ><div class="paiming_rank"><%= i+1%></div></td>
-                                <td class="font_size_3 font_color_4">${gemsloanlist[0].gems }</td>
-                                <td class="font_color_3">${gemsloanlist[0].name }</td>
+                                <td class="font_color_3">${rank.name }</td>
+                                <td class="font_size_3 font_color_4">${rank.sell }</td>
+                                <td ><div class="paiming_rank">${lists.count}</div></td>
+                                <td class="font_size_3 font_color_4">${gemslist[lists.count-1].gems }</td>
+                                <td class="font_color_3">${gemslist[lists.count-1].name }</td>
                             </tr>
+                        </c:forEach>
 
-                        <% } %>
+
+
                     </table>
                 </div>
             </div>

@@ -63,7 +63,10 @@ public class MyTask extends DbCtrl {
                     request.setAttribute("erp_stylelist", erp_stylelist);
                     break;
                 case "1":
-
+                    System.out.println("进来了没有11111");
+                    String jcxxsql="select * from dd_icbc where id="+icbcid;
+                    TtMap jcxxMap = Tools.recinfo(jcxxsql);
+                    request.setAttribute("jcxx", jcxxMap);
                     break;
                 case "2":
 
@@ -182,7 +185,7 @@ public class MyTask extends DbCtrl {
     /**
      * 获取处理过程显示数据
      *
-     * @param request
+     * @param
      */
     public TtList getclgc() {
         TtMap minfo = Tools.minfo();// 当前登陆用户信息
