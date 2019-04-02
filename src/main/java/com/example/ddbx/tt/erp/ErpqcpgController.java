@@ -96,21 +96,21 @@ public class ErpqcpgController {
                 break;
         }
         Tools.recEdit(erp, "dd_icbc_erp", Long.valueOf(post.get("id")));
-//        //更新icbc状态
-//        TtMap icbc_status = new TtMap();
-//        switch (post.get("state_code")) {
-//            case "1":
-//                icbc_status.put("zx_status", "11");
-//                break;
-//            case "2":
-//                icbc_status.put("zx_status", "14");
-//                break;
-//            case "3":
-//                icbc_status.put("zx_status", "12");
-//                break;
-//        }
-//        String status_id = Tools.unDic("dd_icbc_status", post.get("icbc_id"), "id", "icbc_id");
-//        Tools.recEdit(icbc_status, "dd_icbc_status", Long.valueOf(status_id));
+        //更新icbc状态
+        TtMap icbc_status = new TtMap();
+        switch (post.get("state_code")) {
+            case "1":
+                icbc_status.put("qcpg_status", "2");
+                break;
+            case "2":
+                icbc_status.put("qcpg_status", "3");
+                break;
+            case "3":
+                icbc_status.put("qcpg_status", "4");
+                break;
+        }
+        String status_id = Tools.unDic("dd_icbc_status", post.get("icbc_id"), "id", "icbc_id");
+        Tools.recEdit(icbc_status, "dd_icbc_status", Long.valueOf(status_id));
         System.out.println("post:" + post);
         res.put("code", String.valueOf(code));
         res.put("msg", msg);

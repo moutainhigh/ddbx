@@ -27,6 +27,9 @@
 									客户姓名
 								</th>
 								<th class="text-center">
+                                    订单状态
+                                </th>
+								<th class="text-center">
 									来源:公司-姓名
 								</th>
 								<th class="hidden-xs text-center">
@@ -44,6 +47,13 @@
 									<td class="text-center">
 										${u.c_name}
 									</td>
+									<td class="text-center">
+									    <c:if test="${u.car_loan_status == 0}"><span class="label label-success">草稿箱</span></c:if>
+                                        <c:if test="${u.car_loan_status == 1}"><span class="label label-success">审核中</span></c:if>
+                                        <c:if test="${u.car_loan_status == 2}"><span class="label label-success">过件</span></c:if>
+                                        <c:if test="${u.car_loan_status == 3}"><span class="label label-success">过件附条件</span></c:if>
+                                        <c:if test="${u.car_loan_status == 4}"><span class="label label-success">回退补件</span></c:if>
+                                    </td>
 									<td class="text-center">
                                         ${u.fsname}-${u.name}
                                     </td>

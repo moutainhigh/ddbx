@@ -42,10 +42,9 @@ public class qcpg extends DbCtrl {
         }
     }
 
-    //视频面签进件 查询全部征信订单并选择一个进件
     public TtList selectAllOrderName(){
         DbTools myDbTools = new DbTools();
-        String sql="select id,c_name from dd_icbc";
+        String sql="select id,c_name from dd_icbc WHERE id in ( SELECT icbc_id FROM dd_icbc_status WHERE zx_status = 3 or tr_status = 3 )";
         TtList allCustomer = null;
         try {
             allCustomer = myDbTools.reclist(sql);
@@ -79,6 +78,9 @@ public class qcpg extends DbCtrl {
         String icbc_id = ary.get("icbc_id");
         TtMap ttMap3 = selectqcpgPlate(icbc_id);
         System.err.println(ttMap3.get("sum") + "-99999999999999" + ttMap3.get("sum").equals("0"));
+        //添加订单状态
+        DbTools dbTools = new DbTools();
+        dbTools.recupdate("update dd_icbc_status set qcpg_status=1 where icbc_id="+icbc_id);
         // 没有该板块添加
         if(ttMap3.get("sum").equals("0")){
             DbTools myDbTools = new DbTools();
@@ -180,7 +182,7 @@ public class qcpg extends DbCtrl {
         int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
         String whereString = "true";
         String tmpWhere = "";
-        String fieldsString = "t.*,a.name as admin_name,f.name as fs_name"; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
+        String fieldsString = "t.*,a.name as admin_name,f.name as fs_name, s.qcpg_status as qcpg_status"; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
         TtList list = null;
         /* 开始处理搜索过来的字段 */
         kw = post.get("kw");
@@ -207,7 +209,8 @@ public class qcpg extends DbCtrl {
         limit = limtInt; // 每页显示记录数
         showall = true; // 忽略deltag和showtag
         leftsql="LEFT JOIN admin a on a.id=t.gems_id " +
-                "LEFT JOIN fs f on f.id=t.gems_fs_id ";
+                "LEFT JOIN fs f on f.id=t.gems_fs_id " +
+                "LEFT JOIN dd_icbc_status s on s.icbc_id=t.icbc_id ";
         list = lists(whereString, fieldsString);
 
         if (!Tools.myIsNull(kw)) { // 搜索关键字高亮
@@ -216,6 +219,7 @@ public class qcpg extends DbCtrl {
                         info.get("c_name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
             }
         }
+
         request.setAttribute("list", list);// 列表list数据
         request.setAttribute("recs", recs); // 总记录数
         String htmlpages = getPage("", 0, false); // 分页html代码,
@@ -276,6 +280,10 @@ public class qcpg extends DbCtrl {
         String icbc_id = ary.get("icbc_id");
 
         Tools.recexec("update dd_icbc_erp set now_status=10,later_status=11 where type_id=47 and icbc_id="+icbc_id);
+
+        //添加订单状态
+        DbTools dbTools = new DbTools();
+        dbTools.recupdate("update dd_icbc_status set qcpg_status=1 where icbc_id="+icbc_id);
         //2 本表操作
         String imgstep9_1ss = ary.get("imgstep9_1ss1") + ","
                 + ary.get("imgstep9_1ss2") + ","

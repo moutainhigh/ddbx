@@ -12,17 +12,17 @@
         <div class="task_margin ng-scope" style="border:1px solid #ccc; border-radius: 10px;background-color:#F7F7F7; padding-top:10px;">
             <form name="modalForm" class="form-horizontal ng-pristine ng-valid ng-scope ng-valid-required">
 
-                <div class="form-group ng-scope">
+                <div class="form-group ng-scope" ng-if="notUseButton">
                     <label class="col-sm-2 control-label">审核结果</label>
                     <div class="col-sm-8">
                         <label class="radio-inline">
-                            <input type="radio" value="1" name="state_code">通过
+                            <input type="radio" value="1" name="result_code">通过
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" value="2" name="state_code">不通过
+                            <input type="radio" value="2" name="result_code">不通过
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" value="3" name="state_code">回退补件
+                            <input type="radio" value="3" name="result_code">回退补件
                         </label>
                     </div>
                 </div>

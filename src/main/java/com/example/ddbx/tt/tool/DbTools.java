@@ -240,12 +240,17 @@ public class DbTools {
         if (Tools.myIsNull(fieldName) == true) {
             if(tbName == "dd_icbc"){
                 fieldName = "c_name";
+            }else if(tbName == "dd_icbc_status"){
+                fieldName = "car_loan_status";
             }else{
                 fieldName = "name";
             }
         }
         if (Tools.myIsNull(fieldId) == true) {
             fieldId = "id";
+            if(fieldName == "car_loan_status"){
+                fieldId = "icbc_id";
+            }
         }
         // "select $nf from $dic where $kf='$val'",$nf
         String fSql = "select " + fieldName + " from " + tbName + " where " + fieldId + "='" + nid + "'";

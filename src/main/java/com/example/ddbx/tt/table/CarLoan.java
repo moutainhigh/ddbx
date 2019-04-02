@@ -72,6 +72,9 @@ public class CarLoan extends DbCtrl {
 //        carLoanErpStatus.put("now_status","32"); //提交查询
 //        carLoanErpStatus.put("later_status","33"); //专员审核
         Tools.recexec("update dd_icbc_erp set now_status=32,later_status=33 where type_id=70 and icbc_id="+icbc_id);
+        //添加订单状态
+        DbTools dbTools = new DbTools();
+        dbTools.recupdate("update dd_icbc_status set car_loan_status=1 where icbc_id="+icbc_id);
         //2 本表操作
         //证明材料
         String imgstep9_1ss =
@@ -153,7 +156,7 @@ public class CarLoan extends DbCtrl {
     //汽车贷款进件 查询全部征信订单并选择一个进件
     public TtList selectAllOrderName(){
         DbTools myDbTools=new DbTools();
-        String sql="select id,c_name from dd_icbc";
+        String sql="SELECT icbc.id,icbc.c_name FROM dd_icbc icbc LEFT JOIN dd_icbc_status st ON icbc.id=st.icbc_id WHERE (st.zx_status=3)OR(st.zx_status=5 and tr_status=3)";
         TtList allCustomer = null;
         try {
             allCustomer = myDbTools.reclist(sql);
@@ -218,6 +221,9 @@ public class CarLoan extends DbCtrl {
         String icbc_id = ary.get("icbc_id");
         TtMap ttMap = selectCarLoanPlate(icbc_id);
         System.err.println(ttMap.get("sum")+"-99999999999999"+ttMap.get("sum").equals("0"));
+        //添加订单状态
+        DbTools dbTools = new DbTools();
+        dbTools.recupdate("update dd_icbc_status set car_loan_status=1 where icbc_id="+icbc_id);
         // 没有该板块添加
         if(ttMap.get("sum").equals("0")){
             //首先通过获取到主订单id查询到客户的主订单信息
@@ -479,6 +485,7 @@ public class CarLoan extends DbCtrl {
             tmpInfo.put("name", Tools.unDic("admin", Tools.strToLong(tmpInfo.get("gems_id"))));// 所属公司业务员名字
             tmpInfo.put("choice", Tools.dicopt("sys_dic_tag", Tools.strToLong(tmpInfo.get("showtag")))); // 显示/隐藏
             tmpInfo.put("c_name", Tools.unDic("dd_icbc", Tools.strToLong(tmpInfo.get("icbc_id"))));// 客户订单名字
+            tmpInfo.put("car_loan_status", Tools.unDic("dd_icbc_status", Tools.strToLong(tmpInfo.get("icbc_id"))));// 客户订单状态
         }
         return lmss;
     }
