@@ -1,4 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:if test="${fn:contains(sessionScope.strAgp,',61,')==true}">
 <div class="text-primary"><em>反馈开卡结果：</em>
     <div class="big-conte" style="display: block;">
         <strong style="margin-left: 10px;"><i>处理信息：</i></strong><br>
@@ -58,6 +63,7 @@
         </div>
     </div>
 </div>
+</c:if>
 <script>
     $('.form_datetime').datetimepicker({
         weekStart: 0, //一周从哪一天开始

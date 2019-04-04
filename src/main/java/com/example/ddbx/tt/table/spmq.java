@@ -252,9 +252,9 @@ public class spmq extends DbCtrl {
         }
         TtMap minfo = Tools.minfo();
         if (Tools.myIsNull(wheres)) {
-            wheres = (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)) ? "" : " gems_fs_id=" + minfo.get("gems_fs_id"); // 只显示自己公司的
+            wheres = (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)) ? "" : " gems_fs_id=" + minfo.get("fsid"); // 只显示自己公司的
         } else {
-            wheres += (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)) ? "" : " AND gems_fs_id=" + minfo.get("gems_fs_id"); // 只显示自己公司的
+            wheres += (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)) ? "" : " AND gems_fs_id=" + minfo.get("fsid"); // 只显示自己公司的
         }
         TtList lmss = super.lists(wheres, f);
         for (TtMap tmpInfo : lmss) {

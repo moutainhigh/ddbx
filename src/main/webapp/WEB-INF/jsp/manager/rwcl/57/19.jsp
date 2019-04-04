@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: 86176
@@ -6,6 +11,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:if test="${fn:contains(sessionScope.strAgp,',60,')==true}">
 <div class="text-primary"><em>身份核查结果：</em>
     <div class="big-conte" style="display: block;">
         <strong style="margin-left: 10px;"><i>处理信息：</i></strong><br>
@@ -40,6 +46,7 @@
         </div>
     </div>
 </div>
+</c:if>
 <script>
     function erp() {
         var result_code= $('input[name="result_code"]:checked').val();

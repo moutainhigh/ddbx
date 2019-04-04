@@ -10,6 +10,7 @@ package com.example.ddbx.tt.manager;
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
 import com.example.ddbx.tt.tool.Config;
+import com.example.ddbx.tt.tool.DbCtrl;
 import com.example.ddbx.tt.tool.DbTools;
 import com.example.ddbx.tt.tool.Tools;
 import org.springframework.stereotype.Controller;
@@ -99,7 +100,7 @@ public class Manager {
             switch (post.get("sdo")) {
                 case "login":/** 登陆 */
                     String pass = Tools.md5(Tools.md5("kgc" + post.get("password")));
-                    String sql = "select id,isadmin from " + loginTb + " where username='" + post.get("username")
+                    String sql = "select id,isadmin,agp_id from " + loginTb + " where username='" + post.get("username")
                             + "' AND password='" + pass + "'";
                     System.out.println("SQL:" + sql);
                     TtMap info = Tools.recinfo(sql);
@@ -108,6 +109,10 @@ public class Manager {
                                 Tools.myIsNull(refer) ? "/manager/index?cn=home&sdo=form&type=demo" : URLDecoder.decode(refer, "UTF-8"));
                         long id = Long.parseLong(info.get("id"));
                         Tools.setNowUser(id, Boolean.parseBoolean(info.get("isadmin")));
+                        TtMap infoAgp = Tools.recinfo("select * from admin_agp where id = " + info.get("agp_id"));
+                        String strAgp = "," + infoAgp.get("purview_map"); // 此角色组拥有的权限集合
+                        System.out.println("sssss"+strAgp);
+                        request.getSession().setAttribute("strAgp", strAgp);
                     } else {
                         Tools.formatResult(result2, false, 998, "用户名或者密码错误！", Tools.urlKill(""));
                     }

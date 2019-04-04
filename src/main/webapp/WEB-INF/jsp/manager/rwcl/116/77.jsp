@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:if test="${fn:contains(sessionScope.strAgp,',122,')==true}">
 <div class="text-primary">
     <em>抵押材料材料寄回：</em>
     <div class="big-conte" style="display: block;">
@@ -120,3 +121,4 @@ $('.form_datetime').datetimepicker({
 </div>
 </div>
 </div>
+</c:if>

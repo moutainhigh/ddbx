@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:if test="${fn:contains(sessionScope.strAgp,',40,')==true}">
 <div class="text-primary">
     <em>查询结果：</em>
     <div class="big-conte" style="display: block;">
@@ -178,6 +179,7 @@
         </div>
     </div>
 </div>
+</c:if>
 <script>
     function erp() {
         var state_code= $('input[name="state_code"]:checked').val();

@@ -171,7 +171,7 @@ public class qcpg extends DbCtrl {
 
     //list 处理
     public void doGetList(HttpServletRequest request, TtMap post) {
-        System.out.println("查询list");
+        System.out.println("查询list!!!!!!!!!");
         if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断
             request.setAttribute("errorMsg", errorMsg);
             return;
@@ -211,15 +211,15 @@ public class qcpg extends DbCtrl {
         leftsql="LEFT JOIN admin a on a.id=t.gems_id " +
                 "LEFT JOIN fs f on f.id=t.gems_fs_id " +
                 "LEFT JOIN dd_icbc_status s on s.icbc_id=t.icbc_id ";
-        list = lists(whereString, fieldsString);
 
+        list = lists(whereString, fieldsString);
+        System.out.println("list::::++  "+list);
         if (!Tools.myIsNull(kw)) { // 搜索关键字高亮
             for (TtMap info : list) {
-                info.put("c_name",
-                        info.get("c_name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
+                info.put("c_name", info.get("c_name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
             }
         }
-
+        System.out.println("list::::  "+list);
         request.setAttribute("list", list);// 列表list数据
         request.setAttribute("recs", recs); // 总记录数
         String htmlpages = getPage("", 0, false); // 分页html代码,
@@ -258,9 +258,9 @@ public class qcpg extends DbCtrl {
         }
         TtMap minfo = Tools.minfo();
         if (Tools.myIsNull(wheres)) {
-            wheres = (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)) ? "" : " gems_fs_id=" + minfo.get("gems_fs_id"); // 只显示自己公司的
+            wheres = (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)) ? "" : " gems_fs_id=" + minfo.get("fsid"); // 只显示自己公司的
         } else {
-            wheres += (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)) ? "" : " AND gems_fs_id=" + minfo.get("gems_fs_id"); // 只显示自己公司的
+            wheres += (Tools.isSuperAdmin(minfo) || Tools.isCcAdmin(minfo)) ? "" : " AND gems_fs_id=" + minfo.get("fsid"); // 只显示自己公司的
         }
 
         TtList lmss = super.lists(wheres, f);

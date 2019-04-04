@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:if test="${fn:contains(sessionScope.strAgp,',107,')==true}">
 <div class="text-primary">
     <em>机构补充材料</em>
     <div class="big-conte_">
@@ -74,3 +75,4 @@ function erp(){
         </div>
     </div>
 </div>
+</c:if>

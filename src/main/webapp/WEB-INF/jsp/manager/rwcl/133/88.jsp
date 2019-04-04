@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:if test="${fn:contains(sessionScope.strAgp,',142,')==true}">
 <div class="text-primary">
     <em>退单退费申请：</em>
     <div class="big-conte" style="display: block;">
@@ -120,3 +121,4 @@
         </div>
     </div>
 </div>
+</c:if>

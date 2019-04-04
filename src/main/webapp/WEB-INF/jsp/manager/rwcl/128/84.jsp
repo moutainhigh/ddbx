@@ -1,12 +1,9 @@
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: 86176
-  Date: 2019/3/9
-  Time: 11:58
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:if test="${fn:contains(sessionScope.strAgp,',147,')==true}">
 <div class="text-primary">
     <em>业务信息修改申请：</em>
     <div class="big-conte" style="display: block;">
@@ -44,6 +41,7 @@
         </div>
     </div>
 </div>
+</c:if>
 <script type="text/javascript">
     function erp() {
         var ywlx = $('#ywlx').val();
