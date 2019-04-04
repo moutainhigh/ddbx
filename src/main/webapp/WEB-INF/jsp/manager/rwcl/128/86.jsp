@@ -1,12 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 86176
-  Date: 2019/3/9
-  Time: 16:10
-  To change this template use File | Settings | File Templates.
---%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:if test="${fn:contains(sessionScope.strAgp,',131,')==true}">
 <div class="text-primary">
     <em>系统运维(专员):</em>
     <div class="big-conte_">
@@ -44,6 +41,7 @@
         </div>
     </div>
 </div>
+</c:if>
 <script type="text/javascript">
     function erp() {
         var state_code = $('input[name="state_code"]:checked').val();

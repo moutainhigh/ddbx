@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<c:if test="${fn:contains(sessionScope.strAgp,',121,')==true}">
 <div class="text-primary"><em>抵押情况记录：</em>
     <div class="big-conte" style="display: block;">
         <div style="float: left; margin-left: 20px; width: 260px;" class="ng-binding">
@@ -162,3 +163,4 @@
             </form>
         </div>
     </div></div>
+</c:if>

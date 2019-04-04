@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<c:if test="${fn:contains(sessionScope.strAgp,',114,')==true}">
 <div class="text-primary">
     <em>行政入库:</em>
     <div class="big-conte_">
@@ -88,3 +88,4 @@
         </div>
     </div>
 </div>
+</c:if>

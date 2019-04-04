@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="com.example.ddbx.tt.data.TtMap" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %><%--
   Created by IntelliJ IDEA.
@@ -14,6 +19,7 @@
         result_value=Tools.jsonDeCode_mp(erp_result.get("result_value"));
     }
 %>
+<c:if test="${fn:contains(sessionScope.strAgp,',45,')==true}">
 <div class="text-primary"><em>通融审核：</em>
     <div class="big-conte" style="display: block;">
         <strong style="margin-left: 10px;"><i>处理信息：</i></strong><br>
@@ -75,6 +81,7 @@
         </div>
     </div>
 </div>
+</c:if>
 <script>
     function erp() {
         var state_code= $('input[name="state_code"]:checked').val();
