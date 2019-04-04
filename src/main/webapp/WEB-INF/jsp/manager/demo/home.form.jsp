@@ -299,7 +299,7 @@
                             </table>
                         </div>
                         <div style="width: 100%; height: 10%;margin-top: 2%;">
-                            <div class="paiming_button" onclick="show_bjls('fangkan')" style="cursor:pointer">更多</div>
+                            <div class="paiming_button" onclick="show_bjls('fangkuan')" style="cursor:pointer">更多</div>
                         </div>
                     </div>
                 </div>
@@ -456,7 +456,7 @@
                                 </tr>
                             </table>
                             <div style="width: 100%; height: 10%;margin-top: 2%;">
-                                <div class="paiming_button" onclick="show_bjls('yuqi')" style="cursor:pointer">更多</div>
+                                <div class="paiming_button" onclick="show_bjls1()" style="cursor:pointer">更多</div>
                             </div>
                         </div>
                         <div style="height: 100%;width: 36%; float: left;">
@@ -601,18 +601,19 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" align="center" id="aayyclModalLabel">代理商/省份排名</h4>
+                <h4 class="modal-title" align="center" id="aayyclModalLabel">省份/代理商排名</h4>
             </div>
             <div id="modal_add" class="modal-body modal-open"
                  style="height:100%;border:1px solid #ccc;background-color:#F7F7F7;border-radius: 10px;margin:30px;">
                 <div class="paiming_table">
-                    <table  class="paiming_table_style">
+                    <%--   报单统计更多排名  --%>
+                    <table  class="paiming_table_style" id="baodangengduo">
                         <tr>
                             <th >省份</th>
                             <th colspan="3" class="font_color_1 font_color_4">排名</th>
                             <th >代理商</th>
                         </tr>
-                        <c:forEach items="${ rankinglist }" var="rank" varStatus="lists">
+                        <c:forEach items="${ rankinglist }" var="rank" varStatus="lists" >
                             <tr>
                                 <td class="font_color_3">${rank.name }</td>
                                 <td class="font_size_3 font_color_4">${rank.sell }</td>
@@ -621,9 +622,40 @@
                                 <td class="font_color_3">${gemslist[lists.count-1].name }</td>
                             </tr>
                         </c:forEach>
-
-
-
+                    </table>
+                    <%--   汽车贷款更多排名  --%>
+                    <table  class="paiming_table_style" id="guojiangengduo">
+                        <tr>
+                            <th >省份</th>
+                            <th colspan="3" class="font_color_1 font_color_4">排名</th>
+                            <th >代理商</th>
+                        </tr>
+                        <c:forEach items="${ cardpasscomm }" var="comm" varStatus="lists">
+                            <tr>
+                                <td class="font_color_3  asdf">${comm.name }</td>
+                                <td class="font_size_3 font_color_4">${Math.round(comm.rate*100/1) }%</td>
+                                <td ><div class="paiming_rank">${lists.count}</div></td>
+                                <td class="font_size_3 font_color_4">${Math.round(cardpassgems[lists.count-1].rate*100/1) }%</td>
+                                <td class="font_color_3  asdf">${cardpassgems[lists.count-1].name }</td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                    <%--   放款统计更多排名  --%>
+                    <table  class="paiming_table_style" id="fangkuangengduo">
+                        <tr>
+                            <th >省份</th>
+                            <th colspan="3" class="font_color_1 font_color_4">排名</th>
+                            <th >代理商</th>
+                        </tr>
+                        <c:forEach items="${ rankingloanlist }" var="rank" varStatus="lists">
+                            <tr>
+                                <td class="font_color_3">${rank.name }</td>
+                                <td class="font_size_3 font_color_4">${rank.sell }</td>
+                                <td ><div class="paiming_rank">${lists.count}</div></td>
+                                <td class="font_size_3 font_color_4">${gemsloanlist[lists.count-1].gems }</td>
+                                <td class="font_color_3">${gemsloanlist[lists.count-1].name }</td>
+                            </tr>
+                        </c:forEach>
                     </table>
                 </div>
             </div>
@@ -634,6 +666,53 @@
     </div>
 </div>
 
+
+<div class="modal fade in" id="addModal_tdtf1" tabindex="-1" role="dialog" aria-labelledby="imgs_yyclLabel"
+     aria-hidden="false">
+    <div class="modal-dialog modal-lg" style="width: 400px;height: 600px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" align="center" id="">省份/代理商排名</h4>
+            </div>
+            <div class="modal-body modal-open"
+                 style="height:100%;border:1px solid #ccc;background-color:#F7F7F7;border-radius: 10px;margin:30px;">
+                <div class="paiming_table">
+                    <%--   逾期更多排名  --%>
+                    <table class="graph_overdue_center yuqigd">
+                        <tr>
+                            <th>代理商</th>
+                            <th>逾期率</th>
+                        </tr>
+                        <tr>
+                            <td>金稻谷</td>
+                            <td>0.98%</td>
+                        </tr>
+                        <tr >
+                            <td>联众</td>
+                            <td>0.96%</td>
+                        </tr>
+                        <tr>
+                            <td>厦门远景</td>
+                            <td>0.94%</td>
+                        </tr>
+                        <tr>
+                            <td>灿谷</td>
+                            <td>0.88%</td>
+                        </tr>
+                        <tr>
+                            <td>泰州索普</td>
+                            <td>0.83%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="${pageContext.request.contextPath }/manager/js/visual/visual.js"></script>
 <script type="text/javascript">
     window.onload =function(){
@@ -653,19 +732,26 @@
 
     function show_bjls(type) {
         if(type == 'baodan'){
-
+            document.getElementById("guojiangengduo").style.display="none";
+            document.getElementById("fangkuangengduo").style.display="none";
+            document.getElementById("baodangengduo").style.display="block";
         }
         if(type == 'guojian'){
-
+            document.getElementById("baodangengduo").style.display="none";
+            document.getElementById("fangkuangengduo").style.display="none";
+            document.getElementById("guojiangengduo").style.display="block";
         }
         if(type == 'fangkuan'){
-
-        }
-        if(type == 'yuqi'){
-
+            document.getElementById("baodangengduo").style.display="none";
+            document.getElementById("guojiangengduo").style.display="none";
+            document.getElementById("fangkuangengduo").style.display="block";
         }
 
         $('#addModal_tdtf').modal({show: true});
+    }
+
+    function show_bjls1() {
+        $('#addModal_tdtf1').modal({show: true});
     }
 </script>
 
