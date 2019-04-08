@@ -28,7 +28,7 @@ public class ManagerTools {
         String[] allowCnList = {
                 "admin", "assess_admin", "home", "admin2", "button", "demo_upfile", "icon", "general",
                 "admin_agp", "Timeline", "Modals", "table", "comm_citys", "sys_modal", "fs_agp", "readme", "sys_error", "readmedev",
-                "fs", "spmq", "car_loan", "qcpg",
+                "fs", "spmq", "car_loan", "qcpg","LoanCar","LoanPhone",
                 "gems", "dd_icbc", "zxcx", "alltask", "mytask", "my_job", "sys_config", "sys_config_son", "dd_icbc_status", "kk"
         }; // 允许的cn,只有在列表中的cn才允许访问
         return Tools.arrayIndexOf(allowCnList, cn);
@@ -51,6 +51,7 @@ public class ManagerTools {
                 "gems",
                 "spmq",
                 "qcpg",
+                "LoanCar","LoanPhone",
                 "dd_icbc",
                 "alltask", "zxcx", "car_loan",
 
@@ -117,6 +118,10 @@ public class ManagerTools {
                 return "sys_error";
             case "mytask":
                 return "MyTask";
+            case "LoanCar":
+                return "LoanCar";
+            case "LoanPhone":
+                return "LoanPhone";
             case "alltask":
                 return "AllTask";
             case "zx_1":

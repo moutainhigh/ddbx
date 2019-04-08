@@ -2,24 +2,21 @@ package com.example.ddbx.tt.table;
 
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
-import com.example.ddbx.tt.tool.Config;
 import com.example.ddbx.tt.tool.*;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.text.DecimalFormat;
 
-
-public class spmq extends DbCtrl {
-
-    private final String title = "视频面签";
+public class LoanPhone extends DbCtrl {
+    private final String title = "电催作业";
     private String orderString = "ORDER BY dt_edit DESC"; // 默认排序
     private boolean canDel = false;
     private boolean canAdd = true;
-    private final String classAgpId = "149"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
+    private final String classAgpId = "154"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
     public boolean agpOK = false;// 默认无权限
 
-    public spmq() {
-        super("dd_icbc_materials");
+    public LoanPhone() {
+        super("loan_overdue_list");
         AdminAgp adminAgp = new AdminAgp();
         try {
             if (adminAgp.checkAgp(classAgpId)) { // 如果有权限
@@ -35,92 +32,9 @@ public class spmq extends DbCtrl {
             adminAgp.closeConn();
         }
     }
-    //视频面签进件 查询全部征信订单并选择一个进件
-    public TtList selectAllOrderName(){
-        String sql="select id,c_name from dd_icbc";
-        TtList allCustomer = Tools.reclist(sql);
-        return allCustomer;
-    }
-
-    public TtMap selectspmqPlate(String icbc_id) {
-        String sql = "select count(*) sum,e.* from dd_icbc_erp e where type_id=63 and icbc_id=" + icbc_id;
-        TtMap ontCustomer = Tools.recinfo(sql);
-        return ontCustomer;
-    }
-    @Override
-    public long add(TtMap ary) {
-        //添加时先判断一下有没有这个板块，如果有该板块>0就不添加，没有0该板块就添加
-        String icbc_id = ary.get("icbc_id");
-        TtMap ttMap = selectspmqPlate(icbc_id);
-        // 没有该板块添加
-        if(ttMap.get("sum").equals("0")) {
-            //从dd_icbc表中查询出id,gems_fs_id,gems_id,order_code
-            String sql = "select id,gems_fs_id,gems_id,c_name,c_tel,c_cardno from dd_icbc where id=" + ary.get("icbc_id");
-            TtMap ontCustomer = Tools.recinfo(sql);
-
-            long qryid = 0;
-            //向dd_icbc_erp表中添加数据
-            TtMap ttMap1 = new TtMap();
-            ttMap1.put("c_name", ontCustomer.get("c_name"));
-            ttMap1.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
-            ttMap1.put("gems_id", ontCustomer.get("gems_id"));
-            ttMap1.put("icbc_id", ary.get("icbc_id"));
-            ttMap1.put("type_id", "63");
-            ttMap1.put("later_status", "24");
-            ttMap1.put("now_status", "23");
-            ttMap1.put("c_tel", ontCustomer.get("c_tel"));
-            ttMap1.put("c_cardno", ontCustomer.get("c_cardno"));
-            ttMap1.put("adminop_tag", Tools.minfo().get("id")); //当前操作人id
-            qryid = Tools.recAdd(ttMap1, "dd_icbc_erp");
-
-            //向dd_icbc_erp_result表中添加数据
-            TtMap ttMap2 = new TtMap();
-            ttMap2.put("qryid", qryid + "");
-            ttMap2.put("icbc_id", ary.get("icbc_id"));
-            ttMap2.put("type_id", "63");
-            ttMap2.put("later_status", "23");
-            ttMap2.put("now_status", "22");
-            Tools.recAdd(ttMap2, "dd_icbc_erp_result");
-
-            TtMap ttMap3 = new TtMap();
-            ttMap3.put("qryid", qryid + "");
-            ttMap3.put("icbc_id", ary.get("icbc_id"));
-            ttMap3.put("type_id", "63");
-            ttMap3.put("later_status", "24");
-            ttMap3.put("now_status", "23");
-            Tools.recAdd(ttMap3, "dd_icbc_erp_result");
-
-            // 本表操作添加数据
-            ary.put("icbc_id", ary.get("icbc_id"));
-            ary.put("gems_fs_id", ontCustomer.get("gems_fs_id"));
-            ary.put("gems_id", ontCustomer.get("gems_id"));
-            DecimalFormat countFormat = new DecimalFormat("000000000");
-            ary.put("order_code", "S" + countFormat.format(Integer.parseInt(ontCustomer.get("id"))));
-            ary.put("videostep1", ary.get("videostep1"));
-
-            return super.add(ary);
-        }
-        return 0;
-    }
-
-    @Override
-    public void setTable(String table) {
-        super.setTable(table);
-    }
-
     @Override
     public void doGetForm(HttpServletRequest request, TtMap post) {
-        spmq spmq = new spmq();
-        TtList getAllOrderName1 = spmq.selectAllOrderName();
-        request.setAttribute("names",getAllOrderName1);
 
-        if(post.get("id") != null){
-            String sql="select die.c_name from dd_icbc_materials dim,dd_icbc_erp die where dim.icbc_id=die.icbc_id and dim.id="+post.get("id");
-            TtMap ontCustomer = Tools.recinfo(sql);
-
-            String c_name=ontCustomer.get("c_name");
-            request.setAttribute("c_name", c_name);
-        }
         long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
         TtMap info = info(nid);
         String jsonInfo = Tools.jsonEncode(info);
@@ -128,23 +42,6 @@ public class spmq extends DbCtrl {
         request.setAttribute("infodb", info);//infodb为TtMap的info
         request.setAttribute("id", nid);
     }
-
-    @Override
-    public int edit(TtMap ary, long id) {
-        String icbc_id = ary.get("icbc_id");
-
-        Tools.recexec("update dd_icbc_erp set now_status=23,later_status=24 where type_id=63 and icbc_id="+icbc_id);
-        //2 本表操作
-        ary.put("videostep1", ary.get("videostep1"));
-
-        return super.edit(ary, id);
-    }
-
-    @Override
-    public boolean delete(long id, String deltag) {
-        return super.delete(id, deltag);
-    }
-
     //list 处理
     @Override
     public void doGetList(HttpServletRequest request, TtMap post) {
@@ -264,6 +161,10 @@ public class spmq extends DbCtrl {
     @Override
     public void closeConn() {
         super.closeConn();
+    }
+    @Override
+    public void setTable(String table) {
+        super.setTable(table);
     }
     @Override
     public void doPost(TtMap post, long id,TtMap result2) {

@@ -35,7 +35,7 @@
     <!-- Content Header (Page header) --><c:if test="${recs>0}">
     <section class="content-header">
         <h1>
-                ${lsitTitleString}
+                ${ lsitTitleString }
             <small>共${recs}个</small>
         </h1>
     </section>
