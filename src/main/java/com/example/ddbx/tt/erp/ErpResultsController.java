@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.tagext.PageData;
 
 /**
  * erp 相关操作
@@ -331,6 +332,34 @@ public class ErpResultsController {
                              * 生成客户还款计划
                              * 期数 金额 月还款额 月还日期
                              */
+                            TtMap addPS = new TtMap();
+                            addPS.put("icbc_id",post.get("icbc_id"));
+                            String icbcmap = "select * from dd_icbc where id =" + post.get("icbc_id");
+                            TtMap recinfo = Tools.recinfo(icbcmap);
+                            addPS.put("c_cardno",recinfo.get("c_cardno")!=""?recinfo.get("c_cardno"):"");
+                            addPS.put("c_name",recinfo.get("c_name")!=""?recinfo.get("c_name"):"");
+                            addPS.put("should_money",post.get("yhdksh_61_yh")); //月还金额
+                            addPS.put("c_bank_card", post.get("yhdksh_61_kh")); //还款卡号
+                            addPS.put("dt_add", LoanImportExcelController.Getnow());
+                            addPS.put("dt_edit", LoanImportExcelController.Getnow());
+                            String should_data;
+                            int counts = Integer.parseInt(post.get("yhdksh_61_fq")); //分期数
+                            String sqhkr = post.get("firstMonthPayDate"); //首月还款日  "2019-01-25"
+                            int year = Integer.parseInt(sqhkr.substring(0,4));
+                            int month = Integer.parseInt(sqhkr.substring(5,7));
+                            int day = Integer.parseInt(sqhkr.substring(8,10));
+                            for(int i=0;i<counts;i++){
+                                if(month > 12){
+                                    year = year+1;
+                                    month=1;
+                                }
+                                should_data = year+"-"+month+"-"+day;
+                                addPS.put("should_date", should_data);
+                                addPS.put("overdue_which", String.valueOf(i+1));
+                                Tools.recAdd(addPS, "loan_repayment_schedule");
+                                month++;
+                            }
+
 
                         }else if(post.get("result_code").equals("2")){ //放款失败 进入上一个状态 银行审批结果
                             erp.put("now_status", "61");
