@@ -266,6 +266,12 @@ public class Visual {
             years[i]=formatDate-i;
         }
         request.setAttribute("years",years );//年份列表
+
+        String[] count = new String[10];
+        for(int i=0;i<10;i++){
+            count[i]=i+"";
+        }
+        request.setAttribute("count",count );
     }
 
     //每月数据总单数折线图ajax前台获取           null,null,null
