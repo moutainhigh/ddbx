@@ -28,7 +28,7 @@
                                         <c:forEach var="list" items="${comm_city}">
                                             <option value="${list.id}">${list.name}</option>
                                         </c:forEach>
-                                    </select><i style="padding-left: 5px">></i>
+                                    </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                 </li>
                                 <li>
                                     <select id="baodantime" onchange="baodanselect()">
@@ -37,7 +37,7 @@
                                         <c:forEach var="list" items="${years }" >
                                             <option value="${list}">${list}</option>
                                         </c:forEach>
-                                    </select><i>></i>
+                                    </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                 </li>
                             </ul>
                         </div>
@@ -120,7 +120,7 @@
                                         <c:forEach var="list" items="${comm_city}">
                                             <option value="${list.id}">${list.name}</option>
                                         </c:forEach>
-                                    </select><i style="padding-left: 5px">></i>
+                                    </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                 </li>
                                 <li>
                                     <select id="guojiantime" onchange="guojianselect()">
@@ -129,7 +129,7 @@
                                         <c:forEach var="list" items="${years }" >
                                             <option value="${list}">${list}</option>
                                         </c:forEach>
-                                    </select><i>></i>
+                                    </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                 </li>
                             </ul>
                         </div>
@@ -214,7 +214,7 @@
                                         <c:forEach var="list" items="${comm_city}">
                                             <option value="${list.id}">${list.name}</option>
                                         </c:forEach>
-                                    </select><i style="padding-left: 5px">></i>
+                                    </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                 </li>
                                 <li>
                                     <select id="fangkuantime" onchange="fangkuanselect()">
@@ -223,7 +223,7 @@
                                         <c:forEach var="list" items="${years }" >
                                             <option value="${list}">${list}</option>
                                         </c:forEach>
-                                    </select><i>></i>
+                                    </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                 </li>
                             </ul>
                         </div>
@@ -334,7 +334,7 @@
                                         <c:forEach var="list" items="${comm_city}">
                                             <option value="${list.id}">${list.name}</option>
                                         </c:forEach>
-                                    </select><i style="padding-left: 5px">></i>
+                                    </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                 </li>
                                 <li>
                                     <select id="diyatime" onchange="diyaselect()">
@@ -343,7 +343,7 @@
                                         <c:forEach var="list" items="${years }" >
                                             <option value="${list}">${list}</option>
                                         </c:forEach>
-                                    </select><i>></i>
+                                    </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                 </li>
                             </ul>
                         </div>
@@ -366,7 +366,7 @@
                                         <c:forEach var="list" items="${comm_city}">
                                             <option value="${list.id}">${list.name}</option>
                                         </c:forEach>
-                                    </select><i style="padding-left: 5px">></i>
+                                    </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                 </li>
                                 <li>
                                     <select id="cailiaotime" onchange="cailiaoselect()">
@@ -375,7 +375,7 @@
                                         <c:forEach var="list" items="${years }" >
                                             <option value="${list}">${list}</option>
                                         </c:forEach>
-                                    </select><i>></i>
+                                    </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                 </li>
                             </ul>
                         </div>
@@ -412,7 +412,7 @@
                                             <c:forEach var="list" items="${comm_city}">
                                                 <option value="${list.id}">${list.name}</option>
                                             </c:forEach>
-                                        </select><i style="padding-left: 5px">></i>
+                                        </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                     </li>
 
                                 </ul>
@@ -496,7 +496,7 @@
                                         <c:forEach var="list" items="${years }" >
                                             <option value="${list}">${list}</option>
                                         </c:forEach>
-                                    </select><i>></i>
+                                    </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                 </li>
                             </ul>
                         </div>
@@ -516,14 +516,14 @@
                                            onfocus="javascript:if(this.value=='请输入代理商')this.value='';" id="zhengxinval"/>
                                 </li>
                                 <li>
-                                    <select id="zhengxinsel" onchange="zhengxinselect()">
-                                        <option selected value="0"> 请选择省份</option>
-                                        <option value="0"> 全部</option>
-                                        <c:forEach var="list" items="${comm_city}">
-                                            <option value="${list.id}">${list.name}</option>
-                                        </c:forEach>
-                                    </select><i style="padding-left: 5px">></i>
-                                </li>
+                                <select id="zhengxinsel" onchange="zhengxinselect()">
+                                    <option selected value="0"> 请选择省份</option>
+                                    <option value="0"> 全部</option>
+                                    <c:forEach var="list" items="${comm_city}">
+                                        <option value="${list.id}">${list.name}</option>
+                                    </c:forEach>
+                                </select><i style="padding-left: 5px; font-weight:bold;">></i>
+                            </li>
                                 <li>
                                     <select id="zhengxintime" onchange="zhengxinselect()">
                                         <option selected value="0"> 请选择时间</option>
@@ -531,7 +531,7 @@
                                         <c:forEach var="year" items="${years }" >
                                             <option value="${year}">${year}</option>
                                         </c:forEach>
-                                    </select><i>></i>
+                                    </select><i style="padding-left: 5px; font-weight:bold;">></i>
                                 </li>
                             </ul>
                         </div>
@@ -580,7 +580,7 @@
                                     <c:forEach var="list" items="${comm_city}">
                                         <option value="${list.id}">${list.name}</option>
                                     </c:forEach>
-                                </select><i style="padding-left: 5px">></i>
+                                </select><i style="padding-left: 5px; font-weight:bold;">></i>
                             </li>
 
                         </ul>
@@ -613,10 +613,10 @@
                             <th colspan="3" class="font_color_1 font_color_4">排名</th>
                             <th >代理商</th>
                         </tr>
-                        <c:forEach items="${ rankinglist }" var="rank" varStatus="lists" >
+                        <c:forEach items="${ count }" var="rank" varStatus="lists" >
                             <tr>
-                                <td class="font_color_3">${rank.name }</td>
-                                <td class="font_size_3 font_color_4">${rank.sell }</td>
+                                <td class="font_color_3">${rankinglist[lists.count-1].name }</td>
+                                <td class="font_size_3 font_color_4">${rankinglist[lists.count-1].sell }</td>
                                 <td ><div class="paiming_rank">${lists.count}</div></td>
                                 <td class="font_size_3 font_color_4">${gemslist[lists.count-1].gems }</td>
                                 <td class="font_color_3">${gemslist[lists.count-1].name }</td>
@@ -630,13 +630,13 @@
                             <th colspan="3" class="font_color_1 font_color_4">排名</th>
                             <th >代理商</th>
                         </tr>
-                        <c:forEach items="${ cardpasscomm }" var="comm" varStatus="lists">
+                        <c:forEach items="${ count }" var="comm" varStatus="lists">
                             <tr>
-                                <td class="font_color_3  asdf">${comm.name }</td>
-                                <td class="font_size_3 font_color_4">${Math.round(comm.rate*100/1) }%</td>
+                                <td class="font_color_3 ">${cardpasscomm[lists.count-1].name }</td>
+                                <td class="font_size_3 font_color_4">${Math.round(cardpasscomm[lists.count-1].rate*100/1) }%</td>
                                 <td ><div class="paiming_rank">${lists.count}</div></td>
                                 <td class="font_size_3 font_color_4">${Math.round(cardpassgems[lists.count-1].rate*100/1) }%</td>
-                                <td class="font_color_3  asdf">${cardpassgems[lists.count-1].name }</td>
+                                <td class="font_color_3 ">${cardpassgems[lists.count-1].name }</td>
                             </tr>
                         </c:forEach>
                     </table>
@@ -647,10 +647,10 @@
                             <th colspan="3" class="font_color_1 font_color_4">排名</th>
                             <th >代理商</th>
                         </tr>
-                        <c:forEach items="${ rankingloanlist }" var="rank" varStatus="lists">
+                        <c:forEach items="${ count }" var="rank" varStatus="lists">
                             <tr>
-                                <td class="font_color_3">${rank.name }</td>
-                                <td class="font_size_3 font_color_4">${rank.sell }</td>
+                                <td class="font_color_3">${rankingloanlist[lists.count-1].name }</td>
+                                <td class="font_size_3 font_color_4">${rankingloanlist[lists.count-1].sell }</td>
                                 <td ><div class="paiming_rank">${lists.count}</div></td>
                                 <td class="font_size_3 font_color_4">${gemsloanlist[lists.count-1].gems }</td>
                                 <td class="font_color_3">${gemsloanlist[lists.count-1].name }</td>
