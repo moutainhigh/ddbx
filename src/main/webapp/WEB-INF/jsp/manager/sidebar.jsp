@@ -32,7 +32,7 @@
                     iconHtmlMain = !Tools.myIsNull(iconHtmlMain)?iconHtmlMain:"<i class=\"fa fa-sitemap\"></i>";
             %>
             <li>
-                <a href="#"> <%=iconHtmlMain%> <span><%=key%></span></a>
+                <a href="#" name="<%=key%>" onclick="aaa(this)"> <%=iconHtmlMain%> <span><%=key%></span></a>
                 <ul class="treeview-menu">
                     <%
                         for (TtMap keysub :submenus){//二级级菜单循环开始
@@ -67,4 +67,14 @@
 </aside>
 <script>
     $('li.active').parents('li').addClass('treeview').addClass('active');
+
+    function aaa(data) {
+        if (data.name == '客户逾期名单') {
+            location.href="index?cn=loan_khyqmd&sdo=list&type=loan";
+        }
+        if (data.name == '电催作业') {
+            location.href="index?cn=loan_dczy&sdo=list&type=loan";
+        }
+
+    }
 </script>

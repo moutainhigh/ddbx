@@ -245,7 +245,7 @@
                     </div>
                     <label class="col-sm-2">单位地址:<i class="red">*</i></label>
                     <div class="col-sm-2">
-                        ${mapafter.kk/zdr_dwdz}
+                        ${mapafter.zdr_dwdz}
                     </div>
                     <label class="col-sm-2" >个人月收入:<i class="red">*</i></label>
                     <div class="col-sm-2">

@@ -6,22 +6,21 @@ import com.example.ddbx.tt.tool.Config;
 import com.example.ddbx.tt.tool.DbCtrl;
 import com.example.ddbx.tt.tool.Tools;
 import org.apache.commons.lang.StringUtils;
-import org.apache.poi.util.StringUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 
-public class loan_khhkqk extends DbCtrl {
+public class loan_dczy extends DbCtrl {
 
-    private final String title = "客户还款情况";
+    private final String title = "电催作业";
     private String orderString = "ORDER BY dt_edit DESC"; // 默认排序
     private boolean canDel = false;
     private boolean canAdd = false;
     private final String classAgpId = "153"; // 随便填的，正式使用时应该跟model里此模块的ID相对应
     public boolean agpOK = false;// 默认无权限
 
-    public loan_khhkqk() {
-        super("dd_icbc");
+    public loan_dczy(){
+        super("loan_overdue_list");
 
         AdminAgp adminAgp = new AdminAgp();
         try {
@@ -51,8 +50,8 @@ public class loan_khhkqk extends DbCtrl {
         int pageInt = Integer.valueOf(Tools.myIsNull(post.get("p")) == false ? post.get("p") : "1"); // 当前页
         int limtInt = Integer.valueOf(Tools.myIsNull(post.get("l")) == false ? post.get("l") : "10"); // 每页显示多少数据量
         String whereString = "true";
-        String tmpWhere = "";
-        String fieldsString = "t.*,k.dk_price,k.dk_total_price,k.aj_date,c.pg_price"; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
+        String tmpWhere = " and t.type_id = 2";
+        String fieldsString = "t.*, c.order_code, c.c_name, c.c_cardno, c.loan_tpid, k.dk_price, f.`name` fs_name, g.`name` gems_name"; // 显示字段列表如t.id,t.name,t.dt_edit,字段数显示越少加载速度越快，为空显示所有
         TtList list = null;
         /* 开始处理搜索过来的字段 */
         kw = post.get("kw");
@@ -78,8 +77,10 @@ public class loan_khhkqk extends DbCtrl {
         p = pageInt; // 显示页
         limit = limtInt; // 每页显示记录数
         showall = true; // 忽略deltag和showtag
-        leftsql="LEFT JOIN icbc_kk k on k.icbc_id=t.id " +
-                "LEFT JOIN dd_icbc_cars c on c.icbc_id=t.id ";
+        leftsql= "LEFT JOIN dd_icbc c on c.id=t.icbc_id " +
+                 "LEFT JOIN icbc_kk k on k.icbc_id=t.icbc_id " +
+                 "LEFT JOIN fs f on f.id=t.gems_fs_id " +
+                 "LEFT JOIN admin g on g.id=t.gems_id ";
 
         list = lists(whereString, fieldsString);
         System.out.println("list::::++  "+list);
@@ -88,27 +89,9 @@ public class loan_khhkqk extends DbCtrl {
                 info.put("c_name", info.get("c_name").replace(kw, "<font style='color:red;background:#FFCC33;'>" + kw + "</font>"));
             }
         }
-        for (int i = 0; i < list.size(); i++) {
-            TtMap ttMap = list.get(i);
-            String Myyh ="0";
-            if (StringUtils.isNotEmpty(ttMap.get("dk_total_price")) && StringUtils.isNotEmpty(ttMap.get("aj_date"))) {
-                BigDecimal dk_total_price = new BigDecimal(ttMap.get("dk_total_price")); //贷款总额
-                BigDecimal aj_date = new BigDecimal(ttMap.get("aj_date"));    //贷款期限
-                BigDecimal myyh = dk_total_price.divide(aj_date, 3,BigDecimal.ROUND_DOWN);//计算出每月应还并保留三位小数
-                String a1 = myyh.toString();
-                int c1 = Integer.parseInt(a1.substring(a1.indexOf(".")+3));//截取第三位小数转成int
-                if(c1 > 0){//判断是否大于0  是就保留两位小数
-                    BigDecimal vv = myyh.setScale(2, BigDecimal.ROUND_DOWN);
-                    BigDecimal zero = new BigDecimal("0.01");
-                    Myyh = vv.add(zero).toString();
-                }else{
-                    BigDecimal vv = myyh.setScale(2, BigDecimal.ROUND_DOWN);
-                    Myyh=vv.toString();
-                }
-                System.out.println("----每月应还："+Myyh);
-            }
-            ttMap.put("myyh", Myyh);
-        }
+        //电催的配置
+//        Stirng consql = "select * from loan_config";
+
         System.out.println("li::::  "+list);
         request.setAttribute("list", list);// 列表list数据
         request.setAttribute("recs", recs); // 总记录数
@@ -123,45 +106,61 @@ public class loan_khhkqk extends DbCtrl {
         // request.setAttribute("showmsg", "测试弹出消息提示哈！"); //如果有showmsg字段，在载入列表前会提示
     }
 
+
     @Override
     public void doGetForm(HttpServletRequest request, TtMap post) {
-
         long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
 
-        String sql = "select SQL_CALC_FOUND_ROWS t.*,k.dk_price,k.dk_total_price,k.aj_date,c.pg_price,b.`name` blankname from dd_icbc t LEFT JOIN icbc_kk k on k.icbc_id=t.id LEFT JOIN dd_icbc_cars c on c.icbc_id=t.id LEFT JOIN icbc_banklist b on b.id=t.bank_id where t.id = " + nid;
-        TtMap map = Tools.recinfo(sql);
-        String Myyh ="0";
-        if (StringUtils.isNotEmpty(map.get("dk_total_price")) && StringUtils.isNotEmpty(map.get("aj_date"))) {
-            BigDecimal dk_total_price = new BigDecimal(map.get("dk_total_price")); //贷款总额
-            BigDecimal aj_date = new BigDecimal(map.get("aj_date"));    //贷款期限
-            BigDecimal myyh = dk_total_price.divide(aj_date, 3,BigDecimal.ROUND_DOWN);//计算出每月应还并保留三位小数
-            String a1 = myyh.toString();
-            int c1 = Integer.parseInt(a1.substring(a1.indexOf(".")+3));//截取第三位小数转成int
-            if(c1 > 0){//判断是否大于0  是就保留两位小数
-                BigDecimal vv = myyh.setScale(2, BigDecimal.ROUND_DOWN);
-                BigDecimal zero = new BigDecimal("0.01");
-                Myyh = vv.add(zero).toString();
-            }else{
-                BigDecimal vv = myyh.setScale(2, BigDecimal.ROUND_DOWN);
-                Myyh=vv.toString();
-            }
-            System.out.println("----每月应还："+Myyh);
-        }
-        map.put("myyh", Myyh);
+        String bbsql = "select * from loan_overdue_list where id = " + nid;
+        TtMap bbmap = Tools.recinfo(bbsql);
 
-        String hkjhsql = "SELECT * FROM loan_repayment_schedule WHERE icbc_id = " + nid;
+        String sql = "SELECT SQL_CALC_FOUND_ROWS\n" +
+                "\tt.*,\n" +
+                "\tk.dk_price,\n" +
+                "\tk.dk_total_price,\n" +
+                "\tk.aj_date,\n" +
+                "\tc.pg_price,\n" +
+                "\tb.`name` blankname,\n" +
+                "\tc.ppxh,\n" +
+                "\tc.car_type,\n" +
+                "\tc.car_vin,\n" +
+                "\tc.motorcode,\n" +
+                "\tc.carno,\n" +
+                "\tc.car_color_id,\n" +
+                "\tk.aj_lv,\n" +
+                "\tk.sf_price,\n" +
+                "\tk.jrfw_price,\n" +
+                "\tib.`name` bankname\n" +
+                "FROM\n" +
+                "\tdd_icbc t\n" +
+                "\tLEFT JOIN icbc_kk k ON k.icbc_id = t.id\n" +
+                "\tLEFT JOIN dd_icbc_cars c ON c.icbc_id = t.id\n" +
+                "\tLEFT JOIN icbc_banklist b ON b.id = t.bank_id\n" +
+                "\tLEFT JOIN icbc_banklist ib ON ib.id = t.bank_id\n" +
+                "WHERE\n" +
+                "\tt.id = " + bbmap.get("icbc_id");
+        TtMap map = Tools.recinfo(sql);
+
+        String hkjhsql = "SELECT * FROM loan_repayment_schedule WHERE icbc_id = " + bbmap.get("icbc_id");
         TtList reclist = Tools.reclist(hkjhsql);
 
         //贷后信息
-        String dhsql = "select *,a.`name` gems_name,f.`name` fs_name from icbc_kk k left join admin a on a.id=k.gems_id left join fs f on f.id=k.gems_fs_id where icbc_id = " + nid;
+        String dhsql = "select *,a.`name` gems_name,f.`name` fs_name from icbc_kk k left join admin a on a.id=k.gems_id left join fs f on f.id=k.gems_fs_id where icbc_id = " + bbmap.get("icbc_id");
         TtMap mapafter = Tools.recinfo(dhsql);
 
+        //记录栏
+        String jlsql = "select lo.*,a.`name` gems_name from loan_overdue_list_result lo left join admin a on a.id = lo.mid_add where icbc_id = " + bbmap.get("icbc_id");
+        TtList jllist = Tools.reclist(jlsql);
+
+        System.out.println("jjjjjjj" + jllist);
         System.out.println("主贷人信息:"+map);
         String jsonInfo = Tools.jsonEncode(map);
         request.setAttribute("info", jsonInfo);//info为json后的info
         request.setAttribute("infodb", map);//infodb为TtMap的info
         request.setAttribute("hkjh", reclist);
         request.setAttribute("mapafter", mapafter);
+        request.setAttribute("bbmap",bbmap);
+        request.setAttribute("jllist", jllist);
         request.setAttribute("id", nid);
     }
 
