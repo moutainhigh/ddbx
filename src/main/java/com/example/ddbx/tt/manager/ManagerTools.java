@@ -29,7 +29,7 @@ public class ManagerTools {
                 "admin", "assess_admin", "home", "admin2", "button", "demo_upfile", "icon", "general",
                 "admin_agp", "Timeline", "Modals", "table", "comm_citys", "sys_modal", "fs_agp", "readme", "sys_error", "readmedev",
                 "fs", "spmq", "car_loan", "qcpg", "loan_khhklr", "loan_khhkqk","LoanCar","LoanPhone",
-                        "loan_khyqmd", "loan_dczy","loan_tcgl","loan_ssgl",
+                        "loan_khyqmd", "loan_dczy","loan_tcgl","loan_ssgl","loan_pmgl","loan_hxgl","loan_jqcl",
 
                 "gems", "dd_icbc", "zxcx", "alltask", "mytask", "my_job", "sys_config", "sys_config_son", "dd_icbc_status", "kk"
         }; // 允许的cn,只有在列表中的cn才允许访问
@@ -55,7 +55,7 @@ public class ManagerTools {
                 "qcpg",
                 "dd_icbc",
                 "alltask", "zxcx", "car_loan", "loan_khhklr", "loan_khhkqk","LoanCar","LoanPhone",
-                "loan_khyqmd", "loan_dczy","loan_tcgl", "loan_ssgl",
+                "loan_khyqmd", "loan_dczy","loan_tcgl", "loan_ssgl","loan_pmgl","loan_hxgl","loan_jqcl",
                 "mytask", "sys_config", "sys_config_son", "dd_icbc_status", "kk"
         }; // 允许的cn,只有在列表中的cn才使用数据库，
         return Tools.arrayIndexOf(allowCnList, cn);
@@ -147,6 +147,12 @@ public class ManagerTools {
                 return "loan_tcgl";
             case "loan_ssgl":
                 return "loan_ssgl";
+            case "loan_pmgl":
+                return "loan_pmgl";
+            case "loan_hxgl":
+                return "loan_hxgl";
+            case "loan_jqcl":
+                return "loan_jqcl";
             // 不需要使用数据库的CN
             case "home":
             case "button":
