@@ -63,14 +63,10 @@ public class MyTask extends DbCtrl {
                     request.setAttribute("erp_stylelist", erp_stylelist);
                     break;
                 case "1":
-                    String jcxxsql="select * from dd_icbc where id="+icbcid;
-                    TtMap jcxxMap = Tools.recinfo(jcxxsql);
-                    request.setAttribute("jcxx", jcxxMap);
+
                     break;
                 case "2":
-                    String khglsql="select di.*,ik.* from dd_icbc di,icbc_kk ik where di.id=ik.icbc_id and di.id="+icbcid;
-                    TtMap khglMap = Tools.recinfo(khglsql);
-                    request.setAttribute("khgl", khglMap);
+
                     break;
                 case "3":
                     //贷款管理
@@ -186,7 +182,7 @@ public class MyTask extends DbCtrl {
     /**
      * 获取处理过程显示数据
      *
-     * @param
+     * @param request
      */
     public TtList getclgc() {
         TtMap minfo = Tools.minfo();// 当前登陆用户信息

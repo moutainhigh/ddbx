@@ -65,19 +65,19 @@
                             <input type="text" class="form-control" value="${cars.expect_price}">
                         </div>
                     </div>
-                    <%--<div class="col-sm-3">
+                    <div class="col-sm-3">
                         <div class="input-group">
                             <span class="input-group-addon">新车指导价(元)</span>
                             <input type="text" class="form-control" value="${cars.dealer_price}">
                         </div>
-                    </div>--%>
+                    </div>
                     <div class="col-sm-3">
                         <div class="input-group">
                             <span class="input-group-addon">最终评估价(元)</span>
                             <input type="text" class="form-control" value="${cars.pg_price}">
                         </div>
                     </div>
-                   <%-- <div class="col-sm-3">
+                    <div class="col-sm-3">
                         <div class="input-group">
                             <span class="input-group-addon">现车牌号</span>
                             <input type="text" class="form-control" value="" disabled>
@@ -94,7 +94,7 @@
                             <span class="input-group-addon">购车发票号</span>
                             <input type="text" class="form-control" value="" disabled>
                         </div>
-                    </div>--%>
+                    </div>
                     <div class="col-sm-3">
                         <div class="input-group">
                             <span class="input-group-addon">行驶里程(公里)</span>
