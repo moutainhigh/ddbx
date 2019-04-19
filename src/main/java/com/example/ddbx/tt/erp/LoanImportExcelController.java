@@ -1,6 +1,7 @@
 package com.example.ddbx.tt.erp;
 
 import com.example.ddbx.tt.data.TtMap;
+import com.example.ddbx.tt.tool.Config;
 import com.example.ddbx.tt.tool.Tools;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -53,7 +54,8 @@ public class LoanImportExcelController {
         MultipartFile file = multipartRequest.getFile("file");
         String relatDir1 = new SimpleDateFormat("yyyy/MM/dd/").format(new Date());
         // 文件夹不存在则创建
-        File fdir = new File("D:/gitRepository/ddbx/src/main/webapp/upload/Excel/" + relatDir1);
+//        File fdir = new File("D:/gitRepository/ddbx/src/main/webapp/upload/Excel/" + relatDir1);
+        File fdir = new File(Config.FILEUP_SAVEPATH+"/Excel/" + relatDir1);
         if (!fdir.exists()) {
             fdir.mkdirs();
         }
