@@ -102,20 +102,29 @@ public class ErpdcglController {
 
                 } else if(post.get("tctype").equals("2")){  //拖车已受理信息录入提交
                     String coolStatus = post.get("coolStatus");     //拖车结果  33:完成 34:失败
-                    dbTools2.recupdate("update loan_overdue_list set type_id=7,type_status=71 where icbc_id=" + post.get("icbc_id"));
+                    if ("33".equals(coolStatus)) {
+                        dbTools2.recupdate("update loan_overdue_list set type_id=3,type_status=33 where icbc_id=" + post.get("icbc_id"));
 
-                    map3.put("type_id", "3");
-                    map3.put("type_status", coolStatus);
-                    map3.put("remark", "拖车(已受理)信息录入栏提交");
-                    map3.put("result_msg", post.get("result_msg"));
-                    Tools.recAdd(map3, "loan_overdue_list_result");
+                        map3.put("type_id", "3");
+                        map3.put("type_status", "33");
+                        map3.put("remark", "拖车完成");
+                        map3.put("result_msg", post.get("result_msg"));
+                        Tools.recAdd(map3, "loan_overdue_list_result");
+                    } else {
+                        dbTools2.recupdate("update loan_overdue_list set type_id=7,type_status=71 where icbc_id=" + post.get("icbc_id"));
 
-                    map3.put("type_id", "7");
-                    map3.put("type_status", "71");
-                    map3.put("remark", "拖车失败进入未核销");
-                    map3.put("result_msg", "拖车失败进入未核销");
-                    Tools.recAdd(map3, "loan_overdue_list_result");
+                        map3.put("type_id", "3");
+                        map3.put("type_status", coolStatus);
+                        map3.put("remark", "拖车(已受理)信息录入栏提交");
+                        map3.put("result_msg", post.get("result_msg"));
+                        Tools.recAdd(map3, "loan_overdue_list_result");
 
+                        map3.put("type_id", "7");
+                        map3.put("type_status", "71");
+                        map3.put("remark", "拖车失败进入未核销");
+                        map3.put("result_msg", "拖车失败进入未核销");
+                        Tools.recAdd(map3, "loan_overdue_list_result");
+                    }
                 } else if(post.get("tctype").equals("3")) {  //拖车完成信息录入提交
                     String coolStatus = post.get("coolStatus");     //拖车结果  51:拍卖 63:强制结清
                     if (coolStatus.equals("51")){
