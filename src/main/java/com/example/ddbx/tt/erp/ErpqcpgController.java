@@ -1,6 +1,7 @@
 package com.example.ddbx.tt.erp;
 
 import com.example.ddbx.tt.data.TtMap;
+import com.example.ddbx.tt.tool.DbTools;
 import com.example.ddbx.tt.tool.Tools;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -109,6 +110,10 @@ public class ErpqcpgController {
                 icbc_status.put("qcpg_status", "4");
                 break;
         }
+        //更新dd_icbc_cars
+        DbTools dbTools1 = new DbTools();
+        dbTools1.recupdate("update dd_icbc_cars set pg_price=" +post.get("price_result")+ " where icbc_id="+post.get("icbc_id"));
+
         String status_id = Tools.unDic("dd_icbc_status", post.get("icbc_id"), "id", "icbc_id");
         Tools.recEdit(icbc_status, "dd_icbc_status", Long.valueOf(status_id));
         System.out.println("post:" + post);
