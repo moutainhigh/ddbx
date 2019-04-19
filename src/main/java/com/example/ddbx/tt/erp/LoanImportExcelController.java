@@ -55,7 +55,7 @@ public class LoanImportExcelController {
         String relatDir1 = new SimpleDateFormat("yyyy/MM/dd/").format(new Date());
         // 文件夹不存在则创建
 //        File fdir = new File("D:/gitRepository/ddbx/src/main/webapp/upload/Excel/" + relatDir1);
-        File fdir = new File(Config.FILEUP_SAVEPATH+"/Excel/" + relatDir1);
+        File fdir = new File("/KCDIMG/ddbx-upload/Excel/" + relatDir1);
         if (!fdir.exists()) {
             fdir.mkdirs();
         }
