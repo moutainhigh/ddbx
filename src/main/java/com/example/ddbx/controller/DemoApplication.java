@@ -13,6 +13,8 @@ import org.springframework.web.WebApplicationInitializer;
 
 @ComponentScan(basePackages = {
 		"com.example.ddbx.controller",
+		"com.example.ddbx.config",
+		"com.example.ddbx.transfer",
 		"com.example.ddbx.tt",
 		"com.example.ddbx.wx",
 })
