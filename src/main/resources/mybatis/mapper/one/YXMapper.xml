@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.ddbx.transfer.dao.one.YXMapper">
+	<!--
+	本地测试相关sql
+	#查询下个节点状态
+	select later_status from dd_icbc_erp_result where id=(select max(id) from dd_icbc_erp_result where type_id=63 and icbc_id=45)
+
+	SELECT s1.id,s1.name,s2.id,s2.`name`,s2.sort FROM sys_modal s1
+	LEFT JOIN  sys_modal s2 ON s2.id_uplevel=s1.id
+	where s1.type="rwcl"
+
+	select id from sys_modal where id_uplevel="63" order by sort
+
+	#查询视频免签历史列表
+	select b.* from (select yvi.address,yvi.url,yvi.id yid,yvi.result_id resultId,iekir.now_status code,yvi.viedotype, fs.name, ieki.icbc_id icbcid,ieki.id iekiid,ieki.c_name cname,ieki.dt_edit editime,yvi.createtime, yb.id ybId,yb.`name` ybName from icbc_erp_video_info yvi join dd_icbc_erp ieki on yvi.ext=ieki.icbc_id and ieki.type_id=63 join fs fs on ieki.gems_fs_id=fs.id and yvi.app_mark='Dd' left JOIN dd_icbc_erp_result iekir ON iekir.id=yvi.result_id join dd_icbc ki on ki.id=ieki.icbc_id JOIN icbc_banklist yb on yb.id=ki.bank_id) b where 1=1 and b.resultId is null and b.ybId=2 order by yid desc limit 0,10
+
+	#查看数据库中相对较全的信息
+	select DISTINCT di.id from dd_icbc di,dd_icbc_cars dic,icbc_kk ik,dd_icbc_erp die,dd_icbc_erp_result kier,fs fs where di.id=dic.icbc_id and  di.id=ik.icbc_id and di.id=die.icbc_id and di.id=kier.icbc_id  and di.gems_fs_id=fs.id
+	#and die.type_id=63
+
+	select type_id from dd_icbc_erp_result where icbc_id=46
+
+	#添加一个大状态
+	INSERT INTO `ddbxdb`.`dd_icbc_erp`( `mid_add`, `mid_edit`, `dt_add`, `dt_edit`, `now_status`, `later_status`, `icbc_id`, `gems_id`, `gems_fs_id`, `type_id`, `c_name`, `c_tel`, `c_cardno`, `c_carvin`, `c_carno`, `adminop_tag`) VALUES (21, 21, '2019-03-29 17:05:44', '2019-03-29 17:06:24', 4, 4, 46, 65, 66, 63, '线上测试', '52551515', '2625155', NULL, NULL, NULL);
+
+	#添加一条抄送
+	INSERT INTO `ddbxdb`.`icbc_erp_video_info`(`id`, `channelId`, `createtime`, `duration`, `faccid`, `ext`, `server_path`, `url`, `result_id`, `vid`, `viedotype`, `address`, `duration_time`, `download_info`, `te`, `app_mark`) VALUES (857, '50915848388741', '2019-03-29 10:59:41', '220', '2', '46', NULL, 'http://jdvod6ep5thqk.vod.126.net/jdvod6ep5thqk/0-50927925068236-0-mix.mp4', 763, '', '1', '上海市浦东新区周家渡路31号世博源', '\"duration\":\"220\",\"ext\":\"\"id\":\"761\",\"latitude\":31.182165,\"longitude\":121.48882,\"address\":\"上海市浦东新区周家渡路31号世博源\"\",\"createtime\":\"1553828381841\",\"members\":\"\"duration\":110,\"accid\":\"123456\",\"duration\":110,\"caller\":true,\"accid\":\"75dd5d18ee7c102b4aa3ff5c12a5936a\"\",\"eventType\":\"5\",\"type\":\"VEDIO\",\"channelId\":\"50915848388741\",\"live\":\"0\",\"status\":\"SUCCESS\"', '\"fileinfo\":\"\"vid\":\"2408611582\",\"filename\":\"0-50915848388741-mix.mp4\",\"pieceindex\":\"0\",\"size\":\"19350307\",\"type\":\"mp4\",\"user\":\"0\",\"mix\":true,\"url\":\"http://jdvod6ep5thqk.vod.126.net/jdvod6ep5thqk/0-50915848388741-0-mix.mp4\",\"channelid\":\"50915848388741\",\"timestamp\":\"1553828535\",\"md5\":\"078eda5b9ac0f26a8630aa5721878f47\"\",\"eventType\":\"6\"', NULL, 'Dd');
+	-->
+
+
+	<!--查询大状态的下个节点状态
+		select later_status from dd_icbc_erp where icbc_id=#{0} and type_id=63
+	-->
+	<select id="selectSysModalLater" resultType="string" parameterType="string">
+		select later_status from dd_icbc_erp_result where id=(select max(id) from dd_icbc_erp_result where type_id=63 and icbc_id=#{0})
+	</select>
+	<!--根据查询大状态的所有节点-->
+	<select id="selectSysModalByParentId" resultType="string">
+ 		select id from sys_modal where id_uplevel="63" order by sort
+	</select>
+
+	<!-- 查询云信账户  没有用到-->
+	<!-- 	<select id="query_YX_account" resultType="java.util.HashMap" parameterType="java.lang.String">
+            select token,accid from gems where id=#{0}
+        </select> -->
+	<!-- 没有用到 -->
+	<!-- 	<update id="update_YX_account" parameterType="java.util.HashMap">
+            UPDATE  gems SET token=#{token},accid=#{accid} WHERE id=#{id};
+        </update> -->
+	<!-- 截图删除 -->
+	<update id="deleteVideoScreenshot" parameterType="map">
+		UPDATE  video_screenshot SET delmark=1,dt_edit=#{dtEdit},mid_edit=#{midEdit} WHERE id=#{id}
+	</update>
+	<select id="selectRealtimeUrl" parameterType="string" resultType="string">
+		select real_time_url from erp_viedo_app where app_mark=#{0}
+	</select>
+	<select id="selectRecordingRrl" parameterType="string" resultType="string">
+		select recording_url from erp_viedo_app where app_mark=#{0}
+	</select>
+	<delete id="deleteViedoInfoBychannelId"  parameterType="string">
+		delete from icbc_erp_video_info where channelId=#{0}
+	</delete>
+	<!-- 截图查询所有 -->
+	<select id="selectAllVideoScreenshot" resultType="map" parameterType="map">
+		select concat('http://a.kcway.net/assess/',path) path,dt_add dtAdd,id from  video_screenshot where delmark=0 and icbc_id=#{id} and channelId=#{channelId}
+	</select>
+	<!-- 截图保存 -->
+	<!-- {"path":"upload/2019/03/28/fe706b84a996ed8b65a4bcde670a241d.png","dtEdit":"2019-03-28 15:22:50","midEdit":"4793","dtAdd":"2019-03-28 15:22:50","icbcId":"706","midAdd":"4793"}-->
+	<insert id="addVideoScreenshot" parameterType="map">
+		INSERT INTO video_screenshot(`mid_add`, `mid_edit`, `dt_add`, `dt_edit`, `delmark`, `path`, `icbc_id`,`channelId`)
+		VALUES
+		(#{midAdd}, #{midEdit}, #{dtAdd},#{dtEdit}, 0, #{path}, #{icbcId},#{channelId});
+	</insert>
+	<select id="selectUidByAccid" resultType="java.lang.String" parameterType="java.lang.String" >
+		select uid from icbc_erp_token where accid=#{0}
+	</select>
+	<!-- 查询出所有的机构 -->
+	<select id="getOrganization" resultType="java.util.HashMap">
+		select id,name from fs
+	</select>
+	<insert id="addOccupyTest" parameterType="map" keyProperty="id" useGeneratedKeys="true">
+		insert into occupy_test
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="icbcId != null" >
+				icbc_id,
+			</if>
+			<if test="dataTime != null" >
+				data_time,
+			</if>
+			<if test="result != null" >
+				result,
+			</if>
+			<if test="describe != null" >
+				describe_,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="icbcId != null" >
+				#{icbcId},
+			</if>
+			<if test="dataTime != null" >
+				#{dataTime},
+			</if>
+			<if test="result != null" >
+				#{result},
+			</if>
+			<if test="describe != null" >
+				#{describe},
+			</if>
+		</trim>
+	</insert>
+	<select id="getBank" resultType="java.util.HashMap">
+		select id,name from icbc_banklist
+	</select>
+	<update id="updateVideoTokenBinding">
+		update icbc_erp_token
+		<set>
+			<if test="bankId != null" >
+				bank_id=#{bankId},
+			</if>
+			<if test="delmark != null" >
+				delmark=#{delmark},
+			</if>
+			<if test="mid_edit != null" >
+				mid_edit=#{mid_edit},
+			</if>
+			<if test="dt_edit != null" >
+				dt_edit=#{dt_edit}
+			</if>
+		</set>
+		where uid=#{Id}
+	</update>
+
+	<update id="updateServerPath">
+		update icbc_erp_video_info set server_path=#{serverPath} where id=#{id}
+	</update>
+
+	<select id="selectBankId" resultType="string" parameterType="string">
+		select bank_id from dd_icbc where id=#{0}
+	</select>
+	<select id="selectCountAdminById" resultType="integer" parameterType="string">
+		select count(*) from admin  where id=#{0}
+	</select>
+	<!-- 添加云信账户  -->
+	<insert id="add_YX_account" parameterType="java.util.HashMap" keyProperty="id" useGeneratedKeys="true" >
+		insert into icbc_erp_token
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="token != null" >
+				token,
+			</if>
+			<if test="accid != null" >
+				accid,
+			</if>
+			<if test="employcode != null" >
+				employcode,
+			</if>
+			<if test="uid != null" >
+				uid,
+			</if>
+			<if test="parentid != null" >
+				parentid,
+			</if>
+			<if test="mid_add != null" >
+				mid_add,
+			</if>
+			<if test="mid_edit != null" >
+				mid_edit,
+			</if>
+			<if test="dt_add != null" >
+				dt_add,
+			</if>
+			<if test="dt_edit != null" >
+				dt_edit,
+			</if>
+			<if test="delmark != null" >
+				delmark,
+			</if>
+			<if test="bankId != null" >
+				bank_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="token != null" >
+				#{token},
+			</if>
+			<if test="accid != null" >
+				#{accid},
+			</if>
+			<if test="employcode != null" >
+				#{employcode},
+			</if>
+			<if test="uid != null" >
+				#{uid},
+			</if>
+			<if test="parentid != null" >
+				#{parentid},
+			</if>
+			<if test="mid_add != null" >
+				#{mid_add},
+			</if>
+
+			<if test="mid_edit != null" >
+				#{mid_edit},
+			</if>
+			<if test="dt_add != null" >
+				#{dt_add},
+			</if>
+			<if test="dt_edit != null" >
+				#{dt_edit},
+			</if>
+			<if test="delmark != null" >
+				#{delmark},
+			</if>
+			<if test="bankId != null" >
+				#{bankId},
+			</if>
+		</trim>
+	</insert>
+
+	<!-- 查询所有云信账户 没有用到 -->
+	<select id="query_token" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select token,accid,employcode from icbc_erp_token where employcode=#{code}
+		<if test="size>=0">
+			limit 0,${size}
+		</if>
+	</select>
+	<select id="selectCountTokenByUid" resultType="map" parameterType="java.lang.String" >
+		select delmark,bank_id bankId from icbc_erp_token where uid=#{0}
+	</select>
+	<select id="query_tokenbyid" resultType="ScanPool1" parameterType="java.lang.String">
+		select a.bank_id bankId,a.id mark,a.delmark,a.accid auditAccid ,a.token auditToken,b.accid clientAccid,b.token clientToken from  icbc_erp_token a,icbc_erp_token b where a.id=b.parentid and a.uid=#{0}
+	</select>
+	<select id="SelectBankIdByUid" resultType="java.lang.String" parameterType="java.lang.String">
+		select bank_id from icbc_erp_token where uid=#{0}
+	</select>
+	<!-- 记录上传回调信息 -->
+	<insert id="addcallback" parameterType="map">
+		insert into icbc_erp_video_info(viedotype,url,ext,address,channelid,te,vid,app_mark,createtime) values(#{viedotype},#{origAddr},#{ext},#{user_defined.address},#{channelid},#{te},#{vid},#{appMark},sysdate())
+	</insert>
+	<!-- 查询上传回调信息 没有用到 -->
+	<!-- <select id="selectcallback" resultType="callBacK">
+		 select id,type,vid,name,origAddr,warnning,user_defined from yx_callback
+	</select> -->
+	<!-- 云信视频录制问题详情 -->
+	<select id="select_YX_video" resultType="map">
+		select ievw.index,concat('http://a.kcway.net/assess/',videourl) videourl,text from icbc_erp_videorec_wt ievw
+	</select>
+	<!-- 添加时长通话记录抄送 -->
+	<insert id="insert_infocopy_duration" parameterType="infocopy" >
+		insert into icbc_erp_video_info(channelId,createtime,duration,accid,faccid,status,ext) VALUES(#{channelId},#{createtime},#{duration},#{accid},#{faccid},#{status},#{ext})
+	</insert>
+	<!-- 添加下载抄送 -->
+	<insert id="insert_infocopy_download" parameterType="infocopy" >
+		insert into icbc_erp_video_info(filename,url,vid,channelid) values(#{fi.filename},#{fi.url},#{fi.vid},#{fi.channelid})
+	</insert>
+	<delete id="deleteViedoInfoById" parameterType="string">
+		delete from icbc_erp_video_info where id=#{0}
+	</delete>
+	<!-- 查询通道id是否存在 (防止脏数据)-->
+	<select id="select_infocopy" parameterType="java.lang.String" resultType="map">
+		select id,app_mark appMark,download_info downloadInfo,duration_time durationTime from icbc_erp_video_info where channelId=#{0}
+	</select>
+	<!-- 更新时长通话记录抄送 -->
+	<update id="update_infocopy_duration" parameterType="infocopy">
+		update icbc_erp_video_info set createtime=#{createtime},duration=#{duration},accid=#{accid},faccid=#{faccid},status=#{status},ext=#{ext} where channelId=#{channelId}
+	</update>
+	<!-- 更新时长通话记录抄送 -->
+	<update id="update_infocopy_download" parameterType="infocopy">
+		update icbc_erp_video_info set filename=#{fi.filename},url=#{fi.url},vid=#{fi.vid} where channelId=#{fi.channelid}
+	</update>
+	<!-- 历史视频关联-->
+	<update id="update_infocopy_viedo_vid"  parameterType="map">
+		update icbc_erp_video_info set result_id=#{id} where channelId=#{channel}
+	</update>
+
+	<insert id="insert_infocopy_viedo">
+		insert into icbc_erp_video_info(ext,viedotype,address,channelId,app_mark) values(#{extId},'1',#{address},#{channel},#{appMark})
+	</insert>
+	<!-- map类型的输入参数 -->
+	<!-- 添加时长通话记录抄送 -->
+	<insert id="insert_infocopy_durationM" parameterType="java.util.HashMap"  keyProperty="id" useGeneratedKeys="true">
+		insert into icbc_erp_video_info(
+		channelId,
+		createtime,
+		duration,
+		faccid,
+		ext,
+		address,
+		viedotype,
+		duration_time,app_mark) VALUES(
+		#{channelId},
+		#{createtime},
+		#{duration},
+		#{faccid},
+		#{extId},
+		#{ext.address},
+		#{viedotype},
+		#{duration_time},
+		#{appMark})
+	</insert>
+	<!-- 添加下载抄送 -->
+	<insert id="insert_infocopy_downloadM" parameterType="java.util.HashMap" >
+		insert into icbc_erp_video_info(
+		url,
+		channelid,
+		viedotype,
+		download_info,
+		vid) values(
+		#{fi.url},
+		#{channelid},
+		#{viedotype},
+		#{download_info},
+		#{fi.vid}
+		)
+	</insert>
+	<!-- 查询通道id是否存在 -->
+	<select id="select_infocopyM" parameterType="java.lang.String" resultType="java.lang.String">
+		select channelId from icbc_erp_video_info where channelId=#{0}
+	</select>
+	<!-- 视频下载删除 -->
+	<select id="selectUrlAndVidById" parameterType="java.lang.String" resultType="map">
+		select url,vid from icbc_erp_video_info where id=#{0}
+	</select>
+	<!-- 更新时长通话记录抄送 -->
+	<update id="update_infocopy_durationM" parameterType="java.util.HashMap">
+		update icbc_erp_video_info set createtime=#{createtime},duration=#{duration},faccid=#{faccid},ext=#{extId},address=#{ext.address},duration_time=#{duration_time},app_mark=#{appMark} where channelId=#{channelId}
+	</update>
+	<!-- 更新下载通话记录抄送 -->
+	<update id="update_infocopy_downloadM" parameterType="java.util.HashMap">
+		update icbc_erp_video_info set url=#{fi.url},download_info=#{download_info},vid=#{fi.vid} where id=#{id11}
+	</update>
+
+	<insert id="insert_M" parameterType="java.lang.String">
+		insert into icbc_erp_video_info(te) values(#{0})
+	</insert>
+	<select id="selectBankCount"  parameterType="java.lang.String" resultType="integer">
+		select count(*) from icbc_banklist where id=#{0}
+	</select>
+	<!-- 来电客户信息 征信表（正面照片 车牌 姓名） 开卡表 开票价 总额 期限 金融服务费 面签表 相似度 评估表 车辆品牌型号   意向金额 等
+        priceresult 车辆评估价 ,ki.c_name_mt 业务等级
+        -->
+	<select id="select_viedo_byid" resultType="java.util.HashMap" parameterType="java.lang.String" >
+
+		select * from (select
+
+		kik.cars_type,kik.dk_price,kik.jrfw_price,kik.dk_total_price,kik.aj_type,kik.aj_date,kik.aj_bank,kik.dk_lv,
+		kik.dz_type,kik.sp_address,kik.yw_address,kik.kk_car_stateid,kik.kk_car_cityid,kik.kk_loan_stateid,kik.kk_loan_cityid,kik.kk_kh,
+		kik.sfje,kik.po_ysr,kik.po_xl,kik.po_xzdz,kik.po_yzbm,kik.po_gzdw,kik.po_dwdz,kik.po_zw,kik.jjlxr_c_name,kik.jjlxr_c_tel,kik.jjlxr_jdrgx,
+		kik.jjlxr_xzdz,kik.zdr_hyzk,kik.zdr_grsr,kik.zdr_jtsr,kik.zdr_xl,kik.zdr_jzzk,kik.zdr_xzdz,kik.zdr_yzbm,kik.zdr_gzdw,kik.zdr_dwdh,kik.zdr_dwdz,
+		kik.zdr_dwxz,kik.zdr_sshy,kik.zdr_zy,kik.zdr_zw,kik.zdr_gznx,kik.gjr1_hyzk,kik.gjr2_hyzk,kik.gjr1_xzdz,kik.gjr2_xzdz,kik.gjr1_yzbm,kik.gjr2_yzbm,
+		kik.gjr1_gzdw,kik.gjr2_gzdw,kik.gjr1_dwdz,kik.gjr2_dwdz,kik.gjr1_yzdrgx,kik.gjr2_yzdrgx,kik.zdr_wsdz,kik.po_wsdz,kik.gjr1_wsdz,kik.gjr2_wsdz,
+		kik.qtlxr_c_name,kik.qtlxr_c_tel,kik.qtlxr_jdrgx,kik.qtlxr_xzdz,
+		ki.id,ki.c_name,ki.c_tel,ki.c_cardno,ki.gems_fs_id,ki.gems_id,ki.loan_tpid, ki.loan_level,kik.kp_price,ki.c_sex,ki.c_name_gj1,ki.c_name_gj2,ki.c_tel_gj1,ki.c_tel_gj2,ki.c_cardno_gj1,ki.c_cardno_gj2,kik.imgstep3_4 positive,ki.id icbcid,
+		ac.dealer_price,ac.source_id,ac.property_id,ac.car_status,ac.gear_box_id,ac.car_km,ac.cardt2,ac.cardt1,ac.car_color_id,ac.car_vin vincode,ac.ppxh,ac.motorcode,ac.expect_price icbc_pricecs,ac.carno c_carno,
+		yb.id ybId,yb.`name` ybName,
+		cb.name cbName,cm.name cmName,cs.name csName,ag.name agName,af.name afName
+		from dd_icbc ki
+		left JOIN dd_icbc_cars ac on ki.id =ac.icbc_id
+		left JOIN icbc_banklist yb on yb.id=ki.bank_id
+		left JOIN car_brand_v2 cb on cb.id=ac.brid
+		left JOIN car_model_v2 cm on cm.id=ac.carid
+		left JOIN car_series_v2 cs on cs.id=ac.seid
+		left JOIN gems ag on ag.id=ki.gems_id
+		left JOIN fs af on af.id=ki.gems_fs_id
+		left JOIN icbc_kk kik  on ki.id=kik.icbc_id) a  where   a.icbcid=#{0}
+	</select>
+	<select id="select_mq_info" resultType="java.util.HashMap" parameterType="java.lang.String">
+		select concat('http://a.kcway.net/assess/',kim.imgurl_sfzyz) visa,kim.api_result2 man from icbc_mq kim where icbc_id=#{0}  order by id desc
+	</select>
+	<!-- 点击历史视频的时候   cnName 品牌 cmName类型 csName 系列-->
+	<select id="select_viedo_byid2" resultType="java.util.HashMap" parameterType="java.lang.String" >
+
+		select
+		kik.cars_type,kik.dk_price,kik.jrfw_price,kik.dk_total_price,kik.aj_type,kik.aj_date,kik.aj_bank,kik.dk_lv,
+		kik.dz_type,kik.sp_address,kik.yw_address,kik.kk_car_stateid,kik.kk_car_cityid,kik.kk_loan_stateid,kik.kk_loan_cityid,kik.kk_kh,
+		kik.sfje,kik.po_ysr,kik.po_xl,kik.po_xzdz,kik.po_yzbm,kik.po_gzdw,kik.po_dwdz,kik.po_zw,kik.jjlxr_c_name,kik.jjlxr_c_tel,kik.jjlxr_jdrgx,
+		kik.jjlxr_xzdz,kik.zdr_hyzk,kik.zdr_grsr,kik.zdr_jtsr,kik.zdr_xl,kik.zdr_jzzk,kik.zdr_xzdz,kik.zdr_yzbm,kik.zdr_gzdw,kik.zdr_dwdh,kik.zdr_dwdz,
+		kik.zdr_dwxz,kik.zdr_sshy,kik.zdr_zy,kik.zdr_zw,kik.zdr_gznx,kik.gjr1_hyzk,kik.gjr2_hyzk,kik.gjr1_xzdz,kik.gjr2_xzdz,kik.gjr1_yzbm,kik.gjr2_yzbm,
+		kik.gjr1_gzdw,kik.gjr2_gzdw,kik.gjr1_dwdz,kik.gjr2_dwdz,kik.gjr1_yzdrgx,kik.gjr2_yzdrgx,kik.zdr_wsdz,kik.po_wsdz,kik.gjr1_wsdz,kik.gjr2_wsdz,
+		kik.qtlxr_c_name,kik.qtlxr_c_tel,kik.qtlxr_jdrgx,kik.qtlxr_xzdz,
+		ki.id,ki.c_name,ki.c_tel,ki.c_cardno,ki.gems_fs_id,ki.gems_id,ki.loan_tpid, ki.loan_level,kik.kp_price,ki.c_sex,ki.c_name_gj1,ki.c_name_gj2,ki.c_tel_gj1,ki.c_tel_gj2,ki.c_cardno_gj1,ki.c_cardno_gj2,kik.imgstep3_4 positive,ki.id icbcid,
+		ac.dealer_price,ac.source_id,ac.property_id,ac.car_status,ac.gear_box_id,ac.car_km,ac.cardt2,ac.cardt1,ac.car_color_id,ac.car_vin vincode,ac.ppxh,ac.motorcode,ac.expect_price icbc_pricecs,ac.carno c_carno,
+		yb.id ybId,yb.`name` ybName,yvi.address address,yvi.url,yvi.server_path serverPath,yvi.id yviId,yvi.channelId,
+		cb.name cbName,cm.name cmName,cs.name csName,ag.name agName,af.name afName
+		from icbc_erp_video_info yvi
+		join dd_icbc ki on yvi.ext=ki.id and yvi.id=#{0}
+		left JOIN dd_icbc_cars ac on ki.id =ac.icbc_id
+		left JOIN icbc_banklist yb on yb.id=ki.bank_id
+		left JOIN car_brand_v2 cb on cb.id=ac.brid
+		left JOIN car_model_v2 cm on cm.id=ac.carid
+		left JOIN car_series_v2 cs on cs.id=ac.seid
+		left JOIN gems ag on ag.id=ki.gems_id
+		left JOIN fs af on af.id=ki.gems_fs_id
+		left JOIN icbc_kk kik  on ki.id=kik.icbc_id
+	</select>
+	<!-- 查看省 -->
+	<select id="getCommStates" resultType="string" parameterType="java.lang.Integer">
+		select name from comm_states where id=4
+	</select>
+	<!-- 查看市 -->
+	<select id="getCommCitys" resultType="string" parameterType="java.lang.Integer">
+		select name from comm_citys where id=#{0}
+	</select>
+	<!-- 查看区 -->
+	<select id="getCommZones" resultType="string" parameterType="java.lang.Integer">
+		select name from comm_zones where id=#{0}
+	</select>
+	<!-- 查看历史   大状态表 公司表  银行表 视频表 左链接 小状态-->
+	<select id="select_operating" resultType="java.util.HashMap" parameterType="pageinfo" >
+		select b.* from (select
+		yvi.address,yvi.url,yvi.id yid,yvi.result_id resultId,iekir.result_code code,yvi.viedotype,
+		fs.name,
+		ieki.icbc_id icbcid,ieki.id iekiid,ieki.c_name cname,ieki.dt_edit editime,yvi.createtime,
+		yb.id ybId,yb.`name` ybName
+		from icbc_erp_video_info yvi
+		join dd_icbc_erp ieki on yvi.ext=ieki.icbc_id  and ieki.type_id=63
+		join fs fs on ieki.gems_fs_id=fs.id
+		<include refid="condition-viedo"></include>
+		and yvi.app_mark=#{condition.appMark}
+		left JOIN dd_icbc_erp_result iekir ON iekir.id=yvi.result_id
+		join dd_icbc ki on ki.id=ieki.icbc_id
+		JOIN icbc_banklist yb on yb.id=ki.bank_id) b
+		<include refid="condition-viedo1"></include>
+		order by yid desc
+		limit ${from},${size}
+	</select>
+	<!-- 查看历史分页 -->
+	<select id="select_operating_count" resultType="int" parameterType="pageinfo" >
+		select count(*) from (select
+		yvi.address,yvi.url,yvi.id yid,yvi.result_id resultId,iekir.now_status code,yvi.viedotype,
+		fs.name,
+		ieki.icbc_id icbcid,ieki.id iekiid,ieki.c_name cname,ieki.dt_edit editime,yvi.createtime,
+		yb.id ybId,yb.`name` ybName
+		from icbc_erp_video_info yvi
+		join dd_icbc_erp ieki on yvi.ext=ieki.icbc_id  and ieki.type_id=63
+		join fs fs on ieki.gems_fs_id=fs.id
+		<include refid="condition-viedo"></include>
+		left JOIN dd_icbc_erp_result iekir ON iekir.id=yvi.result_id
+		join dd_icbc ki on ki.id=ieki.icbc_id
+		JOIN icbc_banklist yb on yb.id=ki.bank_id) b
+		<include refid="condition-viedo1"></include>
+	</select>
+	<sql id="condition-viedo1">
+		<if test="condition != null" >
+			where 1=1
+			<!-- 签约状态 -->
+			<if test="condition.contract !=null and  condition.contract !=''">
+				and b.code=#{condition.contract}
+			</if>
+			<!-- 审核状态 -->
+			<if test="condition.viedostartsvalue !=null and condition.viedostartsvalue!='' ">
+				<if test="condition.viedostartsvalue=='1'.toString()">
+					and b.resultId is not null
+				</if>
+				<if test="condition.viedostartsvalue=='2'.toString()">
+					and b.resultId is null
+				</if>
+			</if>
+			<!-- 银行 -->
+			<if test="condition.bank !=null and  condition.bank !=''">
+				and b.ybId=#{condition.bank}
+			</if>
+		</if>
+	</sql>
+	<!-- 大于：&gt;
+
+    小于：&lt;
+
+    大于等于：&gt;=
+
+    小于等于：&lt;= -->
+	<!-- 查询的sql -->
+	<sql id="condition-viedo">
+		<if test="condition != null" >
+			<if test="condition.name !=null and  condition.name !=''">
+				and ieki.c_name like #{condition.name}
+			</if>
+			<if test="condition.idNumber !=null and condition.idNumber!='' ">
+				and ieki.c_cardno like #{condition.idNumber}
+			</if>
+			<if test="condition.organization !=null and condition.organization !='' ">
+				and ieki.gems_fs_id=#{condition.organization}
+			</if>
+			<if test="condition.viedotype !=null and condition.viedotype !='' ">
+				and yvi.viedotype=#{condition.viedotype}
+			</if>
+			<if test="condition.endTime !=null and condition.endTime !=''">
+				and yvi.createtime&lt;#{condition.endTime}
+			</if>
+			<if test="condition.startTime !=null and condition.startTime !=''">
+				and yvi.createtime&gt;#{condition.startTime}
+			</if>
+
+		</if>
+	</sql>
+
+	<!-- 查询icbc表的信息 -->
+	<select id="select_icbc_byid" resultType="map" parameterType="string" >
+		select c_name,c_cardno,gems_id,gems_fs_id from dd_icbc where id=#{0}
+	</select>
+	<!-- 查询车辆信息 -->
+	<select id="select_car_byid" resultType="map" parameterType="string">
+		select car_vin vincode,carno code from dd_icbc_cars where icbc_id=#{0}
+	</select>
+	<!-- 查询大状态是否存在 -->
+	<select id="select_kjicbc_byid" resultType="String">
+		select id from dd_icbc_erp where type_id=#{typeid} and icbc_id=#{icbcid}
+	</select>
+	<!-- 添加小状态 -->
+	<insert id="insert_kjicbcresult" parameterType="map"  keyProperty="id" useGeneratedKeys="true">
+		insert into dd_icbc_erp_result(qryid,mid_add,mid_edit,dt_add,dt_edit,remark,result_code,result_msg,type_id,icbc_id,now_status,later_status)
+		values(#{parentid},#{addadmin},#{editadmin},#{addtime},#{editime},#{remark},#{resultcode},#{resultmsg},#{typeid},#{icbcid},#{now_status},#{later_status})
+	</insert>
+	<!-- 添加一个大状态 -->
+	<insert id="insert_kjicbc" parameterType="map" keyProperty="id" useGeneratedKeys="true">
+		insert into dd_icbc_erp(mid_add,mid_edit,dt_add,dt_edit,icbc_id,gems_id,gems_fs_id,type_id,c_name,c_carno,c_carvin,c_cardno,now_status,later_status)
+		values(#{addadmin},#{editadmin},#{addtime},#{editime},#{icbcid},#{gems_id},#{gems_fs_id},#{typeid},#{c_name},#{code},#{vincode},#{c_cardno},#{now_status},#{later_status})
+	</insert>
+	<!-- 更新一下打状态吧 -->
+	<update id="update_kjicbc" parameterType="map" >
+		update dd_icbc_erp set dt_edit=#{editime},now_status=#{now_status},later_status=#{later_status},mid_edit=#{editadmin} where type_id=#{typeid} and icbc_id=#{icbcid}
+	</update>
+	<!-- 修改icbc面签表 -->
+	<update id="updata_mq_status" parameterType="string">
+		update icbc_mq set bc_status=#{bcstatus} where icbc_id=#{icbcid}
+	</update>
+</mapper>
