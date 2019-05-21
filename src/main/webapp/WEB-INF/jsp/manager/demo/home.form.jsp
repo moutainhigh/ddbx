@@ -60,39 +60,39 @@
                                 </tr>
 
                                 <tr>
-                                    <td class="font_color_3">${rankinglist[0].name }</td>
-                                    <td class="font_size_3 font_color_4">${rankinglist[0].sell }</td>
+                                    <td class="font_color_3">${rankinglist[0].name == null?"暂无":rankinglist[0].name}</td>
+                                    <td class="font_size_3 font_color_4">${rankinglist[0].sell == null?0:rankinglist[0].sell }</td>
                                     <td ><div class="paiming_rank">1</div></td>
-                                    <td class="font_size_3 font_color_4">${gemslist[0].gems}</td>
-                                    <td class="font_color_3">${gemslist[0].name}</td>
+                                    <td class="font_size_3 font_color_4">${gemslist[0].gems == null?0:gemslist[0].gems}</td>
+                                    <td class="font_color_3">${gemslist[0].name == null?"暂无":gemslist[0].name}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">${rankinglist[1].name }</td>
-                                    <td class="font_size_3 font_color_4">${rankinglist[1].sell }</td>
+                                    <td class="font_color_3">${rankinglist[1].name == null?"暂无":rankinglist[1].name}</td>
+                                    <td class="font_size_3 font_color_4">${rankinglist[1].sell == null?0:rankinglist[1].sell }</td>
                                     <td ><div class="paiming_rank">2</div></td>
-                                    <td class="font_size_3 font_color_4">${gemslist[1].gems}</td>
-                                    <td class="font_color_3">${gemslist[1].name}</td>
+                                    <td class="font_size_3 font_color_4">${gemslist[1].gems == null?0:gemslist[1].gems}</td>
+                                    <td class="font_color_3">${gemslist[1].name == null?"暂无":gemslist[1].name}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">${rankinglist[2].name }</td>
-                                    <td class="font_size_3 font_color_4">${rankinglist[2].sell }</td>
+                                    <td class="font_color_3">${rankinglist[2].name == null?"暂无":rankinglist[2].name}</td>
+                                    <td class="font_size_3 font_color_4">${rankinglist[2].sell == null?0:rankinglist[2].sell }</td>
                                     <td ><div class="paiming_rank">3</div></td>
-                                    <td class="font_size_3 font_color_4">${gemslist[2].gems}</td>
-                                    <td class="font_color_3">${gemslist[2].name}</td>
+                                    <td class="font_size_3 font_color_4">${gemslist[2].gems == null?0:gemslist[2].gems}</td>
+                                    <td class="font_color_3">${gemslist[2].name == null?"暂无":gemslist[2].name}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">${rankinglist[3].name }</td>
-                                    <td class="font_size_3 font_color_4">${rankinglist[3].sell }</td>
+                                    <td class="font_color_3">${rankinglist[3].name == null?"暂无":rankinglist[3].name}</td>
+                                    <td class="font_size_3 font_color_4">${rankinglist[3].sell == null?0:rankinglist[3].sell }</td>
                                     <td ><div class="paiming_rank">4</div></td>
-                                    <td class="font_size_3 font_color_4">${gemslist[3].gems}</td>
-                                    <td class="font_color_3">${gemslist[3].name}</td>
+                                    <td class="font_size_3 font_color_4">${gemslist[3].gems == null?0:gemslist[3].gems}</td>
+                                    <td class="font_color_3">${gemslist[3].name == null?"暂无":gemslist[3].name}</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">${rankinglist[4].name }</td>
-                                    <td class="font_size_3 font_color_4">${rankinglist[4].sell }</td>
+                                    <td class="font_color_3">${rankinglist[4].name == null?"暂无":rankinglist[4].name}</td>
+                                    <td class="font_size_3 font_color_4">${rankinglist[4].sell == null?0:rankinglist[4].sell }</td>
                                     <td ><div class="paiming_rank">5</div></td>
-                                    <td class="font_size_3 font_color_4">${gemslist[4].gems}</td>
-                                    <td class="font_color_3">${gemslist[4].name}</td>
+                                    <td class="font_size_3 font_color_4">${gemslist[4].gems == null?0:gemslist[4].gems}</td>
+                                    <td class="font_color_3">${gemslist[4].name == null?"暂无":gemslist[4].name}</td>
                                 </tr>
 
                             </table>
@@ -152,39 +152,39 @@
                                 </tr>
 
                                 <tr>
-                                    <td class="font_color_3  asdf">${cardpasscomm[0].name }</td>
+                                    <td class="font_color_3  asdf">${cardpasscomm[0].name == null?"暂无":cardpasscomm[0].name }</td>
                                     <td class="font_size_3 font_color_4">${Math.round(cardpasscomm[0].rate*100/1) }%</td>
                                     <td ><div class="paiming_rank">1</div></td>
                                     <td class="font_size_3 font_color_4">${Math.round(cardpassgems[0].rate*100/1) }%</td>
-                                    <td class="font_color_3  asdf">${cardpassgems[0].name }</td>
+                                    <td class="font_color_3  asdf">${cardpassgems[0].name == null?"暂无":cardpassgems[0].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">${cardpasscomm[1].name }</td>
+                                    <td class="font_color_3">${cardpasscomm[1].name == null?"暂无":cardpasscomm[1].name }</td>
                                     <td class="font_size_3 font_color_4">${Math.round(cardpasscomm[1].rate*100/1) }%</td>
                                     <td ><div class="paiming_rank">2</div></td>
                                     <td class="font_size_3 font_color_4">${Math.round(cardpassgems[1].rate*100/1) }%</td>
-                                    <td class="font_color_3">${cardpassgems[1].name }</td>
+                                    <td class="font_color_3">${cardpassgems[1].name == null?"暂无":cardpassgems[1].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">${cardpasscomm[2].name }</td>
+                                    <td class="font_color_3">${cardpasscomm[2].name == null?"暂无":cardpasscomm[2].name }</td>
                                     <td class="font_size_3 font_color_4">${Math.round(cardpasscomm[2].rate*100/1) }%</td>
                                     <td ><div class="paiming_rank">3</div></td>
                                     <td class="font_size_3 font_color_4">${Math.round(cardpassgems[2].rate*100/1) }%</td>
-                                    <td class="font_color_3">${cardpassgems[2].name }</td>
+                                    <td class="font_color_3">${cardpassgems[2].name == null?"暂无":cardpassgems[2].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">${cardpasscomm[3].name }</td>
+                                    <td class="font_color_3">${cardpasscomm[3].name == null?"暂无":cardpasscomm[3].name }</td>
                                     <td class="font_size_3 font_color_4">${Math.round(cardpasscomm[3].rate*100/1) }%</td>
                                     <td ><div class="paiming_rank">4</div></td>
                                     <td class="font_size_3 font_color_4">${Math.round(cardpassgems[3].rate*100/1) }%</td>
-                                    <td class="font_color_3">${cardpassgems[3].name }</td>
+                                    <td class="font_color_3">${cardpassgems[3].name == null?"暂无":cardpassgems[3].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">${cardpasscomm[4].name }</td>
+                                    <td class="font_color_3">${cardpasscomm[4].name == null?"暂无":cardpasscomm[4].name}</td>
                                     <td class="font_size_3 font_color_4">${Math.round(cardpasscomm[4].rate*100/1) }%</td>
                                     <td ><div class="paiming_rank">5</div></td>
                                     <td class="font_size_3 font_color_4">${Math.round(cardpassgems[4].rate*100/1) }%</td>
-                                    <td class="font_color_3">${cardpassgems[4].name }</td>
+                                    <td class="font_color_3">${cardpassgems[4].name == null?"暂无":cardpassgems[4].name}</td>
                                 </tr>
 
                             </table>
@@ -243,13 +243,15 @@
                                 <p class="font_color_2 font_size_1">本月放款总订单</p>
                             </div>
                             <div class="paiming_top_border" style="width: 50%;float: right;">
-                                <p class="danshu_style font_color_2">${Math.round(loan * 100)/100}<font>元</font></p>
+                                <p class="danshu_style font_color_2">${Math.round(loan ) >10000?Math.round(loan/10000):Math.round(loan *100)/100}
+                                    <font>${Math.round(loan ) >10000?"万元":"元"}</font></p>
                                 <p class="font_color_2 font_size_1">本月放款均金额</p>
                             </div>
                         </div>
 
                         <div class="paiming_top_border" style="width: 100%; margin-top: 5%;">
-                            <p class="danshu_style font_color_2">${Math.ceil(loanlist[0].money) }<font>元</font></p>
+                            <p class="danshu_style font_color_2">${Math.ceil(loanlist[0].money) >10000?Math.round(loanlist[0].money/10000): Math.ceil(loanlist[0].money)}
+                                <font>${Math.ceil(loanlist[0].money)>10000?"万元":"元" }</font></p>
                             <p class="font_color_2 font_size_1">本月累计放款总订单总金额</p>
                         </div>
                         <div class="paiming_table">
@@ -261,39 +263,39 @@
                                 </tr>
 
                                 <tr>
-                                    <td class="font_color_3">${rankingloanlist[0].name }</td>
-                                    <td class="font_size_3 font_color_4">${rankingloanlist[0].sell }</td>
+                                    <td class="font_color_3">${rankingloanlist[0].name == null?"暂无":rankingloanlist[0].name}</td>
+                                    <td class="font_size_3 font_color_4">${rankingloanlist[0].sell == null?0:rankingloanlist[0].sell }</td>
                                     <td ><div class="paiming_rank">1</div></td>
-                                    <td class="font_size_3 font_color_4">${gemsloanlist[0].gems }</td>
-                                    <td class="font_color_3">${gemsloanlist[0].name }</td>
+                                    <td class="font_size_3 font_color_4">${gemsloanlist[0].gems == null?0:gemsloanlist[0].gems }</td>
+                                    <td class="font_color_3">${gemsloanlist[0].name == null?"暂无":gemsloanlist[0].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">${rankingloanlist[1].name }</td>
-                                    <td class="font_size_3 font_color_4">${rankingloanlist[1].sell }</td>
+                                    <td class="font_color_3">${rankingloanlist[1].name == null?"暂无":rankingloanlist[1].name}</td>
+                                    <td class="font_size_3 font_color_4">${rankingloanlist[1].sell == null?0:rankingloanlist[1].sell }</td>
                                     <td ><div class="paiming_rank">2</div></td>
-                                    <td class="font_size_3 font_color_4">${gemsloanlist[1].gems }</td>
-                                    <td class="font_color_3">${gemsloanlist[1].name }</td>
+                                    <td class="font_size_3 font_color_4">${gemsloanlist[1].gems == null?0:gemsloanlist[1].gems }</td>
+                                    <td class="font_color_3">${gemsloanlist[1].name == null?"暂无":gemsloanlist[1].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">${rankingloanlist[2].name }</td>
-                                    <td class="font_size_3 font_color_4">${rankingloanlist[2].sell }</td>
+                                    <td class="font_color_3">${rankingloanlist[2].name == null?"暂无":rankingloanlist[2].name}</td>
+                                    <td class="font_size_3 font_color_4">${rankingloanlist[2].sell == null?0:rankingloanlist[2].sell }</td>
                                     <td ><div class="paiming_rank">3</div></td>
-                                    <td class="font_size_3 font_color_4">${gemsloanlist[2].gems }</td>
-                                    <td class="font_color_3">${gemsloanlist[2].name }</td>
+                                    <td class="font_size_3 font_color_4">${gemsloanlist[2].gems == null?0:gemsloanlist[2].gems }</td>
+                                    <td class="font_color_3">${gemsloanlist[2].name == null?"暂无":gemsloanlist[2].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">${rankingloanlist[3].name }</td>
-                                    <td class="font_size_3 font_color_4">${rankingloanlist[3].sell }</td>
+                                    <td class="font_color_3">${rankingloanlist[3].name == null?"暂无":rankingloanlist[3].name}</td>
+                                    <td class="font_size_3 font_color_4">${rankingloanlist[3].sell == null?0:rankingloanlist[3].sell }</td>
                                     <td ><div class="paiming_rank">4</div></td>
-                                    <td class="font_size_3 font_color_4">${gemsloanlist[3].gems }</td>
-                                    <td class="font_color_3">${gemsloanlist[3].name }</td>
+                                    <td class="font_size_3 font_color_4">${gemsloanlist[3].gems == null?0:gemsloanlist[3].gems }</td>
+                                    <td class="font_color_3">${gemsloanlist[3].name == null?"暂无":gemsloanlist[3].name }</td>
                                 </tr>
                                 <tr>
-                                    <td class="font_color_3">${rankingloanlist[4].name }</td>
-                                    <td class="font_size_3 font_color_4">${rankingloanlist[4].sell }</td>
+                                    <td class="font_color_3">${rankingloanlist[4].name == null?"暂无":rankingloanlist[4].name }</td>
+                                    <td class="font_size_3 font_color_4">${rankingloanlist[4].sell == null?0:rankingloanlist[4].sell }</td>
                                     <td ><div class="paiming_rank">5</div></td>
-                                    <td class="font_size_3 font_color_4">${gemsloanlist[4].gems }</td>
-                                    <td class="font_color_3">${gemsloanlist[4].name }</td>
+                                    <td class="font_size_3 font_color_4">${gemsloanlist[4].gems == null?0:gemsloanlist[4].gems }</td>
+                                    <td class="font_color_3">${gemsloanlist[4].name == null?"暂无":gemsloanlist[4].name }</td>
                                 </tr>
 
                             </table>
@@ -316,7 +318,8 @@
                                 <p class="font_color_2 font_size_1">抵押的订单总数</p>
                             </div>
                             <div class="paiming_bottom_border" style="width: 50%;float: right;">
-                                <p class="danshu_style font_color_2">${Math.ceil(fklist[0].money) }<font>元</font></p>
+                                <p class="danshu_style font_color_2">${Math.ceil(fklist[0].money) > 10000?Math.round(fklist[0].money/10000):Math.ceil(fklist[0].money) }
+                                    <font>${Math.ceil(fklist[0].money) > 10000?"万元":"元" }</font></p>
                                 <p class="font_color_2 font_size_1">本月已放款未完成</p>
                                 <p class="font_color_2 font_size_1">抵押的订单金额</p>
                             </div>
@@ -435,24 +438,24 @@
                                     <th>逾期率</th>
                                 </tr>
                                 <tr>
-                                    <td>金稻谷</td>
-                                    <td>0.98%</td>
+                                    <td>${yuqilv[0].gname == null?"暂无":yuqilv[0].gname}</td>
+                                    <td>${yuqilv[0].yuqilv == null?0:yuqilv[0].yuqilv}%</td>
                                 </tr>
                                 <tr>
-                                    <td>联众</td>
-                                    <td>0.96%</td>
+                                    <td>${yuqilv[1].gname == null?"暂无":yuqilv[1].gname}</td>
+                                    <td>${yuqilv[1].yuqilv == null?0:yuqilv[1].yuqilv}%</td>
                                 </tr>
                                 <tr>
-                                    <td>厦门远景</td>
-                                    <td>0.94%</td>
+                                    <td>${yuqilv[2].gname == null?"暂无":yuqilv[2].gname}</td>
+                                    <td>${yuqilv[2].yuqilv == null?0:yuqilv[2].yuqilv}%</td>
                                 </tr>
                                 <tr>
-                                    <td>灿谷</td>
-                                    <td>0.88%</td>
+                                    <td>${yuqilv[3].gname == null?"暂无":yuqilv[3].gname}</td>
+                                    <td>${yuqilv[3].yuqilv == null?0:yuqilv[3].yuqilv}%</td>
                                 </tr>
                                 <tr>
-                                    <td>泰州索普</td>
-                                    <td>0.83%</td>
+                                    <td>${yuqilv[4].gname == null?"暂无":yuqilv[4].gname}</td>
+                                    <td>${yuqilv[4].yuqilv == null?0:yuqilv[4].yuqilv}%</td>
                                 </tr>
                             </table>
                             <div style="width: 100%; height: 10%;margin-top: 2%;">
@@ -464,9 +467,8 @@
                                 <li>
                                     <div  class="paiming_button" style="margin: 0;float: left;">省份</div>
                                 </li>
-                                <li class="font_color_3">代理商</li>
-                                <li class="font_color_3">客户年龄</li>
-                                <li class="font_color_3">贷款金额</li>
+                                <li class="font_color_3">逾期省份</li>
+                                <li class="font_color_3">逾期金额</li>
                             </ul>
                             <div style="width: 100%;height:80%; margin-left: 5%;" id="yuqilv_2">
                             </div>
@@ -615,11 +617,11 @@
                         </tr>
                         <c:forEach items="${ count }" var="rank" varStatus="lists" >
                             <tr>
-                                <td class="font_color_3">${rankinglist[lists.count-1].name }</td>
-                                <td class="font_size_3 font_color_4">${rankinglist[lists.count-1].sell }</td>
+                                <td class="font_color_3">${rankinglist[lists.count-1].name == null?"暂无":rankinglist[lists.count-1].name }</td>
+                                <td class="font_size_3 font_color_4">${rankinglist[lists.count-1].sell == null?0:rankinglist[lists.count-1].sell }</td>
                                 <td ><div class="paiming_rank">${lists.count}</div></td>
-                                <td class="font_size_3 font_color_4">${gemslist[lists.count-1].gems }</td>
-                                <td class="font_color_3">${gemslist[lists.count-1].name }</td>
+                                <td class="font_size_3 font_color_4">${gemslist[lists.count-1].gems == null?0:gemslist[lists.count-1].gems }</td>
+                                <td class="font_color_3">${gemslist[lists.count-1].name == null?"暂无":gemslist[lists.count-1].name }</td>
                             </tr>
                         </c:forEach>
                     </table>
@@ -632,11 +634,11 @@
                         </tr>
                         <c:forEach items="${ count }" var="comm" varStatus="lists">
                             <tr>
-                                <td class="font_color_3 ">${cardpasscomm[lists.count-1].name }</td>
+                                <td class="font_color_3 ">${cardpasscomm[lists.count-1].name == null?"暂无":cardpasscomm[lists.count-1].name }</td>
                                 <td class="font_size_3 font_color_4">${Math.round(cardpasscomm[lists.count-1].rate*100/1) }%</td>
                                 <td ><div class="paiming_rank">${lists.count}</div></td>
                                 <td class="font_size_3 font_color_4">${Math.round(cardpassgems[lists.count-1].rate*100/1) }%</td>
-                                <td class="font_color_3 ">${cardpassgems[lists.count-1].name }</td>
+                                <td class="font_color_3 ">${cardpassgems[lists.count-1].name == null?"暂无":cardpassgems[lists.count-1].name }</td>
                             </tr>
                         </c:forEach>
                     </table>
@@ -649,11 +651,11 @@
                         </tr>
                         <c:forEach items="${ count }" var="rank" varStatus="lists">
                             <tr>
-                                <td class="font_color_3">${rankingloanlist[lists.count-1].name }</td>
-                                <td class="font_size_3 font_color_4">${rankingloanlist[lists.count-1].sell }</td>
+                                <td class="font_color_3">${rankingloanlist[lists.count-1].name == null?"暂无":rankingloanlist[lists.count-1].name }</td>
+                                <td class="font_size_3 font_color_4">${rankingloanlist[lists.count-1].sell == null?0:rankingloanlist[lists.count-1].sell }</td>
                                 <td ><div class="paiming_rank">${lists.count}</div></td>
-                                <td class="font_size_3 font_color_4">${gemsloanlist[lists.count-1].gems }</td>
-                                <td class="font_color_3">${gemsloanlist[lists.count-1].name }</td>
+                                <td class="font_size_3 font_color_4">${gemsloanlist[lists.count-1].gems == null?0:gemsloanlist[lists.count-1].gems }</td>
+                                <td class="font_color_3">${gemsloanlist[lists.count-1].name == null?"暂无":gemsloanlist[lists.count-1].name }</td>
                             </tr>
                         </c:forEach>
                     </table>
@@ -684,26 +686,12 @@
                             <th>代理商</th>
                             <th>逾期率</th>
                         </tr>
-                        <tr>
-                            <td>金稻谷</td>
-                            <td>0.98%</td>
-                        </tr>
-                        <tr >
-                            <td>联众</td>
-                            <td>0.96%</td>
-                        </tr>
-                        <tr>
-                            <td>厦门远景</td>
-                            <td>0.94%</td>
-                        </tr>
-                        <tr>
-                            <td>灿谷</td>
-                            <td>0.88%</td>
-                        </tr>
-                        <tr>
-                            <td>泰州索普</td>
-                            <td>0.83%</td>
-                        </tr>
+                        <c:forEach items="${ count }" var="rank" varStatus="lists">
+                            <tr>
+                                <td>${yuqilv[lists.count-1].gname == null?"暂无":yuqilv[lists.count-1].gname}</td>
+                                <td>${yuqilv[lists.count-1].yuqilv == null?0:yuqilv[lists.count-1].yuqilv}%</td>
+                            </tr>
+                        </c:forEach>
                     </table>
                 </div>
             </div>
