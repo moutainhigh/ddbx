@@ -253,6 +253,23 @@ public class Visual {
         request.setAttribute("cardpassgems",cardpassgems );//每月汽车贷款过件率各代理商排名
 
 
+        sql="select round(m2.loan*100/m1.amount,2) yuqilv,m2.gid,m2.gname from   " +
+            "  (select count(di.gems_fs_id) amount,f.id gid,f.name gname   " +
+            "   from dd_icbc di,fs f   " +
+            "   where di.lending_result=1   " +
+            "     and f.id=di.gems_fs_id   " +
+            "     and di.gems_fs_id in(select id from fs where up_id="+ fs_id +" or id ="+ fs_id +" )" +
+            "     GROUP BY di.gems_fs_id) m1,  " +
+            "  (select count(lol.gems_fs_id) loan,f.id gid,f.name gname   " +
+            "   from loan_overdue_list lol,fs f   " +
+            "   where lol.type_id!=6   " +
+            "     and f.id=lol.gems_fs_id   " +
+            "     and lol.gems_fs_id in(select id from fs where up_id="+ fs_id +" or id ="+ fs_id +" )" +
+            "     GROUP BY lol.gems_fs_id) m2   " +
+            "where m1.gid=m2.gid ORDER BY yuqilv desc";
+        TtList yuqilv=selectSQL(sql);
+        request.setAttribute("yuqilv",yuqilv );//逾期率代理商排名
+
 
         sql="select id,name from comm_states";
         TtList comm_city=selectSQL(sql);
@@ -725,6 +742,215 @@ public class Visual {
         return object;
     }
 
+
+    //逾期率M1，M2，M3分布图ajax前台获取    null,null,null,null
+    @RequestMapping("/manager/visual/getOverdueMap.do")
+    @ResponseBody
+    public Object[][] getOverdueMap(String yuqiname,String yuqicity){
+        minfo =Tools.minfo();
+        fs_id=minfo.get("fsid");
+        String sqlNew="          and dic.car_type=1  ";
+        String sqlOld="          and dic.car_type=2  ";
+        String gemsId="in(select id from fs where up_id="+ fs_id +" or id ="+ fs_id +")";
+        String sql= "select m1.amount m1a,m1.money/10000 m1m, m2.amount m2a,m2.money/10000 m2m, m3.amount m3a,m3.money/10000 m3m  " +
+                "from (select count(*) amount,sum(lol.overdue_amount) money   " +
+                "      from loan_overdue_list lol,dd_icbc di,dd_icbc_cars dic  " +
+                "        where lol.overdue_days<30   " +
+                "          and lol.type_id!=6 " +
+                "          and lol.icbc_id=di.id  " +
+                "          and dic.icbc_id=lol.icbc_id  ";
+        String sqlEdit= "  and di.gems_fs_id " + gemsId +
+                "        ) m1,(select count(*) amount,sum(lol.overdue_amount) money   " +
+                "      from loan_overdue_list lol,dd_icbc di,dd_icbc_cars dic  " +
+                "        where lol.overdue_days<60   " +
+                "          and lol.overdue_days>=30   " +
+                "          and lol.type_id!=6  " +
+                "          and lol.icbc_id=di.id  " +
+                "          and dic.icbc_id=lol.icbc_id  ";
+        String sqlEnd= "   and di.gems_fs_id " + gemsId +
+                "           ) m2,(select count(*) amount,sum(lol.overdue_amount) money   " +
+                "      from loan_overdue_list lol,dd_icbc di,dd_icbc_cars dic  " +
+                "        where lol.overdue_days>=60   " +
+                "          and lol.type_id!=6" +
+                "          and lol.icbc_id=di.id  " +
+                "          and dic.icbc_id=lol.icbc_id  " +
+                "          and di.gems_fs_id "+ gemsId ;
+        String e=") m3";
+        //判断是否输入代理商
+        String gems_id=selectGemsId(yuqiname);
+        if(!yuqiname.equals("请输入代理商") && !yuqiname.equals("")){
+            sql += " and di.gems_fs_id=  " + gems_id;
+            sqlEdit += " and di.gems_fs_id=  " + gems_id;
+            sqlEnd += " and di.gems_fs_id=  " + gems_id;
+
+        }
+        //判断是否选择城市
+        if(!yuqicity.equals("0")){
+            sql += " and di.state_id=  " + yuqicity;
+            sqlEdit += " and di.state_id=  " + yuqicity;
+            sqlEnd += " and di.state_id=  " + yuqicity;
+        }
+        TtList chart=selectSQL(sql+sqlEdit+sqlEnd+e);
+        TtList chart1=selectSQL(sql+sqlNew+sqlEdit+sqlNew+sqlEnd+sqlNew+e);
+        TtList chart2=selectSQL(sql+sqlOld+sqlEdit+sqlOld+sqlEnd+sqlOld+e);
+        String []s={"m1a","m1m","m2a","m2m","m3a","m3m"};
+        object=new Object[3][6];
+
+        for(int i=0;i<6;i++){
+            if(chart.get(0).get(s[i]) == "" && chart.get(0).get(s[i]).equals("")){
+                object[0][i]="0";
+            }else{
+                object[0][i]=chart.get(0).get(s[i]);
+            }
+            if(chart1.get(0).get(s[i]) == "" && chart1.get(0).get(s[i]).equals("")){
+                object[1][i]="0";
+            }else {
+                object[1][i] = chart1.get(0).get(s[i]);
+            }
+            if(chart2.get(0).get(s[i]) == "" && chart2.get(0).get(s[i]).equals("")){
+                object[2][i]="0";
+            }else{
+                object[2][i]=chart2.get(0).get(s[i]);
+            }
+        }
+        return object;
+    }
+
+    //逾期省份分布图ajax前台获取    null,null,null,null
+    @RequestMapping("/manager/visual/getStateMap.do")
+    @ResponseBody
+    public Object[][] getStateMap(){
+        minfo =Tools.minfo();
+        fs_id=minfo.get("fsid");
+        //排名前五逾期省份
+        String sql= "select count(cs.name) amount,sum(lol.overdue_amount) money,cs.name cname  " +
+                    "  from loan_overdue_list lol,dd_icbc di,comm_states cs   " +
+                    "  where di.id=lol.icbc_id   " +
+                    "    and di.state_id=cs.id  " +
+                    "    and lol.type_id!=6   " +
+                    "    and lol.gems_fs_id in(select id from fs where up_id="+ fs_id +" or id ="+ fs_id +")" +
+                    "    GROUP BY cname   " +
+                    "    ORDER BY amount  " +
+                    "    limit 0,5";
+        //其他逾期省份
+        String sqlOth="select sum(other.amount) Oamount,sum(other.money) Omoney " +
+                        "from (select count(cs.name) amount,sum(lol.overdue_amount) money,cs.name cname  " +
+                        "      from loan_overdue_list lol,dd_icbc di,comm_states cs   " +
+                        "      where di.id=lol.icbc_id   " +
+                        "        and di.state_id=cs.id  " +
+                        "        and lol.type_id!=6   " +
+                        "        and lol.gems_fs_id in(select id from fs where up_id="+ fs_id +" or id ="+ fs_id +")" +
+                        "        GROUP BY cname   " +
+                        "        ORDER BY amount  " +
+                        "        limit 5,30  ) other";
+        TtList chart=selectSQL(sql);
+        TtList chart1=selectSQL(sqlOth);
+        object=new Object[6][3];
+        if(chart.size()<5){
+            for(int i=0;i<chart.size();i++){
+                object[i][0]=chart.get(i).get("amount");
+                object[i][1]=chart.get(i).get("money");
+                object[i][2]=chart.get(i).get("cname");
+            }
+            for(int i=chart.size();i<5;i++){
+                object[i][0]="0";
+                object[i][1]="0";
+                object[i][2]="某某省"+i;
+            }
+        }else{
+            for(int i=0;i<5;i++){
+                object[i][0]=chart.get(i).get("amount");
+                object[i][1]=chart.get(i).get("money");
+                object[i][2]=chart.get(i).get("cname");
+            }
+        }
+        if(chart1.get(0).get("Oamount").equals("") && chart1.get(0).get("Oamount") == ""){
+            object[5][0]="0";
+            object[5][1]="0";
+            object[5][2]="其他省";
+        }else{
+            object[5][0]=chart1.get(0).get("Oamount");
+            object[5][1]=chart1.get(0).get("Omoney");
+            object[5][2]="其他省";
+        }
+        return object;
+    }
+
+    //代理商综合能力图ajax前台获取    null,null,null,null
+    @RequestMapping("/manager/visual/getAgencyMap.do")
+    @ResponseBody
+    public Object[] getAgencyMap(String dailiname,String dailitime){
+        minfo =Tools.minfo();
+        fs_id=minfo.get("fsid");
+        String GemsId="in(select id from fs where up_id="+ fs_id +" or id ="+ fs_id +")";
+        //业务能力
+        String sqlBd= "select year(SYSDATE()) years,count(*) amount from dd_icbc  " +
+                       " where YEAR(dt_add)=year(SYSDATE()) " +
+                       " and gems_fs_id " + GemsId;
+        //进件效率
+        String sqlJj= "select round(avg(timestampdiff(day,dt_add,lending_date)),2) da " +
+                        "from dd_icbc " +
+                        " where lending_result=1 and year(SYSDATE())=year(dt_add) " +
+                        " and gems_fs_id " + GemsId;
+        //风控能力
+        String sqlFk= "select count(*) amount " +
+                         "  from loan_overdue_list " +
+                         "  where overdue_days<30 " +
+                         "    and type_id!=6 " +
+                         "    and year(SYSDATE())=year(dt_add) " +
+                         "    and gems_fs_id " + GemsId;
+        //运营能力
+        String sqlYy= "select count(*) amount from dd_icbc " +
+                     " where pledge_result=1 " +
+                     " and year(SYSDATE())=year(dt_add)" +
+                     " and gems_fs_id " + GemsId;
+        //贷后能力
+        String sqlDh= "select count(*) amount  " +
+                       "  from loan_overdue_list lol " +
+                       "  where overdue_days>=60 " +
+                       "    and type_id!=6 " +
+                       "    and year(SYSDATE())=year(dt_add) " +
+                       "    and gems_fs_id " + GemsId;
+        //判断是否输入代理商
+        String gems_id=selectGemsId(dailiname);
+        if(!dailiname.equals("请输入代理商") && !dailiname.equals("")){
+            String sqlEdit = " and gems_fs_id=  " + gems_id;
+            sqlBd += sqlEdit;
+            sqlJj += sqlEdit;
+            sqlFk += sqlEdit;
+            sqlYy += sqlEdit;
+            sqlDh += sqlEdit;
+        }
+        //判断是否选择时间
+        if(!dailitime.equals("0")){
+            String sqlEdit = " and year(dt_add)="+ dailitime;
+            sqlBd += sqlEdit;
+            sqlJj += sqlEdit;
+            sqlFk += sqlEdit;
+            sqlYy += sqlEdit;
+            sqlDh += sqlEdit;
+        }
+        Object[] obj = new Object[6];
+        TtList chart1=selectSQL(sqlBd);//业务-报单
+        TtList chart2=selectSQL(sqlJj);//进件-时长
+        TtList chart3=selectSQL(sqlYy);//运营-抵押
+        TtList chart4=selectSQL(sqlDh);//贷后-M3逾期
+        TtList chart5=selectSQL(sqlFk);//风控-M1逾期
+
+        obj[0] = chart1.get(0).get("years");
+        obj[1] = chart1.get(0).get("amount");
+        if(chart2.get(0).get("da").equals("")){
+            obj[2] = "0";
+        }else{
+            obj[2] = chart2.get(0).get("da");
+        }
+        obj[3] = chart3.get(0).get("amount");
+        obj[4] = chart4.get(0).get("amount");
+        obj[5] = chart5.get(0).get("amount");
+
+
+        return obj;
+    }
 
     /**
      * 使用 注解@RestController
