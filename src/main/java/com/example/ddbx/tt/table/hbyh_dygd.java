@@ -54,7 +54,7 @@ public class hbyh_dygd extends DbCtrl {
      */
     public void doGetForm(HttpServletRequest request, TtMap post) {
         String f = "t.*,a.name as admin_name,fs.name as fs_name,i.c_name as c_name";
-        leftsql = " LEFT JOIN gems a ON a.id=t.gems_id" +
+        leftsql = " LEFT JOIN admin a ON a.id=t.gems_id" +
                 " LEFT JOIN fs fs ON fs.id=t.gems_fs_id" +
                 " LEFT JOIN kj_icbc i ON i.id=t.icbc_id";
         long nid = Tools.myIsNull(post.get("id")) ? 0 : Tools.strToLong(post.get("id"));
@@ -226,7 +226,7 @@ public class hbyh_dygd extends DbCtrl {
         limit = limtInt; // 每页显示记录数
         showall = true; // 忽略deltag和showtag
         leftsql = "LEFT JOIN fs f ON f.id=t.gems_fs_id " +
-                "LEFT JOIN gems a ON a.id=t.gems_id " +
+                "LEFT JOIN admin a ON a.id=t.gems_id " +
                 "LEFT JOIN kj_icbc i ON i.id=t.icbc_id";
         list = lists(whereString, fieldsString);
 
