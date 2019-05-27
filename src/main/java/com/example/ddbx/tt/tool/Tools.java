@@ -349,6 +349,14 @@ public class Tools {
   }
 
   /**
+   * @description: 当前登陆用户是否超级管理员 用户信息表里的superadmin字段值为3
+   * @param {type}
+   * @return:
+   */
+  public static boolean isAdmin(TtMap minfo) {// 内置管理员
+    return minfo.get("superadmin").equals("3");
+  }
+  /**
    * 指定的list里是否包含某个String
    *
    * @param str

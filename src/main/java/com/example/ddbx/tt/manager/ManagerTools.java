@@ -153,6 +153,28 @@ public class ManagerTools {
                 return "loan_hxgl";
             case "loan_jqcl":
                 return "loan_jqcl";
+            //start
+            case "hbyh_zxlr":
+                return "hbyh_zxlr";
+            case "hbyh_xxzl":
+                return "hbyh_xxzl";
+            case "hbyh_yhht":
+                return "hbyh_yhht";
+            case "hbyh_gsht":
+                return "hbyh_gsht";
+            case "hbyh_gpsgd":
+                return "hbyh_gpsgd";
+            case "hbyh_dygd":
+                return "hbyh_dygd";
+            case "hbyh_yhclhs":
+                return "hbyh_yhclhs";
+            case "hbyh_gsclhs":
+                return "hbyh_gsclhs";
+            case "hbyh_dyclhs":
+                return "hbyh_dyclhs";
+            case "ddjd"://订单进度
+                return "ddjd";
+            //end
             // 不需要使用数据库的CN
             case "home":
             case "button":
