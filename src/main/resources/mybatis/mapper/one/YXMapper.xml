@@ -229,7 +229,7 @@
 	<select id="selectCountTokenByUid" resultType="map" parameterType="java.lang.String" >
 		select delmark,bank_id bankId from icbc_erp_token where uid=#{0}
 	</select>
-	<select id="query_tokenbyid" resultType="ScanPool1" parameterType="java.lang.String">
+	<select id="query_tokenbyid" resultType="com.example.ddbx.transfer.entity.one.ScanPool1" parameterType="java.lang.String">
 		select a.bank_id bankId,a.id mark,a.delmark,a.accid auditAccid ,a.token auditToken,b.accid clientAccid,b.token clientToken from  icbc_erp_token a,icbc_erp_token b where a.id=b.parentid and a.uid=#{0}
 	</select>
 	<select id="SelectBankIdByUid" resultType="java.lang.String" parameterType="java.lang.String">
@@ -248,11 +248,11 @@
 		select ievw.index,concat('http://a.kcway.net/assess/',videourl) videourl,text from icbc_erp_videorec_wt ievw
 	</select>
 	<!-- 添加时长通话记录抄送 -->
-	<insert id="insert_infocopy_duration" parameterType="infocopy" >
+	<insert id="insert_infocopy_duration" parameterType="com.example.ddbx.transfer.entity.one.InfoCopy" >
 		insert into icbc_erp_video_info(channelId,createtime,duration,accid,faccid,status,ext) VALUES(#{channelId},#{createtime},#{duration},#{accid},#{faccid},#{status},#{ext})
 	</insert>
 	<!-- 添加下载抄送 -->
-	<insert id="insert_infocopy_download" parameterType="infocopy" >
+	<insert id="insert_infocopy_download" parameterType="com.example.ddbx.transfer.entity.one.InfoCopy" >
 		insert into icbc_erp_video_info(filename,url,vid,channelid) values(#{fi.filename},#{fi.url},#{fi.vid},#{fi.channelid})
 	</insert>
 	<delete id="deleteViedoInfoById" parameterType="string">
@@ -263,11 +263,11 @@
 		select id,app_mark appMark,download_info downloadInfo,duration_time durationTime from icbc_erp_video_info where channelId=#{0}
 	</select>
 	<!-- 更新时长通话记录抄送 -->
-	<update id="update_infocopy_duration" parameterType="infocopy">
+	<update id="update_infocopy_duration" parameterType="com.example.ddbx.transfer.entity.one.InfoCopy">
 		update icbc_erp_video_info set createtime=#{createtime},duration=#{duration},accid=#{accid},faccid=#{faccid},status=#{status},ext=#{ext} where channelId=#{channelId}
 	</update>
 	<!-- 更新时长通话记录抄送 -->
-	<update id="update_infocopy_download" parameterType="infocopy">
+	<update id="update_infocopy_download" parameterType="com.example.ddbx.transfer.entity.one.InfoCopy">
 		update icbc_erp_video_info set filename=#{fi.filename},url=#{fi.url},vid=#{fi.vid} where channelId=#{fi.channelid}
 	</update>
 	<!-- 历史视频关联-->
@@ -408,7 +408,7 @@
 		select name from comm_zones where id=#{0}
 	</select>
 	<!-- 查看历史   大状态表 公司表  银行表 视频表 左链接 小状态-->
-	<select id="select_operating" resultType="java.util.HashMap" parameterType="pageinfo" >
+	<select id="select_operating" resultType="java.util.HashMap" parameterType="com.example.ddbx.transfer.entity.one.PageInfo" >
 		select b.* from (select
 		yvi.address,yvi.url,yvi.id yid,yvi.result_id resultId,iekir.result_code code,yvi.viedotype,
 		fs.name,
@@ -427,7 +427,7 @@
 		limit ${from},${size}
 	</select>
 	<!-- 查看历史分页 -->
-	<select id="select_operating_count" resultType="int" parameterType="pageinfo" >
+	<select id="select_operating_count" resultType="int" parameterType="com.example.ddbx.transfer.entity.one.PageInfo" >
 		select count(*) from (select
 		yvi.address,yvi.url,yvi.id yid,yvi.result_id resultId,iekir.now_status code,yvi.viedotype,
 		fs.name,
