@@ -278,7 +278,7 @@ public class DataDic {
         dicYesOrNo.put("0", "否");
         dicYesOrNo.put("1", "是");
         /* 性别 */
-        dicSex.put("0", "女");
+        dicSex.put("2", "女");
         dicSex.put("1", "男");
         /* 业务等级 */
         dicBsType.put("0", "请选择业务等级");
