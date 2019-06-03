@@ -235,10 +235,7 @@ public class hbyh_zxlr extends DbCtrl {
             post.put("gems_code", "0");
             post.put("query_type", "0");
             icbc_id = add(post);
-            TtMap ordermap = new TtMap();
-            ordermap.put("gems_code", orderutil.getOrderId("HBYHKCD", 7, icbc_id));
-            //更新订单字段
-            Tools.recEdit(ordermap, "kj_icbc", icbc_id);
+
         }
 
         System.out.println("+++"+post.get("mid_add")+"   "+post.get("mid_edit"));
@@ -262,13 +259,25 @@ public class hbyh_zxlr extends DbCtrl {
 
     @Override
     public void succ(TtMap array, long id, int sqltp) {
+        System.err.println("succ字段--"+array);
         //历史添加
         TtMap res = new TtMap();
         res.put("qryid", String.valueOf(id));
         res.put("status", array.get("bc_status"));
         res.put("remark", array.get("remark"));
         Tools.recAdd(res, "kj_icbc_result");
-        //推送
+        //更新订单字段
+        TtMap ordermap = new TtMap();
+        ordermap.put("gems_code", orderutil.getOrderId("DDBXKCD", 7, id));
+        if(array.get("bc_status").equals("3")){  //征信通过
+            ordermap.put("zxok_tag","1");
+        }else if(array.get("bc_status").equals("4")){//征信不通过
+            ordermap.put("zxok_tag","2");
+        }
+        Tools.recEdit(ordermap, "kj_icbc", id);
+
+        //通融审核
+
 
     }
 

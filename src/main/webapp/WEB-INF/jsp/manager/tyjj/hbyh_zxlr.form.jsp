@@ -612,12 +612,12 @@
                 </div>
             </div>
 
-
-            <%--  <div class="form-group">
+            <c:if test="${infodb.tr_tag eq 1}">
+            <div class="form-group">
                   <label class="col-sm-2 control-label">通融留言：</label>
                   <div class="col-sm-10">
                       <textarea style="width: 80%; height: 80px" class="form-control" id="tr_msg"
-                                name="tr_msg"></textarea>
+                                name="tr_msg" value="${infodb.tr_msg}"></textarea>
                   </div>
               </div>
               <div class="form-group">
@@ -638,7 +638,7 @@
                                   }
                               }
                           %>
-                          &lt;%&ndash; 可能这里用<%@include file %>模式更适合&ndash;%&gt;
+
                           <jsp:include page="<%=upFile1_1%>">
                               <jsp:param name="img_MarginImgSrc" value=""/>
                               <jsp:param name="img_MarginImgClass" value=""/>
@@ -658,12 +658,13 @@
                           </jsp:include>
                       </div>
                   </div>
-              </div>--%>
+              </div>
+              </c:if>
             <div class="form-group">
                 <label class="col-sm-2 control-label">审核和数据填充处理</label>
                 <div class="col-sm-10">
                     <div class="row inline-from">
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <div class="input-group">
                                 <span class="input-group-addon">审核状态</span>
                                 <select class="form-control" id="bc_status" name="bc_status"
@@ -672,24 +673,31 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-4">
-                            <div class="input-group">
-                                <span class="input-group-addon">类型</span>
-                                <input type="text" class="form-control" readonly="" value="征信录入">
-                            </div>
-                        </div>
-                        <%-- <div class="col-sm-4">
+                        <c:if test="${infodb.tr_tag eq 1}">
+                        <div class="col-sm-3">
                              <div class="input-group">
                                  <span class="input-group-addon">通融审核状态</span>
+                                 <select class="form-control" id="tr_status" name="tr_status"
+                                         onchange="autoremark(this)">
+                                     <%=Tools.dicopt(DataDic.dic_tr_status, infodb.get("tr_status"))%>
+                                 </select>
+                                 <%--
                                  <select class="form-control" id="tr_status" name="tr_status">
                                      <option value="0">请选择</option>
                                      <option value="1">提交通融信息</option>
                                      <option value="2">通融不通过</option>
                                      <option value="3">通融通过</option>
                                      <option value="4">通融回退补件</option>
-                                 </select>
+                                 </select>--%>
                              </div>
-                         </div>--%>
+                         </div>
+                         </c:if>
+                         <div class="col-sm-3">
+                             <div class="input-group">
+                                 <span class="input-group-addon">类型</span>
+                                 <input type="text" class="form-control" readonly="" value="征信录入">
+                             </div>
+                         </div>
                     </div>
                 </div>
             </div>

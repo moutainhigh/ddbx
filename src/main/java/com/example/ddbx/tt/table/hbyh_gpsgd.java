@@ -142,17 +142,9 @@ public class hbyh_gpsgd extends DbCtrl {
             icbc_id = id;
         } else {
             icbc_id = add(post);
-            TtMap map=new TtMap();
-            //订单编号更新操作
-            map.put("gems_code",orderutil.getOrderId("ZZKCD", 7, icbc_id));
-            edit(map,icbc_id);
+
         }
-        //历史添加
-        TtMap res = new TtMap();
-        res.put("qryid", String.valueOf(icbc_id));
-        res.put("status", post.get("bc_status"));
-        res.put("remark", newpost.get("remark1"));
-        Tools.recAdd(res, "hbyh_gpsgd_result");
+
 
 //        if(StringUtils.isNotEmpty(post.get("mid_add")) && post.get("mid_add").equals(post.get("mid_edit"))){
 //            Addadmin_msg.addmsg(post.get("mid_edit"), post.get("bc_status"), newpost.get("remark1"), post.get("c_name"), "GPS归档", "河北银行", post.get("mid_add"));
@@ -166,6 +158,21 @@ public class hbyh_gpsgd extends DbCtrl {
         String nextUrl = Tools.urlKill("sdo") + "&sdo=list";
         boolean bSuccess = errorCode == 0;
         Tools.formatResult(result2, bSuccess, errorCode, bSuccess ? "编辑成功！" : errorMsg, bSuccess ? nextUrl : "");// 失败时停留在当前页面,nextUrl为空
+    }
+
+    @Override
+    public void succ(TtMap array, long id, int sqltp) {
+        //历史添加
+        TtMap res = new TtMap();
+        res.put("qryid", String.valueOf(id));
+        res.put("status", array.get("bc_status"));
+        res.put("remark", array.get("remark1"));
+        Tools.recAdd(res, "hbyh_gpsgd_result");
+
+        //订单编号更新操作
+        TtMap map=new TtMap();
+        map.put("gems_code",orderutil.getOrderId("ZZKCD", 7, id));
+        edit(map,id);
     }
 
     /**
