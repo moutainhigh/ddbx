@@ -93,7 +93,7 @@ public class Manager {
         TtMap post = Tools.getPostMap(request);// 过滤参数，过滤mysql的注入，url参数注入
         String refer = post.get("refer");
         String loginTb = Config.DB_USERTABLENAME;
-        System.out.println(Tools.jsonEncode(post));
+        System.out.println("999-"+Tools.jsonEncode(post));
         TtMap result2 = new TtMap();
         Tools.formatResult(result2, false, 999, "异常，请重试！", "");// 初始化返回
         if (ManagerTools.checkSdo(post.get("sdo"))) {// 过滤掉sdo
@@ -104,7 +104,7 @@ public class Manager {
                             + "' AND password='" + pass + "'";
                     System.out.println("SQL:" + sql);
                     TtMap info = Tools.recinfo(sql);
-                    if (info.size() > 0) {
+                    if (info.size() > 0 && (Integer.parseInt(info.get("isadmin"))==0 || Integer.parseInt(info.get("isadmin"))==1)) {
                         Tools.formatResult(result2, true, 0, "登陆成功！",
                                 Tools.myIsNull(refer) ? "/manager/index?cn=home&sdo=form&type=demo" : URLDecoder.decode(refer, "UTF-8"));
                         long id = Long.parseLong(info.get("id"));

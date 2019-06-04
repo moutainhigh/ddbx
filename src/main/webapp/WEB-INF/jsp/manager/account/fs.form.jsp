@@ -13,14 +13,14 @@
 			<h3 class="box-title">代理公司</h3>
 		</div>
 		<div class="box-body" id="tab-content">
-			<div class="form-group">
+			<%-- <div class="form-group">
 				<label class="col-sm-2 control-label">公司性质</label>
 				<div class="col-sm-6">
 					<select id="bank_id" name="bank_id" class="form-control">
                        <%=Tools.dicopt(DataDic.dic_gs_type,"0")%>
 					</select>
 				</div>
-			</div>
+			</div> --%>
 			<div class="form-group">
 				<label class="col-sm-2 control-label">公司名称</label>
 				<div class="col-sm-6">

@@ -291,6 +291,18 @@
                             <div class="pull-right">
                                 <a onclick="dologout();" class="btn btn-default btn-flat">注销</a>
                             </div>
+                            <script>
+                                function dologout(){
+                                        $.post("/manager/login", {
+                                                sdo: "logout",
+                                            },
+                                            function(res) {
+                                                eval("var res="+res);
+                                                alert(res.msg);
+                                                location.href=res.next_url;
+                                            });
+                                    }
+                            </script>
                         </li>
                     </ul>
                 </li>
@@ -347,16 +359,7 @@
         }
       %>
     var afontSize= <%=afontSize%>;
-    function dologout(){
-        $.post("/manager/login", {
-                sdo: "logout",
-            },
-            function(res) {
-                eval("var res="+res);
-                alert(res.msg);
-                location.href=res.next_url;
-            });
-    }
+
     function doFont(type){
         $.post("/manager/command?cn=font&sdo=sysconfig&stype="+type+"&fontsize="+afontSize , {
             },

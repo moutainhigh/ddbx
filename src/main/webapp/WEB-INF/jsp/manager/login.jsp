@@ -89,6 +89,13 @@ desired effect
 </div>
 </body>
 <script type="text/javascript">
+    //回车（enter）登录
+    $(document).keydown(function (event) {
+        if (event.keyCode == 13) {
+            dologin();
+        }
+    });
+
     function myfocus(obj){
         $(obj).parents(".form-group").removeClass("has-error");
         $(obj).prev().remove();

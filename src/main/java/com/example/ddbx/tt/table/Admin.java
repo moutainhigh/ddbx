@@ -123,6 +123,15 @@ public class Admin extends DbCtrl {
     super.closeConn();
   }
 
+  /* 重载dbCtrl的方法，处理info()前的数据的过滤和添加处理 */
+  @Override
+  public TtMap show(TtMap rec) {
+    if (!Tools.myIsNull(rec.get("password"))) { // info()时，把密码项目清空
+      rec.put("password", "");
+    }
+    return rec;
+  }
+
   /**
    * @description: 重载的param方法，此方法在保存数据前调用！就是Add和Edit前都会调用这个方法
    * @param {type}

@@ -14,6 +14,8 @@ import com.example.ddbx.tt.data.TtMap;
  * 一些常用的数据字典，作为<select></select>用
  */
 public class DataDic {
+    public static TtMap dic_isadmin = new TtMap();
+    public static TtMap dic_gs_type = new TtMap();
     public static TtMap dicYesOrNo = new TtMap();
     public static TtMap dicSex = new TtMap();
     public static TtMap dicBsType = new TtMap();
@@ -430,5 +432,9 @@ public class DataDic {
         dic_car_color.put("19", "咖啡");
         dic_car_color.put("20", "天山");
         dic_car_color.put("21", "其他色");
+        /*账户性质*/
+        dic_isadmin.put("0","APP、后台可以同时登陆");
+        dic_isadmin.put("1","仅后台可以登陆");
+        dic_isadmin.put("2","仅APP可以登陆");
     }
 }
