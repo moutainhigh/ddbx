@@ -5,10 +5,10 @@
     <!-- Logo --> <a href="index.php" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini">
-            <img src="/manager/images/logo.png" width="20" height="20" class="logoimg">
+            <img src="/manager/images/icbc.png" width="20" height="20" class="logoimg">
         </span> <!-- logo for regular state and mobile devices -->
     <span class="logo-lg">
-            <img src="/manager/images/logo.png" width="20" height="20" class="logoimg hidden-xs">
+            <img src="/manager/images/icbc.png" width="20" height="20" class="logoimg hidden-xs">
             <span class="logotxt">
                 <b>系统后台</b>
             </span>
