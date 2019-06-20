@@ -53,7 +53,7 @@ desired effect
 <body class="${cssName} login-page" style="background: url(images/bg2.jpeg) no-repeat center;">
 <div class="login-box">
     <div class="login-logo">
-        <img src="images/icbc.png" style="width: 50px">
+        <!-- <img src="images/icbc.png" style="width: 50px"> -->
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
