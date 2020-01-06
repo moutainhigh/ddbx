@@ -28,8 +28,11 @@
                     <div class="row inline-from">
                         <div class="col-sm-4">
                             <div class="input-group">
-                                <img  id="" name="" onclick="yyclimage(this)" class="img-thumbnail"  style="width: 500px;height: 500px;" src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
-                                <p class="fileUpload_filename ng-binding" style="position:absolute;top:505px;left:220px;font-size:12px;" >身份证</p>
+                                <img id="" name="" onclick="yyclimage(this)" class="img-thumbnail"
+                                     style="width: 500px;height: 500px;"
+                                     src="http://a.kcway.net/assess/upload/2019/01/24/9458df766d3255a345e928bb84920355.jpg">
+                                <p class="fileUpload_filename ng-binding"
+                                   style="position:absolute;top:505px;left:220px;font-size:12px;">身份证</p>
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -64,7 +67,8 @@
                                     <jsp:param name="img_Accept" value="vedio/*"/>
                                     <jsp:param name="sImgs" value="<%=sImgs1%>"/>
                                 </jsp:include>
-                                <p class="fileUpload_filename ng-binding" style="position:absolute;top:125px;left:32px;font-size:12px;" >本人照片</p>
+                                <p class="fileUpload_filename ng-binding"
+                                   style="position:absolute;top:125px;left:32px;font-size:12px;">本人照片</p>
                             </div>
                         </div>
                     </div>
@@ -76,12 +80,14 @@
                     <div class="row inline-from">
                         <div class="col-sm-12" style="padding-top:10px;">
                             <div class="input-group">
-                                <p class="fileUpload_filename ng-binding" style="font-size: 16px">身份证验证真实：<span style="color: red">未开始验证</span></p>
+                                <p class="fileUpload_filename ng-binding" style="font-size: 16px">身份证验证真实：<span
+                                        style="color: red">未开始验证</span></p>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="input-group">
-                                <p class="fileUpload_filename ng-binding" style="font-size: 16px" >人脸识别相似度：<span style="color: red">未开始验证</span></p>
+                                <p class="fileUpload_filename ng-binding" style="font-size: 16px">人脸识别相似度：<span
+                                        style="color: red">未开始验证</span></p>
                             </div>
                         </div>
                     </div>

@@ -15,8 +15,8 @@
         </div>
 
         <div class="modal-body">
-            <div class="row" >
-                <label class="col-sm-1" >订单编号:<i class="red">*</i></label>
+            <div class="row">
+                <label class="col-sm-1">订单编号:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.order_code}
                 </div>
@@ -24,17 +24,17 @@
                 <div class="col-sm-2">
                     ${infodb.c_name }
                 </div>
-                <label class="col-sm-1" >电话:<i class="red">*</i></label>
+                <label class="col-sm-1">电话:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.c_tel }
                 </div>
-                <label class="col-sm-1" >身份证:<i class="red">*</i></label>
+                <label class="col-sm-1">身份证:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.c_cardno }
                 </div>
             </div>
             <div class="row">
-                <label class="col-sm-1" >业务员::<i class="red">*</i></label>
+                <label class="col-sm-1">业务员::<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${mapafter.gems_name }
                 </div>
@@ -42,17 +42,17 @@
                 <div class="col-sm-2">
                     ${mapafter.fs_name }
                 </div>
-                <label class="col-sm-1" >现住地址:<i class="red">*</i></label>
+                <label class="col-sm-1">现住地址:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${mapafter.zdr_xzdz }
                 </div>
-                <label class="col-sm-1" >单位名称:<i class="red">*</i></label>
+                <label class="col-sm-1">单位名称:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${mapafter.zdr_gzdw }
                 </div>
             </div>
-            <div class="row" >
-                <label class="col-sm-1" >单位电话:<i class="red">*</i></label>
+            <div class="row">
+                <label class="col-sm-1">单位电话:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${mapafter.zdr_dwdh }
                 </div>
@@ -68,8 +68,8 @@
         </div>
 
         <div class="modal-body">
-            <div class="row" >
-                <label class="col-sm-1" >车辆价格:<i class="red">*</i></label>
+            <div class="row">
+                <label class="col-sm-1">车辆价格:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.pg_price}
                 </div>
@@ -77,18 +77,18 @@
                 <div class="col-sm-2">
                     ${infodb.pg_price}
                 </div>
-                <label class="col-sm-1" >品牌:<i class="red">*</i></label>
+                <label class="col-sm-1">品牌:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.ppxh}
                 </div>
-                <label class="col-sm-1" >车辆型号:<i class="red">*</i></label>
+                <label class="col-sm-1">车辆型号:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.ppxh}
                 </div>
             </div>
 
-            <div class="row" >
-                <label class="col-sm-1" >车辆类型:<i class="red">*</i></label>
+            <div class="row">
+                <label class="col-sm-1">车辆类型:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     <!-- 1新车，2二手车 -->
                     ${infodb.cars_type==1?'新车':'二手车'}
@@ -97,18 +97,18 @@
                 <div class="col-sm-2">
                     ${infodb.car_vin}
                 </div>
-                <label class="col-sm-1" >发动机号:<i class="red">*</i></label>
+                <label class="col-sm-1">发动机号:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.motorcode}
                 </div>
-                <label class="col-sm-1" >车牌:<i class="red">*</i></label>
+                <label class="col-sm-1">车牌:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.carno}
                 </div>
             </div>
 
-            <div class="row" >
-                <label class="col-sm-1" >颜色:<i class="red">*</i></label>
+            <div class="row">
+                <label class="col-sm-1">颜色:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.car_color_id}
                 </div>
@@ -120,8 +120,8 @@
         </div>
 
         <div class="modal-body">
-            <div class="row" >
-                <label class="col-sm-1" >车辆价格:<i class="red">*</i></label>
+            <div class="row">
+                <label class="col-sm-1">车辆价格:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.pg_price}
                 </div>
@@ -129,18 +129,18 @@
                 <div class="col-sm-2">
                     ${infodb.loan_tpid==1?'卡分期':'汽车分期'}
                 </div>
-                <label class="col-sm-1" >贷款银行:<i class="red">*</i></label>
+                <label class="col-sm-1">贷款银行:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.bankname}
                 </div>
-                <label class="col-sm-1" >执行利率:<i class="red">*</i></label>
+                <label class="col-sm-1">执行利率:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.aj_lv}
                 </div>
             </div>
 
-            <div class="row" >
-                <label class="col-sm-1" >首付金额:<i class="red">*</i></label>
+            <div class="row">
+                <label class="col-sm-1">首付金额:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.sf_price}
                 </div>
@@ -148,18 +148,18 @@
                 <div class="col-sm-2">
                     ${infodb.dk_total_price}
                 </div>
-                <label class="col-sm-1" >首付比例:<i class="red">*</i></label>
+                <label class="col-sm-1">首付比例:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     --
                 </div>
-                <label class="col-sm-1" >贷款期数:<i class="red">*</i></label>
+                <label class="col-sm-1">贷款期数:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.aj_date}
                 </div>
             </div>
 
-            <div class="row" >
-                <label class="col-sm-1" style="" >银行分期本金:<i class="red">*</i></label>
+            <div class="row">
+                <label class="col-sm-1" style="">银行分期本金:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     --
                 </div>
@@ -167,7 +167,7 @@
                 <div class="col-sm-2">
                     ${infodb.jrfw_price }
                 </div>
-                <label class="col-sm-1" >本息合计:<i class="red">*</i></label>
+                <label class="col-sm-1">本息合计:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     --
                 </div>
@@ -194,7 +194,7 @@
                 <th class="text-center">逾期金额</th>
                 <!-- <th class="text-center">核销日期</th> -->
             </tr>
-            <c:forEach items="${hkjh}" var="map"  varStatus="status">
+            <c:forEach items="${hkjh}" var="map" varStatus="status">
                 <tr>
                     <td class="text-center">${map.overdue_which}</td>
                     <td class="text-center">${map.should_date }</td>
@@ -217,7 +217,7 @@
         </table>
     </div>
 
-    <form id="form1" onsubmit="return false" action="##"  method="post">
+    <form id="form1" onsubmit="return false" action="##" method="post">
 
         <c:if test="${tctype == 2}">
 
@@ -240,16 +240,20 @@
 
             <div style="margin-top:10px;width:300px;">
                 <div class="input-group date ng-isolate-scope ng-not-empty ng-valid ng-valid-required">
-                    <input id="coolTime" name="coolTime" class="form-control" type="text" lay-key="1"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input id="coolTime" name="coolTime" class="form-control" type="text" lay-key="1"><span
+                        class="input-group-addon"><i class="fa fa-calendar"></i></span>
                 </div>
-                <input id="coolAddress" name="coolAddress" type="text" style="margin-top:-35px;margin-left:380px;width:390px;" class="form-control">
+                <input id="coolAddress" name="coolAddress" type="text"
+                       style="margin-top:-35px;margin-left:380px;width:390px;" class="form-control">
                 <!-- <input onchange="javascript:setImagePreview();"  name="coolVideo" id="coolVideo" style="display: none;margin-top:-35px;margin-left:870px;width:390px;height:35px;"  class="file-upload-input" type="file">  -->
                 <input type="hidden" id="coolVideo" name="coolVideo" value="">
-                <input style="display: none" onchange="javascript:setImagePreview();" enctype="multipart/form-data" type="file" value="" id="file" name="file" class="file-upload-input">
+                <input style="display: none" onchange="javascript:setImagePreview();" enctype="multipart/form-data"
+                       type="file" value="" id="file" name="file" class="file-upload-input">
 
                 <label for="file">
                     <!--上传图片    -->
-                    <img id="preview" style="margin-top:-35px;margin-left:870px;width:50px;height:50px;" class="img-thumbnail" src="/kjs_icbc/kjs_icbc_style/images/logo.png">
+                    <img id="preview" style="margin-top:-35px;margin-left:870px;width:50px;height:50px;"
+                         class="img-thumbnail" src="/kjs_icbc/kjs_icbc_style/images/logo.png">
                 </label>
             </div>
 
@@ -264,16 +268,20 @@
 
             <div style="margin-top:10px;width:300px;">
                 <div class="input-group date ng-isolate-scope ng-not-empty ng-valid ng-valid-required">
-                    <input id="coolTime1" name="coolTime" class="form-control" type="text" lay-key="1"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    <input id="coolTime1" name="coolTime" class="form-control" type="text" lay-key="1"><span
+                        class="input-group-addon"><i class="fa fa-calendar"></i></span>
                 </div>
-                <input id="coolAddress1" name="coolAddress" type="text" style="margin-top:-35px;margin-left:380px;width:390px;" class="form-control">
+                <input id="coolAddress1" name="coolAddress" type="text"
+                       style="margin-top:-35px;margin-left:380px;width:390px;" class="form-control">
                 <!-- <input onchange="javascript:setImagePreview();"  name="coolVideo" id="coolVideo" style="display: none;margin-top:-35px;margin-left:870px;width:390px;height:35px;"  class="file-upload-input" type="file">  -->
                 <input type="hidden" id="coolVideo1" name="coolVideo" value="">
-                <input style="display: none" onchange="javascript:setImagePreview();" enctype="multipart/form-data" type="file" value="" id="file" name="file" class="file-upload-input">
+                <input style="display: none" onchange="javascript:setImagePreview();" enctype="multipart/form-data"
+                       type="file" value="" id="file" name="file" class="file-upload-input">
 
                 <label for="file">
                     <!--上传图片    -->
-                    <img id="preview1" style="margin-top:-35px;margin-left:870px;width:50px;height:50px;" class="img-thumbnail" src="/kjs_icbc/kjs_icbc_style/images/logo.png">
+                    <img id="preview1" style="margin-top:-35px;margin-left:870px;width:50px;height:50px;"
+                         class="img-thumbnail" src="/kjs_icbc/kjs_icbc_style/images/logo.png">
                 </label>
             </div>
 
@@ -291,10 +299,12 @@
         </c:if>
         <div class="box-header with-border">
             <h3 class="box-title">信息录入栏: </h3>
-            <textarea style="border:1px solid #ccc;margin-top:10px;height:120px" id="result_msg" name="result_msg" class="form-control"></textarea>
+            <textarea style="border:1px solid #ccc;margin-top:10px;height:120px" id="result_msg" name="result_msg"
+                      class="form-control"></textarea>
         </div>
         <div style="height:50px;margin:20px 0 0 0;">
-            <button type="button" class="btn btn-info search-btn" style="float:right" onclick="addPhoneResult()">提交</button>
+            <button type="button" class="btn btn-info search-btn" style="float:right" onclick="addPhoneResult()">提交
+            </button>
         </div>
     </form>
 
@@ -314,9 +324,9 @@
                 <th class="text-center">记录查看</th>
                 <!-- <th class="text-center">核销日期</th> -->
             </tr>
-            <c:forEach items="${jllist}" var="results"  varStatus="status">
+            <c:forEach items="${jllist}" var="results" varStatus="status">
                 <tr>
-                    <td class="text-center hidden-xs"><input name="delid"  type="checkbox"></td>
+                    <td class="text-center hidden-xs"><input name="delid" type="checkbox"></td>
                     <td class="text-center">${status.index+1}</td>
                     <td class="text-center">${results.dt_add}</td>
                     <td class="text-center">
@@ -340,22 +350,21 @@
 <script>
 
 
-
     //信息录入栏
-    function addPhoneResult(){
+    function addPhoneResult() {
         var tctype = ${tctype};
         var coolStatus;
 
         if (tctype == 2) {  //拖车已受理
             coolStatus = $('#coolStatus').val();
-            if(coolStatus==''){
+            if (coolStatus == '') {
                 alert("请选择拖车结果!");
                 return false;
             }
         }
         if (tctype == 3) {     //拖车完成
             coolStatus = $('#coolStatus1').val();
-            if(coolStatus==''){
+            if (coolStatus == '') {
                 alert("请选择处置结果!");
                 return false;
             }
@@ -364,7 +373,7 @@
 
         var result_msg = $('#result_msg').val();
         //alert(result_msg);
-        if(result_msg==''){
+        if (result_msg == '') {
             alert("请在录入栏填写信息!");
             return false;
         }
@@ -376,17 +385,17 @@
         $.ajax({
             type: "POST",
             url: "/manager/jrdcajaxpost",
-            data:{
-                result_msg:result_msg,
-                type_id:type_id,
-                type_status:type_status,
-                icbc_id:icbc_id,
-                lolId:lolId,
-                dctype_id:'4',   //拖车管理信息录入栏提交
-                coolStatus:coolStatus,
-                tctype:tctype
+            data: {
+                result_msg: result_msg,
+                type_id: type_id,
+                type_status: type_status,
+                icbc_id: icbc_id,
+                lolId: lolId,
+                dctype_id: '4',   //拖车管理信息录入栏提交
+                coolStatus: coolStatus,
+                tctype: tctype
             },
-            success:function(data){
+            success: function (data) {
                 alert("提交成功");
                 location.reload(true);
             }
@@ -394,12 +403,12 @@
     }
 
     //申请拖车和诉讼
-    function appCar(clickType){
-        if(clickType==1){//
+    function appCar(clickType) {
+        if (clickType == 1) {//
             var type_id = '3';
             var type_status = '31';
             var result_msg = "开始申请拖车";
-        }else if(clickType==2){
+        } else if (clickType == 2) {
             var type_id = '4';
             var type_status = '41';
             var result_msg = "开始申请诉讼";
@@ -408,26 +417,26 @@
         var lolId = ${bbmap.id};
         //alert(icbc_id+"--"+lolId+"--"+type_id+"--"+type_status+"--"+result_msg);
         //确定提示框
-        var confirmMsg = confirm("请问确定"+result_msg+"吗?");
-        if(confirmMsg==true){
+        var confirmMsg = confirm("请问确定" + result_msg + "吗?");
+        if (confirmMsg == true) {
             $.ajax({
                 type: "POST",
                 url: "/manager/jrdcajaxpost",
-                data:{
-                    result_msg:result_msg,
-                    type_id:type_id,
-                    type_status:type_status,
-                    icbc_id:icbc_id,
-                    lolId:lolId,
-                    dctype_id:'3' //申请电催||诉讼
+                data: {
+                    result_msg: result_msg,
+                    type_id: type_id,
+                    type_status: type_status,
+                    icbc_id: icbc_id,
+                    lolId: lolId,
+                    dctype_id: '3' //申请电催||诉讼
                 },
-                success:function(data){
+                success: function (data) {
                     alert(data);
                     //location.reload(true);
                     // location.href="";
                 }
             })
-        }else if(confirmMsg==false){
+        } else if (confirmMsg == false) {
             //如果取消，暂时不做操作
         }
 

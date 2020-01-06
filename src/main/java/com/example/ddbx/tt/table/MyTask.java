@@ -360,7 +360,6 @@ public class MyTask extends DbCtrl {
      * @return
      */
     public static TtMap get_sys_modal_name(int type_id, int id) {
-
         String sql = "select * from sys_modal where id_uplevel=" + type_id + " and sort=" + id;
         return Tools.recinfo(sql);
     }

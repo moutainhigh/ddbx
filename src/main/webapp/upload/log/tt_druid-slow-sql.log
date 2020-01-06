@@ -1,0 +1,48 @@
+[15:10:36] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dalltask%26type%3Dddbx%26icbc_id%3D71%26sdo%3Dform%26id%3D155%26type_id%3D47%26tab%3D3:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp] at line [186]
+
+183:                         <jsp:include page="/WEB-INF/jsp/manager/rwcl/basic/khgl.jsp"></jsp:include>
+184:                     </c:when>
+185:                     <c:when test="${param.tab eq 3}">
+186:                         <jsp:include page="/WEB-INF/jsp/manager/rwcl/basic/dkgl.jsp"></jsp:include>
+187:                     </c:when>
+188:                     <c:when test="${param.tab eq 4}">
+189:                         <jsp:include page="/WEB-INF/jsp/manager/rwcl/basic/clgl.jsp"></jsp:include>
+
+
+Stacktrace:
+[15:10:43] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dalltask%26type%3Dddbx%26icbc_id%3D71%26sdo%3Dform%26id%3D155%26type_id%3D47%26tab%3D3:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp] at line [186]
+
+183:                         <jsp:include page="/WEB-INF/jsp/manager/rwcl/basic/khgl.jsp"></jsp:include>
+184:                     </c:when>
+185:                     <c:when test="${param.tab eq 3}">
+186:                         <jsp:include page="/WEB-INF/jsp/manager/rwcl/basic/dkgl.jsp"></jsp:include>
+187:                     </c:when>
+188:                     <c:when test="${param.tab eq 4}">
+189:                         <jsp:include page="/WEB-INF/jsp/manager/rwcl/basic/clgl.jsp"></jsp:include>
+
+
+Stacktrace:
+[15:12:12] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dmytask%26type%3Dddbx%26icbc_id%3D71%26sdo%3Dform%26id%3D155%26type_id%3D47%26tab%3D1:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/mytask.form.jsp] at line [24]
+
+21: 
+22:     String rwcl_path = "/WEB-INF/jsp/manager/rwcl/";
+23:     if (modals != null && !modals.equals("")) {
+24:         switch (modals.get("name")) {
+25: 
+26:             case "开始":
+27:                 rwcl_path = rwcl_path + "modal_son/begin.jsp";
+
+
+Stacktrace:
+[15:12:31] Config - Tools.logError:http%3A%2F%2Flocalhost%3A8092%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7C%2FWEB-INF%2Fjsp%2Fmanager%2Findex_b.jsp%7Ccn%3Dalltask%26type%3Dddbx%26icbc_id%3D71%26sdo%3Dform%26id%3D155%26type_id%3D36%26tab%3D3:An exception occurred processing [/WEB-INF/jsp/manager/ddbx/alltask.form.jsp] at line [186]
+
+183:                         <jsp:include page="/WEB-INF/jsp/manager/rwcl/basic/khgl.jsp"></jsp:include>
+184:                     </c:when>
+185:                     <c:when test="${param.tab eq 3}">
+186:                         <jsp:include page="/WEB-INF/jsp/manager/rwcl/basic/dkgl.jsp"></jsp:include>
+187:                     </c:when>
+188:                     <c:when test="${param.tab eq 4}">
+189:                         <jsp:include page="/WEB-INF/jsp/manager/rwcl/basic/clgl.jsp"></jsp:include>
+
+
+Stacktrace:

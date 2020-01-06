@@ -5,7 +5,7 @@
   Time: 17:01
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     String AdminLTE_Path = "/manager/AdminLTE-2.4.5/";
 %>
@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="iframe/dist/css/skins/all-skins.min.css">
 
     <!--http://aimodu.org:7777/admin/index_iframe.html?q=audio&search=#-->
-    <%if(request.getParameter("inframe")==null||request.getParameter("inframe")==""){%>
+    <%if (request.getParameter("inframe") == null || request.getParameter("inframe") == "") {%>
     <style type="text/css">
         html {
             overflow: hidden;
@@ -61,13 +61,16 @@
 
     <!--tabs-->
     <script src="iframe/dist/js/app_iframe.js?ver=3"></script>
-    <link href="dist/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="dist/css/style.css" rel="stylesheet" type="text/css"/>
 
     <script src="js/common.js" type="text/javascript"></script>
     <script src="js/jquery.form.js" type="text/javascript"></script>
     <script src="js/ajaxfileupload.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/fileupload.js?v=4.0"></script><%--这个必须--%>
-    <script type="text/javascript" src="js/exif.js"></script><%--这个必须,处理图片用--%>
-    <script type="text/javascript" src="js/megapic-image.js"></script><%--这个必须，压缩和处理图片用--%>
+    <script type="text/javascript" src="js/fileupload.js?v=4.0"></script>
+    <%--这个必须--%>
+    <script type="text/javascript" src="js/exif.js"></script>
+    <%--这个必须,处理图片用--%>
+    <script type="text/javascript" src="js/megapic-image.js"></script>
+    <%--这个必须，压缩和处理图片用--%>
     <script src="js/index.js" type="text/javascript"></script>
 </head>

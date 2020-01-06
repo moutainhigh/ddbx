@@ -325,7 +325,7 @@ immediately after the control sidebar -->
                         icon: "fa fa-arrow-circle-o-right",
                         url: "index?cn=admin&sdo=form&type=demo&inframe=1&iframe=1",
                         targetType: "iframe-tab",
-                        isOpen:true
+                        isOpen: true
                     },
                     {
                         id: "80002",
@@ -333,7 +333,7 @@ immediately after the control sidebar -->
                         icon: "fa fa-arrow-circle-o-right",
                         url: "index?cn=admin2&sdo=form&type=demo&inframe=1&iframe=1",
                         targetType: "iframe-tab",
-                        isOpen:true
+                        isOpen: true
                     },
                     {
                         id: "90011",

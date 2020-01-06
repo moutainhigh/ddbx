@@ -1,5 +1,4 @@
-.uploadBox
-{
+.uploadBox {
     width: 100%;
     height: 362px;
     background-color: #fff;
@@ -13,8 +12,7 @@
     color: #444;
 }
 
-.uploadBox ul li
-{
+.uploadBox ul li {
     float: left;
     position: relative;
     margin-left: 5px;
@@ -22,16 +20,14 @@
     list-style: none;
 }
 
-.uploadBox  li img
-{
+.uploadBox li img {
     border: 1px solid #D1D1D1;
     width: 188px;
     height: 141px;
     vertical-align: middle;
 }
 
-.uploadBox  li  .percentage
-{
+.uploadBox li .percentage {
     width: 69px;
     height: 69px;
     position: absolute;
@@ -47,13 +43,11 @@
     background: rgba(0, 0, 0, .8);
 }
 
-.uploadBox  li.done .percentage
-{
+.uploadBox li.done .percentage {
     background: url("images/done.png") no-repeat 0 0;
 }
 
-.uploadBox li .progress
-{
+.uploadBox li .progress {
     position: absolute;
     bottom: 0px;
     width: 187px;
@@ -62,7 +56,6 @@
     left: 0;
 }
 
-.uploadBox  li.done .progress
-{
+.uploadBox li.done .progress {
     display: none;
 }

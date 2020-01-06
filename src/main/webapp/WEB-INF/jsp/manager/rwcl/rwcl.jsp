@@ -80,7 +80,7 @@
     TtMap infodb = (TtMap) request.getAttribute("infodb");
     TtMap minfo = (TtMap) request.getAttribute("minfo");
 
-    String erp_msg="/WEB-INF/jsp/manager/rwcl/";
+    String erp_msg = "/WEB-INF/jsp/manager/rwcl/";
 %>
 <div class="tab-content">
     <div class="tab-pane active" id="zx">
@@ -93,41 +93,41 @@
                 <div class="flex-rowcen">
                     <ol id="mochu">
                         <%
-                            if(request.getAttribute("erplist")!=null&&!request.getAttribute("erplist").equals("")){
-                                TtList list= (TtList) request.getAttribute("erplist");
-                                if(list.size()>0){
-                                    for(TtMap ttMap : list){
-                                        String result_value=ttMap.get("result_value");
-                                        String admin_name=ttMap.get("admin_name");
-                                        String s_time=ttMap.get("s_time");
-                                        String id=ttMap.get("id");
-                                        System.out.println("s_time:"+s_time+"---------"+ttMap.get("id"));
-                                        String dt_edit=ttMap.get("dt_edit");
-                                        System.out.println(ttMap.get("now_name")+"------"+ttMap.get("now_status"));
-                                        if(ttMap.get("type_id")!=null
-                                                &&!ttMap.get("type_id").equals("")
-                                                &&ttMap.get("now_status")!=null
-                                                &&!ttMap.get("now_status").equals("")
-                                        ){
-                                            System.out.println("***********"+erp_msg+ttMap.get("type_id")+"/"+ttMap.get("now_status")+".jsp");
-                                            switch (ttMap.get("now_name")){
+                            if (request.getAttribute("erplist") != null && !request.getAttribute("erplist").equals("")) {
+                                TtList list = (TtList) request.getAttribute("erplist");
+                                if (list.size() > 0) {
+                                    for (TtMap ttMap : list) {
+                                        String result_value = ttMap.get("result_value");
+                                        String admin_name = ttMap.get("admin_name");
+                                        String s_time = ttMap.get("s_time");
+                                        String id = ttMap.get("id");
+                                        System.out.println("s_time:" + s_time + "---------" + ttMap.get("id"));
+                                        String dt_edit = ttMap.get("dt_edit");
+                                        System.out.println(ttMap.get("now_name") + "------" + ttMap.get("now_status"));
+                                        if (ttMap.get("type_id") != null
+                                                && !ttMap.get("type_id").equals("")
+                                                && ttMap.get("now_status") != null
+                                                && !ttMap.get("now_status").equals("")
+                                        ) {
+                                            System.out.println("***********" + erp_msg + ttMap.get("type_id") + "/" + ttMap.get("now_status") + ".jsp");
+                                            switch (ttMap.get("now_name")) {
                                                 case "开始":
-                                                    erp_msg=erp_msg+"modal/begin.jsp";
+                                                    erp_msg = erp_msg + "modal/begin.jsp";
                                                     break;
                                                 case "提交查询":
-                                                    erp_msg=erp_msg+"modal/submit.jsp";
+                                                    erp_msg = erp_msg + "modal/submit.jsp";
                                                     break;
                                                 case "完成":
-                                                    erp_msg=erp_msg+"modal/end.jsp";
+                                                    erp_msg = erp_msg + "modal/end.jsp";
                                                     break;
-                                                default :
-                                                    erp_msg=erp_msg+"modal/"+ttMap.get("now_status")+".jsp";
+                                                default:
+                                                    erp_msg = erp_msg + "modal/" + ttMap.get("now_status") + ".jsp";
                                                     break;
                                             }
 
 
                         %>
-                        <jsp:include page="<%=erp_msg%>" >
+                        <jsp:include page="<%=erp_msg%>">
                             <jsp:param name="result_value" value="<%=result_value%>"/>
                             <jsp:param name="admin_name" value="<%=admin_name%>"/>
                             <jsp:param name="s_time" value="<%=s_time%>"/>
@@ -136,16 +136,16 @@
                         </jsp:include>
                         <%
                                 }
-                                erp_msg="/WEB-INF/jsp/manager/rwcl/";
+                                erp_msg = "/WEB-INF/jsp/manager/rwcl/";
                             }
 
-                        }else{
+                        } else {
                         %>
                         <jsp:include page="/WEB-INF/jsp/manager/rwcl/modal/null.jsp"></jsp:include>
                         <%
 
                             }
-                        }else{
+                        } else {
 
                         %>
                         <jsp:include page="/WEB-INF/jsp/manager/rwcl/modal/null.jsp"></jsp:include>
@@ -167,34 +167,36 @@
     //     $("#mochu").empty();
     // });
 
-    function showradio(id,value) {
-        switch(value){
+    function showradio(id, value) {
+        switch (value) {
             case "1":
-                $("#"+id+"2").removeAttr("checked");
-                $("#"+id+"3").removeAttr("checked");
+                $("#" + id + "2").removeAttr("checked");
+                $("#" + id + "3").removeAttr("checked");
                 break;
             case "2":
-                $("#"+id+"3").removeAttr("checked");
-                $("#"+id+"1").removeAttr("checked");
+                $("#" + id + "3").removeAttr("checked");
+                $("#" + id + "1").removeAttr("checked");
                 break;
             case "3":
-                $("#"+id+"1").removeAttr("checked");
-                $("#"+id+"2").removeAttr("checked");
+                $("#" + id + "1").removeAttr("checked");
+                $("#" + id + "2").removeAttr("checked");
                 break;
             default:
                 break;
         }
     };
 
-    $(".text-primary em").click(function(){
+    $(".text-primary em").click(function () {
         $(this).next(".big-conte").slideToggle();
     })
+
     //全部展开
-    function funUnfold(){
+    function funUnfold() {
         $(".big-conte").slideDown();
     }
+
     //全部关闭
-    function funClose(){
+    function funClose() {
         $(".big-conte").slideUp();
     }
 </script>

@@ -1,12 +1,12 @@
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="Tools" uri="/tld/manager" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <div class="box">
     <%
-        String url = Tools.urlKill("sdo|id")+"&sdo=form&id=";
+        String url = Tools.urlKill("sdo|id") + "&sdo=form&id=";
     %>
     <!-- /.box-header -->
     <div class="box-body">
@@ -17,7 +17,8 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                           aria-describedby="example2_info">
                         <thead>
                         <tr role="row">
                             <th class="text-center"><!-- hidden-xs为手机模式时自动隐藏， text-center为居中-->
@@ -42,10 +43,10 @@
                         <c:forEach items="${list}" var="u" varStatus="num">
                             <tr role="row" class="odd">
                                 <td class="text-center">
-                                    ${u.id}
+                                        ${u.id}
                                 </td>
                                 <td class="text-center">
-                                    ${u.c_name}
+                                        ${u.c_name}
                                 </td>
                                 <td class="text-center">
 									<span class="label label-success">
@@ -86,32 +87,32 @@
 </div>
 <script>
     //删除操作
-    function del(url,id) {
-        url=url.replace('&id=','').replace("form","list");
+    function del(url, id) {
+        url = url.replace('&id=', '').replace("form", "list");
         //alert(url);
         //定义变量sendData
-        var sendData ={
-            id:id,
-            cn:'sys_modal'
+        var sendData = {
+            id: id,
+            cn: 'sys_modal'
         };
         $.ajax({
-            url:'/manager/todel',
-            type:'post',
-            dataType:'json',
-            async:true,//异步请求
-            cache:false,
-            data:sendData,//使用变量sendData
+            url: '/manager/todel',
+            type: 'post',
+            dataType: 'json',
+            async: true,//异步请求
+            cache: false,
+            data: sendData,//使用变量sendData
             //执行成功的回调函数
-            success:function(data) {
-                if (data.code){
+            success: function (data) {
+                if (data.code) {
                     alert("删除成功！");
-                    window.location.href=url;
-                }else{
+                    window.location.href = url;
+                } else {
                     alert("删除失败！");
                 }
             },
             //执行失败或错误的回调函数
-            error:function(data) {
+            error: function (data) {
                 alert("删除失败！");
             }
         });

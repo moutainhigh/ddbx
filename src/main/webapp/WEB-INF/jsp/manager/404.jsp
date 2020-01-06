@@ -1,19 +1,19 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="Tools" uri="/tld/manager" %>
 <%@ page isErrorPage="true" %>
 <%
-    String errorMsg =(String) request.getAttribute("errorMsg");
-    if (pageContext.getException()!=null){
-        String msg = request.getRequestURL().toString()+"|"+request.getRequestURI()+"|"+request.getQueryString();
+    String errorMsg = (String) request.getAttribute("errorMsg");
+    if (pageContext.getException() != null) {
+        String msg = request.getRequestURL().toString() + "|" + request.getRequestURI() + "|" + request.getQueryString();
         msg = Tools.urlEncode(msg);
-        Tools.logError(msg+":"+pageContext.getException().getMessage(),true,false);
+        Tools.logError(msg + ":" + pageContext.getException().getMessage(), true, false);
     }
 %>
-<%@include file="head.jsp"%>
+<%@include file="head.jsp" %>
 <body class="skin-blue sidebar-mini fixed">
 <div class="box-body">
     <div class="callout callout-danger">
@@ -21,7 +21,7 @@
         <p>请联系管理员。</p>
         <p>
         <h1>这个锅我不背！</h1>
-        <%if (pageContext.getException()!=null){%>
+        <%if (pageContext.getException() != null) {%>
         <table width="100%" border="1">
             <tr valign="top">
                 <td width="40%"><b>Error:</b></td>
@@ -48,7 +48,7 @@
         </p>
     </div>
     <%
-        if(!Tools.myIsNull(errorMsg)){
+        if (!Tools.myIsNull(errorMsg)) {
     %>
     <div class="callout callout-danger">
         <h4>错误信息</h4>

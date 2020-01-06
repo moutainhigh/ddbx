@@ -26,7 +26,7 @@
                 <label class="col-sm-2 control-label">账户性质</label>
                 <div class="col-sm-10">
                     <select id="isadmin" name="isadmin" class="form-control">
-                    <%=Tools.dicopt(DataDic.dic_isadmin,infodb.get("isadmin"))%>
+                        <%=Tools.dicopt(DataDic.dic_isadmin, infodb.get("isadmin"))%>
                     </select>
                 </div>
             </div>

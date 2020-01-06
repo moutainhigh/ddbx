@@ -7,6 +7,7 @@
  * dbCtrl类的建议xx=new DbCtrl("xxx");try{}finally{xxx.closeConn();};的模式就是在finally使用closeConn();保证数据库连接池在使用完后关闭，不管有没出现异常都执行
  */
 package com.example.ddbx.controller;
+
 import com.example.ddbx.tt.api.ApiHyw;
 import com.example.ddbx.tt.data.TtList;
 import com.example.ddbx.tt.data.TtMap;
@@ -28,6 +29,7 @@ import java.util.Map;
 public class HelloController {
     /**
      * 测试服务器上是否安好
+     *
      * @return
      */
     @RequestMapping("/")

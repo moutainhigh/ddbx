@@ -164,12 +164,14 @@ public class qcpg extends DbCtrl {
     }
 
 
+    @Override
     public void setTable(String table) {
         super.setTable(table);
     }
 
 
     //list 处理
+    @Override
     public void doGetList(HttpServletRequest request, TtMap post) {
         System.out.println("查询list!!!!!!!!!");
         if (!agpOK) {// 演示在需要权限检查的地方插入权限标志判断

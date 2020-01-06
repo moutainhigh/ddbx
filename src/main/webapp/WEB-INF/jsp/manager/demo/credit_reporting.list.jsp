@@ -1,9 +1,9 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="com.example.ddbx.tt.tool.Tools" %>
 <%@ taglib prefix="Tools" uri="/tld/manager" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">
@@ -11,7 +11,7 @@
         </h3>
     </div>
     <%
-        String url = Tools.urlKill("sdo|id")+"&sdo=form&id=";
+        String url = Tools.urlKill("sdo|id") + "&sdo=form&id=";
     %>
     <!-- /.box-header -->
     <div class="box-body">
@@ -22,7 +22,8 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    <table id="example2" class="table table-bordered table-hover dataTable" role="grid"
+                           aria-describedby="example2_info">
                         <thead>
                         <tr role="row">
                             <th class="hidden-xs text-center"><!-- hidden-xs为手机模式时自动隐藏， text-center为居中-->

@@ -7,16 +7,18 @@
     <meta charset="UTF-8">
     <title>车辆状况查询-新建</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=0">
-    <meta name="description"content="后台演示">
+    <meta name="description" content="后台演示">
     <script src="${pageContext.request.contextPath}/manager/js/jQuery-2.1.4.min.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/manager/js/jquery.form.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/manager/js/common.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/manager/js/fileupload.js?v=4.0" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/manager/js/exif.js" type="text/javascript"></script>
     <script src="${pageContext.request.contextPath}/manager/js/megapic-image.js" type="text/javascript"></script>
-    <script src="${pageContext.request.contextPath}/manager/dist/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/manager/dist/bootstrap/js/bootstrap.min.js"
+            type="text/javascript"></script>
 
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/manager/dist/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="${pageContext.request.contextPath}/manager/dist/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
 <div class="navbar">

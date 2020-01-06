@@ -422,7 +422,7 @@ function isChinese(str) {
  * @param uppercase 是否转为大写
  * @returns {string} 结果
  */
-function getPinYin(str, split,uppercase ) {
+function getPinYin(str, split, uppercase) {
     split = split || " ";
     uppercase = uppercase || false;
     var l2 = str.length;
@@ -443,8 +443,8 @@ function getPinYin(str, split,uppercase ) {
             result += val;
         }
     }
-    if(uppercase) result = result.toUpperCase();
-    result = result.replace(split,"");
+    if (uppercase) result = result.toUpperCase();
+    result = result.replace(split, "");
     return result.trim();
 }
 
@@ -470,7 +470,7 @@ function arraySearch(str) {
  * @param uppercase 是否转为大写
  * @returns {string} 结果
  */
-function getPinYinFirstCharacter(str, split,uppercase) {
+function getPinYinFirstCharacter(str, split, uppercase) {
     split = split || " ";
     uppercase = uppercase || false;
     var len = str.length;
@@ -488,10 +488,10 @@ function getPinYinFirstCharacter(str, split,uppercase) {
                 result += split + name.substring(0, 1);
             }
         } else {
-            result +=  val;
+            result += val;
         }
     }
-    if(uppercase) result = result.toUpperCase();
-    result = result.replace(split,"");
+    if (uppercase) result = result.toUpperCase();
+    result = result.replace(split, "");
     return result.trim();
 }

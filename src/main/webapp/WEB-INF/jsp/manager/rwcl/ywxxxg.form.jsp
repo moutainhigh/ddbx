@@ -10,7 +10,8 @@
 <div class="text-primary">
     <em>业务属性值修改申请</em>
     <div class="big-conte_">
-        <div class="task_margin ng-scope" style="border:1px solid #ccc; border-radius: 10px;background-color:#F7F7F7; padding-top:10px;">
+        <div class="task_margin ng-scope"
+             style="border:1px solid #ccc; border-radius: 10px;background-color:#F7F7F7; padding-top:10px;">
             <form id="ywxxxgsh_96" name="modalForm" class="form-horizontal ng-pristine ng-valid ng-scope">
                 <div class="form-group ng-scope">
                     <label class="col-sm-2 control-label">业务类型</label>
@@ -27,21 +28,21 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">修改内容备注</label>
                     <div class="col-sm-8">
-                        <textarea  id="xgbz" name="xgbz" class="form-control" type="text"></textarea>
+                        <textarea id="xgbz" name="xgbz" class="form-control" type="text"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
-                        <label class="col-sm-2 control-label">修改原因备注</label>
-                        <div class="col-sm-8">
-                            <textarea id="xgyy" name="xgyy" class="form-control" type="text"></textarea>
-                        </div>
+                    <label class="col-sm-2 control-label">修改原因备注</label>
+                    <div class="col-sm-8">
+                        <textarea id="xgyy" name="xgyy" class="form-control" type="text"></textarea>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <a onclick="erp()" class="btn btn-primary">提交</a>
                 </div>
             </form>
             <script type="text/javascript">
-                function erp(){
+                function erp() {
                     // var form = new FormData(document.getElementById("ywxxxgsh_96"));
                     // $.ajax({
                     //     url:"/erp/erp_ywxxxgsh_96.do",
@@ -58,17 +59,17 @@
                     //         alert("错误！！");
                     //     }
                     // });
-                    var ywlx= $('#ywlx').val();
-                    var xgbz= $('#xgbz').val();
-                    var xgyy= $('#xgyy').val();
-                    var icbc_id= '${param.icbc_id}';
-                    var type_id= '${param.type_id}';
+                    var ywlx = $('#ywlx').val();
+                    var xgbz = $('#xgbz').val();
+                    var xgyy = $('#xgyy').val();
+                    var icbc_id = '${param.icbc_id}';
+                    var type_id = '${param.type_id}';
                     //alert(icbc_id+"----"+type_id+"---"+id);
-                    if(!ywlx){
+                    if (!ywlx) {
                         alert("业务类型不能为空!");
                         return false;
                     }
-                    if(!xgbz){
+                    if (!xgbz) {
                         alert("修改备注不能为空!");
                         return false;
                     }
@@ -77,16 +78,16 @@
                         dataType: 'json',  // 返回数据的数据类型json
                         url: "/manager/ajaxpost",  // 控制器方法
                         data: {
-                            ywlx : ywlx,
-                            xgbz:xgbz,
-                            xgyy:xgyy,
-                            icbc_id:icbc_id,
-                            type_id:type_id,
-                            type:'4'//类型
+                            ywlx: ywlx,
+                            xgbz: xgbz,
+                            xgyy: xgyy,
+                            icbc_id: icbc_id,
+                            type_id: type_id,
+                            type: '4'//类型
                         },  //传送的数据
                         success: function (data) {
                             alert(data.msg);
-                            window.location.href="";
+                            window.location.href = "";
                         },
                         error: function () {
                             alert("编辑失败...请稍后重试！");

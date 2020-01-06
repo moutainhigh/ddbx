@@ -13,8 +13,8 @@
     }
     TtMap cars = (TtMap) request.getAttribute("cars");
 %>
-<input id="gems_id" name="gems_id" value="<%=minfo.get("id")%>" type="hidden" />
-<input id="gems_fs_id" name="gems_fs_id" value="<%=minfo.get("fsid")%>" type="hidden" />
+<input id="gems_id" name="gems_id" value="<%=minfo.get("id")%>" type="hidden"/>
+<input id="gems_fs_id" name="gems_fs_id" value="<%=minfo.get("fsid")%>" type="hidden"/>
 <div class="admin-content nav-tabs-custom box">
     <div class="box-header with-border">
         <c:if test="${id ne 0}">
@@ -43,7 +43,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">车辆类型</span>
                                 <select class="form-control" id="car_type" name="car_type">
-                                    <option selected = "selected">请选择</option>
+                                    <option selected="selected">请选择</option>
                                     <option value="1">新车</option>
                                     <option value="2">二手车</option>
                                 </select>
@@ -53,7 +53,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">国产/进口</span>
                                 <select class="form-control" id="source_id" name="source_id">
-                                    <option selected = "selected">请选择</option>
+                                    <option selected="selected">请选择</option>
                                     <option value="1">国产</option>
                                     <option value="2">进口</option>
                                 </select>
@@ -63,7 +63,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">使用性质</span>
                                 <select class="form-control" id="property_id" name="property_id">
-                                    <option selected = "selected">请选择</option>
+                                    <option selected="selected">请选择</option>
                                     <option value="1">营运</option>
                                     <option value="2">非营运</option>
                                 </select>
@@ -73,7 +73,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">变速箱</span>
                                 <select class="form-control" id="gear_box_id" name="gear_box_id">
-                                    <option selected = "selected">请选择</option>
+                                    <option selected="selected">请选择</option>
                                     <option value="1">自动</option>
                                     <option value="2">手动</option>
                                 </select>
@@ -139,7 +139,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">车辆状况</span>
                                 <select class="form-control" id="" name="car_status">
-                                    <%=Tools.dicopt(DataDic.dic_car_status,infodb.get("car_status"))%>
+                                    <%=Tools.dicopt(DataDic.dic_car_status, infodb.get("car_status"))%>
                                 </select>
                             </div>
                         </div>
@@ -171,7 +171,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">颜色</span>
                                 <select class="form-control" id="" name="car_color_id">
-                                    <option selected = "selected">请选择</option>
+                                    <option selected="selected">请选择</option>
                                     <option value="1">黑</option>
                                     <option value="2">白</option>
                                     <option value="3">灰</option>
@@ -301,7 +301,8 @@
                                             <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                             <jsp:param name="l1div_Style"
                                                        value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
-                                            <jsp:param name="img_Style" value="width: 100%;height:100px;border-radius:10px;"/>
+                                            <jsp:param name="img_Style"
+                                                       value="width: 100%;height:100px;border-radius:10px;"/>
                                             <jsp:param name="img_FileStyle"
                                                        value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
                                             <jsp:param name="img_Class" value="imgclass"/>
@@ -321,7 +322,7 @@
                                     <div class="row inline-from">
                                         <%
                                             String upFile2 = "../upfile.inc.jsp";
-                                            String imgPreName2= "imgstep9_2ss";
+                                            String imgPreName2 = "imgstep9_2ss";
                                             String[] ssImgs2 = { //设置已有值
                                                     !Tools.myIsNull(infodb.get(imgPreName2)) ? infodb.get(imgPreName2) : ""
                                             };
@@ -340,7 +341,8 @@
                                             <jsp:param name="img_DefaultImgSrc" value="images/mgcaraddimg.jpg"/>
                                             <jsp:param name="l1div_Style"
                                                        value="width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"/>
-                                            <jsp:param name="img_Style" value="width: 100%;height:100px;border-radius:10px;"/>
+                                            <jsp:param name="img_Style"
+                                                       value="width: 100%;height:100px;border-radius:10px;"/>
                                             <jsp:param name="img_FileStyle"
                                                        value="position: absolute;left: 0;top: 0;height: 100%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0;"/>
                                             <jsp:param name="img_Class" value="imgclass"/>

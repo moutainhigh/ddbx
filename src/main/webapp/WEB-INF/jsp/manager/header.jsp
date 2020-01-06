@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.io.InputStream" %>
 <%@ page import="java.io.FileInputStream" %>
 <%@ page import="java.util.*" %>
@@ -33,7 +33,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
-                <%if(false){%>
+                <%if (false) {%>
                 <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-envelope-o"></i>
@@ -239,7 +239,8 @@
                             <a href="#">View all tasks</a>
                         </li>
                     </ul>
-                </li><%}%>
+                </li>
+                <%}%>
                 <li class="notifications-menu">
                     <a onclick="doFont(0);" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa  fa-font"></i>
@@ -296,15 +297,15 @@
                 </li>
                 <!-- Control Sidebar Toggle Button -->
                 <%
-                    String msgSearch =  "/WEB-INF/jsp/manager/" + type + "/" + cn + ".search.jsp";
+                    String msgSearch = "/WEB-INF/jsp/manager/" + type + "/" + cn + ".search.jsp";
                     ServletContext context = request.getSession().getServletContext();
-                    InputStream is= context.getResourceAsStream(msgSearch);
-                    boolean havebtnfile = is!=null;
-                    if (havebtnfile){
-                        msgSearch =  "/WEB-INF/jsp/manager/" + type + "/" + cn + ".search.jsp";
+                    InputStream is = context.getResourceAsStream(msgSearch);
+                    boolean havebtnfile = is != null;
+                    if (havebtnfile) {
+                        msgSearch = "/WEB-INF/jsp/manager/" + type + "/" + cn + ".search.jsp";
                         is.close();
                     }
-                    if (havebtnfile){
+                    if (havebtnfile) {
                 %>
                 <li><a href="#" data-toggle="control-sidebar"><i class="fa fa-search"></i></a></li>
                 <%
@@ -315,7 +316,7 @@
     </nav>
 </header>
 <%
-    if (havebtnfile){
+    if (havebtnfile) {
 %>
 <!-- 搜索层 -->
 <aside class="control-sidebar control-sidebar-dark" style="height:100%;">
@@ -328,8 +329,9 @@
             <input
                     type="hidden"
                     name="sdo"
-                    value="list" />
-            <jsp:include page="<%=msgSearch%>"></jsp:include></form>
+                    value="list"/>
+            <jsp:include page="<%=msgSearch%>"></jsp:include>
+        </form>
     </div>
 </aside>
 <%
@@ -346,36 +348,39 @@
           }
         }
       %>
-    var afontSize= <%=afontSize%>;
-    function dologout(){
+    var afontSize = <%=afontSize%>;
+
+    function dologout() {
         $.post("/manager/login", {
                 sdo: "logout",
             },
-            function(res) {
-                eval("var res="+res);
+            function (res) {
+                eval("var res=" + res);
                 alert(res.msg);
-                location.href=res.next_url;
+                location.href = res.next_url;
             });
     }
-    function doFont(type){
-        $.post("/manager/command?cn=font&sdo=sysconfig&stype="+type+"&fontsize="+afontSize , {
-            },
-            function(res) {
-                eval("var res="+res);
+
+    function doFont(type) {
+        $.post("/manager/command?cn=font&sdo=sysconfig&stype=" + type + "&fontsize=" + afontSize, {},
+            function (res) {
+                eval("var res=" + res);
                 afontSize = res.msg;
-                chgFontSize(res.msg+"px");
+                chgFontSize(res.msg + "px");
             });
     }
-    function chgFontSize(sFontSzie){
-        $("<%=Config.UI_FONT_COMPONENTS%>").css("font-size",sFontSzie)
-        $("#logo_title").css("font-size","20px");
+
+    function chgFontSize(sFontSzie) {
+        $("<%=Config.UI_FONT_COMPONENTS%>").css("font-size", sFontSzie)
+        $("#logo_title").css("font-size", "20px");
     }
+
     <%
       String sFontSzie = CookieTools.get("fontsize"); //从cookie里获取用户设置
       if (!Tools.myIsNull(sFontSzie)){
         sFontSzie = sFontSzie +"px";
     %>
-    $(function(){
+    $(function () {
         //cookie
         chgFontSize("<%=sFontSzie%>")
     });
@@ -383,7 +388,7 @@
       }else{
     %>
     <% if (!Tools.myIsNull(Config.UI_FONT_SIZE)){%>
-    $(function(){
+    $(function () {
         //config
         chgFontSize("<%=Config.UI_FONT_SIZE%>px")
     });
@@ -395,15 +400,15 @@
      String sFontFamily = CookieTools.get("font-family"); //从cookie里获取用户设置
      if (!Tools.myIsNull(sFontFamily)){
    %>
-    $(function(){
-        $("<%=Config.UI_FONT_COMPONENTS%>").css("font-family","<%=sFontFamily%>")
+    $(function () {
+        $("<%=Config.UI_FONT_COMPONENTS%>").css("font-family", "<%=sFontFamily%>")
     });
     <%
       }else{ //从全局配置里获取
     %>
     <% if (!Tools.myIsNull(Config.UI_FONT_FAMILY)){%>
-    $(function(){
-        $("<%=Config.UI_FONT_COMPONENTS%>").css("font-family","<%=Config.UI_FONT_FAMILY%>")
+    $(function () {
+        $("<%=Config.UI_FONT_COMPONENTS%>").css("font-family", "<%=Config.UI_FONT_FAMILY%>")
     });
     <%}%>
     <%

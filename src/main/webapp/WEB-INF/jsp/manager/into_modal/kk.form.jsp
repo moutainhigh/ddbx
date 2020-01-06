@@ -78,21 +78,23 @@
                             <div class="input-group">
                                 <span class="input-group-addon">车辆类型</span>
                                 <select class="form-control" id="cars_type" name="cars_type">
-                                    <%=Tools.dicopt(DataDic.dic_cars_type,infodb.get("cars_type"))%>
+                                    <%=Tools.dicopt(DataDic.dic_cars_type, infodb.get("cars_type"))%>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">开票价</span>
-                                <input type="number" step="0.01" class="form-control" id="kp_price" name="kp_price" placeholder="">
+                                <input type="number" step="0.01" class="form-control" id="kp_price" name="kp_price"
+                                       placeholder="">
                                 <span class="input-group-addon" style="font-size: 16px;">元</span>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">购车分期本金</span>
-                                <input type="number" step="0.01" class="form-control" id="gcfqbj" name="gcfqbj" placeholder="">
+                                <input type="number" step="0.01" class="form-control" id="gcfqbj" name="gcfqbj"
+                                       placeholder="">
                                 <span class="input-group-addon" style="font-size: 16px;">元</span>
                             </div>
                         </div>
@@ -115,7 +117,8 @@
                         <div class="col-sm-4">
                             <div class="input-group">
                                 <span class="input-group-addon">首付金额</span>
-                                <input type="number" class="form-control" id="sfje" name="sfje" placeholder="" step="0.01">
+                                <input type="number" class="form-control" id="sfje" name="sfje" placeholder=""
+                                       step="0.01">
                                 <span class="input-group-addon" style="font-size: 16px;">元</span>
                             </div>
                         </div>
@@ -140,7 +143,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">按揭期限</span>
                                 <select class="form-control" id="aj_date" name="aj_date">
-                                   <%=Tools.dicopt(DataDic.dic_aj_date,infodb.get("aj_date"))%>
+                                    <%=Tools.dicopt(DataDic.dic_aj_date, infodb.get("aj_date"))%>
                                 </select>
                             </div>
                         </div>
@@ -157,7 +160,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">垫资类型</span>
                                 <select class="form-control" id="dz_type" name="dz_type">
-                                    <%=Tools.dicopt(DataDic.dic_dz_type,infodb.get("dz_type"))%>
+                                    <%=Tools.dicopt(DataDic.dic_dz_type, infodb.get("dz_type"))%>
                                 </select>
                             </div>
                         </div>
@@ -238,13 +241,13 @@
                     </ul>
                     <div id="clTabContent" class="tab-content">
                         <%
-                            TtList bclist =(TtList)request.getAttribute("bclist");
+                            TtList bclist = (TtList) request.getAttribute("bclist");
 
                             for (int i = 1; i <= 4; i++) {
-                                TtMap bcmap=new TtMap();
-                                if(!bclist.isEmpty()&&bclist.size()>0){
-                                   bcmap=bclist.get(i-1);
-                                   request.setAttribute("bcmap",bcmap);
+                                TtMap bcmap = new TtMap();
+                                if (!bclist.isEmpty() && bclist.size() > 0) {
+                                    bcmap = bclist.get(i - 1);
+                                    request.setAttribute("bcmap", bcmap);
                                 }
                                 if (i == 1) {
                         %>
@@ -265,14 +268,15 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">婚姻状况</span>
                                                     <select class="form-control" id="hyzk<%=i%>" name="hyzk<%=i%>">
-                                                        <%=Tools.dicopt(DataDic.dic_hyzk,bcmap.get("hyzk"))%>
+                                                        <%=Tools.dicopt(DataDic.dic_hyzk, bcmap.get("hyzk"))%>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">个人月收入</span>
-                                                    <input value="${bcmap.ysr}" step="0.01" type="number" class="form-control" id="ysr<%=i%>"
+                                                    <input value="${bcmap.ysr}" step="0.01" type="number"
+                                                           class="form-control" id="ysr<%=i%>"
                                                            name="ysr<%=i%>"
                                                            placeholder="">
                                                     <span class="input-group-addon" style="font-size: 16px;">元</span>
@@ -282,7 +286,7 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">最高学历</span>
                                                     <select class="form-control" id="xl<%=i%>" name="xl<%=i%>">
-                                                        <%=Tools.dicopt(DataDic.dic_xl,bcmap.get("xl"))%>
+                                                        <%=Tools.dicopt(DataDic.dic_xl, bcmap.get("xl"))%>
                                                     </select>
                                                 </div>
                                             </div>
@@ -290,14 +294,15 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">居住状况</span>
                                                     <select class="form-control" id="jzzk<%=i%>" name="jzzk<%=i%>">
-                                                        <%=Tools.dicopt(DataDic.dic_jzzk,bcmap.get("jzzk"))%>
+                                                        <%=Tools.dicopt(DataDic.dic_jzzk, bcmap.get("jzzk"))%>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">现住地址</span>
-                                                    <input value="${bcmap.xzdz}" type="text" class="form-control" id="xzdz<%=i%>"
+                                                    <input value="${bcmap.xzdz}" type="text" class="form-control"
+                                                           id="xzdz<%=i%>"
                                                            name="xzdz<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -305,7 +310,8 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">邮政编码</span>
-                                                    <input value="${bcmap.yzbm}" type="text" class="form-control" id="yzbm<%=i%>"
+                                                    <input value="${bcmap.yzbm}" type="text" class="form-control"
+                                                           id="yzbm<%=i%>"
                                                            name="yzbm<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -313,7 +319,8 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">工作单位</span>
-                                                    <input value="${bcmap.gzdw}"  type="text" class="form-control" id="gzdw<%=i%>"
+                                                    <input value="${bcmap.gzdw}" type="text" class="form-control"
+                                                           id="gzdw<%=i%>"
                                                            name="gzdw<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -321,7 +328,8 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">单位电话</span>
-                                                    <input value="${bcmap.dwdh}" type="text" class="form-control" id="dwdh<%=i%>"
+                                                    <input value="${bcmap.dwdh}" type="text" class="form-control"
+                                                           id="dwdh<%=i%>"
                                                            name="dwdh<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -329,7 +337,8 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">单位地址</span>
-                                                    <input value="${bcmap.dwdz}" type="text" class="form-control" id="dwdz<%=i%>"
+                                                    <input value="${bcmap.dwdz}" type="text" class="form-control"
+                                                           id="dwdz<%=i%>"
                                                            name="dwdz<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -337,7 +346,8 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">文书地址</span>
-                                                    <input value="${bcmap.wsdz}" type="text" class="form-control" id="wsdz<%=i%>"
+                                                    <input value="${bcmap.wsdz}" type="text" class="form-control"
+                                                           id="wsdz<%=i%>"
                                                            name="wsdz<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -345,7 +355,8 @@
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">文书送达地址</span>
-                                                    <input value="${bcmap.wssddz}" type="text" class="form-control" id="wssddz<%=i%>"
+                                                    <input value="${bcmap.wssddz}" type="text" class="form-control"
+                                                           id="wssddz<%=i%>"
                                                            name="wssddz<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -354,7 +365,7 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">单位性质</span>
                                                     <select class="form-control" id="dwxz<%=i%>" name="dwxz<%=i%>">
-                                                        <%=Tools.dicopt(DataDic.dic_dwxz,bcmap.get("dwxz"))%>
+                                                        <%=Tools.dicopt(DataDic.dic_dwxz, bcmap.get("dwxz"))%>
                                                     </select>
                                                 </div>
                                             </div>
@@ -362,7 +373,7 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">所属行业</span>
                                                     <select class="form-control" id="sshy<%=i%>" name="sshy<%=i%>">
-                                                        <%=Tools.dicopt(DataDic.dic_sshy,bcmap.get("sshy"))%>
+                                                        <%=Tools.dicopt(DataDic.dic_sshy, bcmap.get("sshy"))%>
                                                     </select>
                                                 </div>
                                             </div>
@@ -370,7 +381,7 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">职业</span>
                                                     <select class="form-control" id="zy<%=i%>" name="zy<%=i%>">
-                                                        <%=Tools.dicopt(DataDic.dic_zy,bcmap.get("zy"))%>
+                                                        <%=Tools.dicopt(DataDic.dic_zy, bcmap.get("zy"))%>
                                                     </select>
                                                 </div>
                                             </div>
@@ -378,14 +389,15 @@
                                                 <div class="input-group">
                                                     <span class="input-group-addon">职务</span>
                                                     <select class="form-control" id="zw<%=i%>" name="zw<%=i%>">
-                                                        <%=Tools.dicopt(DataDic.dic_zw,bcmap.get("zw"))%>
+                                                        <%=Tools.dicopt(DataDic.dic_zw, bcmap.get("zw"))%>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">工作年限</span>
-                                                    <input value="${bcmap.gznx}" type="text" class="form-control" id="gznx<%=i%>"
+                                                    <input value="${bcmap.gznx}" type="text" class="form-control"
+                                                           id="gznx<%=i%>"
                                                            name="gznx<%=i%>"
                                                            placeholder="">
                                                 </div>
@@ -486,11 +498,11 @@
                             String imgName = "imgstep3_1,imgstep3_2,imgstep3_3,imgstep3_4,imgstep3_5,imgstep3_6,imgstep3_7,imgstep3_8,imgstep3_9";
                             String imgNames_title = "身份证正面, 身份证反面, 面签照片, 借款人资料1, 借款人资料2, 信用卡申请1, 信用卡申请2, 个人税收声明, 电话调查申请";
 
-                            String[] imgNames= imgName.split(",");
-                            String[] imgNames_titles= imgNames_title.split(",");
+                            String[] imgNames = imgName.split(",");
+                            String[] imgNames_titles = imgNames_title.split(",");
 
 
-                                for(int s = 0; s < imgNames.length; s++){
+                            for (int s = 0; s < imgNames.length; s++) {
                                 String[] ssImgs1 = { //设置已有值
                                         !Tools.myIsNull(infodb.get(imgNames[s])) ? infodb.get(imgNames[s]) : ""
                                 };
@@ -530,20 +542,20 @@
                             String[] ssImgs2 = { //设置已有值
                                     !Tools.myIsNull(infodb.get("imgstep3_1s")) ? infodb.get("imgstep3_1s") : ""
                             };
-                            int num=0;
-                           if(ssImgs2[0]!=null&&!ssImgs2[0].equals("")&&ssImgs2[0].length()>0){
-                            ssImgs2 = ssImgs2[0].split(",");
+                            int num = 0;
+                            if (ssImgs2[0] != null && !ssImgs2[0].equals("") && ssImgs2[0].length() > 0) {
+                                ssImgs2 = ssImgs2[0].split(",");
 
-                            if(ssImgs2.length>0){
-                                num=ssImgs2.length;
-                            }
-                            String sImgs2 = "";
-                            for (int i = 0; i < ssImgs2.length; i++) {
-                                if (ssImgs2[i] != null && !ssImgs2[i].equals("")) {
-                                    sImgs2 = sImgs2 + ssImgs2[i] + "|";
+                                if (ssImgs2.length > 0) {
+                                    num = ssImgs2.length;
                                 }
-                            }
-                            System.out.println("长度:"+ssImgs2.length);
+                                String sImgs2 = "";
+                                for (int i = 0; i < ssImgs2.length; i++) {
+                                    if (ssImgs2[i] != null && !ssImgs2[i].equals("")) {
+                                        sImgs2 = sImgs2 + ssImgs2[i] + "|";
+                                    }
+                                }
+                                System.out.println("长度:" + ssImgs2.length);
                         %>
                         <%--&lt;%&ndash; 可能这里用<%@include file %>模式更适合&ndash;%&gt;--%>
                         <jsp:include page="<%=upFile2%>">
@@ -567,7 +579,8 @@
                         <%}%>
                         <div style="position: relative;width: 100px;height:140px;display: inline-block;text-align: center;margin: auto;"
                              id="div_imgstep3_1s">
-                            <img id="imgstep3_1s_view" onclick="addimgFileup('imgstep3_1s');" name="imgstep3_1s_view" src="images/mgcaraddimg.jpg"
+                            <img id="imgstep3_1s_view" onclick="addimgFileup('imgstep3_1s');" name="imgstep3_1s_view"
+                                 src="images/mgcaraddimg.jpg"
                                  class="imgclass gallery-pic" style="width: 100%;height:100px;border-radius:10px;">
                             <img onclick="addimgFileup('imgstep3_1s');" id="imgstep3_1s_views" name="imgstep3_1s_views"
                                  style="float:center;width:12px;height:12px;text-align:center;display:none;"
@@ -590,7 +603,7 @@
                             <div class="input-group">
                                 <span class="input-group-addon">当前状态</span>
                                 <select class="form-control" id="bc_status" name="bc_status">
-                                    <%=Tools.dicopt(DataDic.dic_kk_status,infodb.get("bc_status"))%>
+                                    <%=Tools.dicopt(DataDic.dic_kk_status, infodb.get("bc_status"))%>
                                 </select>
                             </div>
                         </div>
@@ -611,23 +624,23 @@
     <script>
         //点击生成上传入口
         function addimgFileup(imgName) {
-            var num = $("#" + imgName+"_num").val();
+            var num = $("#" + imgName + "_num").val();
             //alert(num);
             num++;
-            var newimgName = imgName+num;
-            $("#" + imgName+"_num").val(num);
+            var newimgName = imgName + num;
+            $("#" + imgName + "_num").val(num);
             $("#imgs_div").append(
                 "<div style=\"position: relative;width: 100px;height:140px;" +
                 "display: inline-block;text-align: center;margin: auto;" +
                 "\" id=\"div_" + newimgName + "\" class=\"gallerys\">\n" +
-                "<img id=\"" + imgName + "_view"+num+"\" name=\"" + imgName + "_view"+num+"\" src=\"images/mgcaraddimg.jpg\"" +
+                "<img id=\"" + imgName + "_view" + num + "\" name=\"" + imgName + "_view" + num + "\" src=\"images/mgcaraddimg.jpg\"" +
                 " class=\"imgclass gallery-pic\" style=\"width: 100%;height:100px;border-radius:10px;\">\n" +
-                "<img id=\"" + imgName + "_view"+num+"s\" name=\"" + imgName + "_view"+num+"s\" style=\"float:center;" +
+                "<img id=\"" + imgName + "_view" + num + "s\" name=\"" + imgName + "_view" + num + "s\" style=\"float:center;" +
                 "width:12px;height:12px;text-align:center;display:none;\" src=\"iframe/dist/img/loading/loading-spinner-grey.gif\" />" +
                 "<input type=\"hidden\" id=\"" + newimgName + "\" name=\"" + newimgName + "\" value=\"images/mgcaraddimg.jpg\" />" +
                 "<input type=\"file\" id=\"upload_" + newimgName + "\" runat=\"server\" name=\"upload_immm\" accept=\"image/*\" style=\"position: absolute;left: 0;top: 0;height: 80%;width: 100%;background: transparent;border: 0;margin: 0;padding: 0;filter: alpha(opacity=0);-moz-opacity: 0;-khtml-opacity: 0;opacity: 0\" class=\"uploadfileclass\">" +
                 "<div style=\"padding-top:20px;\">" +
-                "<a onclick=\"$.openPhotoGallery($('#" + imgName + "_view"+num+"'));\">新增补充材料</a></div>" +
+                "<a onclick=\"$.openPhotoGallery($('#" + imgName + "_view" + num + "'));\">新增补充材料</a></div>" +
                 "</div>" +
                 "<script>" +
                 "$('#upload_" + newimgName + "').fileUpload({" +
@@ -644,8 +657,8 @@
                 "alert(msg);" +
                 "} else {" +
                 "$('#" + newimgName + "').val(imgstep3_9);" +
-                "$('#" + imgName + "_view"+num+"').attr('src', smallimgstep3_9);" +
-                "$('#" + imgName + "_view"+num+"').parents('div.hide:first').removeClass('hide');" +
+                "$('#" + imgName + "_view" + num + "').attr('src', smallimgstep3_9);" +
+                "$('#" + imgName + "_view" + num + "').parents('div.hide:first').removeClass('hide');" +
                 "}" +
                 "} else {" +
                 "if (msg) {" +
@@ -653,7 +666,7 @@
                 "}" +
                 "}" +
                 "if (typeof (cloaseuplayer) == 'function') {" +
-                "cloaseuplayer(\"#" + imgName + "_view"+num+"\");" +
+                "cloaseuplayer(\"#" + imgName + "_view" + num + "\");" +
                 "}" +
                 "}," +
                 "'fail': function (res) {" +
@@ -666,7 +679,7 @@
                 "});" +
                 "$('#upload_" + newimgName + "').on('change', function () {" +
                 "if (typeof (beforeup) == 'function') {" +
-                "beforeup(\"#" + imgName + "_view"+num+"\");}" +
+                "beforeup(\"#" + imgName + "_view" + num + "\");}" +
                 "});</" + "script>"
             );
         }

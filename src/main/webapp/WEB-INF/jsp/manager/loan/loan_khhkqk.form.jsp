@@ -12,8 +12,8 @@
         </div>
 
         <div class="modal-body">
-            <div class="row" >
-                <label class="col-sm-1"  >主贷人姓名:<i class="red">*</i></label>
+            <div class="row">
+                <label class="col-sm-1">主贷人姓名:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.c_name }
                 </div>
@@ -21,19 +21,19 @@
                 <div class="col-sm-2">
                     ${infodb.c_cardno }
                 </div>
-                <label class="col-sm-1" >金融产品:<i class="red">*</i></label>
+                <label class="col-sm-1">金融产品:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     <c:if test="${infodb.loan_tpid==1}">
                         卡分期
                     </c:if>
                 </div>
-                <label class="col-sm-1" >车辆评估价格:<i class="red">*</i></label>
+                <label class="col-sm-1">车辆评估价格:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.pg_price}
                 </div>
             </div>
             <div class="row">
-                <label class="col-sm-1" >贷款金额:<i class="red">*</i></label>
+                <label class="col-sm-1">贷款金额:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.dk_price}
                 </div>
@@ -41,7 +41,7 @@
                 <div class="col-sm-2">
                     ${infodb.aj_date}
                 </div>
-                <label class="col-sm-1" >每月应还:<i class="red">*</i></label>
+                <label class="col-sm-1">每月应还:<i class="red">*</i></label>
                 <div class="col-sm-2">
                     ${infodb.myyh}
                 </div>
@@ -54,7 +54,7 @@
                     ${lborrow.dt_edit}
                 </div> --%>
             </div>
-            <div class="row" >
+            <div class="row">
                 <!-- <label class="col-sm-1" >是否结清:<i class="red">*</i></label>
                   <div class="col-sm-2">
                       暂时无此数据
@@ -86,7 +86,7 @@
                 <th class="text-center">逾期金额</th>
                 <!-- <th class="text-center">核销日期</th> -->
             </tr>
-            <c:forEach items="${hkjh}" var="map"  varStatus="status">
+            <c:forEach items="${hkjh}" var="map" varStatus="status">
                 <tr>
                     <td class="text-center">${map.overdue_which}</td>
                     <td class="text-center">${map.should_date }</td>
@@ -169,22 +169,24 @@
 </div>
 <script>
 
-    function toggleModel(){
-        $('#myModal').modal({ show: true });
+    function toggleModel() {
+        $('#myModal').modal({show: true});
     }
 
 </script>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="addModal_nstrLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="addModal_nstrLabel"
+     aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">主贷人信息</h4>
             </div>
-            <div class="modal-body" style="border:1px solid #ccc;background-color:#F7F7F7;border-radius: 10px;margin:30px;">
+            <div class="modal-body"
+                 style="border:1px solid #ccc;background-color:#F7F7F7;border-radius: 10px;margin:30px;">
                 <!-- 模态框插入内容 start -->
 
-                <div class="row" >
+                <div class="row">
                     <label class="col-sm-1">姓名:<i class="red">*</i></label>
                     <div class="col-sm-3">
                         ${infodb.c_name }
@@ -199,18 +201,18 @@
                         ${infodb.c_tel }
                     </div>
                 </div>
-                <div class="row" >
+                <div class="row">
 
                     <label class="col-sm-2">身份证号:<i class="red">*</i></label>
                     <div class="col-sm-2">
                         ${infodb.c_cardno}
                     </div>
-                    <label class="col-sm-2" >居住地:<i class="red">*</i></label>
+                    <label class="col-sm-2">居住地:<i class="red">*</i></label>
                     <div class="col-sm-3">
                         ${mapafter.zdr_xzdz }
                     </div>
                 </div>
-                <div class="row" >
+                <div class="row">
                     <label class="col-sm-2">身份证地址:<i class="red">*</i></label>
                     <div class="col-sm-3">
 
@@ -224,8 +226,8 @@
                         未婚
                     </div>
                 </div>
-                <div class="row" >
-                    <label class="col-sm-2 " style="" >单位性质:<i class="red">*</i></label>
+                <div class="row">
+                    <label class="col-sm-2 " style="">单位性质:<i class="red">*</i></label>
                     <div class="col-sm-2">
                         私企
                     </div>
@@ -233,12 +235,12 @@
                     <div class="col-sm-2">
                         ${mapafter.zdr_gzdw}
                     </div>
-                    <label class="col-sm-2" >单位职务:<i class="red">*</i></label>
+                    <label class="col-sm-2">单位职务:<i class="red">*</i></label>
                     <div class="col-sm-2">
                         开发
                     </div>
                 </div>
-                <div class="row" >
+                <div class="row">
                     <label class="col-sm-2">单位电话:<i class="red">*</i></label>
                     <div class="col-sm-2">
                         ${mapafter.zdr_dwdh }
@@ -247,7 +249,7 @@
                     <div class="col-sm-2">
                         ${mapafter.zdr_dwdz}
                     </div>
-                    <label class="col-sm-2" >个人月收入:<i class="red">*</i></label>
+                    <label class="col-sm-2">个人月收入:<i class="red">*</i></label>
                     <div class="col-sm-2">
                         ${mapafter.zdr_grsr }
                     </div>

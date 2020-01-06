@@ -1,74 +1,75 @@
 /*点击切换事件 直接用js吧*/
-function visualTransform(){
+function visualTransform() {
     var form_visual_form1 = document.getElementById("form_visual_form1");
     var form_visual_form2 = document.getElementById("form_visual_form2");
-    if (form_visual_form2.style.display=="none"){
-        form_visual_form2.style.display="block";
-        form_visual_form1.style.display="none";
-    }else{
-        form_visual_form2.style.display="none";
-        form_visual_form1.style.display="block";
+    if (form_visual_form2.style.display == "none") {
+        form_visual_form2.style.display = "block";
+        form_visual_form1.style.display = "none";
+    } else {
+        form_visual_form2.style.display = "none";
+        form_visual_form1.style.display = "block";
     }
 }
 
-var axistick="{lineStyle:{color:'white',type:'dashed'}}";//刻度
+var axistick = "{lineStyle:{color:'white',type:'dashed'}}";//刻度
 
 /* -----------------------------------------报单统计开始----------------------------------------- */
 var baodan = echarts.init(document.getElementById('baodan'));
+
 //前台数据图后台获取数据绘制
-function baodanselect(){
-    var sel=document.getElementById("baodanval").value
+function baodanselect() {
+    var sel = document.getElementById("baodanval").value
     var obj = document.getElementById('baodansel'); //定位id
     var index = obj.selectedIndex; // 选中索引
     var value = obj.options[index].value; // 选中值
     $.ajax({
-        dataType : "json",
-        type : "POST",
-        url : "/manager/visual/getPathMap.do",
-        data : {baodanname:sel,baodancity:value},
-        success : function(data) {
+        dataType: "json",
+        type: "POST",
+        url: "/manager/visual/getPathMap.do",
+        data: {baodanname: sel, baodancity: value},
+        success: function (data) {
             var summarydata = [];
             var timeline = [];
 
 
 //数据图绘制
             var option_baodan = {
-                tooltip : {
+                tooltip: {
                     trigger: 'axis',
                     formatter: "{a} <br/>{b} : {c} "
                 },
-                xAxis : [
+                xAxis: [
                     {
-                        type : 'category',
-                        name:'时间',
-                        boundaryGap : false,
-                        axisTick:axistick,
-                        nameTextStyle:{//坐标轴名称的文字样式。
+                        type: 'category',
+                        name: '时间',
+                        boundaryGap: false,
+                        axisTick: axistick,
+                        nameTextStyle: {//坐标轴名称的文字样式。
                             padding: [0, 0, 0, -8]
                         },
 
-                        axisLine :{symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
-                        data : ['2018-07','2018-08','2018-09','2018-10','2018-11','2018-12','2019-01','2019-02','2019-03']
+                        axisLine: {symbolSize: ['10', '13'], lineStyle: {color: '#6A5046'}},//轴线
+                        data: ['2018-07', '2018-08', '2018-09', '2018-10', '2018-11', '2018-12', '2019-01', '2019-02', '2019-03']
                     }
                 ],
-                yAxis : [
+                yAxis: [
                     {
-                        type : 'value',
-                        name:'数量',
-                        axisTick:axistick,
-                        axisLine :{symbol:['none', 'arrow'],symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
-                        splitLine:{show: false},//去除网格线
+                        type: 'value',
+                        name: '数量',
+                        axisTick: axistick,
+                        axisLine: {symbol: ['none', 'arrow'], symbolSize: ['10', '13'], lineStyle: {color: '#6A5046'}},//轴线
+                        splitLine: {show: false},//去除网格线
                     }
                 ],
-                series : [
+                series: [
                     {
-                        name:'报单统计',
-                        type:'line',
-                        smooth:true,
-                        lineStyle:{
+                        name: '报单统计',
+                        type: 'line',
+                        smooth: true,
+                        lineStyle: {
                             /* color:"#F7A043", */  //颜色，'rgb(128, 128, 128)'，'rgba(128, 128, 128, 0.5)'，支持线性渐变，径向渐变，纹理填充
-                            type:"solid",     //坐标轴线线的类型，solid，dashed，dotted
-                            width:2          //坐标轴线线宽
+                            type: "solid",     //坐标轴线线的类型，solid，dashed，dotted
+                            width: 2          //坐标轴线线宽
                         },
                         areaStyle: {
                             // 线性渐变，前四个参数分别是 x0, y0, x2, y2, 范围从 0 - 1，相当于在图形包围盒中的百分比，如果 globalCoord 为 `true`，则该四个值是绝对的像素位置
@@ -87,14 +88,14 @@ function baodanselect(){
                             } */
                         },
                         /* itemStyle: {normal: {areaStyle: {type: 'default',color:'rgb(242,162,42)'}}}, */
-                        data:[265,120,260,160, 312, 621, 254, 260, 830, 710]
+                        data: [265, 120, 260, 160, 312, 621, 254, 260, 830, 710]
                     }
                 ]
             };
             baodan.setOption(option_baodan);
 //ajax结尾
         },
-        error : function(e, type, msg) {
+        error: function (e, type, msg) {
             alert(type + "=报单统计=" + msg);
         }
     })
@@ -105,6 +106,7 @@ function baodanselect(){
 
 /* -----------------------------------------汽车贷款开始 --------------------------------------- */
 var qichedaikuan = echarts.init(document.getElementById('qichedaikuan'));
+
 //前台数据图后台获取数据绘制
 function guojianselect() {
     var sel = document.getElementById("guojianval").value
@@ -115,7 +117,7 @@ function guojianselect() {
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getCarPathMap.do",
-        data : {guojianname:sel,guojiancity:value},
+        data: {guojianname: sel, guojiancity: value},
         success: function (data) {
             var summarydata = [];
             var timeline = [];
@@ -189,9 +191,11 @@ function guojianselect() {
         }
     })
 }
+
 /* -------------------------------------------汽车贷款结束--------------------------------------- */
 /* -------------------------------------------新车二手车放款开始--------------------------------------- */
 var fangkuan_1 = echarts.init(document.getElementById('fangkuan_1'));
+
 function fangkuanselect() {
     var sel = document.getElementById("fangkuanval").value
     var obj = document.getElementById('fangkuansel'); //定位id
@@ -201,7 +205,7 @@ function fangkuanselect() {
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getCarFkPathMap.do",
-        data: {fangkuanname: sel,fangkuancity:value},
+        data: {fangkuanname: sel, fangkuancity: value},
         success: function (data) {
             var summarydata = [];
             var timeline = [];
@@ -274,7 +278,7 @@ function fangkuanselect() {
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getMoneyPathMap.do",
-        data: {fangkuanname: sel,fangkuancity:value},
+        data: {fangkuanname: sel, fangkuancity: value},
         success: function (data) {
             var summarydata = [];
             var timeline = [];
@@ -348,7 +352,7 @@ function fangkuanselect() {
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getNewOldCarsPathMap.do",
-        data: {fangkuanname: sel,fangkuancity:value},
+        data: {fangkuanname: sel, fangkuancity: value},
         success: function (data) {
             var summarydata = [];
             var timeline = [];
@@ -442,10 +446,12 @@ function fangkuanselect() {
         }
     })
 }
+
 /* -------------------------------------------新车二手车放款金额单数结束--------------------------------------- */
 
 /* -------------------------------------------抵押完成天数分布开始--------------------------------------- */
 var diyawancheng = echarts.init(document.getElementById('diyawancheng'));
+
 function diyaselect() {
     var sel = document.getElementById("diyaval").value
     var obj = document.getElementById('diyasel'); //定位id
@@ -455,7 +461,7 @@ function diyaselect() {
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getPawnPathMap.do",
-        data: {diyaname: sel,diyacity:value},
+        data: {diyaname: sel, diyacity: value},
         success: function (data) {
             var summarydata = [];
             var timeline = [];
@@ -502,9 +508,11 @@ function diyaselect() {
         }
     })
 }
+
 /* -------------------------------------------抵押完成天数分布结束--------------------------------------- */
 /* -------------------------------------------抵押材料回收开始--------------------------------------- */
 var cailiaohuishou = echarts.init(document.getElementById('cailiaohuishou'));
+
 function cailiaoselect() {
     var sel = document.getElementById("cailiaoval").value
     var obj = document.getElementById('cailiaosel'); //定位id
@@ -514,7 +522,7 @@ function cailiaoselect() {
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getRecyclePathMap.do",
-        data: {cailiaoname: sel,cailiaocity:value},
+        data: {cailiaoname: sel, cailiaocity: value},
         success: function (data) {
             var summarydata = [];
             var timeline = [];
@@ -575,11 +583,13 @@ function cailiaoselect() {
         }
     })
 }
+
 /* -------------------------------------------抵押完成结束--------------------------------------- */
 
 /* -------------------------------------------征信查询开始--------------------------------------- */
 
 var zhengxinchaxun = echarts.init(document.getElementById('zhengxinchaxun'));
+
 function zhengxinselect() {
     var sel = document.getElementById("zhengxinval").value
     var obj = document.getElementById('zhengxinsel'); //定位id
@@ -589,7 +599,7 @@ function zhengxinselect() {
         dataType: "json",
         type: "POST",
         url: "/manager/visual/getCreditPathMap.do",
-        data: {zhengxinname: sel,zhengxincity:value},
+        data: {zhengxinname: sel, zhengxincity: value},
         success: function (data) {
             var summarydata = [];
             var timeline = [];
@@ -631,58 +641,59 @@ function zhengxinselect() {
         }
     })
 }
+
 /* -------------------------------------------征信查询结束--------------------------------------- */
 
 /* -------------------------------------------客户年龄开始--------------------------------------- */
 var kehunianling = echarts.init(document.getElementById('kehunianling'));
 $.ajax({
-    dataType : "json",
-    type : "POST",
-    url : "/manager/visual/getAgePathMap.do",
-    success : function(data) {
+    dataType: "json",
+    type: "POST",
+    url: "/manager/visual/getAgePathMap.do",
+    success: function (data) {
         var summarydata = [];
         var timeline = [];
-         
-var option_kehunianling = {
-    tooltip : {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: {
-        x : 'center',
-        width:180,
-        itemWidth:18,//图例标记的图形宽度
-        itemHeight:13,//图例标记的图形高度
-        data:[{name:'18-30岁'} ,
-            {name:'30-40岁'},
-            {name:'40-50岁'},
-            {name:'50岁以上'},
-        ],
-        bottom:-5,
-    },
 
-    series : [
-        {
-            name:'客户年龄分布',
-            type:'pie',
-            radius : '65%',
-            center: ['50%', '45%'],//圆心位置[width，height]
-            data:[
-                {value:335, name:'18-30岁'},
-                {value:265, name:'30-40岁'},
-                {value:198, name:'40-50岁'},
-                {value:232, name:'50岁以上'}
+        var option_kehunianling = {
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                x: 'center',
+                width: 180,
+                itemWidth: 18,//图例标记的图形宽度
+                itemHeight: 13,//图例标记的图形高度
+                data: [{name: '18-30岁'},
+                    {name: '30-40岁'},
+                    {name: '40-50岁'},
+                    {name: '50岁以上'},
+                ],
+                bottom: -5,
+            },
+
+            series: [
+                {
+                    name: '客户年龄分布',
+                    type: 'pie',
+                    radius: '65%',
+                    center: ['50%', '45%'],//圆心位置[width，height]
+                    data: [
+                        {value: 335, name: '18-30岁'},
+                        {value: 265, name: '30-40岁'},
+                        {value: 198, name: '40-50岁'},
+                        {value: 232, name: '50岁以上'}
+                    ]
+                }
             ]
-        }
-    ]
-};
+        };
 
-kehunianling.setOption(option_kehunianling);
+        kehunianling.setOption(option_kehunianling);
 //ajax结尾
-},
-error : function(e, type, msg) {
-    alert(type + "=客户年龄=" + msg);
-}
+    },
+    error: function (e, type, msg) {
+        alert(type + "=客户年龄=" + msg);
+    }
 })
 /* -------------------------------------------客户年龄结束--------------------------------------- */
 
@@ -690,126 +701,129 @@ error : function(e, type, msg) {
 /* -------------------------------------------车辆年龄开始--------------------------------------- */
 var cheliangnianling = echarts.init(document.getElementById('cheliangnianling'));
 $.ajax({
-    dataType : "json",
-    type : "POST",
-    url : "/manager/visual/getCarsAgePathMap.do",
-    success : function(data) {
+    dataType: "json",
+    type: "POST",
+    url: "/manager/visual/getCarsAgePathMap.do",
+    success: function (data) {
         var summarydata = [];
         var timeline = [];
-         
-var option_cheliangnianling = {
-    tooltip : {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: {
-        x : 'center',
-        width:180,
-        itemWidth:18,//图例标记的图形宽度
-        itemHeight:13,//图例标记的图形高度
-        data:[{name:'1-3年'},
-            {name:'3-6年'},
-            {name:'6-9年'},
-            {name:'9年以上'},
-        ],
-        bottom:-5,
 
-    },
+        var option_cheliangnianling = {
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                x: 'center',
+                width: 180,
+                itemWidth: 18,//图例标记的图形宽度
+                itemHeight: 13,//图例标记的图形高度
+                data: [{name: '1-3年'},
+                    {name: '3-6年'},
+                    {name: '6-9年'},
+                    {name: '9年以上'},
+                ],
+                bottom: -5,
 
-    series : [
-        {
-            name:'车辆年龄分布',
-            type:'pie',
-            radius : '62%',
-            center: ['50%', '45%'],//圆心位置[width，height]
-            data:[
-                {value:335, name:'1-3年'},
-                {value:310, name:'3-6年'},
-                {value:256, name:'6-9年'},
-                {value:159, name:'9年以上'}
+            },
+
+            series: [
+                {
+                    name: '车辆年龄分布',
+                    type: 'pie',
+                    radius: '62%',
+                    center: ['50%', '45%'],//圆心位置[width，height]
+                    data: [
+                        {value: 335, name: '1-3年'},
+                        {value: 310, name: '3-6年'},
+                        {value: 256, name: '6-9年'},
+                        {value: 159, name: '9年以上'}
+                    ]
+                }
             ]
-        }
-    ]
-};
+        };
 
-cheliangnianling.setOption(option_cheliangnianling);
+        cheliangnianling.setOption(option_cheliangnianling);
 //ajax结尾
-},
-error : function(e, type, msg) {
-    alert(type + "=车辆年龄=" + msg);
-}
+    },
+    error: function (e, type, msg) {
+        alert(type + "=车辆年龄=" + msg);
+    }
 })
 /* -------------------------------------------车辆年龄结束--------------------------------------- */
 
 /* -------------------------------------------(垫资)资金使用时长开始--------------------------------------- */
 var zijinzhouzhuan = echarts.init(document.getElementById('zijinzhouzhuan'));
-function dianziselect(){
+
+function dianziselect() {
     var obj = document.getElementById('dianzisel'); //定位id
     var index = obj.selectedIndex; // 选中索引
     var value = obj.options[index].value; // 选中值
-var option_zijinzhouzhuan = {
-    tooltip : {
-        trigger: 'axis',
-        axisPointer: { //坐标轴指示器配置项。
-            type: 'cross', //指示器类型。 'cross' 十字准星指示器
-            crossStyle: {
-                color: '#999' //交叉风格
+    var option_zijinzhouzhuan = {
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: { //坐标轴指示器配置项。
+                type: 'cross', //指示器类型。 'cross' 十字准星指示器
+                crossStyle: {
+                    color: '#999' //交叉风格
+                }
             }
-        }
-    },
-    legend: {
-        x : 'center',//图例组件离容器下侧的距离
-        width: 300,//图例组件的宽度
-        data:['资金使用时长',/*'资金周转率'*/],
-        itemWidth:15,//图例标记的图形宽度
-        itemHeight:15,//图例标记的图形高度
-        textStyle:{
-            fontSize:13,
-            color:'#6A5046'
         },
-        itemGap:7,
-        bottom:-5
-    },
-    grid:{//直角坐标系内绘图网格
-        show:false,//是否显示直角坐标系网格。[ default: false ]
-        right:"12%"
-    },
-    xAxis : [
-        {
-            type : 'category',
-            axisTick:axistick,
-            axisLine :{symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
-            axisPointer: {//坐标轴指示器配置项。
-                type: 'shadow'
+        legend: {
+            x: 'center',//图例组件离容器下侧的距离
+            width: 300,//图例组件的宽度
+            data: ['资金使用时长',/*'资金周转率'*/],
+            itemWidth: 15,//图例标记的图形宽度
+            itemHeight: 15,//图例标记的图形高度
+            textStyle: {
+                fontSize: 13,
+                color: '#6A5046'
             },
-            data : ['2018-04','2018-05','2018-06','2018-07','2018-08','2018-09','2018-10','2018-11','2018-12','2019-01','2019-02','2019-03']
-        }
-    ],
-    yAxis : [
-        {
-            name: '资金使用时长(天)',
-            type : 'value',
-            axisTick:axistick,
-            axisLine :{symbol:['none', 'arrow'],symbolSize:['10', '13'],lineStyle:{color:'#6A5046'}},//轴线
-            splitLine:{show: false},//去除网格线
-        }
-    ],
-    series : [
-        {
-            name:'资金使用时长',
-            type:'bar',
-            barWidth:28,
-            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
-
+            itemGap: 7,
+            bottom: -5
         },
-    ]
-};
-zijinzhouzhuan.setOption(option_zijinzhouzhuan);
+        grid: {//直角坐标系内绘图网格
+            show: false,//是否显示直角坐标系网格。[ default: false ]
+            right: "12%"
+        },
+        xAxis: [
+            {
+                type: 'category',
+                axisTick: axistick,
+                axisLine: {symbolSize: ['10', '13'], lineStyle: {color: '#6A5046'}},//轴线
+                axisPointer: {//坐标轴指示器配置项。
+                    type: 'shadow'
+                },
+                data: ['2018-04', '2018-05', '2018-06', '2018-07', '2018-08', '2018-09', '2018-10', '2018-11', '2018-12', '2019-01', '2019-02', '2019-03']
+            }
+        ],
+        yAxis: [
+            {
+                name: '资金使用时长(天)',
+                type: 'value',
+                axisTick: axistick,
+                axisLine: {symbol: ['none', 'arrow'], symbolSize: ['10', '13'], lineStyle: {color: '#6A5046'}},//轴线
+                splitLine: {show: false},//去除网格线
+            }
+        ],
+        series: [
+            {
+                name: '资金使用时长',
+                type: 'bar',
+                barWidth: 28,
+                data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+
+            },
+        ]
+    };
+    zijinzhouzhuan.setOption(option_zijinzhouzhuan);
 }
+
 /* -------------------------------------------(垫资)资金使用时长结束--------------------------------------- */
 
 /* -------------------------------------------代理商综合能力分析开始--------------------------------------- */
 var dalifenxi = echarts.init(document.getElementById('dalifenxi'));
+
 function dailiselect() {
     var sel = document.getElementById("dailival").value
     var option_dalifenxi = {
@@ -924,10 +938,12 @@ function dailiselect() {
 
     dalifenxi.setOption(option_dalifenxi);
 }
+
 /* -------------------------------------------代理商综合能力分析结束--------------------------------------- */
 
 /* -------------------------------------------逾期率开始--------------------------------------- */
 var yuqilv_1 = echarts.init(document.getElementById('yuqilv_1'));
+
 function yuqiselect() {
     var sel = document.getElementById("yuqival").value
     var option_yuqilv_1 = {
@@ -1046,47 +1062,48 @@ function yuqiselect() {
     };
     yuqilv_1.setOption(option_yuqilv_1);
 }
+
 /* -------------------------------------------------------------------------------------------逾期率right------------------------------------------------------------- */
 var yuqilv_2 = echarts.init(document.getElementById('yuqilv_2'));
-option_yuqilv_2= {
+option_yuqilv_2 = {
     tooltip: {
         trigger: 'item',
         formatter: "{a}<br/>{b}: {c} "
     },
     series: [
         {
-            name:'省份逾期数量',
-            type:'pie',
+            name: '省份逾期数量',
+            type: 'pie',
             selectedMode: 'single',
             radius: [0, '30%'],
             label: {
-                show:false
+                show: false
             },
             labelLine: {
                 normal: {
                     show: false
                 }
             },
-            data:[
-                {value:52, name:'河南省'},
-                {value:36, name:'江西省'},
-                {value:78, name:'山东省'},
-                {value:68, name:'安徽省'},
-                {value:48, name:'河北省'},
-                {value:58, name:'其他'}
+            data: [
+                {value: 52, name: '河南省'},
+                {value: 36, name: '江西省'},
+                {value: 78, name: '山东省'},
+                {value: 68, name: '安徽省'},
+                {value: 48, name: '河北省'},
+                {value: 58, name: '其他'}
             ],
         },
         {
-            name:'省份逾期金额',
-            type:'pie',
+            name: '省份逾期金额',
+            type: 'pie',
             radius: ['40%', '55%'],
-            data:[
-                {value:1640000, name:'河南省'},
-                {value:2040000, name:'江西省'},
-                {value:2640000, name:'山东省'},
-                {value:1855900, name:'安徽省'},
-                {value:2250800, name:'河北省'},
-                {value:1166900, name:'其他'},
+            data: [
+                {value: 1640000, name: '河南省'},
+                {value: 2040000, name: '江西省'},
+                {value: 2640000, name: '山东省'},
+                {value: 1855900, name: '安徽省'},
+                {value: 2250800, name: '河北省'},
+                {value: 1166900, name: '其他'},
             ]
         }
     ],

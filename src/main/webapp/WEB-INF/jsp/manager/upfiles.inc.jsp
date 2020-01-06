@@ -96,7 +96,7 @@
 <%
 } else {
     int t_num = 0;
-    System.out.println("总数："+ntotal);
+    System.out.println("总数：" + ntotal);
 %>
 <div class="gallerys">
     <c:forEach var="i" begin="1" end="<%=ntotal%>" step="1">
