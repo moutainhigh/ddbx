@@ -101,7 +101,7 @@
                                     <div class="input-group">
                                         <span class="input-group-addon">婚姻状况</span>
                                         <select name="" id="" class="form-control">
-                                            <%=Tools.dicopt(DataDic.dic_hyzk,"0")%>
+                                            <%=Tools.dicopt(DataDic.dic_hyzk2,"0")%>
                                         </select>
                                     </div>
                                 </div>

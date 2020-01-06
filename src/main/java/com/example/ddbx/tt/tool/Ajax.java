@@ -141,6 +141,7 @@ public class Ajax {
                     String smallWidth = post.get("smallwidth");// 缩略图高
                     String smallHeight = post.get("smallheight");//// 缩略图宽
                     String shuiText = post.get("shuitext");//// 缩略图宽
+                    shuiText="";
                     int nSmallWidth = 0;
                     int nSmallHeight = 0;
                     if (Tools.myIsNull(smallWidth) == false) {

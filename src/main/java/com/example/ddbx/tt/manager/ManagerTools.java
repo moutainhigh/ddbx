@@ -29,7 +29,7 @@ public class ManagerTools {
                 "admin", "assess_admin", "home", "admin2", "button", "demo_upfile", "icon", "general",
                 "admin_agp", "Timeline", "Modals", "table", "comm_citys", "sys_modal", "fs_agp", "readme", "sys_error", "readmedev",
                 "fs", "spmq", "car_loan", "qcpg", "loan_khhklr", "loan_khhkqk","LoanCar","LoanPhone",
-                        "loan_khyqmd", "loan_dczy","loan_tcgl","loan_ssgl","loan_pmgl","loan_hxgl","loan_jqcl",
+                        "loan_khyqmd", "loan_dczy","loan_tcgl","loan_ssgl","loan_pmgl","loan_hxgl","loan_jqcl","yxVideo",
 
                 "gems", "dd_icbc", "zxcx", "alltask", "mytask", "my_job", "sys_config", "sys_config_son", "dd_icbc_status", "kk"
         }; // 允许的cn,只有在列表中的cn才允许访问
@@ -153,6 +153,28 @@ public class ManagerTools {
                 return "loan_hxgl";
             case "loan_jqcl":
                 return "loan_jqcl";
+            //start
+            case "hbyh_zxlr":
+                return "hbyh_zxlr";
+            case "hbyh_xxzl":
+                return "hbyh_xxzl";
+            case "hbyh_yhht":
+                return "hbyh_yhht";
+            case "hbyh_gsht":
+                return "hbyh_gsht";
+            case "hbyh_gpsgd":
+                return "hbyh_gpsgd";
+            case "hbyh_dygd":
+                return "hbyh_dygd";
+            case "hbyh_yhclhs":
+                return "hbyh_yhclhs";
+            case "hbyh_gsclhs":
+                return "hbyh_gsclhs";
+            case "hbyh_dyclhs":
+                return "hbyh_dyclhs";
+            case "ddjd"://订单进度
+                return "ddjd";
+            //end
             // 不需要使用数据库的CN
             case "home":
             case "button":
@@ -167,6 +189,7 @@ public class ManagerTools {
             case "Timeline":
             case "font":
             case "ywxxxg":
+            case "yxVideo":
                 return "";
             default:
                 return null;

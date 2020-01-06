@@ -32,6 +32,8 @@ import java.nio.channels.FileChannel;
 import java.security.MessageDigest;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
@@ -348,6 +350,14 @@ public class Tools {
     }
   }
 
+  /**
+   * @description: 当前登陆用户是否超级管理员 用户信息表里的superadmin字段值为3
+   * @param {type}
+   * @return:
+   */
+  public static boolean isAdmin(TtMap minfo) {// 内置管理员
+    return minfo.get("superadmin").equals("3");
+  }
   /**
    * 指定的list里是否包含某个String
    *
@@ -1524,5 +1534,9 @@ public class Tools {
     String result = "<div style=\"padding-left:15px;\" class=\"input-group date form_datetime col-md-"+width+"\" data-date=\"\" data-date-format=\""+dataFormat+"\" data-link-field=\""+fieldName+"\"><input class=\"form-control\" size=\"16\" type=\"text\" value=\""+defValue+"\" readonly><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-remove\"></span></span><span class=\"input-group-addon\"><span class=\"glyphicon glyphicon-th\"></span></span></div><input type=\"hidden\" id=\""+fieldName+"\" name=\""+fieldName+"\" value=\"\" /><br/>";
     return result;
   }
-
+  public static String getnow(){
+    LocalDateTime now = LocalDateTime.now();    //获取当前系统时间
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");//定义时间格式
+    return now.format(dateTimeFormatter);
+  }
 }

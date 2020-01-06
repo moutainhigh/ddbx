@@ -12,10 +12,10 @@
     <!-- Logo --> <a href="/manager/index" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini">
-            <img src="/manager/images/logo.png" width="20" height="20" class="logoimg">
+            <img src="/manager/images/icbc.png" width="20" height="20" class="logoimg">
         </span> <!-- logo for regular state and mobile devices -->
     <span class="logo-lg">
-            <img src="/manager/images/logo.png" width="20" height="20" class="logoimg hidden-xs">
+            <img src="/manager/images/icbc.png" width="20" height="20" class="logoimg hidden-xs">
             <span class="logotxt" style="font-size:20px !important">
                 <b id="logo_title"><%=Config.APP_TITLE%></b>
             </span>
@@ -292,6 +292,18 @@
                             <div class="pull-right">
                                 <a onclick="dologout();" class="btn btn-default btn-flat">注销</a>
                             </div>
+                            <script>
+                                function dologout(){
+                                        $.post("/manager/login", {
+                                                sdo: "logout",
+                                            },
+                                            function(res) {
+                                                eval("var res="+res);
+                                                alert(res.msg);
+                                                location.href=res.next_url;
+                                            });
+                                    }
+                            </script>
                         </li>
                     </ul>
                 </li>
@@ -348,23 +360,13 @@
           }
         }
       %>
-    var afontSize = <%=afontSize%>;
+    var afontSize= <%=afontSize%>;
 
-    function dologout() {
-        $.post("/manager/login", {
-                sdo: "logout",
+    function doFont(type){
+        $.post("/manager/command?cn=font&sdo=sysconfig&stype="+type+"&fontsize="+afontSize , {
             },
-            function (res) {
-                eval("var res=" + res);
-                alert(res.msg);
-                location.href = res.next_url;
-            });
-    }
-
-    function doFont(type) {
-        $.post("/manager/command?cn=font&sdo=sysconfig&stype=" + type + "&fontsize=" + afontSize, {},
-            function (res) {
-                eval("var res=" + res);
+            function(res) {
+                eval("var res="+res);
                 afontSize = res.msg;
                 chgFontSize(res.msg + "px");
             });

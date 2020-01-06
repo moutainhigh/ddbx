@@ -545,6 +545,7 @@ public class DbCtrl {
      * @param id    需更新數據的主鍵的值
      */
     public int edit(TtMap ary, long id) {
+        TtMap tmpAry = new TtMap();
         // todo oldrec=info(id);
         if (chk(ary, id)) {
             if (Tools.myIsNull(ary.get("dt_edit"))) {
@@ -557,15 +558,20 @@ public class DbCtrl {
             if (ary == null) {
                 return 0;
             } else {
+                tmpAry.putAll(ary);
                 int re = editData(ary, id);
-                succ(ary, id, 1);
+                succ(tmpAry, id, 1);
+                tmpAry.clear();
+                tmpAry = null;
                 /*
                  * todo global tablog_tabs; if(in_array(table, tablog_tabs)){
-                 * tablog(title,table,id,'edit',ary,oldrec); }
+                 * tablog(title,table,id,'edit',tmpAry,oldrec); }
                  */
                 return re;
             }
         } else {
+            tmpAry.clear();
+            tmpAry = null;
             return 0;
         }
     }
@@ -600,6 +606,7 @@ public class DbCtrl {
         if (ary == null || ary.size() == 0) {
             return 0;
         }
+        TtMap tmpArray = new TtMap();
         if (chk(ary, 0)) {
             String dt = Tools.dateToStrLong(null);
             if (Tools.myIsNull(ary.get("dt_edit"))) {
@@ -619,14 +626,18 @@ public class DbCtrl {
                 ary.put("showtag", "0");
             }
             ary = param(ary, 0);
-            System.out.println("add :" + ary);
+            tmpArray.putAll(ary);
             id = addData(ary);
-            succ(ary, id, 0);
+            succ(tmpArray, id, 0);
             /*
              * todo 写数据库日志
              */
+            tmpArray.clear();
+            tmpArray = null;
             return id;
         } else {
+            tmpArray.clear();
+            tmpArray = null;
             return 0;
         }
     }
